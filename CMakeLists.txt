@@ -25,6 +25,9 @@ add_executable(run
     src/Level/Level1.cpp
     src/Level/Level.h
 
+    src/Message/Message.cpp
+    src/Message/Message.h
+
     src/Player/Player.cpp
     src/Player/Player.h
 
@@ -32,9 +35,14 @@ add_executable(run
     src/Selection/Selection.h
 )
 
-target_link_libraries(
-    run 
-    PUBLIC 
-)
+add_subdirectory( libraries/json )
+# add_library(run ...)
+
+target_link_libraries(run PRIVATE nlohmann_json::nlohmann_json)
+
+# target_link_libraries(
+#     run 
+#     PUBLIC 
+# )
 
 
