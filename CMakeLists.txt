@@ -22,8 +22,11 @@ add_executable(run
     src/Action/StartGame.h
 
     src/Level/Level.h
+
     src/Level/Level1.cpp
     src/Level/Level.h
+    src/Level/Level2.cpp
+    src/Level/Level2.h
 
     src/Message/Message.cpp
     src/Message/Message.h
@@ -35,14 +38,7 @@ add_executable(run
     src/Selection/Selection.h
 )
 
-add_subdirectory( libraries/json )
-# add_library(run ...)
+add_subdirectory( libraries/json ) 
+add_subdirectory( libraries/AudioFile )
 
-target_link_libraries(run PRIVATE nlohmann_json::nlohmann_json)
-
-# target_link_libraries(
-#     run 
-#     PUBLIC 
-# )
-
-
+target_link_libraries(run PRIVATE nlohmann_json::nlohmann_json AudioFile)

@@ -6,8 +6,13 @@
 class Level1 : public Level
 {
     public:
-        Level1();
+        Level1( Player& player ) : 
+            Level(player) 
+        {
+            
+        }
         void startLevel();
+        ~Level1() {}
 };
 
 #endif

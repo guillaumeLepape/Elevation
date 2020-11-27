@@ -2,6 +2,8 @@
 
 #include <fstream>
 #include <cassert>
+// #include <chrono>
+// #include <thread>
 
 #include <nlohmann/json.hpp>
 
@@ -27,10 +29,11 @@ void Message::writeInConsole()
     std::cout << "\n " << message["hour"] << "h" << message["minut"];
     std::cout << "\n========";
 
-    for ( int i = 0; i < message["message"].size(); i++ )
+    for ( auto i = message["message"].cbegin(); i != message["message"].cend(); i++ )
     {
-        // casting not to print the quotes at the begin and end of message
-        std::cout << "\n " << ( (std::string) message["message"][i] );
+        // std::chrono::seconds dura(3);
+        // std::this_thread::sleep_for( dura );
+        std::cout << "\n " << ( (std::string) *i );
     }
 
     std::cout << "\n";
