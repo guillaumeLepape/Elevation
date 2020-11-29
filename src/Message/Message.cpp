@@ -5,8 +5,8 @@
 
 #include <nlohmann/json.hpp>
 
-Message::Message( const std::string& fileName, Player* player )
-    : fileName_( fileName ), player_(player)
+Message::Message( const std::string& fileName, Player* player, Plug* plug )
+    : fileName_( fileName ), player_(player), plug_(plug)
 {
     writeInConsole();
 }
@@ -22,6 +22,10 @@ void Message::writeInConsole()
     nlohmann::json message;
 
     messageFile >> message;
+
+    // print level name
+    std::cout << "\n " << (std::string) message["nameLevel"];
+    std::cout << "\n========";
 
     // print the hour
     std::cout << "\n " << message["hour"] << "h" << message["minut"];
@@ -39,7 +43,7 @@ void Message::writeInConsole()
         }
         else if ( name == "plug" )
         {
-            std::cout << "plug";
+            std::cout << plug_->name();
         }
         else if ( name == "description" )
         {

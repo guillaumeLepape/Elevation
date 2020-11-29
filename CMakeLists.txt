@@ -38,6 +38,9 @@ add_executable(run
 
     src/Selection/Selection.cpp
     src/Selection/Selection.h
+
+    src/Plug/Plug.cpp
+    src/Plug/Plug.h
 )
 
 add_subdirectory( libraries/json ) 

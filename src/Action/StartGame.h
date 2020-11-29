@@ -8,7 +8,6 @@
 #include "../Level/Level1.h"
 #include "../Level/Level2.h"
 #include "../Player/Player.h"
-#include "../Message/Message.h"
 
 class StartGame : public Action
 {
