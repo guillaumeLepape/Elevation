@@ -10,7 +10,9 @@ int main()
     Action *startGame = new StartGame();
     Action *quit = new Quit();
 
-    Selection::newSelection( 
+    Selection selectBeginGame;
+
+    selectBeginGame.select( 
         "Menu",
         { startGame, quit } 
     );

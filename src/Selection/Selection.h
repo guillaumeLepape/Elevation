@@ -9,13 +9,20 @@
 class Selection
 {
     private:
-        Selection();
+        void printMenu
+        (
+            const std::string& selectionTitle,
+            const std::vector<Action*>& actions
+        ) const;
+
     public:
-        static void newSelection
+        Selection();
+
+        void select
         ( 
             const std::string& selectionTitle,
             const std::vector<Action*>& actions
-        );
+        ) const;
 };
 
 #endif
