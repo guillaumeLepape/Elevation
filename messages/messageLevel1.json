@@ -3,8 +3,9 @@
     "hour": 11,
     "minut": 12,
     "message": [
-        [ "player", "Bon, c'est parti." ],
-        [ "description", "Vous arrivez en bas du batiment" ],
-        [ "plug", "Ca va ?"]
+        [ "player", { "token": false }, "Bon, c'est parti." ],
+        [ "description", { "token": false }, "Vous arrivez en bas du batiment" ],
+        [ "plug", { "token": true }, "Ca va, -*-pseudo-*- ?"],
+        [ "player", { "token": true }, "Et toi, -*-plugName-*- ?" ]
     ]
 }

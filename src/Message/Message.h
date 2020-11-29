@@ -16,6 +16,8 @@ class Message
         Player* player_;
         Plug* plug_;
 
+        std::string replacePlayerPlug(const std::string& str);
+
     public:
         Message( const std::string& fileName, Player* player, Plug* plug );
         void writeInConsole( );

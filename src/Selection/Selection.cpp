@@ -21,8 +21,8 @@ void Selection::select
 
     while (!(std::cin >> choice) || (choice > actions.size() || choice < 1)) 
     {
-        std::cout << "Selection invalide - Entrez un nombre compris entre 1 to " 
-            << actions.size()  << " only.\n";
+        std::cout << "Selection invalide - Entrez un nombre compris entre 1 et " 
+            << actions.size()  << ".\n";
 
         // reset error flags
         std::cin.clear();
