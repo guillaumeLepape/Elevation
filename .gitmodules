@@ -1,6 +1,3 @@
 [submodule "libraries/json"]
 	path = libraries/json
 	url = git@github.com:nlohmann/json.git
-[submodule "libraries/AudioFile"]
-	path = libraries/AudioFile
-	url = git@github.com:adamstark/AudioFile.git

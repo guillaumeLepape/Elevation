@@ -22,7 +22,7 @@ class StartGame : public Action
         }
 
     public: 
-        StartGame() {}
+        StartGame() : Action( "Commencer une partie" ) {}
         void triggerAction() const
         {
             Message( "../messages/messageStartTime.json" );

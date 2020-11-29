@@ -6,7 +6,7 @@
 class Quit : public Action
 {
     public:
-        Quit() {}
+        Quit() : Action( "Quitter" ) {}
         void triggerAction() const 
         { 
             std::cout << "Quitter le jeu" << std::endl; 

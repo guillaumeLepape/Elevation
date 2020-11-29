@@ -10,7 +10,6 @@ Selection::Selection()
 void Selection::newSelection
 ( 
     const std::string& selectionTitle,
-    const std::vector<std::string>& selections,
     const std::vector<Action*>& actions 
 )
 {
@@ -18,12 +17,17 @@ void Selection::newSelection
     std::cout << "\n " << selectionTitle;
 
     std::cout << "\n========";
-    for ( auto i = selections.cbegin(); i != selections.cend(); i++ )
+    for ( int i = 0; i < actions.size(); i++ )
     {
-        std::cout << "\n " << std::to_string(std::distance(selections.cbegin(),i + 1)) << "- " << *i;
+        std::cout << "\n " 
+            << std::to_string( i + 1 ) 
+            << "- " << actions[i]->statement();
     }
 
-    std::cout << "\n Enter selection (between " << 1 << "-" << selections.size() << ") : ";
+    std::cout << "\n Enter selection (between " 
+        << 1 << "-" 
+        << actions.size() 
+        << ") : ";
 
     std::cin >> selection;
     std::cout<<"\n";

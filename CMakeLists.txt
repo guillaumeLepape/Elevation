@@ -13,8 +13,6 @@ add_executable(run
     src/Action/Action.cpp
     src/Action/Action.h
     
-    src/Action/ChangeAttribute.h
-
     src/Action/Action.cpp
     src/Action/Action.h
 
@@ -39,6 +37,5 @@ add_executable(run
 )
 
 add_subdirectory( libraries/json ) 
-add_subdirectory( libraries/AudioFile )
 
-target_link_libraries(run PRIVATE nlohmann_json::nlohmann_json AudioFile)
+target_link_libraries(run PRIVATE nlohmann_json::nlohmann_json)
