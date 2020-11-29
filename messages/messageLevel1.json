@@ -1,0 +1,9 @@
+{
+    "hour": 11,
+    "minut": 12,
+    "message": [
+        [ "player", "Bon, c'est parti." ],
+        [ "description", "Vous arrivez en bas du batiment" ],
+        [ "plug", "Ca va ?"]
+    ]
+}

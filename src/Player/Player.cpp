@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-Player::Player( const std::string& pseudo ) : 
-    pseudo_(pseudo),
+Player::Player() : 
+    pseudo_("Joueur"),
     nbLifePoints_(100)
 {
 

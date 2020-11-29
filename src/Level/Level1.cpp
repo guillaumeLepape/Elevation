@@ -2,6 +2,6 @@
 
 void Level1::startLevel()
 {
-    player_.printState();
+
 
 }

@@ -2,13 +2,11 @@
 
 #include <fstream>
 #include <cassert>
-// #include <chrono>
-// #include <thread>
 
 #include <nlohmann/json.hpp>
 
-Message::Message( const std::string& fileName )
-    : fileName_( fileName )
+Message::Message( const std::string& fileName, Player* player )
+    : fileName_( fileName ), player_(player)
 {
     writeInConsole();
 }
@@ -30,10 +28,29 @@ void Message::writeInConsole()
     std::cout << "\n========";
 
     for ( auto i = message["message"].cbegin(); i != message["message"].cend(); i++ )
-    {
-        // std::chrono::seconds dura(3);
-        // std::this_thread::sleep_for( dura );
-        std::cout << "\n " << ( (std::string) *i );
+    {   
+        std::cout << "\n ";
+
+        std::string name = (std::string) (*i)[0];
+
+        if ( name == "player" )
+        {
+            std::cout << player_->pseudo();
+        }
+        else if ( name == "plug" )
+        {
+            std::cout << "plug";
+        }
+        else if ( name == "description" )
+        {
+            std::cout << "Description";
+        }
+        else
+        {
+             assert( false );
+        }
+        
+        std::cout << " : " << ( (std::string) (*i)[1] );
     }
 
     std::cout << "\n";

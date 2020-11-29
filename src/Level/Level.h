@@ -6,11 +6,11 @@
 class Level
 {
     protected:
-        Player& player_;
+        Player* player_;
 
     public:
-        Level( Player& player ) : 
-            player_(player) 
+        Level( Player* player ) : 
+            player_(player)
         {  
             
         }

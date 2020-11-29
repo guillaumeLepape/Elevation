@@ -10,8 +10,10 @@ class Player
         int nbLifePoints_;
 
     public:
-        Player( const std::string& pseudo );
+        Player();
         void printState();
+        const std::string& pseudo() const { return pseudo_; }
+        void setPseudo( const std::string& pseudo ) { pseudo_ = pseudo; } 
 };  
 
 #endif
