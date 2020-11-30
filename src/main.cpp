@@ -17,8 +17,8 @@ int main()
         { startGame, quit } 
     );
 
-    delete startGame; startGame = 0;
-    delete quit; quit = 0;
+    delete startGame;
+    delete quit;
 
     return 0;
 }

@@ -13,7 +13,7 @@ class StartGame : public Action
 {
     public: 
         StartGame() : Action( "Commencer une partie" ) {}
-        void triggerAction() const
+        void triggerAction() const override
         {   
             // Create Player instance
             std::unique_ptr<Player> player(new Player);

@@ -9,6 +9,8 @@
 #include <boost/algorithm/string.hpp> 
 #include <vector>
 
+#include "../color.h"
+
 Message::Message( const std::string& fileName, Player* player, Plug* plug )
     : fileName_( fileName ), player_(player), plug_(plug)
 {
@@ -43,15 +45,15 @@ void Message::writeInConsole()
 
         if ( name == "player" )
         {
-            std::cout << player_->pseudo();
+            std::cout << "      " << BOLDGREEN << player_->pseudo() << RESET;
         }
         else if ( name == "plug" )
         {
-            std::cout << plug_->name();
+            std::cout << "      " << BOLDRED << plug_->name() << RESET;
         }
         else if ( name == "description" )
         {
-            std::cout << "Description";
+            // std::cout << "Description";
         }
         else
         {
@@ -60,13 +62,14 @@ void Message::writeInConsole()
         
         if ( (*i)[1]["token"] )
         {
-            std::cout << " : " << ( replacePlayerPlug( (std::string) (*i)[2] ) );
+            std::cout << "\n " << ( replacePlayerPlug( (std::string) (*i)[2] ) );
         }
         else
         {
-            std::cout << " : " << ( (std::string) (*i)[2] );
+            std::cout << "\n " << ( (std::string) (*i)[2] );
         }
         
+        std::cout << "\n";
     }
 
     std::cout << "\n";
@@ -82,7 +85,7 @@ std::string Message::replacePlayerPlug(const std::string& str)
   
     std::string result;
 
-    for (int i = 0; i < vecResult.size(); i++)
+    for (unsigned int i = 0; i < vecResult.size(); i++)
     {
         if ( vecResult[i] == "pseudo" )
         {
@@ -91,6 +94,10 @@ std::string Message::replacePlayerPlug(const std::string& str)
         else if ( vecResult[i] == "plugName" )
         {
             result += plug_->name();
+        }
+        else if ( vecResult[i] == "money" )
+        {
+            result += "20";
         }
         else
         {

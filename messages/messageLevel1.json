@@ -6,6 +6,11 @@
         [ "player", { "token": false }, "Bon, c'est parti." ],
         [ "description", { "token": false }, "Vous arrivez en bas du batiment" ],
         [ "plug", { "token": true }, "Ca va, -*-pseudo-*- ?"],
-        [ "player", { "token": true }, "Et toi, -*-plugName-*- ?" ]
+        [ "player", { "token": true }, "Et toi, -*-plugName-*- ?" ],
+        [ "plug", { "token": false }, "Comme d'habitude ?" ],
+        [ "player", { "token": false }, "Ouais, ca fera 20€." ],
+        [ "plug", { "token": false }, "Tiens." ],
+        [ "description", { "token": true }, "Vous perdez -*-money-*-€."],
+        [ "player", { "token": false }, "A la prochaine." ]
     ]
 }

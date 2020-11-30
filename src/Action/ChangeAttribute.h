@@ -6,7 +6,6 @@
 class ChangeAttribute : public Action
 {
     private:
-        int lambda;
     public:
         ChangeAttribute() {}
         void triggerAction() const

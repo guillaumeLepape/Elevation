@@ -10,6 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(run
     src/main.cpp
 
+    src/color.h
+
     src/Action/Action.cpp
     src/Action/Action.h
     

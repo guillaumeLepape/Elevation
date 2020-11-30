@@ -13,6 +13,8 @@ class Action
         virtual void triggerAction() const = 0;
 
         const std::string& statement() const { return statement_; }
+
+        virtual ~Action() {}
 };
 
 #endif
