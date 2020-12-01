@@ -8,9 +8,10 @@
         [ "plug", { "token": true }, "Ca va, -*-pseudo-*- ?"],
         [ "player", { "token": true }, "Et toi, -*-plugName-*- ?" ],
         [ "plug", { "token": false }, "Comme d'habitude ?" ],
-        [ "player", { "token": false }, "Ouais, ca fera 20€." ],
+        [ "player", { "token": true }, "Ouais, ca fera -*-money-*-€." ],
         [ "plug", { "token": false }, "Tiens." ],
         [ "description", { "token": true }, "Vous perdez -*-money-*-€."],
-        [ "player", { "token": false }, "A la prochaine." ]
+        [ "player", { "token": false }, "A la prochaine." ],
+        [ "description", { "token": false }, "Roule. Fume."]
     ]
 }

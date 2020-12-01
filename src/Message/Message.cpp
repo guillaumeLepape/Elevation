@@ -14,7 +14,7 @@
 Message::Message( const std::string& fileName, Player* player, Plug* plug )
     : fileName_( fileName ), player_(player), plug_(plug)
 {
-    
+
 }
 
 void Message::writeInConsole()
@@ -39,17 +39,16 @@ void Message::writeInConsole()
 
     for ( auto i = message["message"].cbegin(); i != message["message"].cend(); i++ )
     {   
-        std::cout << "\n ";
 
         std::string name = (std::string) (*i)[0];
 
         if ( name == "player" )
         {
-            std::cout << "      " << BOLDGREEN << player_->pseudo() << RESET;
+            std::cout << "\n        " << BOLDGREEN << player_->pseudo() << RESET;
         }
         else if ( name == "plug" )
         {
-            std::cout << "      " << BOLDRED << plug_->name() << RESET;
+            std::cout << "\n        " << BOLDRED << plug_->name() << RESET;
         }
         else if ( name == "description" )
         {
@@ -97,7 +96,7 @@ std::string Message::replacePlayerPlug(const std::string& str)
         }
         else if ( vecResult[i] == "money" )
         {
-            result += player_->price();
+            result += std::to_string( plug_->price() );
         }
         else
         {

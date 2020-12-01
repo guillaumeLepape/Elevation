@@ -14,7 +14,6 @@ void Selection::select
     const std::vector<Action*>& actions 
 ) const
 {
-    bool error = true;
     int choice = 0;
 
     printMenu( selectionTitle, actions );

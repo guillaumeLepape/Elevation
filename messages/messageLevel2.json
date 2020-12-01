@@ -3,5 +3,27 @@
     "hour": 12,
     "minut": 10,
     "message" : [
+        [
+            ["description"],
+            [ "player", { "token": true }, "Salut, -*-plugName-*-." ],
+            [ "plug", { "token": false }, "Ca va ? Tu cherches quoi ?" ],
+            [ "player", { "token": false }, "De la C." ],
+            [ "plug", { "token": false }, "C'est 80€ le gramme." ],
+            [ "player", { "token": false }, "Putain, c'est un peu cher." ],
+            [ "plug", { "token": false }, "C'est pas négociable." ],
+            [ "player", { "token": false }, "Aller j'ai pas masse de tunes." ],
+            [ "plug", { "token": false }, "Ok, je veux bien négocier. Tu proposes combien ?" ]
+        ],
+        [
+            [ "plug", { "token": false }, "T'es con ou quoi ?" ]
+        ],
+        [
+            [ "plug", { "token": false }, "Je peux pas me permettre ca." ]
+        ],
+        [
+            [ "plug", { "token": false }, "Ca me convient. Tiens. A la prochaine." ],
+            [ "player", { "token": false }, "Merci. Salut." ],
+            [ "description", { "token": false }, "Carte VISA. Sniffe."]
+        ]
     ]
 }

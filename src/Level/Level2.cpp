@@ -7,8 +7,8 @@
 
 void Level2::startLevel()
 {
-    std::unique_ptr<Plug> plug( new Plug("Jean-Luc Delarue") );
+    std::unique_ptr<Plug> plug( new Plug("Jean-Luc Delarue", 50) );
 
-    Message message( "../messages/messageLevel2.json", player_, plug.get() );
-    message.writeInConsole();
+    // Message message( "../messages/messageLevel2.json", player_, plug.get() );
+    // message.writeInConsole();
 }

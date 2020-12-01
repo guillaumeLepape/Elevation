@@ -6,7 +6,7 @@
 class Level1 : public Level
 {
     public:
-        Level1( Player* player ) : 
+        explicit Level1( Player* player ) : 
             Level(player) 
         {
             
