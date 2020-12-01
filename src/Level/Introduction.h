@@ -9,8 +9,8 @@ class Introduction : public Level
         void getPseudo() const;
 
     public:
-        Introduction( Player* player ) : Level(player) {}
-        void startLevel();
+        explicit Introduction( Player* player ) : Level(player) {}
+        void startLevel() override;
 };
 
 #endif

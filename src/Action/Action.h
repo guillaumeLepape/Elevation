@@ -9,7 +9,7 @@ class Action
         std::string statement_;
 
     public:
-        Action( const std::string& statement ) : statement_( statement ) {}
+        explicit Action( const std::string& statement ) : statement_( statement ) {}
         virtual void triggerAction() const = 0;
 
         const std::string& statement() const { return statement_; }

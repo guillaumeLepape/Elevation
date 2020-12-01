@@ -14,7 +14,7 @@
 Message::Message( const std::string& fileName, Player* player, Plug* plug )
     : fileName_( fileName ), player_(player), plug_(plug)
 {
-    writeInConsole();
+    
 }
 
 void Message::writeInConsole()
@@ -97,7 +97,7 @@ std::string Message::replacePlayerPlug(const std::string& str)
         }
         else if ( vecResult[i] == "money" )
         {
-            result += "20";
+            result += player_->price();
         }
         else
         {

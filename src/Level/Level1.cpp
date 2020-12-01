@@ -9,7 +9,7 @@ void Level1::startLevel()
 {
     std::unique_ptr<Plug> plug( new Plug("Petite frappe") );
 
-    Message( "../messages/messageLevel1.json", player_, plug.get() );
-
+    Message message( "../messages/messageLevel1.json", player_, plug.get() );
+    message.writeInConsole();
 
 }

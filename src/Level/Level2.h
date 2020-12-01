@@ -10,7 +10,7 @@ class Level2 : public Level
         {
             
         }
-        void startLevel();
+        void startLevel() override;
         ~Level2() {}
 };
 

@@ -8,7 +8,7 @@ class Plug
     private:
         std::string name_;
     public:
-        Plug( const std::string& name );
+        explicit Plug( const std::string& name );
         const std::string& name() const { return name_; }
 };
 

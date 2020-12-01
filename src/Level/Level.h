@@ -9,7 +9,7 @@ class Level
         Player* player_;
 
     public:
-        Level( Player* player ) : 
+        explicit Level( Player* player ) : 
             player_(player)
         {  
             

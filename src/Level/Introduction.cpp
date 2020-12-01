@@ -19,7 +19,8 @@ void Introduction::getPseudo() const
 
 void Introduction::startLevel()
 {
-    Message( "../messages/messageStartTime.json", player_, nullptr );
+    Message message( "../messages/messageStartTime.json", player_, nullptr );
+    message.writeInConsole();
 
     getPseudo();
 }
