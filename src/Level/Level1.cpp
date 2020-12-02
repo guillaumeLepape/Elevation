@@ -15,4 +15,6 @@ void Level1::startLevel()
 
     player_->increaseMoney( -plug->price() );
     delete plug;
+
+    std::cout << "\n";
 }

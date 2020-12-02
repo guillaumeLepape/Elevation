@@ -1,21 +1,9 @@
 #include "Introduction.h"
 
 #include "../Message/Message.h"
+#include "../Action/Pseudo.h"
 
 #include <iostream>
-
-void Introduction::getPseudo() const
-{
-    std::cout << "\n Je ne souviens plus de mon prénom. Comment t'appelle tu ? ";
-    std::string pseudo;
-    std::cin >> pseudo; 
-    player_->setPseudo(pseudo);
-    std::cout << "\n " << player_->pseudo() 
-        << " : Bon d'accord " 
-        << player_->pseudo() 
-        << ", ça fera l'affaire.";
-    std::cout << "\n";
-}
 
 void Introduction::startLevel()
 {
@@ -23,5 +11,10 @@ void Introduction::startLevel()
     message.writeHeader();
     message.writeInConsole( player_, nullptr, 0 );
 
-    getPseudo();
+    Pseudo pseudo( player_ );
+    pseudo.triggerAction();
+
+    message.writeInConsole( player_, nullptr, 1 );
+
+    std::cout << "\n";
 }

@@ -16,10 +16,12 @@ void Level2::startLevel()
     negociate( message, player_, plug );
 
     message.writeInConsole( player_, plug, 3 );
-    // message.writeInConsole( player_, plug.get() );
+    
     delete plug;
 
     player_->printState();
+
+    std::cout << "\n";
 }
 
 void Level2::negociate( const Message& message, Player* player, Plug* plug )

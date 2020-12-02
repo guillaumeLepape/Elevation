@@ -6,8 +6,8 @@
         [
         [ "player", false, "Bon, c'est parti." ],
         [ "description", false, "Vous arrivez en bas du batiment" ],
-        [ "plug", false, "Ca va, -*-pseudo-*- ?"],
-        [ "player", false, "Et toi, -*-plugName-*- ?" ],
+        [ "plug", true, "Ca va, -*-pseudo-*- ?"],
+        [ "player", true, "Et toi, -*-plugName-*- ?" ],
         [ "plug", false, "Comme d'habitude ?" ],
         [ "player", true, "Ouais, ca fera -*-money-*-€." ],
         [ "plug", false, "Tiens." ],

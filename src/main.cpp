@@ -1,24 +1,22 @@
 #include <iostream>
 #include <string>
 
+#include "Message/Message.h"
 #include "Selection/Selection.h"
 #include "Action/Quit.h"
 #include "Action/StartGame.h"
 
 int main()
 {
-    Action *startGame = new StartGame();
-    Action *quit = new Quit();
+    std::unique_ptr<Action> startGame( new StartGame() );
+    std::unique_ptr<Action> quit( new Quit() );
 
     Selection selectBeginGame;
 
     selectBeginGame.select( 
         "Menu",
-        { startGame, quit } 
+        { startGame.get(), quit.get() } 
     );
-
-    delete startGame;
-    delete quit;
 
     return 0;
 }

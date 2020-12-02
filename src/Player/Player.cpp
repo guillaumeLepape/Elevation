@@ -5,7 +5,8 @@
 Player::Player() : 
     pseudo_("Joueur"),
     nbLifePoints_(100),
-    money_(200)
+    money_(200),
+    dead_(false)
 {
 
 }

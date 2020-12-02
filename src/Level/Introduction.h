@@ -5,9 +5,6 @@
 
 class Introduction : public Level
 {
-    private: 
-        void getPseudo() const;
-
     public:
         explicit Introduction( Player* player ) : Level(player) {}
         void startLevel() override;
