@@ -3,6 +3,7 @@
     "hour": 10,
     "minut": 12,
     "message" : [ 
+        [
         [ "player", { "token": false }, "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée que vous avez passé chez votre ami." ],
         [ "player", { "token": false }, "Intense et virevoltante, la soirée d'hier vous a marqué profondement." ],
         [ "player", { "token": false }, "C'est certainement dû à la consommation massive et diverse de drogues que vous avez consommé." ],
@@ -10,6 +11,7 @@
         [ "player", { "token": false }, "La combinaison d'hier n'ai qu'un amuse-bouche." ],
         [ "player", { "token": false }, "Il vous faudra donc persister sur cette lancée en allant vous provisionnez auprès de vos 9 dealeurs préférés." ],
         [ "player", { "token": false }, "La consommation de ces 9 drogues est votre seul moyen de changer radicalement votre existence." ]
+    ]
     ]
 }
 

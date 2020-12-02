@@ -3,6 +3,7 @@
     "hour": 11,
     "minut": 12,
     "message": [
+        [
         [ "player", { "token": false }, "Bon, c'est parti." ],
         [ "description", { "token": false }, "Vous arrivez en bas du batiment" ],
         [ "plug", { "token": true }, "Ca va, -*-pseudo-*- ?"],
@@ -13,5 +14,6 @@
         [ "description", { "token": true }, "Vous perdez -*-money-*-€."],
         [ "player", { "token": false }, "A la prochaine." ],
         [ "description", { "token": false }, "Roule. Fume."]
+    ]
     ]
 }

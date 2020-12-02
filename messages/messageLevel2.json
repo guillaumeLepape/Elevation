@@ -4,7 +4,6 @@
     "minut": 10,
     "message" : [
         [
-            ["description"],
             [ "player", { "token": true }, "Salut, -*-plugName-*-." ],
             [ "plug", { "token": false }, "Ca va ? Tu cherches quoi ?" ],
             [ "player", { "token": false }, "De la C." ],
