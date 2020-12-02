@@ -78,7 +78,7 @@ void Message::writeMessage
     const int& i 
 ) const
 {
-    if ( message[i][1]["token"] )
+    if ( message[i][1] )
     {
         std::cout << "\n " << replacePlayerPlug( (std::string) message[i][2], player, plug );
     }

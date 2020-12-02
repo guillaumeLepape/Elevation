@@ -4,16 +4,16 @@
     "minut": 12,
     "message": [
         [
-        [ "player", { "token": false }, "Bon, c'est parti." ],
-        [ "description", { "token": false }, "Vous arrivez en bas du batiment" ],
-        [ "plug", { "token": true }, "Ca va, -*-pseudo-*- ?"],
-        [ "player", { "token": true }, "Et toi, -*-plugName-*- ?" ],
-        [ "plug", { "token": false }, "Comme d'habitude ?" ],
-        [ "player", { "token": true }, "Ouais, ca fera -*-money-*-€." ],
-        [ "plug", { "token": false }, "Tiens." ],
-        [ "description", { "token": true }, "Vous perdez -*-money-*-€."],
-        [ "player", { "token": false }, "A la prochaine." ],
-        [ "description", { "token": false }, "Roule. Fume."]
+        [ "player", false, "Bon, c'est parti." ],
+        [ "description", false, "Vous arrivez en bas du batiment" ],
+        [ "plug", false, "Ca va, -*-pseudo-*- ?"],
+        [ "player", false, "Et toi, -*-plugName-*- ?" ],
+        [ "plug", false, "Comme d'habitude ?" ],
+        [ "player", true, "Ouais, ca fera -*-money-*-€." ],
+        [ "plug", false, "Tiens." ],
+        [ "description", true, "Vous perdez -*-money-*-€."],
+        [ "player", false, "A la prochaine." ],
+        [ "description", false, "Roule. Fume."]
     ]
     ]
 }
