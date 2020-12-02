@@ -3,81 +3,93 @@
 #include <fstream>
 #include <cassert>
 
-#include <nlohmann/json.hpp>
-
 #include <bits/stdc++.h> 
 #include <boost/algorithm/string.hpp> 
 #include <vector>
 
 #include "../color.h"
 
-Message::Message( const std::string& fileName, Player* player, Plug* plug )
-    : fileName_( fileName ), player_(player), plug_(plug)
+Message::Message( const std::string& fileName )
 {
-
-}
-
-void Message::writeInConsole()
-{
-    std::ifstream messageFile( fileName_, std::ifstream::binary );
+    // open json file
+    std::ifstream messageFile( fileName, std::ifstream::binary );
 
     // check if the file is opened
     assert( messageFile.is_open() );
 
-    // create json variable to store message from a json file
-    nlohmann::json message;
+    // read jsonfile 
+    messageFile >> jsonObject_;
 
-    messageFile >> message;
+    messageFile.close();
+}
 
-    // print level name
-    std::cout << "\n " << (std::string) message["nameLevel"];
-    std::cout << "\n========";
+void Message::writeInConsole( Player* player, Plug* plug, const int& indexMessage  ) const
+{
+    const auto& message = jsonObject_["message"][indexMessage];
 
-    // print the hour
-    std::cout << "\n " << message["hour"] << "h" << message["minut"];
-    std::cout << "\n========";
+    for ( int i = 0; i < message.size(); i++ )
+    {
+        std::string name = (std::string) message[i][0];
 
-    for ( auto i = message["message"].cbegin(); i != message["message"].cend(); i++ )
-    {   
+        writeName( name, player, plug );
 
-        std::string name = (std::string) (*i)[0];
-
-        if ( name == "player" )
-        {
-            std::cout << "\n        " << BOLDGREEN << player_->pseudo() << RESET;
-        }
-        else if ( name == "plug" )
-        {
-            std::cout << "\n        " << BOLDRED << plug_->name() << RESET;
-        }
-        else if ( name == "description" )
-        {
-            // std::cout << "Description";
-        }
-        else
-        {
-             assert( false );
-        }
-        
-        if ( (*i)[1]["token"] )
-        {
-            std::cout << "\n " << ( replacePlayerPlug( (std::string) (*i)[2] ) );
-        }
-        else
-        {
-            std::cout << "\n " << ( (std::string) (*i)[2] );
-        }
+        writeMessage( message, player, plug, i );
         
         std::cout << "\n";
     }
-
-    std::cout << "\n";
-
-    messageFile.close();
 }   
 
+void Message::writeHeader() const
+{
+    // print level name
+    std::cout << "\n " << (std::string) jsonObject_["nameLevel"];
+    std::cout << "\n========";
 
-std::string Message::replacePlayerPlug(const std::string& str)
+    // print the hour
+    std::cout << "\n " << jsonObject_["hour"] << "h" << jsonObject_["minut"];
+    std::cout << "\n========";
+}
+
+void Message::writeName( const std::string& name, Player* player, Plug* plug ) const
+{
+    if ( name == "player" )
+    {
+        std::cout << "\n        " << BOLDGREEN << player->pseudo() << RESET;
+    }
+    else if ( name == "plug" )
+    {
+        std::cout << "\n        " << BOLDRED << plug->name() << RESET;
+    }
+    else if ( name == "description" )
+    {
+        // std::cout << "Description";
+    }
+    else
+    {
+        assert( false );
+    }
+}
+
+void Message::writeMessage
+( 
+    const nlohmann::json& message, 
+    Player* player, 
+    Plug* plug, 
+    const int& i 
+) const
+{
+    if ( message[i][1]["token"] )
+    {
+        std::cout << "\n " << replacePlayerPlug( (std::string) message[i][2], player, plug );
+    }
+    else
+    {
+        std::cout << "\n " << ( (std::string) message[i][2] );
+    }
+}
+
+
+std::string Message::replacePlayerPlug(const std::string& str, Player *player, Plug *plug) const
 {
     std::vector<std::string> vecResult; 
     boost::split(vecResult, str, boost::is_any_of("-*"), boost::token_compress_on); 
@@ -88,15 +100,15 @@ std::string Message::replacePlayerPlug(const std::string& str)
     {
         if ( vecResult[i] == "pseudo" )
         {
-            result += player_->pseudo();
+            result += player->pseudo();
         }
         else if ( vecResult[i] == "plugName" )
         {
-            result += plug_->name();
+            result += plug->name();
         }
         else if ( vecResult[i] == "money" )
         {
-            result += std::to_string( plug_->price() );
+            result += std::to_string( plug->price() );
         }
         else
         {

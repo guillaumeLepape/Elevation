@@ -7,9 +7,12 @@
 
 void Level1::startLevel()
 {
-    std::unique_ptr<Plug> plug( new Plug("Petite frappe", 20) );
+    Plug* plug =  new Plug("Petite frappe", 20);
 
-    Message message( "../messages/messageLevel1.json", player_, plug.get() );
-    message.writeInConsole();
+    Message message( "../messages/messageLevel1.json" );
+    message.writeHeader();
+    message.writeInConsole( player_, plug, 0 );
 
+    player_->increaseMoney( -plug->price() );
+    delete plug;
 }

@@ -3,6 +3,8 @@
 
 #include "Level.h"
 
+#include "../Message/Message.h"
+
 class Level2 : public Level
 {
     public:
@@ -11,6 +13,7 @@ class Level2 : public Level
             
         }
         void startLevel() override;
+        void negociate( const Message& message, Player* player, Plug* plug );
         ~Level2() {}
 };
 
