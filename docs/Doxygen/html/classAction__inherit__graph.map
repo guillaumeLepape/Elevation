@@ -1,0 +1,7 @@
+<map id="Action" name="Action">
+<area shape="rect" id="node1" title="blabal" alt="" coords="155,5,214,32"/>
+<area shape="rect" id="node2" href="$classNegociate.html" title=" " alt="" coords="5,80,87,107"/>
+<area shape="rect" id="node3" href="$classPseudo.html" title=" " alt="" coords="111,80,178,107"/>
+<area shape="rect" id="node4" href="$classQuit.html" title=" " alt="" coords="203,80,249,107"/>
+<area shape="rect" id="node5" href="$classStartGame.html" title=" " alt="" coords="274,80,359,107"/>
+</map>

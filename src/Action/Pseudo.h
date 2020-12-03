@@ -5,9 +5,12 @@
 
 class Pseudo : public Action
 {
+    private: 
+        Player* const player_;
+        
     public:
         explicit Pseudo( Player* const player ) : 
-            Action( "Comment t'apelles tu ?", player )
+            Action( "Comment t'apelles tu ?" ), player_(player)
         {
 
         }

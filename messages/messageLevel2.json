@@ -10,7 +10,9 @@
             [ "plug", false, "C'est 80€ le gramme." ],
             [ "player", false, "Putain, c'est un peu cher." ],
             [ "plug", false, "C'est pas négociable." ],
-            [ "player", false, "Aller j'ai pas masse de tunes." ],
+            [ "player", false, "Aller j'ai pas masse de tunes." ]
+        ],
+        [
             [ "plug", false, "Ok, je veux bien négocier. Tu proposes combien ?" ]
         ],
         [

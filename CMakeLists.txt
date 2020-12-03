@@ -18,6 +18,9 @@ add_executable(run
     src/Action/Action.cpp
     src/Action/Action.h
 
+    src/Action/GameOver.h
+    src/Action/Negociate.h
+    src/Action/Pseudo.h
     src/Action/Quit.h
     src/Action/StartGame.h
 
@@ -31,6 +34,9 @@ add_executable(run
 
     src/Level/Level2.cpp
     src/Level/Level2.h
+
+    src/Level/Level3.cpp
+    src/Level/Level3.h
 
     src/Message/Message.cpp
     src/Message/Message.h

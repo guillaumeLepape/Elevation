@@ -3,11 +3,12 @@
 
 #include <memory>
 
-#include "Action.h"
+// #include "Action.h"
 #include "../Level/Introduction.h"
 #include "../Level/Level1.h"
 #include "../Level/Level2.h"
-#include "../Player/Player.h"
+#include "../Level/Level3.h"
+// #include "../Player/Player.h"
 
 class StartGame : public Action
 {
@@ -32,6 +33,9 @@ class StartGame : public Action
             Level2 level2(player.get());
             // Start the second level
             level2.startLevel();
+
+            Level3 level3(player.get());
+            level3.startLevel();
         }
 };
 

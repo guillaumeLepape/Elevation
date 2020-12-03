@@ -1,24 +1,29 @@
 #ifndef ACTION_H
 #define ACTION_H
 
+/*! 
+    * \file Action.h
+*/
+
 #include <string>
 
 #include "../Message/Message.h"
-#include "../Player/Player.h"
+
+/*! \class Action
+    * \brief Abstract class Action to introduce various actions (herited classes)
+*/
 
 class Action
 {
     protected:
         std::string statement_;
-        Player * const player_;
 
     public:
         explicit Action
         ( 
-            const std::string& statement,
-            Player * const player = nullptr
+            const std::string& statement
         ) : 
-            statement_( statement ), player_( player )
+            statement_( statement )
         {
 
         }

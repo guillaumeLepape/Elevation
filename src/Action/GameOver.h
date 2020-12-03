@@ -7,12 +7,13 @@ class GameOver
 {
     private:
         Player * const player_;
+
     public:
         explicit GameOver
         ( 
             Player * const player 
         )
-            Action( player_ )
+            Action( "Game over" ), player_(player)
         {
 
         }
