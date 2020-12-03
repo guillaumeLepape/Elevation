@@ -1,6 +1,10 @@
 #ifndef PLUG_H
 #define PLUG_H
 
+/*!
+    * \file Plug.h
+*/
+
 #include <string>
 
 class Plug 

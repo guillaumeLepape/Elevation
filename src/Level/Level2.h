@@ -1,6 +1,11 @@
 #ifndef LEVEL_2_H
 #define LEVEL_2_H
 
+/*!
+    * \file Level2.h
+*/
+
+
 #include "Level.h"
 
 #include "../Message/Message.h"

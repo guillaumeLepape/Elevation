@@ -1,13 +1,17 @@
 #ifndef PSEUDO_H
 #define PSEUDO_H
 
+/*!
+    * \file Pseudo.h
+*/
+
 #include "Action.h"
 
 class Pseudo : public Action
 {
     private: 
         Player* const player_;
-        
+
     public:
         explicit Pseudo( Player* const player ) : 
             Action( "Comment t'apelles tu ?" ), player_(player)

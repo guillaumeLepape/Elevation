@@ -1,6 +1,10 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+/*!
+    * \file Level.h
+*/
+
 #include "../Player/Player.h"
 
 class Level

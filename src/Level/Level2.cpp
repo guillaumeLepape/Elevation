@@ -1,8 +1,12 @@
+/*!
+    * \file Level2.cpp
+*/
+
+
 #include "Level2.h"
 
 #include <memory>
 
-#include "../Plug/Plug.h"
 #include "../Action/Negociate.h"
 
 void Level2::startLevel()

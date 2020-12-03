@@ -1,6 +1,10 @@
 #ifndef LEVEL_3_H
 #define LEVEL_3_H
 
+/*!
+    * \file Level3.h
+*/
+
 #include "Level.h"
 
 #include "../Message/Message.h"

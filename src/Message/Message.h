@@ -1,7 +1,10 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-#include <string>
+/*!
+    * \file Message.h
+*/ 
+
 #include <iostream>
 
 #include <nlohmann/json.hpp>

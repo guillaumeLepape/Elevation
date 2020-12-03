@@ -1,7 +1,8 @@
-#include <iostream>
-#include <string>
+/*!
+    * \file main.cpp
+*/
 
-#include "Message/Message.h"
+
 #include "Selection/Selection.h"
 #include "Action/Quit.h"
 #include "Action/StartGame.h"

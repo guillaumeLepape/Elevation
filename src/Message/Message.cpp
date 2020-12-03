@@ -1,3 +1,7 @@
+/*!
+    * \file Message.cpp 
+*/
+
 #include "Message.h"
 
 #include <fstream>

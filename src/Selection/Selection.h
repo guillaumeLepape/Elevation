@@ -1,8 +1,11 @@
 #ifndef SELECTION_H
 #define SELECTION_H
 
+/*!
+    * \file Selection.h
+*/
+
 #include <vector>
-#include <string>
 
 #include "../Action/Action.h"
 

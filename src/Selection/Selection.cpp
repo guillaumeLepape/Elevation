@@ -1,4 +1,7 @@
-#include <iostream>
+/*!
+    * \file Selection.cpp
+*/
+
 #include <limits>
 
 #include "Selection.h"

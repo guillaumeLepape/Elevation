@@ -5,8 +5,6 @@
     * \file Action.h
 */
 
-#include <string>
-
 #include "../Message/Message.h"
 
 /*! \class Action

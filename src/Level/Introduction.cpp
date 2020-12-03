@@ -1,9 +1,10 @@
+/*!
+    * \file Introduction.cpp
+*/
+
 #include "Introduction.h"
 
-#include "../Message/Message.h"
 #include "../Action/Pseudo.h"
-
-#include <iostream>
 
 void Introduction::startLevel()
 {

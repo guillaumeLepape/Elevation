@@ -1,6 +1,10 @@
 #ifndef GAME_OVER_H
 #define GAME_OVER_H
 
+/*!
+    * \file GameOver.h
+*/
+
 #include "Action.h"
 
 class GameOver

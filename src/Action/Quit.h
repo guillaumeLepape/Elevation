@@ -1,8 +1,11 @@
 #ifndef QUIT_H
 #define QUIT_H
 
+/*!
+    * \file Quit.h
+*/
+
 #include "Action.h"
-#include <iostream>
 
 class Quit : public Action
 {

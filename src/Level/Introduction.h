@@ -1,6 +1,10 @@
 #ifndef INTRODUCTION_H
 #define INTRODUCTION_H
 
+/*!
+    * \file Introduction.h
+*/
+
 #include "Level.h"
 
 class Introduction : public Level

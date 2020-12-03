@@ -1,6 +1,10 @@
 #ifndef NEGOCIATE_H
 #define NEGOCIATE_H
 
+/*!
+    * \file Negociate.h
+*/
+
 #include "Action.h"
 
 class Negociate : public Action

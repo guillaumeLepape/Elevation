@@ -1,6 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+/*!
+    * \file Player.h
+*/
+
 #include <string>
 
 class Player

@@ -1,14 +1,16 @@
 #ifndef START_GAME_H
 #define START_GAME_H
 
+/*!
+    * \file StartGame.h
+*/
+
 #include <memory>
 
-// #include "Action.h"
 #include "../Level/Introduction.h"
 #include "../Level/Level1.h"
 #include "../Level/Level2.h"
 #include "../Level/Level3.h"
-// #include "../Player/Player.h"
 
 class StartGame : public Action
 {
