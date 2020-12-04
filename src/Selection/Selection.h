@@ -14,7 +14,6 @@ class Selection
     private:
         void printMenu
         (
-            const std::string& selectionTitle,
             const std::vector<Action*>& actions
         ) const;
 
@@ -23,7 +22,6 @@ class Selection
 
         void select
         ( 
-            const std::string& selectionTitle,
             const std::vector<Action*>& actions
         ) const;
 };

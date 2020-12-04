@@ -1,0 +1,22 @@
+{
+    "nameLevel": "Niveau 3 : Shit",
+    "hour": 13,
+    "minut": 12,
+    "message": [
+        [
+            [ "description", false, "" ],
+            [ "player", false, "Salut !" ],
+            [ "plug", false, "Tu veux quoi." ],
+            [ "player", false, "T'as quelque chose pour 10 balles." ],
+            [ "plug", false, "Non, c'est minimum 20 balles." ],
+            [ "player", false, "Ok, ca va être juste." ],
+            [ "plug", false, "C'est 20 balles ou rien." ],
+            [ "description", false, "Vous vous arrêtez. Vous serez le poing." ],
+            [ "plug", false, "Qu'est ce qui t'arrive, frère ? Tu as l'air grave défoncé." ],
+            [ "description", false, "Il a raison. J'ai pas le temps pour ça. Le sang me monte à la tête." ],
+            [ "plug", false, "Qu'est ce qui te prends, fils de pute."],
+            [ "description", false, "Vous venez de le frapper." ],
+            [ "plug", false, "Tu peux pas juste payer ta dose et te casser."]
+        ]
+    ]
+}

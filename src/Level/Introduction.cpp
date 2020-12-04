@@ -8,7 +8,7 @@
 
 void Introduction::startLevel()
 {
-    Message message( "../messages/messageStartTime.json" );
+    Message message( "../messages/messageIntroduction.json" );
     message.writeHeader();
     message.writeInConsole( player_, nullptr, 0 );
 

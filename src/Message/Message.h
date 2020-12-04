@@ -12,15 +12,15 @@
 #include "../Player/Player.h"
 #include "../Plug/Plug.h"
 
-// Read message in a txt file and write it the terminal
+/*!
+    * \class Message
+    * \brief Write message in console
+    * Read message in a json file and write it the terminal
+*/
 
 class Message
 {
     private:
-        // std::string fileName_;
-        // Player* player_;
-        // Plug* plug_;
-
         // json variable to store message from a json file
         nlohmann::json jsonObject_;
 
@@ -35,6 +35,12 @@ class Message
             Plug* plug, 
             const int& i 
         ) const;
+
+        /*!
+            * \brief Pause
+            * Pause message and waiting for enter entry 
+        */
+        void pause() const;
 
     public:
         explicit Message( const std::string& fileName );

@@ -23,8 +23,6 @@ void Level2::startLevel()
     
     delete plug;
 
-    player_->printState();
-
     std::cout << "\n";
 }
 

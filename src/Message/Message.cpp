@@ -5,7 +5,6 @@
 #include "Message.h"
 
 #include <fstream>
-#include <cassert>
 
 #include <bits/stdc++.h> 
 #include <boost/algorithm/string.hpp> 
@@ -34,6 +33,8 @@ void Message::writeInConsole( Player* player, Plug* plug, const int& indexMessag
     for ( int i = 0; i < message.size(); i++ )
     {
         std::string name = (std::string) message[i][0];
+
+        pause();
 
         writeName( name, player, plug );
 
@@ -90,6 +91,17 @@ void Message::writeMessage
     {
         std::cout << "\n " << ( (std::string) message[i][2] );
     }
+}
+
+void Message::pause() const 
+{
+    std::string myString = "";
+
+    do 
+    {
+        std::getline(std::cin, myString);
+    } 
+    while (myString.length() != 0);
 }
 
 
