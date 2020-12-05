@@ -14,7 +14,9 @@
             [ "description", false, "Vous vous taisez. Vous serrez le poing." ],
             [ "plug", false, "Qu'est ce qui t'arrive, frère ? Tu as l'air grave défoncé." ],
             [ "description", false, "Il a raison."],
-            [ "description", false, "J'ai pas le temps pour ça. Le sang me monte à la tête." ],
+            [ "description", false, "J'ai pas le temps pour ça. Le sang me monte à la tête." ]
+        ],
+        [
             [ "plug", false, "Qu'est ce qui te prends, fils de pute."],
             [ "description", false, "Vous venez de le frapper." ],
             [ "plug", false, "Tu peux pas juste payer ta dose et te casser."]

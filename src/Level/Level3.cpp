@@ -18,28 +18,35 @@ void Level3::startLevel()
 
     message.writeInConsole( player_, plug, 0 );
     
-    // first selection menu
-    Selection selection;
-
     std::unique_ptr<Action> hit( new Hit(player_, plug) );
 
-    selection.select(
-        { hit.get() } 
-    );
+    hit->triggerAction();
 
     message.writeInConsole( player_, plug, 1 );
 
+    // first selection menu
+    Selection selection;
+
     selection.select(
+        "Choix",
         { hit.get() } 
     );
 
     message.writeInConsole( player_, plug, 2 );
 
     selection.select(
+        "Choix",
         { hit.get() }
     );
 
     message.writeInConsole( player_, plug, 3 );
+
+    selection.select(
+        "Choix",
+        { hit.get() }
+    );
+
+    message.writeInConsole( player_, plug, 4 );
 
     delete plug;
 

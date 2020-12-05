@@ -14,8 +14,8 @@ int main()
 
     Selection selectBeginGame;
 
-    std::cout << "\n Menu";
     selectBeginGame.select(
+        "Menu",
         { startGame.get(), quit.get() } 
     );
 

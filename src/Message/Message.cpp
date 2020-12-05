@@ -59,14 +59,15 @@ void Message::writeName( const std::string& name, Player* player, Plug* plug ) c
 {
     if ( name == "player" )
     {
-        std::cout << "\n        " << BOLDGREEN << player->pseudo() << RESET;
+        std::cout << "\n        " << BOLDGREEN << player->pseudo() << RESET << BLUE;
     }
     else if ( name == "plug" )
     {
-        std::cout << "\n        " << BOLDRED << plug->name() << RESET;
+        std::cout << "\n        " << BOLDRED << plug->name() << RESET << BLUE;
     }
     else if ( name == "description" )
     {
+        std::cout << BOLDMAGENTA;
         // std::cout << "Description";
     }
     else
@@ -91,6 +92,7 @@ void Message::writeMessage
     {
         std::cout << "\n " << ( (std::string) message[i][2] );
     }
+    std::cout << RESET;
 }
 
 void Message::pause() const 

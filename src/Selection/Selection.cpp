@@ -13,25 +13,32 @@ Selection::Selection()
 
 void Selection::select
 ( 
+    const std::string& selectionTitle,
     const std::vector<Action*>& actions 
 ) const
 {
     int choice = 0;
 
-    printMenu( actions );
+    printMenu( selectionTitle, actions );
 
     while (!(std::cin >> choice) || (choice > actions.size() || choice < 1)) 
     {
-        std::cout << "Selection invalide - Entrez un nombre compris entre 1 et " 
-            << actions.size()  << ".\n";
-
+        if ( actions.size() != 1 )
+        {
+            std::cout << "Selection invalide - Entrez un nombre compris entre 1 et " 
+                << actions.size()  << ".\n";
+        }
+        else 
+        {
+            std::cout << "Selection invalide - Entrez un nombre égale à 1";
+        }
         // reset error flags
         std::cin.clear();
 
         // throw away garbage input
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-        printMenu( actions );
+        printMenu( selectionTitle, actions );
     }
 
     std::cout<<"\n";
@@ -47,10 +54,11 @@ void Selection::select
 
 void Selection::printMenu
 (
+    const std::string& selectionTitle,
     const std::vector<Action*>& actions 
 ) const
 {
-    // std::cout << "\n " << selectionTitle;
+    std::cout << "\n " << selectionTitle;
 
     std::cout << "\n========";
     for ( int i = 0; i < actions.size(); i++ )
@@ -60,8 +68,15 @@ void Selection::printMenu
             << "- " << actions[i]->statement();
     }
 
-    std::cout << "\n Enter selection (between " 
-        << 1 << "-" 
-        << actions.size() 
-        << ") : ";
+    if ( actions.size() != 1 )
+    {
+        std::cout << "\n Entrez un chiffre entre " 
+            << 1 << "-" 
+            << actions.size() 
+            << ") : ";
+    }
+    else 
+    {
+        std::cout << "\n Entrez un chiffre égale à 1 : ";
+    }
 }
