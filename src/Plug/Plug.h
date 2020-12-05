@@ -12,10 +12,15 @@ class Plug
     private:
         std::string name_;
         int price_;
+        int lifePoints_;
+
     public:
-        explicit Plug( const std::string& name, const int& price );
+        explicit Plug( const std::string& name, const int& price, const int& lifePoints = 100 );
         const std::string& name() const { return name_; }
         const int& price() const { return price_; }
+
+        const int& lifePoints() const { return lifePoints_; }
+        void decreaseLifePoints( const int& lifePoints) { lifePoints_ -= lifePoints; } 
 };
 
 #endif

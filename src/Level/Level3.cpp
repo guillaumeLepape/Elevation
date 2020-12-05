@@ -7,6 +7,7 @@
 #include "../Plug/Plug.h"
 #include "../Message/Message.h"
 #include "../Selection/Selection.h"
+#include "../Action/Hit.h"
 
 void Level3::startLevel()
 {
@@ -17,12 +18,30 @@ void Level3::startLevel()
 
     message.writeInConsole( player_, plug, 0 );
     
-    Selection firstSelection;
+    // first selection menu
+    Selection selection;
 
-    // selectBeginGame.select(
-    //     { startGame.get(), quit.get() } 
-    // );
+    std::unique_ptr<Action> hit( new Hit(player_, plug) );
 
+    selection.select(
+        { hit.get() } 
+    );
+
+    message.writeInConsole( player_, plug, 1 );
+
+    selection.select(
+        { hit.get() } 
+    );
+
+    message.writeInConsole( player_, plug, 2 );
+
+    selection.select(
+        { hit.get() }
+    );
+
+    message.writeInConsole( player_, plug, 3 );
+
+    delete plug;
 
     std::cout << "\n";
 }

@@ -23,6 +23,7 @@ add_executable(run
     src/Action/Pseudo.h
     src/Action/Quit.h
     src/Action/StartGame.h
+    src/Action/Hit.h
 
     src/Level/Level.h
 
