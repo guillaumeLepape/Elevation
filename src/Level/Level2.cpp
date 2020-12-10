@@ -25,8 +25,3 @@ void Level2::startLevel()
 
     std::cout << "\n";
 }
-
-void Level2::negociate( const Message& message, Player* player, Plug* plug )
-{
-   
-}

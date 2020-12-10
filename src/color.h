@@ -22,3 +22,8 @@
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
+#define TEST  "\033[1m\033[39m"
+
+#define BOLDREDSIDEBAR "\033[1m\033[41m" 
+#define BOLDGREENSIDEBAR "\033[1m\033[42m"
+

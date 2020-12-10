@@ -6,6 +6,7 @@
 */
 
 #include "Action.h"
+#include "../color.h"
 
 class Pseudo : public Action
 {
@@ -20,9 +21,12 @@ class Pseudo : public Action
         }
         void triggerAction() const override 
         {
-            std::cout << "\n Je ne souviens plus de mon prénom. Comment t'appelle tu ? ";
+            Message message( "../messages/messagePseudo.json" );
+            message.writeInConsole( player_, nullptr, 0 );
+            std::cout << "\n " << BOLDYELLOW << "Entrez votre prénom : " << RESET;
             std::string pseudo;
             std::cin >> pseudo; 
+            // std::cout << "\n";
             player_->setPseudo(pseudo);
         }
 };

@@ -6,6 +6,7 @@
 */
 
 #include "Action.h"
+#include "../color.h"
 
 class Negociate : public Action
 {
@@ -26,12 +27,17 @@ class Negociate : public Action
         void triggerAction() const override 
         {
             bool out = false;
+
+            message_.writeInConsole( player_, plug_, 1 );
+
             while ( !out )
             {
-                message_.writeInConsole( player_, plug_, 1 );
                 std::string priceStr;
+
+                std::cout << "\n " << BOLDYELLOW << "Entrez un montant : " << RESET; 
                 std::cin >> priceStr;
-                int price =  std::stoi( priceStr ); 
+                // std::cout << "\n";
+                int price = std::stoi( priceStr ); 
 
                 if ( price > plug_->price() )
                 {
@@ -47,6 +53,7 @@ class Negociate : public Action
                 {
                     message_.writeInConsole( player_, plug_, 3 );
                 }
+                
             }
         }
 };

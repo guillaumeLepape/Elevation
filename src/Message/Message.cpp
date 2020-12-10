@@ -40,19 +40,21 @@ void Message::writeInConsole( Player* player, Plug* plug, const int& indexMessag
 
         writeMessage( message, player, plug, i );
         
-        std::cout << "\n";
+        // std::cout << "\n";
     }
 }   
 
 void Message::writeHeader() const
 {
+    pause();
+
     // print level name
-    std::cout << "\n " << (std::string) jsonObject_["nameLevel"];
-    std::cout << "\n========";
+    std::cout << "\n " << BOLDREDSIDEBAR << (std::string) jsonObject_["nameLevel"] << RESET;
+    std::cout << "\n" << BOLDBLACK << "========" << RESET;
 
     // print the hour
-    std::cout << "\n " << jsonObject_["hour"] << "h" << jsonObject_["minut"];
-    std::cout << "\n========";
+    std::cout << "\n " << BOLDCYAN << jsonObject_["hour"] << "h" << jsonObject_["minut"] << RESET;
+    std::cout << "\n" <<  BOLDBLACK << "========" << RESET;
 }
 
 void Message::writeName( const std::string& name, Player* player, Plug* plug ) const
@@ -69,6 +71,10 @@ void Message::writeName( const std::string& name, Player* player, Plug* plug ) c
     {
         std::cout << BOLDMAGENTA;
         // std::cout << "Description";
+    }
+    else if ( name == "action" )
+    {
+        std::cout << BOLDYELLOW;
     }
     else
     {

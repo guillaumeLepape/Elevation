@@ -20,8 +20,9 @@ class Hit : public Action
         }   
         void triggerAction() const override 
         {
-            std::cout << "\n " << BOLDYELLOW << plug_->name() << " perd 20 points de vie." << RESET;
             std::cout << "\n";
+            std::cout << "\n " << BOLDYELLOW << plug_->name() << " perd 20 points de vie." << RESET;
+
             plug_->decreaseLifePoints( 20 );
         }
 };

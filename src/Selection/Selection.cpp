@@ -5,6 +5,7 @@
 #include <limits>
 
 #include "Selection.h"
+#include "../color.h"
 
 Selection::Selection()
 {
@@ -41,7 +42,7 @@ void Selection::select
         printMenu( selectionTitle, actions );
     }
 
-    std::cout<<"\n";
+    std::cout << "\n";
 
     for ( int i = 0; i < actions.size(); i++ )
     {
@@ -58,22 +59,22 @@ void Selection::printMenu
     const std::vector<Action*>& actions 
 ) const
 {
-    std::cout << "\n " << selectionTitle;
+    std::cout << "\n " << BOLDGREENSIDEBAR << selectionTitle << RESET;
 
-    std::cout << "\n========";
+    std::cout << "\n" << BOLDBLACK << "========" << RESET;
     for ( int i = 0; i < actions.size(); i++ )
     {
         std::cout << "\n " 
             << std::to_string( i + 1 ) 
-            << "- " << actions[i]->statement();
+            << "- " << BOLDMAGENTA << actions[i]->statement() << RESET;
     }
 
     if ( actions.size() != 1 )
     {
-        std::cout << "\n Entrez un chiffre entre " 
+        std::cout << "\n " << BOLDYELLOW << "Entrez un chiffre entre " 
             << 1 << "-" 
-            << actions.size() 
-            << ") : ";
+            << actions.size() << RESET
+            << " : ";
     }
     else 
     {
