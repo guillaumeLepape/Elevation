@@ -20,8 +20,9 @@ class Hit : public Action
         }   
         void triggerAction() const override 
         {
-            std::cout << "\n";
-            std::cout << "\n " << BOLDYELLOW << plug_->name() << " perd 20 points de vie." << RESET;
+            Message message( "../messages/messageHit.json" );
+            message.writeInConsole( player_, plug_, 0 );
+            // std::cout << "\n " << BOLDYELLOW << plug_->name() << " perd 20 points de vie." << RESET;
 
             plug_->decreaseLifePoints( 20 );
         }

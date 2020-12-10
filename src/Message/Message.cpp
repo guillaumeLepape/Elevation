@@ -3,6 +3,7 @@
 */
 
 #include "Message.h"
+#include "Pause.h"
 
 #include <fstream>
 
@@ -34,19 +35,17 @@ void Message::writeInConsole( Player* player, Plug* plug, const int& indexMessag
     {
         std::string name = (std::string) message[i][0];
 
-        pause();
+        Pause::pause();
 
         writeName( name, player, plug );
 
         writeMessage( message, player, plug, i );
-        
-        // std::cout << "\n";
     }
 }   
 
 void Message::writeHeader() const
 {
-    pause();
+    Pause::pause();
 
     // print level name
     std::cout << "\n " << BOLDREDSIDEBAR << (std::string) jsonObject_["nameLevel"] << RESET;
@@ -70,7 +69,6 @@ void Message::writeName( const std::string& name, Player* player, Plug* plug ) c
     else if ( name == "description" )
     {
         std::cout << BOLDMAGENTA;
-        // std::cout << "Description";
     }
     else if ( name == "action" )
     {
@@ -99,17 +97,6 @@ void Message::writeMessage
         std::cout << "\n " << ( (std::string) message[i][2] );
     }
     std::cout << RESET;
-}
-
-void Message::pause() const 
-{
-    std::string myString = "";
-
-    do 
-    {
-        std::getline(std::cin, myString);
-    } 
-    while (myString.length() != 0);
 }
 
 

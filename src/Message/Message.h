@@ -36,12 +36,6 @@ class Message
             const int& i 
         ) const;
 
-        /*!
-            * \brief Pause
-            * Pause message and waiting for enter entry 
-        */
-        void pause() const;
-
     public:
         explicit Message( const std::string& fileName );
 

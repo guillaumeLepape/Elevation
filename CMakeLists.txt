@@ -41,6 +41,7 @@ add_executable(run
 
     src/Message/Message.cpp
     src/Message/Message.h
+    src/Message/Pause.h
 
     src/Player/Player.cpp
     src/Player/Player.h

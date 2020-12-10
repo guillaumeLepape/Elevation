@@ -6,6 +6,7 @@
 
 #include "Selection.h"
 #include "../color.h"
+#include "../Message/Pause.h"
 
 Selection::Selection()
 {
@@ -19,6 +20,8 @@ void Selection::select
 ) const
 {
     int choice = 0;
+
+    Pause::pause();
 
     printMenu( selectionTitle, actions );
 
@@ -42,7 +45,7 @@ void Selection::select
         printMenu( selectionTitle, actions );
     }
 
-    std::cout << "\n";
+    // std::cout << "\n";
 
     for ( int i = 0; i < actions.size(); i++ )
     {
@@ -78,6 +81,7 @@ void Selection::printMenu
     }
     else 
     {
-        std::cout << "\n Entrez un chiffre égale à 1 : ";
+        std::cout << "\n " << BOLDYELLOW << "Entrez un chiffre égale à 1 " 
+            << RESET << " : ";
     }
 }
