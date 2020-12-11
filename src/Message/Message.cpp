@@ -6,6 +6,7 @@
 #include "Pause.h"
 
 #include <fstream>
+#include <iomanip>
 
 #include <bits/stdc++.h> 
 #include <boost/algorithm/string.hpp> 
@@ -52,7 +53,11 @@ void Message::writeHeader() const
     std::cout << "\n" << BOLDBLACK << "========" << RESET;
 
     // print the hour
-    std::cout << "\n " << BOLDCYAN << jsonObject_["hour"] << "h" << jsonObject_["minut"] << RESET;
+    std::cout << "\n " << BOLDCYAN;
+    std::cout << std::setfill('0') << std::setw(2) << (int) jsonObject_["hour"];
+    std::cout << "h";
+    std::cout << std::setfill('0') << std::setw(2) << (int) jsonObject_["minut"];
+    std::cout << RESET;
     std::cout << "\n" <<  BOLDBLACK << "========" << RESET;
 }
 

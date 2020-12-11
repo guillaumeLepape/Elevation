@@ -10,3 +10,4 @@ With SSH :
 # Requirements
 
 CMake 3.1 or more
+Boost 1.71 or more
