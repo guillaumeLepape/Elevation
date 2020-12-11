@@ -8,16 +8,11 @@
 #include "../color.h"
 #include "../Message/Pause.h"
 
-Selection::Selection()
-{
-
-}
-
 void Selection::select
 ( 
     const std::string& selectionTitle,
     const std::vector<Action*>& actions 
-) const
+)
 {
     int choice = 0;
 
@@ -60,7 +55,7 @@ void Selection::printMenu
 (
     const std::string& selectionTitle,
     const std::vector<Action*>& actions 
-) const
+)
 {
     std::cout << "\n " << BOLDGREENSIDEBAR << selectionTitle << RESET;
 

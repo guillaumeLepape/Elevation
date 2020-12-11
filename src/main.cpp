@@ -14,9 +14,9 @@ int main()
     std::unique_ptr<Action> startGame( new StartGame() );
     std::unique_ptr<Action> quit( new Quit() );
 
-    Selection selectBeginGame;
+    // Selection selectBeginGame;
 
-    selectBeginGame.select(
+    Selection::select(
         "Menu",
         { startGame.get(), quit.get() } 
     );

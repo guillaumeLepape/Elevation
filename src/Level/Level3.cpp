@@ -23,24 +23,21 @@ void Level3::startLevel()
 
     message.writeInConsole( player_, plug, 1 );
 
-    // first selection menu
-    Selection selection;
-
-    selection.select(
+    Selection::select(
         "Choix de l'arme",
         { &useFist } 
     );
 
     message.writeInConsole( player_, plug, 2 );
 
-    selection.select(
+    Selection::select(
         "Choix de l'arme",
         { &useFist }
     );
 
     message.writeInConsole( player_, plug, 3 );
 
-    selection.select(
+    Selection::select(
         "Choix de l'arme",
         { &useFist }
     );
@@ -51,7 +48,7 @@ void Level3::startLevel()
 
     UseWeapon useKnife( player_, plug, "knife" );
 
-    selection.select(
+    Selection::select(
         "Choix de l'arme",
         { &useFist, &useKnife }
     );
