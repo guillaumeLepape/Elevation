@@ -10,8 +10,8 @@
 class Plug 
 {
     private:
-        std::string name_;
-        int price_;
+        const std::string name_;
+        const int price_;
         int lifePoints_;
 
     public:

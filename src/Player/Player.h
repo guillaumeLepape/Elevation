@@ -6,6 +6,8 @@
 */
 
 #include <string>
+#include <vector>
+#include "../Weapon/Weapon.h"
 
 class Player
 {
@@ -14,6 +16,8 @@ class Player
         int nbLifePoints_;
         int money_;
         bool dead_;
+        std::vector<Weapon> weapons_;
+        int selectedWeapon_;
 
     public:
         Player();
@@ -26,6 +30,11 @@ class Player
 
         const bool& dead() const { return dead_; }
         void setDead( const bool& dead ) { dead_ = dead; }
+
+        void changeWeapon( const std::string& nameWeapon ); 
+        void addWeapon( const Weapon& weapon ) { weapons_.push_back( weapon ); }
+        const Weapon& weaponFromName( const std::string& nameWeapon ) const;
+        const Weapon& selectedWeapon() const { return weapons_[selectedWeapon_]; }
 };  
 
 #endif

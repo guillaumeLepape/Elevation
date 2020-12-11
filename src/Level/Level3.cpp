@@ -5,9 +5,8 @@
 #include "Level3.h"
 
 #include "../Plug/Plug.h"
-#include "../Message/Message.h"
 #include "../Selection/Selection.h"
-#include "../Action/Hit.h"
+#include "../Action/UseWeapon.h"
 
 void Level3::startLevel()
 {
@@ -18,9 +17,9 @@ void Level3::startLevel()
 
     message.writeInConsole( player_, plug, 0 );
     
-    std::unique_ptr<Action> hit( new Hit(player_, plug) );
+    UseWeapon useFist( player_, plug, "fist" );
 
-    hit->triggerAction();
+    useFist.triggerAction();
 
     message.writeInConsole( player_, plug, 1 );
 
@@ -28,25 +27,34 @@ void Level3::startLevel()
     Selection selection;
 
     selection.select(
-        "Choix",
-        { hit.get() } 
+        "Choix de l'arme",
+        { &useFist } 
     );
 
     message.writeInConsole( player_, plug, 2 );
 
     selection.select(
-        "Choix",
-        { hit.get() }
+        "Choix de l'arme",
+        { &useFist }
     );
 
     message.writeInConsole( player_, plug, 3 );
 
     selection.select(
-        "Choix",
-        { hit.get() }
+        "Choix de l'arme",
+        { &useFist }
     );
 
     message.writeInConsole( player_, plug, 4 );
+
+    player_->addWeapon( Weapon( "knife", 30, "Plantez !" ) );
+
+    UseWeapon useKnife( player_, plug, "knife" );
+
+    selection.select(
+        "Choix de l'arme",
+        { &useFist, &useKnife }
+    );
 
     delete plug;
 

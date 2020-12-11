@@ -2,7 +2,7 @@
     "message": 
     [
         [
-            [ "action", true, "-*-plugName-*- perd 20 points de vie." ]
+            [ "action", true, "-*-plugName-*- perd -*-damage-*- points de vie." ]
         ]
     ]
 }

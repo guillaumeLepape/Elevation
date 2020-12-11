@@ -81,7 +81,7 @@ void Selection::printMenu
     }
     else 
     {
-        std::cout << "\n " << BOLDYELLOW << "Entrez un chiffre égale à 1 " 
+        std::cout << "\n " << BOLDYELLOW << "Entrez un chiffre égale à 1" 
             << RESET << " : ";
     }
 }

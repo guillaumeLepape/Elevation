@@ -121,6 +121,10 @@ std::string Message::replacePlayerPlug(const std::string& str, Player *player, P
         {
             result += std::to_string( plug->price() );
         }
+        else if ( vecResult[i] == "damage" )
+        {
+            result += std::to_string( player->selectedWeapon().damageWeapon() );
+        }
         else
         {
             result += vecResult[i];

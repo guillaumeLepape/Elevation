@@ -11,11 +11,7 @@ add_executable(run
     src/main.cpp
 
     src/color.h
-
-    src/Action/Action.cpp
-    src/Action/Action.h
     
-    src/Action/Action.cpp
     src/Action/Action.h
 
     src/Action/GameOver.h
@@ -23,7 +19,7 @@ add_executable(run
     src/Action/Pseudo.h
     src/Action/Quit.h
     src/Action/StartGame.h
-    src/Action/Hit.h
+    src/Action/UseWeapon.h
 
     src/Level/Level.h
 
@@ -51,6 +47,8 @@ add_executable(run
 
     src/Plug/Plug.cpp
     src/Plug/Plug.h
+
+    src/Weapon/Weapon.h
 )
 
 add_subdirectory( libraries/json ) 
