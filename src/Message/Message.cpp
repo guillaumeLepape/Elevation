@@ -53,7 +53,7 @@ void Message::writeHeader() const
     std::cout << "\n" << BOLDBLACK << "========" << RESET;
 
     // print the hour
-    std::cout << "\n " << BOLDCYAN;
+    std::cout << "\n " << BOLDMAGENTASIDEBAR;
     std::cout << std::setfill('0') << std::setw(2) << (int) jsonObject_["hour"];
     std::cout << "h";
     std::cout << std::setfill('0') << std::setw(2) << (int) jsonObject_["minut"];

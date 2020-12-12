@@ -13,7 +13,8 @@ class Quit : public Action
         Quit() : Action( "Quitter" ) {}
         void triggerAction() const override  
         { 
-            std::cout << "Quitter le jeu" << std::endl; 
+            std::cout << "\n Fin du jeu";
+            std::cout << "\n"; 
         }
 };
 

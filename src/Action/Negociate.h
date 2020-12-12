@@ -34,7 +34,7 @@ class Negociate : public Action
             {
                 std::string priceStr;
 
-                std::cout << "\n " << BOLDYELLOW << "Entrez un montant : " << RESET; 
+                std::cout << "\n " << BOLDCYAN << "Entrez un montant : " << RESET; 
                 std::cin >> priceStr;
                 // std::cout << "\n";
                 int price = std::stoi( priceStr ); 

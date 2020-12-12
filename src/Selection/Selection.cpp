@@ -73,14 +73,14 @@ void Selection::printMenu
 
     if ( actions.size() != 1 )
     {
-        std::cout << "\n " << BOLDYELLOW << "Entrez un chiffre entre " 
+        std::cout << "\n " << BOLDCYAN << "Entrez un chiffre entre " 
             << 1 << "-" 
             << actions.size() << RESET
             << " : ";
     }
     else 
     {
-        std::cout << "\n " << BOLDYELLOW << "Entrez un chiffre égale à 1" 
+        std::cout << "\n " << BOLDCYAN << "Entrez un chiffre égale à 1" 
             << RESET << " : ";
     }
 }
