@@ -8,12 +8,14 @@
 #include "../color.h"
 #include "../Message/Pause.h"
 
-void Selection::select
+int Selection::select
 ( 
     const std::string& selectionTitle,
-    const std::vector<Action*>& actions 
+    const std::vector<Action*>& actions
 )
 {
+    assert( actions.size() != 0 );
+
     int choice = 0;
 
     Pause::pause();
@@ -49,6 +51,8 @@ void Selection::select
             actions[i]->triggerAction();
         }
     }
+
+    return choice;
 } 
 
 void Selection::printMenu

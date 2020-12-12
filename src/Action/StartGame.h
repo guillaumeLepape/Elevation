@@ -11,6 +11,7 @@
 #include "../Level/Level1.h"
 #include "../Level/Level2.h"
 #include "../Level/Level3.h"
+#include "../Level/Level4.h"
 
 class StartGame : public Action
 {
@@ -38,6 +39,11 @@ class StartGame : public Action
 
             Level3 level3(player.get());
             level3.startLevel();
+
+            // Create Level 4 instance
+            Level4 level4(player.get());
+            // Start the fourth level 
+            level4.startLevel();
         }
 };
 

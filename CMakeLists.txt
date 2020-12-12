@@ -20,6 +20,8 @@ add_executable(run
     src/Action/Quit.h
     src/Action/StartGame.h
     src/Action/UseWeapon.h
+    src/Action/WrongAnswer.h
+    src/Action/CorrectAnswer.h
 
     src/Level/Level.h
 
@@ -34,6 +36,9 @@ add_executable(run
 
     src/Level/Level3.cpp
     src/Level/Level3.h
+
+    src/Level/Level4.cpp
+    src/Level/Level4.h
 
     src/Message/Message.cpp
     src/Message/Message.h

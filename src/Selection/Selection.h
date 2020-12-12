@@ -20,7 +20,7 @@ class Selection
 
 
     public:
-        static void select
+        static int select
         ( 
             const std::string& selectionTitle,
             const std::vector<Action*>& actions
