@@ -4,7 +4,6 @@
 
 #include "Level3.h"
 
-#include "../Plug/Plug.h"
 #include "../Selection/Selection.h"
 #include "../Action/UseWeapon.h"
 

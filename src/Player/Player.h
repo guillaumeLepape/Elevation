@@ -5,7 +5,6 @@
     * \file Player.h
 */
 
-#include <string>
 #include <vector>
 #include "../Weapon/Weapon.h"
 

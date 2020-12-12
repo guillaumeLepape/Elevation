@@ -1,8 +1,11 @@
 #ifndef CORRECT_ANSWER_H
 #define CORRECT_ANSWER_H
 
+/*!
+    * \file CorrectAnswer.h
+*/
+
 #include "Action.h"
-#include "../Message/Message.h"
 
 class CorrectAnswer : public Action
 {
