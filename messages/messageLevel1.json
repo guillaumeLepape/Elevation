@@ -8,10 +8,10 @@
         [ "description", false, "Vous arrivez en bas du batiment" ],
         [ "plug", true, "Ca va, -*-pseudo-*- ?"],
         [ "player", true, "Et toi, -*-plugName-*- ?" ],
-        [ "plug", false, "Comme d'habitude ?" ],
-        [ "player", true, "Ouais, ca fera -*-money-*-€." ],
-        [ "plug", false, "Tiens." ],
+        [ "plug", true, "Comme d'habitude ? C'est -*-money-*-€." ],
+        [ "player", false, "Tiens." ],
         [ "description", true, "Vous perdez -*-money-*-€."],
+        [ "plug", false, "Bonne journée." ],
         [ "player", false, "A la prochaine." ],
         [ "description", false, "Roule. Fume."]
     ]
