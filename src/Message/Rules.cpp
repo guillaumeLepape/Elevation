@@ -7,7 +7,7 @@
 
 void Rules::displayRules()
 {
-    std::cout << "\n " << BOLDYELLOWSIDEBAR << "Interface" << RESET;
+    std::cout << "\n " << GREENSIDEBAR << BOLDBLACK << "Interface" << RESET;
 
     std::cout << "\n" << BOLDBLACK << "========" << RESET;
 
@@ -16,7 +16,7 @@ void Rules::displayRules()
     Pause::pause();
 
     std::cout << "\n Si un champ doit être rempli pour continuer le jeu, cela sera indiqué par la couleur " 
-                << BOLDCYAN << "cyan" << RESET << ".";
+                << YELLOWSIDEBAR << BOLDBLACK << "noir encadré jaune" << RESET << ".";
 
     Pause::pause();
 

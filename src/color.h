@@ -22,9 +22,10 @@
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
-#define BOLDREDSIDEBAR "\033[1m\033[41m" 
-#define BOLDGREENSIDEBAR "\033[1m\033[42m"
-#define BOLDYELLOWSIDEBAR "\033[1m\033[43m"
-#define BOLDMAGENTASIDEBAR "\033[1m\033[45m"
+#define REDSIDEBAR "\033[41m" 
+#define GREENSIDEBAR "\033[42m"
+#define YELLOWSIDEBAR "\033[43m"
+#define MAGENTASIDEBAR "\033[45m"
+#define BLACKSIDEBAR "\033[40m"
 
 

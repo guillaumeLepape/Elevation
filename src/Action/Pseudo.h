@@ -23,7 +23,7 @@ class Pseudo : public Action
         {
             Message message( "../messages/messagePseudo.json" );
             message.writeInConsole( player_, nullptr, 0 );
-            std::cout << "\n " << BOLDCYAN << "Entrez votre pseudo : " << RESET;
+            std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << "Entrez votre pseudo" << RESET << " : ";
             std::string pseudo;
             std::cin >> pseudo; 
             // std::cout << "\n";

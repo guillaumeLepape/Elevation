@@ -49,11 +49,11 @@ void Message::writeHeader() const
     Pause::pause();
 
     // print level name
-    std::cout << "\n " << BOLDREDSIDEBAR << (std::string) jsonObject_["nameLevel"] << RESET;
+    std::cout << "\n " << REDSIDEBAR << BOLDWHITE << (std::string) jsonObject_["nameLevel"] << RESET;
     std::cout << "\n" << BOLDBLACK << "========" << RESET;
 
     // print the hour
-    std::cout << "\n " << BOLDMAGENTASIDEBAR;
+    std::cout << "\n " << BOLDWHITE;
     std::cout << std::setfill('0') << std::setw(2) << (int) jsonObject_["hour"];
     std::cout << "h";
     std::cout << std::setfill('0') << std::setw(2) << (int) jsonObject_["minut"];

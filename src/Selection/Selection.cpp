@@ -61,7 +61,7 @@ void Selection::printMenu
     const std::vector<Action*>& actions 
 )
 {
-    std::cout << "\n " << BOLDGREENSIDEBAR << selectionTitle << RESET;
+    std::cout << "\n " << GREENSIDEBAR << BOLDBLACK << selectionTitle << RESET;
 
     std::cout << "\n" << BOLDBLACK << "========" << RESET;
     for ( int i = 0; i < actions.size(); i++ )
@@ -73,14 +73,14 @@ void Selection::printMenu
 
     if ( actions.size() != 1 )
     {
-        std::cout << "\n " << BOLDCYAN << "Entrez un chiffre entre " 
+        std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << "Entrez un chiffre entre " 
             << 1 << "-" 
             << actions.size() << RESET
             << " : ";
     }
     else 
     {
-        std::cout << "\n " << BOLDCYAN << "Entrez un chiffre égale à 1" 
+        std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << "Entrez un chiffre égale à 1" 
             << RESET << " : ";
     }
 }
