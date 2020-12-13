@@ -11,14 +11,13 @@
 
 void Level1::startLevel()
 {
-    Plug* plug =  new Plug("Petite frappe", 20);
+    Plug plug( "Petite frappe", 20);
 
     Message message( "../messages/messageLevel1.json" );
     message.writeHeader();
-    message.writeInConsole( player_, plug, 0 );
+    message.writeInConsole( player_, &plug, 0 );
 
-    player_->increaseMoney( -plug->price() );
-    delete plug;
+    player_->increaseMoney( -plug.price() );
 
     std::cout << "\n";
 }

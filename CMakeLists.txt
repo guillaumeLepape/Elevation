@@ -41,6 +41,9 @@ add_executable(run
     src/Level/Level4.cpp
     src/Level/Level4.h
 
+    src/Level/Level5.cpp
+    src/Level/Level5.h
+
     src/Message/Message.cpp
     src/Message/Message.h
     src/Message/Pause.h
