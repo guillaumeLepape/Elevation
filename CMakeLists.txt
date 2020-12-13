@@ -24,6 +24,8 @@ add_executable(run
     src/Action/CorrectAnswer.h
 
     src/Level/Level.h
+    
+    src/Level/LevelFactory.h
 
     src/Level/Introduction.cpp
     src/Level/Introduction.h

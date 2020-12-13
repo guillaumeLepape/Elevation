@@ -7,43 +7,24 @@
 
 #include <memory>
 
-#include "../Level/Introduction.h"
-#include "../Level/Level1.h"
-#include "../Level/Level2.h"
-#include "../Level/Level3.h"
-#include "../Level/Level4.h"
+#include "../Level/LevelFactory.h"
 
 class StartGame : public Action
 {
     public: 
         StartGame() : Action( "Commencer une partie" ) {}
         void triggerAction() const override
-        {   
-            // Create Player instance
-            std::unique_ptr<Player> player(new Player);
+        {       
+            Player player;
 
-            // Create Introduction
-            Introduction introduction(player.get());
-            // Start introduction
-            introduction.startLevel();
+            int nbLevel = 4;
 
-            // Create Level 1 instance
-            Level1 level1(player.get());
-            // Start the first level
-            level1.startLevel();
+            for ( int i = 0; i <= 4; i++ )
+            {
+                std::unique_ptr<Level> level( LevelFactory::newLevel( &player, i ) );
 
-            // Create Level 2 instance
-            Level2 level2(player.get());
-            // Start the second level
-            level2.startLevel();
-
-            Level3 level3(player.get());
-            level3.startLevel();
-
-            // Create Level 4 instance
-            Level4 level4(player.get());
-            // Start the fourth level 
-            level4.startLevel();
+                level->startLevel();
+            }
         }
 };
 
