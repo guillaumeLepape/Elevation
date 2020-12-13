@@ -14,13 +14,13 @@
 class LevelFactory
 {
     public:
-        static Level* newLevel( Player* player, const int& levelNumber )
+        static std::unique_ptr<Level> newLevel( Player* player, const int& levelNumber )
         {
-            if ( levelNumber == 0 ) return new Introduction(player);
-            if ( levelNumber == 1 ) return new Level1(player);
-            if ( levelNumber == 2 ) return new Level2(player);
-            if ( levelNumber == 3 ) return new Level3(player);
-            if ( levelNumber == 4 ) return new Level4(player);
+            if ( levelNumber == 0 ) return std::make_unique<Introduction>(player);
+            if ( levelNumber == 1 ) return std::make_unique<Level1>(player);
+            if ( levelNumber == 2 ) return std::make_unique<Level2>(player);
+            if ( levelNumber == 3 ) return std::make_unique<Level3>(player);
+            if ( levelNumber == 4 ) return std::make_unique<Level4>(player);
             assert(false); 
         }
 };

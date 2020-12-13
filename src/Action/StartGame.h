@@ -21,7 +21,7 @@ class StartGame : public Action
 
             for ( int i = 0; i <= 4; i++ )
             {
-                std::unique_ptr<Level> level( LevelFactory::newLevel( &player, i ) );
+                std::unique_ptr<Level> level = LevelFactory::newLevel( &player, i );
 
                 level->startLevel();
             }
