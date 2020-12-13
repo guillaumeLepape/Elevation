@@ -20,8 +20,7 @@ add_executable(run
     src/Action/Quit.h
     src/Action/StartGame.h
     src/Action/UseWeapon.h
-    src/Action/WrongAnswer.h
-    src/Action/CorrectAnswer.h
+    src/Action/Answer.h
 
     src/Level/Level.h
     
@@ -53,6 +52,10 @@ add_executable(run
 
     src/Selection/Selection.cpp
     src/Selection/Selection.h
+    src/Selection/ListAnswers.cpp
+    src/Selection/ListAnswers.h
+    src/Selection/Question.cpp
+    src/Selection/Question.h
 
     src/Plug/Plug.cpp
     src/Plug/Plug.h

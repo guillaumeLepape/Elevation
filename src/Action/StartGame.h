@@ -19,9 +19,12 @@ class StartGame : public Action
 
             int nbLevel = 4;
 
-            for ( int i = 0; i <= 4; i++ )
+            // std::vector<int> listLevel = { 0, 1, 2, 3, 4 };
+            std::vector<int> listLevel = { 4 };
+
+            for ( auto i = listLevel.cbegin(); i != listLevel.cend(); i++ )
             {
-                std::unique_ptr<Level> level = LevelFactory::newLevel( &player, i );
+                std::unique_ptr<Level> level = LevelFactory::newLevel( &player, *i );
 
                 level->startLevel();
             }

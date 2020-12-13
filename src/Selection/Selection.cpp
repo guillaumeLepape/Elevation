@@ -42,8 +42,6 @@ int Selection::select
         printMenu( selectionTitle, actions );
     }
 
-    // std::cout << "\n";
-
     for ( int i = 0; i < actions.size(); i++ )
     {
         if ( choice == i + 1 )
@@ -52,7 +50,8 @@ int Selection::select
         }
     }
 
-    return choice;
+    // return the selection that the user has chosen
+    return choice - 1;
 } 
 
 void Selection::printMenu

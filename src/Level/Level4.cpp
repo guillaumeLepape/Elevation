@@ -1,150 +1,80 @@
 #include "Level4.h"
 
 #include "../Selection/Selection.h"
-#include "../Action/WrongAnswer.h"
-#include "../Action/CorrectAnswer.h"
-// #include "../Selection/Question.h"
+#include "../Selection/Question.h"
 
 
 void Level4::startLevel()
 {
-    Plug* plug = new Plug( "Freeze Corleone", 20 );
+    Plug plug( "Freeze Corleone", 20 );
 
     Message message( "../messages/messageLevel4.json" );
 
     message.writeHeader();
-    message.writeInConsole( player_, plug, 0 );
+    message.writeInConsole( player_, &plug, 0 );
 
-    firstQuestion( plug, message );
+    firstQuestion( &plug, message );
 
-    secondQuestion( plug, message );
+    secondQuestion( &plug, message );
 
-    thirdQuestion( plug, message );
-
-    delete plug;
+    thirdQuestion( &plug, message );
 
     std::cout << "\n";
 }
 
 void Level4::firstQuestion( Plug* plug, const Message& message )
 {
-    int resultSelection = 0;
+    ListAnswers listAnswers
+    ( 
+        player_, 
+        plug, 
+        message, 
+        {
+            OneAnswer( "Oui, bien sur !", 1, false ),
+            OneAnswer( "Bien sur, les américains l'ont fait pour niquer les russes.", 1, false ),
+            OneAnswer( "Non, l'alunissage a eu lieu au Nevada.", 2, true ),
+        } 
+    ); 
 
-    // while the answer is not good, the plug repeat the question
-    while( resultSelection != 2 )
-    {
-        WrongAnswer firstWrongAnswer
-        ( 
-            "Oui, bien sur !", 
-            player_, 
-            plug, 
-            message,
-            1
-        );
-
-        WrongAnswer secondWrongAnswer
-        ( 
-            "Bien sur, les américains l'ont fait pour niquer les russes.",
-            player_,
-            plug, 
-            message,
-            1
-        );
-
-        CorrectAnswer correctAnswer
-        ( 
-            "Non, l'alunissage a eu lieu au Nevada.",
-            player_,
-            plug, 
-            message,
-            2
-        );
-
-        resultSelection = Selection::select(
-            "Les hommes sont-ils allez sur la Lune ?",
-            { &firstWrongAnswer, &correctAnswer, &secondWrongAnswer }
-        );
-    }
+    // while user don't answer correctly the question
+    while ( !Question::question( "Les hommes sont-ils allez sur la Lune ?", listAnswers ) )
+    {}
 }
 
 void Level4::secondQuestion( Plug* plug, const Message& message )
 {
-    int resultSelection = 0;
+    ListAnswers listAnswers
+    (
+        player_,
+        plug,
+        message,
+        {
+            OneAnswer( "Euh ...", 1, false ),
+            OneAnswer( "Pour montrer leurs supériorités, les américains ont préféré mentir car ils n'avaient pas les moyens technologiques d'y aller.",
+            1, false),
+            OneAnswer( "Pour cacher qu'en fait la Terre est plate.", 2, true )
+        }
+    );
 
-    // while the answer is not good, the plug repeat the question
-    while( resultSelection != 3 )
-    {
-        WrongAnswer firstWrongAnswer
-        ( 
-            "Euh ...", 
-            player_, 
-            plug, 
-            message,
-            1
-        );
-
-        WrongAnswer secondWrongAnswer
-        ( 
-            "Pour montrer leurs supériorités, les américains ont préféré mentir car ils n'avaient pas les moyens technologiques d'y aller.",
-            player_,
-            plug, 
-            message,
-            1
-        );
-
-        CorrectAnswer correctAnswer
-        ( 
-            "Pour cacher qu'en fait la Terre est plate.",
-            player_,
-            plug, 
-            message,
-            2
-        );
-
-        resultSelection = Selection::select(
-            "Pourquoi le faux alunissage a été caché ?",
-            { &firstWrongAnswer, &secondWrongAnswer, &correctAnswer }
-        );
-    }
+    while( !Question::question( "Pourquoi le faux alunissage a été caché ?", listAnswers ) )
+    {}
 }
 
 void Level4::thirdQuestion( Plug* plug, const Message& message )
 {
-    int resultSelection = 0;
+    ListAnswers listAnswers
+    (
+        player_,
+        plug,
+        message,
+        {
+            OneAnswer( "Pour cacher la grand plan des élites qui consiste à réduire drastiquement la population.", 3, true ),
+            OneAnswer( "Pour cacher le projet d'Elon Musk, Bill Gates et Laurent Alexandre constitant à implémenter des puces à la population pour les controler.", 3, true),
+            OneAnswer( "Pour cacher que toutes gouvernements sont à la solde d'un organisation secrète dirigé par les reptiliens.", 3, true )
 
-    // while the answer is not good, the plug repeat the question
-    while( resultSelection != 1 && resultSelection != 2 && resultSelection != 3 )
-    {
-        CorrectAnswer firstCorrectAnswer
-        ( 
-            "Pour cacher la grand plan des élites qui consiste à réduire drastiquement la population.", 
-            player_, 
-            plug, 
-            message,
-            3
-        );
+        }
+    );
 
-        CorrectAnswer secondCorrectAnswer
-        ( 
-            "Pour cacher le projet d'Elon Musk, Bill Gates et Laurent Alexandre constitant à implémenter des puces à la population pour les controler.",
-            player_,
-            plug, 
-            message,
-            3
-        );
-
-        CorrectAnswer thirdCorrectAnswer
-        ( 
-            "Pour cacher que toutes gouvernements sont à la solde d'un organisation secrète dirigé par les reptiliens.",
-            player_,
-            plug, 
-            message,
-            3
-        );
-
-        resultSelection = Selection::select(
-            "Pourquoi vouloir masquer tout ca ?",
-            { &firstCorrectAnswer, &secondCorrectAnswer, &thirdCorrectAnswer }
-        );
-    }
+    while( !Question::question( "Pourquoi vouloir masquer tout ca ?", listAnswers ) )
+    {}
 }
