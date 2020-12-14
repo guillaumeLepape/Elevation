@@ -50,6 +50,24 @@ add_executable(run
     src/Message/Rules.cpp
     src/Message/Rules.h
 
+    src/Data/Data.cpp
+    src/Data/Data.h
+    src/Data/HeaderData.cpp
+    src/Data/HeaderData.h
+    src/Data/MessagesData.cpp
+    src/Data/MessagesData.h
+    src/Data/MessageData.cpp
+    src/Data/MessageData.h
+    src/Data/QuestionsData.cpp
+    src/Data/QuestionsData.h
+    src/Data/QuestionData.cpp
+    src/Data/QuestionData.h
+
+    src/Writer/HeaderWriter.cpp
+    src/Writer/HeaderWriter.h
+    src/Writer/MessageWriter.cpp
+    src/Writer/MessageWriter.h
+
     src/Player/Player.cpp
     src/Player/Player.h
 
