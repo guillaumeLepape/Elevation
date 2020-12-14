@@ -17,8 +17,6 @@ class StartGame : public Action
         {       
             Player player;
 
-            int nbLevel = 4;
-
             std::vector<int> listLevel = { 0, 1, 2, 3, 4, 5 };
 
             for ( auto i = listLevel.cbegin(); i != listLevel.cend(); i++ )

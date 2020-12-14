@@ -28,5 +28,41 @@
             [ "plug", false, "Quelle niveau ! Tiens." ],
             [ "description", false, "Gobelet. Sip." ]
         ]
+    ],
+    "question":
+    [
+        [
+            {
+                "questionName": "Les hommes sont-ils allez sur la Lune ?",
+                "answers":
+                [
+                    [ "Oui, bien sur !", 1, false ],
+                    [ "Bien sur, les américains l'ont fait pour niquer les russes.", 1, false ],
+                    [ "Non, l'alunissage a eu lieu au Nevada.", 2, true ]
+                ]
+            }
+        ],
+        [
+            { 
+                "questionName": "Pourquoi le faux alunissage a été caché ?",
+                "answers":
+                [
+                    [ "Euh ...", 1, false ],
+                    [ "Pour montrer leurs supériorités, les américains ont préféré mentir car ils n'avaient pas les moyens technologiques d'y aller.", 1, false ],
+                    [ "Pour cacher qu'en fait la Terre est plate.", 2, true ]
+                ]
+            }
+        ],
+        [
+            {
+                "questionName": "Pourquoi vouloir masquer tout ça ?",
+                "answers":
+                [
+                    [ "Pour cacher la grand plan des élites qui consiste à réduire drastiquement la population.", 3, true ],
+                    [ "Pour cacher le projet d'Elon Musk, Bill Gates et Laurent Alexandre constitant à implémenter des puces à la population pour les controler.", 3, true ],
+                    [ "Pour cacher que toutes gouvernements sont à la solde d'un organisation secrète dirigé par les reptiliens.", 3, true ]
+                ]
+            }
+        ]
     ]
 }
