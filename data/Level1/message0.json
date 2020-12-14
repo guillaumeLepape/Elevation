@@ -1,0 +1,15 @@
+{
+    "message": 
+    [
+        [ "player", false, "Bon, c'est parti." ],
+        [ "description", false, "Vous arrivez en bas du batiment" ],
+        [ "plug", true, "Ca va, -*-pseudo-*- ?"],
+        [ "player", true, "Et toi, -*-plugName-*- ?" ],
+        [ "plug", true, "Comme d'habitude ? C'est -*-money-*-€." ],
+        [ "player", false, "Tiens." ],
+        [ "description", true, "Vous perdez -*-money-*-€."],
+        [ "plug", false, "Bonne journée." ],
+        [ "player", false, "A la prochaine." ],
+        [ "description", false, "Roule. Fume." ]
+    ]
+}

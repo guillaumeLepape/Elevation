@@ -13,17 +13,25 @@
 class MessageWriter
 {
     private:
+        const Player* const player_;
+        const Plug* const plug_;
         const MessageData& messageData_;
 
-        void writeName( Player* player, Plug* plug, const int& i ) const;
+        void writeName( const int& i ) const;
 
-        void writeOneMessage( Player* player, Plug* plug, const int& i) const;
+        void writeOneMessage( const int& i) const;
 
-        std::string replaceToken( Player* player, Plug* plug, const std::string& str ) const;
+        std::string replaceToken( const std::string& str ) const;
 
     public: 
-        MessageWriter( const MessageData& messageData );
-        void writeMessage( Player* player, Plug* plug ) const;
+        MessageWriter
+        ( 
+            const Player* const player, 
+            const Plug* const plug, 
+            const MessageData& messageData 
+        );
+
+        void writeMessage() const;
 };
 
 #endif

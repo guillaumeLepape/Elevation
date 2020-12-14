@@ -67,6 +67,8 @@ add_executable(run
     src/Writer/HeaderWriter.h
     src/Writer/MessageWriter.cpp
     src/Writer/MessageWriter.h
+    src/Writer/MessagesWriter.cpp
+    src/Writer/MessagesWriter.h
 
     src/Player/Player.cpp
     src/Player/Player.h

@@ -1,0 +1,12 @@
+{
+  "message": [
+    ["plug", false, "Ah."],
+    ["description", false, "Le produit tombe au sol ainsi qu'un couteau."],
+    [
+      "description",
+      false,
+      "Vous mettez le shit dans votre poche et saisissez le couteau."
+    ],
+    ["action", false, "Vous êtes maintenant équipé d'un couteau."]
+  ]
+}

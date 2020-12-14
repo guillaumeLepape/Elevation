@@ -11,19 +11,26 @@
 #include "../color.h"
 #include "../Message/Pause.h"
 
-MessageWriter::MessageWriter( const MessageData& messageData ) :
+MessageWriter::MessageWriter
+( 
+    const Player* const player,
+    const Plug* const plug,
+    const MessageData& messageData 
+) :
+    player_( player ),
+    plug_( plug ),
     messageData_( messageData )
 {}
 
-void MessageWriter::writeName( Player* player, Plug* plug, const int& i ) const 
+void MessageWriter::writeName( const int& i ) const 
 {
     if ( messageData_.name()[i] == "player" )
     {
-        std::cout << "\n        " << BOLDGREEN << player->pseudo() << RESET << BLUE;
+        std::cout << "\n        " << BOLDGREEN << player_->pseudo() << RESET << BLUE;
     }
     else if ( messageData_.name()[i] == "plug" )
     {
-        std::cout << "\n        " << BOLDRED << plug->name() << RESET << BLUE;
+        std::cout << "\n        " << BOLDRED << plug_->name() << RESET << BLUE;
     }
     else if ( messageData_.name()[i] == "description" )
     {
@@ -39,11 +46,11 @@ void MessageWriter::writeName( Player* player, Plug* plug, const int& i ) const
     }
 }
 
-void MessageWriter::writeOneMessage( Player* player, Plug* plug, const int& i) const
+void MessageWriter::writeOneMessage( const int& i) const
 {
     if ( messageData_.token()[i] )
     {
-        std::cout << "\n " << replaceToken( player, plug, messageData_.dialog()[i] );
+        std::cout << "\n " << replaceToken( messageData_.dialog()[i] );
     }
     else
     {
@@ -52,19 +59,19 @@ void MessageWriter::writeOneMessage( Player* player, Plug* plug, const int& i) c
     std::cout << RESET;
 }
 
-void MessageWriter::writeMessage( Player* player, Plug* plug ) const
+void MessageWriter::writeMessage() const
 {
     for ( int i = 0; i < messageData_.name().size(); i++ )
     {
         Pause::pause();
 
-        writeName( player, plug, i );
+        writeName(i);
         
-        writeOneMessage( player, plug, i );
+        writeOneMessage(i);
     }
 }
 
-std::string MessageWriter::replaceToken(Player* player, Plug* plug, const std::string& str) const
+std::string MessageWriter::replaceToken( const std::string& str) const
 {
     std::vector<std::string> vecResult; 
     boost::split(vecResult, str, boost::is_any_of("-*"), boost::token_compress_on); 
@@ -75,19 +82,19 @@ std::string MessageWriter::replaceToken(Player* player, Plug* plug, const std::s
     {
         if ( vecResult[i] == "pseudo" )
         {
-            result += player->pseudo();
+            result += player_->pseudo();
         }
         else if ( vecResult[i] == "plugName" )
         {
-            result += plug->name();
+            result += plug_->name();
         }
         else if ( vecResult[i] == "money" )
         {
-            result += std::to_string( plug->price() );
+            result += std::to_string( plug_->price() );
         }
         else if ( vecResult[i] == "damage" )
         {
-            result += std::to_string( player->selectedWeapon().damageWeapon() );
+            result += std::to_string( player_->selectedWeapon().damageWeapon() );
         }
         else
         {
