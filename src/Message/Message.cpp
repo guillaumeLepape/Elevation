@@ -3,7 +3,7 @@
 */
 
 #include "Message.h"
-#include "Pause.h"
+#include "../Writer/Pause.h"
 
 #include <fstream>
 #include <iomanip>

@@ -6,7 +6,7 @@
 
 #include "Selection.h"
 #include "../color.h"
-#include "../Message/Pause.h"
+#include "../Writer/Pause.h"
 
 int Selection::select
 ( 

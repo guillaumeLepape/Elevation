@@ -5,7 +5,6 @@
     * \file MessagesData.h
 */
 
-#include "Data.h"
 #include "MessageData.h"
 
 class MessagesData : public Data

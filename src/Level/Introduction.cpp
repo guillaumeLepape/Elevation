@@ -6,16 +6,24 @@
 
 #include "../Action/Pseudo.h"
 
+#include "../Writer/Writer.h"
+
 void Introduction::startLevel()
 {
-    Message message( "../messages/messageIntroduction.json" );
-    message.writeHeader();
-    message.writeInConsole( player_, nullptr, 0 );
+    HeaderData headerData( levelNumber_ );
+    HeaderWriter headerWriter( headerData );
+
+    headerWriter.writeHeader();
+
+    MessagesData messagesData( levelNumber_ );
+    MessagesWriter messagesWriter( player_, nullptr, messagesData );
+
+    messagesWriter.nextMessage();
 
     Pseudo pseudo( player_ );
     pseudo.triggerAction();
 
-    message.writeInConsole( player_, nullptr, 1 );
+    messagesWriter.nextMessage();
 
     std::cout << "\n";
 }

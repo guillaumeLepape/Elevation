@@ -9,7 +9,7 @@
 #include <boost/algorithm/string.hpp> 
 
 #include "../color.h"
-#include "../Message/Pause.h"
+#include "Pause.h"
 
 MessageWriter::MessageWriter
 ( 

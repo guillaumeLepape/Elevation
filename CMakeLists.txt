@@ -46,9 +46,6 @@ add_executable(run
 
     src/Message/Message.cpp
     src/Message/Message.h
-    src/Message/Pause.h
-    src/Message/Rules.cpp
-    src/Message/Rules.h
 
     src/Data/Data.cpp
     src/Data/Data.h
@@ -62,7 +59,13 @@ add_executable(run
     src/Data/QuestionsData.h
     src/Data/QuestionData.cpp
     src/Data/QuestionData.h
+    src/Data/ActionData.cpp
+    src/Data/ActionData.h
 
+    src/Writer/Writer.h
+    src/Writer/Pause.h
+    src/Writer/Rules.cpp
+    src/Writer/Rules.h
     src/Writer/HeaderWriter.cpp
     src/Writer/HeaderWriter.h
     src/Writer/MessageWriter.cpp

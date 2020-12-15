@@ -1,7 +1,5 @@
 #include "Rules.h"
 
-#include <iostream>
-
 #include "../color.h"
 #include "Pause.h"
 

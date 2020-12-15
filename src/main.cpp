@@ -6,7 +6,7 @@
 #include "Selection/Selection.h"
 #include "Action/Quit.h"
 #include "Action/StartGame.h"
-#include "Message/Rules.h"
+#include "Writer/Rules.h"
 
 int main()
 {

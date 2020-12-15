@@ -6,13 +6,13 @@
 
 #include <iomanip>
 
-#include "../Message/Pause.h"
+#include "Pause.h"
 #include "../color.h"
 
 HeaderWriter::HeaderWriter( const HeaderData& headerData ) :
     headerData_( headerData )
 {
-    writeHeader();
+
 }
 
 void HeaderWriter::writeHeader() const
