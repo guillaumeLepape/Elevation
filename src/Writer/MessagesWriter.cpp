@@ -6,14 +6,14 @@
 
 MessagesWriter::MessagesWriter
 ( 
+    const int& levelNumber,
     const Player* const player, 
     const Plug* const plug,
-    const MessagesData& messagesData,
     int indexMessage
 ) :
+    messagesData_( levelNumber ),
     player_( player ),
     plug_( plug ),
-    messagesData_( messagesData ),
     indexMessage_( indexMessage )
 {
 

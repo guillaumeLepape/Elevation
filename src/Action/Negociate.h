@@ -6,21 +6,33 @@
 */
 
 #include "Action.h"
+
+#include <iostream>
+
 #include "../color.h"
+#include "../Player/Player.h"
+#include "../Plug/Plug.h"
+
+#include "../Writer/Writer.h"
 
 class Negociate : public Action
 {
     private: 
         Player* const player_;
         Plug* const plug_;
-        const Message& message_;
+        MessagesWriter& messagesWriter_;
 
     public:
-        explicit Negociate( Player* const player, Plug* const plug, const Message& message ) :
-            Action("Ok, je veux bien négocier. Tu proposes combien ?"), 
+        explicit Negociate
+        (
+            Player* const player, 
+            Plug* const plug, 
+            MessagesWriter& messagesWriter
+        ) :
+            Action( 2, "negociate", true ),
             player_(player), 
             plug_(plug), 
-            message_(message)
+            messagesWriter_(messagesWriter)
         {
 
         }
@@ -28,30 +40,34 @@ class Negociate : public Action
         {
             bool out = false;
 
-            message_.writeInConsole( player_, plug_, 1 );
+            messagesWriter_.setIndexMessage( 1 );
+            messagesWriter_.writeMessage();
 
             while ( !out )
             {
                 std::string priceStr;
 
-                std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << "Entrez un montant" << RESET << " : "; 
+                actionWriter_.writeAction( player_, plug_ );
                 std::cin >> priceStr;
-                // std::cout << "\n";
                 int price = std::stoi( priceStr ); 
 
                 if ( price > plug_->price() )
                 {
-                    message_.writeInConsole( player_, plug_, 2 );
+                    messagesWriter_.setIndexMessage( 2 );
+                    messagesWriter_.writeMessage();
                 }
                 else if ( price <= plug_->price() && plug_->price() - 30 <= price ) 
                 {
                     out = true;
-                    message_.writeInConsole( player_, plug_, 4 );
+                    messagesWriter_.setIndexMessage( 4 );
+                    messagesWriter_.writeMessage();
+
                     player_->increaseMoney( -price );
                 }
                 else 
                 {
-                    message_.writeInConsole( player_, plug_, 3 );
+                    messagesWriter_.setIndexMessage( 3 );
+                    messagesWriter_.writeMessage();
                 }
                 
             }

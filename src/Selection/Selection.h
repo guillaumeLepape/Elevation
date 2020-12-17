@@ -11,19 +11,12 @@
 
 class Selection
 {
-    private:
-        static void printMenu
-        (
-            const std::string& selectionTitle,
-            const std::vector<Action*>& actions
-        );
-
-
     public:
         static int select
         ( 
-            const std::string& selectionTitle,
-            const std::vector<Action*>& actions
+            const int& levelNumber_, 
+            const int& indexSelection, 
+            const std::vector<Action*>& actions 
         );
 };
 

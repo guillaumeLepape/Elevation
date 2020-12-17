@@ -4,6 +4,7 @@
         [ "description", false, "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée que vous avez passé chez votre ami." ],
         [ "description", false, "C'est certainement dû à la consommation massive et diverse de drogues." ],
         [ "description", false, "Il vous faudra donc persister sur cette lancée en allant vous approvisionnez auprès de vos 9 dealeurs préférés." ],
-        [ "description", false, "La consommation de ces 9 drogues est votre seul moyen de changer radicalement votre existence." ]
+        [ "description", false, "La consommation de ces 9 drogues est votre seul moyen de changer radicalement votre existence." ],
+        [ "player", false, "Je ne souviens plus de mon pseudo. Comment je m'appelle ?" ]
     ]
 }

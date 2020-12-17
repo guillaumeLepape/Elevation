@@ -2,8 +2,6 @@
 #define LEVEL_4_H
 
 #include "Level.h"
-#include "../Plug/Plug.h"
-#include "../Message/Message.h"
 
 class Level4 : public Level
 {   

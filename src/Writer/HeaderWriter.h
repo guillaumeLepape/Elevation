@@ -10,10 +10,10 @@
 class HeaderWriter
 {
     private:
-        const HeaderData& headerData_;
+        HeaderData headerData_;
 
     public:
-        HeaderWriter( const HeaderData& headerData );
+        HeaderWriter( const int& levelNumber );
         void writeHeader() const;
 };
 

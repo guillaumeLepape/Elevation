@@ -8,7 +8,6 @@
 
 #include "Level.h"
 
-#include "../Message/Message.h"
 
 class Level2 : public Level
 {

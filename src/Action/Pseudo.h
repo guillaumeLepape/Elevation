@@ -7,6 +7,9 @@
 
 #include "Action.h"
 #include "../color.h"
+#include "../Writer/ActionWriter.h"
+
+#include <iostream>
 
 class Pseudo : public Action
 {
@@ -15,18 +18,18 @@ class Pseudo : public Action
 
     public:
         explicit Pseudo( Player* const player ) : 
-            Action( "Comment t'apelles tu ?" ), player_(player)
+            Action( 0, "pseudo", true ),
+            player_(player)
         {
 
         }
         void triggerAction() const override 
         {
-            Message message( "../messages/messagePseudo.json" );
-            message.writeInConsole( player_, nullptr, 0 );
-            std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << "Entrez votre pseudo" << RESET << " : ";
+            actionWriter_.writeAction( player_, nullptr );
+
             std::string pseudo;
             std::cin >> pseudo; 
-            // std::cout << "\n";
+            
             player_->setPseudo(pseudo);
         }
 };

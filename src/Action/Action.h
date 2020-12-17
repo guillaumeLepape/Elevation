@@ -5,7 +5,7 @@
     * \file Action.h
 */
 
-#include "../Message/Message.h"
+#include "../Writer/ActionWriter.h"
 
 /*! \class Action
     * \brief Abstract class Action to introduce various actions (herited classes)
@@ -14,21 +14,21 @@
 class Action
 {
     protected:
-        std::string statement_;
+        ActionWriter actionWriter_;
 
     public:
         explicit Action
         ( 
-            const std::string& statement
+            const int& levelNumber, 
+            const std::string& nameAction, 
+            const bool& inputOrNot
         ) : 
-            statement_( statement )
+            actionWriter_( levelNumber, nameAction, inputOrNot )
         {
 
         }
 
         virtual void triggerAction() const = 0;
-
-        const std::string& statement() const { return statement_; }
 
         virtual ~Action() {}
 };

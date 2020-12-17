@@ -21,7 +21,7 @@ class MessageWriter
 
         void writeOneMessage( const int& i) const;
 
-        std::string replaceToken( const std::string& str ) const;
+        // std::string replaceToken( const std::string& str ) const;
 
     public: 
         MessageWriter

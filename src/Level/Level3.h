@@ -7,12 +7,10 @@
 
 #include "Level.h"
 
-#include "../Message/Message.h"
-
 class Level3 : public Level
 {
     private:
-        int levelNumber_:
+        int levelNumber_;
 
     public:
         explicit Level3( Player* player ) : 

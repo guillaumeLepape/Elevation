@@ -7,10 +7,12 @@
 
 #include "Action.h"
 
+#include <iostream>
+
 class Quit : public Action
 {
     public:
-        Quit() : Action( "Quitter" ) {}
+        Quit() : Action( -1, "quit", false ){}
         void triggerAction() const override  
         { 
             std::cout << "\n Fin du jeu";

@@ -12,12 +12,12 @@
 class StartGame : public Action
 {
     public: 
-        StartGame() : Action( "Commencer une partie" ) {}
+        StartGame() : Action( -1, "startGame", false ) {}
         void triggerAction() const override
         {       
             Player player;
 
-            std::vector<int> listLevel = { 0, 1, 2, 3, 4, 5 };
+            std::vector<int> listLevel = { 0, 1, 2, 3 };
 
             for ( auto i = listLevel.cbegin(); i != listLevel.cend(); i++ )
             {

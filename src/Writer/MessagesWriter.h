@@ -11,18 +11,18 @@
 class MessagesWriter    
 {
     private:
+        MessagesData messagesData_;
         const Player* const player_;
         const Plug* const plug_;
-        const MessagesData& messagesData_;
 
         int indexMessage_;
 
     public:
         MessagesWriter
         ( 
+            const int& levelNumber_,
             const Player* const player, 
             const Plug* const plug, 
-            const MessagesData& messagesData,
             int indexMessage = -1
         );
 

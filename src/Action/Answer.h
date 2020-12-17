@@ -7,12 +7,15 @@
 
 #include "Action.h"
 
+#include "../Player/Player.h"
+#include "../Plug/Plug.h"
+
 class Answer : public Action
 {
     private:
         Player* player_;
         Plug* plug_;
-        const Message& message_;
+        // const Message& message_;
         int indexMessage_;
         bool correctOrNot_;
 
@@ -22,15 +25,15 @@ class Answer : public Action
             const std::string& statement,
             Player* player, 
             Plug* plug,
-            const Message& message,
-            const int& indexMessage,
+            // const Message& message,
+            // const int& indexMessage,
             const bool& correctOrNot
         ) : 
-            Action( statement ),
+            // Action( statement ),
             player_( player ),
             plug_( plug ),
-            message_( message ),
-            indexMessage_( indexMessage ),
+            // message_( message ),
+            // indexMessage_( indexMessage ),
             correctOrNot_( correctOrNot )
         {
 
@@ -38,7 +41,7 @@ class Answer : public Action
 
         void triggerAction() const override
         {
-            message_.writeInConsole( player_, plug_, indexMessage_ );
+            // message_.writeInConsole( player_, plug_, indexMessage_ );
         }
 
         const bool& correctOrNot() const { return correctOrNot_; }

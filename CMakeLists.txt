@@ -38,14 +38,12 @@ add_executable(run
     src/Level/Level3.cpp
     src/Level/Level3.h
 
-    src/Level/Level4.cpp
-    src/Level/Level4.h
+    # src/Level/Level4.cpp
+    # src/Level/Level4.h
 
-    src/Level/Level5.cpp
-    src/Level/Level5.h
+    # src/Level/Level5.cpp
+    # src/Level/Level5.h
 
-    src/Message/Message.cpp
-    src/Message/Message.h
 
     src/Data/Data.cpp
     src/Data/Data.h
@@ -61,6 +59,8 @@ add_executable(run
     src/Data/QuestionData.h
     src/Data/ActionData.cpp
     src/Data/ActionData.h
+    src/Data/SelectionData.cpp
+    src/Data/SelectionData.h
 
     src/Writer/Writer.h
     src/Writer/Pause.h
@@ -72,16 +72,21 @@ add_executable(run
     src/Writer/MessageWriter.h
     src/Writer/MessagesWriter.cpp
     src/Writer/MessagesWriter.h
+    src/Writer/ActionWriter.cpp
+    src/Writer/ActionWriter.h
+    src/Writer/SelectionWriter.cpp
+    src/Writer/SelectionWriter.h
+    src/Writer/ReplaceToken.h
 
     src/Player/Player.cpp
     src/Player/Player.h
 
     src/Selection/Selection.cpp
     src/Selection/Selection.h
-    src/Selection/ListAnswers.cpp
-    src/Selection/ListAnswers.h
-    src/Selection/Question.cpp
-    src/Selection/Question.h
+    # src/Selection/ListAnswers.cpp
+    # src/Selection/ListAnswers.h
+    # src/Selection/Question.cpp
+    # src/Selection/Question.h
 
     src/Plug/Plug.cpp
     src/Plug/Plug.h

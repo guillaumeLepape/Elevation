@@ -4,20 +4,15 @@
 
 #include "Introduction.h"
 
-#include "../Action/Pseudo.h"
-
 #include "../Writer/Writer.h"
+#include "../Action/Pseudo.h"
 
 void Introduction::startLevel()
 {
-    HeaderData headerData( levelNumber_ );
-    HeaderWriter headerWriter( headerData );
-
+    HeaderWriter headerWriter( levelNumber_ );
     headerWriter.writeHeader();
 
-    MessagesData messagesData( levelNumber_ );
-    MessagesWriter messagesWriter( player_, nullptr, messagesData );
-
+    MessagesWriter messagesWriter( levelNumber_, player_, nullptr );
     messagesWriter.nextMessage();
 
     Pseudo pseudo( player_ );

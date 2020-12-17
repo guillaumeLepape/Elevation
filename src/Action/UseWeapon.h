@@ -6,6 +6,7 @@
 */
 
 #include "Action.h"
+#include "../Plug/Plug.h"
 
 class UseWeapon : public Action
 {
@@ -15,8 +16,8 @@ class UseWeapon : public Action
         Plug* plug_;
 
     public:
-        UseWeapon( Player* player, Plug* plug, const std::string& nameWeapon ) : 
-            Action( player->weaponFromName( nameWeapon ).statementAction() ),
+        UseWeapon( const int& levelNumber, Player* player, Plug* plug, const std::string& nameWeapon ) : 
+            Action( levelNumber, "useWeapon", false ),
             weapon_( player->weaponFromName( nameWeapon ) ),
             player_(player),
             plug_(plug)
@@ -25,9 +26,8 @@ class UseWeapon : public Action
         void triggerAction() const override
         {
             player_->changeWeapon( weapon_.name() );
-
-            Message message( "../messages/messageHit.json" );
-            message.writeInConsole( player_, plug_, 0 );
+            
+            actionWriter_.writeAction( player_, plug_ );
 
             plug_->decreaseLifePoints( weapon_.damageWeapon() );
         }

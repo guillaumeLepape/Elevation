@@ -5,9 +5,8 @@
 #include "MessageWriter.h"
 
 #include <iostream>
-#include <bits/stdc++.h> 
-#include <boost/algorithm/string.hpp> 
 
+#include "ReplaceToken.h"
 #include "../color.h"
 #include "Pause.h"
 
@@ -50,7 +49,7 @@ void MessageWriter::writeOneMessage( const int& i) const
 {
     if ( messageData_.token()[i] )
     {
-        std::cout << "\n " << replaceToken( messageData_.dialog()[i] );
+        std::cout << "\n " << ReplaceToken::replace( messageData_.dialog()[i], player_, plug_ );
     }
     else
     {
@@ -71,36 +70,7 @@ void MessageWriter::writeMessage() const
     }
 }
 
-std::string MessageWriter::replaceToken( const std::string& str) const
-{
-    std::vector<std::string> vecResult; 
-    boost::split(vecResult, str, boost::is_any_of("-*"), boost::token_compress_on); 
-  
-    std::string result;
-
-    for (unsigned int i = 0; i < vecResult.size(); i++)
-    {
-        if ( vecResult[i] == "pseudo" )
-        {
-            result += player_->pseudo();
-        }
-        else if ( vecResult[i] == "plugName" )
-        {
-            result += plug_->name();
-        }
-        else if ( vecResult[i] == "money" )
-        {
-            result += std::to_string( plug_->price() );
-        }
-        else if ( vecResult[i] == "damage" )
-        {
-            result += std::to_string( player_->selectedWeapon().damageWeapon() );
-        }
-        else
-        {
-            result += vecResult[i];
-        }
-    } 
-
-    return result;  
-}
+// std::string MessageWriter::replaceToken( const std::string& str) const
+// {
+    
+// }

@@ -10,7 +10,7 @@
 class ActionData : public Data
 {
     private:
-        int levelNumber_;
+        bool token_;        
         std::string statement_;
 
     public:

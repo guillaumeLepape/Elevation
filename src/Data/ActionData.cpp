@@ -5,12 +5,13 @@
 #include "ActionData.h"
 
 ActionData::ActionData( const int& levelNumber, const std::string& nameFile ) :
-    levelNumber_(levelNumber, nameFile )
+    Data(levelNumber, nameFile )
 {
-
+    readData();
 }
 
 void ActionData::readData()
 {
-    statement_ = jsonObject_["statement"];
+    token_ = jsonObject_["statement"][0];
+    statement_ = jsonObject_["statement"][1];
 }

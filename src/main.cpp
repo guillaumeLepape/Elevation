@@ -8,6 +8,10 @@
 #include "Action/StartGame.h"
 #include "Writer/Rules.h"
 
+#include "Writer/Writer.h"
+
+// #include "Getter/GetFromTerminal.h"
+
 int main()
 {
     Rules::displayRules();
@@ -15,8 +19,9 @@ int main()
     std::unique_ptr<Action> startGame( new StartGame() );
     std::unique_ptr<Action> quit( new Quit() );
 
-    Selection::select(
-        "Menu",
+    Selection::select( 
+        -1, 
+        0, 
         { startGame.get(), quit.get() } 
     );
 

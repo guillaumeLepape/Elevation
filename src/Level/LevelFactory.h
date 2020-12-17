@@ -9,8 +9,8 @@
 #include "../Level/Level1.h"
 #include "../Level/Level2.h"
 #include "../Level/Level3.h"
-#include "../Level/Level4.h"
-#include "../Level/Level5.h"
+// #include "../Level/Level4.h"
+// #include "../Level/Level5.h"
 
 class LevelFactory
 {
@@ -21,8 +21,8 @@ class LevelFactory
             if ( levelNumber == 1 ) return std::make_unique<Level1>(player);
             if ( levelNumber == 2 ) return std::make_unique<Level2>(player);
             if ( levelNumber == 3 ) return std::make_unique<Level3>(player);
-            if ( levelNumber == 4 ) return std::make_unique<Level4>(player);
-            if ( levelNumber == 5 ) return std::make_unique<Level5>(player);
+            // if ( levelNumber == 4 ) return std::make_unique<Level4>(player);
+            // if ( levelNumber == 5 ) return std::make_unique<Level5>(player);
             assert(false); 
         }
 };

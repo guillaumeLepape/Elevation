@@ -1,3 +1,7 @@
+/*!
+    * \file Rules.cpp
+*/
+
 #include "Rules.h"
 
 #include "../color.h"

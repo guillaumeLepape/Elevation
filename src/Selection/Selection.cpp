@@ -8,26 +8,26 @@
 #include "../color.h"
 #include "../Writer/Pause.h"
 
+#include "../Writer/SelectionWriter.h"
+
 int Selection::select
 ( 
-    const std::string& selectionTitle,
-    const std::vector<Action*>& actions
-)
+    const int& levelNumber, 
+    const int& indexSelection,
+    const std::vector<Action*>& actions )
 {
-    assert( actions.size() != 0 );
+    SelectionData selectionData( levelNumber, indexSelection );
+    SelectionWriter selectionWriter( selectionData );
+    selectionWriter.writeSelection();
 
     int choice = 0;
 
-    Pause::pause();
-
-    printMenu( selectionTitle, actions );
-
-    while (!(std::cin >> choice) || (choice > actions.size() || choice < 1)) 
+    while (!(std::cin >> choice) || (choice > 2 || choice < 1)) 
     {
-        if ( actions.size() != 1 )
+        if ( 2 != 1 )
         {
             std::cout << "Selection invalide - Entrez un nombre compris entre 1 et " 
-                << actions.size()  << ".\n";
+                << 2  << ".\n";
         }
         else 
         {
@@ -39,7 +39,7 @@ int Selection::select
         // throw away garbage input
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-        printMenu( selectionTitle, actions );
+        selectionWriter.writeSelection();    
     }
 
     for ( int i = 0; i < actions.size(); i++ )
@@ -48,38 +48,7 @@ int Selection::select
         {
             actions[i]->triggerAction();
         }
-    }
+    }    
 
-    // return the selection that the user has chosen
     return choice - 1;
-} 
-
-void Selection::printMenu
-(
-    const std::string& selectionTitle,
-    const std::vector<Action*>& actions 
-)
-{
-    std::cout << "\n " << GREENSIDEBAR << BOLDBLACK << selectionTitle << RESET;
-
-    std::cout << "\n" << BOLDBLACK << "========" << RESET;
-    for ( int i = 0; i < actions.size(); i++ )
-    {
-        std::cout << "\n " 
-            << std::to_string( i + 1 ) 
-            << "- " << BOLDMAGENTA << actions[i]->statement() << RESET;
-    }
-
-    if ( actions.size() != 1 )
-    {
-        std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << "Entrez un chiffre entre " 
-            << 1 << "-" 
-            << actions.size() << RESET
-            << " : ";
-    }
-    else 
-    {
-        std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << "Entrez un chiffre égale à 1" 
-            << RESET << " : ";
-    }
 }

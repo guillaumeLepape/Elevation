@@ -4,51 +4,67 @@
 
 #include "Level3.h"
 
+#include <iostream>
+
 #include "../Selection/Selection.h"
 #include "../Action/UseWeapon.h"
+
+#include "../Writer/Writer.h"
 
 void Level3::startLevel()
 {
     Plug plug( "V", 20 );
 
-    Message message( "../messages/messageLevel3.json" );
-    message.writeHeader();
+    HeaderWriter headerWriter( levelNumber_ );
+    headerWriter.writeHeader();
 
-    message.writeInConsole( player_, &plug, 0 );
+    // MessagesData messageData( levelNumber_ );
+    MessagesWriter messagesWriter( levelNumber_, player_, &plug );
+    messagesWriter.nextMessage();
+    // Message message( "../messages/messageLevel3.json" );
+    // message.writeHeader();
+
+    // message.writeInConsole( player_, &plug, 0 );
     
-    UseWeapon useFist( player_, &plug, "fist" );
+    UseWeapon useFist( levelNumber_, player_, &plug, "fist" );
 
     useFist.triggerAction();
 
-    message.writeInConsole( player_, &plug, 1 );
+    messagesWriter.nextMessage();
 
     Selection::select(
-        "Choix de l'arme",
-        { &useFist } 
-    );
-
-    message.writeInConsole( player_, &plug, 2 );
-
-    Selection::select(
-        "Choix de l'arme",
+        levelNumber_, 
+        0, 
         { &useFist }
     );
 
-    message.writeInConsole( player_, &plug, 3 );
+    messagesWriter.setIndexMessage( 2 );
+    messagesWriter.writeMessage();
+    // message.writeInConsole( player_, &plug, 2 );
 
     Selection::select(
-        "Choix de l'arme",
+        levelNumber_, 
+        1, 
         { &useFist }
     );
 
-    message.writeInConsole( player_, &plug, 4 );
+    messagesWriter.nextMessage();
+
+    Selection::select(
+        levelNumber_, 
+        2, 
+        { &useFist }
+    );
+
+    messagesWriter.nextMessage();
 
     player_->addWeapon( Weapon( "knife", 30, "Plantez !" ) );
 
-    UseWeapon useKnife( player_, &plug, "knife" );
+    UseWeapon useKnife( levelNumber_, player_, &plug, "knife" );
 
     Selection::select(
-        "Choix de l'arme",
+        levelNumber_, 
+        3, 
         { &useFist, &useKnife }
     );
 

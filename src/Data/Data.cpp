@@ -10,14 +10,18 @@ Data::Data( const int& levelNumber, const std::string& fileName ) :
     levelNumber_( levelNumber )
 {
     std::string path = "../data/";
-    
-    if ( levelNumber == 0 ) 
+
+    if ( levelNumber_ == -1 )
+    {   
+        path += "Menu/";
+    }
+    else if ( levelNumber_ == 0 ) 
     {
         path += "Introduction/";
     }
     else
     {   
-        path += "Level" + std::to_string(levelNumber) + "/";
+        path += "Level" + std::to_string(levelNumber_) + "/";
     }
 
     path += fileName;
