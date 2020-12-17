@@ -6,7 +6,7 @@
 */
 
 #include "../Writer/ActionWriter.h"
-
+#include <iostream>
 /*! \class Action
     * \brief Abstract class Action to introduce various actions (herited classes)
 */
@@ -27,6 +27,8 @@ class Action
         {
 
         }
+
+        const ActionWriter& actionWriter() const { return actionWriter_; }
 
         virtual void triggerAction() const = 0;
 

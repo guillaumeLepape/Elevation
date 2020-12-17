@@ -24,6 +24,8 @@ class ActionWriter
             const bool& inputOrNot 
         );
 
+        const ActionData& actionData() const { return actionData_; }
+
         void writeAction( const Player* const player, const Plug* const plug ) const;
 };
 

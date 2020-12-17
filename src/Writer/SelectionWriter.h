@@ -7,13 +7,21 @@
 
 #include "../Data/SelectionData.h"
 
+#include "../Action/Action.h"
+
 class SelectionWriter
 {
     private:
-        const SelectionData& selectionData_;
+        SelectionData selectionData_;
+        std::vector<Action*> actions_;
 
     public:
-        SelectionWriter( const SelectionData& selectionData );
+        SelectionWriter
+        ( 
+            const int& levelNumber,
+            const int& selectionIndex, 
+            const std::vector<Action*>& nameAction 
+        );
 
         void writeSelection();
 };

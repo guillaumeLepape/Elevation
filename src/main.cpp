@@ -8,9 +8,9 @@
 #include "Action/StartGame.h"
 #include "Writer/Rules.h"
 
-#include "Writer/Writer.h"
 
-// #include "Getter/GetFromTerminal.h"
+#include "Action/Pseudo.h"
+#include "Writer/Writer.h"
 
 int main()
 {

@@ -14,10 +14,10 @@ int Selection::select
 ( 
     const int& levelNumber, 
     const int& indexSelection,
-    const std::vector<Action*>& actions )
+    const std::vector<Action*>& actions 
+)
 {
-    SelectionData selectionData( levelNumber, indexSelection );
-    SelectionWriter selectionWriter( selectionData );
+    SelectionWriter selectionWriter( levelNumber, indexSelection, actions );
     selectionWriter.writeSelection();
 
     int choice = 0;

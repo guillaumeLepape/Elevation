@@ -9,10 +9,16 @@
 #include "Pause.h"
 #include "../color.h"
 
-SelectionWriter::SelectionWriter( const SelectionData& selectionData ) :
-    selectionData_( selectionData )
+SelectionWriter::SelectionWriter
+( 
+    const int& levelNumber, 
+    const int& indexSelection, 
+    const std::vector<Action*>& actions
+) :
+    selectionData_( levelNumber, indexSelection ),
+    actions_(actions)
 {
-
+    
 }
 
 void SelectionWriter::writeSelection()
@@ -22,18 +28,18 @@ void SelectionWriter::writeSelection()
     std::cout << "\n " << GREENSIDEBAR << BOLDBLACK << selectionData_.title() << RESET;
 
     std::cout << "\n" << BOLDBLACK << "========" << RESET;
-    for ( int i = 0; i < selectionData_.propositions().size(); i++ )
+    for ( int i = 0; i < actions_.size(); i++ )
     {
         std::cout << "\n " 
             << std::to_string( i + 1 ) 
-            << "- " << BOLDMAGENTA << selectionData_.propositions()[i] << RESET;
+            << "- " << BOLDMAGENTA << actions_[i]->actionWriter().actionData().statement() << RESET;
     }
 
-    if ( selectionData_.propositions().size() != 1 )
+    if ( actions_.size() != 1 )
     {
         std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << "Entrez un chiffre entre " 
             << 1 << "-" 
-            << selectionData_.propositions().size() << RESET
+            << actions_.size() << RESET
             << " : ";
     }
     else 
