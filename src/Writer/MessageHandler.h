@@ -1,14 +1,14 @@
-#ifndef MESSAGES_WRITER_H
-#define MESSAGES_WRITER_H
+#ifndef MESSAGE_HANDLER_H
+#define MESSAGE_HANDLER_H
 
 /*!
-    * \file MessagesWriter.h
+    * \file MessageHandler.h
 */
 
 #include "../Data/MessagesData.h"
 #include "MessageWriter.h"
 
-class MessagesWriter    
+class MessageHandler  
 {
     private:
         MessagesData messagesData_;
@@ -18,7 +18,7 @@ class MessagesWriter
         int indexMessage_;
 
     public:
-        MessagesWriter
+        MessageHandler
         ( 
             const int& levelNumber_,
             const Player* const player, 

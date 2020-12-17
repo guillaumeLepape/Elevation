@@ -1,10 +1,10 @@
 /*!
-    * \file MessagesWriter.cpp
+    * \file MessageHandler.cpp
 */
 
-#include "MessagesWriter.h"
+#include "MessageHandler.h"
 
-MessagesWriter::MessagesWriter
+MessageHandler::MessageHandler
 ( 
     const int& levelNumber,
     const Player* const player, 
@@ -19,21 +19,21 @@ MessagesWriter::MessagesWriter
 
 }
 
-void MessagesWriter::writeMessage() const
+void MessageHandler::writeMessage() const
 {
     MessageWriter messageWriter( player_, plug_, messagesData_.messages()[indexMessage_] );
 
     messageWriter.writeMessage();
 }
 
-void MessagesWriter::nextMessage()
+void MessageHandler::nextMessage()
 {
     indexMessage_++;
 
     writeMessage();
 }
 
-void MessagesWriter::setIndexMessage( const int& indexMessage )
+void MessageHandler::setIndexMessage( const int& indexMessage )
 {
     indexMessage_ = indexMessage;
 }

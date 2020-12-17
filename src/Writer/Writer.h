@@ -6,7 +6,7 @@
 */
 
 #include "HeaderWriter.h"
-#include "MessagesWriter.h"
+#include "MessageHandler.h"
 #include "ActionWriter.h"
 #include "SelectionWriter.h"
 

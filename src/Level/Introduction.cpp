@@ -12,13 +12,13 @@ void Introduction::startLevel()
     HeaderWriter headerWriter( levelNumber_ );
     headerWriter.writeHeader();
 
-    MessagesWriter messagesWriter( levelNumber_, player_, nullptr );
-    messagesWriter.nextMessage();
+    MessageHandler messageHandler( levelNumber_, player_, nullptr );
+    messageHandler.nextMessage();
 
     Pseudo pseudo( player_ );
     pseudo.triggerAction();
 
-    messagesWriter.nextMessage();
+    messageHandler.nextMessage();
 
     std::cout << "\n";
 }

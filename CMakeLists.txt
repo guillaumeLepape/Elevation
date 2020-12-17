@@ -70,8 +70,8 @@ add_executable(run
     src/Writer/HeaderWriter.h
     src/Writer/MessageWriter.cpp
     src/Writer/MessageWriter.h
-    src/Writer/MessagesWriter.cpp
-    src/Writer/MessagesWriter.h
+    src/Writer/MessageHandler.cpp
+    src/Writer/MessageHandler.h
     src/Writer/ActionWriter.cpp
     src/Writer/ActionWriter.h
     src/Writer/SelectionWriter.cpp

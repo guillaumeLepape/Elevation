@@ -18,11 +18,11 @@ void Level2::startLevel()
     HeaderWriter headerWriter( levelNumber_ );
     headerWriter.writeHeader();
 
-    MessagesWriter messagesWriter( levelNumber_, player_, &plug );
+    MessageHandler messageHandler( levelNumber_, player_, &plug );
 
-    messagesWriter.nextMessage();
+    messageHandler.nextMessage();
 
-    Negociate negociate( player_, &plug, messagesWriter );
+    Negociate negociate( player_, &plug, messageHandler );
     negociate.triggerAction();
     
     std::cout << "\n";

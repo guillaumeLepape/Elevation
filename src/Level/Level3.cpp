@@ -19,8 +19,8 @@ void Level3::startLevel()
     headerWriter.writeHeader();
 
     // MessagesData messageData( levelNumber_ );
-    MessagesWriter messagesWriter( levelNumber_, player_, &plug );
-    messagesWriter.nextMessage();
+    MessageHandler messageHandler( levelNumber_, player_, &plug );
+    messageHandler.nextMessage();
     // Message message( "../messages/messageLevel3.json" );
     // message.writeHeader();
 
@@ -30,7 +30,7 @@ void Level3::startLevel()
 
     useFist.triggerAction();
 
-    messagesWriter.nextMessage();
+    messageHandler.nextMessage();
 
     Selection::select(
         levelNumber_, 
@@ -38,8 +38,8 @@ void Level3::startLevel()
         { &useFist }
     );
 
-    messagesWriter.setIndexMessage( 2 );
-    messagesWriter.writeMessage();
+    messageHandler.setIndexMessage( 2 );
+    messageHandler.writeMessage();
     // message.writeInConsole( player_, &plug, 2 );
 
     Selection::select(
@@ -48,7 +48,7 @@ void Level3::startLevel()
         { &useFist }
     );
 
-    messagesWriter.nextMessage();
+    messageHandler.nextMessage();
 
     Selection::select(
         levelNumber_, 
@@ -56,7 +56,7 @@ void Level3::startLevel()
         { &useFist }
     );
 
-    messagesWriter.nextMessage();
+    messageHandler.nextMessage();
 
     player_->addWeapon( Weapon( "knife", 30, "Plantez !" ) );
 

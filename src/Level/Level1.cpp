@@ -17,8 +17,8 @@ void Level1::startLevel()
     HeaderWriter headerWriter( levelNumber_ );
     headerWriter.writeHeader();
 
-    MessagesWriter messagesWriter( levelNumber_, player_, &plug );
-    messagesWriter.nextMessage();
+    MessageHandler messageHandler( levelNumber_, player_, &plug );
+    messageHandler.nextMessage();
 
     player_->increaseMoney( -plug.price() );
 

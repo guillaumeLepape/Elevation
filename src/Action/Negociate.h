@@ -20,19 +20,19 @@ class Negociate : public Action
     private: 
         Player* const player_;
         Plug* const plug_;
-        MessagesWriter& messagesWriter_;
+        MessageHandler& messageHandler_;
 
     public:
         explicit Negociate
         (
             Player* const player, 
             Plug* const plug, 
-            MessagesWriter& messagesWriter
+            MessageHandler& messageHandler
         ) :
             Action( 2, "negociate", true ),
             player_(player), 
             plug_(plug), 
-            messagesWriter_(messagesWriter)
+            messageHandler_(messageHandler_)
         {
 
         }
@@ -40,8 +40,8 @@ class Negociate : public Action
         {
             bool out = false;
 
-            messagesWriter_.setIndexMessage( 1 );
-            messagesWriter_.writeMessage();
+            messageHandler_.setIndexMessage( 1 );
+            messageHandler_.writeMessage();
 
             while ( !out )
             {
@@ -53,21 +53,21 @@ class Negociate : public Action
 
                 if ( price > plug_->price() )
                 {
-                    messagesWriter_.setIndexMessage( 2 );
-                    messagesWriter_.writeMessage();
+                    messageHandler_.setIndexMessage( 2 );
+                    messageHandler_.writeMessage();
                 }
                 else if ( price <= plug_->price() && plug_->price() - 30 <= price ) 
                 {
                     out = true;
-                    messagesWriter_.setIndexMessage( 4 );
-                    messagesWriter_.writeMessage();
+                    messageHandler_.setIndexMessage( 4 );
+                    messageHandler_.writeMessage();
 
                     player_->increaseMoney( -price );
                 }
                 else 
                 {
-                    messagesWriter_.setIndexMessage( 3 );
-                    messagesWriter_.writeMessage();
+                    messageHandler_.setIndexMessage( 3 );
+                    messageHandler_.writeMessage();
                 }
                 
             }
