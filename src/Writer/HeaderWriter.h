@@ -14,6 +14,7 @@ class HeaderWriter
 
     public:
         HeaderWriter( const int& levelNumber );
+        HeaderWriter( const HeaderData& headerData );
         void writeHeader() const;
 };
 

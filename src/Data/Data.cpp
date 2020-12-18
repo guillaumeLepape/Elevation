@@ -6,6 +6,11 @@
 
 #include <fstream>
 
+Data::Data()
+{
+    
+}
+
 Data::Data( const int& levelNumber, const std::string& fileName ) :
     levelNumber_( levelNumber )
 {

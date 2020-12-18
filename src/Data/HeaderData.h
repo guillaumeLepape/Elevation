@@ -16,6 +16,7 @@ class HeaderData : public Data
 
     public:
         HeaderData( const int& levelNumber );
+        HeaderData( const std::string& nameLevel, const int& hour, const int& minut );
 
         void readData() override;
 

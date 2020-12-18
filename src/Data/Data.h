@@ -13,9 +13,11 @@ class Data
         int levelNumber_;
         nlohmann::json jsonObject_;
 
-    public:
-        Data( const int& levelNumber, const std::string& fileName );
         virtual void readData() = 0;
+
+    public:
+        Data();
+        Data( const int& levelNumber, const std::string& fileName );
         virtual ~Data() {}
 };
 

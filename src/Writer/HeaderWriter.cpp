@@ -15,6 +15,12 @@ HeaderWriter::HeaderWriter( const int& levelNumber_ ) :
 
 }
 
+HeaderWriter::HeaderWriter( const HeaderData& headerData ) :
+    headerData_( headerData )
+{
+
+}
+
 void HeaderWriter::writeHeader() const
 {
     Pause::pause();
