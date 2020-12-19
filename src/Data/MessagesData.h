@@ -10,11 +10,12 @@
 class MessagesData : public Data
 {
     private:
-        int nbMessage_;
         std::vector<MessageData> messages_;
+        int nbMessage_;
 
     public:
         MessagesData( const int& levelNumber );
+        MessagesData( const std::vector<MessageData>& messages );
         void readData() override;
         const std::vector<MessageData>& messages() const { return messages_; }
 };

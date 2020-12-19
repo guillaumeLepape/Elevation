@@ -25,13 +25,43 @@ ActionWriter::ActionWriter
 void ActionWriter::writeAction( const Player* const player, const Plug* const plug ) const
 {    
     if ( inputOrNot_ )
-    {    
-        std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK << actionData_.statement() << RESET << " : ";
-    }   
+    {           
+        std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK;
+        if ( actionData_.tokenStatement() )
+        {
+            std::cout << ReplaceToken::replace( actionData_.statement(), player, plug );
+        }
+        else
+        {
+            std::cout << actionData_.statement();
+        }
+        std::cout << RESET << " : ";
+
+        // Pause::pause();
+        // std::cout << "\n " << BOLDYELLOW;
+        // if ( actionData_.tokenResult() )
+        // {
+        //    std::cout << ReplaceToken::replace( actionData_.result(), player, plug ); 
+        // }
+        // else
+        // {
+        //     std::cout << actionData_.result();
+        // }
+        // std::cout << RESET;
+    }
     else
     {
         Pause::pause();
-        std::cout << "\n " << BOLDYELLOW << ReplaceToken::replace( actionData_.statement(), player, plug ) << RESET;
+        std::cout << "\n " << BOLDYELLOW;
+        if ( actionData_.tokenResult() ) 
+        {
+           std::cout << ReplaceToken::replace( actionData_.result(), player, plug ); 
+        }
+        else 
+        {
+            std::cout << actionData_.result();
+        }
+        std::cout << RESET;
     }
     
 }

@@ -10,6 +10,14 @@ MessagesData::MessagesData( const int& levelNumber ) :
     readData();
 }
 
+MessagesData::MessagesData( const std::vector<MessageData>& messages ) :
+    Data(),
+    messages_( messages ),
+    nbMessage_( messages.size() )
+{
+
+}
+
 void MessagesData::readData()
 {
     nbMessage_ = jsonObject_["nbMessage"];

@@ -12,6 +12,9 @@ ActionData::ActionData( const int& levelNumber, const std::string& nameFile ) :
 
 void ActionData::readData()
 {
-    token_ = jsonObject_["statement"][0];
+    tokenStatement_ = jsonObject_["statement"][0];
     statement_ = jsonObject_["statement"][1];
+
+    tokenResult_ = jsonObject_["result"][0];
+    result_ = jsonObject_["result"][1];
 }

@@ -32,7 +32,7 @@ void SelectionWriter::writeSelection()
     {
         std::cout << "\n " 
             << std::to_string( i + 1 ) 
-            << "- " << BOLDMAGENTA << actions_[i]->actionWriter().actionData().statement() << RESET;
+            << "- " << BOLDYELLOW << actions_[i]->actionWriter().actionData().statement() << RESET;
     }
 
     if ( actions_.size() != 1 )

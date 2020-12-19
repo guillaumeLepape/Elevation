@@ -14,6 +14,7 @@ class SelectionData : public Data
 
     public:
         SelectionData( const int& levelNumber, const int& indexSelection );
+        SelectionData( const std::string& title );
         void readData() override;
 
         const std::string& title() const { return title_; }

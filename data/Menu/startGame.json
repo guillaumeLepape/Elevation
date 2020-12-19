@@ -1,3 +1,4 @@
 {
-  "statement": [false, "Commencer une partie"]
+  "statement": [false, "Commencer une partie"],
+  "result": [false, "La partie commence."]
 }

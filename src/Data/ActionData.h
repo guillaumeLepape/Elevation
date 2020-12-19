@@ -10,15 +10,22 @@
 class ActionData : public Data
 {
     private:
-        bool token_;        
+        bool tokenStatement_;        
         std::string statement_;
+
+        bool tokenResult_;
+        std::string result_;
 
     public:
         ActionData( const int& levelNumber, const std::string& nameFile );
 
         void readData() override;
 
+        const bool& tokenStatement() const { return tokenStatement_; }
         const std::string& statement() const { return statement_; }
+
+        const bool& tokenResult() const { return tokenResult_; }
+        const std::string& result() const { return result_; }
 };
 
 #endif

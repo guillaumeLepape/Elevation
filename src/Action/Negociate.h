@@ -32,7 +32,7 @@ class Negociate : public Action
             Action( 2, "negociate", true ),
             player_(player), 
             plug_(plug), 
-            messageHandler_(messageHandler_)
+            messageHandler_(messageHandler)
         {
 
         }

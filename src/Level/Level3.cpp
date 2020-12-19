@@ -26,7 +26,7 @@ void Level3::startLevel()
 
     // message.writeInConsole( player_, &plug, 0 );
     
-    UseWeapon useFist( levelNumber_, player_, &plug, "fist" );
+    UseWeapon useFist( levelNumber_, "useFist", player_, &plug, "fist" );
 
     useFist.triggerAction();
 
@@ -60,7 +60,7 @@ void Level3::startLevel()
 
     player_->addWeapon( Weapon( "knife", 30, "Plantez !" ) );
 
-    UseWeapon useKnife( levelNumber_, player_, &plug, "knife" );
+    UseWeapon useKnife( levelNumber_, "useKnife", player_, &plug, "knife" );
 
     Selection::select(
         levelNumber_, 

@@ -9,6 +9,9 @@
 
 class Data
 {
+    private:
+        void openFile( const std::string& fileName );
+
     protected:
         int levelNumber_;
         nlohmann::json jsonObject_;

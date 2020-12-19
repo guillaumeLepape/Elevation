@@ -1,3 +1,4 @@
 {
-  "statement": [false, "Quitter le jeu"]
+  "statement": [false, "Quitter le jeu"],
+  "result": [false, "La partie est finie."]
 }

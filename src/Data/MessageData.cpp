@@ -10,6 +10,20 @@ MessageData::MessageData( const int& levelNumber, const int& indexMessage ) :
     readData();
 }
 
+MessageData::MessageData
+( 
+    const std::vector<std::string>& name, 
+    const std::vector<bool>& token,  
+    const std::vector<std::string>& dialog
+) : 
+    Data(),
+    name_( name ),
+    token_( token ),
+    dialog_( dialog )
+{
+
+}
+
 void MessageData::readData()
 {
     for ( int i = 0; i < jsonObject_["message"].size(); i++ )

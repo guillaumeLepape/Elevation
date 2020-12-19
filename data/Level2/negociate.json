@@ -1,3 +1,4 @@
 {
-    "statement": [false, "Entrez votre montant"]
+  "statement": [false, "Entrez votre montant"],
+  "result": [false, "Vous avez proposer de payer la drogue au prix de -*-price-*-."]
 }

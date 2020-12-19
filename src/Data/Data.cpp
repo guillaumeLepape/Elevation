@@ -14,6 +14,11 @@ Data::Data()
 Data::Data( const int& levelNumber, const std::string& fileName ) :
     levelNumber_( levelNumber )
 {
+    openFile( fileName );
+}
+
+void Data::openFile( const std::string& fileName ) 
+{
     std::string path = "../data/";
 
     if ( levelNumber_ == -1 )

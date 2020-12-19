@@ -18,6 +18,12 @@ class MessageData : public Data
 
     public:
         MessageData( const int& levelNumber, const int& indexMessage );
+        MessageData
+        ( 
+            const std::vector<std::string>& name, 
+            const std::vector<bool>& token,  
+            const std::vector<std::string>& dialog
+        );
 
         void readData() override;
 
