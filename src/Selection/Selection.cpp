@@ -14,7 +14,7 @@ int Selection::select
 ( 
     const int& levelNumber, 
     const int& indexSelection,
-    const std::vector<Action*>& actions 
+    const std::vector<Action*>& actions
 )
 {
     SelectionWriter selectionWriter( levelNumber, indexSelection, actions );
@@ -24,14 +24,14 @@ int Selection::select
 
     while (!(std::cin >> choice) || (choice > 2 || choice < 1)) 
     {
-        if ( 2 != 1 )
+        if ( actions.size() != 1 )
         {
-            std::cout << "Selection invalide - Entrez un nombre compris entre 1 et " 
-                << 2  << ".\n";
+            std::cout << BOLDRED << "Selection invalide - Entrez un nombre compris entre 1 et " 
+                << 2 << " !" <<  RESET << "\n";
         }
         else 
         {
-            std::cout << "Selection invalide - Entrez un nombre égale à 1";
+            std::cout << BOLDRED << "Selection invalide - Entrez un nombre égale à 1 !" << RESET << "\n";
         }
         // reset error flags
         std::cin.clear();

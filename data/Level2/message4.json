@@ -1,8 +1,6 @@
 {
     "message" :
     [
-        [ "plug", false, "Ca me convient. Tiens. A la prochaine." ],
-        [ "player", false, "Merci. Salut." ],
-        [ "description", false, "Carte VISA. Sniffe."]
+        [ "plug", false, "Ca me convient. Tiens. A la prochaine." ]
     ]
 }

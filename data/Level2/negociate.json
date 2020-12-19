@@ -1,4 +1,4 @@
 {
   "statement": [false, "Entrez votre montant"],
-  "result": [false, "Vous avez proposer de payer la drogue au prix de -*-price-*-."]
+  "result": [true, "Vous perdez -*-pricePlayer-*-€."]
 }

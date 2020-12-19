@@ -47,9 +47,10 @@ class Negociate : public Action
             {
                 std::string priceStr;
 
-                actionWriter_.writeAction( player_, plug_ );
+                actionWriter_.writeStatement( player_, plug_ );
                 std::cin >> priceStr;
                 int price = std::stoi( priceStr ); 
+                player_->setPrice( price );
 
                 if ( price > plug_->price() )
                 {
@@ -68,9 +69,12 @@ class Negociate : public Action
                 {
                     messageHandler_.setIndexMessage( 3 );
                     messageHandler_.writeMessage();
-                }
-                
+                } 
             }
+            actionWriter_.writeResult( player_, plug_ );
+            
+            messageHandler_.setIndexMessage( 5 );
+            messageHandler_.writeMessage();
         }
 };
 

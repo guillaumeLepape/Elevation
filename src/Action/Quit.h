@@ -7,8 +7,6 @@
 
 #include "Action.h"
 
-#include <iostream>
-
 class Quit : public Action
 {
     public:

@@ -4,7 +4,7 @@
         [ "player", true, "Salut, -*-plugName-*-." ],
         [ "plug", false, "Ca va ? Tu cherches quoi ?" ],
         [ "player", false, "De la C." ],
-        [ "plug", false, "C'est 80€ le gramme." ],
+        [ "plug", true, "C'est -*-pricePlug-*-€ le gramme." ],
         [ "player", false, "Putain, c'est un peu cher." ],
         [ "plug", false, "C'est pas négociable." ],
         [ "player", false, "Aller j'ai pas masse de tunes." ]

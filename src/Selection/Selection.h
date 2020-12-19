@@ -5,8 +5,6 @@
     * \file Selection.h
 */
 
-#include <vector>
-
 #include "../Action/Action.h"
 
 class Selection

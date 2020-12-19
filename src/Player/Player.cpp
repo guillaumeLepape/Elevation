@@ -13,7 +13,8 @@ Player::Player() :
     money_(200),
     dead_(false),
     weapons_( 1, Weapon("fist", 20, "Cognez !") ),
-    selectedWeapon_(0)
+    selectedWeapon_(0),
+    price_(0)
 {
 
 }

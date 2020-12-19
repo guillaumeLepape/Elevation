@@ -76,7 +76,7 @@ add_executable(run
     src/Writer/ActionWriter.h
     src/Writer/SelectionWriter.cpp
     src/Writer/SelectionWriter.h
-    src/Writer/ReplaceToken.h
+    src/Writer/Token.h
 
     src/Player/Player.cpp
     src/Player/Player.h

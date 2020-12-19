@@ -2,7 +2,7 @@
 #define REPLACE_TOKEN_H
 
 /*!
-    * \file ReplaceToken.h
+    * \file Token.h
 */
 
 #include <bits/stdc++.h>
@@ -11,7 +11,7 @@
 #include "../Player/Player.h"
 #include "../Plug/Plug.h"
 
-class ReplaceToken
+class Token
 {
     public: 
         static std::string replace
@@ -36,7 +36,11 @@ class ReplaceToken
             {
                 result += plug->name();
             }
-            else if ( vecResult[i] == "money" )
+            else if ( vecResult[i] == "pricePlayer" )
+            {
+                result += std::to_string( player->price() );
+            }
+            else if ( vecResult[i] == "pricePlug" )
             {
                 result += std::to_string( plug->price() );
             }

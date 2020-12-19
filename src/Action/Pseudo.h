@@ -9,8 +9,6 @@
 #include "../color.h"
 #include "../Writer/ActionWriter.h"
 
-#include <iostream>
-
 class Pseudo : public Action
 {
     private: 
@@ -25,12 +23,14 @@ class Pseudo : public Action
         }
         void triggerAction() const override 
         {
-            actionWriter_.writeAction( player_, nullptr );
+            actionWriter_.writeStatement( player_, nullptr );
 
             std::string pseudo;
             std::cin >> pseudo; 
             
             player_->setPseudo(pseudo);
+
+            actionWriter_.writeResult( player_, nullptr );
         }
 };
 

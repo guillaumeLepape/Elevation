@@ -4,11 +4,9 @@
 
 #include "ActionWriter.h"
 
-#include <iostream>
-
 #include "../color.h"
 #include "Pause.h"
-#include "ReplaceToken.h"
+#include "Token.h"
 
 ActionWriter::ActionWriter
 ( 
@@ -22,46 +20,39 @@ ActionWriter::ActionWriter
     
 }
 
-void ActionWriter::writeAction( const Player* const player, const Plug* const plug ) const
+void ActionWriter::writeStatement( const Player* const player, const Plug* const plug ) const
 {    
     if ( inputOrNot_ )
     {           
         std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK;
         if ( actionData_.tokenStatement() )
         {
-            std::cout << ReplaceToken::replace( actionData_.statement(), player, plug );
+            std::cout << Token::replace( actionData_.statement(), player, plug );
         }
         else
         {
             std::cout << actionData_.statement();
         }
         std::cout << RESET << " : ";
-
-        // Pause::pause();
-        // std::cout << "\n " << BOLDYELLOW;
-        // if ( actionData_.tokenResult() )
-        // {
-        //    std::cout << ReplaceToken::replace( actionData_.result(), player, plug ); 
-        // }
-        // else
-        // {
-        //     std::cout << actionData_.result();
-        // }
-        // std::cout << RESET;
     }
     else
     {
-        Pause::pause();
-        std::cout << "\n " << BOLDYELLOW;
-        if ( actionData_.tokenResult() ) 
-        {
-           std::cout << ReplaceToken::replace( actionData_.result(), player, plug ); 
-        }
-        else 
-        {
-            std::cout << actionData_.result();
-        }
-        std::cout << RESET;
+       
     }
     
+}
+
+void ActionWriter::writeResult( const Player* const player, const Plug* const plug ) const 
+{
+    Pause::pause();
+    std::cout << "\n " << BOLDYELLOW;
+    if ( actionData_.tokenResult() ) 
+    {
+        std::cout << Token::replace( actionData_.result(), player, plug ); 
+    }
+    else 
+    {
+        std::cout << actionData_.result();
+    }
+    std::cout << RESET;
 }

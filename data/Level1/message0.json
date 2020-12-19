@@ -4,9 +4,9 @@
     ["description", false, "Vous arrivez en bas du batiment"],
     ["plug", true, "Ca va, -*-pseudo-*- ?"],
     ["player", true, "Et toi, -*-plugName-*- ?"],
-    ["plug", true, "Comme d'habitude ? C'est -*-money-*-€."],
+    ["plug", true, "Comme d'habitude ? C'est -*-pricePlug-*-€."],
     ["player", false, "Tiens."],
-    ["description", true, "Vous perdez -*-money-*-€."],
+    ["action", true, "Vous perdez -*-pricePlug-*-€."],
     ["plug", false, "Bonne journée."],
     ["player", false, "A la prochaine."],
     ["description", false, "Roule. Fume."]

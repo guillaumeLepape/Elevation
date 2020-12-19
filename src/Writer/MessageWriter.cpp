@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-#include "ReplaceToken.h"
+#include "Token.h"
 #include "../color.h"
 #include "Pause.h"
 
@@ -49,7 +49,7 @@ void MessageWriter::writeOneMessage( const int& i) const
 {
     if ( messageData_.token()[i] )
     {
-        std::cout << "\n " << ReplaceToken::replace( messageData_.dialog()[i], player_, plug_ );
+        std::cout << "\n " << Token::replace( messageData_.dialog()[i], player_, plug_ );
     }
     else
     {
@@ -70,7 +70,7 @@ void MessageWriter::writeMessage() const
     }
 }
 
-// std::string MessageWriter::replaceToken( const std::string& str) const
+// std::string MessageWriter::Token( const std::string& str) const
 // {
     
 // }
