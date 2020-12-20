@@ -20,22 +20,23 @@ void Level5::startLevel()
     HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    Plug guetteur( "Guetteur", 30 );
+    Plug guetteur( "Guetteur", 0, 15 );
 
     MessageHandler messageHandler( player_, &guetteur, folder, "message" );
     messageHandler.nextMessage();
 
     UseWeapon cutThroat( player_, &guetteur, "knife", "data/Weapon", "cutThroat" );
+    UseWeapon beatUp( player_, &guetteur, "fist", "data/Weapon", "beatUp" );
 
     Selection::select(
-        { &cutThroat },
+        { &beatUp, &cutThroat },
         folder,
         "selection0"
     );
 
-    Plug randomDebile( "Random débile", 50 );
-    Plug randomDebile2( "Random débile 2", 70 );
-    Plug pasFuteFute( "Pas fute-fute", 100 );
+    Plug randomDebile( "Random débile", 0, 50 );
+    Plug randomDebile2( "Random débile 2", 0, 70 );
+    Plug pasFuteFute( "Pas fute-fute", 0, 100 );
 
 
 

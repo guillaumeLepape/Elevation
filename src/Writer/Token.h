@@ -30,23 +30,58 @@ class Token
             {
             if ( vecResult[i] == "pseudo" )
             {
-                result += player->pseudo();
+                if ( player != nullptr )
+                {                
+                    result += player->pseudo();
+                }
+                else
+                {
+                    assert(false);
+                }            
             }
             else if ( vecResult[i] == "plugName" )
             {
-                result += plug->name();
+                if ( plug != nullptr )
+                {
+                    result += plug->name();
+                }
+                else
+                {
+                    assert(false);
+                }
             }
             else if ( vecResult[i] == "pricePlayer" )
             {
-                result += std::to_string( player->price() );
+                if ( player != nullptr )
+                {
+                    result += std::to_string( player->price() );
+                }
+                else
+                {
+                    assert(false);
+                }
             }
             else if ( vecResult[i] == "pricePlug" )
             {
-                result += std::to_string( plug->price() );
+                if ( plug != nullptr )
+                {
+                    result += std::to_string( plug->price() );
+                }
+                else
+                {
+                    assert(false);
+                }
             }
             else if ( vecResult[i] == "damage" )
             {
-                result += std::to_string( player->selectedWeapon().damageWeapon() );
+                if ( player != nullptr )
+                {
+                    result += std::to_string( player->selectedWeapon().damageWeapon() );    
+                }
+                else
+                {
+                    assert(false);
+                }
             }
             else
             {

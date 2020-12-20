@@ -21,6 +21,7 @@ add_executable(run
     src/Action/StartGame.h
     src/Action/UseWeapon.h
     src/Action/Answer.h
+    src/Action/Dead.h
 
     src/Level/Level.h
     

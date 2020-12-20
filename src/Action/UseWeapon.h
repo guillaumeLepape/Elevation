@@ -8,6 +8,8 @@
 #include "Action.h"
 #include "../Plug/Plug.h"
 
+#include "Dead.h"
+
 class UseWeapon : public Action
 {
     private:
@@ -36,6 +38,9 @@ class UseWeapon : public Action
             plug_->decreaseLifePoints( weapon_.damageWeapon() );
 
             actionWriter_.writeResult( player_, plug_ );
+        
+            Dead dead( player_, plug_, "data/Dead", "dead" );
+            dead.triggerAction();
         }
 };
 
