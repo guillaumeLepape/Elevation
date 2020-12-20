@@ -39,7 +39,6 @@ void Level3::startLevel()
 
     messageHandler.setIndexMessage( 2 );
     messageHandler.writeMessage();
-    // message.writeInConsole( player_, &plug, 2 );
 
     Selection::select(
         levelNumber_, 

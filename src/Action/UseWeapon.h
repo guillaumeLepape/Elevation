@@ -16,7 +16,14 @@ class UseWeapon : public Action
         Plug* plug_;
 
     public:
-        UseWeapon( const int& levelNumber, const std::string& nameAction, Player* player, Plug* plug, const std::string& nameWeapon ) : 
+        UseWeapon
+        ( 
+            const int& levelNumber,
+            const std::string& nameAction,
+            Player* player, 
+            Plug* plug, 
+            const std::string& nameWeapon 
+        ) : 
             Action( levelNumber, nameAction, false ),
             weapon_( player->weaponFromName( nameWeapon ) ),
             player_(player),
