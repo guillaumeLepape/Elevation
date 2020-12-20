@@ -50,21 +50,22 @@ MessageHandler::MessageHandler
 
 }
 
-void MessageHandler::writeMessage() const
+void MessageHandler::writeMessagePrivate() const
 {
     MessageWriter messageWriter( player_, plug_, messagesData_.messages()[indexMessage_] );
-
     messageWriter.writeMessage();
+}
+
+void MessageHandler::writeMessage( const int& indexMessage ) const 
+{
+    indexMessage_ = indexMessage;
+
+    writeMessagePrivate();
 }
 
 void MessageHandler::nextMessage() const
 {
     indexMessage_++;
 
-    writeMessage();
-}
-
-void MessageHandler::setIndexMessage( const int& indexMessage ) const
-{
-    indexMessage_ = indexMessage;
+    writeMessagePrivate();
 }

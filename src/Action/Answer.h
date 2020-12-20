@@ -35,8 +35,7 @@ class Answer : public Action
 
         void triggerAction() const override
         {
-            messageHandler_.setIndexMessage( indexMessage_ );
-            messageHandler_.writeMessage();
+            messageHandler_.writeMessage( indexMessage_ );
         }
 
         const bool& correctOrNot() const { return answerWriter_.answerData().correctOrNot(); }

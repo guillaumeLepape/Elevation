@@ -18,6 +18,8 @@ class MessageHandler
 
         mutable int indexMessage_;
 
+        void writeMessagePrivate() const;
+
     public:
         MessageHandler
         ( 
@@ -44,8 +46,7 @@ class MessageHandler
             int indexMessage = -1
         );
 
-        void writeMessage() const;
-        void setIndexMessage( const int& indexMessage ) const;
+        void writeMessage( const int& indexMessage ) const;
         void nextMessage() const;
 };
 

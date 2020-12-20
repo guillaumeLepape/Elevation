@@ -34,8 +34,7 @@ void Level3::startLevel()
         "selection0" 
     );
 
-    messageHandler.setIndexMessage( 2 );
-    messageHandler.writeMessage();
+    messageHandler.writeMessage(2);
 
     Selection::select(
         { &useFist },

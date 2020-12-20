@@ -7,7 +7,7 @@
 #include <fstream>
 
 Data::Data( const nlohmann::json& jsonObject ) :
-    nlohmann::json( jsonObject )
+    jsonObject_( jsonObject )
 {
     
 }

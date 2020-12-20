@@ -40,8 +40,7 @@ class Negociate : public Action
         {
             bool out = false;
 
-            messageHandler_.setIndexMessage( 1 );
-            messageHandler_.writeMessage();
+            messageHandler_.writeMessage(1);
 
             while ( !out )
             {
@@ -54,27 +53,23 @@ class Negociate : public Action
 
                 if ( price > plug_->price() )
                 {
-                    messageHandler_.setIndexMessage( 2 );
-                    messageHandler_.writeMessage();
+                    messageHandler_.writeMessage(2);
                 }
                 else if ( price <= plug_->price() && plug_->price() - 30 <= price ) 
                 {
                     out = true;
-                    messageHandler_.setIndexMessage( 4 );
-                    messageHandler_.writeMessage();
+                    messageHandler_.writeMessage(4);
 
                     player_->increaseMoney( -price );
                 }
                 else 
                 {
-                    messageHandler_.setIndexMessage( 3 );
-                    messageHandler_.writeMessage();
+                    messageHandler_.writeMessage(3);
                 } 
             }
             actionWriter_.writeResult( player_, plug_ );
             
-            messageHandler_.setIndexMessage( 5 );
-            messageHandler_.writeMessage();
+            messageHandler_.writeMessage(5);
         }
 };
 

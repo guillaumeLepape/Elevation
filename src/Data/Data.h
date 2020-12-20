@@ -15,7 +15,7 @@
    * 
 */
 
-class Data : public nlohmann::json
+class Data
 {
     private:
         void openFile( const std::string& folderFromRoot, const std::string& fileName );
