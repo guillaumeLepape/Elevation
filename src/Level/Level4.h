@@ -1,17 +1,27 @@
 #ifndef LEVEL_4_H
 #define LEVEL_4_H
 
+/*!
+    * \file Level4.h
+*/
+
 #include "Level.h"
+
+#include "../Writer/MessageHandler.h"
 
 class Level4 : public Level
 {   
     private:
-        void firstQuestion( Plug* plug, const Message& message );
-        void secondQuestion( Plug* plug, const Message& message );
-        void thirdQuestion( Plug* plug, const Message& message );
+        int levelNumber_;
+
+        void firstQuestion( const MessageHandler& messageHandler );
+        void secondQuestion( const MessageHandler& messageHandler );
+        void thirdQuestion( const MessageHandler& messageHandler );
 
     public:
-        explicit Level4( Player* player ) : Level(player)
+        explicit Level4( Player* player ) : 
+            Level(player),
+            levelNumber_(4)
         {
 
         }

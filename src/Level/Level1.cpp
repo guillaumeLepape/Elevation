@@ -7,8 +7,8 @@
 #include <memory>
 #include <iostream>
 
-#include "../Plug/Plug.h"
-#include "../Writer/Writer.h"
+#include "../Writer/HeaderWriter.h"
+#include "../Writer/MessageHandler.h"
 
 void Level1::startLevel()
 {

@@ -26,14 +26,14 @@ void MessageHandler::writeMessage() const
     messageWriter.writeMessage();
 }
 
-void MessageHandler::nextMessage()
+void MessageHandler::nextMessage() const
 {
     indexMessage_++;
 
     writeMessage();
 }
 
-void MessageHandler::setIndexMessage( const int& indexMessage )
+void MessageHandler::setIndexMessage( const int& indexMessage ) const
 {
     indexMessage_ = indexMessage;
 }

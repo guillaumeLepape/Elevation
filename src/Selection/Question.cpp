@@ -8,21 +8,28 @@
 
 bool Question::question
 ( 
-    const std::string& questionName, 
-    const ListAnswers& listAnswers 
+    const int& levelNumber,
+    const int& indexQuestion,
+    const std::vector<Answer*>& answers
 )
+{
+    int result = Selection::select(
+        levelNumber,
+        indexQuestion,
+        convertAnswersToActions( answers )
+    );
+
+    return answers[result]->correctOrNot();
+}
+
+std::vector<Action*> Question::convertAnswersToActions( const std::vector<Answer*>& answers )
 {
     std::vector<Action*> actions;
 
-    for ( int i = 0; i < listAnswers.size(); i++ )
+    for ( auto i = answers.cbegin(); i != answers.cend(); i++ )
     {
-        actions.push_back( listAnswers[i] );
+        actions.push_back( *i );
     }
 
-    int result = Selection::select(
-        questionName,
-        actions
-    );
-
-    return listAnswers[result]->correctOrNot(); 
+    return actions;
 }

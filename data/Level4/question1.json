@@ -1,9 +1,0 @@
-{
-    "questionName": "Les hommes sont-ils allez sur la Lune ?",
-    "answer":
-    [
-        [ "Oui, bien sur !", 1, false ],
-        [ "Bien sur, les américains l'ont fait pour niquer les russes.", 1, false ],
-        [ "Non, l'alunissage a eu lieu au Nevada.", 2, true ]
-    ]
-}

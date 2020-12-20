@@ -16,7 +16,7 @@ class QuestionData : public Data
         std::vector<std::tuple<std::string, int, bool>> answer_;
 
     public:
-        QuestionData( const int& LevelNumber, const int& questionIndex );
+        QuestionData( const int& levelNumber, const int& questionIndex );
 
         void readData() override;
 

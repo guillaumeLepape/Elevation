@@ -4,16 +4,21 @@
 
 #include "Level5.h"
 
+#include <iostream>
+
 #include "../Plug/Plug.h"
-#include "../Message/Message.h"
+#include "../Writer/HeaderWriter.h"
+#include "../Writer/MessageHandler.h"
 
 void Level5::startLevel()
 {
     Plug plug( "Future", 100 );
 
-    Message message( "../messages/messageLevel5.json" );
+    HeaderWriter headerWriter( levelNumber_ );
+    headerWriter.writeHeader();
 
-    message.writeHeader();
+    MessageHandler messageHandler( levelNumber_, player_, &plug );
+    messageHandler.nextMessage();
 
     std::cout << "\n";
 }

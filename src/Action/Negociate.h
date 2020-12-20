@@ -9,11 +9,9 @@
 
 #include <iostream>
 
-#include "../color.h"
-#include "../Player/Player.h"
 #include "../Plug/Plug.h"
 
-#include "../Writer/Writer.h"
+#include "../Writer/MessageHandler.h"
 
 class Negociate : public Action
 {

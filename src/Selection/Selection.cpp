@@ -22,12 +22,12 @@ int Selection::select
 
     int choice = 0;
 
-    while (!(std::cin >> choice) || (choice > 2 || choice < 1)) 
+    while (!(std::cin >> choice) || (choice > actions.size() || choice < 1)) 
     {
         if ( actions.size() != 1 )
         {
             std::cout << BOLDRED << "Selection invalide - Entrez un nombre compris entre 1 et " 
-                << 2 << " !" <<  RESET << "\n";
+                << actions.size() << " !" <<  RESET << "\n";
         }
         else 
         {

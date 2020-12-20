@@ -5,18 +5,22 @@
     * \file Question.h
 */
 
-#include "ListAnswers.h"
+// #include "ListAnswers.h"
+#include "../Action/Answer.h"
 
 class Question
 {   
     private:
+        static std::vector<Action*> convertAnswersToActions( const std::vector<Answer*>& answers );
+
         Question() {}
 
     public:
         static bool question
         ( 
-            const std::string& questionName, 
-            const ListAnswers& listAnswers 
+            const int& levelNumber,
+            const int& indexQuestion,
+            const std::vector<Answer*>& answers
         );
 };
 

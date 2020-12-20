@@ -6,8 +6,6 @@
 */
 
 #include "Action.h"
-#include "../color.h"
-#include "../Writer/ActionWriter.h"
 
 class Pseudo : public Action
 {

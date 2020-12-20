@@ -9,7 +9,7 @@
 
 #include "../Action/Negociate.h"
 
-#include "../Writer/Writer.h"
+#include "../Writer/HeaderWriter.h"
 
 void Level2::startLevel()
 {

@@ -8,10 +8,6 @@
 #include "Action/StartGame.h"
 #include "Writer/Rules.h"
 
-
-#include "Action/Pseudo.h"
-#include "Writer/Writer.h"
-
 int main()
 {
     Rules::displayRules();

@@ -7,44 +7,39 @@
 
 #include "Action.h"
 
-#include "../Player/Player.h"
-#include "../Plug/Plug.h"
+#include "../Writer/MessageHandler.h"
+#include "../Writer/AnswerWriter.h"
 
 class Answer : public Action
 {
     private:
-        Player* player_;
-        Plug* plug_;
-        // const Message& message_;
-        int indexMessage_;
-        bool correctOrNot_;
+        const AnswerWriter answerWriter_;
+        const MessageHandler& messageHandler_;
+        const int indexMessage_;
 
     public:
         explicit Answer
         ( 
-            const std::string& statement,
-            Player* player, 
-            Plug* plug,
-            // const Message& message,
-            // const int& indexMessage,
-            const bool& correctOrNot
+            const int& levelNumber,
+            const std::string& nameAction,
+            const MessageHandler& messageHandler,
+            const int& indexMessage
         ) : 
-            // Action( statement ),
-            player_( player ),
-            plug_( plug ),
-            // message_( message ),
-            // indexMessage_( indexMessage ),
-            correctOrNot_( correctOrNot )
+            Action( levelNumber, nameAction, false ),
+            answerWriter_( levelNumber, nameAction ),
+            messageHandler_( messageHandler ),
+            indexMessage_( indexMessage )
         {
 
         }
 
         void triggerAction() const override
         {
-            // message_.writeInConsole( player_, plug_, indexMessage_ );
+            messageHandler_.setIndexMessage( indexMessage_ );
+            messageHandler_.writeMessage();
         }
 
-        const bool& correctOrNot() const { return correctOrNot_; }
+        const bool& correctOrNot() const { return answerWriter_.answerData().correctOrNot(); }
 };
 
 #endif

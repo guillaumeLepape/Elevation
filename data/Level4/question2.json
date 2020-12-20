@@ -1,9 +1,0 @@
-{
-    "questionName": "Pourquoi le faux alunissage a été caché ?",
-    "answers":
-    [
-        [ "Euh ...", 1, false ],
-        [ "Pour montrer leurs supériorités, les américains ont préféré mentir car ils n'avaient pas les moyens technologiques d'y aller.", 1, false ],
-        [ "Pour cacher qu'en fait la Terre est plate.", 2, true ]
-    ]
-}

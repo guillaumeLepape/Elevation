@@ -19,7 +19,7 @@ class ActionData : public Data
     public:
         ActionData( const int& levelNumber, const std::string& nameFile );
 
-        void readData() override;
+        virtual void readData() override;
 
         const bool& tokenStatement() const { return tokenStatement_; }
         const std::string& statement() const { return statement_; }

@@ -15,7 +15,7 @@ class MessageHandler
         const Player* const player_;
         const Plug* const plug_;
 
-        int indexMessage_;
+        mutable int indexMessage_;
 
     public:
         MessageHandler
@@ -27,8 +27,8 @@ class MessageHandler
         );
 
         void writeMessage() const;
-        void setIndexMessage( const int& indexMessage );
-        void nextMessage();
+        void setIndexMessage( const int& indexMessage ) const;
+        void nextMessage() const;
 };
 
 #endif

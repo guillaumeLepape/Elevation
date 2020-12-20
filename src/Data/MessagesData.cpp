@@ -1,5 +1,5 @@
 /*!
-    * \file MessagesData.h
+    * \file MessagesData.cpp
 */
 
 #include "MessagesData.h"
