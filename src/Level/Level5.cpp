@@ -12,6 +12,7 @@
 
 #include "../Action/UseWeapon.h"
 #include "../Selection/Selection.h"
+#include "../Selection/Fight.h"
 
 void Level5::startLevel()
 {
@@ -25,8 +26,12 @@ void Level5::startLevel()
     MessageHandler messageHandler( player_, &guetteur, folder, "message" );
     messageHandler.nextMessage();
 
-    UseWeapon cutThroat( player_, &guetteur, "knife", "data/Weapon", "cutThroat" );
+    /**********************/
+    player_->addWeapon( Weapon("knife", 30, "Plantez !") );
+    /**********************/
+
     UseWeapon beatUp( player_, &guetteur, "fist", "data/Weapon", "beatUp" );
+    UseWeapon cutThroat( player_, &guetteur, "knife", "data/Weapon", "cutThroat" );
 
     Selection::select(
         { &beatUp, &cutThroat },
@@ -38,7 +43,18 @@ void Level5::startLevel()
     Plug randomDebile2( "Random débile 2", 0, 70 );
     Plug pasFuteFute( "Pas fute-fute", 0, 100 );
 
+    std::vector<Plug> enemies;
+    enemies.push_back( randomDebile );
+    enemies.push_back( randomDebile2 );
+    enemies.push_back( pasFuteFute );
 
+
+    Fight fight( 
+        player_, 
+        enemies,
+        messageHandler 
+    );
+    fight.startFight(); 
 
     std::cout << "\n";
 }

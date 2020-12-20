@@ -78,10 +78,14 @@ add_executable(run
     src/Writer/Token.h
     src/Writer/AnswerWriter.cpp
     src/Writer/AnswerWriter.h
+    src/Writer/FightWriter.cpp
+    src/Writer/FightWriter.h
 
     src/Player/Player.cpp
     src/Player/Player.h
 
+    src/Selection/Fight.cpp
+    src/Selection/Fight.h
     src/Selection/Selection.cpp
     src/Selection/Selection.h
     src/Selection/Question.cpp
