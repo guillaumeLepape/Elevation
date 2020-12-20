@@ -4,25 +4,20 @@
 
 #include "ActionData.h"
 
-ActionData::ActionData( const int& levelNumber, const std::string& nameFile ) :
-    Data(levelNumber, nameFile )
+ActionData::ActionData( const nlohmann::json& jsonObject ) :
+    Data( jsonObject )
 {
     readData();
 }
 
 ActionData::ActionData
 ( 
-    const bool& tokenStatement,  
-    const std::string& statement,
-    const bool& tokenResult,
-    const std::string& result
+    const std::string& folderFromRoot,
+    const std::string& nameFile
 ) :
-    tokenStatement_( tokenStatement ),
-    statement_( statement ),
-    tokenResult_( tokenResult ),
-    result_( result )
+    Data( folderFromRoot, nameFile )
 {
-
+    readData();
 }
 
 void ActionData::readData()

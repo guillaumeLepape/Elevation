@@ -15,22 +15,22 @@
 
 void Level5::startLevel()
 {
-    // Plug plug( "Future", 100 );
+    std::string folder = "data/Level5";
 
-    HeaderWriter headerWriter( levelNumber_ );
+    HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
     Plug guetteur( "Guetteur", 30 );
 
-    MessageHandler messageHandler( levelNumber_, player_, &guetteur );
+    MessageHandler messageHandler( player_, &guetteur, folder, "message" );
     messageHandler.nextMessage();
 
-    UseWeapon cutThroat( levelNumber_, "cutThroat", player_, &guetteur, "knife" );
+    UseWeapon cutThroat( player_, &guetteur, "knife", "data/Weapon", "cutThroat" );
 
     Selection::select(
-        levelNumber_,
-        0,
-        { &cutThroat }
+        { &cutThroat },
+        folder,
+        "selection0"
     );
 
     Plug randomDebile( "Random débile", 50 );

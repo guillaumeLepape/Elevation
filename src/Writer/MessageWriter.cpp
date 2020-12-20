@@ -11,15 +11,44 @@
 #include "Pause.h"
 
 MessageWriter::MessageWriter
-( 
+(
     const Player* const player,
     const Plug* const plug,
+    const nlohmann::json& jsonObject
+) :
+    player_( player ),
+    plug_( plug ),
+    messageData_( jsonObject )
+{
+
+}
+        
+MessageWriter::MessageWriter
+( 
+    const Player* const player, 
+    const Plug* const plug, 
     const MessageData& messageData 
 ) :
     player_( player ),
     plug_( plug ),
     messageData_( messageData )
-{}
+{
+
+}
+
+MessageWriter::MessageWriter
+(
+    const Player* const player, 
+    const Plug* const plug,
+    const std::string& folderFromRoot,
+    const std::string& fileName
+) :
+    player_( player ),
+    plug_( plug ),
+    messageData_( folderFromRoot, fileName )
+{
+
+}
 
 void MessageWriter::writeName( const int& i ) const 
 {

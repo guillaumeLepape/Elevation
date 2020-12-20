@@ -12,58 +12,55 @@
 
 void Level3::startLevel()
 {
+    std::string folder = "data/Level3";
+
     Plug plug( "V", 20 );
 
-    HeaderWriter headerWriter( levelNumber_ );
+    HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    // MessagesData messageData( levelNumber_ );
-    MessageHandler messageHandler( levelNumber_, player_, &plug );
+    MessageHandler messageHandler( player_, &plug, folder, "message" );
     messageHandler.nextMessage();
-    // Message message( "../messages/messageLevel3.json" );
-    // message.writeHeader();
-
-    // message.writeInConsole( player_, &plug, 0 );
     
-    UseWeapon useFist( levelNumber_, "useFist", player_, &plug, "fist" );
+    UseWeapon useFist( player_, &plug, "fist", "data/Weapon", "useFist" );
 
     useFist.triggerAction();
 
     messageHandler.nextMessage();
 
     Selection::select(
-        levelNumber_, 
-        0, 
-        { &useFist }
+        { &useFist },
+        folder,
+        "selection0" 
     );
 
     messageHandler.setIndexMessage( 2 );
     messageHandler.writeMessage();
 
     Selection::select(
-        levelNumber_, 
-        1, 
-        { &useFist }
+        { &useFist },
+        folder,
+        "selection1"
     );
 
     messageHandler.nextMessage();
 
     Selection::select(
-        levelNumber_, 
-        2, 
-        { &useFist }
+        { &useFist },
+        folder,
+        "selection2"
     );
 
     messageHandler.nextMessage();
 
     player_->addWeapon( Weapon( "knife", 30, "Plantez !" ) );
 
-    UseWeapon useKnife( levelNumber_, "useKnife", player_, &plug, "knife" );
+    UseWeapon useKnife( player_, &plug, "knife", "data/Weapon", "useKnife" );
 
     Selection::select(
-        levelNumber_, 
-        3, 
-        { &useFist, &useKnife }
+        { &useFist, &useKnife },
+        folder,
+        "selection3"
     );
 
     std::cout << "\n";

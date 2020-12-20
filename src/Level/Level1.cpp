@@ -12,12 +12,14 @@
 
 void Level1::startLevel()
 {
+    std::string folder = "data/Level1";
+
     Plug plug( "Petite frappe", 20);
 
-    HeaderWriter headerWriter( levelNumber_ );
+    HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( levelNumber_, player_, &plug );
+    MessageHandler messageHandler( player_, &plug, folder, "message" );
     messageHandler.nextMessage();
 
     player_->increaseMoney( -plug.price() );

@@ -19,11 +19,10 @@ class Action
     public:
         explicit Action
         ( 
-            const int& levelNumber, 
-            const std::string& nameAction, 
-            const bool& inputOrNot
+            const std::string& folderFromRoot,
+            const std::string& nameFile 
         ) : 
-            actionWriter_( levelNumber, nameAction, inputOrNot )
+            actionWriter_( folderFromRoot, nameFile )
         {
 
         }

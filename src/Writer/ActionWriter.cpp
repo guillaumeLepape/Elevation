@@ -8,22 +8,26 @@
 #include "Pause.h"
 #include "Token.h"
 
-ActionWriter::ActionWriter
-( 
-    const int& levelNumber, 
-    const std::string& nameFile,
-    const bool& inputOrNot
-) :
-    actionData_( levelNumber, nameFile ),
-    inputOrNot_( inputOrNot )
+ActionWriter::ActionWriter( const nlohmann::json& jsonObject ) :
+    actionData_( jsonObject )
 {
-    
+
+}
+
+ActionWriter::ActionWriter( const ActionData& actionData ) :
+    actionData_( actionData )
+{
+
+}
+
+ActionWriter::ActionWriter( const std::string& folderFromRoot, const std::string& nameFile ) :
+    actionData_( folderFromRoot, nameFile )
+{
+
 }
 
 void ActionWriter::writeStatement( const Player* const player, const Plug* const plug ) const
-{    
-    if ( inputOrNot_ )
-    {           
+{        
         std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK;
         if ( actionData_.tokenStatement() )
         {
@@ -33,13 +37,7 @@ void ActionWriter::writeStatement( const Player* const player, const Plug* const
         {
             std::cout << actionData_.statement();
         }
-        std::cout << RESET << " : ";
-    }
-    else
-    {
-       
-    }
-    
+        std::cout << RESET << " : ";    
 }
 
 void ActionWriter::writeResult( const Player* const player, const Plug* const plug ) const 

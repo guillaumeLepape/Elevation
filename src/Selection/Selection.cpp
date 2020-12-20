@@ -12,12 +12,12 @@
 
 int Selection::select
 ( 
-    const int& levelNumber, 
-    const int& indexSelection,
-    const std::vector<Action*>& actions
+    const std::vector<Action*>& actions,
+    const std::string& folderFromRoot,
+    const std::string& nameFile
 )
 {
-    SelectionWriter selectionWriter( levelNumber, indexSelection, actions );
+    SelectionWriter selectionWriter( actions, folderFromRoot, nameFile );
     selectionWriter.writeSelection();
 
     int choice = 0;

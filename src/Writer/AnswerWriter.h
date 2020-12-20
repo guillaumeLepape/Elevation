@@ -13,13 +13,9 @@ class AnswerWriter
         AnswerData answerData_;
 
     public:
-        AnswerWriter
-        ( 
-            const int& levelNumber, 
-            const std::string& nameFile  
-        ) : 
-            answerData_( levelNumber, nameFile )
-        {};
+        AnswerWriter( const nlohmann::json& jsonObject );
+        AnswerWriter( const AnswerData& answerData );
+        AnswerWriter( const std::string& folderFromRoot, const std::string& fileName); 
 
         const AnswerData& answerData() const { return answerData_; }
 };

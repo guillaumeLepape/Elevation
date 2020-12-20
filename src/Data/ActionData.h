@@ -17,14 +17,8 @@ class ActionData : public Data
         std::string result_;
 
     public:
-        ActionData( const int& levelNumber, const std::string& nameFile );
-        ActionData
-        ( 
-            const bool& tokenStatement,  
-            const std::string& statement,
-            const bool& tokenResult,
-            const std::string& result
-        );
+        ActionData( const nlohmann::json& jsonObject );
+        ActionData( const std::string& folderFromRoot, const std::string& nameFile );
 
         virtual void readData() override;
 

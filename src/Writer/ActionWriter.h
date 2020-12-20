@@ -14,15 +14,11 @@ class ActionWriter
 {
     private:
         ActionData actionData_;
-        bool inputOrNot_;
 
     public:
-        ActionWriter
-        ( 
-            const int& levelNumber, 
-            const std::string& nameFile, 
-            const bool& inputOrNot 
-        );
+        ActionWriter( const nlohmann::json& jsonObject );
+        ActionWriter( const ActionData& actionData );
+        ActionWriter( const std::string& folderFromRoot, const std::string& nameFile );
 
         const ActionData& actionData() const { return actionData_; }
 

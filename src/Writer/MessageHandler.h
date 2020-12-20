@@ -11,18 +11,36 @@
 class MessageHandler  
 {
     private:
-        MessagesData messagesData_;
         const Player* const player_;
         const Plug* const plug_;
+
+        MessagesData messagesData_;
 
         mutable int indexMessage_;
 
     public:
         MessageHandler
         ( 
-            const int& levelNumber_,
             const Player* const player, 
             const Plug* const plug, 
+            const nlohmann::json& jsonObject,
+            int indexMessage = -1
+        );
+
+        MessageHandler
+        (
+            const Player* const player, 
+            const Plug* const plug, 
+            const MessagesData& messagesData,
+            int indexMessage = -1
+        );
+
+        MessageHandler
+        (
+            const Player* const player, 
+            const Plug* const plug, 
+            const std::string& folderFromRoot,
+            const std::string& nameFile,
             int indexMessage = -1
         );
 

@@ -20,13 +20,13 @@ class Answer : public Action
     public:
         explicit Answer
         ( 
-            const int& levelNumber,
-            const std::string& nameAction,
             const MessageHandler& messageHandler,
-            const int& indexMessage
+            const int& indexMessage,
+            const std::string& folderFromRoot,
+            const std::string& nameFile
         ) : 
-            Action( levelNumber, nameAction, false ),
-            answerWriter_( levelNumber, nameAction ),
+            Action( folderFromRoot, nameFile ),
+            answerWriter_( folderFromRoot, nameFile ),
             messageHandler_( messageHandler ),
             indexMessage_( indexMessage )
         {

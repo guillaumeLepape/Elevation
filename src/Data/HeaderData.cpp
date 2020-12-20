@@ -4,24 +4,16 @@
 
 #include "HeaderData.h"
 
-HeaderData::HeaderData( const int& levelNumber ) :
-    Data( levelNumber, "header" )
+HeaderData::HeaderData( const nlohmann::json& jsonObject ) : 
+    Data( jsonObject )
 {
     readData();
 }
 
-HeaderData::HeaderData
-( 
-    const std::string& nameLevel, 
-    const int& hour, 
-    const int& minut 
-) : 
-    Data(), 
-    nameLevel_( nameLevel ),
-    hour_( hour ),
-    minut_( minut )
+HeaderData::HeaderData( const std::string& folderFromRoot, const std::string& fileName ) :
+    Data( folderFromRoot, fileName )
 {
-
+    readData();
 }
 
 void HeaderData::readData()

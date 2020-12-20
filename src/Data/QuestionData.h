@@ -16,7 +16,8 @@ class QuestionData : public Data
         std::vector<std::tuple<std::string, int, bool>> answer_;
 
     public:
-        QuestionData( const int& levelNumber, const int& questionIndex );
+        QuestionData( const nlohmann::json& jsonObject );
+        QuestionData( const std::string& folderFromRoot, const std::string& fileName );
 
         void readData() override;
 

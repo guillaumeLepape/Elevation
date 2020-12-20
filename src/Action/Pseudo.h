@@ -13,8 +13,13 @@ class Pseudo : public Action
         Player* const player_;
 
     public:
-        explicit Pseudo( Player* const player ) : 
-            Action( 0, "pseudo", true ),
+        explicit Pseudo
+        ( 
+            Player* const player, 
+            const std::string& folderFromRoot,
+            const std::string& nameFile
+        ) : 
+            Action( folderFromRoot, nameFile ),
             player_(player)
         {
 

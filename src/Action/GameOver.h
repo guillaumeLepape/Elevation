@@ -15,9 +15,12 @@ class GameOver
     public:
         explicit GameOver
         ( 
-            Player * const player 
+            Player * const player,
+            const std::string& folderFromRoot,
+            const std::string& fileName
         )
-            Action( "Game over" ), player_(player)
+            Action( folderFromRoot, fileName ), 
+            player_(player)
         {
 
         }

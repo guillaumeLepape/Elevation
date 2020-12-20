@@ -10,13 +10,15 @@
 
 void Introduction::startLevel()
 {
-    HeaderWriter headerWriter( levelNumber_ );
+    std::string folder = "data/Introduction";
+
+    HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( levelNumber_, player_, nullptr );
+    MessageHandler messageHandler( player_, nullptr, folder, "message" );
     messageHandler.nextMessage();
 
-    Pseudo pseudo( player_ );
+    Pseudo pseudo( player_, folder, "pseudo" );
     pseudo.triggerAction();
 
     messageHandler.nextMessage();

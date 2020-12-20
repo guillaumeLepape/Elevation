@@ -4,24 +4,16 @@
 
 #include "MessageData.h"
 
-MessageData::MessageData( const int& levelNumber, const int& indexMessage ) :
-    Data( levelNumber, "message" + std::to_string(indexMessage) )
+MessageData::MessageData( const nlohmann::json& jsonObject ) :
+    Data( jsonObject )
 {
     readData();
 }
 
-MessageData::MessageData
-( 
-    const std::vector<std::string>& name, 
-    const std::vector<bool>& token,  
-    const std::vector<std::string>& dialog
-) : 
-    Data(),
-    name_( name ),
-    token_( token ),
-    dialog_( dialog )
+MessageData::MessageData( const std::string& folderFromRoot, const std::string& fileName ) :
+    Data( folderFromRoot, fileName )
 {
-
+    readData();
 }
 
 void MessageData::readData()

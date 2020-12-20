@@ -12,7 +12,16 @@
 class StartGame : public Action
 {
     public: 
-        StartGame() : Action( -1, "startGame", false ) {}
+        StartGame
+        ( 
+            const std::string& folderFromRoot, 
+            const std::string& nameFile 
+        ) : 
+            Action( folderFromRoot, nameFile ) 
+        {
+
+        }
+
         void triggerAction() const override
         {       
             Player player;

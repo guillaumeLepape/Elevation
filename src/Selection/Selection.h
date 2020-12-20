@@ -12,9 +12,9 @@ class Selection
     public:
         static int select
         ( 
-            const int& levelNumber_, 
-            const int& indexSelection, 
-            const std::vector<Action*>& actions 
+            const std::vector<Action*>& actions,
+            const std::string& folderFromRoot,
+            const std::string& nameFile
         );
 };
 

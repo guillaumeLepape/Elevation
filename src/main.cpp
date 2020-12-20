@@ -12,13 +12,13 @@ int main()
 {
     Rules::displayRules();
 
-    std::unique_ptr<Action> startGame( new StartGame() );
-    std::unique_ptr<Action> quit( new Quit() );
+    std::unique_ptr<Action> startGame( new StartGame( "data/Menu", "startGame" ) );
+    std::unique_ptr<Action> quit( new Quit( "data/Menu", "quit" ) );
 
-    Selection::select( 
-        -1, 
-        0, 
-        { startGame.get(), quit.get() } 
+    Selection::select(  
+        { startGame.get(), quit.get() },
+        "data/Menu",
+        "selection0"
     );
 
     return 0;

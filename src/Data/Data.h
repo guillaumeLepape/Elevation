@@ -7,20 +7,27 @@
 
 #include <nlohmann/json.hpp>
 
-class Data
+/*! \class Data
+   * \brief Abstract class for data
+   * 
+   * Abstract class containing the json data for various type of data (herited class) 
+   * and reader of json file
+   * 
+*/
+
+class Data : public nlohmann::json
 {
     private:
-        void openFile( const std::string& fileName );
+        void openFile( const std::string& folderFromRoot, const std::string& fileName );
 
     protected:
-        int levelNumber_;
         nlohmann::json jsonObject_;
 
         virtual void readData() = 0;
 
     public:
-        Data();
-        Data( const int& levelNumber, const std::string& fileName );
+        Data( const nlohmann::json& jsonObject );
+        Data( const std::string& folderFromRoot, const std::string& fileName );
         virtual ~Data() {}
 };
 

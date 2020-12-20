@@ -9,14 +9,20 @@
 #include "Pause.h"
 #include "../color.h"
 
-HeaderWriter::HeaderWriter( const int& levelNumber_ ) :
-    headerData_( levelNumber_ )
+HeaderWriter::HeaderWriter( const nlohmann::json& jsonObject ) :
+    headerData_( jsonObject )
 {
 
 }
 
 HeaderWriter::HeaderWriter( const HeaderData& headerData ) :
     headerData_( headerData )
+{
+
+}
+
+HeaderWriter::HeaderWriter( const std::string& folderFromRoot, const std::string& fileName ) :
+    headerData_( folderFromRoot, fileName )
 {
 
 }

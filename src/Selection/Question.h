@@ -18,9 +18,9 @@ class Question
     public:
         static bool question
         ( 
-            const int& levelNumber,
-            const int& indexQuestion,
-            const std::vector<Answer*>& answers
+            const std::vector<Answer*>& answers,
+            const std::string& folderFromRoot,
+            const std::string& nameFile
         );
 };
 

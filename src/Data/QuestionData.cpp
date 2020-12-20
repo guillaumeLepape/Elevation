@@ -6,8 +6,14 @@
 
 #include <iostream>
 
-QuestionData::QuestionData( const int& levelNumber, const int& questionIndex ) :
-    Data( levelNumber, "question" + std::to_string( questionIndex ) )
+QuestionData::QuestionData( const nlohmann::json& jsonObject ) :
+    Data( jsonObject )  
+{
+    readData();
+}
+
+QuestionData::QuestionData( const std::string& folderFromRoot, const std::string& fileName ) :
+    Data( folderFromRoot, fileName )
 {
     readData();
 }

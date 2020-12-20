@@ -18,13 +18,13 @@ class UseWeapon : public Action
     public:
         UseWeapon
         ( 
-            const int& levelNumber,
-            const std::string& nameAction,
             Player* player, 
             Plug* plug, 
-            const std::string& nameWeapon 
+            const std::string& nameWeapon,
+            const std::string& folderFromRoot,
+            const std::string& nameFile
         ) : 
-            Action( levelNumber, nameAction, false ),
+            Action( folderFromRoot, nameFile ),
             weapon_( player->weaponFromName( nameWeapon ) ),
             player_(player),
             plug_(plug)

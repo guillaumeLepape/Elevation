@@ -8,15 +8,15 @@
 
 bool Question::question
 ( 
-    const int& levelNumber,
-    const int& indexQuestion,
-    const std::vector<Answer*>& answers
+    const std::vector<Answer*>& answers,
+    const std::string& folderFromRoot,
+    const std::string& nameFile
 )
 {
     int result = Selection::select(
-        levelNumber,
-        indexQuestion,
-        convertAnswersToActions( answers )
+        convertAnswersToActions( answers ),
+        folderFromRoot,
+        nameFile
     );
 
     return answers[result]->correctOrNot();

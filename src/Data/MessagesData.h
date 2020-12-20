@@ -10,13 +10,18 @@
 class MessagesData : public Data
 {
     private:
+        std::string folderFromRoot_;
+        std::string fileName_;
+
         std::vector<MessageData> messages_;
         int nbMessage_;
 
     public:
-        MessagesData( const int& levelNumber );
-        MessagesData( const std::vector<MessageData>& messages );
+        MessagesData( const nlohmann::json& jsonObject );
+        MessagesData( const std::string& folderFromRoot, const std::string& fileName );
+
         void readData() override;
+
         const std::vector<MessageData>& messages() const { return messages_; }
 };
 

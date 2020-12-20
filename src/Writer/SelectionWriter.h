@@ -12,15 +12,27 @@
 class SelectionWriter
 {
     private:
-        SelectionData selectionData_;
         std::vector<Action*> actions_;
+        SelectionData selectionData_;
 
     public:
         SelectionWriter
         ( 
-            const int& levelNumber,
-            const int& selectionIndex, 
-            const std::vector<Action*>& nameAction 
+            const std::vector<Action*>& actions,
+            const nlohmann::json& jsonObject
+        );
+
+        SelectionWriter 
+        (
+            const std::vector<Action*>& actions,
+            const SelectionData& selectionData
+        );
+
+        SelectionWriter
+        (
+            const std::vector<Action*>& actions,
+            const std::string& folderFromRoot,
+            const std::string& fileName
         );
 
         void writeSelection();

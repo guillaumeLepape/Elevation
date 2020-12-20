@@ -10,12 +10,14 @@
 
 void Level4::startLevel()
 {
+    std::string folder = "data/Level4";
+
     Plug plug( "Freeze Corleone", 20 );
 
-    HeaderWriter headerWriter( levelNumber_ );
+    HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( levelNumber_, player_, &plug );
+    MessageHandler messageHandler( player_, &plug, folder, "message" );
     messageHandler.nextMessage();
 
     firstQuestion( messageHandler );
@@ -29,30 +31,36 @@ void Level4::startLevel()
 
 void Level4::firstQuestion( const MessageHandler& messageHandler )
 {
-    std::unique_ptr<Answer> answer0( new Answer(levelNumber_, "answer0_0", messageHandler, 1) );
-    std::unique_ptr<Answer> answer1( new Answer(levelNumber_, "answer0_1", messageHandler, 1) );
-    std::unique_ptr<Answer> answer2( new Answer(levelNumber_, "answer0_2", messageHandler, 2) );
+    std::string folder = "data/Level4";
 
-    while( !Question::question( levelNumber_, 0, { answer0.get(), answer1.get(), answer2.get() } ) )
+    std::unique_ptr<Answer> answer0( new Answer( messageHandler, 1, folder, "answer0_0" ) );
+    std::unique_ptr<Answer> answer1( new Answer( messageHandler, 1, folder, "answer0_1" ) );
+    std::unique_ptr<Answer> answer2( new Answer( messageHandler, 2, folder, "answer0_2" ) );
+
+    while( !Question::question( { answer0.get(), answer1.get(), answer2.get() }, folder, "selection0" ) )
     {}
 }
 
 void Level4::secondQuestion( const MessageHandler& messageHandler )
 {
-    std::unique_ptr<Answer> answer0( new Answer(levelNumber_, "answer1_0", messageHandler, 1) );
-    std::unique_ptr<Answer> answer1( new Answer(levelNumber_, "answer1_1", messageHandler, 1) );
-    std::unique_ptr<Answer> answer2( new Answer(levelNumber_, "answer1_2", messageHandler, 2) );
+    std::string folder = "data/Level4";
 
-    while( !Question::question( levelNumber_, 1, { answer0.get(), answer1.get(), answer2.get() } ) )
+    std::unique_ptr<Answer> answer0( new Answer( messageHandler, 1, folder, "answer1_0" ) );
+    std::unique_ptr<Answer> answer1( new Answer( messageHandler, 1, folder, "answer1_1" ) );
+    std::unique_ptr<Answer> answer2( new Answer( messageHandler, 2, folder, "answer1_2" ) );
+
+    while( !Question::question( { answer0.get(), answer1.get(), answer2.get() }, folder, "selection1" ) )
     {}
 }
 
 void Level4::thirdQuestion( const MessageHandler& messageHandler )
 {
-    std::unique_ptr<Answer> answer0( new Answer(levelNumber_, "answer2_0", messageHandler, 3) );
-    std::unique_ptr<Answer> answer1( new Answer(levelNumber_, "answer2_1", messageHandler, 3) );
-    std::unique_ptr<Answer> answer2( new Answer(levelNumber_, "answer2_2", messageHandler, 3) );
+    std::string folder = "data/Level4";
 
-    while( !Question::question( levelNumber_, 2, { answer0.get(), answer1.get(), answer2.get() } ) )
+    std::unique_ptr<Answer> answer0( new Answer( messageHandler, 3, folder, "answer2_0" ) );
+    std::unique_ptr<Answer> answer1( new Answer( messageHandler, 3, folder, "answer2_1" ) );
+    std::unique_ptr<Answer> answer2( new Answer( messageHandler, 3, folder, "answer2_2" ) );
+
+    while( !Question::question( { answer0.get(), answer1.get(), answer2.get() }, folder, "selection2" ) )
     {}
 }

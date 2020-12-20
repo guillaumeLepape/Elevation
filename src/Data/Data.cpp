@@ -6,36 +6,20 @@
 
 #include <fstream>
 
-Data::Data()
+Data::Data( const nlohmann::json& jsonObject ) :
+    nlohmann::json( jsonObject )
 {
     
 }
 
-Data::Data( const int& levelNumber, const std::string& fileName ) :
-    levelNumber_( levelNumber )
+Data::Data( const std::string& folderFromRoot, const std::string& fileName )
 {
-    openFile( fileName );
+    openFile( folderFromRoot, fileName );
 }
 
-void Data::openFile( const std::string& fileName ) 
+void Data::openFile( const std::string& folderFromRoot, const std::string& fileName ) 
 {
-    std::string path = "../data/";
-
-    if ( levelNumber_ == -1 )
-    {   
-        path += "Menu/";
-    }
-    else if ( levelNumber_ == 0 ) 
-    {
-        path += "Introduction/";
-    }
-    else
-    {   
-        path += "Level" + std::to_string(levelNumber_) + "/";
-    }
-
-    path += fileName;
-    path += ".json";
+    std::string path = "../" + folderFromRoot + "/" + fileName + ".json";
     
     // open json file
     std::ifstream messageFile( path, std::ifstream::binary );

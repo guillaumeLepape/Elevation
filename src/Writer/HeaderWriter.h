@@ -13,8 +13,10 @@ class HeaderWriter
         HeaderData headerData_;
 
     public:
-        HeaderWriter( const int& levelNumber );
+        HeaderWriter( const nlohmann::json& jsonObject );
         HeaderWriter( const HeaderData& headerData );
+        HeaderWriter( const std::string& folderFromRoot, const std::string& fileName );
+
         void writeHeader() const;
 };
 

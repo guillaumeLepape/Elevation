@@ -18,16 +18,18 @@ class Negociate : public Action
     private: 
         Player* const player_;
         Plug* const plug_;
-        MessageHandler& messageHandler_;
+        const MessageHandler& messageHandler_;
 
     public:
         explicit Negociate
         (
             Player* const player, 
             Plug* const plug, 
-            MessageHandler& messageHandler
+            const MessageHandler& messageHandler,
+            const std::string& folderFromRoot,
+            const std::string& fileName
         ) :
-            Action( 2, "negociate", true ),
+            Action( folderFromRoot, fileName ),
             player_(player), 
             plug_(plug), 
             messageHandler_(messageHandler)

@@ -11,14 +11,36 @@
 
 SelectionWriter::SelectionWriter
 ( 
-    const int& levelNumber, 
-    const int& indexSelection, 
-    const std::vector<Action*>& actions
+    const std::vector<Action*>& actions,
+    const nlohmann::json& jsonObject
 ) :
-    selectionData_( levelNumber, indexSelection ),
-    actions_(actions)
+    actions_( actions ),
+    selectionData_( jsonObject )
 {
-    
+
+}
+
+SelectionWriter::SelectionWriter
+(
+    const std::vector<Action*>& actions,
+    const SelectionData& selectionData
+) :
+    actions_( actions ),
+    selectionData_( selectionData )
+{
+
+}
+
+SelectionWriter::SelectionWriter
+(
+    const std::vector<Action*>& actions,
+    const std::string& folderFromRoot,
+    const std::string& fileName
+) :
+    actions_( actions ),
+    selectionData_( folderFromRoot, fileName )
+{
+
 }
 
 void SelectionWriter::writeSelection()

@@ -13,7 +13,8 @@ class AnswerData : public ActionData
         bool correctOrNot_;
 
     public:
-        AnswerData( const int& levelNumber, const std::string& nameFile );
+        AnswerData( const nlohmann::json& jsonObject );
+        AnswerData( const std::string& folderFromRoot, const std::string& nameFile ); 
 
         void readData() override;
 

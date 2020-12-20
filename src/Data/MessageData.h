@@ -17,13 +17,8 @@ class MessageData : public Data
         std::vector<std::string> dialog_;
 
     public:
-        MessageData( const int& levelNumber, const int& indexMessage );
-        MessageData
-        ( 
-            const std::vector<std::string>& name, 
-            const std::vector<bool>& token,  
-            const std::vector<std::string>& dialog
-        );
+        MessageData( const nlohmann::json& jsonObject );
+        MessageData( const std::string& folderFromRoot, const std::string& fileName );
 
         void readData() override;
 
