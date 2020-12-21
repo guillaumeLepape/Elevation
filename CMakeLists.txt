@@ -7,7 +7,7 @@ project(Elevation VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(run
+add_executable(main
     src/main.cpp
 
     src/color.h
@@ -53,6 +53,8 @@ add_executable(run
     src/Data/MessagesData.h
     src/Data/MessageData.cpp
     src/Data/MessageData.h
+    src/Data/FeminineNameData.cpp
+    src/Data/FeminineNameData.h
     src/Data/QuestionData.cpp
     src/Data/QuestionData.h
     src/Data/ActionData.cpp
@@ -97,8 +99,12 @@ add_executable(run
     src/Weapon/Weapon.h
 )
 
+add_executable(dataset
+    dataset/main.cpp
+)
+
 add_subdirectory( libraries/json ) 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 
-
-target_link_libraries(run PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(dataset PRIVATE nlohmann_json::nlohmann_json)

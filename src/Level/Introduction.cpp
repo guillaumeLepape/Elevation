@@ -18,10 +18,10 @@ void Introduction::startLevel()
     MessageHandler messageHandler( player_, nullptr, folder, "message" );
     messageHandler.nextMessage();
 
-    Pseudo pseudo( player_, folder, "pseudo" );
+    Pseudo pseudo( player_, messageHandler, folder, "pseudo" );
     pseudo.triggerAction();
 
-    messageHandler.nextMessage();
+    messageHandler.writeMessage(2);
 
     std::cout << "\n";
 }
