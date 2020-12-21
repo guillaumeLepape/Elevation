@@ -14,14 +14,14 @@ class UseWeapon : public Action
 {
     private:
         const Weapon& weapon_;
-        Player* player_;
-        Plug* plug_;
+        Player* const player_;
+        Plug* const plug_;
 
     public:
         UseWeapon
         ( 
-            Player* player, 
-            Plug* plug, 
+            Player* const player, 
+            Plug* const plug, 
             const std::string& nameWeapon,
             const std::string& folderFromRoot,
             const std::string& nameFile
@@ -32,7 +32,7 @@ class UseWeapon : public Action
             plug_(plug)
         {}
 
-        void triggerAction() const override
+        void triggerAction() override
         {
             player_->changeWeapon( weapon_.name() );
             plug_->decreaseLifePoints( weapon_.damageWeapon() );

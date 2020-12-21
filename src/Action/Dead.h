@@ -32,7 +32,7 @@ class Dead : public Action
 
         }
 
-        void triggerAction() const override
+        void triggerAction() override
         {
             if ( plug_->deadOrNot() )
             {

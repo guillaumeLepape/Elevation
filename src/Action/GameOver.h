@@ -25,7 +25,7 @@ class GameOver
 
         }
 
-        void triggerAction() override const
+        void triggerAction() override
         {
             player_->setDead( true );
         }

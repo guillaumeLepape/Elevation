@@ -33,7 +33,7 @@ class Answer : public Action
 
         }
 
-        void triggerAction() const override
+        void triggerAction() override
         {
             messageHandler_.writeMessage( indexMessage_ );
         }

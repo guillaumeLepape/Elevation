@@ -29,7 +29,7 @@ class Action
 
         const ActionWriter& actionWriter() const { return actionWriter_; }
 
-        virtual void triggerAction() const = 0;
+        virtual void triggerAction() = 0;
 
         virtual ~Action() {}
 };

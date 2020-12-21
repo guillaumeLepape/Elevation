@@ -16,6 +16,15 @@ class Pseudo : public Action
         Player* const player_;
         const MessageHandler& messageHandler_;
 
+        void formatString( std::string& str )
+        {
+            str[0] = std::toupper( str[0] );
+            for ( int i = 1; i < str.length(); i++ )
+            {
+                str[i] = std::tolower( str[i] );
+            }
+        }
+
     public:
         explicit Pseudo
         ( 
@@ -30,7 +39,7 @@ class Pseudo : public Action
         {
 
         }
-        void triggerAction() const override 
+        void triggerAction() override 
         {
             actionWriter_.writeStatement( player_, nullptr );
 
@@ -39,13 +48,17 @@ class Pseudo : public Action
 
             std::string pseudo;
             std::cin >> pseudo;
+            formatString( pseudo );
 
             while ( feminineName.find(pseudo) 
                     == feminineName.end() )
             {
+
                 messageHandler_.writeMessage(1);
                 actionWriter_.writeStatement( player_, nullptr );
+
                 std::cin >> pseudo;
+                formatString( pseudo );
             } 
             
             player_->setPseudo(pseudo);

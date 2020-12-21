@@ -20,7 +20,7 @@ class Quit : public Action
 
         }
 
-        void triggerAction() const override  
+        void triggerAction() override  
         { 
             std::cout << "\n Fin du jeu";
             std::cout << "\n"; 

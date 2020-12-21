@@ -36,7 +36,7 @@ class Negociate : public Action
         {
 
         }
-        void triggerAction() const override 
+        void triggerAction() override 
         {
             bool out = false;
 
