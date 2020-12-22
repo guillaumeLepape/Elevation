@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-#include "../Writer/FightWriter.h"
+#include "FightWriter.h"
 
 Fight::Fight
 ( 

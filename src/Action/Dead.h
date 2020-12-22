@@ -7,9 +7,7 @@
 
 #include "Action.h"
 
-#include "../Plug/Plug.h"
-
-#include "../Writer/Pause.h"
+#include "Pause.h"
 
 class Dead : public Action
 {

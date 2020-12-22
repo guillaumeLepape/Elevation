@@ -7,8 +7,8 @@
 
 #include "Action.h"
 
-#include "../Writer/MessageHandler.h"
-#include "../Writer/AnswerWriter.h"
+#include "MessageHandler.h"
+#include "AnswerWriter.h"
 
 class Answer : public Action
 {

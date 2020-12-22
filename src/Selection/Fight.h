@@ -5,7 +5,7 @@
     * \file Fight.h
 */
 
-#include "../Writer/MessageHandler.h"
+#include "MessageHandler.h"
 
 class Fight
 {

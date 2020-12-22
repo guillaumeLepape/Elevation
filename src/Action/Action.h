@@ -5,8 +5,9 @@
     * \file Action.h
 */
 
-#include "../Writer/ActionWriter.h"
+#include "ActionWriter.h"
 #include <iostream>
+
 /*! \class Action
     * \brief Abstract class Action to introduce various actions (herited classes)
 */

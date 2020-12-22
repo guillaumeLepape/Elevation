@@ -5,7 +5,7 @@
     * \file Selection.h
 */
 
-#include "../Action/Action.h"
+#include "Action.h"
 
 class Selection
 {

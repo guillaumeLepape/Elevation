@@ -4,7 +4,7 @@
 
 #include "ActionWriter.h"
 
-#include "../color.h"
+#include "color.h"
 #include "Pause.h"
 #include "Token.h"
 

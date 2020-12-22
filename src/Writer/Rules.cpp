@@ -4,7 +4,7 @@
 
 #include "Rules.h"
 
-#include "../color.h"
+#include "color.h"
 #include "Pause.h"
 
 void Rules::displayRules()

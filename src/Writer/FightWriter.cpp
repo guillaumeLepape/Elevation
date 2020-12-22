@@ -4,10 +4,10 @@
 
 #include "FightWriter.h"
 
-#include <iostream>
+// #include <iostream>
 
 #include "Pause.h"
-#include "../color.h"
+#include "color.h"
 
 FightWriter::FightWriter
 ( 

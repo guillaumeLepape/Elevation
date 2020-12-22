@@ -7,8 +7,8 @@
 
 #include "Action.h"
 
-#include "../Writer/MessageHandler.h"
-#include "../Data/FeminineNameData.h"
+#include "MessageHandler.h"
+#include "FeminineNameData.h"
 
 class Pseudo : public Action
 {

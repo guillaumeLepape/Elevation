@@ -5,7 +5,7 @@
     * \file AnswerWriter.h
 */
 
-#include "../Data/AnswerData.h"
+#include "AnswerData.h"
 
 class AnswerWriter
 {

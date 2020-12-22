@@ -5,7 +5,7 @@
     * \file Level.h
 */
 
-#include "../Player/Player.h"
+#include "Player.h"
 
 class Level
 {

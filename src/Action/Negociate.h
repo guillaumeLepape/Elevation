@@ -7,11 +7,7 @@
 
 #include "Action.h"
 
-#include <iostream>
-
-#include "../Plug/Plug.h"
-
-#include "../Writer/MessageHandler.h"
+#include "MessageHandler.h"
 
 class Negociate : public Action
 {

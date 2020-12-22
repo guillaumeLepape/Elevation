@@ -5,10 +5,10 @@
 #include <limits>
 
 #include "Selection.h"
-#include "../color.h"
-#include "../Writer/Pause.h"
+#include "color.h"
+#include "Pause.h"
 
-#include "../Writer/SelectionWriter.h"
+#include "SelectionWriter.h"
 
 int Selection::select
 ( 

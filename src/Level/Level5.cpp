@@ -4,11 +4,11 @@
 
 #include "Level5.h"
 
-#include "../Writer/HeaderWriter.h"
+#include "HeaderWriter.h"
 
-#include "../Action/UseWeapon.h"
-#include "../Selection/Selection.h"
-#include "../Selection/Fight.h"
+#include "UseWeapon.h"
+#include "Selection.h"
+#include "Fight.h"
 
 void Level5::startLevel()
 {
@@ -21,10 +21,6 @@ void Level5::startLevel()
 
     MessageHandler messageHandler( player_, &guetteur, folder, "message" );
     messageHandler.nextMessage();
-
-    /**********************/
-    player_->addWeapon( Weapon("knife", 30, "Plantez !") );
-    /**********************/
 
     UseWeapon beatUp( player_, &guetteur, "fist", "data/Weapon", "beatUp" );
     UseWeapon cutThroat( player_, &guetteur, "knife", "data/Weapon", "cutThroat" );

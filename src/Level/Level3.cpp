@@ -4,11 +4,11 @@
 
 #include "Level3.h"
 
-#include "../Selection/Selection.h"
-#include "../Action/UseWeapon.h"
+#include "Selection.h"
+#include "UseWeapon.h"
 
-#include "../Writer/HeaderWriter.h"
-#include "../Writer/MessageHandler.h"
+#include "HeaderWriter.h"
+#include "MessageHandler.h"
 
 void Level3::startLevel()
 {

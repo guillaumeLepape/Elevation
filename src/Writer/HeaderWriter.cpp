@@ -7,7 +7,7 @@
 #include <iomanip>
 
 #include "Pause.h"
-#include "../color.h"
+#include "color.h"
 
 HeaderWriter::HeaderWriter( const nlohmann::json& jsonObject ) :
     headerData_( jsonObject )

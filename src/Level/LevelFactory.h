@@ -5,12 +5,12 @@
     * \file LevelFactory.h
 */ 
 
-#include "../Level/Introduction.h"
-#include "../Level/Level1.h"
-#include "../Level/Level2.h"
-#include "../Level/Level3.h"
-#include "../Level/Level4.h"
-#include "../Level/Level5.h"
+#include "Introduction.h"
+#include "Level1.h"
+#include "Level2.h"
+#include "Level3.h"
+#include "Level4.h"
+#include "Level5.h"
 
 class LevelFactory
 {

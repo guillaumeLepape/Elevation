@@ -3,10 +3,10 @@
 */
 
 
-#include "Selection/Selection.h"
-#include "Action/Quit.h"
-#include "Action/StartGame.h"
-#include "Writer/Rules.h"
+#include "Selection.h"
+#include "Quit.h"
+#include "StartGame.h"
+#include "Rules.h"
 
 int main()
 {

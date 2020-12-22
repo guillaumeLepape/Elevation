@@ -4,9 +4,9 @@
 
 #include "Level4.h"
 
-#include "../Selection/Question.h"
+#include "Question.h"
 
-#include "../Writer/HeaderWriter.h"
+#include "HeaderWriter.h"
 
 void Level4::startLevel()
 {

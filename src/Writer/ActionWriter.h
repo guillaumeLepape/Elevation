@@ -5,10 +5,10 @@
     * \file ActionWriter.h
 */
 
-#include "../Data/ActionData.h"
+#include "ActionData.h"
 
-#include "../Player/Player.h"
-#include "../Plug/Plug.h"
+// #include "Player.h"
+// #include "Plug.h"
 
 class ActionWriter
 {

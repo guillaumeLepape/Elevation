@@ -6,7 +6,7 @@
 */
 
 // #include "ListAnswers.h"
-#include "../Action/Answer.h"
+#include "Answer.h"
 
 class Question
 {   

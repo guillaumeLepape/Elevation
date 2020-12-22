@@ -4,9 +4,8 @@
 
 #include "Introduction.h"
 
-#include "../Writer/HeaderWriter.h"
-#include "../Writer/MessageHandler.h"
-#include "../Action/Pseudo.h"
+#include "HeaderWriter.h"
+#include "Pseudo.h"
 
 void Introduction::startLevel()
 {

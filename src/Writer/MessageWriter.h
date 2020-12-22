@@ -5,10 +5,10 @@
     * \file MessageWriter.h
 */
 
-#include "../Data/MessageData.h"
+#include "MessageData.h"
 
-#include "../Player/Player.h"
-#include "../Plug/Plug.h"
+// #include "Player.h"
+// #include "Plug.h"
 
 class MessageWriter
 {

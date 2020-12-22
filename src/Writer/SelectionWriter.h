@@ -5,9 +5,9 @@
     * \file SelectionWriter.h
 */
 
-#include "../Data/SelectionData.h"
+#include "SelectionData.h"
 
-#include "../Action/Action.h"
+#include "Action.h"
 
 class SelectionWriter
 {

@@ -7,7 +7,7 @@
 
 #include <memory>
 
-#include "../Level/LevelFactory.h"
+#include "LevelFactory.h"
 
 class StartGame : public Action
 {

@@ -7,97 +7,208 @@ project(Elevation VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+#
+# Set header and source files for Action class and its herited classes (in the folder Action) 
+#
+set(FOLDER_ACTION src/Action)
+
+include_directories(
+    ${FOLDER_ACTION}
+)
+
+set(HEADER_ACTION
+    ${FOLDER_ACTION}/Action.h
+
+    ${FOLDER_ACTION}/GameOver.h
+    ${FOLDER_ACTION}/Negociate.h
+    ${FOLDER_ACTION}/Pseudo.h
+    ${FOLDER_ACTION}/Quit.h
+    ${FOLDER_ACTION}/StartGame.h
+    ${FOLDER_ACTION}/UseWeapon.h
+    ${FOLDER_ACTION}/Answer.h
+    ${FOLDER_ACTION}/Dead.h
+)
+
+set(SOURCE_ACTION
+
+)
+
+#
+# Set header and source files for Data class and its herited classes (in the folder Data) 
+#
+set(FOLDER_DATA src/Data)
+
+include_directories(
+    ${FOLDER_DATA}
+)
+
+set(HEADER_DATA
+    ${FOLDER_DATA}/Data.h
+    ${FOLDER_DATA}/HeaderData.h
+    ${FOLDER_DATA}/MessagesData.h
+    ${FOLDER_DATA}/MessageData.h
+    ${FOLDER_DATA}/FeminineNameData.h
+    ${FOLDER_DATA}/QuestionData.h
+    ${FOLDER_DATA}/ActionData.h
+    ${FOLDER_DATA}/AnswerData.h
+    ${FOLDER_DATA}/SelectionData.h
+)
+
+set(SOURCE_DATA
+    ${FOLDER_DATA}/Data.cpp
+    ${FOLDER_DATA}/HeaderData.cpp
+    ${FOLDER_DATA}/MessagesData.cpp
+    ${FOLDER_DATA}/MessageData.cpp
+    ${FOLDER_DATA}/FeminineNameData.cpp
+    ${FOLDER_DATA}/QuestionData.cpp
+    ${FOLDER_DATA}/ActionData.cpp
+    ${FOLDER_DATA}/AnswerData.cpp
+    ${FOLDER_DATA}/SelectionData.cpp
+)
+
+#
+# Set header and source files for Level class and its herited classes (in the folder Level) 
+#
+set(FOLDER_LEVEL src/Level)
+
+include_directories(
+    ${FOLDER_LEVEL}
+)
+
+set(HEADER_LEVEL
+    ${FOLDER_LEVEL}/Level.h
+    ${FOLDER_LEVEL}/LevelFactory.h
+    ${FOLDER_LEVEL}/Introduction.h
+    ${FOLDER_LEVEL}/Level1.h
+    ${FOLDER_LEVEL}/Level2.h
+    ${FOLDER_LEVEL}/Level3.h
+    ${FOLDER_LEVEL}/Level4.h
+    ${FOLDER_LEVEL}/Level5.h
+)
+
+set(SOURCE_LEVEL
+    ${FOLDER_LEVEL}/Introduction.cpp
+    ${FOLDER_LEVEL}/Level1.cpp
+    ${FOLDER_LEVEL}/Level2.cpp
+    ${FOLDER_LEVEL}/Level3.cpp
+    ${FOLDER_LEVEL}/Level4.cpp
+    ${FOLDER_LEVEL}/Level5.cpp
+)
+
+#
+# Set header and source files for Player class (in the folder Player) 
+#
+set(FOLDER_PLAYER src/Player)
+
+include_directories(
+    ${FOLDER_PLAYER}
+)
+
+set(HEADER_PLAYER
+    ${FOLDER_PLAYER}/Player.h
+    ${FOLDER_PLAYER}/Weapon.h
+)
+
+set(SOURCE_PLAYER
+    ${FOLDER_PLAYER}/Player.cpp
+)
+
+#
+# Set header and source files for Plug class (in the folder Plug) 
+#
+set(FOLDER_PLUG src/Plug)
+
+include_directories(
+    ${FOLDER_PLUG}
+)
+
+set(HEADER_PLUG
+    ${FOLDER_PLUG}/Plug.h
+)
+
+set(SOURCE_PLUG
+    ${FOLDER_PLUG}/Plug.cpp
+)
+
+#
+# Set header and source files for Selection class (in the folder Selection) 
+#
+set(FOLDER_SELECTION src/Selection)
+
+include_directories(
+    ${FOLDER_SELECTION}
+)
+
+set(HEADER_SELECTION 
+    ${FOLDER_SELECTION}/Fight.h
+    ${FOLDER_SELECTION}/Selection.h
+    ${FOLDER_SELECTION}/Question.h
+)
+
+set(SOURCE_SELECTION
+    ${FOLDER_SELECTION}/Fight.cpp
+    ${FOLDER_SELECTION}/Selection.cpp
+    ${FOLDER_SELECTION}/Question.cpp
+)
+
+#
+# Set header and source files for Writer classes which write the 
+# data (from Data herited classes) in terminal 
+#
+set(FOLDER_WRITER src/Writer)
+
+include_directories(
+    ${FOLDER_WRITER}
+)
+
+set(HEADER_WRITER
+    ${FOLDER_WRITER}/Pause.h
+    ${FOLDER_WRITER}/Rules.h
+    ${FOLDER_WRITER}/HeaderWriter.h
+    ${FOLDER_WRITER}/MessageWriter.h
+    ${FOLDER_WRITER}/MessageHandler.h
+    ${FOLDER_WRITER}/ActionWriter.h
+    ${FOLDER_WRITER}/SelectionWriter.h
+    ${FOLDER_WRITER}/Token.h
+    ${FOLDER_WRITER}/AnswerWriter.h
+    ${FOLDER_WRITER}/FightWriter.h
+)
+
+set(SOURCE_WRITER
+    ${FOLDER_WRITER}/Rules.cpp
+    ${FOLDER_WRITER}/HeaderWriter.cpp
+    ${FOLDER_WRITER}/MessageWriter.cpp
+    ${FOLDER_WRITER}/MessageHandler.cpp
+    ${FOLDER_WRITER}/ActionWriter.cpp
+    ${FOLDER_WRITER}/SelectionWriter.cpp
+    ${FOLDER_WRITER}/AnswerWriter.cpp
+    ${FOLDER_WRITER}/FightWriter.cpp
+)
+
 add_executable(main
     src/main.cpp
-
-    src/color.h
     
-    src/Action/Action.h
+    ${HEADER_ACTION}
+    ${SOURCE_ACTION}
 
-    src/Action/GameOver.h
-    src/Action/Negociate.h
-    src/Action/Pseudo.h
-    src/Action/Quit.h
-    src/Action/StartGame.h
-    src/Action/UseWeapon.h
-    src/Action/Answer.h
-    src/Action/Dead.h
+    ${HEADER_DATA}
+    ${SOURCE_DATA}
 
-    src/Level/Level.h
-    
-    src/Level/LevelFactory.h
+    ${HEADER_LEVEL}
+    ${SOURCE_LEVEL}
 
-    src/Level/Introduction.cpp
-    src/Level/Introduction.h
+    ${HEADER_PLAYER}
+    ${SOURCE_PLAYER}
 
-    src/Level/Level1.cpp
-    src/Level/Level.h
+    ${HEADER_PLUG}
+    ${SOURCE_PLUG}
 
-    src/Level/Level2.cpp
-    src/Level/Level2.h
+    ${HEADER_SELECTION}
+    ${SOURCE_SELECTION}
 
-    src/Level/Level3.cpp
-    src/Level/Level3.h
-
-    src/Level/Level4.cpp
-    src/Level/Level4.h
-
-    src/Level/Level5.cpp
-    src/Level/Level5.h
-
-    src/Data/Data.cpp
-    src/Data/Data.h
-    src/Data/HeaderData.cpp
-    src/Data/HeaderData.h
-    src/Data/MessagesData.cpp
-    src/Data/MessagesData.h
-    src/Data/MessageData.cpp
-    src/Data/MessageData.h
-    src/Data/FeminineNameData.cpp
-    src/Data/FeminineNameData.h
-    src/Data/QuestionData.cpp
-    src/Data/QuestionData.h
-    src/Data/ActionData.cpp
-    src/Data/ActionData.h
-    src/Data/AnswerData.cpp
-    src/Data/AnswerData.h
-    src/Data/SelectionData.cpp
-    src/Data/SelectionData.h
-
-    src/Writer/Pause.h
-    src/Writer/Rules.cpp
-    src/Writer/Rules.h
-    src/Writer/HeaderWriter.cpp
-    src/Writer/HeaderWriter.h
-    src/Writer/MessageWriter.cpp
-    src/Writer/MessageWriter.h
-    src/Writer/MessageHandler.cpp
-    src/Writer/MessageHandler.h
-    src/Writer/ActionWriter.cpp
-    src/Writer/ActionWriter.h
-    src/Writer/SelectionWriter.cpp
-    src/Writer/SelectionWriter.h
-    src/Writer/Token.h
-    src/Writer/AnswerWriter.cpp
-    src/Writer/AnswerWriter.h
-    src/Writer/FightWriter.cpp
-    src/Writer/FightWriter.h
-
-    src/Player/Player.cpp
-    src/Player/Player.h
-
-    src/Selection/Fight.cpp
-    src/Selection/Fight.h
-    src/Selection/Selection.cpp
-    src/Selection/Selection.h
-    src/Selection/Question.cpp
-    src/Selection/Question.h
-
-    src/Plug/Plug.cpp
-    src/Plug/Plug.h
-
-    src/Weapon/Weapon.h
-)
+    ${HEADER_WRITER}
+    ${SOURCE_WRITER}
+)   
 
 add_executable(dataset
     dataset/main.cpp

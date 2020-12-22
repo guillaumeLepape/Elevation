@@ -7,9 +7,9 @@
 
 #include <memory>
 
-#include "../Action/Negociate.h"
+#include "Negociate.h"
 
-#include "../Writer/HeaderWriter.h"
+#include "HeaderWriter.h"
 
 void Level2::startLevel()
 {

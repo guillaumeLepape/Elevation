@@ -4,10 +4,10 @@
 
 #include "SelectionWriter.h"
 
-#include <iostream>
+// #include <iostream>
 
 #include "Pause.h"
-#include "../color.h"
+#include "color.h"
 
 SelectionWriter::SelectionWriter
 ( 

@@ -7,8 +7,8 @@
 #include <memory>
 #include <iostream>
 
-#include "../Writer/HeaderWriter.h"
-#include "../Writer/MessageHandler.h"
+#include "HeaderWriter.h"
+#include "MessageHandler.h"
 
 void Level1::startLevel()
 {
