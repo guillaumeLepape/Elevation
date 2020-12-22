@@ -5,8 +5,6 @@
     * \file Fight.h
 */
 
-#include "../Player/Player.h"
-#include "../Plug/Plug.h"
 #include "../Writer/MessageHandler.h"
 
 class Fight

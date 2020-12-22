@@ -33,6 +33,7 @@ void Fight::startFight()
         nbTurns++;
 
         fightWriter.writeHeader( nbTurns );
+        fightWriter.writeGameBoard();
     }
 
 

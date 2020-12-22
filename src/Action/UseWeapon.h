@@ -5,9 +5,6 @@
     * \brief UseWeapon.h
 */
 
-#include "Action.h"
-#include "../Plug/Plug.h"
-
 #include "Dead.h"
 
 class UseWeapon : public Action
