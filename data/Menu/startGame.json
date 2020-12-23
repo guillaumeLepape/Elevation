@@ -1,4 +1,4 @@
 {
-  "statement": [false, "Commencer une partie"],
+  "statement": [false, "Commencer une nouvelle partie"],
   "result": [false, "La partie commence."]
 }

@@ -7,8 +7,8 @@
 #include <iostream>
 #include <cassert>
 
-Player::Player() : 
-    pseudo_("Joueur"),
+Player::Player( const Result& result ) : 
+    result_( result ),
     nbLifePoints_(100),
     money_(200),
     dead_(false),
@@ -21,7 +21,7 @@ Player::Player() :
 
 void Player::printState()
 {
-    std::cout << "\n" << pseudo_;
+    std::cout << "\n" << result_.pseudo_;
     std::cout << "\n" << nbLifePoints_;
     std::cout << "\n" << money_;
     std::cout << "\n";

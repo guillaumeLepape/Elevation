@@ -39,6 +39,8 @@ void FightWriter::writeGameBoard() const
     }
     std::cout << "\n ";
 
+    int totalNbCaracters = 0;
+
     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
     {
         int n = numberCharactersString(e->name()) + 3 
@@ -56,8 +58,27 @@ void FightWriter::writeGameBoard() const
             std::cout << std::string( q1, ' ' ) << BOLDYELLOW << e->lifePoints() << RESET<< std::string( q2, ' ' );
         }
 
+        totalNbCaracters += numberCharactersString(e->name()) + 3;
     }
+    totalNbCaracters += 1;
+
     std::cout << "\n ";
+    std::cout << "\n ";
+
+    int n = totalNbCaracters - numberCharactersString( player_->pseudo() );
+
+    if ( n%2 )
+    {
+        int q = n/2;
+        std::cout << "\n" << std::string(q, ' ') << BOLDGREEN << player_->pseudo() << RESET << std::string(q, ' ');
+    }   
+    else
+    {
+        int q1 = (n+1)/2;
+        int q2 = (n-1)/2;
+        std::cout << "\n" << std::string(q1,' ') << BOLDGREEN << player_->pseudo() << RESET << std::string( q2, ' ' );
+    }
+    std::cout << "\n";
 }
 
 

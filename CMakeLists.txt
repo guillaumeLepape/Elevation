@@ -19,11 +19,13 @@ include_directories(
 set(HEADER_ACTION
     ${FOLDER_ACTION}/Action.h
 
+    ${FOLDER_ACTION}/StartGame.h
+    ${FOLDER_ACTION}/LoadGame.h
+    ${FOLDER_ACTION}/Quit.h
+
     ${FOLDER_ACTION}/GameOver.h
     ${FOLDER_ACTION}/Negociate.h
     ${FOLDER_ACTION}/Pseudo.h
-    ${FOLDER_ACTION}/Quit.h
-    ${FOLDER_ACTION}/StartGame.h
     ${FOLDER_ACTION}/UseWeapon.h
     ${FOLDER_ACTION}/Answer.h
     ${FOLDER_ACTION}/Dead.h
@@ -52,6 +54,7 @@ set(HEADER_DATA
     ${FOLDER_DATA}/ActionData.h
     ${FOLDER_DATA}/AnswerData.h
     ${FOLDER_DATA}/SelectionData.h
+    ${FOLDER_DATA}/ResultsData.h
 )
 
 set(SOURCE_DATA
@@ -64,6 +67,7 @@ set(SOURCE_DATA
     ${FOLDER_DATA}/ActionData.cpp
     ${FOLDER_DATA}/AnswerData.cpp
     ${FOLDER_DATA}/SelectionData.cpp
+    ${FOLDER_DATA}/ResultsData.cpp
 )
 
 #
@@ -105,6 +109,7 @@ include_directories(
 )
 
 set(HEADER_PLAYER
+    ${FOLDER_PLAYER}/Id.h
     ${FOLDER_PLAYER}/Player.h
     ${FOLDER_PLAYER}/Weapon.h
 )

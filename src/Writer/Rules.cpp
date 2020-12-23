@@ -9,6 +9,8 @@
 
 void Rules::displayRules()
 {
+    system("clear"); 
+
     std::cout << "\n " << GREENSIDEBAR << BOLDBLACK << "Interface" << RESET;
 
     std::cout << "\n" << BOLDBLACK << "========" << RESET;

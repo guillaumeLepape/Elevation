@@ -39,8 +39,6 @@ void Level5::startLevel()
     enemies.push_back( randomDebile );
     enemies.push_back( randomDebile2 );
     enemies.push_back( pasFuteFute );
-    enemies.push_back( Plug( "Test", 0, 10 ) );
-    enemies.push_back( Plug( "Un gars" , 0, 1000 ));
 
     Fight fight( 
         player_, 
