@@ -25,34 +25,56 @@ nlohmann::json readJsonFile( const std::string& path )
     return jsonObject;
 }
 
-void readListeDesPrenoms( std::set<std::string>& listFeminineName )
+void readListeDesPrenoms
+( 
+    std::set<std::string>& listFemaleName, 
+    std::set<std::string>& listMasculineName
+)
 {
     nlohmann::json jsonObject = readJsonFile( "../dataset/liste_des_prenoms.json" );
 
     for ( auto i = jsonObject.cbegin(); i != jsonObject.cend(); i++ )
     {
+        std::string name = (std::string) (*i)["fields"]["prenoms"];
+
         if ( ((std::string) (*i)["fields"]["sexe"]) == "F" )
         {
-            std::string name = (std::string) (*i)["fields"]["prenoms"];
-
-            listFeminineName.insert( name );
+            listFemaleName.insert( name );
+        }
+        else
+        {
+            listMasculineName.insert( name );
         }
     }
+}
+
+void writeListName
+( 
+    const std::set<std::string>& listName,
+    const std::string& nameFile
+)
+{
+    nlohmann::json jsonObject( listName );
+
+    std::ofstream jsonFile( 
+        "../dataset/" + nameFile + ".json", 
+        std::ofstream::binary 
+    );
+
+    jsonFile << jsonObject;
+
+    jsonFile.close();
 }
 
 int main()
 {
     std::set<std::string> listFeminineName;
+    std::set<std::string> listMasculineName;
 
-    readListeDesPrenoms( listFeminineName );
+    readListeDesPrenoms( listFeminineName, listMasculineName );
 
-    nlohmann::json jsonObject( listFeminineName );
-
-    std::ofstream jsonFile( "../dataset/prenoms_feminins.json", std::ofstream::binary );
-
-    jsonFile << jsonObject;
-
-    jsonFile.close();
+    writeListName( listFeminineName, "prenoms_feminins" );
+    writeListName( listMasculineName, "prenoms_masculins" );
 
     return 0;
 }

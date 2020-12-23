@@ -10,6 +10,7 @@
 #include "LevelFactory.h"
 #include "Id.h"
 #include "ResultsData.h"
+#include "Action.h"
 
 class StartGame : public Action
 {

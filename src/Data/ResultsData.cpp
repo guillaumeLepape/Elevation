@@ -37,7 +37,7 @@ void ResultsData::addResult( const Result& result )
         }
     }
 
-    // if result is not in the global, add it
+    // if result is not in the global results, add it
     if ( !exist )
         results_.push_back( result );
 }

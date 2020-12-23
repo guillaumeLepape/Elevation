@@ -20,7 +20,7 @@ void Introduction::startLevel()
     Pseudo pseudo( player_, messageHandler, folder, "pseudo" );
     pseudo.triggerAction();
 
-    messageHandler.writeMessage(2);
+    messageHandler.writeMessage(4);
 
     std::cout << "\n";
 }

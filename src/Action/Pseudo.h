@@ -8,7 +8,7 @@
 #include "Action.h"
 
 #include "MessageHandler.h"
-#include "FeminineNameData.h"
+#include "ListNameData.h"
 
 class Pseudo : public Action
 {
@@ -41,27 +41,50 @@ class Pseudo : public Action
         }
         void triggerAction() override 
         {
-            actionWriter_.writeStatement( player_, nullptr );
+            // actionWriter_.writeStatement( player_, nullptr );
 
-            FeminineNameData feminineNameData( "dataset", "prenoms_feminins" );
-            auto feminineName = feminineNameData.feminineName();
+            ListNameData feminineNameData( "dataset", "prenoms_feminins" );
+            std::set<std::string> feminineName = feminineNameData.listName();
 
-            std::string pseudo;
-            std::cin >> pseudo;
-            formatString( pseudo );
+            ListNameData masculineNameData( "dataset", "prenoms_masculins" );
+            std::set<std::string> masculineName = masculineNameData.listName();
 
-            while ( feminineName.find(pseudo) 
-                    == feminineName.end() )
+            std::string* ptrPseudo(0);
+            bool out = false;
+
+            while ( !out )
             {
-
+                // Inform the user that he have to enter an information (his pseudo)
                 messageHandler_.writeMessage(1);
                 actionWriter_.writeStatement( player_, nullptr );
 
+                // Get pseudo from user
+                std::string pseudo;
                 std::cin >> pseudo;
                 formatString( pseudo );
-            } 
-            
-            player_->setPseudo(pseudo);
+                ptrPseudo = &pseudo;
+                
+                // Check if chosen pseudo is in the feminine name dataset
+                if ( feminineName.find(pseudo) 
+                    != feminineName.end() )
+                {
+                    out = true;
+                }
+                // Check if chosen pseudo is in the masculine name dataset
+                else if ( masculineName.find(pseudo) 
+                    != masculineName.end() )
+                {
+                    messageHandler_.writeMessage(2);
+                }
+                // If pseudo doesn't appear in the two previous dataset,
+                // consider that this name doesn't exist
+                else 
+                {
+                    messageHandler_.writeMessage(3);
+                }
+            }
+
+            player_->setPseudo(*ptrPseudo);
 
             actionWriter_.writeResult( player_, nullptr );
         }

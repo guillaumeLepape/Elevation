@@ -49,7 +49,7 @@ set(HEADER_DATA
     ${FOLDER_DATA}/HeaderData.h
     ${FOLDER_DATA}/MessagesData.h
     ${FOLDER_DATA}/MessageData.h
-    ${FOLDER_DATA}/FeminineNameData.h
+    ${FOLDER_DATA}/ListNameData.h
     ${FOLDER_DATA}/QuestionData.h
     ${FOLDER_DATA}/ActionData.h
     ${FOLDER_DATA}/AnswerData.h
@@ -62,7 +62,7 @@ set(SOURCE_DATA
     ${FOLDER_DATA}/HeaderData.cpp
     ${FOLDER_DATA}/MessagesData.cpp
     ${FOLDER_DATA}/MessageData.cpp
-    ${FOLDER_DATA}/FeminineNameData.cpp
+    ${FOLDER_DATA}/ListNameData.cpp
     ${FOLDER_DATA}/QuestionData.cpp
     ${FOLDER_DATA}/ActionData.cpp
     ${FOLDER_DATA}/AnswerData.cpp
