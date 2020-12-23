@@ -7,8 +7,10 @@
 #include <iostream>
 #include <cassert>
 
-Player::Player( const Result& result ) : 
-    result_( result ),
+Player::Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded ) :
+    pseudo_( pseudo ),
+    id_( id ),
+    nbLevelSuceeded_( nbLevelSuceeded ),
     nbLifePoints_(100),
     money_(200),
     dead_(false),
@@ -21,7 +23,7 @@ Player::Player( const Result& result ) :
 
 void Player::printState()
 {
-    std::cout << "\n" << result_.pseudo_;
+    std::cout << "\n" << pseudo_;
     std::cout << "\n" << nbLifePoints_;
     std::cout << "\n" << money_;
     std::cout << "\n";

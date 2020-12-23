@@ -9,6 +9,7 @@
 
 #include "LevelFactory.h"
 #include "Id.h"
+#include "ResultsData.h"
 
 class StartGame : public Action
 {
@@ -25,7 +26,7 @@ class StartGame : public Action
                 = { "Joueur", Id::generateId(), 0 }
         ) : 
             Action( folderFromRoot, nameFile ),
-            player_( result ),
+            player_( result.pseudo_, result_.id_, result_.nbLevelSuceeded_ ),
             result_( result )
         {
 
@@ -33,8 +34,8 @@ class StartGame : public Action
 
         void triggerAction() override
         {       
-            int i;
-            for ( i = player_.result().nbLevelSuceeded_; i < 6; i++ )
+            int i = 0;
+            for ( i = player_.nbLevelSuceeded(); i < 6; i++ )
             {
                 std::unique_ptr<Level> level = LevelFactory::newLevel( &player_, i );
 

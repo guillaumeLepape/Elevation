@@ -7,12 +7,13 @@
 
 #include <vector>
 #include "Weapon.h"
-#include "ResultsData.h"
 
 class Player
 {
     private:
-        Result result_;
+        std::string pseudo_;    
+        std::string id_;
+        const int nbLevelSuceeded_;    
         int nbLifePoints_;
         int money_;
         bool dead_;
@@ -21,13 +22,13 @@ class Player
         int price_;
 
     public:
-        Player( const Result& result );
+        Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded );
         void printState();
 
-        const std::string& pseudo() const { return result_.pseudo_; }
-        void setPseudo( const std::string& pseudo ) { result_.pseudo_ = pseudo; } 
+        const std::string& pseudo() const { return pseudo_; }
+        void setPseudo( const std::string& pseudo ) { pseudo_ = pseudo; } 
 
-        const Result& result() const { return result_; }
+        const int& nbLevelSuceeded() const { return nbLevelSuceeded_; }
 
         void increaseMoney( const int& money ) { money_ += money; }
 
