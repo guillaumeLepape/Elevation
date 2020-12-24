@@ -31,8 +31,8 @@ void Level5::startLevel()
         "selection0"
     );
 
-    Plug randomDebile( "Random débile", 0, 50 );
-    Plug randomDebile2( "Random débile 2", 0, 70 );
+    Plug randomDebile( "Random debile", 0, 50 );
+    Plug randomDebile2( "Random debile 2", 0, 70 );
     Plug pasFuteFute( "Pas fute-fute", 0, 100 );
 
     std::vector<Plug> enemies;

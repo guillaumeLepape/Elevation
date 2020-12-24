@@ -9,6 +9,8 @@
 #include "Pause.h"
 #include "color.h"
 
+#include <tabulate/table.hpp>
+
 FightWriter::FightWriter
 ( 
     const Player* const player, 
@@ -25,59 +27,67 @@ void FightWriter::writeHeader( const int& nbTurns ) const
     Pause::pause();
 
     std::cout << "\n" << BOLDBLACK << "========" << RESET;
-    std::cout << "\n Tour : " << nbTurns; 
+    std::cout << "\n " << BOLDBLACK << GREENSIDEBAR << "Tour : " << nbTurns << RESET; 
     std::cout << "\n" << BOLDBLACK << "========" << RESET;
 }
 
 void FightWriter::writeGameBoard() const 
 {
-    std::cout << "\n | ";
+    tabulate::Table fighters;
+    std::vector<variant<std::string, const char *, tabulate::Table>> nameFighters;
+    std::vector<variant<std::string, const char *, tabulate::Table>> lifePointsFighters;
 
-    for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
+    // build a vector of name and life points plugs
+    for(int i = 0; i < plugs_.size(); i++ )
     {
-        std::cout << BOLDRED << e->name() << RESET << " | ";
+        nameFighters.push_back( plugs_[i].name() );
+        lifePointsFighters.push_back( 
+            std::to_string( plugs_[i].lifePoints() ) + " points de vie" 
+        );
     }
-    std::cout << "\n ";
 
-    int totalNbCaracters = 0;
+    fighters.add_row( nameFighters );
+    fighters.add_row( lifePointsFighters );
+    fighters.add_row( {"", "", ""} );
+    fighters.add_row( { "", player_->pseudo(), ""} );
+    fighters.add_row( 
+        { "", std::to_string( player_->nbLifePoints() ) + " points de vie", "" } 
+    );
 
-    for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
-    {
-        int n = numberCharactersString(e->name()) + 3 
-                - std::to_string( e->lifePoints() ).length();
+    fighters.format()
+        .font_style({tabulate::FontStyle::bold})
+        .border_top(" ")
+        .border_bottom(" ")
+        .border_left(" ")
+        .border_right(" ")
+        .corner(" ");
 
-        if ( n%2 == 0 )
-        {
-            int q = n/2;
-            std::cout << std::string( q, ' ' ) << BOLDYELLOW << e->lifePoints() << RESET << std::string( q, ' ' );
-        }
-        else
-        {
-            int q1 = (n+1)/2;
-            int q2 = (n-1)/2;
-            std::cout << std::string( q1, ' ' ) << BOLDYELLOW << e->lifePoints() << RESET<< std::string( q2, ' ' );
-        }
+    fighters[0].format()
+        .padding_top(1)
+        .padding_bottom(1)
+        .font_align(tabulate::FontAlign::center)
+        .font_color(tabulate::Color::red);
 
-        totalNbCaracters += numberCharactersString(e->name()) + 3;
-    }
-    totalNbCaracters += 1;
+    fighters[1].format()
+        .font_align(tabulate::FontAlign::center)
+        .font_color(tabulate::Color::yellow);
 
-    std::cout << "\n ";
-    std::cout << "\n ";
+    fighters[2].format()
+        .padding_top(1)
+        .padding_bottom(1);
 
-    int n = totalNbCaracters - numberCharactersString( player_->pseudo() );
+    fighters[3].format()
+        .padding_top(1)
+        .padding_bottom(1)
+        .font_align(tabulate::FontAlign::center)
+        .font_color(tabulate::Color::green);
 
-    if ( n%2 )
-    {
-        int q = n/2;
-        std::cout << "\n" << std::string(q, ' ') << BOLDGREEN << player_->pseudo() << RESET << std::string(q, ' ');
-    }   
-    else
-    {
-        int q1 = (n+1)/2;
-        int q2 = (n-1)/2;
-        std::cout << "\n" << std::string(q1,' ') << BOLDGREEN << player_->pseudo() << RESET << std::string( q2, ' ' );
-    }
+    fighters[4].format()
+        .font_align(tabulate::FontAlign::center)
+        .font_color(tabulate::Color::yellow);
+
+    std::cout << "\n" << fighters;
+
     std::cout << "\n";
 }
 

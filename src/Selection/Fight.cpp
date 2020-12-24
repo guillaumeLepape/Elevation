@@ -7,6 +7,8 @@
 #include <iostream>
 
 #include "FightWriter.h"
+#include "ChoosePlug.h"
+#include "Selection.h"
 
 Fight::Fight
 ( 
@@ -34,6 +36,29 @@ void Fight::startFight()
 
         fightWriter.writeHeader( nbTurns );
         fightWriter.writeGameBoard();
+
+        std::vector<Action*> choosePlugActions;
+
+        for ( int i = 0; i < plugs_.size(); i++ )
+        {
+            choosePlugActions.push_back( 
+                new ChoosePlug( &(plugs_[i]), "data/ChoosePlug", "choosePlug" ) 
+            ); 
+        }
+
+        int resultChoosePlug = Selection::select(
+            choosePlugActions,
+            "data/Level5",
+            "select0"
+        );
+
+        std::cout << "\n " << resultChoosePlug;
+
+        // UseWeapon useFist( player_, plugs_[0],  );
+
+        // Selection(
+            
+        // );
     }
 
 

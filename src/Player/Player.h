@@ -30,6 +30,8 @@ class Player
 
         const int& nbLevelSuceeded() const { return nbLevelSuceeded_; }
 
+        const int& nbLifePoints() const { return nbLifePoints_; }
+
         void increaseMoney( const int& money ) { money_ += money; }
 
         const bool& dead() const { return dead_; }

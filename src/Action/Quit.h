@@ -22,8 +22,7 @@ class Quit : public Action
 
         void triggerAction() override  
         { 
-            std::cout << "\n Fin du jeu";
-            std::cout << "\n"; 
+            actionWriter_.writeResult( nullptr, nullptr );
         }
 };
 

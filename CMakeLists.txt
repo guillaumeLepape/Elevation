@@ -190,9 +190,15 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/FightWriter.cpp
 )
 
+set(FOLDER_TABULATE libraries/tabulate/include)
+include_directories( ${FOLDER_TABULATE} )
+
+
 add_executable(main
     src/main.cpp
     
+    ${FOLDER_TABULATE}/tabulate/table.hpp
+
     ${HEADER_ACTION}
     ${SOURCE_ACTION}
 
