@@ -26,31 +26,33 @@ ActionWriter::ActionWriter( const std::string& folderFromRoot, const std::string
 
 }
 
-void ActionWriter::writeStatement( const Player* const player, const Plug* const plug ) const
+void ActionWriter::writeStatement() const
 {        
         std::cout << "\n " << YELLOWSIDEBAR << BOLDBLACK;
-        if ( actionData_.tokenStatement() )
-        {
-            std::cout << Token::replace( actionData_.statement(), player, plug );
-        }
-        else
-        {
-            std::cout << actionData_.statement();
-        }
+        // if ( actionData_.tokenStatement() )
+        // {
+        //     std::cout << Token::replace( actionData_.statement(), player, plug );
+        // }
+        // else
+        // {
+        //     std::cout << actionData_.statement();
+        // }
+        std::cout << actionData_.statement();
         std::cout << RESET << " : ";    
 }
 
-void ActionWriter::writeResult( const Player* const player, const Plug* const plug ) const 
+void ActionWriter::writeResult() const 
 {
     Pause::pause();
     std::cout << "\n " << BOLDYELLOW;
-    if ( actionData_.tokenResult() ) 
-    {
-        std::cout << Token::replace( actionData_.result(), player, plug ); 
-    }
-    else 
-    {
-        std::cout << actionData_.result();
-    }
+    // if ( actionData_.tokenResult() ) 
+    // {
+    //     std::cout << Token::replace( actionData_.result(), player, plug ); 
+    // }
+    // else 
+    // {
+    //     std::cout << actionData_.result();
+    // }
+    std::cout << actionData_.result();
     std::cout << RESET;
 }

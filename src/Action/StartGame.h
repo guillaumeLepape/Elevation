@@ -16,7 +16,6 @@ class StartGame : public Action
 {
     private:
         Player player_;
-        const Result result_;
 
     public: 
         StartGame
@@ -27,8 +26,7 @@ class StartGame : public Action
                 = { "Joueur", Id::generateId(), 0 }
         ) : 
             Action( folderFromRoot, nameFile ),
-            player_( result.pseudo_, result_.id_, result_.nbLevelSuceeded_ ),
-            result_( result )
+            player_( result.pseudo_, result.id_, result.nbLevelSuceeded_ )
         {
 
         }
@@ -44,7 +42,7 @@ class StartGame : public Action
             }
 
             ResultsData resultsData;
-            resultsData.addResult( { player_.pseudo(), result_.id_, i-1 } );
+            resultsData.addResult( { player_.pseudo(), player_.id(), i-1 } );
             resultsData.writeData();
         }
 };

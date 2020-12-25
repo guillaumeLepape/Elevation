@@ -14,7 +14,7 @@ class Pseudo : public Action
 {
     private: 
         Player* const player_;
-        const MessageHandler& messageHandler_;
+        MessageHandler& messageHandler_;
 
         void formatString( std::string& str )
         {
@@ -29,7 +29,7 @@ class Pseudo : public Action
         explicit Pseudo
         ( 
             Player* const player, 
-            const MessageHandler& messageHandler,
+            MessageHandler& messageHandler,
             const std::string& folderFromRoot,
             const std::string& nameFile
         ) : 
@@ -55,8 +55,9 @@ class Pseudo : public Action
             while ( !out )
             {
                 // Inform the user that he have to enter an information (his pseudo)
+                messageHandler_.preTreatment( player_, nullptr, 1 );
                 messageHandler_.writeMessage(1);
-                actionWriter_.writeStatement( player_, nullptr );
+                actionWriter_.writeStatement();
 
                 // Get pseudo from user
                 std::string pseudo;
@@ -74,19 +75,22 @@ class Pseudo : public Action
                 else if ( masculineName.find(pseudo) 
                     != masculineName.end() )
                 {
+                    messageHandler_.preTreatment( player_, nullptr, 2 );
                     messageHandler_.writeMessage(2);
                 }
                 // If pseudo doesn't appear in the two previous dataset,
                 // consider that this name doesn't exist
                 else 
                 {
+                    messageHandler_.preTreatment( player_, nullptr, 3 );
                     messageHandler_.writeMessage(3);
                 }
             }
 
             player_->setPseudo(*ptrPseudo);
 
-            actionWriter_.writeResult( player_, nullptr );
+            actionWriter_.preTreatmentResult( player_, nullptr );
+            actionWriter_.writeResult();
         }
 };
 

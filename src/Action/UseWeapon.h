@@ -34,9 +34,11 @@ class UseWeapon : public Action
             player_->changeWeapon( weapon_.name() );
             plug_->decreaseLifePoints( weapon_.damageWeapon() );
 
-            actionWriter_.writeResult( player_, plug_ );
+            actionWriter_.preTreatmentResult( player_, plug_ );
+            actionWriter_.writeResult();
         
             Dead dead( player_, plug_, "data/Dead", "dead" );
+            dead.preTreatmentResult( player_, plug_ );
             dead.triggerAction();
         }
 };

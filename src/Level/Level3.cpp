@@ -19,7 +19,8 @@ void Level3::startLevel()
     HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( player_, &plug, folder, "message" );
+    MessageHandler messageHandler( folder, "message" );
+    messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
     
     UseWeapon useFist( player_, &plug, "fist", "data/Weapon", "useFist" );

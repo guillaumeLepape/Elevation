@@ -19,7 +19,8 @@ void Level5::startLevel()
 
     Plug guetteur( "Guetteur", 0, 15 );
 
-    MessageHandler messageHandler( player_, &guetteur, folder, "message" );
+    MessageHandler messageHandler( folder, "message" );
+    messageHandler.preTreatment( player_, &guetteur );
     messageHandler.nextMessage();
 
     UseWeapon beatUp( player_, &guetteur, "fist", "data/Weapon", "beatUp" );

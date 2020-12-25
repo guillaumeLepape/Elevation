@@ -20,7 +20,8 @@ void Level2::startLevel()
     HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( player_, &plug, folder, "message" );
+    MessageHandler messageHandler( folder, "message" );
+    messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
 
     Negociate negociate( player_, &plug, messageHandler, folder, "negociate" );

@@ -14,12 +14,14 @@ void Introduction::startLevel()
     HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( player_, nullptr, folder, "message" );
+    MessageHandler messageHandler( folder, "message" );
+    messageHandler.preTreatmentNextMessage( player_, nullptr );
     messageHandler.nextMessage();
 
     Pseudo pseudo( player_, messageHandler, folder, "pseudo" );
     pseudo.triggerAction();
 
+    messageHandler.preTreatment( player_, nullptr, 4 );
     messageHandler.writeMessage(4);
 
     std::cout << "\n";

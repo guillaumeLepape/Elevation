@@ -30,6 +30,16 @@ class Action
 
         const ActionWriter& actionWriter() const { return actionWriter_; }
 
+        void preTreatmentStatement( const Player* player, const Plug* plug ) 
+        { 
+            actionWriter_.preTreatmentStatement( player, plug ); 
+        }
+
+        void preTreatmentResult( const Player* player, const Plug* plug ) 
+        { 
+            actionWriter_.preTreatmentResult( player, plug ); 
+        }
+
         virtual void triggerAction() = 0;
 
         virtual ~Action() {}

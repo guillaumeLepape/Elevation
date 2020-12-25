@@ -11,9 +11,6 @@
 class MessageHandler  
 {
     private:
-        const Player* const player_;
-        const Plug* const plug_;
-
         MessagesData messagesData_;
 
         mutable int indexMessage_;
@@ -23,24 +20,18 @@ class MessageHandler
     public:
         MessageHandler
         ( 
-            const Player* const player, 
-            const Plug* const plug, 
             const nlohmann::json& jsonObject,
             int indexMessage = -1
         );
 
         MessageHandler
         (
-            const Player* const player, 
-            const Plug* const plug, 
             const MessagesData& messagesData,
             int indexMessage = -1
         );
 
         MessageHandler
         (
-            const Player* const player, 
-            const Plug* const plug, 
             const std::string& folderFromRoot,
             const std::string& nameFile,
             int indexMessage = -1
@@ -48,6 +39,21 @@ class MessageHandler
 
         void writeMessage( const int& indexMessage ) const;
         void nextMessage() const;
+
+        void preTreatment( const Player* const player, const Plug* const plug )
+        {
+            messagesData_.preTreatment( player, plug );
+        }
+
+        void preTreatment( const Player* const player, const Plug* const plug, const int& indexMessage )
+        {
+            messagesData_.preTreatment( player, plug, indexMessage);
+        }
+
+        void preTreatmentNextMessage( const Player* const player, const Plug* plug )  
+        {
+            messagesData_.preTreatment( player, plug, indexMessage_ + 1);
+        }
 };
 
 #endif

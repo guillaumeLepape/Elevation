@@ -190,15 +190,10 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/FightWriter.cpp
 )
 
-set(FOLDER_TABULATE libraries/tabulate/include)
-include_directories( ${FOLDER_TABULATE} )
-
 
 add_executable(main
     src/main.cpp
     
-    ${FOLDER_TABULATE}/tabulate/table.hpp
-
     ${HEADER_ACTION}
     ${SOURCE_ACTION}
 
@@ -225,8 +220,10 @@ add_executable(dataset
     dataset/main.cpp
 )
 
+add_subdirectory( libraries/tabulate )
+
 add_subdirectory( libraries/json ) 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 
-target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json)
-target_link_libraries(dataset PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json tabulate::tabulate )
+target_link_libraries(dataset PRIVATE nlohmann_json::nlohmann_json )

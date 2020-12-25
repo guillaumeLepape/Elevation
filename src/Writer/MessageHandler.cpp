@@ -6,13 +6,9 @@
 
 MessageHandler::MessageHandler
 ( 
-    const Player* const player, 
-    const Plug* const plug, 
     const nlohmann::json& jsonObject,
     int indexMessage
 ) :
-    player_( player ),
-    plug_( plug ),
     messagesData_( jsonObject ),
     indexMessage_( indexMessage )
 {
@@ -21,13 +17,9 @@ MessageHandler::MessageHandler
 
 MessageHandler::MessageHandler
 (
-    const Player* const player, 
-    const Plug* const plug, 
     const MessagesData& messagesData,
     int indexMessage
 ) :
-    player_( player ),
-    plug_( plug ),
     messagesData_( messagesData ),
     indexMessage_( indexMessage )
 {
@@ -36,14 +28,10 @@ MessageHandler::MessageHandler
 
 MessageHandler::MessageHandler
 (
-    const Player* const player, 
-    const Plug* const plug, 
     const std::string& folderFromRoot,
     const std::string& nameFile,
     int indexMessage
 ) :
-    player_( player ),
-    plug_( plug ),
     messagesData_( folderFromRoot, nameFile ),
     indexMessage_( indexMessage )
 {
@@ -52,7 +40,7 @@ MessageHandler::MessageHandler
 
 void MessageHandler::writeMessagePrivate() const
 {
-    MessageWriter messageWriter( player_, plug_, messagesData_.messages()[indexMessage_] );
+    MessageWriter messageWriter( messagesData_.messages()[indexMessage_] );
     messageWriter.writeMessage();
 }
 

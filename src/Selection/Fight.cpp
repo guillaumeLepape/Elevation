@@ -30,36 +30,36 @@ void Fight::startFight()
     FightWriter fightWriter( player_, plugs_ );
 
     // while all enemies are not dead or player is not dead
-    while ( !enemiesDeadOrNot() && !player_->dead() && nbTurns < 1000 )
-    {
-        nbTurns++;
+    // while ( !enemiesDeadOrNot() && !player_->dead() && nbTurns < 1000 )
+    // {
+    //     nbTurns++;
 
-        fightWriter.writeHeader( nbTurns );
-        fightWriter.writeGameBoard();
+    //     fightWriter.writeHeader( nbTurns );
+    //     fightWriter.writeGameBoard();
 
-        std::vector<Action*> choosePlugActions;
+    //     std::vector<Action*> choosePlugActions;
 
-        for ( int i = 0; i < plugs_.size(); i++ )
-        {
-            choosePlugActions.push_back( 
-                new ChoosePlug( &(plugs_[i]), "data/ChoosePlug", "choosePlug" ) 
-            ); 
-        }
+    //     for ( int i = 0; i < plugs_.size(); i++ )
+    //     {
+    //         choosePlugActions.push_back( 
+    //             new ChoosePlug( &(plugs_[i]), "data/ChoosePlug", "choosePlug" ) 
+    //         ); 
+    //     }
 
-        int resultChoosePlug = Selection::select(
-            choosePlugActions,
-            "data/Level5",
-            "select0"
-        );
+    //     int resultChoosePlug = Selection::select(
+    //         choosePlugActions,
+    //         "data/Level5",
+    //         "select0"
+    //     );
 
-        std::cout << "\n " << resultChoosePlug;
+    //     std::cout << "\n " << resultChoosePlug;
 
-        // UseWeapon useFist( player_, plugs_[0],  );
+    //     // UseWeapon useFist( player_, plugs_[0],  );
 
-        // Selection(
+    //     // Selection(
             
-        // );
-    }
+    //     // );
+    // }
 
 
 }

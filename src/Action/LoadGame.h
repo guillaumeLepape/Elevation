@@ -37,7 +37,11 @@ class LoadGame : public Action
                 std::vector<Action*> actions;
                 for ( int i = 0; i < results.size(); i++ )
                 {
-                    actions.push_back( new StartGame( "data/Menu", "loadGameSelection", results[i] ) );
+                    Action* startGame = new StartGame( "data/Menu", "loadGameSelection", results[i] );
+                    Player player( results[i].pseudo_, results[i].id_, results[i].nbLevelSuceeded_ );
+                    startGame->preTreatmentStatement( &player, nullptr );
+
+                    actions.push_back( startGame );
                 }
 
                 Selection::select(

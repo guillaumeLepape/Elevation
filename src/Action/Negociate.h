@@ -42,7 +42,7 @@ class Negociate : public Action
             {
                 std::string priceStr;
 
-                actionWriter_.writeStatement( player_, plug_ );
+                actionWriter_.writeStatement();
                 std::cin >> priceStr;
                 int price = std::stoi( priceStr ); 
                 player_->setPrice( price );
@@ -63,7 +63,8 @@ class Negociate : public Action
                     messageHandler_.writeMessage(3);
                 } 
             }
-            actionWriter_.writeResult( player_, plug_ );
+            actionWriter_.preTreatmentResult( player_, plug_ );
+            actionWriter_.writeResult();
             
             messageHandler_.writeMessage(5);
         }

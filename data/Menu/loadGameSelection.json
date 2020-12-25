@@ -1,5 +1,5 @@
 {
-    "statement": [true, "Charger la partie (afficher le pseudo correspondant)"],
+    "statement": [true, "Charger la partie -*-pseudo-*-."],
     "result": [false, "Vous avez chois charger une partie."]
 }
   

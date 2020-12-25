@@ -7,9 +7,6 @@
 
 #include "ActionData.h"
 
-#include "Player.h"
-#include "Plug.h"
-
 class ActionWriter
 {
     private:
@@ -22,8 +19,18 @@ class ActionWriter
 
         const ActionData& actionData() const { return actionData_; }
 
-        void writeStatement( const Player* const player, const Plug* const plug ) const;
-        void writeResult( const Player* const player, const Plug* const plug ) const;
+        void preTreatmentStatement( const Player* const player, const Plug* const plug )
+        {
+            actionData_.preTreatmentStatement( player, plug );
+        }
+
+        void preTreatmentResult( const Player* const player, const Plug* const plug )
+        {
+            actionData_.preTreatmentResult( player, plug );
+        }
+
+        void writeStatement() const;
+        void writeResult() const;
 };
 
 #endif

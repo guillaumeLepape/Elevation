@@ -34,7 +34,7 @@ class Dead : public Action
         {
             if ( plug_->deadOrNot() )
             {
-                actionWriter_.writeResult( player_, plug_ );
+                actionWriter_.writeResult();
             }
         }
 };

@@ -22,7 +22,7 @@ class Quit : public Action
 
         void triggerAction() override  
         { 
-            actionWriter_.writeResult( nullptr, nullptr );
+            actionWriter_.writeResult();
         }
 };
 

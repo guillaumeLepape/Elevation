@@ -4,6 +4,8 @@
 
 #include "ActionData.h"
 
+#include "Token.h"
+
 ActionData::ActionData( const nlohmann::json& jsonObject ) :
     Data( jsonObject )
 {
@@ -27,4 +29,20 @@ void ActionData::readData()
 
     tokenResult_ = jsonObject_["result"][0];
     result_ = jsonObject_["result"][1];
+}
+
+void ActionData::preTreatmentStatement( const Player* player, const Plug* plug )
+{
+    if ( tokenStatement_ )
+    {
+        statement_ = Token::replace( statement_, player, plug );
+    }
+}
+
+void ActionData::preTreatmentResult( const Player* player, const Plug* plug )  
+{
+    if( tokenResult_ )
+    {
+        result_ = Token::replace( result_, player, plug );
+    }
 }

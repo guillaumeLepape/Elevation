@@ -22,10 +22,10 @@ class ActionData : public Data
 
         virtual void readData() override;
 
-        const bool& tokenStatement() const { return tokenStatement_; }
-        const std::string& statement() const { return statement_; }
+        void preTreatmentStatement( const Player* const player, const Plug* const plug );
+        void preTreatmentResult( const Player* const player, const Plug* const plug );
 
-        const bool& tokenResult() const { return tokenResult_; }
+        const std::string& statement() const { return statement_; }
         const std::string& result() const { return result_; }
 };
 

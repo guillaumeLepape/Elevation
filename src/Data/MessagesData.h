@@ -22,6 +22,19 @@ class MessagesData : public Data
 
         void readData() override;
 
+        void preTreatment( const Player* const player, const Plug* const plug )
+        {
+            for ( int i = 0; i < messages_.size(); i++ )
+            {
+                preTreatment(player, plug, i);
+            }
+        }
+
+        void preTreatment( const Player* const player, const Plug* const plug, const int& indexMessage )
+        {   
+            messages_[indexMessage].preTreatment( player, plug ); 
+        }
+
         const std::vector<MessageData>& messages() const { return messages_; }
 };
 

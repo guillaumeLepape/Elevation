@@ -12,12 +12,8 @@
 
 MessageWriter::MessageWriter
 (
-    const Player* const player,
-    const Plug* const plug,
     const nlohmann::json& jsonObject
 ) :
-    player_( player ),
-    plug_( plug ),
     messageData_( jsonObject )
 {
 
@@ -25,12 +21,8 @@ MessageWriter::MessageWriter
         
 MessageWriter::MessageWriter
 ( 
-    const Player* const player, 
-    const Plug* const plug, 
     const MessageData& messageData 
 ) :
-    player_( player ),
-    plug_( plug ),
     messageData_( messageData )
 {
 
@@ -38,13 +30,9 @@ MessageWriter::MessageWriter
 
 MessageWriter::MessageWriter
 (
-    const Player* const player, 
-    const Plug* const plug,
     const std::string& folderFromRoot,
     const std::string& fileName
 ) :
-    player_( player ),
-    plug_( plug ),
     messageData_( folderFromRoot, fileName )
 {
 
@@ -52,19 +40,19 @@ MessageWriter::MessageWriter
 
 void MessageWriter::writeName( const int& i ) const 
 {
-    if ( messageData_.name()[i] == "player" )
+    if ( messageData_.tokenName()[i] == "player" )
     {
-        std::cout << "\n        " << BOLDGREEN << player_->pseudo() << RESET << BLUE;
+        std::cout << "\n        " << BOLDGREEN << messageData_.name()[i] << RESET << BLUE;
     }
-    else if ( messageData_.name()[i] == "plug" )
+    else if ( messageData_.tokenName()[i] == "plug" )
     {
-        std::cout << "\n        " << BOLDRED << plug_->name() << RESET << BLUE;
+        std::cout << "\n        " << BOLDRED << messageData_.name()[i]<< RESET << BLUE;
     }
-    else if ( messageData_.name()[i] == "description" )
+    else if ( messageData_.tokenName()[i] == "description" )
     {
         std::cout << BOLDMAGENTA;
     }
-    else if ( messageData_.name()[i] == "action" )
+    else if ( messageData_.tokenName()[i] == "action" )
     {
         std::cout << BOLDYELLOW;
     }
@@ -76,14 +64,15 @@ void MessageWriter::writeName( const int& i ) const
 
 void MessageWriter::writeOneMessage( const int& i) const
 {
-    if ( messageData_.token()[i] )
-    {
-        std::cout << "\n " << Token::replace( messageData_.dialog()[i], player_, plug_ );
-    }
-    else
-    {
-        std::cout << "\n " << ( messageData_.dialog()[i] );
-    }
+    // if ( messageData_.token()[i] )
+    // {
+    //     std::cout << "\n " << Token::replace( messageData_.dialog()[i], player_, plug_ );
+    // }
+    // else
+    // {
+    //     std::cout << "\n " << ( messageData_.dialog()[i] );
+    // }
+    std::cout << "\n " << ( messageData_.dialog()[i] );
     std::cout << RESET;
 }
 
@@ -98,8 +87,3 @@ void MessageWriter::writeMessage() const
         writeOneMessage(i);
     }
 }
-
-// std::string MessageWriter::Token( const std::string& str) const
-// {
-    
-// }
