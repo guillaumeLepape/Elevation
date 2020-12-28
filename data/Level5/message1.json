@@ -1,0 +1,14 @@
+{
+  "message": [
+    [
+      "description",
+      false,
+      "Vous ramassez un marteau tombé au sol lors du combat."
+    ],
+    [
+      "action",
+      false,
+      "Un marteau vient être ajouté à votre collection d'armes."
+    ]
+  ]
+}

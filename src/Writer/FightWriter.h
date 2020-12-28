@@ -13,8 +13,6 @@ class FightWriter
     private:
         const Player* const player_;
         const std::vector<Plug>& plugs_;
-
-        static int numberCharactersString( const std::string& str ); 
         
     public:
         FightWriter( const Player* const player, const std::vector<Plug>& plugs );

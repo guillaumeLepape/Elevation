@@ -26,18 +26,23 @@ void FightWriter::writeHeader( const int& nbTurns ) const
 {
     Pause::pause();
 
-    std::cout << "\n" << BOLDBLACK << "========" << RESET;
-    std::cout << "\n " << BOLDBLACK << GREENSIDEBAR << "Tour : " << nbTurns << RESET; 
-    std::cout << "\n" << BOLDBLACK << "========" << RESET;
+    std::cout << "\n" << BOLDBLUE << "====================" << RESET;
+    std::cout << "\n " << BOLDBLACK << GREENSIDEBAR << "Tour " << nbTurns << RESET; 
+    std::cout << "\n" << BOLDBLUE << "====================" << RESET;
 }
 
 void FightWriter::writeGameBoard() const 
 {
+    Pause::pause();
+
+    std::cout << "\n" << GREENSIDEBAR << BOLDBLACK << "Plateau de jeu" << RESET;
+    std::cout << "\n" << BOLDBLACK << "========" << RESET;
+
     tabulate::Table fighters;
     std::vector<variant<std::string, const char *, tabulate::Table>> nameFighters;
     std::vector<variant<std::string, const char *, tabulate::Table>> lifePointsFighters;
 
-    // build a vector of name and life points plugs
+    // build a vector of name and life points of plugs
     for(int i = 0; i < plugs_.size(); i++ )
     {
         nameFighters.push_back( plugs_[i].name() );
@@ -56,14 +61,14 @@ void FightWriter::writeGameBoard() const
 
     fighters.format()
         .font_style({tabulate::FontStyle::bold})
-        .border_top(" ")
+        .border_top("")
         .border_bottom(" ")
         .border_left(" ")
         .border_right(" ")
         .corner(" ");
 
     fighters[0].format()
-        .padding_top(1)
+        .padding_top(0)
         .padding_bottom(1)
         .font_align(tabulate::FontAlign::center)
         .font_color(tabulate::Color::red);
@@ -88,20 +93,4 @@ void FightWriter::writeGameBoard() const
 
     std::cout << "\n" << fighters;
 
-    std::cout << "\n";
-}
-
-
-int FightWriter::numberCharactersString( const std::string& str)
-{
-    int l = 0;
-    for ( int i = 0; i < str.length(); i++ )
-    {
-        char c = str[i];
-        if ( c != -61 )
-        {
-            l++;
-        }
-    }
-    return l;
 }

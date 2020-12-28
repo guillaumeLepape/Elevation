@@ -17,6 +17,10 @@ void Level5::startLevel()
     HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
+    /****************************/
+    player_->addWeapon( Weapon( "knife", 30, "useKnife" ) );
+    /****************************/
+
     Plug guetteur( "Guetteur", 0, 15 );
 
     MessageHandler messageHandler( folder, "message" );
@@ -31,6 +35,11 @@ void Level5::startLevel()
         folder,
         "selection0"
     );
+
+    messageHandler.preTreatment( player_, &guetteur );
+    messageHandler.nextMessage();
+
+    player_->addWeapon( Weapon( "hammer", 40, "useHammer" ) );
 
     Plug randomDebile( "Random debile", 0, 50 );
     Plug randomDebile2( "Random debile 2", 0, 70 );
