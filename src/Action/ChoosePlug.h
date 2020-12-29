@@ -28,6 +28,8 @@ class ChoosePlug : public Action
         {
 
         }
+
+        Plug* const plug() const { return plug_; }
 };
 
 #endif

@@ -17,9 +17,11 @@ FightWriter::FightWriter
     const std::vector<Plug>& plugs 
 ) :
     player_( player ),
-    plugs_( plugs )
+    plugs_( plugs ),
+    numberOfDeadPlug_( 0 )
 {
-
+    Pause::pause();
+    std::cout << "\n " << BOLDYELLOW << "Début du combat" << RESET; 
 }
 
 void FightWriter::writeHeader( const int& nbTurns ) const
@@ -45,19 +47,33 @@ void FightWriter::writeGameBoard() const
     // build a vector of name and life points of plugs
     for(int i = 0; i < plugs_.size(); i++ )
     {
-        nameFighters.push_back( plugs_[i].name() );
-        lifePointsFighters.push_back( 
-            std::to_string( plugs_[i].lifePoints() ) + " points de vie" 
-        );
+        // display plugs only if they are not dead
+        if ( !(plugs_[i].deadOrNot()) )
+        {
+            nameFighters.push_back( plugs_[i].name() );
+            lifePointsFighters.push_back( 
+                std::to_string( plugs_[i].lifePoints() ) + " points de vie" 
+            );
+        }
     }
 
     fighters.add_row( nameFighters );
     fighters.add_row( lifePointsFighters );
-    fighters.add_row( {"", "", ""} );
-    fighters.add_row( { "", player_->pseudo(), ""} );
-    fighters.add_row( 
-        { "", std::to_string( player_->nbLifePoints() ) + " points de vie", "" } 
-    );
+
+    std::vector<variant<std::string, const char *, tabulate::Table>> 
+        emptyLine( nameFighters.size(), "" );
+    fighters.add_row( emptyLine );
+
+    std::vector<variant<std::string, const char *, tabulate::Table>> 
+        playerLine( nameFighters.size(), "" );
+    playerLine[nameFighters.size()/2] = player_->pseudo();
+    fighters.add_row( playerLine );
+
+    std::vector<variant<std::string, const char *, tabulate::Table>> 
+        lifePlayerPoints( nameFighters.size(), "" );
+    lifePlayerPoints[nameFighters.size()/2] 
+        = std::to_string( player_->nbLifePoints() ) + " points de vie";
+    fighters.add_row( lifePlayerPoints );
 
     fighters.format()
         .font_style({tabulate::FontStyle::bold})
@@ -93,4 +109,39 @@ void FightWriter::writeGameBoard() const
 
     std::cout << "\n" << fighters;
 
+}
+
+
+void FightWriter::writeRemoveDeadBody()
+{
+    const int countNumberOfDeadPlug = methodNumberOfDeadPlug();
+
+    // if the condition is true, it mean that at least one en
+    if ( numberOfDeadPlug_ != countNumberOfDeadPlug )
+    {
+        numberOfDeadPlug_ = countNumberOfDeadPlug;
+        
+        Pause::pause();
+        std::cout << "\n " << BOLDYELLOW << "Evacuation des cadavres." << RESET;
+    }
+}
+
+void FightWriter::writeEndOfFight() const 
+{
+    Pause::pause();
+    std::cout << "\n " << BOLDYELLOW << "Fin du combat" << RESET;
+}
+
+
+const int FightWriter::methodNumberOfDeadPlug() const
+{
+    int numberOfDead = 0;
+    for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
+    {
+        if ( e->deadOrNot() )
+        {
+            numberOfDead++;
+        }
+    } 
+    return numberOfDead;
 }

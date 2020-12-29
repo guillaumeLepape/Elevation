@@ -42,10 +42,13 @@ void Fight::startFight()
 
         for ( int i = 0; i < plugs_.size(); i++ )
         {
-            Action* choosePlug = new ChoosePlug( &(plugs_[i]), "data/ChoosePlug", "choosePlug" ); 
-            choosePlug->preTreatmentStatement( player_, &(plugs_[i]) );
-
-            choosePlugActions.push_back( choosePlug );
+            // user cannot attack dead plugs
+            if ( !(plugs_[i].deadOrNot()) )
+            {
+                Action* choosePlug = new ChoosePlug( &(plugs_[i]), "data/ChoosePlug", "choosePlug" ); 
+                choosePlug->preTreatmentStatement( player_, &(plugs_[i]) );
+                choosePlugActions.push_back( choosePlug );
+            }
         }
 
         int resultChoosePlug = Selection::select(
@@ -54,56 +57,60 @@ void Fight::startFight()
             "selection0"
         );
 
-        UseWeapon useFist
-        ( 
-            player_, 
-            &(plugs_[resultChoosePlug]), 
-            "fist", 
-            "data/Weapon", 
-            "useFist" 
-        );
+        auto weapons = player_->weapons();
 
-        UseWeapon useKnife
-        ( 
-            player_, 
-            &(plugs_[resultChoosePlug]),
-            "knife",
-            "data/Weapon",
-            "useKnife" 
-        );
+        std::vector<Action*> useWeapons;
 
-        UseWeapon useHammer
-        (
-            player_,
-            &(plugs_[resultChoosePlug]),
-            "hammer",
-            "data/Weapon",
-            "useHammer"
-        );
+        for ( int i = 0; i < weapons.size(); i++ )
+        {
+            useWeapons.push_back(
+                new UseWeapon(
+                    player_,
+                    ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug(),
+                    weapons[i].name(),
+                    "data/Weapon",
+                    weapons[i].nameUseWeapon()
+                )
+            );
+        }
 
-        Selection::select(
-            { &useFist, &useKnife, &useHammer },
+        int resultUseWeapon = Selection::select(
+            useWeapons,
             "data/Level5",
             "selection1"
         );
 
-        fightWriter.writeGameBoard();
-
-
+        fightWriter.writeRemoveDeadBody();
     }
 
+    fightWriter.writeEndOfFight();
 
-
+    std::cout << "\n";
 }
 
 const bool Fight::enemiesDeadOrNot() const
 {
-    bool result = false;
+    bool result = true;
 
     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
     {
-        result = result || e->deadOrNot();
+        result = result && e->deadOrNot();
     }
 
     return result;
 }
+
+// void Fight::removeDeadEnnemies() 
+// {
+//     Pause::pause();
+
+//     std::cout << "\n " << "Evacuation des cadavres en cours.";
+
+//     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
+//     {
+//         if ( e->deadOrNot() )
+//         {
+//             plugs_.erase( e );
+//         }   
+//     }
+// }

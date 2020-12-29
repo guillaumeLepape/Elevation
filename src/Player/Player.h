@@ -44,6 +44,8 @@ class Player
         const Weapon& weaponFromName( const std::string& nameWeapon ) const;
         const Weapon& selectedWeapon() const { return weapons_[selectedWeapon_]; }
 
+        const std::vector<Weapon>& weapons() const { return weapons_; }
+
         const int& price() const { return price_; }
         void setPrice( const int& price ) { price_ = price; } 
 };  

@@ -55,6 +55,7 @@ set(HEADER_DATA
     ${FOLDER_DATA}/AnswerData.h
     ${FOLDER_DATA}/SelectionData.h
     ${FOLDER_DATA}/ResultsData.h
+    ${FOLDER_DATA}/TutorialData.h
 )
 
 set(SOURCE_DATA
@@ -68,6 +69,7 @@ set(SOURCE_DATA
     ${FOLDER_DATA}/AnswerData.cpp
     ${FOLDER_DATA}/SelectionData.cpp
     ${FOLDER_DATA}/ResultsData.cpp
+    ${FOLDER_DATA}/TutorialData.cpp
 )
 
 #
@@ -177,6 +179,7 @@ set(HEADER_WRITER
     ${FOLDER_WRITER}/Token.h
     ${FOLDER_WRITER}/AnswerWriter.h
     ${FOLDER_WRITER}/FightWriter.h
+    ${FOLDER_WRITER}/TutorialWriter.h
 )
 
 set(SOURCE_WRITER
@@ -188,6 +191,7 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/SelectionWriter.cpp
     ${FOLDER_WRITER}/AnswerWriter.cpp
     ${FOLDER_WRITER}/FightWriter.cpp
+    ${FOLDER_WRITER}/TutorialWriter.cpp
 )
 
 

@@ -1,0 +1,12 @@
+{
+    "name": "Tutoriel : Système de combat",
+    "tutorialStatement": 
+    [
+        "Dans ce jeu, les combats se déroulent ainsi.",
+        "A chaque tour, vous choisissez d'abord quelles ennemis vous souhaitez avec l'arme qu'il souhaite.",
+        "Une fois que vous avez attaqué, c'est au tour des ennemis.",
+        "Ils attaquent avec l'arme dont ils disposent à tour de rôle.",
+        "Le combat prend fin lorsque tous les ennemis sont morts ou assommés ou lorsque vous êtes mort.",
+        "Lorsque vous tuez un ennemi vous pouvez récupérer leurs armes."
+    ]
+}

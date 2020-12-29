@@ -1,0 +1,10 @@
+{
+    "name": "Tutoriel : Enchaînements",
+    "tutorialStatement": 
+    [
+        "Lors des combats des enchaînements peuvent être réalisés pour faire plus de dégats aux ennemis.",
+        "Par exemple, en frappant avec le poing un ennemi,",
+        "vous pouvez, lors du même tour, frapper le même ennemi avec un arme de mélée.",
+        "Dans ce cas, l'arme de mélée infligera moitié moins de dégâts."
+    ]
+}
