@@ -7,9 +7,9 @@
 // #include <iostream>
 
 #include "Pause.h"
-#include "color.h"
 
 #include <tabulate/table.hpp>
+#include <cpp-terminal/terminal.h>
 
 FightWriter::FightWriter
 ( 
@@ -21,24 +21,62 @@ FightWriter::FightWriter
     numberOfDeadPlug_( 0 )
 {
     Pause::pause();
-    std::cout << "\n " << BOLDYELLOW << "Début du combat" << RESET; 
+    std::cout << "\n " 
+        << Term::color(Term::fg::yellow) 
+        << Term::color(Term::style::bold)
+        << "Début du combat"
+        << Term::color(Term::fg::reset)
+        << Term::color(Term::style::reset); 
 }
 
 void FightWriter::writeHeader( const int& nbTurns ) const
 {
     Pause::pause();
 
-    std::cout << "\n" << BOLDBLUE << "====================" << RESET;
-    std::cout << "\n " << BOLDBLACK << GREENSIDEBAR << "Tour " << nbTurns << RESET; 
-    std::cout << "\n" << BOLDBLUE << "====================" << RESET;
+    std::cout << "\n" 
+        << Term::color(Term::fg::blue) 
+        << Term::color(Term::style::bold) 
+        << "===================="
+        << Term::color(Term::fg::reset)
+        << Term::color(Term::style::reset); 
+
+    std::cout << "\n "
+        << Term::color(Term::fg::black)  
+        << Term::color(Term::bg::green)
+        << Term::color(Term::style::bold)   
+        << "Tour " 
+        << nbTurns
+        << Term::color(Term::fg::reset)
+        << Term::color(Term::bg::reset)
+        << Term::color(Term::style::reset); 
+
+    std::cout << "\n" 
+        << Term::color(Term::fg::blue) 
+        << Term::color(Term::style::bold) 
+        << "===================="
+        << Term::color(Term::fg::reset)
+        << Term::color(Term::style::reset); 
 }
 
 void FightWriter::writeGameBoard() const 
 {
     Pause::pause();
 
-    std::cout << "\n" << GREENSIDEBAR << BOLDBLACK << "Plateau de jeu" << RESET;
-    std::cout << "\n" << BOLDBLACK << "========" << RESET;
+    std::cout << "\n" 
+        << Term::color(Term::fg::black)  
+        << Term::color(Term::bg::green)
+        << Term::color(Term::style::bold)   
+        << "Plateau de jeu"
+        << Term::color(Term::fg::reset)
+        << Term::color(Term::bg::reset)
+        << Term::color(Term::style::reset); 
+
+    std::cout << "\n" 
+        << Term::color(Term::fg::black)  
+        << Term::color(Term::style::bold)   
+        << "========"
+        << Term::color(Term::fg::reset)
+        << Term::color(Term::style::reset); 
 
     tabulate::Table fighters;
     std::vector<variant<std::string, const char *, tabulate::Table>> nameFighters;
@@ -122,14 +160,24 @@ void FightWriter::writeRemoveDeadBody()
         numberOfDeadPlug_ = countNumberOfDeadPlug;
         
         Pause::pause();
-        std::cout << "\n " << BOLDYELLOW << "Evacuation des cadavres." << RESET;
+        std::cout << "\n " 
+            << Term::color(Term::fg::yellow)  
+            << Term::color(Term::style::bold)   
+            << "Evacuation des cadavres."
+            << Term::color(Term::fg::reset)
+            << Term::color(Term::style::reset); 
     }
 }
 
 void FightWriter::writeEndOfFight() const 
 {
     Pause::pause();
-    std::cout << "\n " << BOLDYELLOW << "Fin du combat" << RESET;
+    std::cout << "\n " 
+        << Term::color(Term::fg::yellow)  
+        << Term::color(Term::style::bold)    
+        << "Fin du combat"
+        << Term::color(Term::fg::reset)
+        << Term::color(Term::style::reset); 
 }
 
 

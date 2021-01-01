@@ -7,7 +7,7 @@
 
 #include "Action.h"
 
-#include "color.h"
+#include <cpp-terminal/terminal.h>
 
 class LoadGame : public Action
 {
@@ -29,7 +29,13 @@ class LoadGame : public Action
 
             if ( results.size() == 0 )
             {
-                std::cout << "\n " << BOLDRED << "Aucune partie ne peut être chargé." << RESET;
+                std::cout << "\n " 
+                    << Term::color( Term::bg::red )
+                    << Term::color( Term::style::bold ) 
+                    << "Aucune partie ne peut être chargé." 
+                    << Term::color( Term::bg::reset )
+                    << Term::color( Term::style::reset );
+                
                 std::cout << "\n";
             }
             else

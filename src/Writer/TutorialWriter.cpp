@@ -7,7 +7,8 @@
 #include <iostream>
 
 #include "Pause.h"
-#include "color.h"
+
+#include <cpp-terminal/terminal.h>
 
 TutorialWriter::TutorialWriter
 (  
@@ -23,16 +24,30 @@ void TutorialWriter::writeTutorial() const
 {
     Pause::pause();
 
-    std::cout << "\n " << MAGENTASIDEBAR << BOLDWHITE << tutorialData_.name() << RESET;
-    std::cout << "\n" << BOLDBLACK << "========" << RESET;
+    std::cout << "\n " 
+        << Term::color( Term::bg::magenta )
+        << Term::color( Term::style::bold )
+        << tutorialData_.name() 
+        << Term::color( Term::bg::reset )
+        << Term::color( Term::style::reset );
+
+    std::cout << "\n" 
+        << Term::color( Term::fg::black )
+        << Term::color( Term::style::bold )
+        << "========" 
+        << Term::color( Term::fg::reset )
+        << Term::color( Term::style::reset );
 
     for ( int i = 0; i < tutorialData_.tutorialStatement().size(); i++ )
     {
         Pause::pause();
 
         std::cout << "\n " 
-            << BOLDMAGENTA << tutorialData_.tutorialStatement()[i] 
-            << RESET;
+            << Term::color( Term::fg::magenta )
+            << Term::color( Term::style::bold ) 
+            << tutorialData_.tutorialStatement()[i] 
+            << Term::color( Term::fg::reset )
+            << Term::color( Term::style::reset );
     }
 
     std::cout << "\n";

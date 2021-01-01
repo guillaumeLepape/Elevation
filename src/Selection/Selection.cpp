@@ -5,10 +5,10 @@
 #include <limits>
 
 #include "Selection.h"
-#include "color.h"
 #include "Pause.h"
-
 #include "SelectionWriter.h"
+
+#include <cpp-terminal/terminal.h>
 
 int Selection::select
 ( 
@@ -26,12 +26,23 @@ int Selection::select
     {
         if ( actions.size() != 1 )
         {
-            std::cout << BOLDRED << "Selection invalide - Entrez un nombre compris entre 1 et " 
-                << actions.size() << " !" <<  RESET << "\n";
+            std::cout << Term::color( Term::fg::red )
+                << Term::color( Term::style::bold ) 
+                << "Selection invalide - Entrez un nombre compris entre 1 et " 
+                << actions.size() 
+                << " !" 
+                << Term::color( Term::fg::reset )
+                << Term::color( Term::style::reset )  
+                << "\n";
         }
         else 
         {
-            std::cout << BOLDRED << "Selection invalide - Entrez un nombre égale à 1 !" << RESET << "\n";
+            std::cout << Term::color( Term::fg::red )
+                << Term::color( Term::style::bold )  
+                << "Selection invalide - Entrez un nombre égale à 1 !" 
+                << Term::color( Term::fg::reset )
+                << Term::color( Term::style::reset )   
+                << "\n";
         }
         // reset error flags
         std::cin.clear();

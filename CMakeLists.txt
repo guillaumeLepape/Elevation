@@ -232,5 +232,16 @@ add_subdirectory( libraries/tabulate )
 add_subdirectory( libraries/json ) 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 
-target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json tabulate::tabulate )
-target_link_libraries(dataset PRIVATE nlohmann_json::nlohmann_json )
+add_subdirectory( libraries/cpp-terminal )
+
+target_link_libraries(
+    main 
+    PRIVATE nlohmann_json::nlohmann_json 
+    PRIVATE tabulate::tabulate
+    PRIVATE cpp-terminal
+)
+
+target_link_libraries(
+    dataset 
+    PRIVATE nlohmann_json::nlohmann_json 
+)

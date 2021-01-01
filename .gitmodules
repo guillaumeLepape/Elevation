@@ -4,3 +4,6 @@
 [submodule "libraries/tabulate"]
 	path = libraries/tabulate
 	url = git@github.com:p-ranav/tabulate.git
+[submodule "libraries/cpp-terminal"]
+	path = libraries/cpp-terminal
+	url = git@github.com:jupyter-xeus/cpp-terminal.git

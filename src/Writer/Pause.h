@@ -8,6 +8,8 @@
 #include <string>
 #include <iostream>
 
+#include <cpp-terminal/terminal.h>
+
 /*!
     * \class Pause
     * \brief class with only one static function to pause message
@@ -22,13 +24,26 @@ class Pause
         */
         static void pause()
         {
-            std::string myString = "";
+            try {
+                Term::Terminal term;
 
-            do 
-            {
-                std::getline(std::cin, myString);
+                bool on = true;
+                while(on)
+                {
+                    int key = term.read_key();
+
+                    if ( key == Term::Key::ENTER )
+                    {
+                        on = false;
+                    }
+                }
+            } 
+            catch(const std::runtime_error& re) {
+                std::cerr << "Runtime error: " << re.what() << std::endl;
             }   
-            while (myString.length() != 0);
+            catch(...) {
+                std::cerr << "Unknown error." << std::endl;
+            }
         }
 };
 

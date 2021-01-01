@@ -7,7 +7,8 @@
 #include <iomanip>
 
 #include "Pause.h"
-#include "color.h"
+
+#include <cpp-terminal/terminal.h>
 
 HeaderWriter::HeaderWriter( const nlohmann::json& jsonObject ) :
     headerData_( jsonObject )
@@ -32,14 +33,31 @@ void HeaderWriter::writeHeader() const
     Pause::pause();
 
     // print level name
-    std::cout << "\n " << REDSIDEBAR << BOLDWHITE << headerData_.nameLevel() << RESET;
-    std::cout << "\n" << BOLDBLACK << "========" << RESET;
+    std::cout << "\n " 
+        << Term::color( Term::bg::red )
+        << Term::color( Term::style::bold ) 
+        << headerData_.nameLevel() 
+        << Term::color( Term::bg::reset )
+        << Term::color( Term::style::reset );
+        
+    std::cout << "\n"
+        << Term::color( Term::fg::black )
+        << Term::color( Term::style::bold ) 
+        << "========" 
+        << Term::color( Term::fg::reset )
+        << Term::color( Term::style::reset ); 
 
     // print the hour
-    std::cout << "\n " << BOLDWHITE;
+    std::cout << "\n " << Term::color( Term::style::bold );
     std::cout << std::setfill('0') << std::setw(2) << headerData_.hour();
     std::cout << "h";
     std::cout << std::setfill('0') << std::setw(2) << headerData_.minut();
-    std::cout << RESET;
-    std::cout << "\n" <<  BOLDBLACK << "========" << RESET;
+    std::cout << Term::color( Term::style::reset );
+
+    std::cout << "\n" 
+        << Term::color( Term::fg::black )
+        << Term::color( Term::style::bold )
+        << "========" 
+        << Term::color( Term::fg::reset )
+        << Term::color( Term::style::reset ); 
 }

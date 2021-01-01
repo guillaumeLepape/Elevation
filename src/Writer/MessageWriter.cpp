@@ -4,11 +4,10 @@
 
 #include "MessageWriter.h"
 
-// #include <iostream>
-
 #include "Token.h"
-#include "color.h"
 #include "Pause.h"
+
+#include <cpp-terminal/terminal.h>
 
 MessageWriter::MessageWriter
 (
@@ -42,19 +41,37 @@ void MessageWriter::writeName( const int& i ) const
 {
     if ( messageData_.tokenName()[i] == "player" )
     {
-        std::cout << "\n        " << BOLDGREEN << messageData_.name()[i] << RESET << BLUE;
+        std::cout << "\n        " 
+            << Term::color( Term::fg::green )
+            << Term::color( Term::style::bold )
+            << messageData_.name()[i] 
+            << Term::color( Term::fg::reset )
+            << Term::color( Term::style::reset );
+
+        std::cout << Term::color( Term::fg::blue )
+            << Term::color( Term::style::bold );
     }
     else if ( messageData_.tokenName()[i] == "plug" )
     {
-        std::cout << "\n        " << BOLDRED << messageData_.name()[i]<< RESET << BLUE;
+        std::cout << "\n        " 
+            << Term::color( Term::fg::red )
+            << Term::color( Term::style::bold ) 
+            << messageData_.name()[i]
+            << Term::color( Term::fg::reset )
+            << Term::color( Term::style::reset );
+
+        std::cout << Term::color( Term::fg::blue )
+            << Term::color( Term::style::bold );   
     }
     else if ( messageData_.tokenName()[i] == "description" )
     {
-        std::cout << BOLDMAGENTA;
+        std::cout << Term::color( Term::fg::magenta )
+            << Term::color( Term::style::bold ) ;
     }
     else if ( messageData_.tokenName()[i] == "action" )
     {
-        std::cout << BOLDYELLOW;
+        std::cout << Term::color( Term::fg::yellow )
+            << Term::color( Term::style::bold ) ;
     }
     else
     {
@@ -64,16 +81,9 @@ void MessageWriter::writeName( const int& i ) const
 
 void MessageWriter::writeOneMessage( const int& i) const
 {
-    // if ( messageData_.token()[i] )
-    // {
-    //     std::cout << "\n " << Token::replace( messageData_.dialog()[i], player_, plug_ );
-    // }
-    // else
-    // {
-    //     std::cout << "\n " << ( messageData_.dialog()[i] );
-    // }
     std::cout << "\n " << ( messageData_.dialog()[i] );
-    std::cout << RESET;
+    std::cout << Term::color( Term::fg::reset )
+        << Term::color( Term::style::reset );
 }
 
 void MessageWriter::writeMessage() const
