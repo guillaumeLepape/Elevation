@@ -11,8 +11,6 @@
 class Question
 {   
     private:
-        static std::vector<Action*> convertAnswersToActions( const std::vector<Answer*>& answers );
-
         Question() {}
 
     public:

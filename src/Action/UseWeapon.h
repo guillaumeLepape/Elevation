@@ -10,7 +10,7 @@
 class UseWeapon : public Action
 {
     private:
-        const Weapon& weapon_;
+        const std::string nameWeapon_;
         Player* const player_;
         Plug* const plug_;
 
@@ -24,15 +24,17 @@ class UseWeapon : public Action
             const std::string& nameFile
         ) : 
             Action( folderFromRoot, nameFile ),
-            weapon_( player->weaponFromName( nameWeapon ) ),
+            nameWeapon_( nameWeapon ),
             player_(player),
             plug_(plug)
         {}
 
         void triggerAction() override
-        {
-            player_->changeWeapon( weapon_.name() );
-            plug_->decreaseLifePoints( weapon_.damageWeapon() );
+        {   
+            const Weapon& weapon = player_->weaponFromName( nameWeapon_ );
+
+            player_->changeWeapon( weapon.name() );
+            plug_->decreaseLifePoints( weapon.damageWeapon() );
 
             actionWriter_.preTreatmentResult( player_, plug_ );
             actionWriter_.writeResult();
@@ -41,6 +43,8 @@ class UseWeapon : public Action
             dead.preTreatmentResult( player_, plug_ );
             dead.triggerAction();
         }
+
+        const std::string& nameWeapon() const { return nameWeapon_; }
 };
 
 #endif

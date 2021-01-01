@@ -14,22 +14,10 @@ bool Question::question
 )
 {
     int result = Selection::select(
-        convertAnswersToActions( answers ),
+        (const std::vector<Action*>&) answers,
         folderFromRoot,
         nameFile
     );
 
     return answers[result]->correctOrNot();
-}
-
-std::vector<Action*> Question::convertAnswersToActions( const std::vector<Answer*>& answers )
-{
-    std::vector<Action*> actions;
-
-    for ( auto i = answers.cbegin(); i != answers.cend(); i++ )
-    {
-        actions.push_back( *i );
-    }
-
-    return actions;
 }

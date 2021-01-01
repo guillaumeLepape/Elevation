@@ -15,11 +15,13 @@ Fight::Fight
 ( 
     Player* const player, 
     std::vector<Plug>& plugs, 
-    const MessageHandler& messageHandler 
+    const MessageHandler& messageHandler,
+    const std::vector<Combo*>& combos
 ) : 
     player_( player ),
     plugs_( plugs ),
-    messageHandler_( messageHandler )
+    messageHandler_( messageHandler ),
+    combos_( combos )
 {
 
 }
@@ -57,7 +59,7 @@ void Fight::startFight()
             "selection0"
         );
 
-        auto weapons = player_->weapons();
+        std::vector<Weapon> weapons = player_->weapons();
 
         std::vector<Action*> useWeapons;
 
@@ -80,6 +82,16 @@ void Fight::startFight()
             "selection1"
         );
 
+        // launch every combo
+        for ( int i = 0; i < combos_.size(); i++ )
+        {
+            combos_[i]->triggerCombo( 
+                ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug(),
+                resultUseWeapon, 
+                (const std::vector<UseWeapon*>&) useWeapons 
+            );
+        }
+
         fightWriter.writeRemoveDeadBody();
     }
 
@@ -99,18 +111,3 @@ const bool Fight::enemiesDeadOrNot() const
 
     return result;
 }
-
-// void Fight::removeDeadEnnemies() 
-// {
-//     Pause::pause();
-
-//     std::cout << "\n " << "Evacuation des cadavres en cours.";
-
-//     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
-//     {
-//         if ( e->deadOrNot() )
-//         {
-//             plugs_.erase( e );
-//         }   
-//     }
-// }

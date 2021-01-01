@@ -14,7 +14,7 @@ Player::Player( const std::string& pseudo, const std::string& id, const int& nbL
     nbLifePoints_(100),
     money_(200),
     dead_(false),
-    weapons_( 1, Weapon("fist", 20, "Cognez !") ),
+    weapons_( 1, Weapon("fist", 20) ),
     selectedWeapon_(0),
     price_(0)
 {
@@ -53,3 +53,8 @@ const Weapon& Player::weaponFromName( const std::string& nameWeapon ) const
 
     assert(false);
 } 
+
+void Player::deleteWeapon() 
+{
+    weapons_.pop_back();
+}

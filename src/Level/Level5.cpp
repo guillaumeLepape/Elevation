@@ -11,6 +11,8 @@
 #include "Selection.h"
 #include "Fight.h"
 
+#include "ComboFistWeapon.h"
+
 void Level5::startLevel()
 {
     std::string folder = "data/Level5";
@@ -35,10 +37,14 @@ void Level5::startLevel()
     std::vector<Plug> fistFightEnemi;
     fistFightEnemi.push_back( guetteur );
 
+    std::vector<Combo*> combosFirstFight;
+    combosFirstFight.push_back( new ComboFistWeapon( player_ ) );
+
     Fight firstFight( 
         player_,
         fistFightEnemi,
-        messageHandler
+        messageHandler,
+        combosFirstFight
     );
     firstFight.startFight();
 
@@ -52,10 +58,14 @@ void Level5::startLevel()
     enemies.push_back( randomDebile2 );
     enemies.push_back( pasFuteFute );
 
+    std::vector<Combo*> combosSecondFight;
+    combosSecondFight.push_back( new ComboFistWeapon( player_ ) );
+
     Fight fight( 
         player_, 
         enemies,
-        messageHandler 
+        messageHandler,
+        combosSecondFight
     );
     fight.startFight(); 
 

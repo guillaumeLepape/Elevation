@@ -10,21 +10,18 @@
 class Weapon 
 {
     private: 
-        std::string name_;
-        int damageWeapon_;
-        std::string statementAction_;
+        const std::string name_;
+        const int damageWeapon_;
         std::string defaultNameUseWeapon_;
 
     public:
         Weapon
         ( 
             const std::string& name, 
-            const int& damageWeapon, 
-            const std::string& statementAction
+            const int& damageWeapon 
         ) :
             name_( name ),
-            damageWeapon_( damageWeapon ),
-            statementAction_( statementAction )
+            damageWeapon_( damageWeapon )
         {
             defaultNameUseWeapon_ = "use";
             char firstLetter = std::toupper( name[0] );
@@ -34,7 +31,6 @@ class Weapon
 
         const std::string& name() const { return name_; }
         const int& damageWeapon() const { return damageWeapon_; }
-        const std::string& statementAction() const { return statementAction_; }
         const std::string& nameUseWeapon() const { return defaultNameUseWeapon_; }
 };
 
