@@ -53,7 +53,7 @@ void Level3::startLevel()
 
     messageHandler.nextMessage();
 
-    player_->addWeapon( Weapon( "knife", 30 ) );
+    player_->addWeapon( Weapon( "knife", 30, WeaponType::meleeWeapon ) );
 
     UseWeapon useKnife( player_, &plug, "knife", "data/Weapon", "useKnife" );
 

@@ -23,7 +23,7 @@ void ComboFistWeapon::triggerCombo
 {
     // if the player has attack with his fist, trigger the combo 
     // and the ennemy is not dead
-    if ( useWeapon[resultChooseWeapon]->nameWeapon() == "fist" 
+    if ( (player_->weaponFromName( useWeapon[resultChooseWeapon]->nameWeapon() )).weaponType() == WeaponType::fist 
             && !( plug->deadOrNot() ) )
     {
         // Build vector of useWeapon actions without the fist action
@@ -35,7 +35,8 @@ void ComboFistWeapon::triggerCombo
             {
                 Weapon weapon( 
                     useWeapon[i]->nameWeapon() + "FistCombo",
-                    (player_->weaponFromName( useWeapon[i]->nameWeapon() ).damageWeapon())/2                
+                    (player_->weaponFromName( useWeapon[i]->nameWeapon() ).damageWeapon())/2,
+                    WeaponType::meleeWeapon                
                 );
 
                 player_->addWeapon( weapon );

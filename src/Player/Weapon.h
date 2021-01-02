@@ -7,21 +7,31 @@
 
 #include <string>
 
+enum class WeaponType
+{
+    fist = 0,
+    meleeWeapon = 1,
+    fireArm = 2
+};
+
 class Weapon 
 {
     private: 
         const std::string name_;
         const int damageWeapon_;
         std::string defaultNameUseWeapon_;
+        WeaponType weaponType_;
 
     public:
         Weapon
         ( 
             const std::string& name, 
-            const int& damageWeapon 
+            const int& damageWeapon,
+            WeaponType weaponType
         ) :
             name_( name ),
-            damageWeapon_( damageWeapon )
+            damageWeapon_( damageWeapon ),
+            weaponType_( weaponType )
         {
             defaultNameUseWeapon_ = "use";
             char firstLetter = std::toupper( name[0] );
@@ -32,6 +42,7 @@ class Weapon
         const std::string& name() const { return name_; }
         const int& damageWeapon() const { return damageWeapon_; }
         const std::string& nameUseWeapon() const { return defaultNameUseWeapon_; }
+        const WeaponType& weaponType() const { return weaponType_; }
 };
 
 #endif

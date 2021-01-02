@@ -14,7 +14,7 @@ Player::Player( const std::string& pseudo, const std::string& id, const int& nbL
     nbLifePoints_(100),
     money_(200),
     dead_(false),
-    weapons_( 1, Weapon("fist", 20) ),
+    weapons_( 1, Weapon("fist", 20, WeaponType::fist) ),
     selectedWeapon_(0),
     price_(0)
 {
