@@ -1,6 +1,6 @@
 # Clone the repository
 
-This repository contains some libraries and using Github submodules to integrate them. So to clone the repository, the `--recurse-submodule` option has to used. With this option, repository has to with ssh : 
+This repository contains some libraries and using Github submodules to integrate them. So to clone the repository, the `--recurse-submodule` option has to used. With this option, repository has to be cloned with ssh : 
 
 With SSH :
 ```shell
@@ -9,26 +9,32 @@ With SSH :
 
 # Requirements
 
-CMake 3.1 or more
-Boost 1.71 or more
+1. CMake 3.1 or more
+```shell
+    sudo apt install cmake 
+```
+2. Boost 1.71 or more
+```shell
+    sudo apt install libboost1.71-dev
+```
 
 # Compilation
 
-Create the `build` directory in this folder and go to it with
+Generate the makefile in repository folder with
 
 ```shell
-    mkdir build
-    cd build
+    cmake -Bbuild -S.
 ```
 
-Generate the makefile in `build` folder with
+In repository folder, compile with
 
 ```shell
-    cmake ..
+    cmake --build build
 ```
 
-In `build` folder, compile with
+# Run program
 
+Once the program is compiled, go to `build` folder and run `main` executable by writing
 ```shell
-    make
+    ./main
 ```

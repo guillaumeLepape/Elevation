@@ -229,8 +229,8 @@ add_executable(dataset
 
 add_subdirectory( libraries/tabulate )
 
-add_subdirectory( libraries/json ) 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory( libraries/json ) 
 
 add_subdirectory( libraries/cpp-terminal )
 
