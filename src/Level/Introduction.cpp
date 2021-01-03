@@ -7,7 +7,7 @@
 #include "HeaderWriter.h"
 #include "Pseudo.h"
 
-void Introduction::startLevel()
+void Introduction::startLevel( const Options& options )
 {
     std::string folder = "data/Introduction";
 

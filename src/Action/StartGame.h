@@ -16,17 +16,20 @@ class StartGame : public Action
 {
     private:
         Player player_;
+        const Options& options_;
 
     public: 
         StartGame
         ( 
             const std::string& folderFromRoot, 
             const std::string& nameFile,
+            const Options& options,
             const Result& result 
                 = { "Joueur", Id::generateId(), 0 }
         ) : 
             Action( folderFromRoot, nameFile ),
-            player_( result.pseudo_, result.id_, result.nbLevelSuceeded_ )
+            player_( result.pseudo_, result.id_, result.nbLevelSuceeded_ ),
+            options_( options )
         {
 
         }
@@ -38,7 +41,7 @@ class StartGame : public Action
             {
                 std::unique_ptr<Level> level = LevelFactory::newLevel( &player_, i );
 
-                level->startLevel();
+                level->startLevel( options_ );
             }
 
             ResultsData resultsData;

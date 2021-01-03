@@ -172,6 +172,7 @@ include_directories(
 )
 
 set(HEADER_WRITER
+    ${FOLDER_WRITER}/Options.h
     ${FOLDER_WRITER}/Pause.h
     ${FOLDER_WRITER}/Rules.h
     ${FOLDER_WRITER}/HeaderWriter.h
@@ -186,6 +187,7 @@ set(HEADER_WRITER
 )
 
 set(SOURCE_WRITER
+    ${FOLDER_WRITER}/Options.cpp
     ${FOLDER_WRITER}/Rules.cpp
     ${FOLDER_WRITER}/HeaderWriter.cpp
     ${FOLDER_WRITER}/MessageWriter.cpp
@@ -234,11 +236,14 @@ add_subdirectory( libraries/json )
 
 add_subdirectory( libraries/cpp-terminal )
 
+add_subdirectory( libraries/boost-cmake )
+
 target_link_libraries(
     main 
     PRIVATE nlohmann_json::nlohmann_json 
     PRIVATE tabulate::tabulate
     PRIVATE cpp-terminal
+    PRIVATE Boost::program_options
 )
 
 target_link_libraries(

@@ -11,7 +11,7 @@
 
 #include "HeaderWriter.h"
 
-void Level2::startLevel()
+void Level2::startLevel( const Options& options )
 {
     std::string folder = "data/Level2";
 

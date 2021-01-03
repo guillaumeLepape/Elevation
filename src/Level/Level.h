@@ -6,6 +6,7 @@
 */
 
 #include "Player.h"
+#include "Options.h"
 
 class Level
 {
@@ -18,7 +19,7 @@ class Level
         {  
             
         }
-        virtual void startLevel() = 0;
+        virtual void startLevel( const Options& options ) = 0;
         virtual ~Level() {}
 };
 

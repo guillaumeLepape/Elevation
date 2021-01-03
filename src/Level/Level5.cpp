@@ -13,7 +13,7 @@
 
 #include "ComboFistWeapon.h"
 
-void Level5::startLevel()
+void Level5::startLevel( const Options& options )
 {
     std::string folder = "data/Level5";
 
@@ -28,11 +28,17 @@ void Level5::startLevel()
     messageHandler.nextMessage();
     messageHandler.nextMessage();
 
-    TutorialWriter tutorial0( folder, "tutorial0" );
-    tutorial0.writeTutorial();
+    if ( !options.noRule_ )
+    {
+        TutorialWriter tutorial0( folder, "tutorial0" );
+        tutorial0.writeTutorial();
+    }
 
-    TutorialWriter tutorial1( folder, "tutorial1" );
-    tutorial1.writeTutorial();
+    if ( !options.noRule_ )
+    {   
+        TutorialWriter tutorial1( folder, "tutorial1" );
+        tutorial1.writeTutorial();
+    }
 
     std::vector<Plug> fistFightEnemi;
     fistFightEnemi.push_back( guetteur );

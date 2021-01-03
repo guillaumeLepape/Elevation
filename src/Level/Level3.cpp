@@ -10,7 +10,7 @@
 #include "HeaderWriter.h"
 #include "MessageHandler.h"
 
-void Level3::startLevel()
+void Level3::startLevel( const Options& options )
 {
     std::string folder = "data/Level3";
 

@@ -75,6 +75,8 @@
         "scoped_allocator": "cpp",
         "typeindex": "cpp",
         "*.ipp": "cpp",
-        "strstream": "cpp"
+        "strstream": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp"
     }
 }

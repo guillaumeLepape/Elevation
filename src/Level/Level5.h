@@ -20,7 +20,7 @@ class Level5 : public Level
 
         }
 
-        void startLevel() override;
+        void startLevel( const Options& options ) override;
 
         ~Level5() {}
 };

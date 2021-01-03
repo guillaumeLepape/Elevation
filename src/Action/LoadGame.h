@@ -11,13 +11,18 @@
 
 class LoadGame : public Action
 {
+    private:
+        const Options& options_;
+
     public:
         LoadGame
         ( 
             const std::string& folderFromRoot, 
-            const std::string& nameFile 
+            const std::string& nameFile,
+            const Options& options
         ) :
-            Action( folderFromRoot, nameFile )
+            Action( folderFromRoot, nameFile ),
+            options_( options )
         {
 
         }
@@ -43,7 +48,7 @@ class LoadGame : public Action
                 std::vector<Action*> actions;
                 for ( int i = 0; i < results.size(); i++ )
                 {
-                    Action* startGame = new StartGame( "data/Menu", "loadGameSelection", results[i] );
+                    Action* startGame = new StartGame( "data/Menu", "loadGameSelection", options_, results[i] );
                     Player player( results[i].pseudo_, results[i].id_, results[i].nbLevelSuceeded_ );
                     startGame->preTreatmentStatement( &player, nullptr );
 

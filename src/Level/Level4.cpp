@@ -8,7 +8,7 @@
 
 #include "HeaderWriter.h"
 
-void Level4::startLevel()
+void Level4::startLevel( const Options& options )
 {
     std::string folder = "data/Level4";
 
