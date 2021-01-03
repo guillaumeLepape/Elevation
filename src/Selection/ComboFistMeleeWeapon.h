@@ -2,15 +2,15 @@
 #define COMBO_FIST_WEAPON_H
 
 /*!
-    * \file ComboFistWeapon.h
+    * \file ComboFistMeleeWeapon.h
 */
 
 #include "Combo.h"
 
-class ComboFistWeapon : public Combo
+class ComboFistMeleeWeapon : public Combo
 {
     public:
-        ComboFistWeapon
+        ComboFistMeleeWeapon
         ( 
             Player* const player
         );

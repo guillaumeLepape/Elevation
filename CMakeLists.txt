@@ -151,14 +151,14 @@ set(HEADER_SELECTION
     ${FOLDER_SELECTION}/Selection.h
     ${FOLDER_SELECTION}/Question.h
     ${FOLDER_SELECTION}/Combo.h
-    ${FOLDER_SELECTION}/ComboFistWeapon.h
+    ${FOLDER_SELECTION}/ComboFistMeleeWeapon.h
 )
 
 set(SOURCE_SELECTION
     ${FOLDER_SELECTION}/Fight.cpp
     ${FOLDER_SELECTION}/Selection.cpp
     ${FOLDER_SELECTION}/Question.cpp
-    ${FOLDER_SELECTION}/ComboFistWeapon.cpp
+    ${FOLDER_SELECTION}/ComboFistMeleeWeapon.cpp
 )
 
 #

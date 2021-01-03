@@ -11,7 +11,7 @@
 #include "Selection.h"
 #include "Fight.h"
 
-#include "ComboFistWeapon.h"
+#include "ComboFistMeleeWeapon.h"
 
 void Level5::startLevel( const Options& options )
 {
@@ -44,7 +44,7 @@ void Level5::startLevel( const Options& options )
     fistFightEnemi.push_back( guetteur );
 
     std::vector<Combo*> combosFirstFight;
-    combosFirstFight.push_back( new ComboFistWeapon( player_ ) );
+    combosFirstFight.push_back( new ComboFistMeleeWeapon( player_ ) );
 
     Fight firstFight( 
         player_,
@@ -65,7 +65,7 @@ void Level5::startLevel( const Options& options )
     enemies.push_back( pasFuteFute );
 
     std::vector<Combo*> combosSecondFight;
-    combosSecondFight.push_back( new ComboFistWeapon( player_ ) );
+    combosSecondFight.push_back( new ComboFistMeleeWeapon( player_ ) );
 
     Fight fight( 
         player_, 

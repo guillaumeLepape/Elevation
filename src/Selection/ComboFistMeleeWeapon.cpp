@@ -1,11 +1,11 @@
 /*!
-    * \file ComboFistWeapon.cpp
+    * \file ComboFistMeleeWeapon.cpp
 */
 
-#include "ComboFistWeapon.h"
+#include "ComboFistMeleeWeapon.h"
 #include "Selection.h"
 
-ComboFistWeapon::ComboFistWeapon
+ComboFistMeleeWeapon::ComboFistMeleeWeapon
 ( 
     Player* const player
 ) :
@@ -14,7 +14,7 @@ ComboFistWeapon::ComboFistWeapon
 
 }
 
-void ComboFistWeapon::triggerCombo
+void ComboFistMeleeWeapon::triggerCombo
 (
     Plug* const plug,
     const int& resultChooseWeapon, 
