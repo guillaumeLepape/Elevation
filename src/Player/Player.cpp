@@ -55,11 +55,6 @@ const Weapon& Player::weaponFromName( const std::string& nameWeapon ) const
     assert(false);
 } 
 
-// bool Player::checkNameWeapon( const std::string& nameWeapon )
-// {
-//     return ( nameWeapon == weapon.name() );
-// }
-
 void Player::deleteWeapon( const std::string& nameWeapon ) 
 {
     auto x = [&nameWeapon]( const Weapon& weapon ) { return nameWeapon == weapon.name(); };
@@ -74,4 +69,17 @@ void Player::deleteWeapon( const std::string& nameWeapon )
         ),
         weapons_.end()
     );
+}
+
+bool Player::containWeaponType( WeaponType weaponType )
+{
+    for ( auto w = weapons_.cbegin(); w != weapons_.cend(); w++ )
+    {
+        if ( w->weaponType() == weaponType )
+        {
+            return true;
+        }
+    }
+
+    return false;
 }

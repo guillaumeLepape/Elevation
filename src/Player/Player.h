@@ -44,8 +44,8 @@ class Player
         void deleteWeapon( const std::string& nameWeapon );
         const Weapon& weaponFromName( const std::string& nameWeapon ) const;
         const Weapon& selectedWeapon() const { return weapons_[selectedWeapon_]; }
-
-        bool checkNameWeapon( const std::string& nameWeapon );
+        
+        bool containWeaponType( WeaponType weaponType );
 
         const std::vector<Weapon>& weapons() const { return weapons_; }
 
