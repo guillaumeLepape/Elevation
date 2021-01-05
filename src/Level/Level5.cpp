@@ -12,6 +12,7 @@
 #include "Fight.h"
 
 #include "ComboFistMeleeWeapon.h"
+#include "ComboDoubleMeleeWeapon.h"
 
 void Level5::startLevel( const Options& options )
 {
@@ -45,6 +46,7 @@ void Level5::startLevel( const Options& options )
 
     std::vector<Combo*> combosFirstFight;
     combosFirstFight.push_back( new ComboFistMeleeWeapon( player_ ) );
+    combosFirstFight.push_back( new ComboDoubleMeleeWeapon( player_ ) );
 
     Fight firstFight( 
         player_,
@@ -66,6 +68,7 @@ void Level5::startLevel( const Options& options )
 
     std::vector<Combo*> combosSecondFight;
     combosSecondFight.push_back( new ComboFistMeleeWeapon( player_ ) );
+    combosSecondFight.push_back( new ComboDoubleMeleeWeapon( player_ ) );
 
     Fight fight( 
         player_, 

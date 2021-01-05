@@ -1,20 +1,17 @@
-#ifndef COMBO_FIST_MELEE_WEAPON_H
-#define COMBO_FIST_MELEE_WEAPON_H
+#ifndef COMBO_DOUBLE_MELEE_WEAPON
+#define COMBO_DOUBLE_MELEE_WEAPON
 
 /*!
-    * \file ComboFistMeleeWeapon.h
+    * \file ComboDoubleMeleeWeapon.h
 */
 
 #include "Combo.h"
 
-class ComboFistMeleeWeapon : public Combo
+class ComboDoubleMeleeWeapon : public Combo
 {
     public:
-        ComboFistMeleeWeapon
-        ( 
-            Player* const player
-        );
-
+        ComboDoubleMeleeWeapon( Player* const player );
+        
         void triggerCombo
         ( 
             Plug* const plug,

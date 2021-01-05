@@ -56,12 +56,12 @@ void ComboFistMeleeWeapon::triggerCombo
         Selection::select(
             useWeaponFistCombo,
             "data/Weapon",
-            "selection0"
+            "comboPoingMelee"
         );
 
         for ( int i = 0; i < useWeaponFistCombo.size(); i++ )
         {
-            player_->deleteWeapon();
+            player_->deleteWeapon( ((UseWeapon*) useWeaponFistCombo[i])->nameWeapon() );
         }
     }       
 }

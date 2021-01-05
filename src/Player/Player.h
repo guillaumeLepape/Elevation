@@ -41,9 +41,11 @@ class Player
 
         void changeWeapon( const std::string& nameWeapon ); 
         void addWeapon( const Weapon& weapon ) { weapons_.push_back( weapon ); }
-        void deleteWeapon();
+        void deleteWeapon( const std::string& nameWeapon );
         const Weapon& weaponFromName( const std::string& nameWeapon ) const;
         const Weapon& selectedWeapon() const { return weapons_[selectedWeapon_]; }
+
+        bool checkNameWeapon( const std::string& nameWeapon );
 
         const std::vector<Weapon>& weapons() const { return weapons_; }
 

@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <cassert>
+#include <algorithm>
 
 Player::Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded ) :
     pseudo_( pseudo ),
@@ -54,7 +55,23 @@ const Weapon& Player::weaponFromName( const std::string& nameWeapon ) const
     assert(false);
 } 
 
-void Player::deleteWeapon() 
+// bool Player::checkNameWeapon( const std::string& nameWeapon )
+// {
+//     return ( nameWeapon == weapon.name() );
+// }
+
+void Player::deleteWeapon( const std::string& nameWeapon ) 
 {
-    weapons_.pop_back();
+    auto x = [&nameWeapon]( const Weapon& weapon ) { return nameWeapon == weapon.name(); };
+
+    weapons_.erase
+    (
+        std::remove_if
+        ( 
+            weapons_.begin(), 
+            weapons_.end(), 
+            x
+        ),
+        weapons_.end()
+    );
 }
