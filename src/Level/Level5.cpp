@@ -21,8 +21,8 @@ void Level5::startLevel( const Options& options )
     HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-
-    Plug guetteur( "Guetteur", 0, 15 );
+    Weapon knife( "Couteau", 30, WeaponType::meleeWeapon );
+    Plug guetteur( "Guetteur", 0, 15, knife );
 
     MessageHandler messageHandler( folder, "message" );
     messageHandler.preTreatment( player_, &guetteur );
@@ -56,10 +56,9 @@ void Level5::startLevel( const Options& options )
     );
     firstFight.startFight();
 
-
-    Plug randomDebile( "Random debile", 0, 50 );
-    Plug randomDebile2( "Random debile 2", 0, 70 );
-    Plug pasFuteFute( "Pas fute-fute", 0, 100 );
+    Plug randomDebile( "Random debile", 0, 50, knife );
+    Plug randomDebile2( "Random debile 2", 0, 70, knife );
+    Plug pasFuteFute( "Pas fute-fute", 0, 100, knife );
 
     std::vector<Plug> enemies;
     enemies.push_back( randomDebile );
@@ -77,6 +76,8 @@ void Level5::startLevel( const Options& options )
         combosSecondFight
     );
     fight.startFight(); 
+
+    Level::endOfLevel();
 
     std::cout << "\n";
 }

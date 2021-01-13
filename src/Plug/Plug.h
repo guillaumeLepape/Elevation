@@ -5,7 +5,7 @@
     * \file Plug.h
 */
 
-#include <string>
+#include "Weapon.h"
 
 class Plug 
 {
@@ -13,9 +13,10 @@ class Plug
         const std::string name_;
         const int price_;
         int lifePoints_;
+        Weapon weapon_;
 
     public:
-        explicit Plug( const std::string& name, const int& price, const int& lifePoints = 100 );
+        explicit Plug( const std::string& name, const int& price, const int& lifePoints = 100, const Weapon& weapon = Weapon() );
         const std::string& name() const { return name_; }
         const int& price() const { return price_; }
 
@@ -23,6 +24,8 @@ class Plug
         void decreaseLifePoints( const int& lifePoints) { lifePoints_ -= lifePoints; } 
 
         const bool deadOrNot() const { return (lifePoints_ <= 0); }
+
+        const Weapon& weapon() const { return weapon_; }
 };
 
 #endif

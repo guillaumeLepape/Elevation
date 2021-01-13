@@ -44,9 +44,8 @@ class StartGame : public Action
                 level->startLevel( options_ );
             }
 
-            ResultsData resultsData;
-            resultsData.addResult( { player_.pseudo(), player_.id(), i-1 } );
-            resultsData.writeData();
+            WriteResults writeResults( "data/Menu", "writeResults", &player_, i-1 );
+            writeResults.triggerAction();
         }
 };
 

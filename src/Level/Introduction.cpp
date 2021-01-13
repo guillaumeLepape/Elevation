@@ -24,5 +24,7 @@ void Introduction::startLevel( const Options& options )
     messageHandler.preTreatment( player_, nullptr, 4 );
     messageHandler.writeMessage(4);
 
+    Level::endOfLevel();
+
     std::cout << "\n";
 }

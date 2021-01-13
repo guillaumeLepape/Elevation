@@ -5,8 +5,6 @@
     * \file Options.h
 */
 
-#include <mutex>
-
 #include <boost/program_options.hpp>
 
 class Options

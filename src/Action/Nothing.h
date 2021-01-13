@@ -5,6 +5,8 @@
     * \file Nothing.h
 */
 
+#include "Action.h"
+
 class Nothing : public Action
 {
     public:

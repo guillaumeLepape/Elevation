@@ -25,5 +25,7 @@ void Level1::startLevel( const Options& options )
 
     player_->increaseMoney( -plug.price() );
 
+    Level::endOfLevel();
+
     std::cout << "\n";
 }

@@ -27,5 +27,7 @@ void Level2::startLevel( const Options& options )
     Negociate negociate( player_, &plug, messageHandler, folder, "negociate" );
     negociate.triggerAction();
     
+    Level::endOfLevel();
+
     std::cout << "\n";
 }

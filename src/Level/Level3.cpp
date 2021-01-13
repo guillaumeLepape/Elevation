@@ -63,5 +63,7 @@ void Level3::startLevel( const Options& options )
         "selection3"
     );
 
+    Level::endOfLevel();
+
     std::cout << "\n";
 }

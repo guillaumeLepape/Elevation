@@ -22,6 +22,7 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/StartGame.h
     ${FOLDER_ACTION}/LoadGame.h
     ${FOLDER_ACTION}/Quit.h
+    ${FOLDER_ACTION}/WriteResults.h
 
     ${FOLDER_ACTION}/GameOver.h
     ${FOLDER_ACTION}/Negociate.h

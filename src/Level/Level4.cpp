@@ -45,5 +45,7 @@ void Level4::startLevel( const Options& options )
     while( !Question::question( { answer0_2.get(), answer1_2.get(), answer2_2.get() }, folder, "selection2" ) )
     {}
 
+    Level::endOfLevel();
+
     std::cout << "\n";
 }

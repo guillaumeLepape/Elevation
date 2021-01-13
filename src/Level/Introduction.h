@@ -9,13 +9,9 @@
 
 class Introduction : public Level
 {
-    private:
-        const int levelNumber_;
-
     public:
         explicit Introduction( Player* player ) : 
-            Level(player),
-            levelNumber_(0) 
+            Level(player,0 )
         {
 
         }

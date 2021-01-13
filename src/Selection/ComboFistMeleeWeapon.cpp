@@ -62,7 +62,7 @@ void ComboFistMeleeWeapon::triggerCombo
 
         for ( int i = 0; i < useWeaponFistCombo.size(); i++ )
         {
-            player_->deleteWeapon( ((UseWeapon*) useWeaponFistCombo[i])->nameWeapon() );
+            player_->deleteWeapon( ((const UseWeapon* const) useWeaponFistCombo[i])->nameWeapon() );
         }
     }       
 }

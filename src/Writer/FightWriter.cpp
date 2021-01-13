@@ -81,6 +81,7 @@ void FightWriter::writeGameBoard() const
     tabulate::Table fighters;
     std::vector<variant<std::string, const char *, tabulate::Table>> nameFighters;
     std::vector<variant<std::string, const char *, tabulate::Table>> lifePointsFighters;
+    std::vector<variant<std::string, const char *, tabulate::Table>> damageWeaponFighters;
 
     // build a vector of name and life points of plugs
     for(int i = 0; i < plugs_.size(); i++ )
@@ -92,11 +93,15 @@ void FightWriter::writeGameBoard() const
             lifePointsFighters.push_back( 
                 std::to_string( plugs_[i].lifePoints() ) + " points de vie" 
             );
+            damageWeaponFighters.push_back(
+                std::to_string( plugs_[i].weapon().damageWeapon() ) + " points d'attaque"
+            );
         }
     }
 
     fighters.add_row( nameFighters );
     fighters.add_row( lifePointsFighters );
+    fighters.add_row( damageWeaponFighters );
 
     std::vector<variant<std::string, const char *, tabulate::Table>> 
         emptyLine( nameFighters.size(), "" );
@@ -132,16 +137,20 @@ void FightWriter::writeGameBoard() const
         .font_color(tabulate::Color::yellow);
 
     fighters[2].format()
+        .font_align(tabulate::FontAlign::center)
+        .font_color(tabulate::Color::magenta);
+
+    fighters[3].format()
         .padding_top(1)
         .padding_bottom(1);
 
-    fighters[3].format()
+    fighters[4].format()
         .padding_top(1)
         .padding_bottom(1)
         .font_align(tabulate::FontAlign::center)
         .font_color(tabulate::Color::green);
 
-    fighters[4].format()
+    fighters[5].format()
         .font_align(tabulate::FontAlign::center)
         .font_color(tabulate::Color::yellow);
 

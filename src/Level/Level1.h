@@ -9,13 +9,9 @@
 
 class Level1 : public Level
 {
-    private:
-        int levelNumber_;
-
     public:
         explicit Level1( Player* player ) : 
-            Level(player),
-            levelNumber_(1)
+            Level(player, 1)
         {
             
         }
