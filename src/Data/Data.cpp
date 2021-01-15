@@ -19,7 +19,7 @@ Data::Data( const std::string& folderFromRoot, const std::string& fileName )
 
 void Data::openFile( const std::string& folderFromRoot, const std::string& fileName ) 
 {
-    std::string path = "../" + folderFromRoot + "/" + fileName + ".json";
+    std::string path = folderFromRoot + "/" + fileName + ".json";
     
     // open json file
     std::ifstream messageFile( path, std::ifstream::binary );

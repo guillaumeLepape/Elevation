@@ -3,15 +3,11 @@
 */
 
 
-#include "Selection.h"
-
 #include "StartGame.h"
 #include "LoadGame.h"
 #include "Quit.h"
 
 #include "Rules.h"
-
-#include <boost/program_options.hpp>
 
 int main( int argc, char* argv[] )
 {

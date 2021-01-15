@@ -6,9 +6,7 @@
 
 #include "HeaderWriter.h"
 
-#include "UseWeapon.h"
 #include "TutorialWriter.h"
-#include "Selection.h"
 #include "Fight.h"
 
 #include "ComboFistMeleeWeapon.h"

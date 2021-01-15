@@ -34,10 +34,11 @@ class Player
 
         const int& nbLifePoints() const { return nbLifePoints_; }
 
+        void decreaseLifePoints( const int& nbLifePoints ) { nbLifePoints_ -= nbLifePoints; }
+
         void increaseMoney( const int& money ) { money_ += money; }
 
-        const bool& dead() const { return dead_; }
-        void setDead( const bool& dead ) { dead_ = dead; }
+        const bool dead() const { return nbLifePoints_ <= 0; }
 
         void changeWeapon( const std::string& nameWeapon ); 
         void addWeapon( const Weapon& weapon ) { weapons_.push_back( weapon ); }

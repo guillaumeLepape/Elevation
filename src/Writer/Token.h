@@ -83,6 +83,17 @@ class Token
                     assert(false);
                 }
             }
+            else if ( vecResult[i] == "damagePlug" )
+            {
+                if ( plug != nullptr )
+                {
+                    result += std::to_string( plug->weapon().damageWeapon() );    
+                }
+                else
+                {
+                    assert(false);
+                }
+            }
             else
             {
                 result += vecResult[i];

@@ -4,12 +4,11 @@
 
 #include "Fight.h"
 
-#include <iostream>
-
 #include "FightWriter.h"
 #include "ChoosePlug.h"
+#include "PlugAttack.h"
+#include "GameOver.h"
 #include "Selection.h"
-#include "UseWeapon.h"
 
 Fight::Fight
 ( 
@@ -93,6 +92,19 @@ void Fight::startFight()
         }
 
         fightWriter.writeRemoveDeadBody();
+
+        for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
+        {
+            PlugAttack plugAttack( player_, &(*e), "data/ChoosePlug", "plugAttack" );
+            plugAttack.triggerAction();
+
+            if ( player_->dead() )
+            {
+                GameOver gameOver( "data/Menu", "quit" );
+                gameOver.triggerAction();
+            }
+        }
+
     }
 
     fightWriter.writeEndOfFight();

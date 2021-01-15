@@ -7,27 +7,24 @@
 
 #include "Action.h"
 
-class GameOver
+class GameOver : public Action
 {
-    private:
-        Player * const player_;
-
     public:
         explicit GameOver
         ( 
-            Player * const player,
             const std::string& folderFromRoot,
             const std::string& fileName
-        )
-            Action( folderFromRoot, fileName ), 
-            player_(player)
+        ) :
+            Action( folderFromRoot, fileName )
         {
 
         }
 
         void triggerAction() override
         {
-            player_->setDead( true );
+            actionWriter_.writeResult();
+            std::cout << "\n";
+            exit(0);
         }
 };
 

@@ -4,9 +4,6 @@
 
 #include "Level1.h"
 
-#include <memory>
-#include <iostream>
-
 #include "HeaderWriter.h"
 #include "MessageHandler.h"
 

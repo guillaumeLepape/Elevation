@@ -5,8 +5,8 @@
     * \file Pause.h
 */
 
-#include <string>
-#include <iostream>
+// #include <string>
+// #include <iostream>
 
 #include <cpp-terminal/terminal.h>
 

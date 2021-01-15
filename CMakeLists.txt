@@ -30,6 +30,7 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/UseWeapon.h
     ${FOLDER_ACTION}/Answer.h
     ${FOLDER_ACTION}/Dead.h
+    ${FOLDER_ACTION}/PlugAttack.h
 )
 
 set(SOURCE_ACTION

@@ -26,25 +26,16 @@ void ResultsData::readData()
 
 void ResultsData::addResult( const Result& result )
 {
-    // checking if the result already exist or not by comparing the id
-    bool exist = false;
-    
-    for ( int i = 0; i < results_.size(); i++ )
-    {
-        if ( result.id_ == results_[i].id_ )
-        {
-            exist = true;
-        }
-    }
+    const std::string& id = result.id_;
+    auto x = [&id]( const Result& r_lambda ) { return r_lambda.id_ == id; };
+    results_.remove_if( x );
 
-    // if result is not in the global results, add it
-    if ( !exist )
-        results_.push_back( result );
+    results_.push_back( result );
 }
 
 void ResultsData::writeData() const 
 {
-    std::string path = "../results/results.json";
+    std::string path = "results/results.json";
     
     // open json file
     std::ofstream jsonFile( path );
@@ -54,11 +45,15 @@ void ResultsData::writeData() const
 
     nlohmann::json jsonObjectOutput;
 
-    for ( int r = 0; r < results_.size(); r++ )
+    for ( auto r = results_.cbegin(); r != results_.cend(); r++ )
     {
-        jsonObjectOutput[r]["pseudo"] = results_[r].pseudo_;
-        jsonObjectOutput[r]["id"] = results_[r].id_;
-        jsonObjectOutput[r]["nbLevelSuceeded"] = results_[r].nbLevelSuceeded_;
+        jsonObjectOutput.push_back( 
+            { 
+                { "pseudo", r->pseudo_ },
+                { "id", r->id_ },
+                { "nbLevelSuceeded", r->nbLevelSuceeded_ }
+            }
+        );
     }
 
     // read jsonfile 

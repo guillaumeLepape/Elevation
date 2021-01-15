@@ -46,10 +46,16 @@ class LoadGame : public Action
             else
             {
                 std::vector<Action*> actions;
-                for ( int i = 0; i < results.size(); i++ )
+                for ( auto r = results.cbegin(); r != results.cend(); r++ )
                 {
-                    Action* startGame = new StartGame( "data/Menu", "loadGameSelection", options_, results[i] );
-                    Player player( results[i].pseudo_, results[i].id_, results[i].nbLevelSuceeded_ );
+                    Action* startGame = new StartGame
+                    ( 
+                        "data/Menu", 
+                        "loadGameSelection", 
+                        options_, 
+                        *r 
+                    );                   
+                    Player player( r->pseudo_, r->id_, r->nbLevelSuceeded_ );
                     startGame->preTreatmentStatement( &player, nullptr );
 
                     actions.push_back( startGame );

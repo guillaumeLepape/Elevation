@@ -16,7 +16,14 @@ class Plug
         Weapon weapon_;
 
     public:
-        explicit Plug( const std::string& name, const int& price, const int& lifePoints = 100, const Weapon& weapon = Weapon() );
+        explicit Plug
+        ( 
+            const std::string& name, 
+            const int& price, 
+            const int& lifePoints = 100, 
+            const Weapon& weapon = Weapon() 
+        );
+        
         const std::string& name() const { return name_; }
         const int& price() const { return price_; }
 
