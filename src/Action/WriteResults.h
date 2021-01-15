@@ -13,19 +13,16 @@ class WriteResults : public Action
 {
     private:
         const Player* const player_;
-        const int levelNumber_;
 
     public:
         WriteResults
         (  
             const std::string& folderFromRoot,
             const std::string& nameFile,
-            const Player* const player,
-            const int& levelNumber
+            const Player* const player
         ) :
             Action( folderFromRoot, nameFile ),
-            player_( player ),
-            levelNumber_( levelNumber )
+            player_( player )
         {
 
         }
@@ -33,7 +30,7 @@ class WriteResults : public Action
         void triggerAction() override
         {
             ResultsData resultsData;
-            resultsData.addResult( { player_->pseudo(), player_->id(), levelNumber_ } );
+            resultsData.addResult( *player_ );
             resultsData.writeData();
 
             actionWriter_.writeResult();

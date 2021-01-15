@@ -55,7 +55,7 @@ class LoadGame : public Action
                         options_, 
                         *r 
                     );                   
-                    Player player( r->pseudo_, r->id_, r->nbLevelSuceeded_ );
+                    Player player = *r;
                     startGame->preTreatmentStatement( &player, nullptr );
 
                     actions.push_back( startGame );

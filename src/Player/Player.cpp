@@ -14,10 +14,31 @@ Player::Player( const std::string& pseudo, const std::string& id, const int& nbL
     nbLevelSuceeded_( nbLevelSuceeded ),
     nbLifePoints_(100),
     money_(200),
-    dead_(false),
     weapons_( 1, Weapon("fist", 20, WeaponType::fist) ),
     selectedWeapon_(0),
     price_(0)
+{
+
+}
+
+Player::Player
+( 
+    const std::string& pseudo, 
+    const std::string& id,
+    const int& nbLevelSuceeded,
+    const int& nbLifePoints,
+    const int& money,
+    const std::vector<Weapon>& weapons,
+    const int& price
+) :
+    pseudo_( pseudo ),
+    id_( id ),
+    nbLevelSuceeded_( nbLevelSuceeded ),
+    nbLifePoints_(nbLifePoints),
+    money_(money),
+    weapons_( weapons ),
+    selectedWeapon_(0),
+    price_(price)
 {
 
 }
@@ -83,3 +104,57 @@ bool Player::containWeaponType( WeaponType weaponType )
 
     return false;
 }
+
+nlohmann::json Player::writeJson() const
+{
+    nlohmann::json jsonWeaponArray;
+    for ( auto w = weapons_.cbegin(); w != weapons_.cend(); w++ )
+    {
+        jsonWeaponArray.push_back(
+            w->writeJson()
+        );
+    }
+
+    nlohmann::json jsonObjectOutput
+    // jsonObjectOutput["pseudo"] = pseudo_;
+    // jsonObjectOutput["id"] = id_;
+    // jsonObjectOutput["nbLevelSuceeded"] = nbLevelSuceeded_;
+    // jsonObjectOutput["nbLifePoints"] = nbLifePoints_;
+    // jsonObjectOutput["money"] = money_;
+    {
+        { "pseudo", pseudo_ },
+        { "id", id_ },
+        { "nbLevelSuceeded", nbLevelSuceeded_ },
+        { "nbLifePoints", nbLifePoints_ },
+        { "money", money_ },
+        { "weapons", jsonWeaponArray },
+        { "price", price_ }
+    };
+
+    return jsonObjectOutput;
+}
+
+const Player* const Player::readJson( const nlohmann::json& jsonInput )
+{   
+    std::vector<Weapon> weapons;
+    for ( auto wJson = jsonInput["weapons"].cbegin(); wJson != jsonInput["weapons"].cend(); wJson++ )
+    {
+        weapons.push_back
+        (
+            Weapon( (*wJson)["name"], (*wJson)["damageWeapon"], (*wJson)["weaponType"] )
+        );
+    }
+
+    const Player* const player = new Player
+    ( 
+        jsonInput["pseudo"],
+        jsonInput["id"],
+        jsonInput["nbLevelSuceeded"],
+        jsonInput["nbLifePoints"],
+        jsonInput["money"],
+        weapons,
+        jsonInput["price"]
+    );
+
+    return player;
+} 

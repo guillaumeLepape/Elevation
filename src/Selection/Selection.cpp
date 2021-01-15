@@ -8,8 +8,6 @@
 #include "Pause.h"
 #include "SelectionWriter.h"
 
-#include <cpp-terminal/terminal.h>
-
 int Selection::select
 ( 
     const std::vector<Action*>& actions,

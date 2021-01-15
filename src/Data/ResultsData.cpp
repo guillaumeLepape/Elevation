@@ -14,23 +14,17 @@ void ResultsData::readData()
 {
     for ( auto i = jsonObject_.cbegin(); i != jsonObject_.cend(); i++ )
     {
-        Result result = 
-        { 
-            (*i)["pseudo"], 
-            (*i)["id"], 
-            (*i)["nbLevelSuceeded"] 
-        };
-        results_.push_back(result);
+        results_.push_back( *(Player::readJson( *i )) );
     }
 }
 
-void ResultsData::addResult( const Result& result )
+void ResultsData::addResult( const Player& player )
 {
-    const std::string& id = result.id_;
-    auto x = [&id]( const Result& r_lambda ) { return r_lambda.id_ == id; };
+    const std::string& id = player.id();
+    auto x = [&id]( const Player& player_lambda ) { return player_lambda.id() == id; };
     results_.remove_if( x );
 
-    results_.push_back( result );
+    results_.push_back( player );
 }
 
 void ResultsData::writeData() const 
@@ -47,13 +41,8 @@ void ResultsData::writeData() const
 
     for ( auto r = results_.cbegin(); r != results_.cend(); r++ )
     {
-        jsonObjectOutput.push_back( 
-            { 
-                { "pseudo", r->pseudo_ },
-                { "id", r->id_ },
-                { "nbLevelSuceeded", r->nbLevelSuceeded_ }
-            }
-        );
+        nlohmann::json jsonPlayer = r->writeJson();
+        jsonObjectOutput.push_back( jsonPlayer );
     }
 
     // read jsonfile 

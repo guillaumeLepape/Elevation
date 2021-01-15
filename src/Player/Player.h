@@ -13,13 +13,23 @@ class Player
     private:
         std::string pseudo_;    
         std::string id_;
-        const int nbLevelSuceeded_;    
+        int nbLevelSuceeded_;    
         int nbLifePoints_;
         int money_;
-        bool dead_;
         std::vector<Weapon> weapons_;
         int selectedWeapon_;
         int price_;
+
+        Player
+        ( 
+            const std::string& pseudo, 
+            const std::string& id,
+            const int& nbLevelSuceeded,
+            const int& nbLifePoints,
+            const int& money,
+            const std::vector<Weapon>& weapons,
+            const int& price
+        );
 
     public:
         Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded );
@@ -31,6 +41,7 @@ class Player
         void setPseudo( const std::string& pseudo ) { pseudo_ = pseudo; } 
 
         const int& nbLevelSuceeded() const { return nbLevelSuceeded_; }
+        void nextLevel() { nbLevelSuceeded_++; }
 
         const int& nbLifePoints() const { return nbLifePoints_; }
 
@@ -52,6 +63,10 @@ class Player
 
         const int& price() const { return price_; }
         void setPrice( const int& price ) { price_ = price; } 
+
+        nlohmann::json writeJson() const;
+        static const Player* const readJson( const nlohmann::json& jsonInput ); 
+
 };  
 
 #endif

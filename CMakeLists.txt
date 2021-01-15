@@ -120,6 +120,7 @@ set(HEADER_PLAYER
 
 set(SOURCE_PLAYER
     ${FOLDER_PLAYER}/Player.cpp
+    ${FOLDER_PLAYER}/Weapon.cpp
 )
 
 #

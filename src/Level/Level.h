@@ -20,8 +20,10 @@ class Level
 
         void endOfLevel() const 
         {
+            player_->nextLevel();
+
             std::unique_ptr<Action> continueAction( new Nothing( "data/Menu", "continue" ) );
-            std::unique_ptr<Action> saveAndQuit( new WriteResults( "data/Menu", "writeResults", player_, levelNumber_ + 1 ) );
+            std::unique_ptr<Action> saveAndQuit( new WriteResults( "data/Menu", "writeResults", player_ ) );
 
             Selection::select(
                 { continueAction.get(), saveAndQuit.get() },

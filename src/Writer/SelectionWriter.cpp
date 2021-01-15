@@ -6,8 +6,6 @@
 
 #include "Pause.h"
 
-#include <cpp-terminal/terminal.h>
-
 SelectionWriter::SelectionWriter
 ( 
     const std::vector<Action*>& actions,

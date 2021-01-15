@@ -7,6 +7,8 @@
 
 #include <string>
 
+#include <nlohmann/json.hpp>
+
 enum class WeaponType
 {
     empty = -1,
@@ -32,31 +34,20 @@ class Weapon
         }
 
     public:
-        Weapon() :
-            name_(""),
-            damageWeapon_(0),
-            weaponType_( WeaponType::empty )
-        {
-
-        }
-
+        Weapon();
         Weapon
         ( 
             const std::string& name, 
             const int& damageWeapon,
             WeaponType weaponType
-        ) :
-            name_( name ),
-            damageWeapon_( damageWeapon ),
-            weaponType_( weaponType )
-        {
-            settingNameWeapon( name );
-        }
+        );
 
         const std::string& name() const { return name_; }
         const int& damageWeapon() const { return damageWeapon_; }
         const std::string& nameUseWeapon() const { return defaultNameUseWeapon_; }
         const WeaponType& weaponType() const { return weaponType_; }
+
+        nlohmann::json writeJson() const;
 };
 
 #endif

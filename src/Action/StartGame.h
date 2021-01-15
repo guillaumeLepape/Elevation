@@ -20,11 +20,11 @@ class StartGame : public Action
             const std::string& folderFromRoot, 
             const std::string& nameFile,
             const Options& options,
-            const Result& result 
-                = { "Joueur", Id::generateId(), 0 }
+            const Player& player 
+                = Player( "Joueur", Id::generateId(), 0 )
         ) : 
             Action( folderFromRoot, nameFile ),
-            player_( result.pseudo_, result.id_, result.nbLevelSuceeded_ ),
+            player_( player ),
             options_( options )
         {
 
@@ -40,7 +40,7 @@ class StartGame : public Action
                 level->startLevel( options_ );
             }
 
-            WriteResults writeResults( "data/Menu", "writeResults", &player_, i-1 );
+            WriteResults writeResults( "data/Menu", "writeResults", &player_ );
             writeResults.triggerAction();
         }
 };
