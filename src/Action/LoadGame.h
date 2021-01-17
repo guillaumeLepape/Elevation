@@ -49,7 +49,7 @@ class LoadGame : public Action
                 std::cout << "\n " 
                     << Term::color( Term::bg::red )
                     << Term::color( Term::style::bold ) 
-                    << "Aucune partie ne peut être chargé." 
+                    << "Aucune partie ne peut etre chargé." 
                     << Term::color( Term::bg::reset )
                     << Term::color( Term::style::reset );
                 

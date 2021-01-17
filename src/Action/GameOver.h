@@ -39,9 +39,6 @@ class GameOver : public Action
 
         void triggerAction() override
         {
-            WriteResults writeResults( player_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
-            writeResults.triggerAction();
-
             actionWriter_.writeResult();
             std::cout << "\n";
             exit(0);

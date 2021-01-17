@@ -34,7 +34,7 @@ void Rules::displayRules( const Options &options )
     {
         Pause::pause();
 
-        std::cout << "\n Si un champ doit être rempli pour continuer le jeu, cela sera indiqué par la couleur "
+        std::cout << "\n Si un champ doit etre rempli pour continuer le jeu, cela sera indiqué par la couleur "
                   << Term::color(Term::fg::black)
                   << Term::color(Term::bg::yellow)
                   << Term::color(Term::style::bold)

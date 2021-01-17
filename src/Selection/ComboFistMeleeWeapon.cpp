@@ -34,7 +34,10 @@ void ComboFistMeleeWeapon::triggerCombo
 
         for ( int i = 0; i < useWeapon.size(); i++ )
         {
-            if ( useWeapon[i]->nameWeapon() != "fist" )
+            const std::string& nameWeapon = useWeapon[i]->nameWeapon();
+
+            // Generate combo weapon, if the weapon is a melee weapon
+            if ( (player_->weaponFromName( nameWeapon )).weaponType() == WeaponType::meleeWeapon )
             {
                 std::unique_ptr<Weapon> weaponFistCombo 
                     = WeaponFactory::newWeaponFistCombo( useWeapon[i]->nameWeapon() );

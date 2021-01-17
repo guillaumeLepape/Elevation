@@ -153,13 +153,13 @@ namespace data
         static std::tuple<bool, std::string> resultSaveAndQuit( false, "Partie sauvegardée" );
     
         // data for game Over action
-        static std::tuple<bool, std::string> resultGameOver( false, "Vous êtes mort. Game Over." );
+        static std::tuple<bool, std::string> resultGameOver( false, "Vous etes mort. Game Over." );
     }
 
     namespace Combo
     {
         static std::string comboFistMeleeWeaponComboTitle = "Combo Poing-Arme de mếlée";
-        static std::string comboDoubleMeleeTitle = "Combo Double arme de mêlée";
+        static std::string comboDoubleMeleeTitle = "Combo Double arme de melée";
         static std::tuple<bool, std::string> statementDontCombo(false, "Ne pas déclencher le combo");
     }
 
