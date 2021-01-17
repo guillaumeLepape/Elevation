@@ -46,7 +46,7 @@ void Fight::startFight()
             // user cannot attack dead plugs
             if ( !(plugs_[i].deadOrNot()) )
             {
-                Action* choosePlug = new ChoosePlug( &(plugs_[i]), "data/ChoosePlug", "choosePlug" ); 
+                Action* choosePlug = new ChoosePlug( &(plugs_[i]), data::Action::statementChoosePlug, data::Action::resultChoosePlug ); 
                 choosePlug->preTreatmentStatement( player_, &(plugs_[i]) );
                 choosePlugActions.push_back( choosePlug );
             }
@@ -68,9 +68,9 @@ void Fight::startFight()
                 new UseWeapon(
                     player_,
                     ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug(),
-                    weapons[i].name(),
-                    "data/Weapon",
-                    weapons[i].nameUseWeapon()
+                    weapons[i],
+                    *( data::Action::newStatementUseWeapon( weapons[i].name() ).get() ),
+                    data::Action::resultUseWeapon
                 )
             );
         }
@@ -95,7 +95,7 @@ void Fight::startFight()
 
         for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
         {
-            PlugAttack plugAttack( player_, &(*e), "data/ChoosePlug", "plugAttack" );
+            PlugAttack plugAttack( player_, &(*e), std::tuple<bool, std::string>(), data::Action::resultPlugAttack );
             plugAttack.triggerAction();
 
             if ( player_->dead() )

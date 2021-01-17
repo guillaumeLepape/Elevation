@@ -20,6 +20,16 @@ class Nothing : public Action
 
         }
 
+        Nothing
+        (
+            const std::tuple<bool, std::string> statement,
+            const std::tuple<bool, std::string> result
+        ) :
+            Action( statement, result )
+        {
+            
+        }
+
         void triggerAction() override
         {
 

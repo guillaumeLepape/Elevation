@@ -5,10 +5,9 @@
     * \file Data.h
 */
 
-#include <nlohmann/json.hpp>
-
 #include "Player.h"
 #include "Plug.h"
+#include "Languages.h"
 
 /*! \class Data
    * \brief Abstract class for data

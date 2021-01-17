@@ -5,14 +5,10 @@
     * \file Level.h
 */
 
-#include <memory>
-
 #include "Options.h"
 #include "Selection.h"
 #include "Nothing.h"
 #include "WriteResults.h"
-
-#include "Languages.h"
 
 class Level
 {

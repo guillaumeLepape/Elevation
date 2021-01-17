@@ -12,19 +12,28 @@
 class Dead : public Action
 {
     private:
-        const Player* const player_;
         const Plug* const plug_;
 
     public:
         Dead
         (
-            const Player* const player,
             const Plug* const plug,
             const std::string& folderFromRoot,
             const std::string& nameFile
         ) :
             Action( folderFromRoot, nameFile ),
-            player_( player ),
+            plug_( plug )
+        {
+
+        }
+
+        Dead
+        (
+            const Plug* const plug,
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result
+        ) :
+            Action( statement, result ),
             plug_( plug )
         {
 

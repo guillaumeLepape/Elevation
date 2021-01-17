@@ -15,7 +15,8 @@ class SelectionData : public Data
     public:
         SelectionData( const nlohmann::json& jsonObject );
         SelectionData( const std::string& folderFromRoot, const std::string& fileName );   
-        
+        SelectionData( const std::string& title );
+
         void readData() override;
 
         const std::string& title() const { return title_; }

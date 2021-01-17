@@ -7,6 +7,7 @@
 #include "Selection.h"
 #include "UseWeapon.h"
 #include "Knife.h"
+#include "Fist.h"
 
 #include "HeaderWriter.h"
 #include "MessageHandler.h"
@@ -28,7 +29,7 @@ void Level3::startLevel( const Options& options )
     messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
     
-    UseWeapon useFist( player_, &plug, "poing", "data/Weapon", "usePoing" );
+    UseWeapon useFist( player_, &plug, Fist(), data::Action::statementUseFist, data::Action::resultUseWeapon );
 
     useFist.triggerAction();
 
@@ -60,7 +61,7 @@ void Level3::startLevel( const Options& options )
 
     player_->addWeapon( Knife() );
 
-    UseWeapon useKnife( player_, &plug, "knife", "data/Weapon", "useKnife" );
+    UseWeapon useKnife( player_, &plug, Knife(), data::Action::statementUseKnife, data::Action::resultUseWeapon );
 
     Selection::select(
         { &useFist, &useKnife },

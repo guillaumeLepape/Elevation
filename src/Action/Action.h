@@ -28,6 +28,16 @@ class Action
 
         }
 
+        explicit Action
+        (
+            const std::tuple<bool, std::string>& statement, 
+            const std::tuple<bool, std::string>& result
+        ) :
+            actionWriter_( statement, result )
+        {
+        
+        }
+
         const ActionWriter& actionWriter() const { return actionWriter_; }
 
         void preTreatmentStatement( const Player* player, const Plug* plug ) 

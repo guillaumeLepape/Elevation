@@ -22,6 +22,12 @@ class SelectionWriter
             const nlohmann::json& jsonObject
         );
 
+        SelectionWriter
+        (
+            const std::vector<Action*>& actions,
+            const std::string& title
+        );
+
         SelectionWriter 
         (
             const std::vector<Action*>& actions,

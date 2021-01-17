@@ -24,6 +24,18 @@ class ChoosePlug : public Action
 
         }
 
+        ChoosePlug
+        (
+            Plug* const plug,
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result
+        ) :
+            Action( statement, result ),
+            plug_( plug )
+        {
+
+        }
+
         void triggerAction() override
         {
 

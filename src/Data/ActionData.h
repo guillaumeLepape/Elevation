@@ -19,6 +19,11 @@ class ActionData : public Data
     public:
         ActionData( const nlohmann::json& jsonObject );
         ActionData( const std::string& folderFromRoot, const std::string& nameFile );
+        ActionData
+        ( 
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result
+        );
 
         virtual void readData() override;
 

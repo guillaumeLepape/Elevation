@@ -39,21 +39,15 @@ void ComboFistMeleeWeapon::triggerCombo
                 std::unique_ptr<Weapon> weaponFistCombo 
                     = WeaponFactory::newWeaponFistCombo( useWeapon[i]->nameWeapon() );
 
-                // Weapon weapon( 
-                //     useWeapon[i]->nameWeapon() + "FistCombo",
-                //     (player_->weaponFromName( useWeapon[i]->nameWeapon() ).damageWeapon())/2,
-                //     WeaponType::meleeWeapon                
-                // );
-
                 player_->addWeapon( *(weaponFistCombo.get()) );
 
                 useWeaponFistCombo.push_back(
                     new UseWeapon(
                         player_,
                         plug,
-                        weaponFistCombo->name(),
-                        "data/Weapon",
-                        weaponFistCombo->nameUseWeapon()
+                        *(weaponFistCombo.get()),
+                        *(data::Action::newStatementUseWeapon( weaponFistCombo->name() ).get()),
+                        data::Action::resultUseWeapon
                     )
                 );
             }
@@ -61,8 +55,7 @@ void ComboFistMeleeWeapon::triggerCombo
 
         Selection::select(
             useWeaponFistCombo,
-            "data/Weapon",
-            "comboPoingMelee"
+            data::Combo::comboFistMeleeWeaponComboTitle
         );
 
         for ( int i = 0; i < useWeaponFistCombo.size(); i++ )

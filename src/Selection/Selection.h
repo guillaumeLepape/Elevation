@@ -16,6 +16,12 @@ class Selection
             const std::string& folderFromRoot,
             const std::string& nameFile
         );
+
+        static int select
+        (
+            const std::vector<Action*>& actions,
+            const std::string& title
+        );
 };
 
 #endif

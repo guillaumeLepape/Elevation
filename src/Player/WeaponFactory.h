@@ -17,10 +17,10 @@ class WeaponFactory
     public:
         static std::unique_ptr<Weapon> newWeapon( const std::string& nameWeapon )
         {
-            if ( nameWeapon == "noWeapon" ) { return std::make_unique<NoWeapon>(); }
-            if ( nameWeapon == "fist" ) { return std::make_unique<Fist>(); }
-            if ( nameWeapon == "knife" ) { return std::make_unique<Knife>(); }
-            if ( nameWeapon == "katana" ) { return std::make_unique<Katana>(); }
+            if ( nameWeapon == std::string() ) { return std::make_unique<NoWeapon>(); }
+            if ( nameWeapon == "Poing" ) { return std::make_unique<Fist>(); }
+            if ( nameWeapon == "Couteau" ) { return std::make_unique<Knife>(); }
+            if ( nameWeapon == "Katana" ) { return std::make_unique<Katana>(); }
             assert(false);
 
         }

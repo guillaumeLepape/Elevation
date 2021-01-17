@@ -14,6 +14,11 @@ class ActionWriter
 
     public:
         ActionWriter( const nlohmann::json& jsonObject );
+        ActionWriter
+        ( 
+            const std::tuple<bool, std::string>& statement, 
+            const std::tuple<bool, std::string>& result
+        );
         ActionWriter( const ActionData& actionData );
         ActionWriter( const std::string& folderFromRoot, const std::string& nameFile );
 

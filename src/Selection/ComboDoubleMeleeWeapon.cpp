@@ -7,6 +7,8 @@
 #include "Nothing.h"
 #include "Selection.h"
 
+#include "WeaponFactory.h"
+
 ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon( Player* const player ) :
     Combo( player )
 {
@@ -20,7 +22,9 @@ void ComboDoubleMeleeWeapon::triggerCombo
     const std::vector<UseWeapon*>& useWeapon
 )
 {
-    if ( (player_->weaponFromName( useWeapon[resultChooseWeapon]->nameWeapon() )).weaponType() == WeaponType::meleeWeapon 
+    const std::string& nameWeapon = useWeapon[resultChooseWeapon]->nameWeapon();
+
+    if ( (player_->weaponFromName( nameWeapon )).weaponType() == WeaponType::meleeWeapon 
             && !( plug->deadOrNot() ) )
     {
         std::unique_ptr<Action> useWeaponCombo
@@ -28,23 +32,22 @@ void ComboDoubleMeleeWeapon::triggerCombo
             new UseWeapon(
                 player_, 
                 plug, 
-                useWeapon[resultChooseWeapon]->nameWeapon(), 
-                "data/Weapon",
-                (player_->weaponFromName( useWeapon[resultChooseWeapon]->nameWeapon() )).nameUseWeapon()
+                *( WeaponFactory::newWeapon( nameWeapon ).get() ), 
+                *( data::Action::newStatementUseWeapon( nameWeapon ).get() ),
+                data::Action::resultUseWeapon
             )
         );
 
         std::unique_ptr<Action> nothing(
             new Nothing(
-                "data/Weapon",
-                "dontCombo"
+                data::Combo::statementDontCombo,
+                std::tuple<bool, std::string>()
             )
         );
 
         int result = Selection::select(
             { useWeaponCombo.get(), nothing.get() },
-            "data/Weapon",
-            "comboDoubleMelee"
+            data::Combo::comboDoubleMeleeTitle
         );
 
         // if player choose to trigger combo, destroy the melee weapon

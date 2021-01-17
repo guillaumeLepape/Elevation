@@ -20,6 +20,17 @@ SelectionWriter::SelectionWriter
 SelectionWriter::SelectionWriter
 (
     const std::vector<Action*>& actions,
+    const std::string& title
+) :
+    actions_( actions ),
+    selectionData_( title )
+{
+
+}
+
+SelectionWriter::SelectionWriter
+(
+    const std::vector<Action*>& actions,
     const SelectionData& selectionData
 ) :
     actions_( actions ),

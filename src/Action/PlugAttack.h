@@ -28,6 +28,21 @@ class PlugAttack : public Action
 
         }
 
+        PlugAttack
+        (
+            Player* const player, 
+            const Plug* const plug,
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result
+        ) :
+            Action( statement, result ),
+            player_( player ),
+            plug_( plug )
+        {
+
+        }
+
+
         void triggerAction() override
         {
             // if plug is not dead, he can attack

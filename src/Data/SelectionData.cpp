@@ -16,6 +16,14 @@ SelectionData::SelectionData( const std::string& folderFromRoot, const std::stri
     readData();
 }
 
+SelectionData::SelectionData( const std::string& title ) :
+    Data(),
+    title_( title )
+{
+
+}
+
+
 void SelectionData::readData() 
 {
     title_ = jsonObject_["title"];

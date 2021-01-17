@@ -29,6 +29,22 @@ class UseWeapon : public Action
             plug_(plug)
         {}
 
+        UseWeapon
+        (
+            Player* const player, 
+            Plug* const plug,
+            const Weapon& weapon,
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result
+        ) : 
+            Action( statement, result ),
+            nameWeapon_( weapon.name() ),
+            player_( player ),
+            plug_( plug )
+        {
+
+        }
+
         void triggerAction() override
         {   
             const Weapon& weapon = player_->weaponFromName( nameWeapon_ );
@@ -39,7 +55,7 @@ class UseWeapon : public Action
             actionWriter_.preTreatmentResult( player_, plug_ );
             actionWriter_.writeResult();
         
-            Dead dead( player_, plug_, "data/Dead", "dead" );
+            Dead dead( plug_, std::tuple<bool, std::string>(), data::Action::resultDead );
             dead.preTreatmentResult( player_, plug_ );
             dead.triggerAction();
         }

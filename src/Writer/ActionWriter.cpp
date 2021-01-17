@@ -15,6 +15,16 @@ ActionWriter::ActionWriter( const nlohmann::json& jsonObject ) :
 
 }
 
+ActionWriter::ActionWriter
+( 
+    const std::tuple<bool, std::string>& statement, 
+    const std::tuple<bool, std::string>& result
+) :
+    actionData_( statement, result )
+{
+
+}
+
 ActionWriter::ActionWriter( const ActionData& actionData ) :
     actionData_( actionData )
 {
