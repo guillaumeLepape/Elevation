@@ -13,7 +13,11 @@ void Level1::startLevel( const Options& options )
 
     Plug plug( "Petite frappe", 20);
 
-    HeaderWriter headerWriter( folder, "header" );
+    HeaderWriter headerWriter( 
+        data::Level1::nameLevel,
+        data::Level1::hour,
+        data::Level1::minut
+    );
     headerWriter.writeHeader();
 
     MessageHandler messageHandler( folder, "message" );

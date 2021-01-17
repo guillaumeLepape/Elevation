@@ -17,6 +17,7 @@ class HeaderData : public Data
     public:
         HeaderData( const nlohmann::json& jsonObject );
         HeaderData( const std::string& folderRoot, const std::string& fileName );
+        HeaderData( const std::string& nameLevel, const int& hour, const int& minut );
 
         void readData() override;
 

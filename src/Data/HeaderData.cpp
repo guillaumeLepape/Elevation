@@ -16,6 +16,15 @@ HeaderData::HeaderData( const std::string& folderFromRoot, const std::string& fi
     readData();
 }
 
+HeaderData::HeaderData( const std::string& nameLevel, const int& hour, const int& minut ) :
+    nameLevel_( nameLevel ),
+    hour_( hour ),
+    minut_( minut )
+{
+
+}
+
+
 void HeaderData::readData()
 {
     nameLevel_ = (std::string) jsonObject_["nameLevel"];

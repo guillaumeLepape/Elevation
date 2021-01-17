@@ -16,6 +16,12 @@ HeaderWriter::HeaderWriter( const nlohmann::json& jsonObject ) :
 
 }
 
+HeaderWriter::HeaderWriter( const std::string& nameLevel, const int& hour, const int& minut ) :
+    headerData_( nameLevel, hour, minut )
+{
+
+}
+
 HeaderWriter::HeaderWriter( const HeaderData& headerData ) :
     headerData_( headerData )
 {

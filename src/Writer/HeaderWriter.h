@@ -14,6 +14,7 @@ class HeaderWriter
 
     public:
         HeaderWriter( const nlohmann::json& jsonObject );
+        HeaderWriter( const std::string& nameLevel, const int& hour, const int& minut );
         HeaderWriter( const HeaderData& headerData );
         HeaderWriter( const std::string& folderFromRoot, const std::string& fileName );
 

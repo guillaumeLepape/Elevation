@@ -75,6 +75,24 @@ set(SOURCE_DATA
 )
 
 #
+# Set header and source files for Data files (in the folder DataFiles) 
+#
+set(FOLDER_DATAFILES src/DataFiles)
+
+include_directories(
+    ${FOLDER_DATAFILES}
+)
+
+set(HEADER_DATAFILES
+    ${FOLDER_DATAFILES}/Languages.h
+    ${FOLDER_DATAFILES}/FrenchData.h    
+)
+
+set(SOURCE_DATAFILES
+
+)
+
+#
 # Set header and source files for Level class and its herited classes (in the folder Level) 
 #
 set(FOLDER_LEVEL src/Level)
@@ -220,6 +238,9 @@ add_executable(main
 
     ${HEADER_DATA}
     ${SOURCE_DATA}
+
+    ${HEADER_DATAFILES}
+    ${SOURCE_DATAFILES}
 
     ${HEADER_LEVEL}
     ${SOURCE_LEVEL}

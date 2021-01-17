@@ -14,7 +14,11 @@ void Level4::startLevel( const Options& options )
 
     Plug plug( "Freeze Corleone", 20 );
 
-    HeaderWriter headerWriter( folder, "header" );
+    HeaderWriter headerWriter( 
+        data::Level4::nameLevel,
+        data::Level4::hour,
+        data::Level4::minut
+    );
     headerWriter.writeHeader();
 
     MessageHandler messageHandler( folder, "message" );

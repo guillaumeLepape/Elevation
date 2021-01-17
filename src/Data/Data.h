@@ -29,7 +29,7 @@ class Data
         virtual void readData() = 0;
 
     public:
-        Data( const nlohmann::json& jsonObject );
+        Data( const nlohmann::json& jsonObject = {} );
         Data( const std::string& folderFromRoot, const std::string& fileName );
         virtual ~Data() {}
 };

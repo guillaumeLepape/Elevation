@@ -19,7 +19,11 @@ void Level5::startLevel( const Options& options )
 {
     std::string folder = "data/Level5";
 
-    HeaderWriter headerWriter( folder, "header" );
+    HeaderWriter headerWriter( 
+        data::Level5::nameLevel,
+        data::Level5::hour,
+        data::Level5::minut
+    );
     headerWriter.writeHeader();
 
     // Weapon knife( "Couteau", 30, WeaponType::meleeWeapon );

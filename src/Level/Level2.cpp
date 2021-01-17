@@ -17,7 +17,11 @@ void Level2::startLevel( const Options& options )
 
     Plug plug( "Jean-Luc Delarue", 80 );
 
-    HeaderWriter headerWriter( folder, "header" );
+    HeaderWriter headerWriter( 
+        data::Level2::nameLevel,
+        data::Level2::hour,
+        data::Level2::minut
+    );
     headerWriter.writeHeader();
 
     MessageHandler messageHandler( folder, "message" );

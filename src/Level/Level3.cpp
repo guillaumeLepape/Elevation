@@ -17,7 +17,11 @@ void Level3::startLevel( const Options& options )
 
     Plug plug( "V", 20 );
 
-    HeaderWriter headerWriter( folder, "header" );
+    HeaderWriter headerWriter( 
+        data::Level3::nameLevel,
+        data::Level3::hour,
+        data::Level3::minut
+    );
     headerWriter.writeHeader();
 
     MessageHandler messageHandler( folder, "message" );

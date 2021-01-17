@@ -12,6 +12,8 @@
 #include "Nothing.h"
 #include "WriteResults.h"
 
+#include "Languages.h"
+
 class Level
 {
     protected:
