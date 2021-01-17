@@ -5,23 +5,43 @@
     * \file GameOver.h
 */
 
-#include "Action.h"
+#include "WriteResults.h"
 
 class GameOver : public Action
 {
+    private:
+        const Player* const player_;
+
     public:
         explicit GameOver
         ( 
+            const Player* const player,
             const std::string& folderFromRoot,
             const std::string& fileName
         ) :
-            Action( folderFromRoot, fileName )
+            Action( folderFromRoot, fileName ),
+            player_( player )
+        {
+
+        }
+
+        explicit GameOver
+        (
+            const Player* const player,
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result
+        ) :
+            Action( statement, result ),
+            player_( player )
         {
 
         }
 
         void triggerAction() override
         {
+            WriteResults writeResults( player_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
+            writeResults.triggerAction();
+
             actionWriter_.writeResult();
             std::cout << "\n";
             exit(0);

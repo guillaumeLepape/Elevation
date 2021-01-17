@@ -27,6 +27,18 @@ class WriteResults : public Action
 
         }
 
+        WriteResults
+        (
+            const Player* const player,
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result
+        ) : 
+            Action( statement, result ),
+            player_( player )
+        {
+
+        }
+
         void triggerAction() override
         {
             ResultsData resultsData;

@@ -100,7 +100,7 @@ void Fight::startFight()
 
             if ( player_->dead() )
             {
-                GameOver gameOver( "data/Menu", "quit" );
+                GameOver gameOver( player_, std::tuple<bool, std::string>(), data::Menu::resultGameOver );
                 gameOver.triggerAction();
             }
         }

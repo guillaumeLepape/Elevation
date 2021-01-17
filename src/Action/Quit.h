@@ -20,6 +20,16 @@ class Quit : public Action
 
         }
 
+        Quit 
+        (
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result
+        ) :
+            Action( statement, result )
+        {
+
+        }
+
         void triggerAction() override  
         { 
             actionWriter_.writeResult();

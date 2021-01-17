@@ -72,15 +72,16 @@ namespace data
 
     namespace Action
     {
-        // generic UseWeapon data for fist
+        // generic UseWeapon data statement for fist
         static std::tuple<bool, std::string> statementUseFist(false, "Cognez ! (Poing)");
-        // generic UseWeapon data for knife
+        // generic UseWeapon data statement for knife
         static std::tuple<bool, std::string> statementUseKnife(false, "Plantez ! (Couteau)");
         static std::tuple<bool, std::string> statementUseKnifeFistCombo(false, "Combo avec le couteau !");
-        // generic UseWeapon data for katana
+        // generic UseWeapon data statement for katana
         static std::tuple<bool, std::string> statementUseKatana(false, "Découpez ! (Katana)");
         static std::tuple<bool, std::string> statementUseKatanaFistCombo(false, "Combo avec le katana !");
 
+        // generic UseWeapon data result
         static std::tuple<bool, std::string> resultUseWeapon(true, "-*-plugName-*- perd -*-damage-*- points de vie.");
 
         static std::unique_ptr<std::tuple<bool, std::string>> newStatementUseWeapon(const std::string &nameWeapon)
@@ -111,13 +112,49 @@ namespace data
         static std::tuple<bool, std::string> statementChoosePlug( true, "Attaquer -*-plugName-*-." );
         static std::tuple<bool, std::string> resultChoosePlug( true, "Vous avez choisi d'attaquer -*-plugName-*-." );
 
-        // static std::tuple<bool, std::string> statementPlugAttack();
         static std::tuple<bool, std::string> resultPlugAttack( true, "-*-plugName-*- vous inflige -*-damagePlug-*- points de vie." );
 
-        // static std::tuple<bool, std::string> statementDaad();
         static std::tuple<bool, std::string> resultDead( true, "-*-plugName-*- est mort." );
 
     } // namespace Action
+
+    namespace Menu 
+    {
+        // title of startGame menu 
+        static std::string titleStartGameMenu = "Menu";
+
+        // data for startGame action
+        static std::tuple<bool, std::string> statementStartGame( false, "Commencer une nouvelle partie" );
+        static std::tuple<bool, std::string> resultStartGame( false, "La partie commence." );
+
+        // data for loadGame action
+        static std::tuple<bool, std::string> statementLoadGame( false, "Charger une partie" );
+        static std::tuple<bool, std::string> resultLoadGame( false, "Vous avez choisi de charger une partie." );
+    
+        // data for quit action 
+        static std::tuple<bool, std::string> statementQuit( false, "Quitter le jeu" );
+        static std::tuple<bool, std::string> resultQuit( false, "Fin du jeu" );
+
+        // title of loadGame menu
+        static std::string titleLoadGameMenu = "Choix de la partie";
+
+        // data for the choice of the loaded game 
+        static std::tuple<bool, std::string> statementChooseLoadedGame( true, "Charger la partie -*-pseudo-*-." );
+        static std::tuple<bool, std::string> resultChooseLoadedGame( false, "Vous avez chois charger une partie." );
+
+        // title of endOfLevel menu
+        static std::string titleContinueMenu = "Niveau terminé";
+
+        // data for continue action 
+        static std::tuple<bool, std::string> statementContinue( false, "Continuer votre partie" );
+    
+        // data for save and quit action
+        static std::tuple<bool, std::string> statementSaveAndQuit( false, "Quitter et sauvegarder" );
+        static std::tuple<bool, std::string> resultSaveAndQuit( false, "Partie sauvegardée" );
+    
+        // data for game Over action
+        static std::tuple<bool, std::string> resultGameOver( false, "Vous êtes mort. Game Over." );
+    }
 
     namespace Combo
     {

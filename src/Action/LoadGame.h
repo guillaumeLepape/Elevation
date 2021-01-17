@@ -27,6 +27,18 @@ class LoadGame : public Action
 
         }
 
+        LoadGame
+        (
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result,
+            const Options& options
+        ) :
+            Action( statement, result ),
+            options_( options )
+        {
+
+        }
+
         void triggerAction() override
         {
             ResultsData resultsData;
@@ -50,8 +62,8 @@ class LoadGame : public Action
                 {
                     Action* startGame = new StartGame
                     ( 
-                        "data/Menu", 
-                        "loadGameSelection", 
+                        data::Menu::statementChooseLoadedGame, 
+                        data::Menu::resultChooseLoadedGame, 
                         options_, 
                         *r 
                     );                   
@@ -63,8 +75,7 @@ class LoadGame : public Action
 
                 Selection::select(
                     actions,
-                    "data/Menu",
-                    "selection1"
+                    data::Menu::titleLoadGameMenu
                 );
             }
         }

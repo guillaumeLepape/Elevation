@@ -30,6 +30,21 @@ class StartGame : public Action
 
         }
 
+        StartGame
+        (
+            const std::tuple<bool, std::string>& statement,
+            const std::tuple<bool, std::string>& result,
+            const Options& options,
+            const Player& player 
+                = Player( "Joueur", Id::generateId(), 0 ) 
+        ) : 
+            Action( statement, result ),
+            player_( player ),
+            options_( options )
+        {
+
+        }
+
         void triggerAction() override
         {       
             int i = 0;
@@ -40,7 +55,7 @@ class StartGame : public Action
                 level->startLevel( options_ );
             }
 
-            WriteResults writeResults( "data/Menu", "writeResults", &player_ );
+            WriteResults writeResults( &player_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
             writeResults.triggerAction();
         }
 };
