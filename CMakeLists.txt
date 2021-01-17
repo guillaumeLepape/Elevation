@@ -113,14 +113,21 @@ include_directories(
 )
 
 set(HEADER_PLAYER
+    ${FOLDER_PLAYER}/Weapon.h
+    ${FOLDER_PLAYER}/WeaponFactory.h
+    ${FOLDER_PLAYER}/NoWeapon.h
+    ${FOLDER_PLAYER}/Fist.h
+    ${FOLDER_PLAYER}/Knife.h
+    ${FOLDER_PLAYER}/Katana.h
+    ${FOLDER_PLAYER}/WeaponFistCombo.h
+
     ${FOLDER_PLAYER}/Id.h
     ${FOLDER_PLAYER}/Player.h
-    ${FOLDER_PLAYER}/Weapon.h
 )
 
 set(SOURCE_PLAYER
-    ${FOLDER_PLAYER}/Player.cpp
     ${FOLDER_PLAYER}/Weapon.cpp
+    ${FOLDER_PLAYER}/Player.cpp
 )
 
 #

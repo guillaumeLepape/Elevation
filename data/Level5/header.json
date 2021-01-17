@@ -1,11 +1,5 @@
 {
-    "nameLevel": "Niveau 5 : Molly",
+    "nameLevel": "Niveau 5 : Xanax",
     "hour": 19,
-    "minut": 2,
-    "message":
-    [
-        [
-            [ "plug", false, "Molly Percocet." ]
-        ]
-    ]
+    "minut": 2
 }

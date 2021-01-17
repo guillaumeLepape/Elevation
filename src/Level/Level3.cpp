@@ -6,6 +6,7 @@
 
 #include "Selection.h"
 #include "UseWeapon.h"
+#include "Knife.h"
 
 #include "HeaderWriter.h"
 #include "MessageHandler.h"
@@ -23,7 +24,7 @@ void Level3::startLevel( const Options& options )
     messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
     
-    UseWeapon useFist( player_, &plug, "fist", "data/Weapon", "useFist" );
+    UseWeapon useFist( player_, &plug, "poing", "data/Weapon", "usePoing" );
 
     useFist.triggerAction();
 
@@ -53,7 +54,7 @@ void Level3::startLevel( const Options& options )
 
     messageHandler.nextMessage();
 
-    player_->addWeapon( Weapon( "knife", 30, WeaponType::meleeWeapon ) );
+    player_->addWeapon( Knife() );
 
     UseWeapon useKnife( player_, &plug, "knife", "data/Weapon", "useKnife" );
 

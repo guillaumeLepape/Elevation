@@ -5,6 +5,8 @@
 #include "ComboFistMeleeWeapon.h"
 #include "Selection.h"
 
+#include "WeaponFactory.h"
+
 ComboFistMeleeWeapon::ComboFistMeleeWeapon
 ( 
     Player* const player
@@ -34,21 +36,24 @@ void ComboFistMeleeWeapon::triggerCombo
         {
             if ( useWeapon[i]->nameWeapon() != "fist" )
             {
-                Weapon weapon( 
-                    useWeapon[i]->nameWeapon() + "FistCombo",
-                    (player_->weaponFromName( useWeapon[i]->nameWeapon() ).damageWeapon())/2,
-                    WeaponType::meleeWeapon                
-                );
+                std::unique_ptr<Weapon> weaponFistCombo 
+                    = WeaponFactory::newWeaponFistCombo( useWeapon[i]->nameWeapon() );
 
-                player_->addWeapon( weapon );
+                // Weapon weapon( 
+                //     useWeapon[i]->nameWeapon() + "FistCombo",
+                //     (player_->weaponFromName( useWeapon[i]->nameWeapon() ).damageWeapon())/2,
+                //     WeaponType::meleeWeapon                
+                // );
+
+                player_->addWeapon( *(weaponFistCombo.get()) );
 
                 useWeaponFistCombo.push_back(
                     new UseWeapon(
                         player_,
                         plug,
-                        weapon.name(),
+                        weaponFistCombo->name(),
                         "data/Weapon",
-                        weapon.nameUseWeapon()
+                        weaponFistCombo->nameUseWeapon()
                     )
                 );
             }

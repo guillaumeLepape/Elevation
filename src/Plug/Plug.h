@@ -5,7 +5,7 @@
     * \file Plug.h
 */
 
-#include "Weapon.h"
+#include "NoWeapon.h"
 
 class Plug 
 {
@@ -21,7 +21,7 @@ class Plug
             const std::string& name, 
             const int& price, 
             const int& lifePoints = 100, 
-            const Weapon& weapon = Weapon() 
+            const Weapon& weapon = NoWeapon() 
         );
         
         const std::string& name() const { return name_; }

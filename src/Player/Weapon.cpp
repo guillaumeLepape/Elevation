@@ -4,14 +4,6 @@
 
 #include "Weapon.h"
 
-Weapon::Weapon() :
-    name_(""),
-    damageWeapon_(0),
-    weaponType_( WeaponType::empty )
-{
-
-}
-
 Weapon::Weapon
 ( 
     const std::string& name, 
@@ -25,12 +17,16 @@ Weapon::Weapon
     settingNameWeapon( name );
 }
 
+Weapon::~Weapon()
+{
+
+}
+
+
 nlohmann::json Weapon::writeJson() const
 {   
     return 
     {
-        { "name", name_ },
-        { "damageWeapon", damageWeapon_ },
-        { "weaponType", weaponType_ }
+        { "name", name_ }
     };
 }   

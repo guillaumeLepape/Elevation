@@ -12,6 +12,9 @@
 #include "ComboFistMeleeWeapon.h"
 #include "ComboDoubleMeleeWeapon.h"
 
+#include "Fist.h"
+#include "Knife.h"
+
 void Level5::startLevel( const Options& options )
 {
     std::string folder = "data/Level5";
@@ -19,8 +22,8 @@ void Level5::startLevel( const Options& options )
     HeaderWriter headerWriter( folder, "header" );
     headerWriter.writeHeader();
 
-    Weapon knife( "Couteau", 30, WeaponType::meleeWeapon );
-    Plug guetteur( "Guetteur", 0, 15, knife );
+    // Weapon knife( "Couteau", 30, WeaponType::meleeWeapon );
+    Plug guetteur( "Guetteur", 0, 15, Fist() );
 
     MessageHandler messageHandler( folder, "message" );
     messageHandler.preTreatment( player_, &guetteur );
@@ -54,6 +57,7 @@ void Level5::startLevel( const Options& options )
     );
     firstFight.startFight();
 
+    Knife knife;
     Plug randomDebile( "Random debile", 0, 50, knife );
     Plug randomDebile2( "Random debile 2", 0, 70, knife );
     Plug pasFuteFute( "Pas fute-fute", 0, 100, knife );

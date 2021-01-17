@@ -27,13 +27,16 @@ class Weapon
 
         void settingNameWeapon( const std::string& name )
         {
-            defaultNameUseWeapon_ = "use";
-            char firstLetter = std::toupper( name[0] );
-            defaultNameUseWeapon_ += firstLetter;
-            defaultNameUseWeapon_ += name.substr(1, name.length());
+            if ( weaponType_ != WeaponType::empty ) 
+            {
+                defaultNameUseWeapon_ = "use";
+                char firstLetter = std::toupper( name[0] );
+                defaultNameUseWeapon_ += firstLetter;
+                defaultNameUseWeapon_ += name.substr(1, name.length());
+            }
         }
 
-    public:
+    protected:
         Weapon();
         Weapon
         ( 
@@ -41,6 +44,8 @@ class Weapon
             const int& damageWeapon,
             WeaponType weaponType
         );
+    public:
+        virtual ~Weapon();
 
         const std::string& name() const { return name_; }
         const int& damageWeapon() const { return damageWeapon_; }

@@ -8,13 +8,15 @@
 #include <cassert>
 #include <algorithm>
 
+#include "WeaponFactory.h"
+
 Player::Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded ) :
     pseudo_( pseudo ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
     nbLifePoints_(100),
     money_(200),
-    weapons_( 1, Weapon("fist", 20, WeaponType::fist) ),
+    weapons_( 1, Fist() ),
     selectedWeapon_(0),
     price_(0)
 {
@@ -116,11 +118,6 @@ nlohmann::json Player::writeJson() const
     }
 
     nlohmann::json jsonObjectOutput
-    // jsonObjectOutput["pseudo"] = pseudo_;
-    // jsonObjectOutput["id"] = id_;
-    // jsonObjectOutput["nbLevelSuceeded"] = nbLevelSuceeded_;
-    // jsonObjectOutput["nbLifePoints"] = nbLifePoints_;
-    // jsonObjectOutput["money"] = money_;
     {
         { "pseudo", pseudo_ },
         { "id", id_ },
@@ -141,7 +138,7 @@ const Player* const Player::readJson( const nlohmann::json& jsonInput )
     {
         weapons.push_back
         (
-            Weapon( (*wJson)["name"], (*wJson)["damageWeapon"], (*wJson)["weaponType"] )
+            *( WeaponFactory::newWeapon( (*wJson)["name"] ).get() )
         );
     }
 
