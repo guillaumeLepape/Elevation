@@ -41,7 +41,7 @@ class SelectionWriter
             const std::string& fileName
         );
 
-        void writeSelection();
+        void writeSelection() const;
 };
 
 #endif

@@ -37,36 +37,33 @@ void Level3::startLevel( const Options& options )
 
     Selection::select(
         { &useFist },
-        folder,
-        "selection0" 
+        data::Action::titleChooseWeapon
     );
 
     messageHandler.writeMessage(2);
 
     Selection::select(
         { &useFist },
-        folder,
-        "selection1"
+        data::Action::titleChooseWeapon
     );
 
     messageHandler.nextMessage();
 
     Selection::select(
         { &useFist },
-        folder,
-        "selection2"
+        data::Action::titleChooseWeapon
     );
 
     messageHandler.nextMessage();
 
-    player_->addWeapon( Knife() );
+    Knife knife;
+    player_->addWeapon( knife );
 
-    UseWeapon useKnife( player_, &plug, Knife(), data::Action::statementUseKnife, data::Action::resultUseWeapon );
+    UseWeapon useKnife( player_, &plug, knife, data::Action::statementUseKnife, data::Action::resultUseWeapon );
 
     Selection::select(
         { &useFist, &useKnife },
-        folder,
-        "selection3"
+        data::Action::titleChooseWeapon
     );
 
     Level::endOfLevel();

@@ -15,6 +15,12 @@ class AnswerData : public ActionData
     public:
         AnswerData( const nlohmann::json& jsonObject );
         AnswerData( const std::string& folderFromRoot, const std::string& nameFile ); 
+        AnswerData
+        ( 
+            const std::tuple<bool, std::string>& statement, 
+            const std::tuple<bool, std::string>& result, 
+            const bool& correctOrNot 
+        );
 
         void readData() override;
 

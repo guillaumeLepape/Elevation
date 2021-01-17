@@ -14,6 +14,12 @@ class AnswerWriter
 
     public:
         AnswerWriter( const nlohmann::json& jsonObject );
+        AnswerWriter
+        ( 
+            const std::tuple<bool, std::string>& statement, 
+            const std::tuple<bool, std::string>& result, 
+            const bool& correctOrNot 
+        );
         AnswerWriter( const AnswerData& answerData );
         AnswerWriter( const std::string& folderFromRoot, const std::string& fileName); 
 

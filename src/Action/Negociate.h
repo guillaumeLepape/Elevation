@@ -32,6 +32,23 @@ class Negociate : public Action
         {
 
         }
+
+        explicit Negociate
+        (
+            Player* const player, 
+            Plug* const plug, 
+            const MessageHandler& messageHandler,
+            const std::tuple<bool, std::string> statement,
+            const std::tuple<bool, std::string> result
+        ) :
+            Action( statement, result ),  
+            player_(player), 
+            plug_(plug), 
+            messageHandler_(messageHandler)      
+        {
+
+        }
+
         void triggerAction() override 
         {
             bool out = false;

@@ -28,7 +28,7 @@ void Level2::startLevel( const Options& options )
     messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
 
-    Negociate negociate( player_, &plug, messageHandler, folder, "negociate" );
+    Negociate negociate( player_, &plug, messageHandler, data::Action::statementNegociate, data::Action::resultNegociate );
     negociate.triggerAction();
     
     Level::endOfLevel();

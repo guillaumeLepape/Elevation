@@ -6,9 +6,17 @@
 */
 
 #include "Action.h"
+#include "SelectionWriter.h"
 
 class Selection
 {
+    private:
+        static int select
+        (
+            const std::vector<Action*>& actions,
+            const SelectionWriter& selectionWriter
+        );
+
     public:
         static int select
         ( 

@@ -24,7 +24,7 @@ class MessagesData : public Data
 
         void preTreatment( const Player* const player, const Plug* const plug )
         {
-            for ( int i = 0; i < messages_.size(); i++ )
+            for ( long unsigned int i = 0; i < messages_.size(); i++ )
             {
                 preTreatment(player, plug, i);
             }

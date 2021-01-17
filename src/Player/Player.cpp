@@ -131,7 +131,7 @@ nlohmann::json Player::writeJson() const
     return jsonObjectOutput;
 }
 
-const Player* const Player::readJson( const nlohmann::json& jsonInput )
+Player* Player::readJson( const nlohmann::json& jsonInput )
 {   
     std::vector<Weapon> weapons;
     for ( auto wJson = jsonInput["weapons"].cbegin(); wJson != jsonInput["weapons"].cend(); wJson++ )
@@ -142,7 +142,7 @@ const Player* const Player::readJson( const nlohmann::json& jsonInput )
         );
     }
 
-    const Player* const player = new Player
+    Player* player = new Player
     ( 
         jsonInput["pseudo"],
         jsonInput["id"],

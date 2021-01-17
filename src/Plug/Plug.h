@@ -30,7 +30,7 @@ class Plug
         const int& lifePoints() const { return lifePoints_; }
         void decreaseLifePoints( const int& lifePoints) { lifePoints_ -= lifePoints; } 
 
-        const bool deadOrNot() const { return (lifePoints_ <= 0); }
+        bool deadOrNot() const { return (lifePoints_ <= 0); }
 
         const Weapon& weapon() const { return weapon_; }
 };

@@ -22,7 +22,7 @@ void Introduction::startLevel( const Options& options )
     messageHandler.preTreatmentNextMessage( player_, nullptr );
     messageHandler.nextMessage();
 
-    Pseudo pseudo( player_, messageHandler, folder, "pseudo" );
+    Pseudo pseudo( player_, messageHandler, data::Action::statementPseudo, data::Action::resultPseudo );
     pseudo.triggerAction();
 
     messageHandler.preTreatment( player_, nullptr, 4 );

@@ -39,6 +39,21 @@ class Pseudo : public Action
         {
 
         }
+
+        explicit Pseudo 
+        (
+            Player* const player, 
+            MessageHandler& messageHandler,
+            const std::tuple<bool, std::string> statement,
+            const std::tuple<bool, std::string> result
+        ) :
+            Action( statement, result ),
+            messageHandler_( messageHandler ),
+            player_(player)
+        {
+
+        }
+
         void triggerAction() override 
         {
             // actionWriter_.writeStatement( player_, nullptr );

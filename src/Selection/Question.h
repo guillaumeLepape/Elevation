@@ -20,6 +20,12 @@ class Question
             const std::string& folderFromRoot,
             const std::string& nameFile
         );
+
+        static bool question
+        (
+            const std::vector<Answer*>& answers,
+            const std::string& title
+        );
 };
 
 #endif

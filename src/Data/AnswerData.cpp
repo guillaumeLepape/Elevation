@@ -16,6 +16,19 @@ AnswerData::AnswerData( const std::string& folderFromRoot, const std::string& na
     readData();
 }
 
+AnswerData::AnswerData
+( 
+    const std::tuple<bool, std::string>& statement, 
+    const std::tuple<bool, std::string>& result, 
+    const bool& correctOrNot 
+) :
+    ActionData( statement, result ),
+    correctOrNot_( correctOrNot )
+{
+
+}
+
+
 void AnswerData::readData()
 {
     correctOrNot_ = jsonObject_["correctOrNot"];

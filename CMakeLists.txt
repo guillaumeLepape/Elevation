@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 project(Elevation VERSION 1.0.0)
 
 # specify the C++ standard
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 #
@@ -52,7 +52,6 @@ set(HEADER_DATA
     ${FOLDER_DATA}/MessagesData.h
     ${FOLDER_DATA}/MessageData.h
     ${FOLDER_DATA}/ListNameData.h
-    ${FOLDER_DATA}/QuestionData.h
     ${FOLDER_DATA}/ActionData.h
     ${FOLDER_DATA}/AnswerData.h
     ${FOLDER_DATA}/SelectionData.h
@@ -66,7 +65,6 @@ set(SOURCE_DATA
     ${FOLDER_DATA}/MessagesData.cpp
     ${FOLDER_DATA}/MessageData.cpp
     ${FOLDER_DATA}/ListNameData.cpp
-    ${FOLDER_DATA}/QuestionData.cpp
     ${FOLDER_DATA}/ActionData.cpp
     ${FOLDER_DATA}/AnswerData.cpp
     ${FOLDER_DATA}/SelectionData.cpp
@@ -229,6 +227,7 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/TutorialWriter.cpp
 )
 
+# add_compile_options(-Wall -Wextra -pedantic)
 
 add_executable(main
     src/main.cpp

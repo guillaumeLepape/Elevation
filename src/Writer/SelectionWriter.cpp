@@ -51,7 +51,7 @@ SelectionWriter::SelectionWriter
 
 }
 
-void SelectionWriter::writeSelection()
+void SelectionWriter::writeSelection() const
 {
     Pause::pause();
 

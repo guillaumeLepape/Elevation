@@ -10,6 +10,17 @@ AnswerWriter::AnswerWriter( const nlohmann::json& jsonObject ) :
 
 }
 
+AnswerWriter::AnswerWriter
+( 
+    const std::tuple<bool, std::string>& statement, 
+    const std::tuple<bool, std::string>& result, 
+    const bool& correctOrNot 
+) :
+    answerData_( statement, result, correctOrNot )
+{
+
+}
+
 AnswerWriter::AnswerWriter( const AnswerData& answerData ) :
     answerData_( answerData )
 {

@@ -49,7 +49,7 @@ class Player
 
         void increaseMoney( const int& money ) { money_ += money; }
 
-        const bool dead() const { return nbLifePoints_ <= 0; }
+        bool dead() const { return nbLifePoints_ <= 0; }
 
         void changeWeapon( const std::string& nameWeapon ); 
         void addWeapon( const Weapon& weapon ) { weapons_.push_back( weapon ); }
@@ -65,7 +65,7 @@ class Player
         void setPrice( const int& price ) { price_ = price; } 
 
         nlohmann::json writeJson() const;
-        static const Player* const readJson( const nlohmann::json& jsonInput ); 
+        static Player* readJson( const nlohmann::json& jsonInput ); 
 
 };  
 

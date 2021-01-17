@@ -33,6 +33,22 @@ class Answer : public Action
 
         }
 
+        explicit Answer
+        (
+            const MessageHandler& messageHandler,
+            const int& indexMessage,
+            const std::tuple<bool, std::string>& statement, 
+            const std::tuple<bool, std::string>& result, 
+            const bool& correctOrNot  
+        ) :
+            Action( statement, result ),
+            answerWriter_( statement, result, correctOrNot ),
+            messageHandler_( messageHandler ),
+            indexMessage_( indexMessage )
+        {
+
+        }
+
         void triggerAction() override
         {
             messageHandler_.writeMessage( indexMessage_ );
