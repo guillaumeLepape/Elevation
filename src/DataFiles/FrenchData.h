@@ -277,7 +277,7 @@ namespace data
         inline std::tuple<bool, std::string> statementContinue( false, "Continuer votre partie" );
     
         // data for save and quit action
-        inline std::tuple<bool, std::string> statementSaveAndQuit( false, "Quitter et sauvegarder" );
+        inline std::tuple<bool, std::string> statementSaveAndQuit( false, "Quitter" );
         inline std::tuple<bool, std::string> resultSaveAndQuit( false, "Partie sauvegardée" );
     
         // data for game Over action

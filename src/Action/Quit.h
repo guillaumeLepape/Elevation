@@ -33,6 +33,8 @@ class Quit : public Action
         void triggerAction() override  
         { 
             actionWriter_.writeResult();
+            std::cout << "\n";
+            exit(0);
         }
 };
 

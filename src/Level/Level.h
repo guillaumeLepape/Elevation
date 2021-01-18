@@ -9,6 +9,7 @@
 #include "Selection.h"
 #include "Nothing.h"
 #include "WriteResults.h"
+#include "Quit.h"
 
 class Level
 {
@@ -20,11 +21,14 @@ class Level
         {
             player_->nextLevel();
 
+            WriteResults writeResults( player_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
+            writeResults.triggerAction();
+
             std::unique_ptr<Action> continueAction( new Nothing( data::Menu::statementContinue, std::tuple<bool, std::string>() ) );
-            std::unique_ptr<Action> saveAndQuit( new WriteResults( player_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit ) );
+            std::unique_ptr<Action> quit( new Quit( data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit ) );
 
             Selection::select(
-                { continueAction.get(), saveAndQuit.get() },
+                { continueAction.get(), quit.get() },
                 data::Menu::titleContinueMenu
             );
         }
