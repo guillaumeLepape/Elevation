@@ -4,19 +4,6 @@
 
 #include "Level5.h"
 
-#include "HeaderWriter.h"
-
-#include "TutorialWriter.h"
-#include "Fight.h"
-
-#include "ComboFistMeleeWeapon.h"
-#include "ComboDoubleMeleeWeapon.h"
-
-#include "Fist.h"
-#include "Knife.h"
-#include "Katana.h"
-#include "Cutter.h"
-
 void Level5::startLevel( const Options& options )
 {
     HeaderWriter headerWriter( 

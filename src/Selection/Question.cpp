@@ -4,8 +4,6 @@
 
 #include "Question.h"
 
-#include "Selection.h"
-
 bool Question::question
 ( 
     const std::vector<Answer*>& answers,

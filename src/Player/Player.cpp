@@ -8,8 +8,6 @@
 #include <cassert>
 #include <algorithm>
 
-#include "WeaponFactory.h"
-
 Player::Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded ) :
     pseudo_( pseudo ),
     id_( id ),

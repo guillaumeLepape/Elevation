@@ -4,10 +4,6 @@
 
 #include "Level4.h"
 
-#include "Question.h"
-
-#include "HeaderWriter.h"
-
 void Level4::startLevel( const Options& options )
 {
     Plug plug( "Freeze Corleone", 20 );

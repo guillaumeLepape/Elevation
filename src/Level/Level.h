@@ -5,11 +5,7 @@
     * \file Level.h
 */
 
-#include "Options.h"
-#include "Selection.h"
-#include "Nothing.h"
-#include "WriteResults.h"
-#include "Quit.h"
+#include "Fight.h"
 
 class Level
 {

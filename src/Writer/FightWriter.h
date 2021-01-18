@@ -5,8 +5,7 @@
     * \file FightWriter.h
 */
 
-#include "Player.h"
-#include "Plug.h"
+#include "Writer.h"
 
 class FightWriter
 {

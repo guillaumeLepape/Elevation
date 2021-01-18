@@ -4,8 +4,6 @@
 
 #include "FightWriter.h"
 
-// #include <iostream>
-
 #include "Pause.h"
 
 #include <tabulate/table.hpp>

@@ -4,12 +4,6 @@
 
 #include "Fight.h"
 
-#include "FightWriter.h"
-#include "ChoosePlug.h"
-#include "PlugAttack.h"
-#include "GameOver.h"
-#include "Selection.h"
-
 Fight::Fight
 ( 
     Player* const player, 

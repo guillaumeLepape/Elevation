@@ -5,9 +5,7 @@
     * \file LoadGame.h
 */
 
-#include "Action.h"
-
-#include <cpp-terminal/terminal.h>
+#include "StartGame.h"
 
 class LoadGame : public Action
 {

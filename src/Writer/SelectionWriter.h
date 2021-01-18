@@ -5,38 +5,36 @@
     * \file SelectionWriter.h
 */
 
-#include "SelectionData.h"
-
-#include "Action.h"
+#include "ActionWriter.h"
 
 class SelectionWriter
 {
     private:
-        std::vector<Action*> actions_;
+        std::vector<const ActionWriter*> actionWriter_;
         SelectionData selectionData_;
 
     public:
         SelectionWriter
         ( 
-            const std::vector<Action*>& actions,
+            const std::vector<const ActionWriter*>& actionWriter,
             const nlohmann::json& jsonObject
         );
 
         SelectionWriter
         (
-            const std::vector<Action*>& actions,
+            const std::vector<const ActionWriter*>& actionWriter,
             const std::string& title
         );
 
         SelectionWriter 
         (
-            const std::vector<Action*>& actions,
+            const std::vector<const ActionWriter*>& actionWriter,
             const SelectionData& selectionData
         );
 
         SelectionWriter
         (
-            const std::vector<Action*>& actions,
+            const std::vector<const ActionWriter*>& actionWriter,
             const std::string& folderFromRoot,
             const std::string& fileName
         );

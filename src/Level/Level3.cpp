@@ -4,14 +4,6 @@
 
 #include "Level3.h"
 
-#include "Selection.h"
-#include "UseWeapon.h"
-#include "Knife.h"
-#include "Fist.h"
-
-#include "HeaderWriter.h"
-#include "MessageHandler.h"
-
 void Level3::startLevel( const Options& options )
 {
     Plug plug( "V", 20 );

@@ -8,10 +8,10 @@
 
 SelectionWriter::SelectionWriter
 ( 
-    const std::vector<Action*>& actions,
+    const std::vector<const ActionWriter*>& actionWriter,
     const nlohmann::json& jsonObject
 ) :
-    actions_( actions ),
+    actionWriter_( actionWriter ),
     selectionData_( jsonObject )
 {
 
@@ -19,10 +19,10 @@ SelectionWriter::SelectionWriter
 
 SelectionWriter::SelectionWriter
 (
-    const std::vector<Action*>& actions,
+    const std::vector<const ActionWriter*>& actionWriter,
     const std::string& title
 ) :
-    actions_( actions ),
+    actionWriter_( actionWriter ),
     selectionData_( title )
 {
 
@@ -30,10 +30,10 @@ SelectionWriter::SelectionWriter
 
 SelectionWriter::SelectionWriter
 (
-    const std::vector<Action*>& actions,
+    const std::vector<const ActionWriter*>& actionWriter,
     const SelectionData& selectionData
 ) :
-    actions_( actions ),
+    actionWriter_( actionWriter ),
     selectionData_( selectionData )
 {
 
@@ -41,11 +41,11 @@ SelectionWriter::SelectionWriter
 
 SelectionWriter::SelectionWriter
 (
-    const std::vector<Action*>& actions,
+    const std::vector<const ActionWriter*>& actionWriter,
     const std::string& folderFromRoot,
     const std::string& fileName
 ) :
-    actions_( actions ),
+    actionWriter_( actionWriter ),
     selectionData_( folderFromRoot, fileName )
 {
 
@@ -71,19 +71,19 @@ void SelectionWriter::writeSelection() const
         << Term::color( Term::fg::reset ) 
         << Term::color( Term::style::reset );
 
-    for ( int i = 0; i < actions_.size(); i++ )
+    for ( int i = 0; i < actionWriter_.size(); i++ )
     {
         std::cout << "\n " 
             << std::to_string( i + 1 ) 
             << "- " 
             << Term::color( Term::fg::yellow ) 
             << Term::color( Term::style::bold )   
-            << actions_[i]->actionWriter().actionData().statement() 
+            << actionWriter_[i]->actionData().statement() 
             << Term::color( Term::fg::reset ) 
             << Term::color( Term::style::reset );   
     }
 
-    if ( actions_.size() != 1 )
+    if ( actionWriter_.size() != 1 )
     {
         std::cout << "\n " 
             << Term::color( Term::fg::black ) 
@@ -91,7 +91,7 @@ void SelectionWriter::writeSelection() const
             << Term::color( Term::style::bold ) 
             << "Entrez un chiffre entre " 
             << 1 << "-" 
-            << actions_.size() 
+            << actionWriter_.size() 
             << Term::color( Term::fg::reset ) 
             << Term::color( Term::bg::reset ) 
             << Term::color( Term::style::reset ) 

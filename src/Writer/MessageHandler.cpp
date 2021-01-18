@@ -4,6 +4,8 @@
 
 #include "MessageHandler.h"
 
+#include "MessageWriter.h"
+
 MessageHandler::MessageHandler
 ( 
     const nlohmann::json& jsonObject,

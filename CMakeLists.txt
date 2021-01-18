@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.12)
 
 # set the project name
 project(Elevation VERSION 1.0.0)
@@ -18,9 +18,8 @@ include_directories(
 
 set(HEADER_ACTION
     ${FOLDER_ACTION}/Action.h
+    ${FOLDER_ACTION}/Actions.h
 
-    ${FOLDER_ACTION}/StartGame.h
-    ${FOLDER_ACTION}/LoadGame.h
     ${FOLDER_ACTION}/Quit.h
     ${FOLDER_ACTION}/WriteResults.h
 
@@ -31,10 +30,34 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/Answer.h
     ${FOLDER_ACTION}/Dead.h
     ${FOLDER_ACTION}/PlugAttack.h
+    ${FOLDER_ACTION}/ChoosePlug.h
+    ${FOLDER_ACTION}/Nothing.h
 )
 
 set(SOURCE_ACTION
 
+)
+
+#
+# Set header and source files for Combo class and its herited classes (in the folder Combo) 
+#
+set(FOLDER_COMBO src/Combo)
+
+include_directories(
+    ${FOLDER_COMBO}
+)
+
+set(HEADER_COMBO
+    ${FOLDER_COMBO}/Combo.h
+    ${FOLDER_COMBO}/Combos.h
+
+    ${FOLDER_COMBO}/ComboFistMeleeWeapon.h
+    ${FOLDER_COMBO}/ComboDoubleMeleeWeapon.h
+)
+
+set(SOURCE_COMBO
+    ${FOLDER_COMBO}/ComboFistMeleeWeapon.cpp
+    ${FOLDER_COMBO}/ComboDoubleMeleeWeapon.cpp
 )
 
 #
@@ -48,6 +71,7 @@ include_directories(
 
 set(HEADER_DATA
     ${FOLDER_DATA}/Data.h
+    ${FOLDER_DATA}/Datas.h
     ${FOLDER_DATA}/HeaderData.h
     ${FOLDER_DATA}/MessagesData.h
     ${FOLDER_DATA}/MessageData.h
@@ -57,6 +81,7 @@ set(HEADER_DATA
     ${FOLDER_DATA}/SelectionData.h
     ${FOLDER_DATA}/ResultsData.h
     ${FOLDER_DATA}/TutorialData.h
+    ${FOLDER_DATA}/Token.h
 )
 
 set(SOURCE_DATA
@@ -88,6 +113,23 @@ set(HEADER_DATAFILES
 
 set(SOURCE_DATAFILES
 
+)
+
+#
+# Set header and source files for Fight files (in the folder Fight) 
+#
+set(FOLDER_FIGHT src/Fight)
+
+include_directories(
+    ${FOLDER_FIGHT}
+)
+
+set(HEADER_FIGHT
+    ${FOLDER_FIGHT}/Fight.h
+)   
+
+set(SOURCE_FIGHT
+    ${FOLDER_FIGHT}/Fight.cpp
 )
 
 #
@@ -129,21 +171,10 @@ include_directories(
 )
 
 set(HEADER_PLAYER
-    ${FOLDER_PLAYER}/Weapon.h
-    ${FOLDER_PLAYER}/WeaponFactory.h
-    ${FOLDER_PLAYER}/NoWeapon.h
-    ${FOLDER_PLAYER}/Fist.h
-    ${FOLDER_PLAYER}/Knife.h
-    ${FOLDER_PLAYER}/Katana.h
-    ${FOLDER_PLAYER}/WeaponFistCombo.h
-    ${FOLDER_PLAYER}/Cutter.h
-
-    ${FOLDER_PLAYER}/Id.h
     ${FOLDER_PLAYER}/Player.h
 )
 
 set(SOURCE_PLAYER
-    ${FOLDER_PLAYER}/Weapon.cpp
     ${FOLDER_PLAYER}/Player.cpp
 )
 
@@ -174,20 +205,71 @@ include_directories(
 )
 
 set(HEADER_SELECTION 
-    ${FOLDER_SELECTION}/Fight.h
     ${FOLDER_SELECTION}/Selection.h
+    ${FOLDER_SELECTION}/Selections.h
     ${FOLDER_SELECTION}/Question.h
-    ${FOLDER_SELECTION}/Combo.h
-    ${FOLDER_SELECTION}/ComboFistMeleeWeapon.h
-    ${FOLDER_SELECTION}/ComboDoubleMeleeWeapon.h
 )
 
 set(SOURCE_SELECTION
-    ${FOLDER_SELECTION}/Fight.cpp
     ${FOLDER_SELECTION}/Selection.cpp
     ${FOLDER_SELECTION}/Question.cpp
-    ${FOLDER_SELECTION}/ComboFistMeleeWeapon.cpp
-    ${FOLDER_SELECTION}/ComboDoubleMeleeWeapon.cpp
+)
+
+#
+# Set header for the startGame action (in the folder StartGame)
+#
+set(FOLDER_STARTGAME src/StartGame)
+
+include_directories( ${FOLDER_STARTGAME} )
+
+set(HEADER_STARTGAME
+    ${FOLDER_STARTGAME}/StartGame.h
+    ${FOLDER_STARTGAME}/LoadGame.h
+)
+
+set(SOURCE_STARTGAME
+
+)
+
+#
+# Set header for utils
+#
+set(FOLDER_UTILS src/Utils)
+
+include_directories(
+    ${FOLDER_UTILS}
+)
+
+set(HEADER_UTILS
+    ${FOLDER_UTILS}/Id.h
+)
+
+set(SOURCE_UTILS
+
+)
+
+#
+# Set header and sources for Weapon class and its herited classes (in the folder Weapon)
+#
+set(FOLDER_WEAPON src/Weapon)
+
+include_directories(
+    ${FOLDER_WEAPON}
+)
+
+set(HEADER_WEAPON
+    ${FOLDER_WEAPON}/Weapon.h
+    ${FOLDER_WEAPON}/WeaponFactory.h
+    ${FOLDER_WEAPON}/NoWeapon.h
+    ${FOLDER_WEAPON}/Fist.h
+    ${FOLDER_WEAPON}/Knife.h
+    ${FOLDER_WEAPON}/Katana.h
+    ${FOLDER_WEAPON}/WeaponFistCombo.h
+    ${FOLDER_WEAPON}/Cutter.h
+)
+
+set(SOURCE_WEAPON
+    ${FOLDER_WEAPON}/Weapon.cpp
 )
 
 #
@@ -209,10 +291,10 @@ set(HEADER_WRITER
     ${FOLDER_WRITER}/MessageHandler.h
     ${FOLDER_WRITER}/ActionWriter.h
     ${FOLDER_WRITER}/SelectionWriter.h
-    ${FOLDER_WRITER}/Token.h
     ${FOLDER_WRITER}/AnswerWriter.h
     ${FOLDER_WRITER}/FightWriter.h
     ${FOLDER_WRITER}/TutorialWriter.h
+    ${FOLDER_WRITER}/Writers.h
 )
 
 set(SOURCE_WRITER
@@ -236,11 +318,17 @@ add_executable(main
     ${HEADER_ACTION}
     ${SOURCE_ACTION}
 
+    ${HEADER_COMBO}
+    ${SOURCE_COMBO}
+
     ${HEADER_DATA}
     ${SOURCE_DATA}
 
     ${HEADER_DATAFILES}
     ${SOURCE_DATAFILES}
+
+    ${HEADER_FIGHT}
+    ${SOURCE_FIGHT}
 
     ${HEADER_LEVEL}
     ${SOURCE_LEVEL}
@@ -253,6 +341,15 @@ add_executable(main
 
     ${HEADER_SELECTION}
     ${SOURCE_SELECTION}
+
+    ${HEADER_STARTGAME}
+    ${SOURCE_STARTGAME}
+
+    ${HEADER_UTILS}
+    ${SOURCE_UTILS}
+
+    ${HEADER_WEAPON}
+    ${SOURCE_WEAPON}
 
     ${HEADER_WRITER}
     ${SOURCE_WRITER}

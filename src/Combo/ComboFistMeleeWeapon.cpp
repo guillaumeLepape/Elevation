@@ -3,9 +3,6 @@
 */
 
 #include "ComboFistMeleeWeapon.h"
-#include "Selection.h"
-
-#include "WeaponFactory.h"
 
 ComboFistMeleeWeapon::ComboFistMeleeWeapon
 ( 

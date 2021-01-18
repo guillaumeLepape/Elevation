@@ -5,7 +5,7 @@
     * \file TutorialWriter.h
 */
 
-#include "TutorialData.h"
+#include "Writer.h"
 
 class TutorialWriter
 {

@@ -4,9 +4,6 @@
 
 #include "Level1.h"
 
-#include "HeaderWriter.h"
-#include "MessageHandler.h"
-
 void Level1::startLevel( const Options& options )
 {
     Plug plug( "Petite frappe", 20);

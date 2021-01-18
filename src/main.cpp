@@ -3,11 +3,14 @@
 */
 
 
-#include "StartGame.h"
-#include "LoadGame.h"
-#include "Quit.h"
+// #include "StartGame.h"
+// #include "LoadGame.h"
+// #include "Quit.h"
 
-#include "Rules.h"
+// #include "Actions.h"
+#include "LoadGame.h"
+
+// #include "Rules.h"
 
 int main( int argc, char* argv[] )
 {

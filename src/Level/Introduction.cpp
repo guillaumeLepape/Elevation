@@ -4,9 +4,6 @@
 
 #include "Introduction.h"
 
-#include "HeaderWriter.h"
-#include "Pseudo.h"
-
 void Introduction::startLevel( const Options& options )
 {
     HeaderWriter headerWriter
