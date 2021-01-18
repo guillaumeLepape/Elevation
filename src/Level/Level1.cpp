@@ -9,8 +9,6 @@
 
 void Level1::startLevel( const Options& options )
 {
-    std::string folder = "data/Level1";
-
     Plug plug( "Petite frappe", 20);
 
     HeaderWriter headerWriter( 
@@ -20,7 +18,7 @@ void Level1::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( folder, "message" );
+    MessageHandler messageHandler( data::Level1::messages );
     messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
 

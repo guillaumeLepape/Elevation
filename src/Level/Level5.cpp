@@ -17,8 +17,6 @@
 
 void Level5::startLevel( const Options& options )
 {
-    std::string folder = "data/Level5";
-
     HeaderWriter headerWriter( 
         data::Level5::nameLevel,
         data::Level5::hour,
@@ -29,20 +27,20 @@ void Level5::startLevel( const Options& options )
     // Weapon knife( "Couteau", 30, WeaponType::meleeWeapon );
     Plug guetteur( "Guetteur", 0, 15, Fist() );
 
-    MessageHandler messageHandler( folder, "message" );
+    MessageHandler messageHandler( data::Level5::messages );
     messageHandler.preTreatment( player_, &guetteur );
     messageHandler.nextMessage();
     messageHandler.nextMessage();
 
     if ( !options.noRule_ )
     {
-        TutorialWriter tutorial0( folder, "tutorial0" );
+        TutorialWriter tutorial0( data::Tutorial::title1, data::Tutorial::statement1 );
         tutorial0.writeTutorial();
     }
 
     if ( !options.noRule_ )
     {   
-        TutorialWriter tutorial1( folder, "tutorial1" );
+        TutorialWriter tutorial1( data::Tutorial::title2, data::Tutorial::statement2 );
         tutorial1.writeTutorial();
     }
 

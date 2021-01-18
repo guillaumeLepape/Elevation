@@ -17,9 +17,25 @@ class MessageData : public Data
         std::vector<bool> token_;
         std::vector<std::string> dialog_;
 
+        std::vector<std::string> vectorFromVectorOfTuple1
+        ( 
+            const std::vector<std::tuple<std::string, bool, std::string>>& message
+        ) const;
+
+        std::vector<bool> vectorFromVectorOfTuple2
+        ( 
+            const std::vector<std::tuple<std::string, bool, std::string>>& message
+        ) const;
+
+        std::vector<std::string> vectorFromVectorOfTuple3
+        ( 
+            const std::vector<std::tuple<std::string, bool, std::string>>& message
+        ) const;
+
     public:
         MessageData( const nlohmann::json& jsonObject );
         MessageData( const std::string& folderFromRoot, const std::string& fileName );
+        MessageData( const std::vector<std::tuple<std::string, bool, std::string>>& message );
 
         void readData() override;
 

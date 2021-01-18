@@ -14,8 +14,6 @@
 
 void Level3::startLevel( const Options& options )
 {
-    std::string folder = "data/Level3";
-
     Plug plug( "V", 20 );
 
     HeaderWriter headerWriter( 
@@ -25,12 +23,11 @@ void Level3::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( folder, "message" );
+    MessageHandler messageHandler( data::Level3::messages );
     messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
     
     UseWeapon useFist( player_, &plug, Fist(), data::Action::statementUseFist, data::Action::resultUseWeapon );
-
     useFist.triggerAction();
 
     messageHandler.nextMessage();

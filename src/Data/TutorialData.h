@@ -10,7 +10,7 @@
 class TutorialData : public Data
 {
     private:
-        std::string name_;
+        std::string title_;
         std::vector<std::string> tutorialStatement_;
 
     public:
@@ -20,9 +20,15 @@ class TutorialData : public Data
             const std::string& fileName 
         );
 
+        TutorialData
+        (
+            const std::string& title,
+            const std::vector<std::string>& tutorialStatement
+        );
+
         void readData();
 
-        const std::string& name() const { return name_; }
+        const std::string& title() const { return title_; }
         const std::vector<std::string> tutorialStatement() const { return tutorialStatement_; }
 };
 

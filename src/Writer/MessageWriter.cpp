@@ -17,6 +17,15 @@ MessageWriter::MessageWriter
 {
 
 }
+
+MessageWriter::MessageWriter
+(
+    const std::vector<std::tuple<std::string, bool, std::string>>& message
+) :
+    messageData_( message )
+{
+
+}
         
 MessageWriter::MessageWriter
 ( 

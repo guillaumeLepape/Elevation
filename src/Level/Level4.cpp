@@ -10,8 +10,6 @@
 
 void Level4::startLevel( const Options& options )
 {
-    std::string folder = "data/Level4";
-
     Plug plug( "Freeze Corleone", 20 );
 
     HeaderWriter headerWriter( 
@@ -21,7 +19,7 @@ void Level4::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( folder, "message" );
+    MessageHandler messageHandler( data::Level4::messages );
     messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
 

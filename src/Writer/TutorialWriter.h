@@ -19,6 +19,12 @@ class TutorialWriter
             const std::string& fileName 
         );
 
+        TutorialWriter
+        (
+            const std::string& title,
+            const std::vector<std::string>& tutorialStatement
+        );
+
         void writeTutorial() const;
 };
 

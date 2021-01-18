@@ -13,8 +13,6 @@
 
 void Level2::startLevel( const Options& options )
 {
-    std::string folder = "data/Level2";
-
     Plug plug( "Jean-Luc Delarue", 80 );
 
     HeaderWriter headerWriter( 
@@ -24,7 +22,7 @@ void Level2::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( folder, "message" );
+    MessageHandler messageHandler( data::Level2::messages );
     messageHandler.preTreatment( player_, &plug );
     messageHandler.nextMessage();
 

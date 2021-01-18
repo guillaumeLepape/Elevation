@@ -20,6 +20,16 @@ TutorialWriter::TutorialWriter
 
 }
 
+TutorialWriter::TutorialWriter
+(
+    const std::string& title,
+    const std::vector<std::string>& tutorialStatement
+) :
+    tutorialData_( title, tutorialStatement )
+{
+
+}
+
 void TutorialWriter::writeTutorial() const 
 {
     Pause::pause();
@@ -27,7 +37,7 @@ void TutorialWriter::writeTutorial() const
     std::cout << "\n " 
         << Term::color( Term::bg::magenta )
         << Term::color( Term::style::bold )
-        << tutorialData_.name() 
+        << tutorialData_.title() 
         << Term::color( Term::bg::reset )
         << Term::color( Term::style::reset );
 

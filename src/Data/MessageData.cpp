@@ -18,6 +18,15 @@ MessageData::MessageData( const std::string& folderFromRoot, const std::string& 
     readData();
 }
 
+MessageData::MessageData( const std::vector<std::tuple<std::string, bool, std::string>>& message ) :
+    tokenName_( vectorFromVectorOfTuple1(message) ),
+    token_( vectorFromVectorOfTuple2(message) ),
+    dialog_( vectorFromVectorOfTuple3(message) )
+{
+
+}
+
+
 void MessageData::readData()
 {
     for ( int i = 0; i < jsonObject_["message"].size(); i++ )
@@ -63,4 +72,43 @@ void MessageData::preTreatment( const Player* player, const Plug* plug )
             assert( false );
         }
     }
+}
+
+std::vector<std::string> MessageData::vectorFromVectorOfTuple1
+( 
+    const std::vector<std::tuple<std::string, bool, std::string>>& message
+) const
+{
+    std::vector<std::string> result;
+    for ( auto m = message.cbegin(); m != message.cend(); m++ )
+    {
+        result.push_back( std::get<0>( *m ) );
+    }
+    return result;
+}
+
+std::vector<bool> MessageData::vectorFromVectorOfTuple2
+( 
+    const std::vector<std::tuple<std::string, bool, std::string>>& message
+) const
+{
+    std::vector<bool> result;
+    for ( auto m = message.cbegin(); m != message.cend(); m++ )
+    {
+        result.push_back( std::get<1>( *m ) );
+    }
+    return result;
+}
+
+std::vector<std::string> MessageData::vectorFromVectorOfTuple3
+( 
+    const std::vector<std::tuple<std::string, bool, std::string>>& message
+) const
+{
+    std::vector<std::string> result;
+    for ( auto m = message.cbegin(); m != message.cend(); m++ )
+    {
+        result.push_back( std::get<2>( *m ) );
+    }
+    return result;
 }

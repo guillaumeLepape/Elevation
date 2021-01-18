@@ -9,16 +9,15 @@
 
 void Introduction::startLevel( const Options& options )
 {
-    std::string folder = "data/Introduction";
-
-    HeaderWriter headerWriter( 
+    HeaderWriter headerWriter
+    ( 
         data::Introduction::nameLevel,
         data::Introduction::hour,
         data::Introduction::minut
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( folder, "message" );
+    MessageHandler messageHandler( data::Introduction::messages );
     messageHandler.preTreatmentNextMessage( player_, nullptr );
     messageHandler.nextMessage();
 

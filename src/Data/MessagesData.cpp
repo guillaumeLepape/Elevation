@@ -18,6 +18,13 @@ MessagesData::MessagesData( const std::string& folderFromRoot, const std::string
     readData();
 }
 
+MessagesData::MessagesData( const std::vector<std::vector<std::tuple<std::string, bool, std::string>>>& messages ) :
+    messages_( convertSTLToMessages(messages) )
+{
+    
+}
+
+
 void MessagesData::readData()
 {
     nbMessage_ = jsonObject_["nbMessage"];
@@ -28,4 +35,18 @@ void MessagesData::readData()
 
         messages_.push_back( messageData );
     }
+}
+
+std::vector<MessageData> MessagesData::convertSTLToMessages
+( 
+    const std::vector<std::vector<std::tuple<std::string, bool, std::string>>>& messages
+) const 
+{
+    std::vector<MessageData> result;
+    for ( auto m = messages.cbegin(); m != messages.cend(); m++ )
+    {
+        MessageData messageData( *m );
+        result.push_back( messageData );
+    }
+    return result;
 }

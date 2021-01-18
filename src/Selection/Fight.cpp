@@ -54,8 +54,7 @@ void Fight::startFight()
 
         int resultChoosePlug = Selection::select(
             choosePlugActions,
-            "data/Level5",
-            "selection0"
+            data::Action::titleChoosePlug
         );
 
         std::vector<Weapon> weapons = player_->weapons();
@@ -77,8 +76,7 @@ void Fight::startFight()
 
         int resultUseWeapon = Selection::select(
             useWeapons,
-            "data/Level5",
-            "selection1"
+            data::Action::titleChooseWeapon
         );
 
         // launch every combo

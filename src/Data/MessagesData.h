@@ -16,9 +16,15 @@ class MessagesData : public Data
         std::vector<MessageData> messages_;
         int nbMessage_;
 
+        std::vector<MessageData> convertSTLToMessages
+        ( 
+            const std::vector<std::vector<std::tuple<std::string, bool, std::string>>>& messages
+        ) const;
+
     public:
         MessagesData( const nlohmann::json& jsonObject );
         MessagesData( const std::string& folderFromRoot, const std::string& fileName );
+        MessagesData( const std::vector<std::vector<std::tuple<std::string, bool, std::string>>>& messages );
 
         void readData() override;
 

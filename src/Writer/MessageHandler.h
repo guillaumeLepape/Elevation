@@ -26,6 +26,12 @@ class MessageHandler
 
         MessageHandler
         (
+            const std::vector<std::vector<std::tuple<std::string, bool, std::string>>>& messages,
+            int indexMessage = -1
+        );
+
+        MessageHandler
+        (
             const MessagesData& messagesData,
             int indexMessage = -1
         );

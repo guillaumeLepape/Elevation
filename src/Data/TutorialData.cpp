@@ -14,9 +14,20 @@ TutorialData::TutorialData
     readData();
 }
 
+TutorialData::TutorialData
+(
+    const std::string& title,
+    const std::vector<std::string>& tutorialStatement
+) :
+    title_( title ),
+    tutorialStatement_( tutorialStatement )
+{
+
+}
+
 void TutorialData::readData()
 {
-    name_ = jsonObject_["name"];
+    title_ = jsonObject_["title"];
 
     for ( auto i = jsonObject_["tutorialStatement"].cbegin(); i != jsonObject_["tutorialStatement"].cend(); i++ )
     {

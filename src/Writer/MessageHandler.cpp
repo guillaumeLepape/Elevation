@@ -17,6 +17,17 @@ MessageHandler::MessageHandler
 
 MessageHandler::MessageHandler
 (
+    const std::vector<std::vector<std::tuple<std::string, bool, std::string>>>& messages,
+    int indexMessage
+) :
+    messagesData_( messages ),
+    indexMessage_( indexMessage )
+{
+
+}
+
+MessageHandler::MessageHandler
+(
     const MessagesData& messagesData,
     int indexMessage
 ) :

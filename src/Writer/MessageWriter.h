@@ -23,6 +23,11 @@ class MessageWriter
         );
         
         MessageWriter
+        (
+            const std::vector<std::tuple<std::string, bool, std::string>>& message
+        );
+
+        MessageWriter
         ( 
             const MessageData& messageData 
         );
