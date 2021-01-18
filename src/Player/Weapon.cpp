@@ -14,7 +14,7 @@ Weapon::Weapon
     damageWeapon_( damageWeapon ),
     weaponType_( weaponType )
 {
-    settingNameWeapon( name );
+    
 }
 
 Weapon::~Weapon()

@@ -46,6 +46,7 @@ class WriteResults : public Action
             resultsData.writeData();
 
             actionWriter_.writeResult();
+            std::cout << "\n";
         }
 };
 

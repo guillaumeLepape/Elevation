@@ -14,6 +14,8 @@
 
 #include "Fist.h"
 #include "Knife.h"
+#include "Katana.h"
+#include "Cutter.h"
 
 void Level5::startLevel( const Options& options )
 {
@@ -24,7 +26,6 @@ void Level5::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    // Weapon knife( "Couteau", 30, WeaponType::meleeWeapon );
     Plug guetteur( "Guetteur", 0, 15, Fist() );
 
     MessageHandler messageHandler( data::Level5::messages );
@@ -59,15 +60,17 @@ void Level5::startLevel( const Options& options )
     );
     firstFight.startFight();
 
+    Katana katana;
     Knife knife;
-    Plug randomDebile( "Random debile", 0, 50, knife );
-    Plug randomDebile2( "Random debile 2", 0, 70, knife );
-    Plug pasFuteFute( "Pas fute-fute", 0, 100, knife );
+    Cutter cutter;
+    Plug sacAPV( "Sac à PV", 0, 100, cutter );
+    Plug kamikaze( "Kamikaze", 0, 32, katana );
+    Plug soutien( "Soutien", 0, 60, knife );
 
     std::vector<Plug> enemies;
-    enemies.push_back( randomDebile );
-    enemies.push_back( randomDebile2 );
-    enemies.push_back( pasFuteFute );
+    enemies.push_back( sacAPV );
+    enemies.push_back( kamikaze );
+    enemies.push_back( soutien );
 
     std::vector<Combo*> combosSecondFight;
     combosSecondFight.push_back( new ComboFistMeleeWeapon( player_ ) );

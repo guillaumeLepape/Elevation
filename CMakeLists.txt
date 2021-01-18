@@ -136,6 +136,7 @@ set(HEADER_PLAYER
     ${FOLDER_PLAYER}/Knife.h
     ${FOLDER_PLAYER}/Katana.h
     ${FOLDER_PLAYER}/WeaponFistCombo.h
+    ${FOLDER_PLAYER}/Cutter.h
 
     ${FOLDER_PLAYER}/Id.h
     ${FOLDER_PLAYER}/Player.h
