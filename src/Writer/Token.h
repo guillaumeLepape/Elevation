@@ -8,8 +8,8 @@
 #include <bits/stdc++.h>
 #include <boost/algorithm/string.hpp> 
 
-#include "Player.h"
-#include "Plug.h"
+class Player;
+class Plug;
 
 class Token
 {

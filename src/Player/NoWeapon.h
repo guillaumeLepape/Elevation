@@ -11,7 +11,7 @@ class NoWeapon : public Weapon
 {
     public: 
         NoWeapon() :
-            Weapon( std::string(), 0, WeaponType::empty )
+            Weapon( "NoWeapon", 0, WeaponType::empty )
         {
 
         }

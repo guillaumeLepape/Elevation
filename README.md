@@ -11,7 +11,7 @@ If you forget to add the flag, running `git submodule update --init` will get al
 
 # Requirements
 
-1. CMake 3.10 or more
+1. CMake 3.12 or more
 ```shell
     sudo apt install cmake 
 ```

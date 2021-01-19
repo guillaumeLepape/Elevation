@@ -24,11 +24,11 @@ class Level
             WriteResults writeResults( player_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
             writeResults.triggerAction();
 
-            std::unique_ptr<Action> continueAction( new Nothing( data::Menu::statementContinue, std::tuple<bool, std::string>() ) );
-            std::unique_ptr<Action> quit( new Quit( data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit ) );
+            Nothing continueAction( data::Menu::statementContinue, std::tuple<bool, std::string>() );
+            Quit quit( data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
 
             Selection::select(
-                { continueAction.get(), quit.get() },
+                { &continueAction, &quit },
                 data::Menu::titleContinueMenu
             );
         }

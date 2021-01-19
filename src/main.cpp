@@ -23,35 +23,12 @@ int main( int argc, char* argv[] )
     
     Rules::displayRules( options );
     
-    std::unique_ptr<Action> startGame
-    ( 
-        new StartGame
-        ( 
-            data::Menu::statementStartGame, 
-            data::Menu::resultStartGame, 
-            options 
-        ) 
-    );
-    std::unique_ptr<Action> loadGame
-    ( 
-        new LoadGame
-        ( 
-            data::Menu::statementLoadGame, 
-            data::Menu::resultLoadGame, 
-            options 
-        ) 
-    );
-    std::unique_ptr<Action> quit
-    ( 
-        new Quit
-        (
-            data::Menu::statementQuit,
-            data::Menu::resultLoadGame
-        ) 
-    );
+    StartGame startGame( data::Menu::statementStartGame, data::Menu::resultStartGame, options );
+    LoadGame loadGame( data::Menu::statementLoadGame, data::Menu::resultLoadGame, options ); 
+    Quit quit( data::Menu::statementQuit, data::Menu::resultLoadGame ); 
 
     Selection::select(  
-        { startGame.get(), loadGame.get(), quit.get() },
+        { &startGame, &loadGame, &quit },
         data::Menu::titleStartGameMenu
     );
 
