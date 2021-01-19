@@ -4,6 +4,7 @@
 
 #include "MessageWriter.h"
 
+#include "Token.h"
 #include "Pause.h"
 
 #include <cpp-terminal/terminal.h>

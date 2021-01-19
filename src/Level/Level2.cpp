@@ -5,6 +5,12 @@
 
 #include "Level2.h"
 
+#include <memory>
+
+#include "Negociate.h"
+
+#include "HeaderWriter.h"
+
 void Level2::startLevel( const Options& options )
 {
     Plug plug( "Jean-Luc Delarue", 80 );

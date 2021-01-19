@@ -5,7 +5,7 @@
     * \file MessageWriter.h
 */
 
-#include "Writer.h"
+#include "MessageData.h"
 
 class MessageWriter
 {

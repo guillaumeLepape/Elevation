@@ -9,7 +9,6 @@
 #include "Fist.h"
 #include "Knife.h"
 #include "Katana.h"
-#include "Cutter.h"
 
 #include "WeaponFistCombo.h"
 
@@ -22,7 +21,6 @@ class WeaponFactory
             if ( nameWeapon == "Poing" ) { return std::make_unique<Fist>(); }
             if ( nameWeapon == "Couteau" ) { return std::make_unique<Knife>(); }
             if ( nameWeapon == "Katana" ) { return std::make_unique<Katana>(); }
-            if ( nameWeapon == "Cutter" ) { return std::make_unique<Cutter>(); }
             assert(false);
 
         }

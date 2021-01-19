@@ -7,6 +7,8 @@
 
 #include "Action.h"
 
+#include "Pause.h"
+
 class Dead : public Action
 {
     private:

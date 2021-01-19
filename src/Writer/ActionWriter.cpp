@@ -5,6 +5,7 @@
 #include "ActionWriter.h"
 
 #include "Pause.h"
+#include "Token.h"
 
 #include <cpp-terminal/terminal.h>
 

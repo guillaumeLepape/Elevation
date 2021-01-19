@@ -7,6 +7,9 @@
 
 #include "Action.h"
 
+#include "MessageHandler.h"
+#include "ListNameData.h"
+
 class Pseudo : public Action
 {
     private: 

@@ -5,7 +5,8 @@
     * \file MessageHandler.h
 */
 
-#include "Writer.h"
+#include "MessagesData.h"
+#include "MessageWriter.h"
 
 class MessageHandler  
 {

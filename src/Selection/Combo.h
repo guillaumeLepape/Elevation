@@ -5,7 +5,7 @@
     * \file Combo.h
 */
 
-#include "Selections.h"
+#include "UseWeapon.h"
 
 class Combo
 {

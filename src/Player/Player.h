@@ -6,7 +6,7 @@
 */
 
 #include <vector>
-#include "Weapons.h"
+#include "Weapon.h"
 
 class Player
 {

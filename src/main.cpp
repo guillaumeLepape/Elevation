@@ -1,7 +1,13 @@
 /*!
     * \file main.cpp
 */
+
+
+#include "StartGame.h"
 #include "LoadGame.h"
+#include "Quit.h"
+
+#include "Rules.h"
 
 int main( int argc, char* argv[] )
 {

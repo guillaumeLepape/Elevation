@@ -5,7 +5,7 @@
     * \file HeaderWriter.h
 */
 
-#include "Writer.h"
+#include "HeaderData.h"
 
 class HeaderWriter
 {

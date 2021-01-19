@@ -5,7 +5,8 @@
     * \file Selection.h
 */
 
-#include "Actions.h"
+#include "Action.h"
+#include "SelectionWriter.h"
 
 class Selection
 {
@@ -15,9 +16,6 @@ class Selection
             const std::vector<Action*>& actions,
             const SelectionWriter& selectionWriter
         );
-
-        static std::vector<const ActionWriter*> 
-            vectorOfActionsToVectorOfActionWriter( const std::vector<Action*>& actions );
 
     public:
         static int select

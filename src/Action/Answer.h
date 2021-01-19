@@ -7,6 +7,9 @@
 
 #include "Action.h"
 
+#include "MessageHandler.h"
+#include "AnswerWriter.h"
+
 class Answer : public Action
 {
     private:

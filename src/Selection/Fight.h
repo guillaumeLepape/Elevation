@@ -5,7 +5,8 @@
     * \file Fight.h
 */
 
-#include "Combos.h"
+#include "MessageHandler.h"
+#include "Combo.h"
 
 class Fight
 {
@@ -16,7 +17,6 @@ class Fight
         const std::vector<Combo*>& combos_;
 
         const bool enemiesDeadOrNot() const;
-        
     public:
         Fight
         ( 

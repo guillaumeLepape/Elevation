@@ -5,7 +5,6 @@
     * \file Options.h
 */
 
-#include "Writer.h"
 #include <boost/program_options.hpp>
 
 class Options

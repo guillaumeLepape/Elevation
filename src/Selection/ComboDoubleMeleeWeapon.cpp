@@ -4,6 +4,11 @@
 
 #include "ComboDoubleMeleeWeapon.h"
 
+#include "Nothing.h"
+#include "Selection.h"
+
+#include "WeaponFactory.h"
+
 ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon( Player* const player ) :
     Combo( player )
 {

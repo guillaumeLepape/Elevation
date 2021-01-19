@@ -7,6 +7,8 @@
 
 #include "Action.h"
 
+#include "ResultsData.h"
+
 class WriteResults : public Action
 {
     private:

@@ -5,7 +5,7 @@
     * \file Plug.h
 */
 
-#include "Weapons.h"
+#include "NoWeapon.h"
 
 class Plug 
 {

@@ -5,6 +5,7 @@
 #include <limits>
 
 #include "Selection.h"
+#include "Pause.h"
 
 int Selection::select
 ( 
@@ -13,10 +14,7 @@ int Selection::select
     const std::string& nameFile
 )
 {
-    std::vector<const ActionWriter*> actionWriter( 
-        vectorOfActionsToVectorOfActionWriter( actions )
-    );
-    SelectionWriter selectionWriter( actionWriter, folderFromRoot, nameFile );
+    SelectionWriter selectionWriter( actions, folderFromRoot, nameFile );
     int result = select( actions, selectionWriter );
     return result;
 }
@@ -27,10 +25,7 @@ int Selection::select
     const std::string& title
 )
 {
-    std::vector<const ActionWriter*> actionWriter( 
-        vectorOfActionsToVectorOfActionWriter( actions )
-    );
-    SelectionWriter selectionWriter( actionWriter, title );
+    SelectionWriter selectionWriter( actions, title );
     int result = select( actions, selectionWriter );
     return result;
 }
@@ -85,15 +80,4 @@ int Selection::select
     }    
 
     return choice - 1;
-}
-
-std::vector<const ActionWriter*> 
-    Selection::vectorOfActionsToVectorOfActionWriter( const std::vector<Action*>& actions )
-{
-    std::vector<const ActionWriter*> actionWriter;
-    for ( auto a = actions.cbegin(); a != actions.cend(); a++ )
-    {
-        actionWriter.push_back( &((*a)->actionWriter()) );
-    }
-    return actionWriter;
 }
