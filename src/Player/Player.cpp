@@ -78,6 +78,15 @@ const Weapon& Player::weaponFromName( const std::string& nameWeapon ) const
     assert(false);
 } 
 
+void Player::addWeapon( const Weapon& weapon )
+{
+    auto it = std::find( weapons_.cbegin(), weapons_.cend(), weapon );
+    // If this condition is true, weapon is not in weapons_ so add it
+    if ( it == weapons_.cend() )
+        weapons_.push_back( weapon );
+}
+
+
 void Player::deleteWeapon( const std::string& nameWeapon ) 
 {
     auto x = [&nameWeapon]( const Weapon& weapon ) { return nameWeapon == weapon.name(); };

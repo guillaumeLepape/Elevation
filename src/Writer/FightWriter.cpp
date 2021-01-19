@@ -17,8 +17,7 @@ FightWriter::FightWriter
     const std::vector<Plug>& plugs 
 ) :
     player_( player ),
-    plugs_( plugs ),
-    numberOfDeadPlug_( 0 )
+    plugs_( plugs )
 {
     Pause::pause();
     std::cout << "\n " 
@@ -168,21 +167,13 @@ void FightWriter::writeGameBoard() const
 
 void FightWriter::writeRemoveDeadBody()
 {
-    const int countNumberOfDeadPlug = methodNumberOfDeadPlug();
-
-    // if the condition is true, it mean that at least one en
-    if ( numberOfDeadPlug_ != countNumberOfDeadPlug )
-    {
-        numberOfDeadPlug_ = countNumberOfDeadPlug;
-        
-        Pause::pause();
-        std::cout << "\n " 
-            << Term::color(Term::fg::yellow)  
-            << Term::color(Term::style::bold)   
-            << "Evacuation des cadavres."
-            << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset); 
-    }
+    Pause::pause();
+    std::cout << "\n " 
+        << Term::color(Term::fg::yellow)  
+        << Term::color(Term::style::bold)   
+        << "Evacuation des cadavres."
+        << Term::color(Term::fg::reset)
+        << Term::color(Term::style::reset); 
 }
 
 void FightWriter::writeEndOfFight() const 
@@ -194,18 +185,4 @@ void FightWriter::writeEndOfFight() const
         << "Fin du combat"
         << Term::color(Term::fg::reset)
         << Term::color(Term::style::reset); 
-}
-
-
-const int FightWriter::methodNumberOfDeadPlug() const
-{
-    int numberOfDead = 0;
-    for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
-    {
-        if ( e->deadOrNot() )
-        {
-            numberOfDead++;
-        }
-    } 
-    return numberOfDead;
 }

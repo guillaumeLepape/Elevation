@@ -13,10 +13,6 @@ class FightWriter
     private:
         const Player* const player_;
         const std::vector<Plug>& plugs_;
-
-        int numberOfDeadPlug_;
-
-        const int methodNumberOfDeadPlug() const;
         
     public:
         FightWriter( const Player* const player, const std::vector<Plug>& plugs );

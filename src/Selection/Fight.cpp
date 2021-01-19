@@ -20,7 +20,8 @@ Fight::Fight
     player_( player ),
     plugs_( plugs ),
     messageHandler_( messageHandler ),
-    combos_( combos )
+    combos_( combos ),
+    numberOfDeadPlug_( 0 )
 {
 
 }
@@ -89,7 +90,14 @@ void Fight::startFight()
             );
         }
 
-        fightWriter.writeRemoveDeadBody();
+        const int countNumberOfDeadPlug = methodNumberOfDeadPlug();
+
+        if ( numberOfDeadPlug_ != countNumberOfDeadPlug )
+        {
+            numberOfDeadPlug_ = countNumberOfDeadPlug;
+            fightWriter.writeRemoveDeadBody();
+            player_->addWeapon( ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon() );
+        }
 
         for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
         {
@@ -120,4 +128,17 @@ const bool Fight::enemiesDeadOrNot() const
     }
 
     return result;
+}
+
+const int Fight::methodNumberOfDeadPlug() const
+{
+    int numberOfDead = 0;
+    for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
+    {
+        if ( e->deadOrNot() )
+        {
+            numberOfDead++;
+        }
+    } 
+    return numberOfDead;
 }

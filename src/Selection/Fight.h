@@ -16,6 +16,9 @@ class Fight
         const MessageHandler& messageHandler_;
         const std::vector<Combo*>& combos_;
 
+        int numberOfDeadPlug_;
+
+        const int methodNumberOfDeadPlug() const;
         const bool enemiesDeadOrNot() const;
     public:
         Fight

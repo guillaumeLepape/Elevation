@@ -40,6 +40,8 @@ class Weapon
         const int& damageWeapon() const { return damageWeapon_; }
         const WeaponType& weaponType() const { return weaponType_; }
 
+        friend bool operator==( const Weapon& weapon1, const Weapon& weapon2 );
+
         nlohmann::json writeJson() const;
 };
 

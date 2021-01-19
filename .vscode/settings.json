@@ -80,5 +80,14 @@
         "hash_set": "cpp",
         "rope": "cpp",
         "slist": "cpp"
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/.hg/store/**": true,
+        "libraries/**": true,
+        "build/**": true,
+        "doc/**": true
     }
 }

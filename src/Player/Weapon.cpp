@@ -22,7 +22,6 @@ Weapon::~Weapon()
 
 }
 
-
 nlohmann::json Weapon::writeJson() const
 {   
     return 
@@ -30,3 +29,10 @@ nlohmann::json Weapon::writeJson() const
         { "name", name_ }
     };
 }   
+
+bool operator==( const Weapon& weapon1, const Weapon& weapon2 )
+{
+    return ( (weapon1.name_ == weapon2.name_) 
+            && (weapon1.damageWeapon_ == weapon2.damageWeapon_) 
+            && (weapon1.weaponType_ == weapon2.weaponType_ ) );
+}
