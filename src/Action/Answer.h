@@ -7,51 +7,40 @@
 
 #include "Action.h"
 
-#include "MessageHandler.h"
 #include "AnswerWriter.h"
 
 class Answer : public Action
 {
     private:
         const AnswerWriter answerWriter_;
-        const MessageHandler& messageHandler_;
-        const int indexMessage_;
 
     public:
         explicit Answer
         ( 
-            const MessageHandler& messageHandler,
-            const int& indexMessage,
             const std::string& folderFromRoot,
             const std::string& nameFile
         ) : 
             Action( folderFromRoot, nameFile ),
-            answerWriter_( folderFromRoot, nameFile ),
-            messageHandler_( messageHandler ),
-            indexMessage_( indexMessage )
+            answerWriter_( folderFromRoot, nameFile )
         {
 
         }
 
         explicit Answer
         (
-            const MessageHandler& messageHandler,
-            const int& indexMessage,
             const std::tuple<bool, std::string>& statement, 
             const std::tuple<bool, std::string>& result, 
             const bool& correctOrNot  
         ) :
             Action( statement, result ),
-            answerWriter_( statement, result, correctOrNot ),
-            messageHandler_( messageHandler ),
-            indexMessage_( indexMessage )
+            answerWriter_( statement, result, correctOrNot )
         {
 
         }
 
         void triggerAction() override
         {
-            messageHandler_.writeMessage( indexMessage_ );
+
         }
 
         const bool& correctOrNot() const { return answerWriter_.answerData().correctOrNot(); }

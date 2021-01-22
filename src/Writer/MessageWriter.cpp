@@ -20,9 +20,11 @@ MessageWriter::MessageWriter
 
 MessageWriter::MessageWriter
 (
-    const std::vector<std::tuple<std::string, bool, std::string>>& message
+    const std::vector<std::tuple<NameSpeaker, std::string>>& message,
+    const std::string& pseudo,
+    const std::string& plugName
 ) :
-    messageData_( message )
+    messageData_( message, pseudo, plugName )
 {
 
 }
@@ -48,7 +50,7 @@ MessageWriter::MessageWriter
 
 void MessageWriter::writeName( const int& i ) const 
 {
-    if ( messageData_.tokenName()[i] == "player" )
+    if ( messageData_.tokenName()[i] == NameSpeaker::player )
     {
         std::cout << "\n        " 
             << Term::color( Term::fg::green )
@@ -60,7 +62,7 @@ void MessageWriter::writeName( const int& i ) const
         std::cout << Term::color( Term::fg::blue )
             << Term::color( Term::style::bold );
     }
-    else if ( messageData_.tokenName()[i] == "plug" )
+    else if ( messageData_.tokenName()[i] == NameSpeaker::plug )
     {
         std::cout << "\n        " 
             << Term::color( Term::fg::red )
@@ -72,12 +74,12 @@ void MessageWriter::writeName( const int& i ) const
         std::cout << Term::color( Term::fg::blue )
             << Term::color( Term::style::bold );   
     }
-    else if ( messageData_.tokenName()[i] == "description" )
+    else if ( messageData_.tokenName()[i] == NameSpeaker::description )
     {
         std::cout << Term::color( Term::fg::magenta )
             << Term::color( Term::style::bold ) ;
     }
-    else if ( messageData_.tokenName()[i] == "action" )
+    else if ( messageData_.tokenName()[i] == NameSpeaker::action )
     {
         std::cout << Term::color( Term::fg::yellow )
             << Term::color( Term::style::bold ) ;

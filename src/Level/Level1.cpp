@@ -5,7 +5,7 @@
 #include "Level1.h"
 
 #include "HeaderWriter.h"
-#include "MessageHandler.h"
+#include "MessageWriter.h"
 
 void Level1::startLevel( const Options& options )
 {
@@ -18,9 +18,10 @@ void Level1::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( data::Level1::messages );
-    messageHandler.preTreatment( player_, &plug );
-    messageHandler.nextMessage();
+    auto message = data::Level1::message0( player_->pseudo(), plug.name(), plug.price() );
+
+    MessageWriter messageWriter( message, player_->pseudo(), plug.name() );
+    messageWriter.writeMessage();
 
     player_->increaseMoney( -plug.price() );
 

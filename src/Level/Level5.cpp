@@ -5,8 +5,9 @@
 #include "Level5.h"
 
 #include "HeaderWriter.h"
-
+#include "MessageWriter.h"
 #include "TutorialWriter.h"
+
 #include "Fight.h"
 
 #include "ComboFistMeleeWeapon.h"
@@ -28,10 +29,11 @@ void Level5::startLevel( const Options& options )
 
     Plug guetteur( "Guetteur", 0, 15, Fist() );
 
-    MessageHandler messageHandler( data::Level5::messages );
-    messageHandler.preTreatment( player_, &guetteur );
-    messageHandler.nextMessage();
-    messageHandler.nextMessage();
+    MessageWriter messageWriter0( data::Level5::message0, player_->pseudo(), guetteur.name() );
+    messageWriter0.writeMessage();
+    
+    MessageWriter messageWriter1( data::Level5::message1, player_->pseudo(), guetteur.name() );
+    messageWriter1.writeMessage();
 
     if ( !options.noRule_ )
     {
@@ -55,7 +57,6 @@ void Level5::startLevel( const Options& options )
     Fight firstFight( 
         player_,
         fistFightEnemi,
-        messageHandler,
         combosFirstFight
     );
     firstFight.startFight();
@@ -79,7 +80,6 @@ void Level5::startLevel( const Options& options )
     Fight fight( 
         player_, 
         enemies,
-        messageHandler,
         combosSecondFight
     );
     fight.startFight(); 

@@ -5,8 +5,6 @@
 
 #include "Level2.h"
 
-#include <memory>
-
 #include "Negociate.h"
 
 #include "HeaderWriter.h"
@@ -22,11 +20,16 @@ void Level2::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( data::Level2::messages );
-    messageHandler.preTreatment( player_, &plug );
-    messageHandler.nextMessage();
+    auto message = data::Level2::message0( plug.name(), plug.price() );
+    MessageWriter messageWriter
+    ( 
+        message,
+        player_->pseudo(),
+        plug.name()
+    );
+    messageWriter.writeMessage();
 
-    Negociate negociate( player_, &plug, messageHandler, data::Action::statementNegociate, data::Action::resultNegociate );
+    Negociate negociate( player_, &plug, data::Action::statementNegociate, data::Action::resultNegociate );
     negociate.triggerAction();
     
     Level::endOfLevel();

@@ -12,38 +12,40 @@
 class MessageData : public Data
 {
     private:
-        std::vector<std::string> tokenName_;
+        std::vector<NameSpeaker> tokenName_;
         std::vector<std::string> name_;
-        std::vector<bool> token_;
         std::vector<std::string> dialog_;
 
-        std::vector<std::string> vectorFromVectorOfTuple1
+        std::vector<NameSpeaker> vectorFromVectorOfTuple1
         ( 
-            const std::vector<std::tuple<std::string, bool, std::string>>& message
+            const std::vector<std::tuple<NameSpeaker, std::string>>& message
         ) const;
 
-        std::vector<bool> vectorFromVectorOfTuple2
+        std::vector<std::string> vectorFromVectorOfTuple2
         ( 
-            const std::vector<std::tuple<std::string, bool, std::string>>& message
-        ) const;
-
-        std::vector<std::string> vectorFromVectorOfTuple3
-        ( 
-            const std::vector<std::tuple<std::string, bool, std::string>>& message
+            const std::vector<std::tuple<NameSpeaker, std::string>>& message
         ) const;
 
     public:
         MessageData( const nlohmann::json& jsonObject );
         MessageData( const std::string& folderFromRoot, const std::string& fileName );
-        MessageData( const std::vector<std::tuple<std::string, bool, std::string>>& message );
+        MessageData
+        ( 
+            const std::vector<std::tuple<NameSpeaker, std::string>>& message, 
+            const std::string& pseudo, 
+            const std::string& plugName
+        );
 
         void readData() override;
 
-        void preTreatment( const Player* const player, const Plug* plug );
+        void writeName
+        ( 
+            const std::string& pseudo = std::string(), 
+            const std::string& plugName = std::string()
+        );
 
-        const std::vector<std::string>& tokenName() const { return tokenName_; }
+        const std::vector<NameSpeaker>& tokenName() const { return tokenName_; }
         const std::vector<std::string>& name() const { return name_; }
-        const std::vector<bool>& token() const { return token_; }
         const std::vector<std::string>& dialog() const { return dialog_; }
 };
 

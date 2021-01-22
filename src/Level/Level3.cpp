@@ -10,7 +10,7 @@
 #include "Fist.h"
 
 #include "HeaderWriter.h"
-#include "MessageHandler.h"
+#include "MessageWriter.h"
 
 void Level3::startLevel( const Options& options )
 {
@@ -23,35 +23,39 @@ void Level3::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( data::Level3::messages );
-    messageHandler.preTreatment( player_, &plug );
-    messageHandler.nextMessage();
-    
+    MessageWriter messageWriter0( data::Level3::message0, player_->pseudo(), plug.name() );
+    messageWriter0.writeMessage();
+
     UseWeapon useFist( player_, &plug, Fist(), data::Action::statementUseFist, data::Action::resultUseWeapon );
     useFist.triggerAction();
 
-    messageHandler.nextMessage();
+    MessageWriter messageWriter1( data::Level3::message1, player_->pseudo(), plug.name() );
+    messageWriter1.writeMessage();
 
     Selection::select(
         { &useFist },
         data::Action::titleChooseWeapon
     );
 
-    messageHandler.writeMessage(2);
+    auto message = data::Level3::message2( plug.name() );
+    MessageWriter messageWriter2( message, player_->pseudo(), plug.name() );
+    messageWriter2.writeMessage();
 
     Selection::select(
         { &useFist },
         data::Action::titleChooseWeapon
     );
 
-    messageHandler.nextMessage();
+    MessageWriter messageWriter3( data::Level3::message3, player_->pseudo(), plug.name() );
+    messageWriter3.writeMessage();
 
     Selection::select(
         { &useFist },
         data::Action::titleChooseWeapon
     );
 
-    messageHandler.nextMessage();
+    MessageWriter messageWriter4( data::Level3::message4, player_->pseudo(), plug.name() );
+    messageWriter4.writeMessage();
 
     Knife knife;
     player_->addWeapon( knife );

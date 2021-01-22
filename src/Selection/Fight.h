@@ -5,7 +5,6 @@
     * \file Fight.h
 */
 
-#include "MessageHandler.h"
 #include "Combo.h"
 
 class Fight
@@ -13,7 +12,6 @@ class Fight
     private:
         Player* const player_;
         std::vector<Plug>& plugs_;
-        const MessageHandler& messageHandler_;
         const std::vector<Combo*>& combos_;
 
         int numberOfDeadPlug_;
@@ -25,7 +23,6 @@ class Fight
         ( 
             Player* const player, 
             std::vector<Plug>& plugs, 
-            const MessageHandler& messageHandler,
             const std::vector<Combo*>& combos
         );
 

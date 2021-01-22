@@ -24,7 +24,9 @@ class MessageWriter
         
         MessageWriter
         (
-            const std::vector<std::tuple<std::string, bool, std::string>>& message
+            const std::vector<std::tuple<NameSpeaker, std::string>>& message,
+            const std::string& pseudo,
+            const std::string& plugName
         );
 
         MessageWriter
@@ -39,8 +41,6 @@ class MessageWriter
         );
 
         void writeMessage() const;
-
-        void preTreatment( const Player* const player, const Plug* const plug ) {  }
 };
 
 #endif

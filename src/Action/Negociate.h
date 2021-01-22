@@ -7,28 +7,25 @@
 
 #include "Action.h"
 
-#include "MessageHandler.h"
+#include "MessageWriter.h"
 
 class Negociate : public Action
 {
     private: 
         Player* const player_;
         Plug* const plug_;
-        const MessageHandler& messageHandler_;
 
     public:
         explicit Negociate
         (
             Player* const player, 
             Plug* const plug, 
-            const MessageHandler& messageHandler,
             const std::string& folderFromRoot,
             const std::string& fileName
         ) :
             Action( folderFromRoot, fileName ),
             player_(player), 
-            plug_(plug), 
-            messageHandler_(messageHandler)
+            plug_(plug) 
         {
 
         }
@@ -37,14 +34,12 @@ class Negociate : public Action
         (
             Player* const player, 
             Plug* const plug, 
-            const MessageHandler& messageHandler,
             const std::tuple<bool, std::string> statement,
             const std::tuple<bool, std::string> result
         ) :
             Action( statement, result ),  
             player_(player), 
-            plug_(plug), 
-            messageHandler_(messageHandler)      
+            plug_(plug) 
         {
 
         }
@@ -53,7 +48,13 @@ class Negociate : public Action
         {
             bool out = false;
 
-            messageHandler_.writeMessage(1);
+            MessageWriter messageWriter1
+            ( 
+                data::Level2::message1, 
+                player_->pseudo(),
+                plug_->name() 
+            );
+            messageWriter1.writeMessage();
 
             while ( !out )
             {
@@ -66,24 +67,48 @@ class Negociate : public Action
 
                 if ( price > plug_->price() )
                 {
-                    messageHandler_.writeMessage(2);
+                    MessageWriter messageWriter2
+                    ( 
+                        data::Level2::message2,
+                        player_->pseudo(),
+                        plug_->name()
+                    );
+                    messageWriter2.writeMessage();
                 }
                 else if ( price <= plug_->price() && plug_->price() - 30 <= price ) 
                 {
                     out = true;
-                    messageHandler_.writeMessage(4);
+                    MessageWriter messageWriter4
+                    ( 
+                        data::Level2::message4,
+                        player_->pseudo(),
+                        plug_->name()
+                    );
+                    messageWriter4.writeMessage();
 
                     player_->increaseMoney( -price );
                 }
                 else 
                 {
-                    messageHandler_.writeMessage(3);
+                    MessageWriter messageWriter3
+                    ( 
+                        data::Level2::message3,
+                        player_->pseudo(),
+                        plug_->name()
+                    );
+                    messageWriter3.writeMessage();
                 } 
             }
             actionWriter_.preTreatmentResult( player_, plug_ );
             actionWriter_.writeResult();
             
-            messageHandler_.writeMessage(5);
+            MessageWriter messageWriter5
+            ( 
+                data::Level2::message5,
+                player_->pseudo(),
+                plug_->name()
+            );
+            messageWriter5.writeMessage();
         }
 };
 

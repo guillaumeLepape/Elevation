@@ -5,6 +5,16 @@
 #include <vector>
 #include <memory>
 
+enum class NameSpeaker
+{
+    player = 0,
+    plug,
+    description,
+    action
+};
+
+typedef std::vector<std::tuple<NameSpeaker, std::string>> Message;
+
 namespace data
 {
     namespace Introduction
@@ -18,17 +28,29 @@ namespace data
         inline int minut = 12;
 
         // Messages data
-        inline std::vector<std::vector<std::tuple<std::string, bool, std::string>>> messages = {
-            {
-                {"description", false, "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée que vous avez passé chez votre ami."},
-                {"description", false, "C'est certainement dû à la consommation massive et diverse de drogues."},
-                {"description", false, "Il vous faudra donc persister sur cette lancée en allant vous approvisionnez auprès de vos 9 dealeurs préférés."},
-                {"description", false, "La consommation de ces 9 drogues est votre seul moyen de changer radicalement votre existence."},
-            },
-            {{"player", false, "Je ne souviens plus de mon prénom. Comment je m'appelle ?"}},
-            {{"player", true, "Euh, je suis plutôt sûr d'être une femme."}},
-            {{"player", true, "Ce prénom n'existe pas."}},
-            {{"player", true, "Bon d'accord -*-pseudo-*-, ça fera l'affaire."}}};
+        inline Message message0 = {
+            {NameSpeaker::description, "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée que vous avez passé chez votre ami."},
+            {NameSpeaker::description, "C'est certainement dû à la consommation massive et diverse de drogues."},
+            {NameSpeaker::description, "Il vous faudra donc persister sur cette lancée en allant vous approvisionnez auprès de vos 9 dealeurs préférés."},
+            {NameSpeaker::description, "La consommation de ces 9 drogues est votre seul moyen de changer radicalement votre existence."}
+        };
+
+        inline Message message1 = {
+            {NameSpeaker::player, "Je ne souviens plus de mon prénom. Comment je m'appelle ?"}
+        };  
+
+        inline Message message2 = {
+            {NameSpeaker::player, "Euh, je suis plutôt sûr d'être une femme."}
+        };
+
+        inline Message message3 = {
+            {NameSpeaker::player, "Ce prénom n'existe pas."}
+        };
+
+        inline Message message4( const std::string& pseudo )
+        {
+            return {{ NameSpeaker::player, "Bon d'accord " + pseudo + ", ça fera l'affaire." }};
+        }
     } // namespace Introduction
 
     namespace Level1
@@ -41,54 +63,72 @@ namespace data
         inline int hour = 14;
         inline int minut = 35;
 
-        inline std::vector<std::vector<std::tuple<std::string, bool, std::string>>> messages = { 
-            {
-                {"player", false, "Bon, c'est parti."},
-                {"description", false, "Vous arrivez en bas du batiment"},
-                {"plug", true, "Ca va, -*-pseudo-*- ?"},
-                {"player", true, "Et toi, -*-plugName-*- ?"},
-                {"plug", true, "Comme d'habitude ? C'est -*-pricePlug-*-€."},
-                {"player", false, "Tiens."},
-                {"action", true, "Vous perdez -*-pricePlug-*-€."},
-                {"plug", false, "Bonne journée."},
-                {"player", false, "A la prochaine."},
-                {"description", false, "Roule. Fume."}
-            }
-        };
+        // Messages data
+        inline Message message0
+        ( 
+            const std::string& pseudo, 
+            const std::string& plugName,
+            const int& pricePlug 
+        )
+        {
+            return { 
+                {NameSpeaker::player, "Bon, c'est parti."},
+                {NameSpeaker::description, "Vous arrivez en bas du batiment"},
+                {NameSpeaker::plug, "Ca va, " + pseudo + " ?"},
+                {NameSpeaker::player, "Et toi, " + plugName + " ?"},
+                {NameSpeaker::plug, "Comme d'habitude ? C'est " + std::to_string( pricePlug ) + "€."},
+                {NameSpeaker::player, "Tiens."},
+                {NameSpeaker::action, "Vous perdez " + std::to_string( pricePlug ) + "€."},
+                {NameSpeaker::plug, "Bonne journée."},
+                {NameSpeaker::player, "A la prochaine."},
+                {NameSpeaker::description, "Roule. Fume."}
+            };
+        }
     } // namespace Level1
 
     namespace Level2
     {
+        // Level 2 data
+        // ***********************************
+
+        // Header data
         inline std::string nameLevel = "Niveau 2 : Coke";
         inline int hour = 15;
         inline int minut = 10;
 
-        inline std::vector<std::vector<std::tuple<std::string, bool, std::string>>> messages = { 
-            {
-                {"player", true, "Salut, -*-plugName-*-."} ,
-                {"plug", false, "Ca va ? Tu cherches quoi ?"} ,
-                {"player", false, "De la C."} ,
-                {"plug", true, "C'est -*-pricePlug-*-€ le gramme."} ,
-                {"player", false, "Putain, c'est un peu cher."} ,
-                {"plug", false, "C'est pas négociable."} ,
-                {"player", false, "Aller j'ai pas masse de tunes."} 
-            },
-            {
-                {"plug", false, "Ok, je veux bien négocier. Tu proposes combien ?"}
-            },
-            {
-                {"plug", false, "T'es con ou quoi ?"}
-            },
-            {
-                {"plug", false, "Je peux pas me permettre ca."}
-            },
-            {
-                {"plug", false, "Ca me convient. Tiens. A la prochaine."}
-            },
-            {
-                {"player", false, "Merci. Salut."},
-                {"description", false, "Carte VISA. Sniffe."}
-            }
+        // Messages data
+        inline Message message0( const std::string& plugName, const int& pricePlug )
+        {
+            return {
+                {NameSpeaker::player, "Salut, " + plugName + "."} ,
+                {NameSpeaker::plug, "Ca va ? Tu cherches quoi ?"} ,
+                {NameSpeaker::player, "De la C."} ,
+                {NameSpeaker::plug, "C'est " + std::to_string(pricePlug) + "€ le gramme."} ,
+                {NameSpeaker::player, "Putain, c'est un peu cher."} ,
+                {NameSpeaker::plug, "C'est pas négociable."} ,
+                {NameSpeaker::player, "Aller j'ai pas masse de tunes."} 
+            };
+        }
+
+        inline Message message1 = {
+            {NameSpeaker::plug, "Ok, je veux bien négocier. Tu proposes combien ?"}
+        };  
+
+        inline Message message2 = {
+            {NameSpeaker::plug, "T'es con ou quoi ?"}
+        };
+
+        inline Message message3 = {
+            {NameSpeaker::plug, "Je peux pas me permettre ca."}
+        };
+
+        inline Message message4 = {
+            {NameSpeaker::plug, "Ca me convient. Tiens. A la prochaine."}
+        };
+
+        inline Message message5 = {
+            {NameSpeaker::player, "Merci. Salut."},
+            {NameSpeaker::description, "Carte VISA. Sniffe."}
         };
     } // namespace Level2
 
@@ -98,38 +138,43 @@ namespace data
         inline int hour = 16;
         inline int minut = 4;
 
-        inline std::vector<std::vector<std::tuple<std::string, bool, std::string>>> messages = { 
-            {
-                {"description", false, "Vous arrivez en bas du bloc."},
-                {"player", false, "Salut !"},
-                {"plug", false, "Tu veux quoi."},
-                {"player", false, "T'as quelque chose pour 10 balles."},
-                {"plug", false, "Non, c'est minimum 20 balles."},
-                {"player", false, "Ok, ca va être juste."},
-                {"plug", false, "C'est 20 balles ou rien."},
-                {"description", false, "Vous vous taisez. Vous serrez le poing."},
-                {"plug", false, "Qu'est ce qui t'arrive, frère ? Tu as l'air grave défoncé."},
-                {"description", false, "Il a raison."},
-                {"description", false, "J'ai pas le temps pour ça. Le sang me monte à la tête."}
-            },
-            {
-                {"plug", false, "Qu'est ce qui te prends, fils de pute."},
-                {"description", false, "Vous venez de le frapper."},
-                {"plug", false, "Tu peux pas juste payer ta dose et te casser."}
-            },
-            {
-                {"description", true, "Vous vous placez sur le torse de -*-plugName-*-."},
-                {"plug", false, "Batard !"}
-            },
-            {
-                {"plug", false, "Fils de pute !"}
-            },
-            {
-                {"plug", false, "Ah."},
-                {"description", false, "Le produit tombe au sol ainsi qu'un couteau."},
-                {"description", false, "Vous mettez le shit dans votre poche et saisissez le couteau."},
-                {"action", false, "Vous êtes maintenant équipé d'un couteau."}
-            }
+        inline Message message0 = {
+            {NameSpeaker::description, "Vous arrivez en bas du bloc."},
+            {NameSpeaker::player, "Salut !"},
+            {NameSpeaker::plug, "Tu veux quoi."},
+            {NameSpeaker::player, "T'as quelque chose pour 10 balles."},
+            {NameSpeaker::plug, "Non, c'est minimum 20 balles."},
+            {NameSpeaker::player, "Ok, ca va être juste."},
+            {NameSpeaker::plug, "C'est 20 balles ou rien."},
+            {NameSpeaker::description, "Vous vous taisez. Vous serrez le poing."},
+            {NameSpeaker::plug, "Qu'est ce qui t'arrive, frère ? Tu as l'air grave défoncé."},
+            {NameSpeaker::description, "Il a raison."},
+            {NameSpeaker::description, "J'ai pas le temps pour ça. Le sang me monte à la tête."}
+        };
+
+        inline Message message1 = {
+            {NameSpeaker::plug, "Qu'est ce qui te prends, fils de pute."},
+            {NameSpeaker::description, "Vous venez de le frapper."},
+            {NameSpeaker::plug, "Tu peux pas juste payer ta dose et te casser."}
+        };
+
+        inline Message message2( const std::string& plugName )
+        {
+            return {
+                {NameSpeaker::description, "Vous vous placez sur le torse de " + plugName + "."},
+                {NameSpeaker::plug, "Batard !"}
+            };
+        }
+
+        inline Message message3 = {
+            {NameSpeaker::plug, "Fils de pute !"}
+        };
+
+        inline Message message4 = {
+            {NameSpeaker::plug, "Ah."},
+            {NameSpeaker::description, "Le produit tombe au sol ainsi qu'un couteau."},
+            {NameSpeaker::description, "Vous mettez le shit dans votre poche et saisissez le couteau."},
+            {NameSpeaker::action, "Vous êtes maintenant équipé d'un couteau."}
         };
     } // namespace Level3
 
@@ -139,31 +184,35 @@ namespace data
         inline int hour = 17;
         inline int minut = 15;
 
-        inline std::vector<std::vector<std::tuple<std::string, bool, std::string>>> messages = { 
-            {
-                { "description", false, "Vous arrivez en bas d'un petit appartement où vous trouverez le produit tant convoité." },
-                { "description", false, "Vous sonnez à la porte." },
-                { "plug", true, "Ca va -*-pseudo-*- ?" },
-                { "player", true, "Tranquille." },
-                { "description", false, "La porte s'ouvre. Vous montez jusqu'à l'appartement et y pénétrez." },
-                { "plug", false, "Viens par ici, je peux te faire le produit gratuitement." },
-                { "player", false, "Gratuit, c'est cool." },
-                { "plug", false, "Mais tu dois répondre à quelques questions avant." },
-                { "player", false, "Ok." },
-                { "plug", false, "Je veux savoir si tu comprends les liens cachés." },
-                { "player", false, "Euh ... ok." },
-                { "plug", false, "Première question." }
-            },
-            {
-                { "plug", false, "Non, c'est pas ça, réessaie." }
-            },
-            {
-                { "plug", false, "Yep, c'est ca, question suivante." }
-            },
-            {
-                { "plug", false, "Quelle niveau ! Tiens." },
-                { "description", false, "Gobelet. Sip." }
-            }
+        inline Message message0( const std::string& pseudo )
+        {
+            return {
+                { NameSpeaker::description, "Vous arrivez en bas d'un petit appartement où vous trouverez le produit tant convoité." },
+                { NameSpeaker::description, "Vous sonnez à la porte." },
+                { NameSpeaker::plug, "Ca va " + pseudo + " ?" },
+                { NameSpeaker::player, "Tranquille." },
+                { NameSpeaker::description, "La porte s'ouvre. Vous montez jusqu'à l'appartement et y pénétrez." },
+                { NameSpeaker::plug, "Viens par ici, je peux te faire le produit gratuitement." },
+                { NameSpeaker::player, "Gratuit, c'est cool." },
+                { NameSpeaker::plug, "Mais tu dois répondre à quelques questions avant." },
+                { NameSpeaker::player, "Ok." },
+                { NameSpeaker::plug, "Je veux savoir si tu comprends les liens cachés." },
+                { NameSpeaker::player, "Euh ... ok." },
+                { NameSpeaker::plug, "Première question." } 
+            };
+        }
+
+        inline Message message1 = {
+            { NameSpeaker::plug, "Non, c'est pas ça, réessaie." }
+        };
+
+        inline Message message2 = {
+            { NameSpeaker::plug, "Yep, c'est ca, question suivante." }
+        };
+
+        inline Message message3 = {
+            { NameSpeaker::plug, "Quelle niveau ! Tiens." },
+            { NameSpeaker::description, "Gobelet. Sip." }
         };
     } // namespace Level4
 
@@ -173,18 +222,18 @@ namespace data
         inline int hour = 19;
         inline int minut = 2;
 
-        inline std::vector<std::vector<std::tuple<std::string, bool, std::string>>> messages = { 
-            {
-                {"description", false, "Vous arrivez en bas du Bones factory tenu par le celebre gang des Bones."},
-                {"plug", false, "Tu rentres pas."}
-            },
-            {
-                {"player", false, "Je vais te buter."}
-            },
-            {
-                {"description",false,"Vous ramassez un marteau tombé au sol lors du combat."},
-                {"action",false,"Un marteau vient être ajouté à votre collection d'armes."}
-            }
+        inline Message message0 = {
+            {NameSpeaker::description, "Vous arrivez en bas du Bones factory tenu par le celebre gang des Bones."},
+            {NameSpeaker::plug, "Tu rentres pas."}
+        };
+
+        inline Message message1 = {
+            {NameSpeaker::player, "Je vais te buter."}
+        };
+
+        inline Message message2 = {
+            {NameSpeaker::description, "Vous ramassez un marteau tombé au sol lors du combat."},
+            {NameSpeaker::action, "Un marteau vient être ajouté à votre collection d'armes."}
         };
     } // namespace Level5
 

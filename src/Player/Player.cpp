@@ -14,7 +14,7 @@ Player::Player( const std::string& pseudo, const std::string& id, const int& nbL
     pseudo_( pseudo ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
-    nbLifePoints_(100),
+    nbLifePoints_(MAX_LIFE_POINTS),
     money_(200),
     weapons_( 1, Fist() ),
     selectedWeapon_(0),
@@ -45,14 +45,6 @@ Player::Player
 
 }
 
-void Player::printState()
-{
-    std::cout << "\n" << pseudo_;
-    std::cout << "\n" << nbLifePoints_;
-    std::cout << "\n" << money_;
-    std::cout << "\n";
-}
-
 void Player::changeWeapon( const std::string& nameWeapon )
 {
     for ( int i = 0; i < weapons_.size(); i++ )
@@ -81,9 +73,17 @@ const Weapon& Player::weaponFromName( const std::string& nameWeapon ) const
 void Player::addWeapon( const Weapon& weapon )
 {
     auto it = std::find( weapons_.cbegin(), weapons_.cend(), weapon );
-    // If this condition is true, weapon is not in weapons_ so add it
+    // If this condition is true, weapon is not in weapons_ so add it and sort the weapons_ vector
     if ( it == weapons_.cend() )
+    {
         weapons_.push_back( weapon );
+        // sort on the number of damage Weapon
+        std::sort( weapons_.begin(), weapons_.end(), 
+            []( const Weapon& weapon1, const Weapon& weapon2 ) -> bool
+        {
+            return weapon1.damageWeapon() < weapon2.damageWeapon(); 
+        });
+    }
 }
 
 

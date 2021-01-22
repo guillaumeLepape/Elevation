@@ -5,6 +5,7 @@
 #include "Introduction.h"
 
 #include "HeaderWriter.h"
+#include "MessageWriter.h"
 #include "Pseudo.h"
 
 void Introduction::startLevel( const Options& options )
@@ -17,15 +18,24 @@ void Introduction::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( data::Introduction::messages );
-    messageHandler.preTreatmentNextMessage( player_, nullptr );
-    messageHandler.nextMessage();
+    MessageWriter messageWriter0
+    ( 
+        data::Introduction::message0, 
+        player_->pseudo(), 
+        "" 
+    );
+    messageWriter0.writeMessage();
 
-    Pseudo pseudo( player_, messageHandler, data::Action::statementPseudo, data::Action::resultPseudo );
+    Pseudo pseudo( player_, data::Action::statementPseudo, data::Action::resultPseudo );
     pseudo.triggerAction();
 
-    messageHandler.preTreatment( player_, nullptr, 4 );
-    messageHandler.writeMessage(4);
+    MessageWriter messageWriter4
+    ( 
+        data::Introduction::message4( player_->pseudo() ), 
+        player_->pseudo(), 
+        "" 
+    );
+    messageWriter4.writeMessage();
 
     Level::endOfLevel();
 

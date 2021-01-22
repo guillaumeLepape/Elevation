@@ -14,12 +14,10 @@ Fight::Fight
 ( 
     Player* const player, 
     std::vector<Plug>& plugs, 
-    const MessageHandler& messageHandler,
     const std::vector<Combo*>& combos
 ) : 
     player_( player ),
     plugs_( plugs ),
-    messageHandler_( messageHandler ),
     combos_( combos ),
     numberOfDeadPlug_( 0 )
 {

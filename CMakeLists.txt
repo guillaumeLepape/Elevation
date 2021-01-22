@@ -18,6 +18,7 @@ include_directories(
 
 set(HEADER_ACTION
     ${FOLDER_ACTION}/Action.h
+    ${FOLDER_ACTION}/Actions.h
 
     ${FOLDER_ACTION}/StartGame.h
     ${FOLDER_ACTION}/LoadGame.h
@@ -31,6 +32,7 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/Answer.h
     ${FOLDER_ACTION}/Dead.h
     ${FOLDER_ACTION}/PlugAttack.h
+    ${FOLDER_ACTION}/Regeneration.h
 )
 
 set(SOURCE_ACTION
@@ -49,7 +51,6 @@ include_directories(
 set(HEADER_DATA
     ${FOLDER_DATA}/Data.h
     ${FOLDER_DATA}/HeaderData.h
-    ${FOLDER_DATA}/MessagesData.h
     ${FOLDER_DATA}/MessageData.h
     ${FOLDER_DATA}/ListNameData.h
     ${FOLDER_DATA}/ActionData.h
@@ -62,7 +63,6 @@ set(HEADER_DATA
 set(SOURCE_DATA
     ${FOLDER_DATA}/Data.cpp
     ${FOLDER_DATA}/HeaderData.cpp
-    ${FOLDER_DATA}/MessagesData.cpp
     ${FOLDER_DATA}/MessageData.cpp
     ${FOLDER_DATA}/ListNameData.cpp
     ${FOLDER_DATA}/ActionData.cpp
@@ -206,7 +206,6 @@ set(HEADER_WRITER
     ${FOLDER_WRITER}/Rules.h
     ${FOLDER_WRITER}/HeaderWriter.h
     ${FOLDER_WRITER}/MessageWriter.h
-    ${FOLDER_WRITER}/MessageHandler.h
     ${FOLDER_WRITER}/ActionWriter.h
     ${FOLDER_WRITER}/SelectionWriter.h
     ${FOLDER_WRITER}/Token.h
@@ -220,7 +219,6 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/Rules.cpp
     ${FOLDER_WRITER}/HeaderWriter.cpp
     ${FOLDER_WRITER}/MessageWriter.cpp
-    ${FOLDER_WRITER}/MessageHandler.cpp
     ${FOLDER_WRITER}/ActionWriter.cpp
     ${FOLDER_WRITER}/SelectionWriter.cpp
     ${FOLDER_WRITER}/AnswerWriter.cpp

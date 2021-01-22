@@ -7,14 +7,13 @@
 
 #include "Action.h"
 
-#include "MessageHandler.h"
+#include "MessageWriter.h"
 #include "ListNameData.h"
 
 class Pseudo : public Action
 {
     private: 
         Player* const player_;
-        MessageHandler& messageHandler_;
 
         void formatString( std::string& str )
         {
@@ -29,12 +28,10 @@ class Pseudo : public Action
         explicit Pseudo
         ( 
             Player* const player, 
-            MessageHandler& messageHandler,
             const std::string& folderFromRoot,
             const std::string& nameFile
         ) : 
             Action( folderFromRoot, nameFile ),
-            messageHandler_( messageHandler ),
             player_(player)
         {
 
@@ -43,12 +40,10 @@ class Pseudo : public Action
         explicit Pseudo 
         (
             Player* const player, 
-            MessageHandler& messageHandler,
             const std::tuple<bool, std::string> statement,
             const std::tuple<bool, std::string> result
         ) :
             Action( statement, result ),
-            messageHandler_( messageHandler ),
             player_(player)
         {
 
@@ -70,8 +65,13 @@ class Pseudo : public Action
             while ( !out )
             {
                 // Inform the user that he have to enter an information (his pseudo)
-                messageHandler_.preTreatment( player_, nullptr, 1 );
-                messageHandler_.writeMessage(1);
+                MessageWriter messageWriter
+                ( 
+                    data::Introduction::message1, 
+                    player_->pseudo(), 
+                    "" 
+                );
+                messageWriter.writeMessage();
                 actionWriter_.writeStatement();
 
                 // Get pseudo from user
@@ -90,15 +90,25 @@ class Pseudo : public Action
                 else if ( masculineName.find(pseudo) 
                     != masculineName.end() )
                 {
-                    messageHandler_.preTreatment( player_, nullptr, 2 );
-                    messageHandler_.writeMessage(2);
+                    MessageWriter messageWriter2
+                    ( 
+                        data::Introduction::message2, 
+                        player_->pseudo(), 
+                        "" 
+                    );
+                    messageWriter2.writeMessage();
                 }
                 // If pseudo doesn't appear in the two previous dataset,
                 // consider that this name doesn't exist
                 else 
                 {
-                    messageHandler_.preTreatment( player_, nullptr, 3 );
-                    messageHandler_.writeMessage(3);
+                    MessageWriter messageWriter3
+                    ( 
+                        data::Introduction::message3, 
+                        player_->pseudo(), 
+                        "" 
+                    );
+                    messageWriter3.writeMessage();
                 }
             }
 

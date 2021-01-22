@@ -54,9 +54,6 @@ class StartGame : public Action
 
                 level->startLevel( options_ );
             }
-
-            WriteResults writeResults( &player_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
-            writeResults.triggerAction();
         }
 };
 

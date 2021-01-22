@@ -7,6 +7,7 @@
 #include "Question.h"
 
 #include "HeaderWriter.h"
+#include "MessageWriter.h"
 
 void Level4::startLevel( const Options& options )
 {
@@ -19,31 +20,31 @@ void Level4::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    MessageHandler messageHandler( data::Level4::messages );
-    messageHandler.preTreatment( player_, &plug );
-    messageHandler.nextMessage();
+    auto message = data::Level4::message0( player_->pseudo() );
+    MessageWriter messageWriter0( message, player_->pseudo(), plug.name() );
+    messageWriter0.writeMessage();
 
     // first question
     Answer answer0_0( 
-        messageHandler, 1, 
         data::Question::answer1Question1, 
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer1Question1
     ); 
     Answer answer1_0
     ( 
-        messageHandler, 1, 
         data::Question::answer2Question1,
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer2Question1
     );   
     Answer answer2_0
     (
-        messageHandler, 2, 
         data::Question::answer3Question1,
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer3Question1
     );
+
+    MessageWriter messageWriter1( data::Level4::message1, player_->pseudo(), plug.name() );
+    MessageWriter messageWriter2( data::Level4::message2, player_->pseudo(), plug.name() );
 
     while
     ( 
@@ -53,26 +54,27 @@ void Level4::startLevel( const Options& options )
             data::Question::titleFirstQuestion 
         ) 
     )
-    {}
+    {
+        messageWriter1.writeMessage();
+    }
+
+    messageWriter2.writeMessage();
 
     // second question
     Answer answer0_1
     ( 
-        messageHandler, 1, 
         data::Question::answer1Question2,
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer1Question2
     );
     Answer answer1_1
     ( 
-        messageHandler, 1, 
         data::Question::answer2Question2,
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer2Question2
     );
     Answer answer2_1
     ( 
-        messageHandler, 2, 
         data::Question::answer3Question2,
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer3Question2
@@ -86,26 +88,27 @@ void Level4::startLevel( const Options& options )
             data::Question::titleSecondQuestion 
         ) 
     )
-    {}
+    {
+        messageWriter1.writeMessage();
+    }
+
+    messageWriter2.writeMessage();
 
     // third question
     Answer answer0_2
     ( 
-        messageHandler, 3, 
         data::Question::answer1Question3,
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer1Question3
     );
     Answer answer1_2
     ( 
-        messageHandler, 3, 
         data::Question::answer2Question3,
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer2Question3
     );
     Answer answer2_2
     ( 
-        messageHandler, 3, 
         data::Question::answer3Question3,
         std::tuple<bool, std::string>(),
         data::Question::correctOrNotAnswer3Question3
@@ -120,6 +123,8 @@ void Level4::startLevel( const Options& options )
         ) 
     )
     {}
+
+    messageWriter2.writeMessage();
 
     Level::endOfLevel();
 
