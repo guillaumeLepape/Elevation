@@ -26,7 +26,7 @@ void Introduction::startLevel( const Options& options )
     );
     messageWriter0.writeMessage();
 
-    Pseudo pseudo( player_, data::Action::statementPseudo, data::Action::resultPseudo );
+    Pseudo pseudo( player_, data::Action::statementPseudo, data::Action::resultPseudo(player_->pseudo()) );
     pseudo.triggerAction();
 
     MessageWriter messageWriter4

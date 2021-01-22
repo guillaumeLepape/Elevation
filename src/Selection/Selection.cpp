@@ -8,34 +8,12 @@
 #include "Pause.h"
 
 int Selection::select
-( 
-    const std::vector<Action*>& actions,
-    const std::string& folderFromRoot,
-    const std::string& nameFile
-)
-{
-    SelectionWriter selectionWriter( actions, folderFromRoot, nameFile );
-    int result = select( actions, selectionWriter );
-    return result;
-}
-
-int Selection::select
 (
     const std::vector<Action*>& actions,
     const std::string& title
 )
 {
     SelectionWriter selectionWriter( actions, title );
-    int result = select( actions, selectionWriter );
-    return result;
-}
-
-int Selection::select
-(
-    const std::vector<Action*>& actions,
-    const SelectionWriter& selectionWriter
-)
-{
     selectionWriter.writeSelection();
 
     int choice = 0;
@@ -79,5 +57,5 @@ int Selection::select
         }
     }    
 
-    return choice - 1;
+    return choice - 1;   
 }

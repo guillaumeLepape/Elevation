@@ -9,6 +9,8 @@
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
 
+#include "Plug.h"
+
 void Level4::startLevel( const Options& options )
 {
     Plug plug( "Freeze Corleone", 20 );
@@ -27,19 +29,19 @@ void Level4::startLevel( const Options& options )
     // first question
     Answer answer0_0( 
         data::Question::answer1Question1, 
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer1Question1
     ); 
     Answer answer1_0
     ( 
         data::Question::answer2Question1,
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer2Question1
     );   
     Answer answer2_0
     (
         data::Question::answer3Question1,
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer3Question1
     );
 
@@ -64,19 +66,19 @@ void Level4::startLevel( const Options& options )
     Answer answer0_1
     ( 
         data::Question::answer1Question2,
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer1Question2
     );
     Answer answer1_1
     ( 
         data::Question::answer2Question2,
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer2Question2
     );
     Answer answer2_1
     ( 
         data::Question::answer3Question2,
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer3Question2
     );
 
@@ -98,19 +100,19 @@ void Level4::startLevel( const Options& options )
     Answer answer0_2
     ( 
         data::Question::answer1Question3,
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer1Question3
     );
     Answer answer1_2
     ( 
         data::Question::answer2Question3,
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer2Question3
     );
     Answer answer2_2
     ( 
         data::Question::answer3Question3,
-        std::tuple<bool, std::string>(),
+        "",
         data::Question::correctOrNotAnswer3Question3
     );
 

@@ -7,46 +7,12 @@
 #include "Pause.h"
 
 SelectionWriter::SelectionWriter
-( 
-    const std::vector<Action*>& actions,
-    const nlohmann::json& jsonObject
-) :
-    actions_( actions ),
-    selectionData_( jsonObject )
-{
-
-}
-
-SelectionWriter::SelectionWriter
 (
     const std::vector<Action*>& actions,
     const std::string& title
 ) :
     actions_( actions ),
-    selectionData_( title )
-{
-
-}
-
-SelectionWriter::SelectionWriter
-(
-    const std::vector<Action*>& actions,
-    const SelectionData& selectionData
-) :
-    actions_( actions ),
-    selectionData_( selectionData )
-{
-
-}
-
-SelectionWriter::SelectionWriter
-(
-    const std::vector<Action*>& actions,
-    const std::string& folderFromRoot,
-    const std::string& fileName
-) :
-    actions_( actions ),
-    selectionData_( folderFromRoot, fileName )
+    title_( title )
 {
 
 }
@@ -59,7 +25,7 @@ void SelectionWriter::writeSelection() const
         << Term::color( Term::fg::black ) 
         << Term::color( Term::bg::green ) 
         << Term::color( Term::style::bold ) 
-        << selectionData_.title() 
+        << title_ 
         << Term::color( Term::fg::reset ) 
         << Term::color( Term::bg::reset ) 
         << Term::color( Term::style::reset );
@@ -78,7 +44,7 @@ void SelectionWriter::writeSelection() const
             << "- " 
             << Term::color( Term::fg::yellow ) 
             << Term::color( Term::style::bold )   
-            << actions_[i]->actionWriter().actionData().statement() 
+            << actions_[i]->actionWriter().statement() 
             << Term::color( Term::fg::reset ) 
             << Term::color( Term::style::reset );   
     }

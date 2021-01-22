@@ -6,12 +6,6 @@
 
 #include <fstream>
 
-Data::Data( const nlohmann::json& jsonObject ) :
-    jsonObject_( jsonObject )
-{
-    
-}
-
 Data::Data( const std::string& folderFromRoot, const std::string& fileName )
 {
     openFile( folderFromRoot, fileName );

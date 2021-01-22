@@ -25,23 +25,11 @@ class Pseudo : public Action
         }
 
     public:
-        explicit Pseudo
-        ( 
-            Player* const player, 
-            const std::string& folderFromRoot,
-            const std::string& nameFile
-        ) : 
-            Action( folderFromRoot, nameFile ),
-            player_(player)
-        {
-
-        }
-
         explicit Pseudo 
         (
             Player* const player, 
-            const std::tuple<bool, std::string> statement,
-            const std::tuple<bool, std::string> result
+            const std::string& statement,
+            const std::string& result
         ) :
             Action( statement, result ),
             player_(player)
@@ -114,7 +102,7 @@ class Pseudo : public Action
 
             player_->setPseudo(*ptrPseudo);
 
-            actionWriter_.preTreatmentResult( player_, nullptr );
+            actionWriter_.updateResult( data::Action::resultPseudo( player_->pseudo() ) );
             actionWriter_.writeResult();
         }
 };

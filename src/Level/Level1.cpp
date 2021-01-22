@@ -7,6 +7,8 @@
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
 
+#include "Plug.h"
+
 void Level1::startLevel( const Options& options )
 {
     Plug plug( "Petite frappe", 20);

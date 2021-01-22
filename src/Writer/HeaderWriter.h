@@ -5,18 +5,17 @@
     * \file HeaderWriter.h
 */
 
-#include "HeaderData.h"
+#include <string>
 
 class HeaderWriter
 {
     private:
-        HeaderData headerData_;
+        std::string nameLevel_;
+        int hour_;
+        int minut_;
 
     public:
-        HeaderWriter( const nlohmann::json& jsonObject );
         HeaderWriter( const std::string& nameLevel, const int& hour, const int& minut );
-        HeaderWriter( const HeaderData& headerData );
-        HeaderWriter( const std::string& folderFromRoot, const std::string& fileName );
 
         void writeHeader() const;
 };

@@ -16,20 +16,9 @@ class Answer : public Action
 
     public:
         explicit Answer
-        ( 
-            const std::string& folderFromRoot,
-            const std::string& nameFile
-        ) : 
-            Action( folderFromRoot, nameFile ),
-            answerWriter_( folderFromRoot, nameFile )
-        {
-
-        }
-
-        explicit Answer
         (
-            const std::tuple<bool, std::string>& statement, 
-            const std::tuple<bool, std::string>& result, 
+            const std::string& statement, 
+            const std::string& result, 
             const bool& correctOrNot  
         ) :
             Action( statement, result ),
@@ -43,7 +32,7 @@ class Answer : public Action
 
         }
 
-        const bool& correctOrNot() const { return answerWriter_.answerData().correctOrNot(); }
+        const bool& correctOrNot() const { return answerWriter_.correctOrNot(); }
 };
 
 #endif

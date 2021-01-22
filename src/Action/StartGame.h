@@ -16,24 +16,9 @@ class StartGame : public Action
 
     public: 
         StartGame
-        ( 
-            const std::string& folderFromRoot, 
-            const std::string& nameFile,
-            const Options& options,
-            const Player& player 
-                = Player( "Joueur", Id::generateId(), 0 )
-        ) : 
-            Action( folderFromRoot, nameFile ),
-            player_( player ),
-            options_( options )
-        {
-
-        }
-
-        StartGame
         (
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result,
+            const std::string& statement,
+            const std::string& result,
             const Options& options,
             const Player& player 
                 = Player( "Joueur", Id::generateId(), 0 ) 

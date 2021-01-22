@@ -5,25 +5,22 @@
     * \file AnswerWriter.h
 */
 
-#include "AnswerData.h"
+#include "ActionWriter.h"
 
-class AnswerWriter
+class AnswerWriter : public ActionWriter
 {
     private:
-        AnswerData answerData_;
+        bool correctOrNot_;
 
     public:
-        AnswerWriter( const nlohmann::json& jsonObject );
         AnswerWriter
         ( 
-            const std::tuple<bool, std::string>& statement, 
-            const std::tuple<bool, std::string>& result, 
+            const std::string& statement, 
+            const std::string& result, 
             const bool& correctOrNot 
         );
-        AnswerWriter( const AnswerData& answerData );
-        AnswerWriter( const std::string& folderFromRoot, const std::string& fileName); 
 
-        const AnswerData& answerData() const { return answerData_; }
+        const bool& correctOrNot() const { return correctOrNot_; }
 };
 
 #endif

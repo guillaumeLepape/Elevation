@@ -5,22 +5,13 @@
     * \file Question.h
 */
 
-// #include "ListAnswers.h"
 #include "Answer.h"
+
+#include <vector>
 
 class Question
 {   
-    private:
-        Question() {}
-
     public:
-        static bool question
-        ( 
-            const std::vector<Answer*>& answers,
-            const std::string& folderFromRoot,
-            const std::string& nameFile
-        );
-
         static bool question
         (
             const std::vector<Answer*>& answers,

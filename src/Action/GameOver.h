@@ -9,30 +9,13 @@
 
 class GameOver : public Action
 {
-    private:
-        const Player* const player_;
-
     public:
         explicit GameOver
-        ( 
-            const Player* const player,
-            const std::string& folderFromRoot,
-            const std::string& fileName
-        ) :
-            Action( folderFromRoot, fileName ),
-            player_( player )
-        {
-
-        }
-
-        explicit GameOver
         (
-            const Player* const player,
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result
+            const std::string& statement,
+            const std::string& result
         ) :
-            Action( statement, result ),
-            player_( player )
+            Action( statement, result )
         {
 
         }

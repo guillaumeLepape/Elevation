@@ -13,22 +13,10 @@ class ChoosePlug : public Action
         Plug* const plug_;
     public:
         ChoosePlug
-        ( 
-            Plug* const plug,
-            const std::string& folderFromRoot,
-            const std::string& nameFile 
-        ) :
-            Action( folderFromRoot, nameFile ),
-            plug_( plug )
-        {
-
-        }
-
-        ChoosePlug
         (
             Plug* const plug,
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result
+            const std::string& statement,
+            const std::string& result
         ) :
             Action( statement, result ),
             plug_( plug )

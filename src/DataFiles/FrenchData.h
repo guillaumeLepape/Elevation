@@ -1,19 +1,10 @@
 #ifndef FRENCH_DATA_H
 #define FRENCH_DATA_H
 
-#include <string>
-#include <vector>
 #include <memory>
+#include <cassert>
 
-enum class NameSpeaker
-{
-    player = 0,
-    plug,
-    description,
-    action
-};
-
-typedef std::vector<std::tuple<NameSpeaker, std::string>> Message;
+#include "NameSpeaker.h"
 
 namespace data
 {
@@ -240,59 +231,78 @@ namespace data
     namespace Action
     {
         // generic UseWeapon data statement for fist
-        inline std::tuple<bool, std::string> statementUseFist(false, "Cognez ! (Poing)");
+        inline std::string statementUseFist("Cognez ! (Poing)");
         // generic UseWeapon data statement for knife
-        inline std::tuple<bool, std::string> statementUseKnife(false, "Plantez ! (Couteau)");
-        inline std::tuple<bool, std::string> statementUseKnifeFistCombo(false, "Combo avec le couteau !");
+        inline std::string statementUseKnife("Plantez ! (Couteau)");
+        inline std::string statementUseKnifeFistCombo("Combo avec le couteau !");
         // generic UseWeapon data statement for katana
-        inline std::tuple<bool, std::string> statementUseKatana(false, "Découpez ! (Katana)");
-        inline std::tuple<bool, std::string> statementUseKatanaFistCombo(false, "Combo avec le katana !");
+        inline std::string statementUseKatana("Découpez ! (Katana)");
+        inline std::string statementUseKatanaFistCombo("Combo avec le katana !");
 
         // generic UseWeapon data result
-        inline std::tuple<bool, std::string> resultUseWeapon(true, "-*-plugName-*- perd -*-damage-*- points de vie.");
-
+        inline std::string resultUseWeapon(const std::string& plugName, const int& damageWeapon)
+        {
+            return plugName + " perd " + std::to_string( damageWeapon ) + " points de vie.";
+        }
         inline std::string titleChooseWeapon = "Choix de l'arme";
         inline std::string titleChoosePlug = "Choix de l'ennemi";
 
-        inline std::unique_ptr<std::tuple<bool, std::string>> newStatementUseWeapon(const std::string &nameWeapon)
+        inline std::unique_ptr<std::string> newStatementUseWeapon(const std::string &nameWeapon)
         {
             if (nameWeapon == "Poing")
             {
-                return std::make_unique<std::tuple<bool, std::string>>(statementUseFist);
+                return std::make_unique<std::string>(statementUseFist);
             }
             if (nameWeapon == "Couteau")
             {
-                return std::make_unique<std::tuple<bool, std::string>>(statementUseKnife);
+                return std::make_unique<std::string>(statementUseKnife);
             }
             if (nameWeapon == "Katana")
             {
-                return std::make_unique<std::tuple<bool, std::string>>(statementUseKatana);
+                return std::make_unique<std::string>(statementUseKatana);
             }
             if (nameWeapon == "CouteauFistCombo")
             {
-                return std::make_unique<std::tuple<bool, std::string>>(statementUseKnifeFistCombo);
+                return std::make_unique<std::string>(statementUseKnifeFistCombo);
             }
             if (nameWeapon == "KatanaFistCombo")
             {
-                return std::make_unique<std::tuple<bool, std::string>>(statementUseKatanaFistCombo);
+                return std::make_unique<std::string>(statementUseKatanaFistCombo);
             }
             assert(false);
         }
 
-        inline std::tuple<bool, std::string> statementChoosePlug( true, "Attaquer -*-plugName-*-." );
-        inline std::tuple<bool, std::string> resultChoosePlug( true, "Vous avez choisi d'attaquer -*-plugName-*-." );
+        inline std::string statementChoosePlug(const std::string& plugName)
+        {
+            return "Attaquer " + plugName + ".";
+        }
+        inline std::string resultChoosePlug( const std::string& plugName )
+        {
+            return "Vous avez choisi d'attaquer " + plugName + ".";
+        }
+        inline std::string resultPlugAttack(const std::string& plugName, const int& damagePlug)
+        {
+            return plugName + " vous inflige " + std::to_string(damagePlug) + " points de vie.";
+        }
 
-        inline std::tuple<bool, std::string> resultPlugAttack( true, "-*-plugName-*- vous inflige -*-damagePlug-*- points de vie." );
-
-        inline std::tuple<bool, std::string> resultDead( true, "-*-plugName-*- est mort." );
+        inline std::string resultDead( const std::string& plugName )
+        {
+            return plugName + " est mort.";
+        }
 
         // data for pseudo action
-        inline std::tuple<bool, std::string> statementPseudo( false, "Entrez votre prénom" );
-        inline std::tuple<bool, std::string> resultPseudo( true, "Votre prénom est à présent : -*-pseudo-*-." );
-    
+        inline std::string statementPseudo( "Entrez votre prénom" );
+        inline std::string resultPseudo(const std::string& pseudo)
+        {
+            return "Votre prénom est à présent : " + pseudo + "."; 
+        } 
+
         // data for negociate action
-        inline std::tuple<bool, std::string> statementNegociate( false, "Entrez votre montant" );
-        inline std::tuple<bool, std::string> resultNegociate( true, "Vous perdez -*-pricePlayer-*-€." );    
+        inline std::string statementNegociate( "Entrez votre montant" );
+        inline std::string resultNegociate( const int& pricePlayer )
+        {
+            return "Vous perdez " + std::to_string( pricePlayer ) + "€.";
+        }
     } // namespace Action
 
     namespace Menu 
@@ -301,43 +311,46 @@ namespace data
         inline std::string titleStartGameMenu = "Menu";
 
         // data for startGame action
-        inline std::tuple<bool, std::string> statementStartGame( false, "Commencer une nouvelle partie" );
-        inline std::tuple<bool, std::string> resultStartGame( false, "La partie commence." );
+        inline std::string statementStartGame( "Commencer une nouvelle partie" );
+        inline std::string resultStartGame( "La partie commence." );
 
         // data for loadGame action
-        inline std::tuple<bool, std::string> statementLoadGame( false, "Charger une partie" );
-        inline std::tuple<bool, std::string> resultLoadGame( false, "Vous avez choisi de charger une partie." );
+        inline std::string statementLoadGame( "Charger une partie" );
+        inline std::string resultLoadGame( "Vous avez choisi de charger une partie." );
     
         // data for quit action 
-        inline std::tuple<bool, std::string> statementQuit( false, "Quitter le jeu" );
-        inline std::tuple<bool, std::string> resultQuit( false, "Fin du jeu" );
+        inline std::string statementQuit( "Quitter le jeu" );
+        inline std::string resultQuit( "Fin du jeu" );
 
         // title of loadGame menu
         inline std::string titleLoadGameMenu = "Choix de la partie";
 
         // data for the choice of the loaded game 
-        inline std::tuple<bool, std::string> statementChooseLoadedGame( true, "Charger la partie -*-pseudo-*-." );
-        inline std::tuple<bool, std::string> resultChooseLoadedGame( false, "Vous avez chois charger une partie." );
+        inline std::string statementChooseLoadedGame( const std::string& pseudo )
+        {
+            return "Charger la partie " + pseudo; 
+        }
+        inline std::string resultChooseLoadedGame( "Vous avez chois charger une partie." );
 
         // title of endOfLevel menu
         inline std::string titleContinueMenu = "Niveau terminé";
 
         // data for continue action 
-        inline std::tuple<bool, std::string> statementContinue( false, "Continuer votre partie" );
+        inline std::string statementContinue( "Continuer votre partie" );
     
         // data for save and quit action
-        inline std::tuple<bool, std::string> statementSaveAndQuit( false, "Quitter" );
-        inline std::tuple<bool, std::string> resultSaveAndQuit( false, "Partie sauvegardée" );
+        inline std::string statementSaveAndQuit( "Quitter" );
+        inline std::string resultSaveAndQuit( "Partie sauvegardée" );
     
         // data for game Over action
-        inline std::tuple<bool, std::string> resultGameOver( false, "Vous etes mort. Game Over." );
+        inline std::string resultGameOver( "Vous etes mort. Game Over." );
     } // namespace Menu
 
     namespace Combo
     {
         inline std::string comboFistMeleeWeaponComboTitle = "Combo Poing-Arme de mếlée";
         inline std::string comboDoubleMeleeTitle = "Combo Double arme de melée";
-        inline std::tuple<bool, std::string> statementDontCombo(false, "Ne pas déclencher le combo");
+        inline std::string statementDontCombo("Ne pas déclencher le combo");
     } // namespace Combo
 
     namespace Question 
@@ -346,15 +359,15 @@ namespace data
         inline std::string titleFirstQuestion = "Les hommes sont-ils allez sur la Lune ?";
         
         // First Answer
-        inline std::tuple<bool, std::string> answer1Question1( false, "Oui, bien sur !" );
+        inline std::string answer1Question1("Oui, bien sur !" );
         inline bool correctOrNotAnswer1Question1 = false;
 
         // Second Answer
-        inline std::tuple<bool, std::string> answer2Question1( false, "Bien sur, les américains l'ont fait pour niquer les russes." );
+        inline std::string answer2Question1( "Bien sur, les américains l'ont fait pour niquer les russes." );
         inline bool correctOrNotAnswer2Question1 = false;
 
         // Third Answer
-        inline std::tuple<bool, std::string> answer3Question1( false, "Non, l'alunissage a eu lieu au Nevada." );
+        inline std::string answer3Question1( "Non, l'alunissage a eu lieu au Nevada." );
         inline bool correctOrNotAnswer3Question1 = true;
 
 
@@ -362,15 +375,15 @@ namespace data
         inline std::string titleSecondQuestion = "Pourquoi le faux alunissage a été caché ?";
         
         // First Answer
-        inline std::tuple<bool, std::string> answer1Question2( false, "Euh ..." );
+        inline std::string answer1Question2( "Euh ..." );
         inline bool correctOrNotAnswer1Question2 = false;
 
         // Second Answer
-        inline std::tuple<bool, std::string> answer2Question2( false, "Pour montrer leurs supériorités, les américains ont préféré mentir car ils n'avaient pas les moyens technologiques d'y aller." );
+        inline std::string answer2Question2( "Pour montrer leurs supériorités, les américains ont préféré mentir car ils n'avaient pas les moyens technologiques d'y aller." );
         inline bool correctOrNotAnswer2Question2 = false;
 
         // Third Answer 
-        inline std::tuple<bool, std::string> answer3Question2( false, "Pour cacher qu'en fait la Terre est plate." );
+        inline std::string answer3Question2( "Pour cacher qu'en fait la Terre est plate." );
         inline bool correctOrNotAnswer3Question2 = true;
 
 
@@ -378,17 +391,16 @@ namespace data
         inline std::string titleThirdQuestion = "Pourquoi vouloir masquer tout ça ?";
 
         // First Answer
-        inline std::tuple<bool, std::string> answer1Question3( false,
-            "Pour cacher la grand plan des élites qui consiste à réduire drastiquement la population." );
+        inline std::string answer1Question3( "Pour cacher la grand plan des élites qui consiste à réduire drastiquement la population." );
         inline bool correctOrNotAnswer1Question3 = true;
 
         // Second Answer
-        inline std::tuple<bool, std::string> answer2Question3( false,
+        inline std::string answer2Question3(
             "Pour cacher le projet d'Elon Musk, Bill Gates et Laurent Alexandre constitant à implémenter des puces à la population pour les controler." );
         inline bool correctOrNotAnswer2Question3 = true;
 
         // Third Answer 
-        inline std::tuple<bool, std::string> answer3Question3( false,
+        inline std::string answer3Question3(
             "Pour cacher que toutes gouvernements sont à la solde d'un organisation secrète dirigé par les reptiliens." );
         inline bool correctOrNotAnswer3Question3 = true;
     } // namespace Question

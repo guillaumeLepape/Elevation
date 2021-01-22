@@ -16,24 +16,10 @@ class PlugAttack : public Action
     public:
         PlugAttack
         (
-            Player* const player,
-            const Plug* const plug,
-            const std::string& folderFromRoot,
-            const std::string& nameFile
-        ) :
-            Action( folderFromRoot, nameFile ),
-            player_( player ),
-            plug_( plug )
-        {
-
-        }
-
-        PlugAttack
-        (
             Player* const player, 
             const Plug* const plug,
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result
+            const std::string& statement,
+            const std::string& result
         ) :
             Action( statement, result ),
             player_( player ),
@@ -49,7 +35,7 @@ class PlugAttack : public Action
             if ( !(plug_->deadOrNot()) )
             {
                 player_->decreaseLifePoints( plug_->weapon().damageWeapon() );
-                actionWriter_.preTreatmentResult( player_, plug_ );
+                actionWriter_.updateResult( data::Action::resultPlugAttack( plug_->name(), plug_->weapon().damageWeapon() ) );
                 actionWriter_.writeResult();
             }
         }

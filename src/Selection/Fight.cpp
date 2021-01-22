@@ -4,6 +4,8 @@
 
 #include "Fight.h"
 
+#include "Pause.h"
+
 #include "FightWriter.h"
 #include "ChoosePlug.h"
 #include "PlugAttack.h"
@@ -45,8 +47,13 @@ void Fight::startFight()
             // user cannot attack dead plugs
             if ( !(plugs_[i].deadOrNot()) )
             {
-                Action* choosePlug = new ChoosePlug( &(plugs_[i]), data::Action::statementChoosePlug, data::Action::resultChoosePlug ); 
-                choosePlug->preTreatmentStatement( player_, &(plugs_[i]) );
+                Action* choosePlug = 
+                    new ChoosePlug
+                    ( 
+                        &(plugs_[i]), 
+                        data::Action::statementChoosePlug(plugs_[i].name()), 
+                        data::Action::resultChoosePlug(plugs_[i].name())
+                    ); 
                 choosePlugActions.push_back( choosePlug );
             }
         }
@@ -62,13 +69,15 @@ void Fight::startFight()
 
         for ( int i = 0; i < weapons.size(); i++ )
         {
+            Plug* plug = ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug();
+
             useWeapons.push_back(
                 new UseWeapon(
                     player_,
-                    ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug(),
+                    plug,
                     weapons[i],
                     *( data::Action::newStatementUseWeapon( weapons[i].name() ).get() ),
-                    data::Action::resultUseWeapon
+                    data::Action::resultUseWeapon( plug->name(), weapons[i].damageWeapon() )
                 )
             );
         }
@@ -99,12 +108,12 @@ void Fight::startFight()
 
         for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
         {
-            PlugAttack plugAttack( player_, &(*e), std::tuple<bool, std::string>(), data::Action::resultPlugAttack );
+            PlugAttack plugAttack( player_, &(*e), "", data::Action::resultPlugAttack( e->name(), ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon().damageWeapon()  ) );
             plugAttack.triggerAction();
 
             if ( player_->dead() )
             {
-                GameOver gameOver( player_, std::tuple<bool, std::string>(), data::Menu::resultGameOver );
+                GameOver gameOver( "", data::Menu::resultGameOver );
                 gameOver.triggerAction();
             }
         }

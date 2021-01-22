@@ -42,7 +42,6 @@ class Regeneration : public Action
                     break;
             }
             player_->increaseLifePoints( nbLifePointsRegeneration );
-            actionWriter_.preTreatmentStatement( player_, nullptr );
             actionWriter_.writeResult();
         }
 };

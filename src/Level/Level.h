@@ -5,6 +5,8 @@
     * \file Level.h
 */
 
+#include "Languages.h"
+
 #include "Options.h"
 #include "Selection.h"
 #include "Nothing.h"
@@ -24,7 +26,7 @@ class Level
             WriteResults writeResults( player_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
             writeResults.triggerAction();
 
-            Nothing continueAction( data::Menu::statementContinue, std::tuple<bool, std::string>() );
+            Nothing continueAction( data::Menu::statementContinue, "" );
             Quit quit( data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
 
             Selection::select(

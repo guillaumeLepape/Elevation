@@ -16,21 +16,9 @@ class LoadGame : public Action
 
     public:
         LoadGame
-        ( 
-            const std::string& folderFromRoot, 
-            const std::string& nameFile,
-            const Options& options
-        ) :
-            Action( folderFromRoot, nameFile ),
-            options_( options )
-        {
-
-        }
-
-        LoadGame
         (
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result,
+            const std::string& statement,
+            const std::string& result,
             const Options& options
         ) :
             Action( statement, result ),
@@ -59,16 +47,16 @@ class LoadGame : public Action
             {
                 std::vector<Action*> actions;
                 for ( auto r = results.cbegin(); r != results.cend(); r++ )
-                {
+                {                
+                    Player player = *r;
+
                     Action* startGame = new StartGame
                     ( 
-                        data::Menu::statementChooseLoadedGame, 
+                        data::Menu::statementChooseLoadedGame( player.pseudo() ), 
                         data::Menu::resultChooseLoadedGame, 
                         options_, 
                         *r 
-                    );                   
-                    Player player = *r;
-                    startGame->preTreatmentStatement( &player, nullptr );
+                    );   
 
                     actions.push_back( startGame );
                 }

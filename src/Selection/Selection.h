@@ -10,21 +10,7 @@
 
 class Selection
 {
-    private:
-        static int select
-        (
-            const std::vector<Action*>& actions,
-            const SelectionWriter& selectionWriter
-        );
-
     public:
-        static int select
-        ( 
-            const std::vector<Action*>& actions,
-            const std::string& folderFromRoot,
-            const std::string& nameFile
-        );
-
         static int select
         (
             const std::vector<Action*>& actions,

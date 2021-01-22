@@ -5,12 +5,16 @@
     * \file MessageWriter.h
 */
 
-#include "MessageData.h"
+#include <string>
+
+#include "NameSpeaker.h"
 
 class MessageWriter
 {
-    private:
-        MessageData messageData_;
+    private:    
+        Message message_;
+        std::string pseudo_;
+        std::string plugName_;
 
         void writeName( const int& i ) const;
 
@@ -19,25 +23,9 @@ class MessageWriter
     public: 
         MessageWriter
         (
-            const nlohmann::json& jsonObject
-        );
-        
-        MessageWriter
-        (
             const std::vector<std::tuple<NameSpeaker, std::string>>& message,
             const std::string& pseudo,
             const std::string& plugName
-        );
-
-        MessageWriter
-        ( 
-            const MessageData& messageData 
-        );
-
-        MessageWriter
-        (
-            const std::string& folderFromRoot,
-            const std::string& fileName
         );
 
         void writeMessage() const;

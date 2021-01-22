@@ -5,9 +5,11 @@
     * \file Dead.h
 */
 
+// forward declaration of Plug class
+class Plug;
+
 #include "Action.h"
 
-#include "Pause.h"
 
 class Dead : public Action
 {
@@ -18,34 +20,17 @@ class Dead : public Action
         Dead
         (
             const Plug* const plug,
-            const std::string& folderFromRoot,
-            const std::string& nameFile
-        ) :
-            Action( folderFromRoot, nameFile ),
-            plug_( plug )
-        {
+            const std::string& statement,
+            const std::string& result
+        );
 
-        }
-
-        Dead
-        (
-            const Plug* const plug,
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result
-        ) :
-            Action( statement, result ),
-            plug_( plug )
-        {
-
-        }
-
-        void triggerAction() override
-        {
-            if ( plug_->deadOrNot() )
-            {
-                actionWriter_.writeResult();
-            }
-        }
+        void triggerAction() override;
+        // {
+            // if ( plug_->deadOrNot() )
+            // {
+            //     actionWriter_.writeResult();
+            // }
+        // };
 };
 
 #endif

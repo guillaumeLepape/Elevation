@@ -33,13 +33,13 @@ void ComboDoubleMeleeWeapon::triggerCombo
             plug, 
             *( WeaponFactory::newWeapon( nameWeapon ).get() ), 
             *( data::Action::newStatementUseWeapon( nameWeapon ).get() ),
-            data::Action::resultUseWeapon
+            data::Action::resultUseWeapon( plug->name(), player_->weaponFromName( nameWeapon ).damageWeapon() )
         );
 
         Nothing nothing
         (
             data::Combo::statementDontCombo,
-            std::tuple<bool, std::string>()
+            ""
         );
 
         int result = Selection::select(

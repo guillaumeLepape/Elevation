@@ -36,7 +36,8 @@ set(HEADER_ACTION
 )
 
 set(SOURCE_ACTION
-
+    ${FOLDER_ACTION}/Dead.cpp
+    ${FOLDER_ACTION}/Negociate.cpp
 )
 
 #
@@ -50,26 +51,26 @@ include_directories(
 
 set(HEADER_DATA
     ${FOLDER_DATA}/Data.h
-    ${FOLDER_DATA}/HeaderData.h
-    ${FOLDER_DATA}/MessageData.h
+    # ${FOLDER_DATA}/HeaderData.h
+    # ${FOLDER_DATA}/MessageData.h
     ${FOLDER_DATA}/ListNameData.h
-    ${FOLDER_DATA}/ActionData.h
-    ${FOLDER_DATA}/AnswerData.h
-    ${FOLDER_DATA}/SelectionData.h
+    # ${FOLDER_DATA}/ActionData.h
+    # ${FOLDER_DATA}/AnswerData.h
+    # ${FOLDER_DATA}/SelectionData.h
     ${FOLDER_DATA}/ResultsData.h
-    ${FOLDER_DATA}/TutorialData.h
+    # ${FOLDER_DATA}/TutorialData.h
 )
 
 set(SOURCE_DATA
     ${FOLDER_DATA}/Data.cpp
-    ${FOLDER_DATA}/HeaderData.cpp
-    ${FOLDER_DATA}/MessageData.cpp
+    # ${FOLDER_DATA}/HeaderData.cpp
+    # ${FOLDER_DATA}/MessageData.cpp
     ${FOLDER_DATA}/ListNameData.cpp
-    ${FOLDER_DATA}/ActionData.cpp
-    ${FOLDER_DATA}/AnswerData.cpp
-    ${FOLDER_DATA}/SelectionData.cpp
+    # ${FOLDER_DATA}/ActionData.cpp
+    # ${FOLDER_DATA}/AnswerData.cpp
+    # ${FOLDER_DATA}/SelectionData.cpp
     ${FOLDER_DATA}/ResultsData.cpp
-    ${FOLDER_DATA}/TutorialData.cpp
+    # ${FOLDER_DATA}/TutorialData.cpp
 )
 
 #
@@ -208,7 +209,6 @@ set(HEADER_WRITER
     ${FOLDER_WRITER}/MessageWriter.h
     ${FOLDER_WRITER}/ActionWriter.h
     ${FOLDER_WRITER}/SelectionWriter.h
-    ${FOLDER_WRITER}/Token.h
     ${FOLDER_WRITER}/AnswerWriter.h
     ${FOLDER_WRITER}/FightWriter.h
     ${FOLDER_WRITER}/TutorialWriter.h

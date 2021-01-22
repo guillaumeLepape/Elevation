@@ -12,19 +12,9 @@ class Quit : public Action
     public:
         Quit
         ( 
-            const std::string& folderFromRoot, 
-            const std::string& nameFile
+            const std::string& statement, 
+            const std::string& result
         ) : 
-            Action( folderFromRoot, nameFile )
-        {
-
-        }
-
-        Quit 
-        (
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result
-        ) :
             Action( statement, result )
         {
 

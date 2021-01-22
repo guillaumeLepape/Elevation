@@ -7,7 +7,10 @@
 
 #include "Negociate.h"
 
+#include "Plug.h"
+
 #include "HeaderWriter.h"
+#include "MessageWriter.h"
 
 void Level2::startLevel( const Options& options )
 {
@@ -29,7 +32,7 @@ void Level2::startLevel( const Options& options )
     );
     messageWriter.writeMessage();
 
-    Negociate negociate( player_, &plug, data::Action::statementNegociate, data::Action::resultNegociate );
+    Negociate negociate( player_, &plug, data::Action::statementNegociate, data::Action::resultNegociate(0) );
     negociate.triggerAction();
     
     Level::endOfLevel();

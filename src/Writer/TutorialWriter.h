@@ -5,20 +5,16 @@
     * \file TutorialWriter.h
 */
 
-#include "TutorialData.h"
+#include <vector>
+#include <string>
 
 class TutorialWriter
 {
     private:
-        TutorialData tutorialData_;
+        std::string title_;
+        std::vector<std::string> tutorialStatement_;
 
     public:
-        TutorialWriter
-        ( 
-            const std::string& folderFromRoot, 
-            const std::string& fileName 
-        );
-
         TutorialWriter
         (
             const std::string& title,

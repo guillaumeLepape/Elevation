@@ -10,26 +10,10 @@
 
 #include <cpp-terminal/terminal.h>
 
-HeaderWriter::HeaderWriter( const nlohmann::json& jsonObject ) :
-    headerData_( jsonObject )
-{
-
-}
-
 HeaderWriter::HeaderWriter( const std::string& nameLevel, const int& hour, const int& minut ) :
-    headerData_( nameLevel, hour, minut )
-{
-
-}
-
-HeaderWriter::HeaderWriter( const HeaderData& headerData ) :
-    headerData_( headerData )
-{
-
-}
-
-HeaderWriter::HeaderWriter( const std::string& folderFromRoot, const std::string& fileName ) :
-    headerData_( folderFromRoot, fileName )
+    nameLevel_(nameLevel), 
+    hour_(hour), 
+    minut_(minut)
 {
 
 }
@@ -42,7 +26,7 @@ void HeaderWriter::writeHeader() const
     std::cout << "\n " 
         << Term::color( Term::bg::red )
         << Term::color( Term::style::bold ) 
-        << headerData_.nameLevel() 
+        << nameLevel_ 
         << Term::color( Term::bg::reset )
         << Term::color( Term::style::reset );
         
@@ -55,9 +39,9 @@ void HeaderWriter::writeHeader() const
 
     // print the hour
     std::cout << "\n " << Term::color( Term::style::bold );
-    std::cout << std::setfill('0') << std::setw(2) << headerData_.hour();
+    std::cout << std::setfill('0') << std::setw(2) << hour_;
     std::cout << "h";
-    std::cout << std::setfill('0') << std::setw(2) << headerData_.minut();
+    std::cout << std::setfill('0') << std::setw(2) << minut_;
     std::cout << Term::color( Term::style::reset );
 
     std::cout << "\n" 

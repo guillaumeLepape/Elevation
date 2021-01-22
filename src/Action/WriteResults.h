@@ -9,6 +9,8 @@
 
 #include "ResultsData.h"
 
+#include <iostream>
+
 class WriteResults : public Action
 {
     private:
@@ -16,22 +18,10 @@ class WriteResults : public Action
 
     public:
         WriteResults
-        (  
-            const std::string& folderFromRoot,
-            const std::string& nameFile,
-            const Player* const player
-        ) :
-            Action( folderFromRoot, nameFile ),
-            player_( player )
-        {
-
-        }
-
-        WriteResults
         (
             const Player* const player,
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result
+            const std::string& statement,
+            const std::string& result
         ) : 
             Action( statement, result ),
             player_( player )

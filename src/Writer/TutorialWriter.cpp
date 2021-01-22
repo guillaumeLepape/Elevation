@@ -11,21 +11,12 @@
 #include <cpp-terminal/terminal.h>
 
 TutorialWriter::TutorialWriter
-(  
-    const std::string& folderFromRoot,
-    const std::string& fileName
-) :
-    tutorialData_( folderFromRoot, fileName )
-{
-
-}
-
-TutorialWriter::TutorialWriter
 (
     const std::string& title,
     const std::vector<std::string>& tutorialStatement
 ) :
-    tutorialData_( title, tutorialStatement )
+    title_( title ),
+    tutorialStatement_( tutorialStatement )
 {
 
 }
@@ -37,7 +28,7 @@ void TutorialWriter::writeTutorial() const
     std::cout << "\n " 
         << Term::color( Term::bg::magenta )
         << Term::color( Term::style::bold )
-        << tutorialData_.title() 
+        << title_
         << Term::color( Term::bg::reset )
         << Term::color( Term::style::reset );
 
@@ -48,14 +39,14 @@ void TutorialWriter::writeTutorial() const
         << Term::color( Term::fg::reset )
         << Term::color( Term::style::reset );
 
-    for ( int i = 0; i < tutorialData_.tutorialStatement().size(); i++ )
+    for ( int i = 0; i < tutorialStatement_.size(); i++ )
     {
         Pause::pause();
 
         std::cout << "\n " 
             << Term::color( Term::fg::magenta )
             << Term::color( Term::style::bold ) 
-            << tutorialData_.tutorialStatement()[i] 
+            << tutorialStatement_[i] 
             << Term::color( Term::fg::reset )
             << Term::color( Term::style::reset );
     }

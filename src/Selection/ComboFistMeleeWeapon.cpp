@@ -50,7 +50,7 @@ void ComboFistMeleeWeapon::triggerCombo
                         plug,
                         *(weaponFistCombo.get()),
                         *(data::Action::newStatementUseWeapon( weaponFistCombo->name() ).get()),
-                        data::Action::resultUseWeapon
+                        data::Action::resultUseWeapon( plug->name(), weaponFistCombo->damageWeapon() )
                     )
                 );
             }

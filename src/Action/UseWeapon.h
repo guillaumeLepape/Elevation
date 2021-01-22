@@ -5,7 +5,11 @@
     * \brief UseWeapon.h
 */
 
+#include "Languages.h"
 #include "Dead.h"
+
+#include "Player.h"
+#include "Plug.h"
 
 class UseWeapon : public Action
 {
@@ -16,26 +20,12 @@ class UseWeapon : public Action
 
     public:
         UseWeapon
-        ( 
-            Player* const player, 
-            Plug* const plug, 
-            const std::string& nameWeapon,
-            const std::string& folderFromRoot,
-            const std::string& nameFile
-        ) : 
-            Action( folderFromRoot, nameFile ),
-            nameWeapon_( nameWeapon ),
-            player_(player),
-            plug_(plug)
-        {}
-
-        UseWeapon
         (
             Player* const player, 
             Plug* const plug,
             const Weapon& weapon,
-            const std::tuple<bool, std::string>& statement,
-            const std::tuple<bool, std::string>& result
+            const std::string& statement,
+            const std::string& result
         ) : 
             Action( statement, result ),
             nameWeapon_( weapon.name() ),
@@ -52,11 +42,9 @@ class UseWeapon : public Action
             player_->changeWeapon( weapon.name() );
             plug_->decreaseLifePoints( weapon.damageWeapon() );
 
-            actionWriter_.preTreatmentResult( player_, plug_ );
             actionWriter_.writeResult();
         
-            Dead dead( plug_, std::tuple<bool, std::string>(), data::Action::resultDead );
-            dead.preTreatmentResult( player_, plug_ );
+            Dead dead( plug_, "", data::Action::resultDead( plug_->name() ) );
             dead.triggerAction();
         }
 

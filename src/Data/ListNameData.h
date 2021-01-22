@@ -15,7 +15,6 @@ class ListNameData : public Data
         std::set<std::string> listName_;
 
     public:
-        ListNameData( const nlohmann::json& jsonObject );
         ListNameData( const std::string& folderFromRoot, const std::string& nameFile );
 
         void readData() override;

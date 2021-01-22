@@ -5,9 +5,7 @@
     * \file Data.h
 */
 
-#include "Player.h"
-#include "Plug.h"
-#include "Languages.h"
+#include <nlohmann/json.hpp>
 
 /*! \class Data
    * \brief Abstract class for data
@@ -28,7 +26,6 @@ class Data
         virtual void readData() = 0;
 
     public:
-        Data( const nlohmann::json& jsonObject = {} );
         Data( const std::string& folderFromRoot, const std::string& fileName );
         virtual ~Data() {}
 };
