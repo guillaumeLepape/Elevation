@@ -223,8 +223,36 @@ namespace data
         };
 
         inline Message message2 = {
-            {NameSpeaker::description, "Vous ramassez un marteau tombé au sol lors du combat."},
-            {NameSpeaker::action, "Un marteau vient être ajouté à votre collection d'armes."}
+            {NameSpeaker::description, "Après avoir tabasser le pauvre homme, vous pénetrez dans le batiment."},
+            {NameSpeaker::player, "Fait chier, je controle plus grand chose là."},
+            {NameSpeaker::plug, "Hey, toi là."},
+            {NameSpeaker::player, "Et merde."}
+        };
+
+        inline Message message3 = {
+            {NameSpeaker::player, "Encore une personne tué de ma main, pas le choix faut que je continue."},
+            {NameSpeaker::player, "N'empêche j'ai plus d'armes, comment je vais faire."},
+            {NameSpeaker::description, "Vous ouvrez la porte qui va vous mener au produit tant convoité."},
+            {NameSpeaker::plug, "Non pas ce fou furieux !"}
+        };
+
+        inline Message message4 = {
+            {NameSpeaker::player, "Putain, il m'a fait mal ce batard."},
+            {NameSpeaker::player, "Au moins, j'ai récupéré son couteau, ca pourra mettre utile."}
+        };
+
+        inline Message message5 = {
+            {NameSpeaker::player, "Qu'est ce qu'il se passe ? Je me sens mieux là."},
+            {NameSpeaker::player, "Ca doit être les effets de la drogue."}
+        };
+
+        inline Message message6 = {
+            {NameSpeaker::player, "Enfin. J'ai plus qu'à buter ces 3 batards et c'est torché."}
+        };
+
+        inline Message message7 = {
+            {NameSpeaker::description, "Après avoir buter tout le monde, vous ramassez les 3 cachetons qui reste les proches du kamikaze."},
+            {NameSpeaker::description, "Cachetons sur la langue. Verre d'eau."}
         };
     } // namespace Level5
 
@@ -303,6 +331,12 @@ namespace data
         {
             return "Vous perdez " + std::to_string( pricePlayer ) + "€.";
         }
+
+        // data for regeneration action
+        inline std::string resultRegeneration( const int& lifePointsRegeneration )
+        {
+            return "Vous gagnez " + std::to_string( lifePointsRegeneration ) + " points de vie.";
+        }
     } // namespace Action
 
     namespace Menu 
@@ -326,9 +360,9 @@ namespace data
         inline std::string titleLoadGameMenu = "Choix de la partie";
 
         // data for the choice of the loaded game 
-        inline std::string statementChooseLoadedGame( const std::string& pseudo )
+        inline std::string statementChooseLoadedGame( const std::string& pseudo, const int& levelNumber )
         {
-            return "Charger la partie " + pseudo; 
+            return "Charger la partie " + pseudo + " au niveau " + std::to_string(levelNumber); 
         }
         inline std::string resultChooseLoadedGame( "Vous avez chois charger une partie." );
 
@@ -407,8 +441,8 @@ namespace data
 
     namespace Tutorial 
     {
-        inline std::string title1 = "Tutoriel : Système de combat";
-        inline std::vector<std::string> statement1 = {
+        inline std::string titleCombatSystem = "Tutoriel : Système de combat";
+        inline std::vector<std::string> statementCombatSystem = {
             "Dans ce jeu, les combats se déroulent ainsi.",
             "A chaque tour, vous choisissez d'abord quelle ennemi vous souhaitez attaquer et avec quelle arme.",
             "Une fois que vous avez attaqué, c'est au tour des ennemis.",
@@ -417,12 +451,57 @@ namespace data
             "Lorsque vous tuez un ennemi vous pouvez récupérer leurs armes."
         };
 
-        inline std::string title2 = "Tutoriel : Enchaînements";
-        inline std::vector<std::string> statement2 = {
+        inline std::string titleCombo = "Tutoriel : Enchaînements";
+        inline std::vector<std::string> statementCombo = {
             "Lors des combats des enchaînements peuvent être réalisés pour faire plus de dégats aux ennemis.",
-            "Par exemple, en frappant avec le poing un ennemi,",
+            "Ainsi, au lieu de frapper avec une arme une unique fois lors de votre tour,",
+            "vous pouvez frapper avec plusieurs fois. Attention, chaque combo possède un malus."
+        };
+
+        inline std::string titleComboFistMeleeWeapon = "Tutoriel : Combo Poing - Arme de mélée";
+        inline std::vector<std::string> statementComboFistMeleeWeapon = {
+            "En frappant avec le poing un ennemi,",
             "vous pouvez, lors du même tour, frapper le même ennemi avec un arme de mélée.",
-            "Dans ce cas, l'arme de mélée infligera moitié moins de dégâts."
+            "Dans ce cas, l'arme de mélée infligera moitié moins de dégâts.",
+            "En réfléchissant bien, vous pourrez tuer le prochain ennemi en 1 tour,",
+            "au lieu de 2. Vous perdez de fait moins de points de vie."
+        };
+
+        inline std::string titleComboDoubleMeleeWeapon = "Tutoriel : Arme de mélée + Arme de mélée";
+        inline std::vector<std::string> statementComboDoubleMeleeWeapon = {
+            "En frappant avec une arme de mélée un ennemi,",
+            "vous pouvez, lors du même tour, frapper le même ennemi avec la même arme de mélée.",
+            "Si vous decidez de déclencher le combo, vous infligerez double plus de dégats à un ennemi,",
+            "mais en contrepartie vous perdez l'arme.",
+            "Grace à ce combo, vous pourrez vaincre le prochain ennemi en 1 tour,",
+            "sans perdre de points de vie."
+        };
+
+        inline std::string titleNoWeapon = "Tutoriel : Subir et revenir";
+        inline std::vector<std::string> statementNoWeapon = {
+            "Vos poings sont la seule arme qu'il vous reste.",
+            "Pas le choix, vous devez subir et revenir.",
+            "Pour cela, lorsque vous tuez un ennemi, vous pouvez récupérer son arme si vous n'en disposez pas déjà."
+        };
+
+        inline std::string titleRegeneration = "Tutoriel : Regeneration";
+        inline std::vector<std::string> statementRegeneration = {
+            "Les drogues sont très bonnes pour la santé (dans ce jeu en tout cas).",
+            "Elles ouvrent de nouvelles capacité au corps humain.",
+            "Parfois, elles permettent de se régénerer de ces blessures.",
+            "Bon après, je te dis pas quand tu régéneras, c'est Dieu qui a décidé de ça.",
+            "Après comme il existe pas, c'est moi qui est décidé de tout ca.",
+            "Oui, j'ai totalement dévié du sujet. Une petite digression ca fait du bien, non ?",
+            "Là je t'imagine taper sur entrée en te disant : 'Putain mais qu'est ce qui raconte ce con celui-là.",
+            "Je voudrai continuer son jeu de merde. D'ailleurs c'est quand que c'est fini ca me saoule'.",
+            "Je comprends.",
+            "Une autre théorie faudrait qu'un prénom féminim permet de se régénerer.",
+            "Me demander pas pourquoi, c'est comme ca.",
+            "Et je vois tous les mecs qui ont mis leur prénom comme des débiles.",
+            "C'est vraiment une catastrophe ces hommes, incapacable de se mettre à la place",
+            "d'une femme. Bon, bref j'ai fini.",
+            "En fait, non lol.",
+            "Ah oui, bon courage pour le prochain combat."
         };
     } // namespace Tutorial
 

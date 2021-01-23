@@ -52,7 +52,7 @@ class LoadGame : public Action
 
                     Action* startGame = new StartGame
                     ( 
-                        data::Menu::statementChooseLoadedGame( player.pseudo() ), 
+                        data::Menu::statementChooseLoadedGame( player.pseudo(), player.nbLevelSuceeded() ), 
                         data::Menu::resultChooseLoadedGame, 
                         options_, 
                         *r 

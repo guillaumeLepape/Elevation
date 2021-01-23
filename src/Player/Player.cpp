@@ -103,6 +103,12 @@ void Player::deleteWeapon( const std::string& nameWeapon )
     );
 }
 
+void Player::deleteWeapon( const Weapon& weapon )
+{
+    deleteWeapon( weapon.name() );
+}
+
+
 bool Player::containWeaponType( WeaponType weaponType )
 {
     for ( auto w = weapons_.cbegin(); w != weapons_.cend(); w++ )

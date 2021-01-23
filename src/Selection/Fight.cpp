@@ -10,17 +10,21 @@
 #include "ChoosePlug.h"
 #include "PlugAttack.h"
 #include "GameOver.h"
+#include "Regeneration.h"
+
 #include "Selection.h"
 
 Fight::Fight
 ( 
     Player* const player, 
-    std::vector<Plug>& plugs, 
-    const std::vector<Combo*>& combos
+    const std::vector<Plug>& plugs, 
+    const std::vector<Combo*>& combos,
+    const bool& regeneration
 ) : 
     player_( player ),
     plugs_( plugs ),
     combos_( combos ),
+    regeneration_( regeneration ),
     numberOfDeadPlug_( 0 )
 {
 
@@ -90,10 +94,14 @@ void Fight::startFight()
         // launch every combo
         for ( int i = 0; i < combos_.size(); i++ )
         {
+            auto plug1 = ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug();
+            auto useWeapons1 = (const std::vector<UseWeapon*>&) useWeapons;
+
+
             combos_[i]->triggerCombo( 
-                ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug(),
+                plug1,
                 resultUseWeapon, 
-                (const std::vector<UseWeapon*>&) useWeapons 
+                useWeapons1 
             );
         }
 
@@ -118,6 +126,12 @@ void Fight::startFight()
             }
         }
 
+        // If player is not dead, regenerate her
+        if ( regeneration_ )
+        {
+            Regeneration regeneration( player_, "", "" );
+            regeneration.triggerAction();
+        }
     }
 
     fightWriter.writeEndOfFight();

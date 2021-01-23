@@ -94,6 +94,7 @@ class Player
         void nextLevel() { nbLevelSuceeded_++; }
 
         const int& nbLifePoints() const { return nbLifePoints_; }
+        int missingLifePoints() const { return MAX_LIFE_POINTS - nbLifePoints_; }
 
         void increaseLifePoints( const int& nbLifePoints ) 
         {
@@ -122,6 +123,7 @@ class Player
         void changeWeapon( const std::string& nameWeapon ); 
         void addWeapon( const Weapon& weapon );
         void deleteWeapon( const std::string& nameWeapon );
+        void deleteWeapon( const Weapon& weapon );
         const Weapon& weaponFromName( const std::string& nameWeapon ) const;
         const Weapon& selectedWeapon() const { return weapons_[selectedWeapon_]; }
         

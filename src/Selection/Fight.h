@@ -11,8 +11,9 @@ class Fight
 {
     private:
         Player* const player_;
-        std::vector<Plug>& plugs_;
-        const std::vector<Combo*>& combos_;
+        std::vector<Plug> plugs_;
+        std::vector<Combo*> combos_;
+        bool regeneration_;
 
         int numberOfDeadPlug_;
 
@@ -22,8 +23,9 @@ class Fight
         Fight
         ( 
             Player* const player, 
-            std::vector<Plug>& plugs, 
-            const std::vector<Combo*>& combos
+            const std::vector<Plug>& plugs, 
+            const std::vector<Combo*>& combos,
+            const bool& regeneration = true
         );
 
         void startFight();
