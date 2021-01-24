@@ -4,12 +4,16 @@
 
 #include "Level4.h"
 
+#include <iostream>
+
 #include "Question.h"
 
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
 
 #include "Plug.h"
+
+#include "Languages.h"
 
 void Level4::startLevel( const Options& options )
 {

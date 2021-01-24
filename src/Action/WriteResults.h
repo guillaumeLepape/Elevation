@@ -7,9 +7,7 @@
 
 #include "Action.h"
 
-#include "ResultsData.h"
-
-#include <iostream>
+class Player;
 
 class WriteResults : public Action
 {
@@ -22,22 +20,9 @@ class WriteResults : public Action
             const Player* const player,
             const std::string& statement,
             const std::string& result
-        ) : 
-            Action( statement, result ),
-            player_( player )
-        {
+        );
 
-        }
-
-        void triggerAction() override
-        {
-            ResultsData resultsData;
-            resultsData.addResult( *player_ );
-            resultsData.writeData();
-
-            actionWriter_.writeResult();
-            std::cout << "\n";
-        }
+        void triggerAction() override;
 };
 
 #endif

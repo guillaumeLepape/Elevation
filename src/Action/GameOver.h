@@ -5,7 +5,7 @@
     * \file GameOver.h
 */
 
-#include "WriteResults.h"
+#include "Action.h"
 
 class GameOver : public Action
 {

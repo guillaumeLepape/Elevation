@@ -14,18 +14,9 @@ class Quit : public Action
         ( 
             const std::string& statement, 
             const std::string& result
-        ) : 
-            Action( statement, result )
-        {
+        );
 
-        }
-
-        void triggerAction() override  
-        { 
-            actionWriter_.writeResult();
-            std::cout << "\n";
-            exit(0);
-        }
+        void triggerAction() override;
 };
 
 #endif

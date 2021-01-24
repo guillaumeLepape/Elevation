@@ -4,6 +4,8 @@
 
 #include "Level5.h"
 
+#include <iostream>
+
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
 #include "TutorialWriter.h"
@@ -19,6 +21,8 @@
 #include "Cutter.h"
 
 #include "RegenerateAllLife.h"
+
+#include "Languages.h"
 
 void Level5::startLevel( const Options& options )
 {

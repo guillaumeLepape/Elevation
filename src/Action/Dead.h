@@ -5,11 +5,10 @@
     * \file Dead.h
 */
 
-// forward declaration of Plug class
-class Plug;
-
 #include "Action.h"
 
+// forward declaration of Plug class
+class Plug;
 
 class Dead : public Action
 {
@@ -25,12 +24,6 @@ class Dead : public Action
         );
 
         void triggerAction() override;
-        // {
-            // if ( plug_->deadOrNot() )
-            // {
-            //     actionWriter_.writeResult();
-            // }
-        // };
 };
 
 #endif

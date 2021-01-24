@@ -38,7 +38,12 @@ set(HEADER_ACTION
 
 set(SOURCE_ACTION
     ${FOLDER_ACTION}/Dead.cpp
+    ${FOLDER_ACTION}/StartGame.cpp
     ${FOLDER_ACTION}/Negociate.cpp
+    ${FOLDER_ACTION}/LoadGame.cpp
+    ${FOLDER_ACTION}/Pseudo.cpp
+    ${FOLDER_ACTION}/WriteResults.cpp
+    ${FOLDER_ACTION}/Quit.cpp
 )
 
 #
@@ -103,6 +108,7 @@ set(HEADER_LEVEL
 )
 
 set(SOURCE_LEVEL
+    ${FOLDER_LEVEL}/Level.cpp
     ${FOLDER_LEVEL}/Introduction.cpp
     ${FOLDER_LEVEL}/Level1.cpp
     ${FOLDER_LEVEL}/Level2.cpp

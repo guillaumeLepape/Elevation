@@ -2,10 +2,15 @@
     * \file main.cpp
 */
 
+#include <iostream>
 
 #include "StartGame.h"
 #include "LoadGame.h"
 #include "Quit.h"
+
+#include "Selection.h"
+
+#include "Languages.h"
 
 #include "Rules.h"
 

@@ -4,8 +4,12 @@
 
 #include "Level1.h"
 
+#include <iostream>
+
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
+
+#include "Languages.h"
 
 #include "Plug.h"
 

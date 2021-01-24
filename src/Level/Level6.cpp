@@ -4,8 +4,12 @@
 
 #include "Level6.h"
 
+#include <iostream>
+
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
+
+#include "Languages.h"
 
 void Level6::startLevel( const Options& options )
 {

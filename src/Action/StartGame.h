@@ -5,8 +5,12 @@
     * \file StartGame.h
 */
 
-#include "LevelFactory.h"
+#include "Action.h"
+
+#include "Player.h"
 #include "Id.h"
+
+class Options;
 
 class StartGame : public Action
 {
@@ -22,24 +26,9 @@ class StartGame : public Action
             const Options& options,
             const Player& player 
                 = Player( "Joueur", Id::generateId(), 0 ) 
-        ) : 
-            Action( statement, result ),
-            player_( player ),
-            options_( options )
-        {
+        );
 
-        }
-
-        void triggerAction() override
-        {       
-            int i = 0;
-            for ( i = player_.nbLevelSuceeded(); i < NB_LEVEL; i++ )
-            {
-                std::unique_ptr<Level> level = LevelFactory::newLevel( &player_, i );
-
-                level->startLevel( options_ );
-            }
-        }
+        void triggerAction() override;
 };
 
 #endif

@@ -4,6 +4,8 @@
 
 #include "Level3.h"
 
+#include <iostream>
+
 #include "Selection.h"
 #include "UseWeapon.h"
 #include "Knife.h"
@@ -11,6 +13,8 @@
 
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
+
+#include "Languages.h"
 
 void Level3::startLevel( const Options& options )
 {

@@ -4,9 +4,13 @@
 
 #include "Introduction.h"
 
+#include <iostream>
+
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
 #include "Pseudo.h"
+
+#include "Languages.h"
 
 void Introduction::startLevel( const Options& options )
 {

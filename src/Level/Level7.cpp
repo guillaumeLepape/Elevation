@@ -4,12 +4,16 @@
 
 #include "Level7.h"
 
+#include <iostream>
+
 #include "HeaderWriter.h"
 #include "MessageWriter.h"
 
 #include "Plug.h"
 
 #include "Ninemm.h"
+
+#include "Languages.h"
 
 void Level7::startLevel( const Options& options )
 {
