@@ -24,16 +24,16 @@ void ComboDoubleMeleeWeapon::triggerCombo
 {
     const std::string& nameWeapon = useWeapon[resultChooseWeapon]->nameWeapon();
 
-    if ( (player_->weaponFromName( nameWeapon )).weaponType() == WeaponType::meleeWeapon 
+    if ( (player_->weaponFromName( nameWeapon ))->weaponType() == WeaponType::meleeWeapon 
             && !( plug->deadOrNot() ) )
     {
         UseWeapon useWeaponCombo
         ( 
             player_, 
             plug, 
-            *( WeaponFactory::newWeapon( nameWeapon ).get() ), 
+            *( WeaponFactory::newWeapon( nameWeapon ) ), 
             *( data::Action::newStatementUseWeapon( nameWeapon ).get() ),
-            data::Action::resultUseWeapon( plug->name(), player_->weaponFromName( nameWeapon ).damageWeapon() )
+            data::Action::resultUseWeapon( plug->name(), player_->weaponFromName( nameWeapon )->damageWeapon() )
         );
 
         Nothing nothing

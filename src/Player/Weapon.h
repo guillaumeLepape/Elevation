@@ -42,7 +42,7 @@ class Weapon
 
         friend bool operator==( const Weapon& weapon1, const Weapon& weapon2 );
 
-        nlohmann::json writeJson() const;
+        virtual nlohmann::json writeJson() const;
 };
 
 #endif

@@ -10,26 +10,33 @@
 #include "Knife.h"
 #include "Katana.h"
 #include "Cutter.h"
+#include "Ninemm.h"
 
 #include "WeaponFistCombo.h"
 
 class WeaponFactory
 {
     public:
-        static std::unique_ptr<Weapon> newWeapon( const std::string& nameWeapon )
+        static const Weapon* newWeapon( const std::string& nameWeapon )
         {
-            if ( nameWeapon == "NoWeapon" ) { return std::make_unique<NoWeapon>(); }
-            if ( nameWeapon == "Poing" ) { return std::make_unique<Fist>(); }
-            if ( nameWeapon == "Couteau" ) { return std::make_unique<Knife>(); }
-            if ( nameWeapon == "Katana" ) { return std::make_unique<Katana>(); }
-            if ( nameWeapon == "Cutter" ) { return std::make_unique<Cutter>(); }
+            if ( nameWeapon == "NoWeapon" ) { return new NoWeapon(); }
+            if ( nameWeapon == "Poing" ) { return new Fist(); }
+            if ( nameWeapon == "Couteau" ) { return new Knife(); }
+            if ( nameWeapon == "Katana" ) { return new Katana(); }
+            if ( nameWeapon == "Cutter" ) { return new Cutter(); }
             assert(false);
 
         }
 
-        static std::unique_ptr<Weapon> newWeaponFistCombo( const std::string& nameWeapon )
+        static const Weapon* newWeaponFistCombo( const std::string& nameWeapon )
         {
-            return std::make_unique<WeaponFistCombo>( *(newWeapon( nameWeapon ).get()) );
+            return new WeaponFistCombo( *newWeapon( nameWeapon ) );
+        }
+
+        static const FireArm* newFireArm( const std::string& nameWeapon, const int& nbAmmo )
+        {
+            if ( nameWeapon == "9mm" ) { return new Ninemm( nbAmmo ); }
+            assert(false);
         }
 };
 

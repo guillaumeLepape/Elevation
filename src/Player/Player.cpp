@@ -16,8 +16,7 @@ Player::Player( const std::string& pseudo, const std::string& id, const int& nbL
     nbLevelSuceeded_( nbLevelSuceeded ),
     nbLifePoints_(MAX_LIFE_POINTS),
     money_(200),
-    weapons_( 1, Fist() ),
-    selectedWeapon_(0),
+    weapons_( 1, new Fist() ),
     price_(0)
 {
 
@@ -30,7 +29,7 @@ Player::Player
     const int& nbLevelSuceeded,
     const int& nbLifePoints,
     const int& money,
-    const std::vector<Weapon>& weapons,
+    const std::vector<const Weapon*>& weapons,
     const int& price
 ) :
     pseudo_( pseudo ),
@@ -39,38 +38,26 @@ Player::Player
     nbLifePoints_(nbLifePoints),
     money_(money),
     weapons_( weapons ),
-    selectedWeapon_(0),
     price_(price)
 {
 
 }
 
-void Player::changeWeapon( const std::string& nameWeapon )
-{
-    for ( int i = 0; i < weapons_.size(); i++ )
-    {
-        if ( weapons_[i].name() == nameWeapon )
-        {
-            selectedWeapon_ = i;
-        }
-    }
-}
 
-
-const Weapon& Player::weaponFromName( const std::string& nameWeapon ) const
+const Weapon* Player::weaponFromName( const std::string& nameWeapon ) const
 {
     for ( auto w = weapons_.cbegin(); w != weapons_.cend(); w++ )
     {
-        if ( w->name() == nameWeapon )
+        if ( (*w)->name() == nameWeapon )
         {
-            return *w;
+            return &(**w);
         }
     }
 
     assert(false);
 } 
 
-void Player::addWeapon( const Weapon& weapon )
+void Player::addWeapon( const Weapon* const weapon )
 {
     auto it = std::find( weapons_.cbegin(), weapons_.cend(), weapon );
     // If this condition is true, weapon is not in weapons_ so add it and sort the weapons_ vector
@@ -79,9 +66,9 @@ void Player::addWeapon( const Weapon& weapon )
         weapons_.push_back( weapon );
         // sort on the number of damage Weapon
         std::sort( weapons_.begin(), weapons_.end(), 
-            []( const Weapon& weapon1, const Weapon& weapon2 ) -> bool
+            []( const Weapon* const weapon1, const Weapon* const weapon2 ) -> bool
         {
-            return weapon1.damageWeapon() < weapon2.damageWeapon(); 
+            return weapon1->damageWeapon() < weapon2->damageWeapon(); 
         });
     }
 }
@@ -89,7 +76,7 @@ void Player::addWeapon( const Weapon& weapon )
 
 void Player::deleteWeapon( const std::string& nameWeapon ) 
 {
-    auto x = [&nameWeapon]( const Weapon& weapon ) { return nameWeapon == weapon.name(); };
+    auto x = [&nameWeapon]( const Weapon* const weapon ) { return nameWeapon == weapon->name(); };
 
     weapons_.erase
     (
@@ -113,7 +100,7 @@ bool Player::containWeaponType( WeaponType weaponType )
 {
     for ( auto w = weapons_.cbegin(); w != weapons_.cend(); w++ )
     {
-        if ( w->weaponType() == weaponType )
+        if ( (*w)->weaponType() == weaponType )
         {
             return true;
         }
@@ -128,7 +115,7 @@ nlohmann::json Player::writeJson() const
     for ( auto w = weapons_.cbegin(); w != weapons_.cend(); w++ )
     {
         jsonWeaponArray.push_back(
-            w->writeJson()
+            (*w)->writeJson()
         );
     }
 
@@ -148,13 +135,23 @@ nlohmann::json Player::writeJson() const
 
 Player* Player::readJson( const nlohmann::json& jsonInput )
 {   
-    std::vector<Weapon> weapons;
+    std::vector<const Weapon*> weapons;
     for ( auto wJson = jsonInput["weapons"].cbegin(); wJson != jsonInput["weapons"].cend(); wJson++ )
     {
-        weapons.push_back
-        (
-            *( WeaponFactory::newWeapon( (*wJson)["name"] ).get() )
-        );
+        bool nbAmmoPresent = wJson->count("nbAmmo");
+        if ( nbAmmoPresent  )
+        {
+            weapons.push_back( 
+                WeaponFactory::newFireArm( (*wJson)["name"], (*wJson)["nbAmmo"] )
+            );
+        }
+        else
+        {
+            weapons.push_back
+            (
+                WeaponFactory::newWeapon( (*wJson)["name"] )
+            );
+        }
     }
 
     Player* player = new Player

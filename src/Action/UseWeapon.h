@@ -37,10 +37,9 @@ class UseWeapon : public Action
 
         void triggerAction() override
         {   
-            const Weapon& weapon = player_->weaponFromName( nameWeapon_ );
+            const Weapon* weapon = player_->weaponFromName( nameWeapon_ );
 
-            player_->changeWeapon( weapon.name() );
-            plug_->decreaseLifePoints( weapon.damageWeapon() );
+            plug_->decreaseLifePoints( weapon->damageWeapon() );
 
             actionWriter_.writeResult();
         

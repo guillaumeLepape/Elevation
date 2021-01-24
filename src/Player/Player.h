@@ -15,7 +15,7 @@
     * \brief 
 */
 
-constexpr int MAX_LIFE_POINTS = 100;
+static constexpr int MAX_LIFE_POINTS = 100;
 
 class Player
 {
@@ -31,9 +31,7 @@ class Player
         /*< Amount of money own by player */
         int money_;
         /*< List of weapons own by player */
-        std::vector<Weapon> weapons_;
-        /*< Selected weapon by player */
-        int selectedWeapon_;
+        std::vector<const Weapon*> weapons_;
         /*< Price of the drug choosen */
         int price_;
 
@@ -51,7 +49,7 @@ class Player
             const int& nbLevelSuceeded,
             const int& nbLifePoints,
             const int& money,
-            const std::vector<Weapon>& weapons,
+            const std::vector<const Weapon*>& weapons,
             const int& price
         );
 
@@ -117,19 +115,14 @@ class Player
         */
         bool dead() const { return nbLifePoints_ <= 0; }
 
-        /*!
-            \brief Change the selected weapon of player
-        */
-        void changeWeapon( const std::string& nameWeapon ); 
-        void addWeapon( const Weapon& weapon );
+        void addWeapon( const Weapon* const weapon );
         void deleteWeapon( const std::string& nameWeapon );
         void deleteWeapon( const Weapon& weapon );
-        const Weapon& weaponFromName( const std::string& nameWeapon ) const;
-        const Weapon& selectedWeapon() const { return weapons_[selectedWeapon_]; }
+        const Weapon* weaponFromName( const std::string& nameWeapon ) const;
         
         bool containWeaponType( WeaponType weaponType );
 
-        const std::vector<Weapon>& weapons() const { return weapons_; }
+        const std::vector<const Weapon*>& weapons() const { return weapons_; }
 
         const int& price() const { return price_; }
         void setPrice( const int& price ) { price_ = price; } 

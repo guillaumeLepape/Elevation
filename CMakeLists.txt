@@ -33,6 +33,7 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/Dead.h
     ${FOLDER_ACTION}/PlugAttack.h
     ${FOLDER_ACTION}/Regeneration.h
+    ${FOLDER_ACTION}/RegenerateAllLife.h
 )
 
 set(SOURCE_ACTION
@@ -51,26 +52,14 @@ include_directories(
 
 set(HEADER_DATA
     ${FOLDER_DATA}/Data.h
-    # ${FOLDER_DATA}/HeaderData.h
-    # ${FOLDER_DATA}/MessageData.h
     ${FOLDER_DATA}/ListNameData.h
-    # ${FOLDER_DATA}/ActionData.h
-    # ${FOLDER_DATA}/AnswerData.h
-    # ${FOLDER_DATA}/SelectionData.h
     ${FOLDER_DATA}/ResultsData.h
-    # ${FOLDER_DATA}/TutorialData.h
 )
 
 set(SOURCE_DATA
     ${FOLDER_DATA}/Data.cpp
-    # ${FOLDER_DATA}/HeaderData.cpp
-    # ${FOLDER_DATA}/MessageData.cpp
     ${FOLDER_DATA}/ListNameData.cpp
-    # ${FOLDER_DATA}/ActionData.cpp
-    # ${FOLDER_DATA}/AnswerData.cpp
-    # ${FOLDER_DATA}/SelectionData.cpp
     ${FOLDER_DATA}/ResultsData.cpp
-    # ${FOLDER_DATA}/TutorialData.cpp
 )
 
 #
@@ -109,6 +98,8 @@ set(HEADER_LEVEL
     ${FOLDER_LEVEL}/Level3.h
     ${FOLDER_LEVEL}/Level4.h
     ${FOLDER_LEVEL}/Level5.h
+    ${FOLDER_LEVEL}/Level6.h
+    ${FOLDER_LEVEL}/Level7.h
 )
 
 set(SOURCE_LEVEL
@@ -118,6 +109,8 @@ set(SOURCE_LEVEL
     ${FOLDER_LEVEL}/Level3.cpp
     ${FOLDER_LEVEL}/Level4.cpp
     ${FOLDER_LEVEL}/Level5.cpp
+    ${FOLDER_LEVEL}/Level6.cpp
+    ${FOLDER_LEVEL}/Level7.cpp
 )
 
 #
@@ -138,6 +131,8 @@ set(HEADER_PLAYER
     ${FOLDER_PLAYER}/Katana.h
     ${FOLDER_PLAYER}/WeaponFistCombo.h
     ${FOLDER_PLAYER}/Cutter.h
+    ${FOLDER_PLAYER}/FireArm.h
+    ${FOLDER_PLAYER}/Ninemm.h
 
     ${FOLDER_PLAYER}/Id.h
     ${FOLDER_PLAYER}/Player.h
@@ -226,7 +221,7 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/TutorialWriter.cpp
 )
 
-# add_compile_options(-Wall -Wextra -pedantic)
+add_compile_options(-Wall -Wextra -pedantic)
 
 add_executable(main
     src/main.cpp

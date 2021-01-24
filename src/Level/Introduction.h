@@ -11,7 +11,7 @@ class Introduction : public Level
 {
     public:
         explicit Introduction( Player* player ) : 
-            Level(player,0 )
+            Level(player)
         {
 
         }

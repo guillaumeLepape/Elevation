@@ -67,7 +67,7 @@ void Fight::startFight()
             data::Action::titleChoosePlug
         );
 
-        std::vector<Weapon> weapons = player_->weapons();
+        const std::vector<const Weapon*> weapons = player_->weapons();
 
         std::vector<Action*> useWeapons;
 
@@ -79,9 +79,9 @@ void Fight::startFight()
                 new UseWeapon(
                     player_,
                     plug,
-                    weapons[i],
-                    *( data::Action::newStatementUseWeapon( weapons[i].name() ).get() ),
-                    data::Action::resultUseWeapon( plug->name(), weapons[i].damageWeapon() )
+                    *(weapons[i]),
+                    *( data::Action::newStatementUseWeapon( (*(weapons[i])).name() ).get() ),
+                    data::Action::resultUseWeapon( plug->name(), (*(weapons[i])).damageWeapon() )
                 )
             );
         }
@@ -111,7 +111,7 @@ void Fight::startFight()
         {
             numberOfDeadPlug_ = countNumberOfDeadPlug;
             fightWriter.writeRemoveDeadBody();
-            player_->addWeapon( ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon() );
+            player_->addWeapon( &((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon() );
         }
 
         for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )

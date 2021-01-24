@@ -13,7 +13,7 @@ class Level2 : public Level
 {
     public:
         explicit Level2( Player* player ) : 
-            Level(player, 2)
+            Level(player)
         {
             
         }

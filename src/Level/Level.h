@@ -17,7 +17,6 @@ class Level
 {
     protected:
         Player* const player_;
-        const int levelNumber_;
 
         void endOfLevel() const 
         {
@@ -36,9 +35,8 @@ class Level
         }
 
     public:
-        explicit Level( Player* const player, const int& levelNumber ) : 
-            player_(player),
-            levelNumber_( levelNumber )
+        explicit Level( Player* const player ) : 
+            player_(player)
         {  
             
         }

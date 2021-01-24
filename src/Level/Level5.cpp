@@ -102,7 +102,7 @@ void Level5::startLevel( const Options& options )
     );
     secondFight.startFight();
 
-    player_->addWeapon( fist );
+    player_->addWeapon( &fist );
 
     // Third fight (introduction to Healing and weapon recuperation)
     Plug secondGarde( "Un futur cadavre", 0, 30, Knife() );

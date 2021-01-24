@@ -26,7 +26,7 @@ void Level3::startLevel( const Options& options )
     MessageWriter messageWriter0( data::Level3::message0, player_->pseudo(), plug.name() );
     messageWriter0.writeMessage();
 
-    Fist fist;
+    const Fist fist;
     UseWeapon useFist( player_, &plug, fist, data::Action::statementUseFist, data::Action::resultUseWeapon( plug.name(), fist.damageWeapon() ) );
     useFist.triggerAction();
 
@@ -58,8 +58,8 @@ void Level3::startLevel( const Options& options )
     MessageWriter messageWriter4( data::Level3::message4, player_->pseudo(), plug.name() );
     messageWriter4.writeMessage();
 
-    Knife knife;
-    player_->addWeapon( knife );
+    const Knife knife;
+    player_->addWeapon( &knife );
 
     UseWeapon useKnife( player_, &plug, knife, data::Action::statementUseKnife, data::Action::resultUseWeapon(plug.name(), knife.damageWeapon()) );
 

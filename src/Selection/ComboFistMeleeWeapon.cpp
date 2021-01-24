@@ -26,7 +26,7 @@ void ComboFistMeleeWeapon::triggerCombo
     // if the player has attack with his fist, trigger the combo 
     // and the ennemy is not dead
     // and player has at least one melee weapon
-    if ( (player_->weaponFromName( useWeapon[resultChooseWeapon]->nameWeapon() )).weaponType() == WeaponType::fist 
+    if ( (player_->weaponFromName( useWeapon[resultChooseWeapon]->nameWeapon() ))->weaponType() == WeaponType::fist 
             && !( plug->deadOrNot() ) && player_->containWeaponType( WeaponType::meleeWeapon ))
     {
         // Build vector of useWeapon actions without the fist action
@@ -37,18 +37,18 @@ void ComboFistMeleeWeapon::triggerCombo
             const std::string& nameWeapon = useWeapon[i]->nameWeapon();
 
             // Generate combo weapon, if the weapon is a melee weapon
-            if ( (player_->weaponFromName( nameWeapon )).weaponType() == WeaponType::meleeWeapon )
+            if ( (player_->weaponFromName( nameWeapon ))->weaponType() == WeaponType::meleeWeapon )
             {
-                std::unique_ptr<Weapon> weaponFistCombo 
+                const Weapon* weaponFistCombo 
                     = WeaponFactory::newWeaponFistCombo( useWeapon[i]->nameWeapon() );
 
-                player_->addWeapon( *(weaponFistCombo.get()) );
+                player_->addWeapon( weaponFistCombo );
 
                 useWeaponFistCombo.push_back(
                     new UseWeapon(
                         player_,
                         plug,
-                        *(weaponFistCombo.get()),
+                        *weaponFistCombo,
                         *(data::Action::newStatementUseWeapon( weaponFistCombo->name() ).get()),
                         data::Action::resultUseWeapon( plug->name(), weaponFistCombo->damageWeapon() )
                     )

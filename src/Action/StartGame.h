@@ -33,7 +33,7 @@ class StartGame : public Action
         void triggerAction() override
         {       
             int i = 0;
-            for ( i = player_.nbLevelSuceeded(); i < 6; i++ )
+            for ( i = player_.nbLevelSuceeded(); i < NB_LEVEL; i++ )
             {
                 std::unique_ptr<Level> level = LevelFactory::newLevel( &player_, i );
 

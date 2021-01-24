@@ -4,6 +4,8 @@
 
 #include "ResultsData.h"
 
+#include <iomanip>
+
 ResultsData::ResultsData() :
     Data( "results", "results" )
 {
@@ -46,7 +48,7 @@ void ResultsData::writeData() const
     }
 
     // read jsonfile 
-    jsonFile << jsonObjectOutput;
+    jsonFile << std::setw(4) << jsonObjectOutput;
 
     jsonFile.close();  
 }
