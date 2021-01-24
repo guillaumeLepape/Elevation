@@ -20,6 +20,8 @@ class ListNameData : public Data
         void readData() override;
 
         const std::set<std::string>& listName() const { return listName_; }
+
+        ~ListNameData() override = default;
 };
 
 #endif

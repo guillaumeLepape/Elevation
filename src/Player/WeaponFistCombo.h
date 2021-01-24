@@ -15,6 +15,8 @@ class WeaponFistCombo : public Weapon
         {
 
         }
+
+        ~WeaponFistCombo() override = default;
 };
 
 #endif

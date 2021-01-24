@@ -29,7 +29,7 @@ class ChoosePlug : public Action
 
         }
 
-        Plug* const plug() const { return plug_; }
+        Plug* plug() const { return plug_; }
 };
 
 #endif

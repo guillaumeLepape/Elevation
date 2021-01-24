@@ -15,6 +15,8 @@ class Katana : public Weapon
         {
 
         }
+
+        ~Katana() override = default;
 };
 
 #endif

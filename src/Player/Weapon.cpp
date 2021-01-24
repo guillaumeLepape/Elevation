@@ -17,11 +17,6 @@ Weapon::Weapon
     
 }
 
-Weapon::~Weapon()
-{
-
-}
-
 nlohmann::json Weapon::writeJson() const
 {   
     return 

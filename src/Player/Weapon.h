@@ -34,7 +34,7 @@ class Weapon
         );
         
     public:
-        virtual ~Weapon();
+        virtual ~Weapon() = default;
 
         const std::string& name() const { return name_; }
         const int& damageWeapon() const { return damageWeapon_; }

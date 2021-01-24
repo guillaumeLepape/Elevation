@@ -16,7 +16,7 @@ class Ninemm : public FireArm
 
         }
 
-        virtual ~Ninemm() {}
+        ~Ninemm() override = default;
 };
 
 #endif

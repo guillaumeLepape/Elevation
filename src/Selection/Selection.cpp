@@ -16,7 +16,7 @@ int Selection::select
     SelectionWriter selectionWriter( actions, title );
     selectionWriter.writeSelection();
 
-    int choice = 0;
+    long unsigned int choice = 0;
 
     while (!(std::cin >> choice) || (choice > actions.size() || choice < 1)) 
     {
@@ -49,7 +49,7 @@ int Selection::select
         selectionWriter.writeSelection();    
     }
 
-    for ( int i = 0; i < actions.size(); i++ )
+    for ( long unsigned int i = 0; i < actions.size(); i++ )
     {
         if ( choice == i + 1 )
         {

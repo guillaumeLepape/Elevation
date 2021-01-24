@@ -18,7 +18,7 @@ class Level5 : public Level
 
         void startLevel( const Options& options ) override;
 
-        ~Level5() {}
+        ~Level5() override = default;
 };
 
 #endif

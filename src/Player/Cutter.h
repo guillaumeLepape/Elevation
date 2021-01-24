@@ -15,6 +15,8 @@ class Cutter : public Weapon
         {
 
         }
+
+        ~Cutter() override = default;
 };
 
 #endif

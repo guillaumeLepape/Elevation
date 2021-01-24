@@ -15,6 +15,8 @@ class Knife : public Weapon
         {
 
         }
+
+        ~Knife() override = default;
 };
 
 #endif

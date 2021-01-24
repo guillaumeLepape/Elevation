@@ -27,7 +27,7 @@ class Data
 
     public:
         Data( const std::string& folderFromRoot, const std::string& fileName );
-        virtual ~Data() {}
+        virtual ~Data() = default;
 };
 
 #endif

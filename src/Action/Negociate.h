@@ -25,7 +25,7 @@ class Negociate : public Action
             const std::string& result
         );
 
-        void triggerAction();
+        void triggerAction() override;
 };
 
 #endif

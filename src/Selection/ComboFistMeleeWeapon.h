@@ -21,6 +21,8 @@ class ComboFistMeleeWeapon : public Combo
             const int& resultChooseWeapon, 
             const std::vector<UseWeapon*>& useWeapon
         ) override;
+
+        ~ComboFistMeleeWeapon() override = default;
 };
 
 #endif

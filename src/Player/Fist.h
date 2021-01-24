@@ -15,6 +15,8 @@ class Fist : public Weapon
         {
 
         }
+
+        ~Fist() override = default;
 };
 
 #endif

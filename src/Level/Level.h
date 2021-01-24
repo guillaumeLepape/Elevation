@@ -41,7 +41,7 @@ class Level
             
         }
         virtual void startLevel( const Options& options ) = 0;
-        virtual ~Level() {}
+        virtual ~Level() = default;
 };
 
 #endif

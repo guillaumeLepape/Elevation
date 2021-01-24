@@ -46,17 +46,17 @@ void Fight::startFight()
 
         std::vector<Action*> choosePlugActions;
 
-        for ( int i = 0; i < plugs_.size(); i++ )
+        for ( auto p = plugs_.begin(); p != plugs_.end(); p++ )
         {
             // user cannot attack dead plugs
-            if ( !(plugs_[i].deadOrNot()) )
+            if ( !p->deadOrNot() )
             {
                 Action* choosePlug = 
                     new ChoosePlug
                     ( 
-                        &(plugs_[i]), 
-                        data::Action::statementChoosePlug(plugs_[i].name()), 
-                        data::Action::resultChoosePlug(plugs_[i].name())
+                        &(*p), 
+                        data::Action::statementChoosePlug(p->name()), 
+                        data::Action::resultChoosePlug(p->name())
                     ); 
                 choosePlugActions.push_back( choosePlug );
             }
@@ -71,17 +71,17 @@ void Fight::startFight()
 
         std::vector<Action*> useWeapons;
 
-        for ( int i = 0; i < weapons.size(); i++ )
-        {
-            Plug* plug = ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug();
+        Plug* const choosenPlug = ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug();
 
+        for ( auto w = weapons.cbegin(); w != weapons.cend(); w++ )
+        {
             useWeapons.push_back(
                 new UseWeapon(
                     player_,
-                    plug,
-                    *(weapons[i]),
-                    *( data::Action::newStatementUseWeapon( (*(weapons[i])).name() ).get() ),
-                    data::Action::resultUseWeapon( plug->name(), (*(weapons[i])).damageWeapon() )
+                    choosenPlug,
+                    **w,
+                    *( data::Action::newStatementUseWeapon( (*w)->name() ).get() ),
+                    data::Action::resultUseWeapon( choosenPlug->name(), (*w)->damageWeapon() )
                 )
             );
         }
@@ -91,17 +91,14 @@ void Fight::startFight()
             data::Action::titleChooseWeapon
         );
 
+
         // launch every combo
-        for ( int i = 0; i < combos_.size(); i++ )
+        for ( auto c = combos_.cbegin(); c != combos_.cend(); c++ )
         {
-            auto plug1 = ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug();
-            auto useWeapons1 = (const std::vector<UseWeapon*>&) useWeapons;
-
-
-            combos_[i]->triggerCombo( 
-                plug1,
+            (*c)->triggerCombo( 
+                choosenPlug,
                 resultUseWeapon, 
-                useWeapons1 
+                (const std::vector<UseWeapon*>&) useWeapons 
             );
         }
 
@@ -139,7 +136,7 @@ void Fight::startFight()
     std::cout << "\n";
 }
 
-const bool Fight::enemiesDeadOrNot() const
+bool Fight::enemiesDeadOrNot() const
 {
     bool result = true;
 
@@ -151,7 +148,7 @@ const bool Fight::enemiesDeadOrNot() const
     return result;
 }
 
-const int Fight::methodNumberOfDeadPlug() const
+int Fight::methodNumberOfDeadPlug() const
 {
     int numberOfDead = 0;
     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )

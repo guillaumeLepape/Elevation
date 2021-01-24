@@ -25,6 +25,8 @@ class Combo
             const int& resultChooseWeapon, 
             const std::vector<UseWeapon*>& useWeapon
         ) = 0;
+
+        virtual ~Combo() = default;
 };
 
 #endif

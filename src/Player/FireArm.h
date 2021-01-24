@@ -26,9 +26,9 @@ class FireArm : public Weapon
         }    
 
     public:
-        virtual ~FireArm() {}
+        ~FireArm() override {}
 
-        virtual nlohmann::json writeJson() const override
+        nlohmann::json writeJson() const override
         {
             return 
             {

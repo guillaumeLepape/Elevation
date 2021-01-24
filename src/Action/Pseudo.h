@@ -18,7 +18,7 @@ class Pseudo : public Action
         void formatString( std::string& str )
         {
             str[0] = std::toupper( str[0] );
-            for ( int i = 1; i < str.length(); i++ )
+            for ( long unsigned int i = 1; i < str.length(); i++ )
             {
                 str[i] = std::tolower( str[i] );
             }

@@ -17,8 +17,8 @@ class Fight
 
         int numberOfDeadPlug_;
 
-        const int methodNumberOfDeadPlug() const;
-        const bool enemiesDeadOrNot() const;
+        int methodNumberOfDeadPlug() const;
+        bool enemiesDeadOrNot() const;
     public:
         Fight
         ( 

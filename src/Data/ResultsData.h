@@ -25,6 +25,8 @@ class ResultsData : public Data
         void writeData() const; 
 
         const std::list<Player>& results() const { return results_; }
+
+        ~ResultsData() override = default;
 };
 
 #endif

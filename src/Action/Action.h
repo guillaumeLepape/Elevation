@@ -31,7 +31,7 @@ class Action
 
         virtual void triggerAction() = 0;
 
-        virtual ~Action() {}
+        virtual ~Action() = default;
 };
 
 #endif

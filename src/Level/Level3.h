@@ -16,7 +16,7 @@ class Level3 : public Level
             
         }
         void startLevel( const Options& options ) override;
-        ~Level3() {}
+        ~Level3() override = default;
 };
 
 #endif

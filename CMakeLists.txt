@@ -221,7 +221,7 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/TutorialWriter.cpp
 )
 
-add_compile_options(-Wall -Wextra -pedantic)
+add_compile_options(-Wall -Wextra)
 
 add_executable(main
     src/main.cpp

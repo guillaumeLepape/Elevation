@@ -17,6 +17,7 @@ class Introduction : public Level
         }
 
         void startLevel( const Options& options ) override;
+        ~Introduction() override = default;
 };
 
 #endif
