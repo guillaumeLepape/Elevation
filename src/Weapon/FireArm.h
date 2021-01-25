@@ -10,7 +10,7 @@
 class FireArm : public Weapon
 {
     private:
-        int nbAmmo_;
+        mutable int nbAmmo_;
 
     protected:
         FireArm
@@ -35,6 +35,12 @@ class FireArm : public Weapon
                 { "name", name() },
                 { "nbAmmo", nbAmmo_ }
             };
+        }
+
+        void attack( Entity* const entity ) const override
+        {
+            Weapon::attack( entity );
+            nbAmmo_--;
         }
 
         const int& nbAmmo() const { return nbAmmo_; }   

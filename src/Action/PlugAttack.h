@@ -11,13 +11,13 @@ class PlugAttack : public Action
 {
     private:
         Player* const player_;
-        const Plug* const plug_;
+        Plug* const plug_;
 
     public:
         PlugAttack
         (
             Player* const player, 
-            const Plug* const plug,
+            Plug* const plug,
             const std::string& statement,
             const std::string& result
         ) :
@@ -34,8 +34,8 @@ class PlugAttack : public Action
             // if plug is not dead, he can attack
             if ( !(plug_->dead()) )
             {
-                player_->decreaseLifePoints( plug_->weapon().damageWeapon() );
-                actionWriter_.updateResult( data::Action::resultPlugAttack( plug_->name(), plug_->weapon().damageWeapon() ) );
+                plug_->weapon()->attack( player_ );
+                actionWriter_.updateResult( data::Action::resultPlugAttack( plug_->name(), plug_->weapon()->damageWeapon() ) );
                 actionWriter_.writeResult();
             }
         }

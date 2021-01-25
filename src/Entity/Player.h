@@ -10,6 +10,8 @@
 #include "WeaponInventory.h"
 #include "Entity.h"
 
+static constexpr int MAX_LIFE_POINTS_PLAYER = 100; 
+
 /*!
     * \class Player class
     * \brief 
@@ -63,8 +65,6 @@ class Player : public Entity
         */
         Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded );
 
-        void attack( Entity* entity ) override {}
-
         /*!
             * \brief id accesor, initialized at the creation of Player, unmodifiable argument
             * \return unique id 
@@ -86,7 +86,7 @@ class Player : public Entity
             * \brief Accesor to weapon inventory
             * \return Reference to weapon inventory
         */
-        WeaponInventory& weapons() { return weapons_; }
+        WeaponInventory* weapons() { return &weapons_; }
 
         const int& price() const { return price_; }
         void setPrice( const int& price ) { price_ = price; } 

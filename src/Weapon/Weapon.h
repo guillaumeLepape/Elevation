@@ -9,6 +9,8 @@
 
 #include <nlohmann/json.hpp>
 
+#include "Entity.h"
+
 enum class WeaponType
 {
     empty = -1,
@@ -43,6 +45,8 @@ class Weapon
         friend bool operator==( const Weapon& weapon1, const Weapon& weapon2 );
 
         virtual nlohmann::json writeJson() const;
+
+        virtual void attack( Entity* const entity ) const;
 };
 
 #endif

@@ -14,11 +14,10 @@ class Entity
         int nbLifePoints_;
         const int maxNbLifePoints_;
 
-    public:
         Entity( const std::string& name, const int& nbLifePoints );
 
-        // this attack the parameter Entity
-        virtual void attack( Entity* entity ) = 0;
+    public:
+        virtual ~Entity() = default;
 
         /*!
             * \brief pseudo accesor 

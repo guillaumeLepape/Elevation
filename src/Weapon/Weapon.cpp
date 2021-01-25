@@ -25,6 +25,11 @@ nlohmann::json Weapon::writeJson() const
     };
 }   
 
+void Weapon::attack( Entity* entity ) const
+{
+    entity->decreaseLifePoints( damageWeapon_ );
+}
+
 bool operator==( const Weapon& weapon1, const Weapon& weapon2 )
 {
     return ( (weapon1.name_ == weapon2.name_) 

@@ -67,13 +67,13 @@ void Fight::startFight()
             data::Action::titleChoosePlug
         );
 
-        const std::vector<const Weapon*> weapons = player_->weapons();
+        const std::vector<const Weapon*>* weapons = player_->weapons();
 
         std::vector<Action*> useWeapons;
 
         Plug* const choosenPlug = ( (ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug();
 
-        for ( auto w = weapons.cbegin(); w != weapons.cend(); w++ )
+        for ( auto w = weapons->cbegin(); w != weapons->cend(); w++ )
         {
             useWeapons.push_back(
                 new UseWeapon(
@@ -110,14 +110,14 @@ void Fight::startFight()
             fightWriter.writeRemoveDeadBody();
             const Weapon* weapon = new Weapon
             (
-                ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon()
+                *((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon()
             );
-            player_->weapons().addWeapon( weapon );
+            player_->weapons()->addWeapon( weapon );
         }
 
-        for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
+        for ( auto e = plugs_.begin(); e != plugs_.end(); e++ )
         {
-            PlugAttack plugAttack( player_, &(*e), "", data::Action::resultPlugAttack( e->name(), ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon().damageWeapon()  ) );
+            PlugAttack plugAttack( player_, &(*e), "", data::Action::resultPlugAttack( e->name(), ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon()->damageWeapon()  ) );
             plugAttack.triggerAction();
 
             if ( player_->dead() )

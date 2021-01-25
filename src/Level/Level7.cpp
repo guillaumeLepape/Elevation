@@ -30,7 +30,7 @@ void Level7::startLevel( const Options& options )
     );
     messageWriter.writeMessage();
 
-    player_->weapons().addWeapon( new Ninemm(3) );
+    player_->weapons()->addWeapon( new Ninemm(3) );
 
     Level::endOfLevel();
 

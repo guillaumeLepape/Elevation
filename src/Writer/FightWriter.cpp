@@ -91,9 +91,9 @@ void FightWriter::writeGameBoard() const
             lifePointsFighters.push_back( 
                 std::to_string( plugs_[i].nbLifePoints() ) + " points de vie" 
             );
-            nameWeaponFighters.push_back( plugs_[i].weapon().name() );
+            nameWeaponFighters.push_back( plugs_[i].weapon()->name() );
             damageWeaponFighters.push_back(
-                std::to_string( plugs_[i].weapon().damageWeapon() ) + " points d'attaque"
+                std::to_string( plugs_[i].weapon()->damageWeapon() ) + " points d'attaque"
             );
         }
     }

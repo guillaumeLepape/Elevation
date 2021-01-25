@@ -302,6 +302,11 @@ namespace data
         // generic UseWeapon data statement for katana
         inline std::string statementUseKatana("Découpez ! (Katana)");
         inline std::string statementUseKatanaFistCombo("Combo avec le katana !");
+        // generic UseWeapon data statement for cutter
+        inline std::string statementUseCutter("Tailladez ! (Cutter)");
+        inline std::string statementUseCutterFistCombo("Combo avec le cutter !");
+        // generic UseWeapon data statement for 9mm
+        inline std::string statementNinemm("Tirez ! (9mm)");
 
         // generic UseWeapon data result
         inline std::string resultUseWeapon(const std::string& plugName, const int& damageWeapon)
@@ -332,6 +337,18 @@ namespace data
             if (nameWeapon == "KatanaFistCombo")
             {
                 return std::make_unique<std::string>(statementUseKatanaFistCombo);
+            }
+            if ( nameWeapon == "Cutter" )
+            {
+                return std::make_unique<std::string>(statementUseCutter);
+            }
+            if ( nameWeapon == "CutterFistCombo" )
+            {
+                return std::make_unique<std::string>(statementUseCutterFistCombo);
+            }
+            if ( nameWeapon == "9mm" )
+            {
+                return std::make_unique<std::string>(statementNinemm);
             }
             assert(false);
         }
