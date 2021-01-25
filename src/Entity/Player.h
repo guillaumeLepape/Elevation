@@ -16,23 +16,21 @@
     * \brief 
 */
 
-// static constexpr int MAX_LIFE_POINTS = 100;
-
 class Player : public Entity
 {
     private:
-        /*!<  Pseudo of player */
-        // std::string pseudo_;    
         /*< Unique id */
         std::string id_;
+
         /*< Number of level suceeded by the player */
         int nbLevelSuceeded_;    
-        /*< Number of life points */
-        // int nbLifePoints_;
+
         /*< Amount of money own by player */
         int money_;
+
         /*< List of weapons own by player */
         std::vector<const Weapon*> weapons_;
+        
         /*< Price of the drug choosen */
         int price_;
 
@@ -75,17 +73,6 @@ class Player : public Entity
         const std::string& id() const { return id_; }
 
         /*!
-            * \brief pseudo accesor 
-            * \return pseudo of player
-        */
-        // const std::string& name() const { return pseudo_; }
-        /*!
-            * \brief pseudo mutator 
-            * \param pseudo : new pseudo
-        */
-        // void changeName( const std::string& pseudo ) { pseudo_ = pseudo; } 
-
-        /*!
             * \brief nbLevelSuceeded accesor
         */
         const int& nbLevelSuceeded() const { return nbLevelSuceeded_; }
@@ -94,29 +81,7 @@ class Player : public Entity
         */
         void nextLevel() { nbLevelSuceeded_++; }
 
-        // const int& nbLifePoints() const { return nbLifePoints_; }
-        // int missingLifePoints() const { return MAX_LIFE_POINTS - nbLifePoints_; }
-
-        // void increaseLifePoints( const int& nbLifePoints ) 
-        // {
-        //     if ( nbLifePoints_ + nbLifePoints >= MAX_LIFE_POINTS )
-        //     {
-        //         nbLifePoints_ = MAX_LIFE_POINTS;
-        //     }
-        //     else
-        //     {
-        //         nbLifePoints_ += nbLifePoints; 
-        //     }
-        // }
-        // void decreaseLifePoints( const int& nbLifePoints ) { nbLifePoints_ -= nbLifePoints; }
-
         void increaseMoney( const int& money ) { money_ += money; }
-
-        /*!
-            \brief State of player : dead or alive 
-            \return true if the number of life points is null or negative, false else
-        */
-        // bool dead() const { return nbLifePoints_ <= 0; }
 
         void addWeapon( const Weapon* const weapon );
         void deleteWeapon( const std::string& nameWeapon );

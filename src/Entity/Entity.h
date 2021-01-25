@@ -20,9 +20,16 @@ class Entity
         // this attack the parameter Entity
         virtual void attack( Entity* entity ) = 0;
 
-        // Accessor of name_ attribute
+        /*!
+            * \brief pseudo accesor 
+            * \return pseudo of player
+        */        
         const std::string& name() const { return name_; }
-        // Mutator of name_ attribute
+        
+        /*!
+            * \brief pseudo mutator 
+            * \param pseudo : new pseudo
+        */        
         void changeName( const std::string& name ) { name_ = name; }
 
         // Accessor of nbLifePoints_ attribute
@@ -49,6 +56,10 @@ class Entity
 
         bool fullLife() const { return nbLifePoints_ == maxNbLifePoints_; }
 
+        /*!
+            \brief State of player : dead or alive 
+            \return true if the number of life points is null or negative, false else
+        */
         bool dead() const { return ( nbLifePoints_ <= 0 ); }
 };
 

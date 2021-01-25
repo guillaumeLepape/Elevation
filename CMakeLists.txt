@@ -86,6 +86,29 @@ set(SOURCE_DATAFILES
 )
 
 #
+# Set header and source files for Entity and its herited classes (Player and Plug)
+#
+
+set(FOLDER_ENTITY src/Entity)
+
+include_directories(
+    ${FOLDER_ENTITY}
+)
+
+set(HEADER_ENTITY
+    ${FOLDER_ENTITY}/Entity.h
+    ${FOLDER_ENTITY}/Id.h
+    ${FOLDER_ENTITY}/Player.h
+    ${FOLDER_ENTITY}/Plug.h
+    )
+
+set(SOURCE_ENTITY
+    ${FOLDER_ENTITY}/Entity.cpp
+    ${FOLDER_ENTITY}/Player.cpp
+    ${FOLDER_ENTITY}/Plug.cpp
+)
+
+#
 # Set header and source files for Level class and its herited classes (in the folder Level) 
 #
 set(FOLDER_LEVEL src/Level)
@@ -122,51 +145,28 @@ set(SOURCE_LEVEL
 #
 # Set header and source files for Player class (in the folder Player) 
 #
-set(FOLDER_PLAYER src/Player)
+set(FOLDER_WEAPON src/Weapon)
 
 include_directories(
-    ${FOLDER_PLAYER}
+    ${FOLDER_WEAPON}
 )
 
-set(HEADER_PLAYER
-    ${FOLDER_PLAYER}/Weapon.h
-    ${FOLDER_PLAYER}/WeaponFactory.h
-    ${FOLDER_PLAYER}/NoWeapon.h
-    ${FOLDER_PLAYER}/Fist.h
-    ${FOLDER_PLAYER}/Knife.h
-    ${FOLDER_PLAYER}/Katana.h
-    ${FOLDER_PLAYER}/WeaponFistCombo.h
-    ${FOLDER_PLAYER}/Cutter.h
-    ${FOLDER_PLAYER}/FireArm.h
-    ${FOLDER_PLAYER}/Ninemm.h
-
-    ${FOLDER_PLAYER}/Id.h
-    ${FOLDER_PLAYER}/Player.h
-
-    ${FOLDER_PLAYER}/Entity.h
+set(HEADER_WEAPON
+    ${FOLDER_WEAPON}/Weapon.h
+    ${FOLDER_WEAPON}/WeaponFactory.h
+    ${FOLDER_WEAPON}/NoWeapon.h
+    ${FOLDER_WEAPON}/Fist.h
+    ${FOLDER_WEAPON}/Knife.h
+    ${FOLDER_WEAPON}/Katana.h
+    ${FOLDER_WEAPON}/WeaponFistCombo.h
+    ${FOLDER_WEAPON}/Cutter.h
+    ${FOLDER_WEAPON}/FireArm.h
+    ${FOLDER_WEAPON}/Ninemm.h
 )
 
-set(SOURCE_PLAYER
-    ${FOLDER_PLAYER}/Weapon.cpp
-    ${FOLDER_PLAYER}/Player.cpp
-    ${FOLDER_PLAYER}/Entity.cpp
-)
-
-#
-# Set header and source files for Plug class (in the folder Plug) 
-#
-set(FOLDER_PLUG src/Plug)
-
-include_directories(
-    ${FOLDER_PLUG}
-)
-
-set(HEADER_PLUG
-    ${FOLDER_PLUG}/Plug.h
-)
-
-set(SOURCE_PLUG
-    ${FOLDER_PLUG}/Plug.cpp
+set(SOURCE_WEAPON
+    ${FOLDER_WEAPON}/Weapon.cpp
+    ${FOLDER_WEAPON}/WeaponInventory.cpp
 )
 
 #
@@ -247,17 +247,17 @@ add_executable(main
     ${HEADER_LEVEL}
     ${SOURCE_LEVEL}
 
-    ${HEADER_PLAYER}
-    ${SOURCE_PLAYER}
-
-    ${HEADER_PLUG}
-    ${SOURCE_PLUG}
+    ${HEADER_ENTITY}
+    ${SOURCE_ENTITY}
 
     ${HEADER_SELECTION}
     ${SOURCE_SELECTION}
 
     ${HEADER_WRITER}
     ${SOURCE_WRITER}
+
+    ${HEADER_WEAPON}
+    ${SOURCE_WEAPON}
 )   
 
 add_executable(dataset
