@@ -27,7 +27,7 @@ void ComboFistMeleeWeapon::triggerCombo
     // and the ennemy is not dead
     // and player has at least one melee weapon
     if ( (player_->weaponFromName( useWeapon[resultChooseWeapon]->nameWeapon() ))->weaponType() == WeaponType::fist 
-            && !( plug->deadOrNot() ) && player_->containWeaponType( WeaponType::meleeWeapon ))
+            && !( plug->dead() ) && player_->containWeaponType( WeaponType::meleeWeapon ))
     {
         // Build vector of useWeapon actions without the fist action
         std::vector<Action*> useWeaponFistCombo; 

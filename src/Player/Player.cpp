@@ -11,10 +11,9 @@
 #include "WeaponFactory.h"
 
 Player::Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded ) :
-    pseudo_( pseudo ),
+    Entity( pseudo, 100 ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
-    nbLifePoints_(MAX_LIFE_POINTS),
     money_(200),
     weapons_( 1, new Fist() ),
     price_(0)
@@ -32,10 +31,9 @@ Player::Player
     const std::vector<const Weapon*>& weapons,
     const int& price
 ) :
-    pseudo_( pseudo ),
+    Entity( pseudo, nbLifePoints ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
-    nbLifePoints_(nbLifePoints),
     money_(money),
     weapons_( weapons ),
     price_(price)
@@ -128,7 +126,7 @@ nlohmann::json Player::writeJson() const
 
     nlohmann::json jsonObjectOutput
     {
-        { "pseudo", pseudo_ },
+        { "pseudo", name_ },
         { "id", id_ },
         { "nbLevelSuceeded", nbLevelSuceeded_ },
         { "nbLifePoints", nbLifePoints_ },

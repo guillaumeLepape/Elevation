@@ -24,9 +24,9 @@ void Level1::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    auto message = data::Level1::message0( player_->pseudo(), plug.name(), plug.price() );
+    auto message = data::Level1::message0( player_->name(), plug.name(), plug.price() );
 
-    MessageWriter messageWriter( message, player_->pseudo(), plug.name() );
+    MessageWriter messageWriter( message, player_->name(), plug.name() );
     messageWriter.writeMessage();
 
     player_->increaseMoney( -plug.price() );

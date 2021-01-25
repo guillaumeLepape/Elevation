@@ -40,7 +40,7 @@ void Pseudo::triggerAction()
         MessageWriter messageWriter
         ( 
             data::Introduction::message1, 
-            player_->pseudo(), 
+            player_->name(), 
             "" 
         );
         messageWriter.writeMessage();
@@ -65,7 +65,7 @@ void Pseudo::triggerAction()
             MessageWriter messageWriter2
             ( 
                 data::Introduction::message2, 
-                player_->pseudo(), 
+                player_->name(), 
                 "" 
             );
             messageWriter2.writeMessage();
@@ -77,16 +77,16 @@ void Pseudo::triggerAction()
             MessageWriter messageWriter3
             ( 
                 data::Introduction::message3, 
-                player_->pseudo(), 
+                player_->name(), 
                 "" 
             );
             messageWriter3.writeMessage();
         }
     }
 
-    player_->setPseudo(*ptrPseudo);
+    player_->changeName(*ptrPseudo);
 
-    actionWriter_.updateResult( data::Action::resultPseudo( player_->pseudo() ) );
+    actionWriter_.updateResult( data::Action::resultPseudo( player_->name() ) );
     actionWriter_.writeResult();
 }
 

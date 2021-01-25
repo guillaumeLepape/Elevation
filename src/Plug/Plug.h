@@ -5,14 +5,15 @@
     * \file Plug.h
 */
 
+#include "Entity.h"
 #include "NoWeapon.h"
 
-class Plug 
+class Plug : public Entity
 {
     private:
-        const std::string name_;
+        // const std::string name_;
         const int price_;
-        int lifePoints_;
+        // int lifePoints_;
         Weapon weapon_;
 
     public:
@@ -20,17 +21,19 @@ class Plug
         ( 
             const std::string& name, 
             const int& price, 
-            const int& lifePoints = 100, 
+            const int& nbLifePoints = 100, 
             const Weapon& weapon = NoWeapon() 
         );
         
-        const std::string& name() const { return name_; }
+        void attack( Entity* entity ) override {  }
+
+        // const std::string& name() const { return name_; }
         const int& price() const { return price_; }
 
-        const int& lifePoints() const { return lifePoints_; }
-        void decreaseLifePoints( const int& lifePoints) { lifePoints_ -= lifePoints; } 
+        // const int& lifePoints() const { return lifePoints_; }
+        // void decreaseLifePoints( const int& lifePoints) { lifePoints_ -= lifePoints; } 
 
-        bool deadOrNot() const { return (lifePoints_ <= 0); }
+        // bool deadOrNot() const { return (lifePoints_ <= 0); }
 
         const Weapon& weapon() const { return weapon_; }
 };

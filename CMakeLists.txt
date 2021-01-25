@@ -142,11 +142,14 @@ set(HEADER_PLAYER
 
     ${FOLDER_PLAYER}/Id.h
     ${FOLDER_PLAYER}/Player.h
+
+    ${FOLDER_PLAYER}/Entity.h
 )
 
 set(SOURCE_PLAYER
     ${FOLDER_PLAYER}/Weapon.cpp
     ${FOLDER_PLAYER}/Player.cpp
+    ${FOLDER_PLAYER}/Entity.cpp
 )
 
 #

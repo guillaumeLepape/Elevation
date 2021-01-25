@@ -31,7 +31,7 @@ void Level2::startLevel( const Options& options )
     MessageWriter messageWriter
     ( 
         message,
-        player_->pseudo(),
+        player_->name(),
         plug.name()
     );
     messageWriter.writeMessage();

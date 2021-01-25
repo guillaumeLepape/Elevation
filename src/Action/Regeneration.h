@@ -30,7 +30,7 @@ class Regeneration : public Action
             int nbLifePointsRegeneration = 0;
 
             // if player is full life or dead, do nothing, else regenerate him
-            if ( player_->nbLifePoints() < MAX_LIFE_POINTS && !(player_->dead()) )
+            if ( !(player_->fullLife()) && !(player_->dead()) )
             {
                 switch (player_->nbLevelSuceeded())
                 {      

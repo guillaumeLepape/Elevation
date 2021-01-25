@@ -35,10 +35,10 @@ void Level5::startLevel( const Options& options )
 
     Plug guetteur( "Guetteur", 0, 35, Fist() );
 
-    MessageWriter messageWriter0( data::Level5::message0, player_->pseudo(), guetteur.name() );
+    MessageWriter messageWriter0( data::Level5::message0, player_->name(), guetteur.name() );
     messageWriter0.writeMessage();
     
-    MessageWriter messageWriter1( data::Level5::message1, player_->pseudo(), guetteur.name() );
+    MessageWriter messageWriter1( data::Level5::message1, player_->name(), guetteur.name() );
     messageWriter1.writeMessage();
 
     if ( !options.noRule_ )
@@ -82,7 +82,7 @@ void Level5::startLevel( const Options& options )
     // Second fight (introduction to Double melee Weapon combo )
     Plug garde( "Garde", 0, 50, Fist() );
 
-    MessageWriter messageWriter2( data::Level5::message2, player_->pseudo(), garde.name() );
+    MessageWriter messageWriter2( data::Level5::message2, player_->name(), garde.name() );
     messageWriter2.writeMessage();
 
     if ( !options.noRule_ )
@@ -111,7 +111,7 @@ void Level5::startLevel( const Options& options )
     // Third fight (introduction to Healing and weapon recuperation)
     Plug secondGarde( "Un futur cadavre", 0, 30, Knife() );
 
-    MessageWriter messageWriter3( data::Level5::message3, player_->pseudo(), secondGarde.name() );
+    MessageWriter messageWriter3( data::Level5::message3, player_->name(), secondGarde.name() );
     messageWriter3.writeMessage();
 
     if ( !options.noRule_ )
@@ -132,13 +132,13 @@ void Level5::startLevel( const Options& options )
     );
     thirdFight.startFight();
 
-    MessageWriter messageWriter4( data::Level5::message4, player_->pseudo(), "" );
+    MessageWriter messageWriter4( data::Level5::message4, player_->name(), "" );
     messageWriter4.writeMessage();
 
     RegenerateAllLife regenerateAllLife( player_, "", "" ); 
     regenerateAllLife.triggerAction();
 
-    MessageWriter messageWriter5( data::Level5::message5, player_->pseudo(), "" );
+    MessageWriter messageWriter5( data::Level5::message5, player_->name(), "" );
     messageWriter5.writeMessage();
 
     if ( !options.noRule_ )
@@ -152,7 +152,7 @@ void Level5::startLevel( const Options& options )
     }
 
     // Fourth fight
-    MessageWriter messageWriter6( data::Level5::message6, player_->pseudo(), "" );
+    MessageWriter messageWriter6( data::Level5::message6, player_->name(), "" );
 
     Katana katana;
     Knife knife;
@@ -168,7 +168,7 @@ void Level5::startLevel( const Options& options )
     );
     fight.startFight(); 
 
-    MessageWriter messageWriter7( data::Level5::message7, player_->pseudo(), "" );
+    MessageWriter messageWriter7( data::Level5::message7, player_->name(), "" );
 
     Level::endOfLevel();
 

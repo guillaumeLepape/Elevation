@@ -34,7 +34,7 @@ void Negociate::triggerAction()
     MessageWriter messageWriter1
     ( 
         data::Level2::message1, 
-        player_->pseudo(),
+        player_->name(),
         plug_->name() 
     );
     messageWriter1.writeMessage();
@@ -53,7 +53,7 @@ void Negociate::triggerAction()
             MessageWriter messageWriter2
             ( 
                 data::Level2::message2,
-                player_->pseudo(),
+                player_->name(),
                 plug_->name()
             );
             messageWriter2.writeMessage();
@@ -64,7 +64,7 @@ void Negociate::triggerAction()
             MessageWriter messageWriter4
             ( 
                 data::Level2::message4,
-                player_->pseudo(),
+                player_->name(),
                 plug_->name()
             );
             messageWriter4.writeMessage();
@@ -79,7 +79,7 @@ void Negociate::triggerAction()
             MessageWriter messageWriter3
             ( 
                 data::Level2::message3,
-                player_->pseudo(),
+                player_->name(),
                 plug_->name()
             );
             messageWriter3.writeMessage();
@@ -89,7 +89,7 @@ void Negociate::triggerAction()
     MessageWriter messageWriter5
     (
         data::Level2::message5,
-        player_->pseudo(),
+        player_->name(),
         plug_->name()
     );
     messageWriter5.writeMessage();

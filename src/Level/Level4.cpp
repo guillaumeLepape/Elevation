@@ -26,8 +26,8 @@ void Level4::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    auto message = data::Level4::message0( player_->pseudo() );
-    MessageWriter messageWriter0( message, player_->pseudo(), plug.name() );
+    auto message = data::Level4::message0( player_->name() );
+    MessageWriter messageWriter0( message, player_->name(), plug.name() );
     messageWriter0.writeMessage();
 
     // first question
@@ -49,8 +49,8 @@ void Level4::startLevel( const Options& options )
         data::Question::correctOrNotAnswer3Question1
     );
 
-    MessageWriter messageWriter1( data::Level4::message1, player_->pseudo(), plug.name() );
-    MessageWriter messageWriter2( data::Level4::message2, player_->pseudo(), plug.name() );
+    MessageWriter messageWriter1( data::Level4::message1, player_->name(), plug.name() );
+    MessageWriter messageWriter2( data::Level4::message2, player_->name(), plug.name() );
 
     while
     ( 

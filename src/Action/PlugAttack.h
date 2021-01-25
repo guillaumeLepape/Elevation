@@ -32,7 +32,7 @@ class PlugAttack : public Action
         void triggerAction() override
         {
             // if plug is not dead, he can attack
-            if ( !(plug_->deadOrNot()) )
+            if ( !(plug_->dead()) )
             {
                 player_->decreaseLifePoints( plug_->weapon().damageWeapon() );
                 actionWriter_.updateResult( data::Action::resultPlugAttack( plug_->name(), plug_->weapon().damageWeapon() ) );

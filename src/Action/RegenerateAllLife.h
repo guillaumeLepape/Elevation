@@ -23,10 +23,10 @@ class RegenerateAllLife : public Action
         void triggerAction() override
         {
             // if player is full life or dead, do nothing, else regenerate him
-            if ( player_->nbLifePoints() < MAX_LIFE_POINTS && !(player_->dead()) )
+            if ( !(player_->fullLife()) && !(player_->dead()) )
             {
-                actionWriter_.updateResult( data::Action::resultRegeneration( MAX_LIFE_POINTS - player_->nbLifePoints() ) );
-                player_->increaseLifePoints( MAX_LIFE_POINTS - player_->nbLifePoints() );
+                actionWriter_.updateResult( data::Action::resultRegeneration( player_->missingLifePoints() ) );
+                player_->increaseLifePoints( player_->missingLifePoints() );
                 actionWriter_.writeResult();
             }
         }

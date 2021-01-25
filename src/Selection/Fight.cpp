@@ -49,7 +49,7 @@ void Fight::startFight()
         for ( auto p = plugs_.begin(); p != plugs_.end(); p++ )
         {
             // user cannot attack dead plugs
-            if ( !p->deadOrNot() )
+            if ( !p->dead() )
             {
                 Action* choosePlug = 
                     new ChoosePlug
@@ -146,7 +146,7 @@ bool Fight::enemiesDeadOrNot() const
 
     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
     {
-        result = result && e->deadOrNot();
+        result = result && e->dead();
     }
 
     return result;
@@ -157,7 +157,7 @@ int Fight::methodNumberOfDeadPlug() const
     int numberOfDead = 0;
     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
     {
-        if ( e->deadOrNot() )
+        if ( e->dead() )
         {
             numberOfDead++;
         }

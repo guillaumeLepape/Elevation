@@ -20,7 +20,7 @@ Dead::Dead
 
 void Dead::triggerAction()
 {
-    if ( plug_->deadOrNot() )
+    if ( plug_->dead() )
     {
         actionWriter_.writeResult();
     }

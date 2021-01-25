@@ -85,11 +85,11 @@ void FightWriter::writeGameBoard() const
     for(int i = 0; i < plugs_.size(); i++ )
     {
         // display plugs only if they are not dead
-        if ( !(plugs_[i].deadOrNot()) )
+        if ( !(plugs_[i].dead()) )
         {
             nameFighters.push_back( plugs_[i].name() );
             lifePointsFighters.push_back( 
-                std::to_string( plugs_[i].lifePoints() ) + " points de vie" 
+                std::to_string( plugs_[i].nbLifePoints() ) + " points de vie" 
             );
             nameWeaponFighters.push_back( plugs_[i].weapon().name() );
             damageWeaponFighters.push_back(
@@ -109,7 +109,7 @@ void FightWriter::writeGameBoard() const
 
     std::vector<variant<std::string, const char *, tabulate::Table>> 
         playerLine( nameFighters.size(), "" );
-    playerLine[nameFighters.size()/2] = player_->pseudo();
+    playerLine[nameFighters.size()/2] = player_->name();
     fighters.add_row( playerLine );
 
     std::vector<variant<std::string, const char *, tabulate::Table>> 

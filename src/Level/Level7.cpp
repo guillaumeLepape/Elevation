@@ -25,7 +25,7 @@ void Level7::startLevel( const Options& options )
     MessageWriter messageWriter
     ( 
         data::Level7::message0( plug.name() ), 
-        player_->pseudo(),  
+        player_->name(),  
         plug.name()
     );
     messageWriter.writeMessage();

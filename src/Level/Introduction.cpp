@@ -25,18 +25,18 @@ void Introduction::startLevel( const Options& options )
     MessageWriter messageWriter0
     ( 
         data::Introduction::message0, 
-        player_->pseudo(), 
+        player_->name(), 
         "" 
     );
     messageWriter0.writeMessage();
 
-    Pseudo pseudo( player_, data::Action::statementPseudo, data::Action::resultPseudo(player_->pseudo()) );
+    Pseudo pseudo( player_, data::Action::statementPseudo, data::Action::resultPseudo(player_->name()) );
     pseudo.triggerAction();
 
     MessageWriter messageWriter4
     ( 
-        data::Introduction::message4( player_->pseudo() ), 
-        player_->pseudo(), 
+        data::Introduction::message4( player_->name() ), 
+        player_->name(), 
         "" 
     );
     messageWriter4.writeMessage();
