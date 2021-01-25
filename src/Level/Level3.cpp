@@ -62,10 +62,10 @@ void Level3::startLevel( const Options& options )
     MessageWriter messageWriter4( data::Level3::message4, player_->pseudo(), plug.name() );
     messageWriter4.writeMessage();
 
-    const Knife knife;
-    player_->addWeapon( &knife );
+    const Knife* knife = new Knife();
+    player_->addWeapon( knife );
 
-    UseWeapon useKnife( player_, &plug, knife, data::Action::statementUseKnife, data::Action::resultUseWeapon(plug.name(), knife.damageWeapon()) );
+    UseWeapon useKnife( player_, &plug, *knife, data::Action::statementUseKnife, data::Action::resultUseWeapon(plug.name(), knife->damageWeapon()) );
 
     Selection::select(
         { &useFist, &useKnife },

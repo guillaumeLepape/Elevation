@@ -13,7 +13,8 @@
 
 void Level6::startLevel( const Options& options )
 {
-    HeaderWriter headerWriter( data::Level7::nameLevel, data::Level7::hour, data::Level7::minut );
+    HeaderWriter headerWriter( data::Level6::nameLevel, data::Level6::hour, data::Level6::minut );
+    headerWriter.writeHeader();
 
     Level::endOfLevel();
     std::cout << "\n";

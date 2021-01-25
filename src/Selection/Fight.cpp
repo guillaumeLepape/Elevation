@@ -108,7 +108,11 @@ void Fight::startFight()
         {
             numberOfDeadPlug_ = countNumberOfDeadPlug;
             fightWriter.writeRemoveDeadBody();
-            player_->addWeapon( &((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon() );
+            const Weapon* weapon = new Weapon
+            (
+                ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon()
+            );
+            player_->addWeapon( weapon );
         }
 
         for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )

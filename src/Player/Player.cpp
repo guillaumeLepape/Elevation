@@ -59,7 +59,14 @@ const Weapon* Player::weaponFromName( const std::string& nameWeapon ) const
 
 void Player::addWeapon( const Weapon* const weapon )
 {
-    auto it = std::find( weapons_.cbegin(), weapons_.cend(), weapon );
+    auto it = std::find_if( 
+        weapons_.cbegin(), 
+        weapons_.cend(), 
+        [&weapon]( const Weapon* const lWeapon )
+        {
+            return *(weapon) == *(lWeapon);
+        } 
+    );
     // If this condition is true, weapon is not in weapons_ so add it and sort the weapons_ vector
     if ( it == weapons_.cend() )
     {
