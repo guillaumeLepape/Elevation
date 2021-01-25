@@ -112,7 +112,7 @@ void Fight::startFight()
             (
                 ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon()
             );
-            player_->addWeapon( weapon );
+            player_->weapons().addWeapon( weapon );
         }
 
         for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )

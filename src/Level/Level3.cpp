@@ -63,7 +63,7 @@ void Level3::startLevel( const Options& options )
     messageWriter4.writeMessage();
 
     const Knife* knife = new Knife();
-    player_->addWeapon( knife );
+    player_->weapons().addWeapon( knife );
 
     UseWeapon useKnife( player_, &plug, *knife, data::Action::statementUseKnife, data::Action::resultUseWeapon(plug.name(), knife->damageWeapon()) );
 
