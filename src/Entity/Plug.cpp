@@ -4,9 +4,13 @@
 
 #include "Plug.h"
 
-Plug::Plug( const std::string& name, const int& price, const int& nbLifePoints, Weapon* const weapon ) : 
+Plug::Plug
+( 
+    const std::string& name, 
+    const int& nbLifePoints, 
+    Weapon* const weapon 
+) : 
     Entity( name, nbLifePoints ),
-    price_(price), 
     weapon_(weapon)
 {
     

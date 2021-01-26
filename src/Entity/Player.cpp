@@ -15,8 +15,7 @@ Player::Player( const std::string& pseudo, const std::string& id, const int& nbL
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
     money_(200),
-    weapons_( 1, new Fist() ),
-    price_(0)
+    weapons_( 1, new Fist() )
 {
 
 }
@@ -28,15 +27,13 @@ Player::Player
     const int& nbLevelSuceeded,
     const int& nbLifePoints,
     const int& money,
-    const std::vector<const Weapon*>& weapons,
-    const int& price
+    const std::vector<const Weapon*>& weapons
 ) :
     Entity( pseudo, nbLifePoints ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
     money_(money),
-    weapons_( weapons ),
-    price_(price)
+    weapons_( weapons )
 {
 
 }
@@ -58,8 +55,7 @@ nlohmann::json Player::writeJson() const
         { "nbLevelSuceeded", nbLevelSuceeded_ },
         { "nbLifePoints", nbLifePoints_ },
         { "money", money_ },
-        { "weapons", jsonWeaponArray },
-        { "price", price_ }
+        { "weapons", jsonWeaponArray }
     };
 
     return jsonObjectOutput;
@@ -93,8 +89,7 @@ Player* Player::readJson( const nlohmann::json& jsonInput )
         jsonInput["nbLevelSuceeded"],
         jsonInput["nbLifePoints"],
         jsonInput["money"],
-        weapons,
-        jsonInput["price"]
+        weapons
     );
 
     return player;

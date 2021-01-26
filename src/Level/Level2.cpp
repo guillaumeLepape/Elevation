@@ -18,7 +18,7 @@
 
 void Level2::startLevel( const Options& options )
 {
-    Plug plug( "Jean-Luc Delarue", 80 );
+    Plug plug( "Jean-Luc Delarue" );
 
     HeaderWriter headerWriter( 
         data::Level2::nameLevel,
@@ -27,7 +27,8 @@ void Level2::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    auto message = data::Level2::message0( plug.name(), plug.price() );
+    int price = 80;
+    auto message = data::Level2::message0( plug.name(), price );
     MessageWriter messageWriter
     ( 
         message,
@@ -36,7 +37,14 @@ void Level2::startLevel( const Options& options )
     );
     messageWriter.writeMessage();
 
-    Negociate negociate( player_, &plug, data::Action::statementNegociate, data::Action::resultNegociate(0) );
+    Negociate negociate
+    ( 
+        player_, 
+        &plug, 
+        price, 
+        data::Action::statementNegociate, 
+        data::Action::resultNegociate(0) 
+    );
     negociate.triggerAction();
     
     Level::endOfLevel();

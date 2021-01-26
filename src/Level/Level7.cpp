@@ -17,7 +17,7 @@
 
 void Level7::startLevel( const Options& options )
 {
-    Plug plug( "Mathilde", 0, 30 );
+    Plug plug( "Mathilde", 30 );
 
     HeaderWriter headerWriter( data::Level7::nameLevel, data::Level7::hour, data::Level7::minut );
     headerWriter.writeHeader();

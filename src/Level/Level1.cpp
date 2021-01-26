@@ -15,7 +15,7 @@
 
 void Level1::startLevel( const Options& options )
 {
-    Plug plug( "Petite frappe", 20);
+    Plug plug( "Petite frappe" );
 
     HeaderWriter headerWriter( 
         data::Level1::nameLevel,
@@ -24,12 +24,13 @@ void Level1::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    auto message = data::Level1::message0( player_->name(), plug.name(), plug.price() );
+    int price = 20;
+    auto message = data::Level1::message0( player_->name(), plug.name(), price );
 
     MessageWriter messageWriter( message, player_->name(), plug.name() );
     messageWriter.writeMessage();
 
-    player_->increaseMoney( -plug.price() );
+    player_->decreaseMoney( price );
 
     Level::endOfLevel();
 

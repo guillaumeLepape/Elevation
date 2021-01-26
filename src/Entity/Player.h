@@ -32,9 +32,6 @@ class Player : public Entity
         /*< List of weapons own by player */
         WeaponInventory weapons_;
 
-        /*< Price of the drug choosen */
-        int price_;
-
         /*!
             * \brief Private Constructor 
             * 
@@ -49,8 +46,7 @@ class Player : public Entity
             const int& nbLevelSuceeded,
             const int& nbLifePoints,
             const int& money,
-            const std::vector<const Weapon*>& weapons,
-            const int& price
+            const std::vector<const Weapon*>& weapons
         );
 
     public:
@@ -81,15 +77,13 @@ class Player : public Entity
         void nextLevel() { nbLevelSuceeded_++; }
 
         void increaseMoney( const int& money ) { money_ += money; }
+        void decreaseMoney( const int& money ) { money_ -= money; }
 
         /*!
             * \brief Accesor to weapon inventory
             * \return Reference to weapon inventory
         */
         WeaponInventory* weapons() { return &weapons_; }
-
-        const int& price() const { return price_; }
-        void setPrice( const int& price ) { price_ = price; } 
 
         nlohmann::json writeJson() const;
 

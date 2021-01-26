@@ -18,7 +18,7 @@
 
 void Level3::startLevel( const Options& options )
 {
-    Plug plug( "V", 20 );
+    Plug plug( "V", 100 );
 
     HeaderWriter headerWriter( 
         data::Level3::nameLevel,

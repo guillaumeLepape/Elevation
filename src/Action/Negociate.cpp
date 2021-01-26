@@ -13,16 +13,20 @@
 
 #include "Languages.h"
 
+#include "Pause.h"
+
 Negociate::Negociate
 (
     Player* const player, 
     Plug* const plug, 
+    const int& plugPrice,
     const std::string& statement,
     const std::string& result
 ) :
     Action( statement, result ),  
     player_(player), 
-    plug_(plug) 
+    plug_(plug),
+    plugPrice_(plugPrice)
 {
 
 }
@@ -41,14 +45,37 @@ void Negociate::triggerAction()
 
     while ( !out )
     {
-        std::string priceStr;
-
         actionWriter_.writeStatement();
-        std::cin >> priceStr;
-        int price = std::stoi( priceStr ); 
-        player_->setPrice( price );
+        
+        int price;
+        std::cin >> price;
 
-        if ( price > plug_->price() )
+        while (true)
+        {
+            if ( std::cin.fail() )
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+
+                std::cout << "\n " 
+                    << Term::color( Term::bg::red )
+                    << Term::color( Term::style::bold ) 
+                    << "Entrez le prix valide." 
+                    << Term::color( Term::bg::reset )
+                    << Term::color( Term::style::reset );
+
+                Pause::pause();
+
+                actionWriter_.writeStatement();
+                std::cin >> price;
+            }
+            if ( !std::cin.fail() )
+            {
+                break;
+            }
+        }
+
+        if ( price > plugPrice_ )
         {
             MessageWriter messageWriter2
             ( 
@@ -58,7 +85,7 @@ void Negociate::triggerAction()
             );
             messageWriter2.writeMessage();
         }
-        else if ( price <= plug_->price() && plug_->price() - 30 <= price ) 
+        else if ( price <= plugPrice_ && plugPrice_ - 30 <= price ) 
         {
             out = true;
             MessageWriter messageWriter4

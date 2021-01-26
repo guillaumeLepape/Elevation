@@ -33,7 +33,7 @@ void Level5::startLevel( const Options& options )
     );
     headerWriter.writeHeader();
 
-    Plug guetteur( "Guetteur", 0, 35, new Fist() );
+    Plug guetteur( "Guetteur", 35, new Fist() );
 
     MessageWriter messageWriter0( data::Level5::message0, player_->name(), guetteur.name() );
     messageWriter0.writeMessage();
@@ -79,7 +79,7 @@ void Level5::startLevel( const Options& options )
 
 
     // Second fight (introduction to Double melee Weapon combo )
-    Plug garde( "Garde", 0, 50, new Fist() );
+    Plug garde( "Garde", 50, new Fist() );
 
     MessageWriter messageWriter2( data::Level5::message2, player_->name(), garde.name() );
     messageWriter2.writeMessage();
@@ -108,7 +108,7 @@ void Level5::startLevel( const Options& options )
     player_->weapons()->addWeapon( fist );
 
     // Third fight (introduction to Healing and weapon recuperation)
-    Plug secondGarde( "Un futur cadavre", 0, 30, new Knife() );
+    Plug secondGarde( "Un futur cadavre", 30, new Knife() );
 
     MessageWriter messageWriter3( data::Level5::message3, player_->name(), secondGarde.name() );
     messageWriter3.writeMessage();
@@ -153,9 +153,9 @@ void Level5::startLevel( const Options& options )
     // Fourth fight
     MessageWriter messageWriter6( data::Level5::message6, player_->name(), "" );
 
-    Plug sacAPV( "Sac à PV", 0, 100, new Cutter() );
-    Plug kamikaze( "Kamikaze", 0, 32, new Katana() );
-    Plug soutien( "Soutien", 0, 60, new Knife() );
+    Plug sacAPV( "Sac à PV", 100, new Cutter() );
+    Plug kamikaze( "Kamikaze", 32, new Katana() );
+    Plug soutien( "Soutien", 60, new Knife() );
 
     Fight fight( 
         player_, 
