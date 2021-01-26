@@ -27,8 +27,8 @@ void StartGame::triggerAction()
     int i = 0;
     for ( i = player_.nbLevelSuceeded(); i < NB_LEVEL; i++ )
     {
-        std::unique_ptr<Level> level = LevelFactory::newLevel( &player_, i );
+        std::unique_ptr<Level> level = LevelFactory::newLevel( &player_, options_, i );
 
-        level->startLevel( options_ );
+        level->startLevel();
     }
 }

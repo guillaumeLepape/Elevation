@@ -15,7 +15,7 @@
 
 #include "Languages.h"
 
-void Level7::startLevel( const Options& options )
+void Level7::startLevel()
 {
     Plug plug( "Mathilde", 30 );
 

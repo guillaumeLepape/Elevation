@@ -12,12 +12,13 @@ class Level
 {
     protected:
         Player* const player_;
+        const Options& options_;
 
         void endOfLevel() const;
 
     public:
-        explicit Level( Player* const player );
-        virtual void startLevel( const Options& options ) = 0;
+        explicit Level( Player* const player, const Options& options );
+        virtual void startLevel() = 0;
         virtual ~Level() = default;
 };
 

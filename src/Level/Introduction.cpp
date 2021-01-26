@@ -12,7 +12,7 @@
 
 #include "Languages.h"
 
-void Introduction::startLevel( const Options& options )
+void Introduction::startLevel()
 {
     HeaderWriter headerWriter
     ( 

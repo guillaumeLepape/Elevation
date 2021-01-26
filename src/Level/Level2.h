@@ -5,19 +5,17 @@
     * \file Level2.h
 */
 
-
 #include "Level.h"
-
 
 class Level2 : public Level
 {
     public:
-        explicit Level2( Player* player ) : 
-            Level(player)
+        explicit Level2( Player* player, const Options& options ) : 
+            Level(player, options)
         {
             
         }
-        void startLevel( const Options& options ) override;
+        void startLevel() override;
         ~Level2() override = default;
 };
 

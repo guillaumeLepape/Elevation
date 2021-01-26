@@ -24,7 +24,7 @@
 
 #include "Languages.h"
 
-void Level5::startLevel( const Options& options )
+void Level5::startLevel()
 {
     HeaderWriter headerWriter( 
         data::Level5::nameLevel,
@@ -41,13 +41,13 @@ void Level5::startLevel( const Options& options )
     MessageWriter messageWriter1( data::Level5::message1, player_->name(), guetteur.name() );
     messageWriter1.writeMessage();
 
-    if ( !options.noRule_ )
+    if ( !options_.noRule_ )
     {
         TutorialWriter tutorialCombatSystem( data::Tutorial::titleCombatSystem, data::Tutorial::statementCombatSystem );
         tutorialCombatSystem.writeTutorial();
     }
 
-    if ( !options.noRule_ )
+    if ( !options_.noRule_ )
     {   
         TutorialWriter tutorialCombo( data::Tutorial::titleCombo, data::Tutorial::statementCombo );
         tutorialCombo.writeTutorial();
@@ -58,7 +58,7 @@ void Level5::startLevel( const Options& options )
     std::unique_ptr<Combo> comboDoubleMeleeWeapon( new ComboDoubleMeleeWeapon(player_) ); 
 
     // First fight (introduction to Fist - Melee Weapon combo)
-    if ( !options.noRule_ )
+    if ( !options_.noRule_ )
     {
         TutorialWriter tutorialFistMeleeWeapon
         ( 
@@ -84,7 +84,7 @@ void Level5::startLevel( const Options& options )
     MessageWriter messageWriter2( data::Level5::message2, player_->name(), garde.name() );
     messageWriter2.writeMessage();
 
-    if ( !options.noRule_ )
+    if ( !options_.noRule_ )
     {
         TutorialWriter tutorialDoubleMeleeWeapon
         ( 
@@ -113,7 +113,7 @@ void Level5::startLevel( const Options& options )
     MessageWriter messageWriter3( data::Level5::message3, player_->name(), secondGarde.name() );
     messageWriter3.writeMessage();
 
-    if ( !options.noRule_ )
+    if ( !options_.noRule_ )
     {
         TutorialWriter tutorialNoWeapon
         (
@@ -140,7 +140,7 @@ void Level5::startLevel( const Options& options )
     MessageWriter messageWriter5( data::Level5::message5, player_->name(), "" );
     messageWriter5.writeMessage();
 
-    if ( !options.noRule_ )
+    if ( !options_.noRule_ )
     {
         TutorialWriter tutorialRegeneration
         ( 

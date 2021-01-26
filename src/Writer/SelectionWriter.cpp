@@ -37,7 +37,7 @@ void SelectionWriter::writeSelection() const
         << Term::color( Term::fg::reset ) 
         << Term::color( Term::style::reset );
 
-    for ( int i = 0; i < actions_.size(); i++ )
+    for ( long unsigned int i = 0; i < actions_.size(); i++ )
     {
         std::cout << "\n " 
             << std::to_string( i + 1 ) 

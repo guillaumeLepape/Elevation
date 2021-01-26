@@ -72,7 +72,7 @@ void MessageWriter::writeOneMessage( const int& i) const
 
 void MessageWriter::writeMessage() const
 {
-    for ( int i = 0; i < message_.size(); i++ )
+    for ( long unsigned int i = 0; i < message_.size(); i++ )
     {
         Pause::pause();
 

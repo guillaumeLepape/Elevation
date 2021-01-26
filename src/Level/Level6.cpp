@@ -22,7 +22,7 @@
 
 #include "Languages.h"
 
-void Level6::startLevel( const Options& options )
+void Level6::startLevel()
 {
     HeaderWriter headerWriter( data::Level6::nameLevel, data::Level6::hour, data::Level6::minut );
     headerWriter.writeHeader();

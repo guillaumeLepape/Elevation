@@ -10,13 +10,13 @@
 class Introduction : public Level
 {
     public:
-        explicit Introduction( Player* player ) : 
-            Level(player)
+        explicit Introduction( Player* player, const Options& options ) : 
+            Level(player, options)
         {
 
         }
 
-        void startLevel( const Options& options ) override;
+        void startLevel() override;
         ~Introduction() override = default;
 };
 

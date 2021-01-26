@@ -10,13 +10,13 @@
 class Level6 : public Level
 {
     public:
-        Level6( Player* const player ) :
-            Level(player)
+        Level6( Player* const player, const Options& options ) :
+            Level(player, options)
         {
 
         }
 
-        void startLevel( const Options& options ) override;
+        void startLevel() override;
 
         ~Level6() override = default;
 };

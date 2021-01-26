@@ -39,7 +39,7 @@ void TutorialWriter::writeTutorial() const
         << Term::color( Term::fg::reset )
         << Term::color( Term::style::reset );
 
-    for ( int i = 0; i < tutorialStatement_.size(); i++ )
+    for ( long unsigned int i = 0; i < tutorialStatement_.size(); i++ )
     {
         Pause::pause();
 

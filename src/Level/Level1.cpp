@@ -13,7 +13,7 @@
 
 #include "Plug.h"
 
-void Level1::startLevel( const Options& options )
+void Level1::startLevel()
 {
     Plug plug( "Petite frappe" );
 

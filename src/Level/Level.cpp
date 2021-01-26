@@ -10,8 +10,8 @@
 #include "Quit.h"
 #include "Languages.h"
 
-Level::Level( Player* const player ) : 
-    player_(player)
+Level::Level( Player* const player, const Options& options ) : 
+    player_(player), options_(options)
 {  
             
 }
@@ -24,7 +24,7 @@ void Level::endOfLevel() const
     writeResults.triggerAction();
 
     Nothing continueAction( data::Menu::statementContinue, "" );
-    Quit quit( data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
+    Quit quit( data::Menu::statementQuit, data::Menu::resultQuit );
 
     Selection::select(
         { &continueAction, &quit },

@@ -16,7 +16,7 @@
 
 #include "Languages.h"
 
-void Level3::startLevel( const Options& options )
+void Level3::startLevel()
 {
     Plug plug( "V", 100 );
 

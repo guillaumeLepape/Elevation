@@ -16,7 +16,7 @@
 
 #include "Languages.h"
 
-void Level2::startLevel( const Options& options )
+void Level2::startLevel()
 {
     Plug plug( "Jean-Luc Delarue" );
 

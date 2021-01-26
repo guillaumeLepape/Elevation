@@ -10,12 +10,12 @@
 class Level1 : public Level
 {
     public:
-        explicit Level1( Player* player ) : 
-            Level(player)
+        explicit Level1( Player* player, const Options& options ) : 
+            Level(player, options)
         {
             
         }
-        void startLevel( const Options& options ) override;
+        void startLevel() override;
         ~Level1() override = default;
 };
 

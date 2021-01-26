@@ -82,7 +82,7 @@ void FightWriter::writeGameBoard() const
     std::vector<variant<std::string, const char *, tabulate::Table>> damageWeaponFighters;
 
     // build a vector of name and life points of plugs
-    for(int i = 0; i < plugs_.size(); i++ )
+    for( long unsigned int i = 0; i < plugs_.size(); i++ )
     {
         // display plugs only if they are not dead
         if ( !(plugs_[i].dead()) )

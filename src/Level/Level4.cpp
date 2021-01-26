@@ -15,7 +15,7 @@
 
 #include "Languages.h"
 
-void Level4::startLevel( const Options& options )
+void Level4::startLevel()
 {
     Plug plug( "Freeze Corleone", 20 );
 

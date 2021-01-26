@@ -16,11 +16,12 @@ WeaponInventory::WeaponInventory( const std::vector<const Weapon*>& weapons ) :
 
 }
 
-WeaponInventory::WeaponInventory( const WeaponInventory& weaponInventory )
+WeaponInventory::WeaponInventory( const WeaponInventory& weaponInventory ) :
+    std::vector<const Weapon*>()
 {
     for ( long unsigned int i = 0; i < weaponInventory.size(); i++ )
     {
-        std::vector<const Weapon*>::push_back( weaponInventory[i] );
+        std::vector<const Weapon*>::push_back( new Weapon(*(weaponInventory[i])) );
     }
 }
 
