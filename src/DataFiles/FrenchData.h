@@ -435,10 +435,37 @@ namespace data
 
     namespace Combo
     {
-        inline std::string comboFistMeleeWeaponComboTitle = "Combo Poing-Arme de mếlée";
-        inline std::string comboDoubleMeleeTitle = "Combo Double arme de melée";
-        inline std::string statementDontCombo("Ne pas déclencher le combo");
+        inline std::string titleFistMeleeWeapon = "Combo Poing-Arme de mélée";
+        inline std::string triggerStatementFistMeleeWeapon 
+            = "Attaquer un ennemi avec le poing";
+        inline std::string triggeredStatementFistMeleeWeapon 
+            = "Attaquer le même ennemi avec l'arme de mélée de votre choix. Le combo n'est pas déclenché si vous ne possèdez pas d'arme de mélée.";
+        inline std::string malusStatementFistMeleeWeapon
+            = "L'attaque avec l'arme de mélée inflige moitié moins de dégats"; 
+
+        inline std::string titleDoubleMeleeWeapon = "Combo Double arme de melée";
+        inline std::string triggerStatementDoubleMeleeWeapon 
+            = "Attaquer un ennemi avec une arme de mélée.";
+        inline std::string triggeredStatementDoubleMeleeWeapon 
+            = "Attaquer le même ennemi avec la même arme.";
+        inline std::string malusStatementDoubleMeleeWeapon 
+            = "L'arme que vous avez utilisé est détruire. Vous pouvez ne pas déclencher le combo. Dans ce cas l'arme n'est pas détruite.";
+
+        inline std::string statementDontCombo = "Ne pas déclencher le combo";
     } // namespace Combo
+
+    namespace Information 
+    {
+        inline std::string titleInformation = "Informations";
+        inline std::string statementInformationWeapon 
+            = "Informations sur les armes que vous possèdez.";
+        inline std::string statementInformationCombo 
+            = "Informations sur les combos disponible lors de ce combat.";
+        inline std::string statementNoInformation 
+            = "Je ne souhaite pas avoir d'informations.";
+        inline std::string statementNoInformationAnymore 
+            = "Je ne souhaite pas avoir d'informations et je ne souhaite plus voir le menu d'informations lors de ce combat.";
+    } // namespace Information
 
     namespace Question 
     {

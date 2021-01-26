@@ -7,11 +7,20 @@
 
 #include "WeaponFactory.h"
 
+#include "Languages.h"
+
 ComboFistMeleeWeapon::ComboFistMeleeWeapon
 ( 
     Player* const player
 ) :
-    Combo( player )
+    Combo
+    ( 
+        player,
+        data::Combo::titleFistMeleeWeapon,
+        data::Combo::triggerStatementFistMeleeWeapon,
+        data::Combo::triggeredStatementFistMeleeWeapon,
+        data::Combo::malusStatementFistMeleeWeapon
+    )
 {
 
 }
@@ -32,7 +41,7 @@ void ComboFistMeleeWeapon::triggerCombo
         // Build vector of useWeapon actions without the fist action
         std::vector<Action*> useWeaponFistCombo; 
 
-        for ( int i = 0; i < useWeapon.size(); i++ )
+        for ( long unsigned int i = 0; i < useWeapon.size(); i++ )
         {
             const std::string& nameWeapon = useWeapon[i]->nameWeapon();
 
@@ -58,10 +67,10 @@ void ComboFistMeleeWeapon::triggerCombo
 
         Selection::select(
             useWeaponFistCombo,
-            data::Combo::comboFistMeleeWeaponComboTitle
+            data::Combo::titleFistMeleeWeapon
         );
 
-        for ( int i = 0; i < useWeaponFistCombo.size(); i++ )
+        for ( long unsigned int i = 0; i < useWeaponFistCombo.size(); i++ )
         {
             player_->weapons()->deleteWeapon( ((UseWeapon*) useWeaponFistCombo[i])->nameWeapon() );
         }

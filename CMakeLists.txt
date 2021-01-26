@@ -35,6 +35,7 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/Regeneration.h
     ${FOLDER_ACTION}/RegenerateAllLife.h
 
+    ${FOLDER_ACTION}/InformationCombo.h
     ${FOLDER_ACTION}/InformationWeaponInventory.h
 )
 
@@ -219,6 +220,7 @@ set(HEADER_WRITER
     ${FOLDER_WRITER}/FightWriter.h
     ${FOLDER_WRITER}/TutorialWriter.h
     ${FOLDER_WRITER}/WeaponWriter.h
+    ${FOLDER_WRITER}/ComboWriter.h
 )
 
 set(SOURCE_WRITER
@@ -232,6 +234,7 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/FightWriter.cpp
     ${FOLDER_WRITER}/TutorialWriter.cpp
     ${FOLDER_WRITER}/WeaponWriter.cpp
+    ${FOLDER_WRITER}/ComboWriter.cpp
 )
 
 add_compile_options(-Wall -Wextra)

@@ -11,7 +11,9 @@
 #include "PlugAttack.h"
 #include "GameOver.h"
 #include "Regeneration.h"
+#include "Nothing.h"
 #include "InformationWeaponInventory.h"
+#include "InformationCombo.h"
 
 #include "Selection.h"
 
@@ -26,7 +28,8 @@ Fight::Fight
     plugs_( plugs ),
     combos_( combos ),
     regeneration_( regeneration ),
-    numberOfDeadPlug_( 0 )
+    numberOfDeadPlug_( 0 ),
+    information_( true )
 {
 
 }
@@ -44,6 +47,46 @@ void Fight::startFight()
 
         fightWriter.writeHeader( nbTurns );
         fightWriter.writeGameBoard();
+
+        if ( information_ )
+        {
+            bool out = false;
+
+            std::vector<Action*> informationActions;
+            informationActions.push_back( 
+                new InformationWeaponInventory( player_->weapons(), data::Information::statementInformationWeapon, "" ) 
+            );
+            informationActions.push_back( 
+                new InformationCombo( combos_, data::Information::statementInformationCombo, "" ) 
+            );
+            informationActions.push_back( 
+                new Nothing( data::Information::statementNoInformation, "" )
+            );
+            informationActions.push_back( 
+                new Nothing( data::Information::statementNoInformationAnymore, "" ) 
+            );
+
+            while ( !out )
+            {
+                int resultInformation = Selection::select(
+                    informationActions,
+                    data::Information::titleInformation
+                );
+
+                // If the NoInformation option have been chosen, quit the while loop
+                if ( resultInformation == 2 )
+                {
+                    out = true;
+                }    
+                // If the NoInformationAnymore option have been chosen, quit the while loop
+                // and set information_ to true not display this selection for this fight
+                else if ( resultInformation == 3 )
+                {
+                    out = true;
+                    information_ = false;
+                }   
+            }
+        }
 
         std::vector<Action*> choosePlugActions;
 
@@ -87,21 +130,10 @@ void Fight::startFight()
             );
         }
 
-        Action* informationWeaponInventory = new InformationWeaponInventory( player_->weapons(), "Informations sur les armes", "" );
-        useWeapons.push_back( informationWeaponInventory );
-
         int resultUseWeapon = Selection::select(
             useWeapons,
             data::Action::titleChooseWeapon
         );
-
-        while ( resultUseWeapon == useWeapons.size() - 1 )
-        {
-            resultUseWeapon = Selection::select(
-                useWeapons,
-                data::Action::titleChooseWeapon
-            );
-        }
 
         // launch every combo
         for ( auto c = combos_.cbegin(); c != combos_.cend(); c++ )

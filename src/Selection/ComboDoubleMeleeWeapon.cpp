@@ -10,7 +10,14 @@
 #include "WeaponFactory.h"
 
 ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon( Player* const player ) :
-    Combo( player )
+    Combo
+    ( 
+        player,
+        data::Combo::titleDoubleMeleeWeapon,
+        data::Combo::triggerStatementDoubleMeleeWeapon,
+        data::Combo::triggeredStatementDoubleMeleeWeapon,
+        data::Combo::malusStatementDoubleMeleeWeapon
+    )
 {
 
 }
@@ -44,7 +51,7 @@ void ComboDoubleMeleeWeapon::triggerCombo
 
         int result = Selection::select(
             { &useWeaponCombo, &nothing },
-            data::Combo::comboDoubleMeleeTitle
+            data::Combo::titleDoubleMeleeWeapon
         );
 
         // if player choose to trigger combo, destroy the melee weapon

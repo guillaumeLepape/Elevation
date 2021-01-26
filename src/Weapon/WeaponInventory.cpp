@@ -47,7 +47,14 @@ void WeaponInventory::addWeapon( const Weapon* weapon )
         std::sort( std::vector<const Weapon*>::begin(), std::vector<const Weapon*>::end(), 
             []( const Weapon* const weapon1, const Weapon* const weapon2 ) -> bool
         {
-            return weapon1->damageWeapon() < weapon2->damageWeapon(); 
+            if ( weapon1->weaponType() == weapon2->weaponType() )
+            {
+                return weapon1->damageWeapon() < weapon2->damageWeapon();
+            }
+            else
+            {
+                return weapon1->weaponType() < weapon2->weaponType(); 
+            }
         });
     }
 }
