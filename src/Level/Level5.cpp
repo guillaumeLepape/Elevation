@@ -14,6 +14,7 @@
 
 #include "ComboFistMeleeWeapon.h"
 #include "ComboDoubleMeleeWeapon.h"
+#include "ComboQuadrupleCutter.h"
 
 #include "Fist.h"
 #include "Knife.h"
@@ -56,6 +57,7 @@ void Level5::startLevel()
     // Declare combos
     std::unique_ptr<Combo> comboFistMeleeWeapon( new ComboFistMeleeWeapon(player_) ); 
     std::unique_ptr<Combo> comboDoubleMeleeWeapon( new ComboDoubleMeleeWeapon(player_) ); 
+    std::unique_ptr<Combo> comboQuadrupleCutter( new ComboQuadrupleCutter(player_) );
 
     // First fight (introduction to Fist - Melee Weapon combo)
     if ( !options_.noRule_ )
@@ -160,7 +162,7 @@ void Level5::startLevel()
     Fight fight( 
         player_, 
         { sacAPV, kamikaze, soutien },
-        { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get() }
+        { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(), comboQuadrupleCutter.get() }
     );
     fight.startFight(); 
 

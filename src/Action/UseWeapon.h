@@ -11,6 +11,8 @@
 #include "Player.h"
 #include "Plug.h"
 
+#include "FireArm.h"
+
 class UseWeapon : public Action
 {
     private:
@@ -40,12 +42,21 @@ class UseWeapon : public Action
             const Weapon* weapon = player_->weapons()->weaponFromName( nameWeapon_ );
 
             weapon->attack( plug_ );
-            // plug_->decreaseLifePoints( weapon->damageWeapon() );
 
             actionWriter_.writeResult();
         
             Dead dead( plug_, "", data::Action::resultDead( plug_->name() ) );
             dead.triggerAction();
+
+            // if weapon is fireArm and has no ammo, delete it
+            if ( weapon->weaponType() == WeaponType::fireArm )
+            {
+                if ( ((FireArm*) weapon)->nbAmmo() <= 0 )
+                {
+                    std::string nameWeapon = weapon->name();
+                    player_->weapons()->deleteWeapon( nameWeapon );
+                }
+            }
         }
 
         const std::string& nameWeapon() const { return nameWeapon_; }

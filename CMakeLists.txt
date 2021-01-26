@@ -188,6 +188,7 @@ set(HEADER_SELECTION
     ${FOLDER_SELECTION}/Combo.h
     ${FOLDER_SELECTION}/ComboFistMeleeWeapon.h
     ${FOLDER_SELECTION}/ComboDoubleMeleeWeapon.h
+    ${FOLDER_SELECTION}/ComboQuadrupleCutter.h
 )
 
 set(SOURCE_SELECTION
@@ -196,6 +197,7 @@ set(SOURCE_SELECTION
     ${FOLDER_SELECTION}/Question.cpp
     ${FOLDER_SELECTION}/ComboFistMeleeWeapon.cpp
     ${FOLDER_SELECTION}/ComboDoubleMeleeWeapon.cpp
+    ${FOLDER_SELECTION}/ComboQuadrupleCutter.cpp
 )
 
 #

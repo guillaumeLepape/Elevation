@@ -13,10 +13,11 @@
 #include "Plug.h"
 
 #include "Ninemm.h"
-#include "Katana.h"
+#include "Knife.h"
 
 #include "ComboFistMeleeWeapon.h"
 #include "ComboDoubleMeleeWeapon.h"
+#include "ComboQuadrupleCutter.h"
 
 #include "Fight.h"
 
@@ -27,15 +28,16 @@ void Level6::startLevel()
     HeaderWriter headerWriter( data::Level6::nameLevel, data::Level6::hour, data::Level6::minut );
     headerWriter.writeHeader();
 
-    Plug boss( "Boss", 200, new Katana() );
+    Plug boss( "Boss", 200, new Knife() );
 
     std::unique_ptr<Combo> comboFistMeleeWeapon( new ComboFistMeleeWeapon( player_ ) );
     std::unique_ptr<Combo> comboDoubleMeleeWeapon( new ComboDoubleMeleeWeapon(player_) );  
+    std::unique_ptr<Combo> comboQuadrupleCutter( new ComboQuadrupleCutter(player_) );
 
     Fight fight(
         player_,
         { boss },
-        { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get() }
+        { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(), comboQuadrupleCutter.get() }
     );
     fight.startFight();
 

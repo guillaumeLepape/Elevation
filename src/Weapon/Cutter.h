@@ -11,7 +11,7 @@ class Cutter : public Weapon
 {
     public:
         Cutter() :
-            Weapon( "Cutter", 10, WeaponType::meleeWeapon )
+            Weapon( "Cutter", 15, WeaponType::meleeWeapon )
         {
 
         }

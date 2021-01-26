@@ -443,13 +443,21 @@ namespace data
         inline std::string malusStatementFistMeleeWeapon
             = "L'attaque avec l'arme de mélée inflige moitié moins de dégats"; 
 
-        inline std::string titleDoubleMeleeWeapon = "Combo Double arme de melée";
+        inline std::string titleDoubleMeleeWeapon = "Combo Double Couteau";
         inline std::string triggerStatementDoubleMeleeWeapon 
-            = "Attaquer un ennemi avec une arme de mélée.";
+            = "Attaquer un ennemi avec le couteau.";
         inline std::string triggeredStatementDoubleMeleeWeapon 
             = "Attaquer le même ennemi avec la même arme.";
         inline std::string malusStatementDoubleMeleeWeapon 
-            = "L'arme que vous avez utilisé est détruire. Vous pouvez ne pas déclencher le combo. Dans ce cas l'arme n'est pas détruite.";
+            = "Le couteau que vous avez utilisé est détruit. Vous pouvez ne pas déclencher le combo. Dans ce cas le couteau n'est pas détruit.";
+
+        inline std::string titleQuadrupleCutter = "Combo Quadruple Cutter";
+        inline std::string triggerStatementQuadrupleCutter 
+            = "Attaquer un ennemu avec le cutter";
+        inline std::string triggeredStatementQuadrupleCutter
+            = "Attaquer le même ennemi avec le cutter à 3 reprises.";
+        inline std::string malusStatementQuadrupleCutter
+            = "Le cutter est détruit et vous ne pouvez plus l'utiliser.";
 
         inline std::string statementDontCombo = "Ne pas déclencher le combo";
     } // namespace Combo

@@ -39,8 +39,12 @@ class FireArm : public Weapon
 
         void attack( Entity* const entity ) const override
         {
-            Weapon::attack( entity );
-            nbAmmo_--;
+            // if the player has at least one ammo, she can attack 
+            if ( nbAmmo_ > 0 )
+            {   
+                Weapon::attack( entity );
+                nbAmmo_--;
+            }
         }
 
         const int& nbAmmo() const { return nbAmmo_; }   

@@ -31,7 +31,7 @@ void ComboDoubleMeleeWeapon::triggerCombo
 {
     const std::string& nameWeapon = useWeapon[resultChooseWeapon]->nameWeapon();
 
-    if ( (player_->weapons()->weaponFromName( nameWeapon ))->weaponType() == WeaponType::meleeWeapon 
+    if ( nameWeapon == "Couteau"
             && !( plug->dead() ) )
     {
         UseWeapon useWeaponCombo
