@@ -39,11 +39,6 @@ void Level6::startLevel( const Options& options )
     );
     fight.startFight();
 
-    auto weapon = player_->weapons()->weaponFromName( "9mm" );
-
-    std::cout << weapon->damageWeapon() << std::endl;
-    std::cout << ( (FireArm*) weapon)->nbAmmo() << std::endl;
-
     Level::endOfLevel();
     std::cout << "\n";
 }

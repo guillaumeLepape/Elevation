@@ -34,6 +34,8 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/PlugAttack.h
     ${FOLDER_ACTION}/Regeneration.h
     ${FOLDER_ACTION}/RegenerateAllLife.h
+
+    ${FOLDER_ACTION}/InformationWeaponInventory.h
 )
 
 set(SOURCE_ACTION
@@ -216,6 +218,7 @@ set(HEADER_WRITER
     ${FOLDER_WRITER}/AnswerWriter.h
     ${FOLDER_WRITER}/FightWriter.h
     ${FOLDER_WRITER}/TutorialWriter.h
+    ${FOLDER_WRITER}/WeaponWriter.h
 )
 
 set(SOURCE_WRITER
@@ -228,6 +231,7 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/AnswerWriter.cpp
     ${FOLDER_WRITER}/FightWriter.cpp
     ${FOLDER_WRITER}/TutorialWriter.cpp
+    ${FOLDER_WRITER}/WeaponWriter.cpp
 )
 
 add_compile_options(-Wall -Wextra)

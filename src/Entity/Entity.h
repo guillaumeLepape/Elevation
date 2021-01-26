@@ -60,6 +60,8 @@ class Entity
             \return true if the number of life points is null or negative, false else
         */
         bool dead() const { return ( nbLifePoints_ <= 0 ); }
+
+        std::string healthBar() const;
 };
 
 #endif

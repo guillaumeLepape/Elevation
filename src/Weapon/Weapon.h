@@ -5,8 +5,6 @@
     * \file Weapon.h
 */
 
-#include <string>
-
 #include <nlohmann/json.hpp>
 
 #include "Entity.h"

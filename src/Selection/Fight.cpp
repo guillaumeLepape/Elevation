@@ -11,6 +11,7 @@
 #include "PlugAttack.h"
 #include "GameOver.h"
 #include "Regeneration.h"
+#include "InformationWeaponInventory.h"
 
 #include "Selection.h"
 
@@ -86,11 +87,21 @@ void Fight::startFight()
             );
         }
 
+        Action* informationWeaponInventory = new InformationWeaponInventory( player_->weapons(), "Informations sur les armes", "" );
+        useWeapons.push_back( informationWeaponInventory );
+
         int resultUseWeapon = Selection::select(
             useWeapons,
             data::Action::titleChooseWeapon
         );
 
+        while ( resultUseWeapon == useWeapons.size() - 1 )
+        {
+            resultUseWeapon = Selection::select(
+                useWeapons,
+                data::Action::titleChooseWeapon
+            );
+        }
 
         // launch every combo
         for ( auto c = combos_.cbegin(); c != combos_.cend(); c++ )
