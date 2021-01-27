@@ -13,7 +13,7 @@ class Fist : public Weapon
 {
     public:
         Fist() :
-            Weapon( "Poing", 20, WeaponType::fist, data::Weapon::statementUseFist )
+            Weapon( data::Weapon::nameFist, 20, WeaponType::fist, data::Weapon::statementUseFist )
         {
 
         }

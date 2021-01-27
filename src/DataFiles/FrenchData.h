@@ -552,6 +552,8 @@ namespace data
 
         // generic UseWeapon data statement for 9mm
         inline std::string statementUseNinemm("Tirez ! (9mm)");
+        // generic UseWeapon data statement for 9mm
+        inline std::string statementUseAK47("Rafalez ! (AK47)");
 
         // generic UseWeapon data result
         inline std::string resultUseWeapon(const std::string& plugName, const int& damageWeapon)
@@ -561,8 +563,19 @@ namespace data
 
         inline std::string statementCombo(const std::string& nameWeapon )
         {
-            return "Combo avec le " + nameWeapon + "!";
+            return "Combo avec le " + nameWeapon + " !";
         }
+
+        // Name of all weapons
+        inline std::string nameFist = "Poing";
+
+        inline std::string nameCutter = "Cutter";
+        inline std::string nameKnife = "Couteau";
+        inline std::string nameHammer = "Marteau";
+        inline std::string nameKatana = "Katana";
+
+        inline std::string nameNinemm = "9mm";
+        inline std::string nameAK47 = "AK47"; 
     } // namespace Weapon
 
 } // namespace data

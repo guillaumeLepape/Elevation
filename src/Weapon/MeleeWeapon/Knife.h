@@ -13,7 +13,7 @@ class Knife : public Weapon
 {
     public: 
         Knife() :
-            Weapon( "Couteau", 30, WeaponType::meleeWeapon, data::Weapon::statementUseKnife )
+            Weapon( data::Weapon::nameKnife, 30, WeaponType::meleeWeapon, data::Weapon::statementUseKnife )
         {
 
         }
