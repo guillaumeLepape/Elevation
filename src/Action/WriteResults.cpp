@@ -11,7 +11,7 @@
 
 WriteResults::WriteResults
 (
-    const Player* const player,
+    Player* const player,
     const std::string& statement,
     const std::string& result
 ) : 
@@ -24,7 +24,7 @@ WriteResults::WriteResults
 void WriteResults::triggerAction()
 {
     ResultsData resultsData;
-    resultsData.addResult( *player_ );
+    resultsData.addResult( player_ );
     resultsData.writeData();
 
     actionWriter_.writeResult();

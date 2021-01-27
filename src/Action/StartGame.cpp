@@ -13,7 +13,7 @@ StartGame::StartGame
     const std::string& statement,
     const std::string& result,
     const Options& options,
-    const Player& player 
+    Player* const player 
 ) : 
     Action( statement, result ),
     player_( player ),
@@ -25,9 +25,9 @@ StartGame::StartGame
 void StartGame::triggerAction()
 {       
     int i = 0;
-    for ( i = player_.nbLevelSuceeded(); i < NB_LEVEL; i++ )
+    for ( i = player_->nbLevelSuceeded(); i < NB_LEVEL; i++ )
     {
-        std::unique_ptr<Level> level = LevelFactory::newLevel( &player_, options_, i );
+        std::unique_ptr<Level> level = LevelFactory::newLevel( player_, options_, i );
 
         level->startLevel();
     }

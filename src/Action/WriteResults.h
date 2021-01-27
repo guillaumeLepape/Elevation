@@ -12,12 +12,12 @@ class Player;
 class WriteResults : public Action
 {
     private:
-        const Player* const player_;
+        Player* const player_;
 
     public:
         WriteResults
         (
-            const Player* const player,
+            Player* const player,
             const std::string& statement,
             const std::string& result
         );

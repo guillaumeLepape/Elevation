@@ -16,14 +16,14 @@ void ResultsData::readData()
 {
     for ( auto i = jsonObject_.cbegin(); i != jsonObject_.cend(); i++ )
     {
-        results_.push_back( *(Player::readJson( *i )) );
+        results_.push_back( Player::readJson( *i ) );
     }
 }
 
-void ResultsData::addResult( const Player& player )
+void ResultsData::addResult( Player* player )
 {
-    const std::string& id = player.id();
-    auto x = [&id]( const Player& player_lambda ) { return player_lambda.id() == id; };
+    const std::string& id = player->id();
+    auto x = [&id]( Player* player_lambda ) { return player_lambda->id() == id; };
     results_.remove_if( x );
 
     results_.push_back( player );
@@ -43,7 +43,7 @@ void ResultsData::writeData() const
 
     for ( auto r = results_.cbegin(); r != results_.cend(); r++ )
     {
-        nlohmann::json jsonPlayer = r->writeJson();
+        nlohmann::json jsonPlayer = (*r)->writeJson();
         jsonObjectOutput.push_back( jsonPlayer );
     }
 

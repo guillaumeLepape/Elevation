@@ -15,7 +15,7 @@ class Options;
 class StartGame : public Action
 {
     private:
-        Player player_;
+        Player* const player_;
         const Options& options_;
 
     public: 
@@ -24,8 +24,8 @@ class StartGame : public Action
             const std::string& statement,
             const std::string& result,
             const Options& options,
-            const Player& player 
-                = Player( "Joueur", Id::generateId(), 0 ) 
+            Player* const player 
+                = new Player( "Joueur", Id::generateId(), 0 ) 
         );
 
         void triggerAction() override;

@@ -33,7 +33,7 @@ class WeaponFactory
             return new WeaponFistCombo( *newWeapon( nameWeapon ) );
         }
 
-        static const FireArm* newFireArm( const std::string& nameWeapon, const int& nbAmmo )
+        static const Weapon* newFireArm( const std::string& nameWeapon, const int& nbAmmo )
         {
             if ( nameWeapon == "9mm" ) { return new Ninemm( nbAmmo ); }
             assert(false);

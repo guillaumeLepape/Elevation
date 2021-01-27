@@ -29,7 +29,7 @@ void Level6::startLevel()
     HeaderWriter headerWriter( data::Level6::nameLevel, data::Level6::hour, data::Level6::minut );
     headerWriter.writeHeader();
 
-    Plug boss( "Boss", 200, new Knife() );
+    Plug boss( "Boss", 200, new Hammer() );
 
     std::unique_ptr<Combo> comboFistMeleeWeapon( new ComboFistMeleeWeapon( player_ ) );
     std::unique_ptr<Combo> comboDoubleMeleeWeapon( new ComboDoubleMeleeWeapon(player_) );  

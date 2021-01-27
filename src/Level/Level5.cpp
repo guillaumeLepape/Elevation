@@ -78,8 +78,6 @@ void Level5::startLevel()
     );
     firstFight.startFight();
 
-
-
     // Second fight (introduction to Double melee Weapon combo )
     Plug garde( "Garde", 50, new Fist() );
 
@@ -167,6 +165,8 @@ void Level5::startLevel()
     fight.startFight(); 
 
     MessageWriter messageWriter7( data::Level5::message7, player_->name(), "" );
+
+    regenerateAllLife.triggerAction();
 
     Level::endOfLevel();
 

@@ -46,15 +46,17 @@ void LoadGame::triggerAction()
         std::vector<Action*> actions;
         for ( auto r = results.cbegin(); r != results.cend(); r++ )
         {                
-            Player player = *r;
+            // std::list<Player*> results_;
+            Player* const player = *r;
 
             Action* startGame = new StartGame
             ( 
-                data::Menu::statementChooseLoadedGame( player.name(), player.nbLevelSuceeded() ), 
+                data::Menu::statementChooseLoadedGame( player->name(), player->nbLevelSuceeded() ), 
                 data::Menu::resultChooseLoadedGame, 
                 options_, 
-                *r 
+                player 
             );   
+            // Player* const player
 
             actions.push_back( startGame );
         }
