@@ -149,21 +149,29 @@ set(SOURCE_LEVEL
 # Set header and source files for Player class (in the folder Player) 
 #
 set(FOLDER_WEAPON src/Weapon)
+set(FOLDER_FIST Fist)
+set(FOLDER_MELEE_WEAPON MeleeWeapon)
+set(FOLDER_FIRE_ARM FireArm)
 
 include_directories(
     ${FOLDER_WEAPON}
+    ${FOLDER_WEAPON}/${FOLDER_FIST}
+    ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}
+    ${FOLDER_WEAPON}/${FOLDER_FIRE_ARM}
 )
 
 set(HEADER_WEAPON
     ${FOLDER_WEAPON}/Weapon.h
+    ${FOLDER_WEAPON}/WeaponInventory.h
     ${FOLDER_WEAPON}/WeaponFactory.h
-    ${FOLDER_WEAPON}/Fist.h
-    ${FOLDER_WEAPON}/Knife.h
-    ${FOLDER_WEAPON}/Katana.h
-    ${FOLDER_WEAPON}/WeaponFistCombo.h
-    ${FOLDER_WEAPON}/Cutter.h
-    ${FOLDER_WEAPON}/FireArm.h
-    ${FOLDER_WEAPON}/Ninemm.h
+    ${FOLDER_WEAPON}/${FOLDER_FIST}/Fist.h
+    ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/Cutter.h
+    ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/Knife.h
+    ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/Hammer.h
+    ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/Katana.h
+    ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/WeaponFistCombo.h
+    ${FOLDER_WEAPON}/${FOLDER_FIRE_ARM}/FireArm.h
+    ${FOLDER_WEAPON}/${FOLDER_FIRE_ARM}/Ninemm.h
 )
 
 set(SOURCE_WEAPON
@@ -213,6 +221,7 @@ set(HEADER_WRITER
     ${FOLDER_WRITER}/Options.h
     ${FOLDER_WRITER}/Pause.h
     ${FOLDER_WRITER}/Rules.h
+
     ${FOLDER_WRITER}/HeaderWriter.h
     ${FOLDER_WRITER}/MessageWriter.h
     ${FOLDER_WRITER}/ActionWriter.h
