@@ -10,7 +10,7 @@ Plug::Plug
     const int& nbLifePoints, 
     Weapon* const weapon 
 ) : 
-    Entity( name, nbLifePoints ),
+    Entity( name, nbLifePoints, nbLifePoints ),
     weapon_(weapon)
 {
     

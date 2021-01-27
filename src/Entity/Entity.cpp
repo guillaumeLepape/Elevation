@@ -6,10 +6,10 @@
 
 #include <iomanip>
 
-Entity::Entity( const std::string& name, const int& nbLifePoints ) :
+Entity::Entity( const std::string& name, const int& nbLifePoints, const int& maxNbLifePoints ) :
     name_( name ),
     nbLifePoints_( nbLifePoints ),
-    maxNbLifePoints_( nbLifePoints )
+    maxNbLifePoints_( maxNbLifePoints )
 {
 
 }

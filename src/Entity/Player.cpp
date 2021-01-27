@@ -11,7 +11,7 @@
 #include "WeaponFactory.h"
 
 Player::Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded ) :
-    Entity( pseudo, MAX_LIFE_POINTS_PLAYER ),
+    Entity( pseudo, MAX_LIFE_POINTS_PLAYER, MAX_LIFE_POINTS_PLAYER ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
     money_(200),
@@ -29,7 +29,7 @@ Player::Player
     const int& money,
     const std::vector<const Weapon*>& weapons
 ) :
-    Entity( pseudo, nbLifePoints ),
+    Entity( pseudo, nbLifePoints, MAX_LIFE_POINTS_PLAYER ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
     money_(money),

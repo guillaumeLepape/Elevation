@@ -151,11 +151,12 @@ void Level5::startLevel()
     }
 
     // Fourth fight
-    MessageWriter messageWriter6( data::Level5::message6, player_->name(), "" );
-
     Plug sacAPV( "Sac à PV", 100, new Cutter() );
     Plug kamikaze( "Kamikaze", 32, new Katana() );
     Plug soutien( "Soutien", 60, new Knife() );
+
+    MessageWriter messageWriter6( data::Level5::message6, player_->name(), kamikaze.name() );
+    messageWriter6.writeMessage();
 
     Fight fight( 
         player_, 
@@ -165,6 +166,7 @@ void Level5::startLevel()
     fight.startFight(); 
 
     MessageWriter messageWriter7( data::Level5::message7, player_->name(), "" );
+    messageWriter7.writeMessage();
 
     regenerateAllLife.triggerAction();
 

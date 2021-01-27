@@ -247,6 +247,8 @@ namespace data
         };
 
         inline Message message6 = {
+            {NameSpeaker::player, "En allant par là, je devrais trouver la drogue."},
+            {NameSpeaker::plug, "Putain c'est le fils de pute qui a buté tout le monde. On se le fait."},
             {NameSpeaker::player, "Enfin. J'ai plus qu'à buter ces 3 batards et c'est torché."}
         };
 

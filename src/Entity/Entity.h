@@ -12,9 +12,9 @@ class Entity
     protected:
         std::string name_;
         int nbLifePoints_;
-        const int maxNbLifePoints_;
+        int maxNbLifePoints_;
 
-        Entity( const std::string& name, const int& nbLifePoints );
+        Entity( const std::string& name, const int& nbLifePoints, const int& maxNbLifePoints );
 
     public:
         virtual ~Entity() = default;
