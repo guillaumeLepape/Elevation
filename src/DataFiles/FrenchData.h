@@ -294,64 +294,8 @@ namespace data
 
     namespace Action
     {
-        // generic UseWeapon data statement for fist
-        inline std::string statementUseFist("Cognez ! (Poing)");
-        // generic UseWeapon data statement for knife
-        inline std::string statementUseKnife("Plantez ! (Couteau)");
-        inline std::string statementUseKnifeFistCombo("Combo avec le couteau !");
-        // generic UseWeapon data statement for katana
-        inline std::string statementUseKatana("Découpez ! (Katana)");
-        inline std::string statementUseKatanaFistCombo("Combo avec le katana !");
-        // generic UseWeapon data statement for cutter
-        inline std::string statementUseCutter("Tailladez ! (Cutter)");
-        inline std::string statementUseCutterFistCombo("Combo avec le cutter !");
-        // generic UseWeapon data statement for 9mm
-        inline std::string statementNinemm("Tirez ! (9mm)");
-
-        // generic UseWeapon data result
-        inline std::string resultUseWeapon(const std::string& plugName, const int& damageWeapon)
-        {
-            return plugName + " perd " + std::to_string( damageWeapon ) + " points de vie.";
-        }
         inline std::string titleChooseWeapon = "Choix de l'arme";
         inline std::string titleChoosePlug = "Choix de l'ennemi";
-
-        inline std::unique_ptr<std::string> newStatementUseWeapon(const std::string &nameWeapon)
-        {
-            if (nameWeapon == "Poing")
-            {
-                return std::make_unique<std::string>(statementUseFist);
-            }
-            if (nameWeapon == "Couteau")
-            {
-                return std::make_unique<std::string>(statementUseKnife);
-            }
-            if (nameWeapon == "Katana")
-            {
-                return std::make_unique<std::string>(statementUseKatana);
-            }
-            if (nameWeapon == "CouteauFistCombo")
-            {
-                return std::make_unique<std::string>(statementUseKnifeFistCombo);
-            }
-            if (nameWeapon == "KatanaFistCombo")
-            {
-                return std::make_unique<std::string>(statementUseKatanaFistCombo);
-            }
-            if ( nameWeapon == "Cutter" )
-            {
-                return std::make_unique<std::string>(statementUseCutter);
-            }
-            if ( nameWeapon == "CutterFistCombo" )
-            {
-                return std::make_unique<std::string>(statementUseCutterFistCombo);
-            }
-            if ( nameWeapon == "9mm" )
-            {
-                return std::make_unique<std::string>(statementNinemm);
-            }
-            assert(false);
-        }
 
         inline std::string statementChoosePlug(const std::string& plugName)
         {
@@ -592,6 +536,34 @@ namespace data
             "Ah oui, bon courage pour le prochain combat."
         };
     } // namespace Tutorial
+
+    namespace Weapon
+    {   
+         // generic UseWeapon data statement for fist
+        inline std::string statementUseFist("Cognez ! (Poing)");
+        // generic UseWeapon data statement for knife
+        inline std::string statementUseKnife("Plantez ! (Couteau)");
+        // generic UseWeapon data statement for katana
+        inline std::string statementUseKatana("Découpez ! (Katana)");
+        // generic UseWeapon data statement for cutter
+        inline std::string statementUseCutter("Tailladez ! (Cutter)");
+        // generic UseWeapon data statement for hammer
+        inline std::string statementUseHammer("Martelez ! (Marteau)" );
+
+        // generic UseWeapon data statement for 9mm
+        inline std::string statementUseNinemm("Tirez ! (9mm)");
+
+        // generic UseWeapon data result
+        inline std::string resultUseWeapon(const std::string& plugName, const int& damageWeapon)
+        {
+            return plugName + " perd " + std::to_string( damageWeapon ) + " points de vie.";
+        }
+
+        inline std::string statementCombo(const std::string& nameWeapon )
+        {
+            return "Combo avec le " + nameWeapon + "!";
+        }
+    } // namespace Weapon
 
 } // namespace data
 

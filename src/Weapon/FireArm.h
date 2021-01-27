@@ -7,6 +7,8 @@
 
 #include "Weapon.h"
 
+#include "Languages.h"
+
 class FireArm : public Weapon
 {
     private:
@@ -17,9 +19,10 @@ class FireArm : public Weapon
         ( 
             const std::string& name, 
             const int& damageWeapon,
-            const int& nbAmmo
+            const int& nbAmmo,
+            const std::string& statement
         ) :
-            Weapon( name, damageWeapon, WeaponType::fireArm ),
+            Weapon( name, damageWeapon, WeaponType::fireArm, statement ),
             nbAmmo_(nbAmmo)
         {
 

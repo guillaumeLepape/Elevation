@@ -14,6 +14,7 @@
 
 #include "Ninemm.h"
 #include "Knife.h"
+#include "Hammer.h"
 
 #include "ComboFistMeleeWeapon.h"
 #include "ComboDoubleMeleeWeapon.h"

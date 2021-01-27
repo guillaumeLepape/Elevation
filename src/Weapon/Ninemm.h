@@ -7,11 +7,13 @@
 
 #include "FireArm.h"
 
+#include "Languages.h"
+
 class Ninemm : public FireArm
 {
     public:
         Ninemm( const int& nbAmmo ) :
-            FireArm( "9mm", 70, nbAmmo )
+            FireArm( "9mm", 70, nbAmmo, data::Weapon::statementUseNinemm )
         {
 
         }

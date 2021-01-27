@@ -7,11 +7,19 @@
 
 #include "Weapon.h"
 
+#include "Languages.h"
+
 class WeaponFistCombo : public Weapon
 {
     public:
         WeaponFistCombo( const Weapon& weapon ) :
-            Weapon( weapon.name() + "FistCombo", weapon.damageWeapon()/2, weapon.weaponType() )
+            Weapon
+            ( 
+                weapon.name() + "FistCombo", 
+                weapon.damageWeapon()/2, 
+                weapon.weaponType(), 
+                data::Weapon::statementCombo( weapon.name() )
+            )
         {
 
         }

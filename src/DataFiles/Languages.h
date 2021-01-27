@@ -6,7 +6,7 @@
     * \brief Include the correct languages data files
 */
 
-// 
+// define the chosen language
 #define FRENCH
 
 #ifdef FRENCH

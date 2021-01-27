@@ -7,11 +7,13 @@
 
 #include "Weapon.h"
 
+#include "Languages.h"
+
 class Fist : public Weapon
 {
     public:
         Fist() :
-            Weapon( "Poing", 20, WeaponType::fist )
+            Weapon( "Poing", 20, WeaponType::fist, data::Weapon::statementUseFist )
         {
 
         }

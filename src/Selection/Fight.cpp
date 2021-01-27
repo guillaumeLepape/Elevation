@@ -124,8 +124,7 @@ void Fight::startFight()
                     player_,
                     choosenPlug,
                     **w,
-                    *( data::Action::newStatementUseWeapon( (*w)->name() ).get() ),
-                    data::Action::resultUseWeapon( choosenPlug->name(), (*w)->damageWeapon() )
+                    data::Weapon::resultUseWeapon( choosenPlug->name(), (*w)->damageWeapon() )
                 )
             );
         }

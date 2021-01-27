@@ -23,6 +23,7 @@ class Weapon
         std::string name_;
         int damageWeapon_;
         WeaponType weaponType_;
+        const std::string statement_;
 
     protected:
         Weapon();
@@ -30,7 +31,8 @@ class Weapon
         ( 
             const std::string& name, 
             const int& damageWeapon,
-            WeaponType weaponType
+            WeaponType weaponType,
+            const std::string& statement
         );
         
     public:
@@ -39,6 +41,7 @@ class Weapon
         const std::string& name() const { return name_; }
         const int& damageWeapon() const { return damageWeapon_; }
         const WeaponType& weaponType() const { return weaponType_; }
+        const std::string& statement() const { return statement_; }
 
         friend bool operator==( const Weapon& weapon1, const Weapon& weapon2 );
 

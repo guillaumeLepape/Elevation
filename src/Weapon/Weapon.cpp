@@ -8,11 +8,13 @@ Weapon::Weapon
 ( 
     const std::string& name, 
     const int& damageWeapon,
-    WeaponType weaponType
+    WeaponType weaponType,
+    const std::string& statement
 ) :
     name_( name ),
     damageWeapon_( damageWeapon ),
-    weaponType_( weaponType )
+    weaponType_( weaponType ),
+    statement_( statement )
 {
     
 }

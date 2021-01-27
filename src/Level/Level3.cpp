@@ -31,7 +31,7 @@ void Level3::startLevel()
     messageWriter0.writeMessage();
 
     const Fist fist;
-    UseWeapon useFist( player_, &plug, fist, data::Action::statementUseFist, data::Action::resultUseWeapon( plug.name(), fist.damageWeapon() ) );
+    UseWeapon useFist( player_, &plug, fist, data::Weapon::resultUseWeapon( plug.name(), fist.damageWeapon() ) );
     useFist.triggerAction();
 
     MessageWriter messageWriter1( data::Level3::message1, player_->name(), plug.name() );
@@ -65,7 +65,7 @@ void Level3::startLevel()
     const Knife* knife = new Knife();
     player_->weapons()->addWeapon( knife );
 
-    UseWeapon useKnife( player_, &plug, *knife, data::Action::statementUseKnife, data::Action::resultUseWeapon(plug.name(), knife->damageWeapon()) );
+    UseWeapon useKnife( player_, &plug, *knife, data::Weapon::resultUseWeapon(plug.name(), knife->damageWeapon()) );
 
     Selection::select(
         { &useFist, &useKnife },

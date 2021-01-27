@@ -39,8 +39,7 @@ void ComboDoubleMeleeWeapon::triggerCombo
             player_, 
             plug, 
             *( WeaponFactory::newWeapon( nameWeapon ) ), 
-            *( data::Action::newStatementUseWeapon( nameWeapon ).get() ),
-            data::Action::resultUseWeapon( plug->name(), player_->weapons()->weaponFromName( nameWeapon )->damageWeapon() )
+            data::Weapon::resultUseWeapon( plug->name(), player_->weapons()->weaponFromName( nameWeapon )->damageWeapon() )
         );
 
         Nothing nothing

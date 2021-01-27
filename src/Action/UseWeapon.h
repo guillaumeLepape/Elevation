@@ -26,10 +26,9 @@ class UseWeapon : public Action
             Player* const player, 
             Plug* const plug,
             const Weapon& weapon,
-            const std::string& statement,
             const std::string& result
         ) : 
-            Action( statement, result ),
+            Action( weapon.statement(), result ),
             nameWeapon_( weapon.name() ),
             player_( player ),
             plug_( plug )

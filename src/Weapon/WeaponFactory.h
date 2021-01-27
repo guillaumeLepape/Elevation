@@ -10,6 +10,7 @@
 #include "Knife.h"
 #include "Katana.h"
 #include "Cutter.h"
+#include "Hammer.h"
 #include "Ninemm.h"
 
 #include "WeaponFistCombo.h"
@@ -24,6 +25,7 @@ class WeaponFactory
             if ( nameWeapon == "Couteau" ) { return new Knife(); }
             if ( nameWeapon == "Katana" ) { return new Katana(); }
             if ( nameWeapon == "Cutter" ) { return new Cutter(); }
+            if ( nameWeapon == "Marteau" ) { return new Hammer(); }
             assert(false);
 
         }

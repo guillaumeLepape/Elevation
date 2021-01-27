@@ -7,11 +7,13 @@
 
 #include "Weapon.h"
 
+#include "Languages.h"
+
 class Cutter : public Weapon
 {
     public:
         Cutter() :
-            Weapon( "Cutter", 15, WeaponType::meleeWeapon )
+            Weapon( "Cutter", 15, WeaponType::meleeWeapon, data::Weapon::statementUseCutter )
         {
 
         }
