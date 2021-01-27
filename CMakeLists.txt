@@ -157,7 +157,6 @@ include_directories(
 set(HEADER_WEAPON
     ${FOLDER_WEAPON}/Weapon.h
     ${FOLDER_WEAPON}/WeaponFactory.h
-    ${FOLDER_WEAPON}/NoWeapon.h
     ${FOLDER_WEAPON}/Fist.h
     ${FOLDER_WEAPON}/Knife.h
     ${FOLDER_WEAPON}/Katana.h

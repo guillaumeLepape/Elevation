@@ -5,7 +5,6 @@
     * \file WeaponFactory.h
 */
 
-#include "NoWeapon.h"
 #include "Fist.h"
 #include "Knife.h"
 #include "Katana.h"
@@ -20,7 +19,6 @@ class WeaponFactory
     public:
         static const Weapon* newWeapon( const std::string& nameWeapon )
         {
-            if ( nameWeapon == "NoWeapon" ) { return new NoWeapon(); }
             if ( nameWeapon == "Poing" ) { return new Fist(); }
             if ( nameWeapon == "Couteau" ) { return new Knife(); }
             if ( nameWeapon == "Katana" ) { return new Katana(); }

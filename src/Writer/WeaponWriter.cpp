@@ -79,8 +79,6 @@ std::string WeaponWriter::informationWeaponType() const
 {
     switch (weapon_->weaponType())
     {
-        case WeaponType::empty:
-            return "vide";
         case WeaponType::fist:
             return "poing";
         case WeaponType::meleeWeapon:

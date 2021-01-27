@@ -6,12 +6,12 @@
 */
 
 #include "Entity.h"
-#include "NoWeapon.h"
+
+#include "Fist.h"
 
 class Plug : public Entity
 {
     private:
-        // int lifePoints_;
         Weapon* const weapon_;
 
     public:
@@ -19,7 +19,7 @@ class Plug : public Entity
         ( 
             const std::string& name, 
             const int& nbLifePoints = 100, 
-            Weapon* const weapon = new NoWeapon() 
+            Weapon* const weapon = new Fist() 
         );
 
         Weapon* weapon() const { return weapon_; }
