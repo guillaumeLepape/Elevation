@@ -30,9 +30,9 @@ WeaponInventory::~WeaponInventory()
     
 }
 
-void WeaponInventory::addWeapon( const Weapon* weapon )
+bool WeaponInventory::addWeapon( const Weapon* weapon )
 {
-     auto it = std::find_if( 
+    auto it = std::find_if( 
         std::vector<const Weapon*>::cbegin(), 
         std::vector<const Weapon*>::cend(), 
         [&weapon]( const Weapon* const lWeapon )
@@ -40,8 +40,11 @@ void WeaponInventory::addWeapon( const Weapon* weapon )
             return *(weapon) == *(lWeapon);
         } 
     );
+
+    bool present = (it != std::vector<const Weapon*>::cend());
+    
     // If this condition is true, weapon is not in weapons_ so add it and sort the weapons_ vector
-    if ( it == std::vector<const Weapon*>::cend() )
+    if ( !present )
     {
         std::vector<const Weapon*>::push_back( weapon );
         // sort on the number of damage Weapon
@@ -58,6 +61,8 @@ void WeaponInventory::addWeapon( const Weapon* weapon )
             }
         });
     }
+
+    return present;
 }
 
 void WeaponInventory::deleteWeapon( const std::string& nameWeapon )

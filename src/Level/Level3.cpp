@@ -8,6 +8,7 @@
 
 #include "Selection.h"
 #include "UseWeapon.h"
+#include "AddWeaponAction.h"
 #include "Knife.h"
 #include "Fist.h"
 
@@ -30,8 +31,8 @@ void Level3::startLevel()
     MessageWriter messageWriter0( data::Level3::message0, player_->name(), plug.name() );
     messageWriter0.writeMessage();
 
-    const Fist fist;
-    UseWeapon useFist( player_, &plug, fist, data::Weapon::resultUseWeapon( plug.name(), fist.damageWeapon() ) );
+    const Fist* fist = new Fist();
+    UseWeapon useFist( player_, &plug, fist, data::Weapon::resultUseWeapon( plug.name(), fist->damageWeapon() ) );
     useFist.triggerAction();
 
     MessageWriter messageWriter1( data::Level3::message1, player_->name(), plug.name() );
@@ -63,9 +64,16 @@ void Level3::startLevel()
     messageWriter4.writeMessage();
 
     const Knife* knife = new Knife();
-    player_->weapons()->addWeapon( knife );
+    AddWeaponAction addWeaponAction
+    ( 
+        player_, 
+        knife, 
+        "", 
+        data::Action::resultAddWeapon(knife->name()) 
+    );
+    addWeaponAction.triggerAction();
 
-    UseWeapon useKnife( player_, &plug, *knife, data::Weapon::resultUseWeapon(plug.name(), knife->damageWeapon()) );
+    UseWeapon useKnife( player_, &plug, knife, data::Weapon::resultUseWeapon(plug.name(), knife->damageWeapon()) );
 
     Selection::select(
         { &useFist, &useKnife },

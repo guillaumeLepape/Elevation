@@ -57,7 +57,7 @@ void ComboFistMeleeWeapon::triggerCombo
                     new UseWeapon(
                         player_,
                         plug,
-                        *weaponFistCombo,
+                        weaponFistCombo,
                         data::Weapon::resultUseWeapon( plug->name(), weaponFistCombo->damageWeapon() )
                     )
                 );

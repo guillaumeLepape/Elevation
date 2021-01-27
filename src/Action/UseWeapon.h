@@ -16,7 +16,7 @@
 class UseWeapon : public Action
 {
     private:
-        const std::string nameWeapon_;
+        const Weapon* weapon_;
         Player* const player_;
         Plug* const plug_;
 
@@ -25,11 +25,11 @@ class UseWeapon : public Action
         (
             Player* const player, 
             Plug* const plug,
-            const Weapon& weapon,
+            const Weapon* weapon,
             const std::string& result
         ) : 
-            Action( weapon.statement(), result ),
-            nameWeapon_( weapon.name() ),
+            Action( weapon->statement(), result ),
+            weapon_( weapon ),
             player_( player ),
             plug_( plug )
         {
@@ -38,9 +38,9 @@ class UseWeapon : public Action
 
         void triggerAction() override
         {   
-            const Weapon* weapon = player_->weapons()->weaponFromName( nameWeapon_ );
+            // const Weapon* weapon = player_->weapons()->weaponFromName( nameWeapon_ );
 
-            weapon->attack( plug_ );
+            weapon_->attack( plug_ );
 
             actionWriter_.writeResult();
         
@@ -48,17 +48,17 @@ class UseWeapon : public Action
             dead.triggerAction();
 
             // if weapon is fireArm and has no ammo, delete it
-            if ( weapon->weaponType() == WeaponType::fireArm )
+            if ( weapon_->weaponType() == WeaponType::fireArm )
             {
-                if ( ((FireArm*) weapon)->nbAmmo() <= 0 )
+                if ( ((FireArm*) weapon_)->nbAmmo() <= 0 )
                 {
-                    std::string nameWeapon = weapon->name();
+                    std::string nameWeapon = weapon_->name();
                     player_->weapons()->deleteWeapon( nameWeapon );
                 }
             }
         }
 
-        const std::string& nameWeapon() const { return nameWeapon_; }
+        const std::string& nameWeapon() const { return weapon_->name(); }
 };
 
 #endif

@@ -14,6 +14,7 @@
 #include "Nothing.h"
 #include "InformationWeaponInventory.h"
 #include "InformationCombo.h"
+#include "AddWeaponAction.h"
 
 #include "Selection.h"
 
@@ -123,7 +124,7 @@ void Fight::startFight()
                 new UseWeapon(
                     player_,
                     choosenPlug,
-                    **w,
+                    *w,
                     data::Weapon::resultUseWeapon( choosenPlug->name(), (*w)->damageWeapon() )
                 )
             );
@@ -149,12 +150,20 @@ void Fight::startFight()
         if ( numberOfDeadPlug_ != countNumberOfDeadPlug )
         {
             numberOfDeadPlug_ = countNumberOfDeadPlug;
-            fightWriter.writeRemoveDeadBody();
-            const Weapon* weapon = new Weapon
+            const Weapon* weapon
             (
-                *((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon()
+                ((ChoosePlug*) choosePlugActions[resultChoosePlug])->plug()->weapon()
             );
-            player_->weapons()->addWeapon( weapon );
+            AddWeaponAction addWeaponAction
+            ( 
+                player_, 
+                weapon, 
+                "", 
+                data::Action::resultAddWeapon(weapon->name()) 
+            );
+            addWeaponAction.triggerAction();
+
+            fightWriter.writeRemoveDeadBody();
         }
 
         for ( auto e = plugs_.begin(); e != plugs_.end(); e++ )

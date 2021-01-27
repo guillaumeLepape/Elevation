@@ -38,7 +38,7 @@ void ComboDoubleMeleeWeapon::triggerCombo
         ( 
             player_, 
             plug, 
-            *( WeaponFactory::newWeapon( nameWeapon ) ), 
+            WeaponFactory::newWeapon( nameWeapon ), 
             data::Weapon::resultUseWeapon( plug->name(), player_->weapons()->weaponFromName( nameWeapon )->damageWeapon() )
         );
 

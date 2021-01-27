@@ -18,7 +18,7 @@ class WeaponInventory : public std::vector<const Weapon*>
 
         ~WeaponInventory();
 
-        void addWeapon( const Weapon* weapon );
+        bool addWeapon( const Weapon* weapon );
         void deleteWeapon( const std::string& nameWeapon );
         void deleteWeapon( const Weapon& weapon );
         const Weapon* weaponFromName( const std::string& nameWeapon ) const;

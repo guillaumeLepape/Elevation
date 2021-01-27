@@ -22,6 +22,7 @@
 #include "Cutter.h"
 
 #include "RegenerateAllLife.h"
+#include "AddWeaponAction.h"
 
 #include "Languages.h"
 
@@ -94,9 +95,6 @@ void Level5::startLevel()
         tutorialDoubleMeleeWeapon.writeTutorial();
     }
 
-    const Fist* fist = new Fist();
-    player_->weapons()->deleteWeapon( *fist );
-
     Fight secondFight(
         player_,
         { garde },
@@ -104,8 +102,6 @@ void Level5::startLevel()
         false
     );
     secondFight.startFight();
-
-    player_->weapons()->addWeapon( fist );
 
     // Third fight (introduction to Healing and weapon recuperation)
     Plug secondGarde( "Un futur cadavre", 30, new Knife() );

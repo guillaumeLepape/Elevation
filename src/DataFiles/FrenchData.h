@@ -292,7 +292,7 @@ namespace data
                 {NameSpeaker::description, "Pipe à crack. Briquet."}
             };
         }
-    } // namespace Level6
+    } // namespace Level7
 
     namespace Action
     {
@@ -335,6 +335,11 @@ namespace data
         inline std::string resultRegeneration( const int& lifePointsRegeneration )
         {
             return "Vous gagnez " + std::to_string( lifePointsRegeneration ) + " points de vie.";
+        }
+
+        inline std::string resultAddWeapon( const std::string& nameWeapon )
+        {
+            return nameWeapon + " ajouté à votre inventaire.";
         }
     } // namespace Action
 

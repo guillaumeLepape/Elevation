@@ -34,6 +34,7 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/PlugAttack.h
     ${FOLDER_ACTION}/Regeneration.h
     ${FOLDER_ACTION}/RegenerateAllLife.h
+    ${FOLDER_ACTION}/AddWeaponAction.h
 
     ${FOLDER_ACTION}/InformationCombo.h
     ${FOLDER_ACTION}/InformationWeaponInventory.h
@@ -41,6 +42,7 @@ set(HEADER_ACTION
 
 set(SOURCE_ACTION
     ${FOLDER_ACTION}/Dead.cpp
+    ${FOLDER_ACTION}/AddWeaponAction.cpp
     ${FOLDER_ACTION}/StartGame.cpp
     ${FOLDER_ACTION}/Negociate.cpp
     ${FOLDER_ACTION}/LoadGame.cpp
