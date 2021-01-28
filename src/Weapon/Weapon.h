@@ -11,6 +11,7 @@
 
 enum class WeaponType
 {
+    noWeapon = -1,
     fist = 0,
     meleeWeapon = 1,
     fireArm = 2

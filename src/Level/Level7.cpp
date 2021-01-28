@@ -16,6 +16,8 @@
 #include "Knife.h"
 #include "Hammer.h"
 
+#include "RegenerateAllLife.h"
+
 #include "ComboFistMeleeWeapon.h"
 #include "ComboDoubleMeleeWeapon.h"
 #include "ComboQuadrupleCutter.h"
@@ -41,12 +43,16 @@ void Level7::startLevel()
     Fight fight(
         player_,
         { boss },
-        { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(), comboQuadrupleCutter.get() }
+        { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(), comboQuadrupleCutter.get() },
+        options_.noRule_
     );
     fight.startFight();
 
     MessageWriter messageWriter1( data::Level7::message1, player_->name(), "" );
     messageWriter1.writeMessage();
+
+    RegenerateAllLife regenerateAllLife( player_, "", "" );
+    regenerateAllLife.triggerAction();
 
     Level::endOfLevel();
     std::cout << "\n";

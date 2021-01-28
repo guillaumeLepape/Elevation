@@ -10,6 +10,7 @@
 #include "Katana.h"
 #include "Cutter.h"
 #include "Hammer.h"
+#include "Chopper.h"
 #include "Ninemm.h"
 #include "AK47.h"
 
@@ -25,6 +26,7 @@ class WeaponFactory
             if ( nameWeapon == data::Weapon::nameKatana ) { return new Katana(); }
             if ( nameWeapon == data::Weapon::nameCutter ) { return new Cutter(); }
             if ( nameWeapon == data::Weapon::nameHammer ) { return new Hammer(); }
+            if ( nameWeapon == data::Weapon::nameChopper ) { return new Chopper(); }
             assert(false);
 
         }

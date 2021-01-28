@@ -12,17 +12,19 @@
 class Plug : public Entity
 {
     private:
-        Weapon* const weapon_;
+        const Weapon* weapon_;
 
     public:
         explicit Plug
         ( 
             const std::string& name, 
             const int& nbLifePoints = 100, 
-            Weapon* const weapon = new Fist() 
+            const Weapon* weapon = new Fist() 
         );
 
-        Weapon* weapon() const { return weapon_; }
+        void changeWeapon( const Weapon* newWeapon );
+
+        const Weapon* weapon() const { return weapon_; }
 };
 
 #endif

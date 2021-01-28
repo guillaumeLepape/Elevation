@@ -23,6 +23,7 @@ Fight::Fight
     Player* const player, 
     const std::vector<Plug>& plugs, 
     const std::vector<Combo*>& combos,
+    const bool& noRule,
     const bool& regeneration
 ) : 
     player_( player ),
@@ -30,7 +31,8 @@ Fight::Fight
     combos_( combos ),
     regeneration_( regeneration ),
     numberOfDeadPlug_( 0 ),
-    information_( true )
+    information_( true ),
+    noRule_( noRule )
 {
 
 }
@@ -49,7 +51,7 @@ void Fight::startFight()
         fightWriter.writeHeader( nbTurns );
         fightWriter.writeGameBoard();
 
-        if ( information_ )
+        if ( information_ && !noRule_ )
         {
             bool out = false;
 

@@ -31,8 +31,8 @@ class PlugAttack : public Action
 
         void triggerAction() override
         {
-            // if plug is not dead, he can attack
-            if ( !(plug_->dead()) )
+            // if plug is not dead and has a weapon, he can attack
+            if ( !(plug_->dead()) && plug_->weapon()->weaponType() != WeaponType::noWeapon )
             {
                 plug_->weapon()->attack( player_ );
                 actionWriter_.updateResult( data::Action::resultPlugAttack( plug_->name(), plug_->weapon()->damageWeapon() ) );

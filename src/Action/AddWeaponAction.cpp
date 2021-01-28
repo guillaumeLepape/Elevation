@@ -23,10 +23,13 @@ AddWeaponAction::AddWeaponAction
 
 void AddWeaponAction::triggerAction()
 {
-    bool present = player_->weapons()->addWeapon( weapon_ );
-
-    if ( !present )
+    if ( weapon_->weaponType() != WeaponType::noWeapon )
     {
-        actionWriter_.writeResult();
+        bool present = player_->weapons()->addWeapon( weapon_ );
+
+        if ( !present )
+        {
+            actionWriter_.writeResult();
+        }
     }
 }

@@ -307,7 +307,7 @@ namespace data
             return {
                 {NameSpeaker::player, "Ca part en couilles là. Il faut que j'aille voir " + plugName + " pour qu'elle m'aide."},
                 {NameSpeaker::player, "J'ai pas de sang sur moi, je peux tappe des hallus maintenant."},
-                {NameSpeaker::description, "Malgré votre état, vous arrivez enfin devant chez " + plugName + ", l'un de vos plus fidèles amis."},
+                {NameSpeaker::description, "Malgré votre état, vous arrivez enfin devant chez " + plugName + ", l'un de vos plus fidèles amies."},
                 {NameSpeaker::description, "Arrivé devant la porte, celle-ci s'ouvre par miracle."},
                 {NameSpeaker::plug, "Pourquoi ?"},
                 {NameSpeaker::player, "Ah merde mon couteau."},
@@ -334,7 +334,33 @@ namespace data
         inline int minut = 35;
 
         inline Message message0 = {
-            
+            {NameSpeaker::player, "Dégage de là."}
+        };
+
+        inline Message message1 = {
+            {NameSpeaker::player, "Tu te prends pour qui pour me poignarder 3 fois."},
+            {NameSpeaker::plug, "C'est toi qui bute tout le monde depuis ce matin."},
+            {NameSpeaker::player, "T'as planté la mauvaise personne."}
+        };
+
+        inline Message message2 = {
+            {NameSpeaker::plug, "Creve sale pute."}
+        };
+
+        inline Message message3 = {
+            {NameSpeaker::plug, "Ca cicatrise tout seul, il faut que j'tappe plus fort."}
+        };
+
+        inline Message message4 = {
+            {NameSpeaker::plug, "J'ai jamais vu ca. T'es un putain d'alien."},
+            {NameSpeaker::player, "Non, juste un Dieu."},
+            {NameSpeaker::plug, "S'il te plait, me tue pas."},
+            {NameSpeaker::player, "J'hésite."},
+            {NameSpeaker::player, "Allez, pour s'amuser."}
+        };
+
+        inline Message message5 = {
+            {NameSpeaker::player, ""}
         };
     } // namespace Level9
 
@@ -617,6 +643,9 @@ namespace data
         // generic UseWeapon data statement for hammer
         inline std::string statementUseHammer("Martelez ! (Marteau)" );
 
+        inline std::string statementUseChopper("Hachez ! (Hachoir)" );
+        inline std::string statementUseNoWeapon("");
+
         // generic UseWeapon data statement for 9mm
         inline std::string statementUseNinemm("Tirez ! (9mm)");
         // generic UseWeapon data statement for 9mm
@@ -634,12 +663,15 @@ namespace data
         }
 
         // Name of all weapons
+        inline std::string nameNoWeapon = "Pas d'arme";
+
         inline std::string nameFist = "Poing";
 
         inline std::string nameCutter = "Cutter";
         inline std::string nameKnife = "Couteau";
         inline std::string nameHammer = "Marteau";
         inline std::string nameKatana = "Katana";
+        inline std::string nameChopper = "Hachoir";
 
         inline std::string nameNinemm = "9mm";
         inline std::string nameAK47 = "AK47"; 

@@ -18,6 +18,7 @@ class Fight
         int numberOfDeadPlug_;
 
         bool information_;
+        bool noRule_;
 
         int methodNumberOfDeadPlug() const;
         bool enemiesDeadOrNot() const;
@@ -27,6 +28,7 @@ class Fight
             Player* const player, 
             const std::vector<Plug>& plugs, 
             const std::vector<Combo*>& combos,
+            const bool& noRule,
             const bool& regeneration = true
         );
 
