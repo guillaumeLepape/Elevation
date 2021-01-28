@@ -164,8 +164,7 @@ namespace data
         inline Message message4 = {
             {NameSpeaker::plug, "Ah."},
             {NameSpeaker::description, "Le produit tombe au sol ainsi qu'un couteau."},
-            {NameSpeaker::description, "Vous mettez le shit dans votre poche et saisissez le couteau."},
-            {NameSpeaker::action, "Vous êtes maintenant équipé d'un couteau."}
+            {NameSpeaker::description, "Vous mettez le shit dans votre poche et saisissez le couteau."}
         };
     } // namespace Level3
 
@@ -261,20 +260,52 @@ namespace data
 
     namespace Level6
     {
-        inline std::string nameLevel = "Niveau 6 : ";
+        inline std::string nameLevel = "Niveau 6 : Champis";
         inline int hour = 21;
         inline int minut = 10;
+
+        inline Message message0 = {
+            {NameSpeaker::player, "Avec toutes ces histoires, il est temps de rentrer chez soi."},
+            {NameSpeaker::description, "Arrivé chez vous, vous vous asseyez sur le canapé."},
+            {NameSpeaker::player, "Ca tourne, sa mère. J'ai pas fini mais faut que je me repose."},
+            {NameSpeaker::player, "Il me reste quelque champis, parfait."},
+            {NameSpeaker::description, "Poele. Soupe de champis"},
+            {NameSpeaker::player, "Zzzzzzz." },
+            {NameSpeaker::player, "Zzzzzzz." },
+            {NameSpeaker::player, "Zzzzzzz." }
+        };
     } // namespace Level6
 
-    namespace Level7 
+    namespace Level7
     {
-        inline std::string nameLevel = "Niveau 7 : Crack (Interlude)";
-        inline int hour = 22;
-        inline int minut = 42;
+        inline std::string nameLevel = "Niveau 7 : Kétamine";
+        inline int hour = 0;
+        inline int minut = 10;
+
+        inline Message message0 = {
+            {NameSpeaker::description, "Boum."},
+            {NameSpeaker::player, "AHHHHHHHHHHHHHH. QU'EST CE QUI SE PASSE PUTAIN DE MERDE !" },
+            {NameSpeaker::description, "Kaboom."},
+            {NameSpeaker::plug, "CC je suis là te buter."}
+        };
+
+        inline Message message1 = {
+            {NameSpeaker::player, "Tu t'as penser à mon sommeil."},
+            {NameSpeaker::player, "Au moins, tu as des trucs sur toi. De la ké parfait."},
+            {NameSpeaker::description, "Feuille à rouler. Para."}
+        };
+    } // namespace Level7
+
+    namespace Level8
+    {
+        inline std::string nameLevel = "Niveau 8 : Crack (Interlude)";
+        inline int hour = 2;
+        inline int minut = 12;
 
         inline Message message0( const std::string& plugName )
         {
             return {
+                {NameSpeaker::player, "Ca part en couilles là. Il faut que j'aille voir " + plugName + " pour qu'elle m'aide."},
                 {NameSpeaker::player, "J'ai pas de sang sur moi, je peux tappe des hallus maintenant."},
                 {NameSpeaker::description, "Malgré votre état, vous arrivez enfin devant chez " + plugName + ", l'un de vos plus fidèles amis."},
                 {NameSpeaker::description, "Arrivé devant la porte, celle-ci s'ouvre par miracle."},
@@ -283,16 +314,18 @@ namespace data
                 {NameSpeaker::description, "Effectivement il a un couteau la poitrine."},
                 {NameSpeaker::plug, "Après tout ce que j'ai fait pour toi."},
                 {NameSpeaker::player, "Tu souffres, faut que j'abrège tes souffrances."},
-                {NameSpeaker::player, "Avec ce gun c'est parfait."},
-                {NameSpeaker::action, "9mm ajouté à votre inventaire."},
-                {NameSpeaker::description, "BANG ! "},
-                {NameSpeaker::description, "PAW !"},
-                {NameSpeaker::player, "Deux balles dans le crane ca devrait suffire."},
-                {NameSpeaker::player, "Le crack est là, je vais le fumer ici."},
-                {NameSpeaker::description, "Pipe à crack. Briquet."}
+                {NameSpeaker::player, "Avec ce gun c'est parfait."}
             };
         }
-    } // namespace Level7
+
+        inline Message message1 = {
+            {NameSpeaker::description, "BANG ! "},
+            {NameSpeaker::description, "PAW !"},
+            {NameSpeaker::player, "Deux balles dans le crane ca devrait suffire."},
+            {NameSpeaker::player, "Le crack est là, je vais le fumer ici."},
+            {NameSpeaker::description, "Pipe à crack. Briquet."}
+        };
+    } // namespace Level8
 
     namespace Action
     {
