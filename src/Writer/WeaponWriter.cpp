@@ -72,6 +72,19 @@ void WeaponWriter::informationWeapon() const
             << ( (FireArm*) weapon_ )->nbAmmo()
             << Term::color( Term::fg::reset )
             << Term::color( Term::style::reset );
+
+        std::cout << "\n "
+            << Term::color( Term::fg::magenta )
+            << Term::color( Term::style::bold )
+            << "Nombre de munitions utilisés par un tir : "
+            << Term::color( Term::fg::reset )
+            << Term::color( Term::style::reset );
+
+        std::cout << Term::color( Term::fg::red )
+            << Term::color( Term::style::bold )
+            << ( (FireArm*) weapon_ )->nbAmmoForOneShot()
+            << Term::color( Term::fg::reset )
+            << Term::color( Term::style::reset );
     }
 }
 

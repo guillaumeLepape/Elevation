@@ -35,7 +35,7 @@ void ComboFistMeleeWeapon::triggerCombo
     // if the player has attack with his fist, trigger the combo 
     // and the ennemy is not dead
     // and player has at least one melee weapon
-    if ( (player_->weapons()->weaponFromName( useWeapon[resultChooseWeapon]->nameWeapon() ))->weaponType() == WeaponType::fist 
+    if ( useWeapon[resultChooseWeapon]->weapon()->weaponType() == WeaponType::fist 
             && !( plug->dead() ) && player_->weapons()->containWeaponType( WeaponType::meleeWeapon ))
     {
         // Build vector of useWeapon actions without the fist action

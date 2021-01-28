@@ -13,7 +13,7 @@ class Ninemm : public FireArm
 {
     public:
         Ninemm( const int& nbAmmo ) :
-            FireArm( data::Weapon::nameNinemm, 70, nbAmmo, data::Weapon::statementUseNinemm )
+            FireArm( data::Weapon::nameNinemm, 70, nbAmmo, 1, data::Weapon::statementUseNinemm )
         {
 
         }

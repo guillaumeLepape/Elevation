@@ -31,7 +31,7 @@ void ComboDoubleMeleeWeapon::triggerCombo
 {
     const std::string& nameWeapon = useWeapon[resultChooseWeapon]->nameWeapon();
 
-    if ( nameWeapon == "Couteau"
+    if ( (nameWeapon == data::Weapon::nameKnife || nameWeapon == data::Weapon::nameHammer)
             && !( plug->dead() ) )
     {
         UseWeapon useWeaponCombo

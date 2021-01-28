@@ -144,7 +144,7 @@ namespace data
         };
 
         inline Message message1 = {
-            {NameSpeaker::plug, "Qu'est ce qui te prends, fils de pute."},
+            {NameSpeaker::plug, "Qu'est ce qui te prends, sale pute."},
             {NameSpeaker::description, "Vous venez de le frapper."},
             {NameSpeaker::plug, "Tu peux pas juste payer ta dose et te casser."}
         };
@@ -158,7 +158,7 @@ namespace data
         }
 
         inline Message message3 = {
-            {NameSpeaker::plug, "Fils de pute !"}
+            {NameSpeaker::plug, "Salope !"}
         };
 
         inline Message message4 = {
@@ -247,7 +247,7 @@ namespace data
 
         inline Message message6 = {
             {NameSpeaker::player, "En allant par là, je devrais trouver la drogue."},
-            {NameSpeaker::plug, "Putain c'est le fils de pute qui a buté tout le monde. On se le fait."},
+            {NameSpeaker::plug, "Putain c'est la pétasse qui a buté tout le monde. On se le fait."},
             {NameSpeaker::player, "Enfin. J'ai plus qu'à buter ces 3 batards et c'est torché."}
         };
 
@@ -290,7 +290,7 @@ namespace data
         };
 
         inline Message message1 = {
-            {NameSpeaker::player, "Tu t'as penser à mon sommeil."},
+            {NameSpeaker::player, "Tu as pensé à mon sommeil."},
             {NameSpeaker::player, "Au moins, tu as des trucs sur toi. De la ké parfait."},
             {NameSpeaker::description, "Feuille à rouler. Para."}
         };
@@ -311,7 +311,7 @@ namespace data
                 {NameSpeaker::description, "Arrivé devant la porte, celle-ci s'ouvre par miracle."},
                 {NameSpeaker::plug, "Pourquoi ?"},
                 {NameSpeaker::player, "Ah merde mon couteau."},
-                {NameSpeaker::description, "Effectivement il a un couteau la poitrine."},
+                {NameSpeaker::description, "Effectivement elle a un couteau dans la poitrine."},
                 {NameSpeaker::plug, "Après tout ce que j'ai fait pour toi."},
                 {NameSpeaker::player, "Tu souffres, faut que j'abrège tes souffrances."},
                 {NameSpeaker::player, "Avec ce gun c'est parfait."}
@@ -326,6 +326,28 @@ namespace data
             {NameSpeaker::description, "Pipe à crack. Briquet."}
         };
     } // namespace Level8
+
+    namespace Level9
+    {
+        inline std::string nameLevel = "Niveau 9 : LSD (Révélation)";
+        inline int hour = 3;
+        inline int minut = 35;
+
+        inline Message message0 = {
+            
+        };
+    } // namespace Level9
+
+    namespace Level10
+    {
+        inline std::string nameLevel = "Niveau 10 : Héroine (Désillusion)";
+        inline int hour = 7;
+        inline int minut = 30;
+
+        inline Message message0 = {
+
+        };
+    } // namespace Level10
 
     namespace Action
     {
@@ -514,15 +536,20 @@ namespace data
     namespace Tutorial 
     {
         inline std::string titleCombatSystem = "Tutoriel : Système de combat";
-        inline std::vector<std::string> statementCombatSystem = {
-            "Dans ce jeu, les combats se déroulent ainsi.",
-            "A chaque tour, vous choisissez d'abord quelle ennemi vous souhaitez attaquer et avec quelle arme.",
-            "Une fois que vous avez attaqué, c'est au tour des ennemis.",
-            "Ils attaquent avec l'arme dont ils disposent à tour de rôle.",
-            "Le combat prend fin lorsque tous les ennemis sont morts ou lorsque vous êtes mort.",
-            "Lorsque vous tuez un ennemi vous pouvez récupérer leurs armes."
-        };
-
+        inline std::vector<std::string> statementCombatSystem( const int& maxNbLifePoints )
+        {
+            return 
+            {
+                "Dans ce jeu, les combats se déroulent ainsi.",
+                "A chaque tour, vous choisissez d'abord quelle ennemi vous souhaitez attaquer et avec quelle arme.",
+                "Une fois que vous avez attaqué, c'est au tour des ennemis.",
+                "Ils attaquent avec l'arme dont ils disposent à tour de rôle.",
+                "Vous avez " + std::to_string(maxNbLifePoints) + " points de vie. Lorsqu'il descende en dessous de 0, vous mort.",
+                "Le combat prend fin lorsque tous les ennemis sont morts ou lorsque vous êtes mort.",
+                "Lorsque vous tuez un ennemi vous pouvez récupérer leurs armes."
+            };
+        }
+        
         inline std::string titleCombo = "Tutoriel : Enchaînements";
         inline std::vector<std::string> statementCombo = {
             "Lors des combats des enchaînements peuvent être réalisés pour faire plus de dégats aux ennemis.",

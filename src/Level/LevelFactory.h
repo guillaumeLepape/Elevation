@@ -14,8 +14,10 @@
 #include "Level6.h"
 #include "Level7.h"
 #include "Level8.h"
+#include "Level9.h"
+#include "Level10.h"
 
-static constexpr int NB_LEVEL = 9;
+static constexpr int NB_LEVEL = 11;
 
 class LevelFactory
 {
@@ -36,6 +38,8 @@ class LevelFactory
             if ( levelNumber == 6 ) return std::make_unique<Level6>(player, options);
             if ( levelNumber == 7 ) return std::make_unique<Level7>(player, options);
             if ( levelNumber == 8 ) return std::make_unique<Level8>(player, options);
+            if ( levelNumber == 9 ) return std::make_unique<Level9>(player, options);
+            if ( levelNumber == 10 ) return std::make_unique<Level10>(player, options);
             assert(false); 
         }
 };

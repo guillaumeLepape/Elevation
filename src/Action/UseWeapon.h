@@ -38,8 +38,6 @@ class UseWeapon : public Action
 
         void triggerAction() override
         {   
-            // const Weapon* weapon = player_->weapons()->weaponFromName( nameWeapon_ );
-
             weapon_->attack( plug_ );
 
             actionWriter_.writeResult();
@@ -59,6 +57,7 @@ class UseWeapon : public Action
         }
 
         const std::string& nameWeapon() const { return weapon_->name(); }
+        const Weapon* weapon() const { return weapon_; }
 };
 
 #endif

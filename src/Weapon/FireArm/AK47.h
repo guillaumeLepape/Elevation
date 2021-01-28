@@ -13,7 +13,7 @@ class AK47 : public FireArm
 {
     public:
         AK47( const int& nbAmmo ) :
-            FireArm( data::Weapon::nameAK47, 90, nbAmmo, data::Weapon::statementUseAK47 )
+            FireArm( data::Weapon::nameAK47, 90, nbAmmo, 10, data::Weapon::statementUseAK47 )
         {
 
         }

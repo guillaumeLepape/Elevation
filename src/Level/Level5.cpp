@@ -45,7 +45,7 @@ void Level5::startLevel()
 
     if ( !options_.noRule_ )
     {
-        TutorialWriter tutorialCombatSystem( data::Tutorial::titleCombatSystem, data::Tutorial::statementCombatSystem );
+        TutorialWriter tutorialCombatSystem( data::Tutorial::titleCombatSystem, data::Tutorial::statementCombatSystem(MAX_LIFE_POINTS_PLAYER) );
         tutorialCombatSystem.writeTutorial();
     }
 

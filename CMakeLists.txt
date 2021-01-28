@@ -134,6 +134,8 @@ set(HEADER_LEVEL
     ${FOLDER_LEVEL}/Level6.h
     ${FOLDER_LEVEL}/Level7.h
     ${FOLDER_LEVEL}/Level8.h
+    ${FOLDER_LEVEL}/Level9.h
+    ${FOLDER_LEVEL}/Level10.h
 )
 
 set(SOURCE_LEVEL
@@ -147,6 +149,8 @@ set(SOURCE_LEVEL
     ${FOLDER_LEVEL}/Level6.cpp
     ${FOLDER_LEVEL}/Level7.cpp
     ${FOLDER_LEVEL}/Level8.cpp
+    ${FOLDER_LEVEL}/Level9.cpp
+    ${FOLDER_LEVEL}/Level10.cpp
 )
 
 #
