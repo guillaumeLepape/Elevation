@@ -12,6 +12,14 @@ ResultsData::ResultsData() :
     readData();
 }
 
+ResultsData::~ResultsData() 
+{
+    for ( auto p = results_.cbegin(); p != results_.cend(); p++ )
+    {
+        delete *p;
+    }
+}
+
 void ResultsData::readData()
 {
     for ( auto i = jsonObject_.cbegin(); i != jsonObject_.cend(); i++ )
@@ -20,10 +28,10 @@ void ResultsData::readData()
     }
 }
 
-void ResultsData::addResult( Player* player )
+void ResultsData::addResult( Player* const player )
 {
     const std::string& id = player->id();
-    auto x = [&id]( Player* player_lambda ) { return player_lambda->id() == id; };
+    auto x = [&id]( Player* const player_lambda ) { return player_lambda->id() == id; };
     results_.remove_if( x );
 
     results_.push_back( player );

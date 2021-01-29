@@ -257,7 +257,7 @@ set(SOURCE_WRITER
     ${FOLDER_WRITER}/ComboWriter.cpp
 )
 
-add_compile_options(-Wall -Wextra)
+add_compile_options(-g -Wall -Wextra)
 
 add_executable(main
     src/main.cpp

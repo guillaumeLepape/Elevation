@@ -49,13 +49,7 @@ int Selection::select
         selectionWriter.writeSelection();    
     }
 
-    for ( long unsigned int i = 0; i < actions.size(); i++ )
-    {
-        if ( choice == i + 1 )
-        {
-            actions[i]->triggerAction();
-        }
-    }    
+    actions[choice-1]->triggerAction();
 
     return choice - 1;   
 }

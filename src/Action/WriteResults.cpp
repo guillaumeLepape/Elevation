@@ -12,20 +12,21 @@
 WriteResults::WriteResults
 (
     Player* const player,
+    ResultsData* const resultsData,
     const std::string& statement,
     const std::string& result
 ) : 
     Action( statement, result ),
-    player_( player )
+    player_( player ),
+    resultsData_( resultsData )
 {
 
 }
 
 void WriteResults::triggerAction()
 {
-    ResultsData resultsData;
-    resultsData.addResult( player_ );
-    resultsData.writeData();
+    resultsData_->addResult( player_ );
+    resultsData_->writeData();
 
     actionWriter_.writeResult();
     std::cout << "\n";

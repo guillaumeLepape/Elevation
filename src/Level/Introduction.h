@@ -10,8 +10,8 @@
 class Introduction : public Level
 {
     public:
-        explicit Introduction( Player* player, const Options& options ) : 
-            Level(player, options)
+        explicit Introduction( Player* const player, ResultsData* const resultsData, const Options& options ) : 
+            Level(player, resultsData, options)
         {
 
         }

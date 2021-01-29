@@ -19,14 +19,14 @@ class ResultsData : public Data
     public:
         ResultsData();
 
+        ~ResultsData() override;
+
         void readData() override;
 
-        void addResult( Player* player );
+        void addResult( Player* const player );
         void writeData() const; 
 
         const std::list<Player*>& results() const { return results_; }
-
-        ~ResultsData() override = default;
 };
 
 #endif

@@ -61,6 +61,8 @@ class Player : public Entity
         */
         Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded );
 
+        Player( const Player& player ) = delete;
+
         /*!
             * \brief id accesor, initialized at the creation of Player, unmodifiable argument
             * \return unique id 

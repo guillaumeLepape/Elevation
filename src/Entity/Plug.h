@@ -5,6 +5,8 @@
     * \file Plug.h
 */
 
+#include <memory>
+
 #include "Entity.h"
 
 #include "Fist.h"
@@ -12,7 +14,7 @@
 class Plug : public Entity
 {
     private:
-        const Weapon* weapon_;
+        std::shared_ptr<const Weapon> weapon_;
 
     public:
         explicit Plug
@@ -24,7 +26,7 @@ class Plug : public Entity
 
         void changeWeapon( const Weapon* newWeapon );
 
-        const Weapon* weapon() const { return weapon_; }
+        const Weapon* weapon() const { return weapon_.get(); }
 };
 
 #endif

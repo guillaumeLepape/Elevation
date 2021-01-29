@@ -27,6 +27,9 @@ class Data
 
     public:
         Data( const std::string& folderFromRoot, const std::string& fileName );
+
+        Data( const Data& data ) = delete;
+
         virtual ~Data() = default;
 };
 

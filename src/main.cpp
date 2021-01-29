@@ -28,8 +28,11 @@ int main( int argc, char* argv[] )
     
     Rules::displayRules( options );
     
+    // Start the game at the begining
     StartGame startGame( data::Menu::statementStartGame, data::Menu::resultStartGame, options );
+    // Load previous game from results.json file
     LoadGame loadGame( data::Menu::statementLoadGame, data::Menu::resultLoadGame, options ); 
+    // Quit the game
     Quit quit( data::Menu::statementQuit, data::Menu::resultLoadGame ); 
 
     Selection::select(  

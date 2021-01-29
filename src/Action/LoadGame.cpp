@@ -27,8 +27,8 @@ LoadGame::LoadGame
 
 void LoadGame::triggerAction()
 {
-    ResultsData resultsData;
-    const auto& results = resultsData.results();
+    ResultsData* const resultsData = new ResultsData();
+    const auto& results = resultsData->results();
 
     if ( results.size() == 0 )
     {
@@ -40,30 +40,29 @@ void LoadGame::triggerAction()
             << Term::color( Term::style::reset );
         
         std::cout << "\n";
+
+        delete resultsData;
     }
     else
     {
         std::vector<Action*> actions;
         for ( auto r = results.cbegin(); r != results.cend(); r++ )
         {                
-            // std::list<Player*> results_;
-            Player* const player = *r;
-
             Action* startGame = new StartGame
             ( 
-                data::Menu::statementChooseLoadedGame( player->name(), player->nbLevelSuceeded() ), 
+                data::Menu::statementChooseLoadedGame( (*r)->name(), (*r)->nbLevelSuceeded() ), 
                 data::Menu::resultChooseLoadedGame, 
                 options_, 
-                player 
+                *r, 
+                resultsData
             );   
-            // Player* const player
 
             actions.push_back( startGame );
         }
 
-        Selection::select(
+        int result = Selection::select(
             actions,
             data::Menu::titleLoadGameMenu
-        );
+        );     
     }
 }

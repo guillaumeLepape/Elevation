@@ -18,5 +18,5 @@ Plug::Plug
 
 void Plug::changeWeapon( const Weapon* newWeapon )
 {
-    weapon_ = newWeapon;
+    weapon_ = std::shared_ptr<const Weapon>( newWeapon );
 }

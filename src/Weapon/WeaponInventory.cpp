@@ -27,7 +27,10 @@ WeaponInventory::WeaponInventory( const WeaponInventory& weaponInventory ) :
 
 WeaponInventory::~WeaponInventory()
 {
-    
+    for ( long unsigned int i = 0; i < std::vector<const Weapon*>::size(); i++ )
+    {
+        delete std::vector<const Weapon*>::operator[](i);
+    }
 }
 
 bool WeaponInventory::addWeapon( const Weapon* weapon )
