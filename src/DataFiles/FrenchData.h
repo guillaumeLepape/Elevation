@@ -643,6 +643,8 @@ namespace data
         // generic UseWeapon data statement for hammer
         inline std::string statementUseHammer("Martelez ! (Marteau)" );
 
+        inline std::string statementDivineStrike("Frappez comme un Dieu! (Frappe divine)" );
+
         inline std::string statementUseChopper("Hachez ! (Hachoir)" );
         inline std::string statementUseNoWeapon("");
 
@@ -666,6 +668,7 @@ namespace data
         inline std::string nameNoWeapon = "Pas d'arme";
 
         inline std::string nameFist = "Poing";
+        inline std::string nameDivineStrike = "Frappe Divine";
 
         inline std::string nameCutter = "Cutter";
         inline std::string nameKnife = "Couteau";

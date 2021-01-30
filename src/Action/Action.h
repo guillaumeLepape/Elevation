@@ -27,6 +27,9 @@ class Action
         
         }
 
+        Action( const Action& action ) = delete;
+        Action& operator=( const Action& action ) = delete;
+
         const ActionWriter& actionWriter() const { return actionWriter_; }
 
         virtual void triggerAction() = 0;

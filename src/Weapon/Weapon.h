@@ -35,6 +35,8 @@ class Weapon
         );
         
     public:
+        Weapon& operator=( const Weapon& weapon ) = delete;
+
         virtual ~Weapon() = default;
 
         const std::string& name() const { return name_; }

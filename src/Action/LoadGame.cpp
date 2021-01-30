@@ -28,7 +28,6 @@ LoadGame::LoadGame
 
 void LoadGame::triggerAction()
 {
-    // ResultsData* const resultsData = new ResultsData();
     const auto& results = resultsData_->results();
 
     if ( results.size() == 0 )
@@ -41,8 +40,6 @@ void LoadGame::triggerAction()
             << Term::color( Term::style::reset );
         
         std::cout << "\n";
-
-        // delete resultsData;
     }
     else
     {

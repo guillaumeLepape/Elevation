@@ -50,12 +50,12 @@ void Level9::startLevel()
     MessageWriter messageWriter0( data::Level9::message0, player_->name(), plug.name() );
     messageWriter0.writeMessage();
 
-    const Fist* fist = new Fist();
+    std::unique_ptr<Fist> fist( new Fist() );
     UseWeapon useWeapon
     (
         player_,
         &plug,
-        fist,
+        fist.get(),
         data::Weapon::resultUseWeapon( plug.name(), fist->damageWeapon() )
     );
     useWeapon.triggerAction();
