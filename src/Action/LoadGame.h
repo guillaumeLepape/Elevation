@@ -7,12 +7,16 @@
 
 #include "Action.h"
 
+#include <memory>
+
 // forward declaration of Options class
 class Options;
+class ResultsData;
 
 class LoadGame : public Action
 {
     private:
+        std::unique_ptr<ResultsData> resultsData_;
         const Options& options_;
 
     public:

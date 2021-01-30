@@ -31,15 +31,15 @@ void Level3::startLevel()
     MessageWriter messageWriter0( data::Level3::message0, player_->name(), plug.name() );
     messageWriter0.writeMessage();
 
-    const Fist* fist = new Fist();
-    UseWeapon useFist( player_, &plug, fist, data::Weapon::resultUseWeapon( plug.name(), fist->damageWeapon() ) );
-    useFist.triggerAction();
+    const std::unique_ptr<Fist> fist( new Fist() );
+    std::unique_ptr<UseWeapon> useFist( new UseWeapon( player_, &plug, fist.get(), data::Weapon::resultUseWeapon( plug.name(), fist->damageWeapon() ) ) );
+    useFist->triggerAction();
 
     MessageWriter messageWriter1( data::Level3::message1, player_->name(), plug.name() );
     messageWriter1.writeMessage();
 
     Selection::select(
-        { &useFist },
+        { useFist.get() },
         data::Action::titleChooseWeapon
     );
 
@@ -48,7 +48,7 @@ void Level3::startLevel()
     messageWriter2.writeMessage();
 
     Selection::select(
-        { &useFist },
+        { useFist.get() },
         data::Action::titleChooseWeapon
     );
 
@@ -56,7 +56,7 @@ void Level3::startLevel()
     messageWriter3.writeMessage();
 
     Selection::select(
-        { &useFist },
+        { useFist.get() },
         data::Action::titleChooseWeapon
     );
 
@@ -73,10 +73,10 @@ void Level3::startLevel()
     );
     addWeaponAction.triggerAction();
 
-    UseWeapon useKnife( player_, &plug, knife, data::Weapon::resultUseWeapon(plug.name(), knife->damageWeapon()) );
+    std::unique_ptr<UseWeapon> useKnife( new UseWeapon( player_, &plug, knife, data::Weapon::resultUseWeapon(plug.name(), knife->damageWeapon()) ) );
 
     Selection::select(
-        { &useFist, &useKnife },
+        { useFist.get(), useKnife.get() },
         data::Action::titleChooseWeapon
     );
 

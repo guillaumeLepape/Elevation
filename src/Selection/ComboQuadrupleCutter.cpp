@@ -29,11 +29,11 @@ void ComboQuadrupleCutter::triggerCombo
     const std::vector<UseWeapon*>& useWeapon
 )
 {
-    UseWeapon* useWeaponCombo = useWeapon[resultChooseWeapon];
-    const std::string& nameWeapon = useWeaponCombo->nameWeapon();
-
-    if ( nameWeapon == "Cutter" )
+    if ( useWeapon[resultChooseWeapon]->weapon()->name() == "Cutter" )
     {
+        UseWeapon* useWeaponCombo = useWeapon[resultChooseWeapon];  
+        const std::string& nameWeapon = useWeapon[resultChooseWeapon]->weapon()->name();
+
         useWeaponCombo->triggerAction();
         useWeaponCombo->triggerAction();
         useWeaponCombo->triggerAction();

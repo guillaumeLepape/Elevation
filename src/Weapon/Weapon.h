@@ -26,7 +26,6 @@ class Weapon
         const std::string statement_;
 
     protected:
-        Weapon();
         Weapon
         ( 
             const std::string& name, 

@@ -23,11 +23,11 @@ void Level::endOfLevel() const
     WriteResults writeResults( player_, resultsData_, data::Menu::statementSaveAndQuit, data::Menu::resultSaveAndQuit );
     writeResults.triggerAction();
 
-    Nothing continueAction( data::Menu::statementContinue, "" );
-    Quit quit( data::Menu::statementQuit, data::Menu::resultQuit );
+    std::unique_ptr<Nothing> continueAction( new Nothing( data::Menu::statementContinue, "" ) );
+    std::unique_ptr<Quit> quit( new Quit( data::Menu::statementQuit, data::Menu::resultQuit ) );
 
     Selection::select(
-        { &continueAction, &quit },
+        { continueAction.get(), quit.get() }, 
         data::Menu::titleContinueMenu
     );
 }

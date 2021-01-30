@@ -18,6 +18,8 @@ class Fist : public Weapon
 
         }
 
+        Fist( const Fist& fist ) = delete;
+
         ~Fist() override = default;
 };
 

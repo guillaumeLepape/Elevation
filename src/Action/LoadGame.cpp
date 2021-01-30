@@ -20,6 +20,7 @@ LoadGame::LoadGame
     const Options& options
 ) :
     Action( statement, result ),
+    resultsData_( new ResultsData() ),
     options_( options )
 {
 
@@ -27,8 +28,8 @@ LoadGame::LoadGame
 
 void LoadGame::triggerAction()
 {
-    ResultsData* const resultsData = new ResultsData();
-    const auto& results = resultsData->results();
+    // ResultsData* const resultsData = new ResultsData();
+    const auto& results = resultsData_->results();
 
     if ( results.size() == 0 )
     {
@@ -41,7 +42,7 @@ void LoadGame::triggerAction()
         
         std::cout << "\n";
 
-        delete resultsData;
+        // delete resultsData;
     }
     else
     {
@@ -54,7 +55,7 @@ void LoadGame::triggerAction()
                 data::Menu::resultChooseLoadedGame, 
                 options_, 
                 *r, 
-                resultsData
+                resultsData_.get()
             );   
 
             actions.push_back( startGame );

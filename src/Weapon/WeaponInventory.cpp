@@ -70,17 +70,24 @@ bool WeaponInventory::addWeapon( const Weapon* weapon )
 
 void WeaponInventory::deleteWeapon( const std::string& nameWeapon )
 {
-    auto lambdaSorter = [&nameWeapon]( const Weapon* weapon ) { return nameWeapon == weapon->name(); };
-
+    for(int i = 0; i < std::vector<const Weapon*>::size(); i++ )
+    {
+        if ( std::vector<const Weapon*>::operator[](i)->name() == nameWeapon )
+        {
+            delete std::vector<const Weapon*>::operator[](i);
+            std::vector<const Weapon*>::operator[](i) = nullptr;
+        }
+    }
+    
     std::vector<const Weapon*>::erase
     (
-        std::remove_if
-        ( 
+        std::remove
+        (
             std::vector<const Weapon*>::begin(), 
             std::vector<const Weapon*>::end(), 
-            lambdaSorter
-        ),
-        std::vector<const Weapon*>::end()
+            nullptr
+        ), 
+         std::vector<const Weapon*>::end()
     );
 }
 

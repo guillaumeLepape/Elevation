@@ -31,11 +31,6 @@ class WeaponFactory
 
         }
 
-        static const Weapon* newWeaponFistCombo( const std::string& nameWeapon )
-        {
-            return new WeaponFistCombo( *newWeapon( nameWeapon ) );
-        }
-
         static const Weapon* newFireArm( const std::string& nameWeapon, const int& nbAmmo )
         {
             if ( nameWeapon == data::Weapon::nameNinemm ) { return new Ninemm( nbAmmo ); }

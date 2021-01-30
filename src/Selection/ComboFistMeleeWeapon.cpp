@@ -39,29 +39,30 @@ void ComboFistMeleeWeapon::triggerCombo
             && !( plug->dead() ) && player_->weapons()->containWeaponType( WeaponType::meleeWeapon ))
     {
         // Build vector of useWeapon actions without the fist action
-        std::vector<Action*> useWeaponFistCombo; 
+        std::vector<const Weapon*> weaponFistComboVector;
 
         for ( long unsigned int i = 0; i < useWeapon.size(); i++ )
         {
-            const std::string& nameWeapon = useWeapon[i]->nameWeapon();
-
             // Generate combo weapon, if the weapon is a melee weapon
-            if ( (player_->weapons()->weaponFromName( nameWeapon ))->weaponType() == WeaponType::meleeWeapon )
+            if ( useWeapon[i]->weapon()->weaponType() == WeaponType::meleeWeapon )
             {
-                const Weapon* weaponFistCombo 
-                    = WeaponFactory::newWeaponFistCombo( useWeapon[i]->nameWeapon() );
-
-                player_->weapons()->addWeapon( weaponFistCombo );
-
-                useWeaponFistCombo.push_back(
-                    new UseWeapon(
-                        player_,
-                        plug,
-                        weaponFistCombo,
-                        data::Weapon::resultUseWeapon( plug->name(), weaponFistCombo->damageWeapon() )
-                    )
-                );
+                const Weapon* weaponFistCombo = new WeaponFistCombo( useWeapon[i]->weapon() );
+                weaponFistComboVector.push_back( weaponFistCombo );
             }
+        }
+
+        std::vector<Action*> useWeaponFistCombo; 
+
+        for ( int i = 0; i < weaponFistComboVector.size(); i++ )
+        {
+            useWeaponFistCombo.push_back(
+                new UseWeapon(
+                    player_,
+                    plug,
+                    weaponFistComboVector[i],
+                    data::Weapon::resultUseWeapon( plug->name(), weaponFistComboVector[i]->damageWeapon() )
+                )
+            );
         }
 
         Selection::select(
@@ -69,9 +70,14 @@ void ComboFistMeleeWeapon::triggerCombo
             data::Combo::titleFistMeleeWeapon
         );
 
-        for ( long unsigned int i = 0; i < useWeaponFistCombo.size(); i++ )
+        for ( int i = 0; i < weaponFistComboVector.size(); i++ )
         {
-            player_->weapons()->deleteWeapon( ((UseWeapon*) useWeaponFistCombo[i])->nameWeapon() );
+            delete weaponFistComboVector[i];
+        }
+
+        for ( int i = 0; i < useWeaponFistCombo.size(); i++ )
+        {
+            delete useWeaponFistCombo[i];
         }
     }       
 }

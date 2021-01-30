@@ -55,24 +55,15 @@ void Fight::startFight()
         {
             bool out = false;
 
-            std::vector<Action*> informationActions;
-            informationActions.push_back( 
-                new InformationWeaponInventory( player_->weapons(), data::Information::statementInformationWeapon, "" ) 
-            );
-            informationActions.push_back( 
-                new InformationCombo( combos_, data::Information::statementInformationCombo, "" ) 
-            );
-            informationActions.push_back( 
-                new Nothing( data::Information::statementNoInformation, "" )
-            );
-            informationActions.push_back( 
-                new Nothing( data::Information::statementNoInformationAnymore, "" ) 
-            );
+            InformationWeaponInventory informationWeaponInventory( player_->weapons(), data::Information::statementInformationWeapon, "" );
+            InformationCombo informationCombo( combos_, data::Information::statementInformationCombo, "" );
+            Nothing noInformation( data::Information::statementNoInformation, "" );
+            Nothing noInformationAnymore( data::Information::statementNoInformationAnymore, "" );
 
             while ( !out )
             {
                 int resultInformation = Selection::select(
-                    informationActions,
+                    { &informationWeaponInventory, &informationCombo, &noInformation, &noInformationAnymore},
                     data::Information::titleInformation
                 );
 
@@ -185,6 +176,15 @@ void Fight::startFight()
         {
             Regeneration regeneration( player_, "", "" );
             regeneration.triggerAction();
+        }
+
+        for ( int i = 0; i < choosePlugActions.size(); i++ )
+        {
+            delete choosePlugActions[i];
+        }
+        for ( int i = 0; i < useWeapons.size(); i++ )
+        {
+            delete useWeapons[i];
         }
     }
 
