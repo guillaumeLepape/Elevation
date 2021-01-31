@@ -5,23 +5,22 @@
     * \file WeaponInventory.h
 */
 
-#include <vector>
+#include <list>
+
 #include "Weapon.h"
 
-class WeaponInventory : public std::vector<const Weapon*>
+class WeaponInventory : public std::list<std::unique_ptr<const Weapon>>
 {
     public:
         WeaponInventory( const int& size, const Weapon* weapon );
-        WeaponInventory( const std::vector<const Weapon*>& weapon );
+        WeaponInventory( const std::list<const Weapon*>& weapon );
 
-        WeaponInventory( const WeaponInventory& weaponInventory );
-
-        ~WeaponInventory();
+        WeaponInventory( const WeaponInventory& weaponInventory ) = delete;
 
         bool addWeapon( const Weapon* weapon );
         void deleteWeapon( const std::string& nameWeapon );
         void deleteWeapon( const Weapon& weapon );
-        const Weapon* weaponFromName( const std::string& nameWeapon ) const;
+        // const Weapon* weaponFromName( const std::string& nameWeapon ) const;
         bool containWeaponType( const WeaponType& weaponType ) const;
 };
 

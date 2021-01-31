@@ -21,7 +21,7 @@
 Fight::Fight
 ( 
     Player* const player, 
-    const std::vector<Plug>& plugs, 
+    const std::vector<Plug*>& plugs, 
     const std::vector<Combo*>& combos,
     const bool& noRule,
     const bool& regeneration
@@ -85,13 +85,13 @@ void Fight::startFight()
         }
 
         // Choose the plug which player want to attack
-        const std::unique_ptr<Plug> choosenPlug = choosePlug();
+        Plug* const choosenPlug = choosePlug();
 
         // Choose the weapon to attack choosenPlug
-        ChooseWeaponResult chooseWeaponResult = chooseWeapon( choosenPlug.get() );
+        ChooseWeaponResult chooseWeaponResult = chooseWeapon( choosenPlug );
 
         // run the combos
-        runCombos( choosenPlug.get(), chooseWeaponResult.resultUseWeapon, chooseWeaponResult.useWeapons );
+        runCombos( choosenPlug, chooseWeaponResult.resultUseWeapon, chooseWeaponResult.useWeapons );
 
         const int countNumberOfDeadPlug = methodNumberOfDeadPlug();
 
@@ -116,11 +116,11 @@ void Fight::startFight()
 
         for ( auto e = plugs_.begin(); e != plugs_.end(); e++ )
         {
-            auto message = data::Action::resultPlugAttack(e->name(), e->weapon()->damageWeapon());
+            auto message = data::Action::resultPlugAttack((*e)->name(), (*e)->weapon()->damageWeapon());
             PlugAttack plugAttack
             ( 
                 player_, 
-                &(*e), 
+                *e, 
                 "", 
                 message
             );
@@ -157,7 +157,7 @@ bool Fight::enemiesDeadOrNot() const
 
     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
     {
-        result = result && e->dead();
+        result = result && (*e)->dead();
     }
 
     return result;
@@ -168,7 +168,7 @@ int Fight::methodNumberOfDeadPlug() const
     int numberOfDead = 0;
     for ( auto e = plugs_.cbegin(); e != plugs_.cend(); e++ )
     {
-        if ( e->dead() )
+        if ( (*e)->dead() )
         {
             numberOfDead++;
         }
@@ -176,21 +176,21 @@ int Fight::methodNumberOfDeadPlug() const
     return numberOfDead;
 }
 
-const std::unique_ptr<Plug> Fight::choosePlug()
+Plug* const Fight::choosePlug()
 {
     std::vector<Action*> choosePlugActions;
 
     for ( auto p = plugs_.begin(); p != plugs_.end(); p++ )
     {
         // user cannot attack dead plugs
-        if ( !p->dead() )
+        if ( !(*p)->dead() )
         {
             Action* choosePlug = 
                 new ChoosePlug
                 ( 
-                    &(*p), 
-                    data::Action::statementChoosePlug(p->name()), 
-                    data::Action::resultChoosePlug(p->name())
+                    *p, 
+                    data::Action::statementChoosePlug((*p)->name()), 
+                    data::Action::resultChoosePlug((*p)->name())
                 ); 
             choosePlugActions.push_back( choosePlug );
         }
@@ -201,7 +201,7 @@ const std::unique_ptr<Plug> Fight::choosePlug()
         data::Action::titleChoosePlug
     );
 
-    std::unique_ptr<Plug> choosenPlug( ((ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug() );
+    Plug* const choosenPlug( ((ChoosePlug*) choosePlugActions[resultChoosePlug] )->plug() );
 
     for ( int i = 0; i < choosePlugActions.size(); i++ )
     {
@@ -209,7 +209,7 @@ const std::unique_ptr<Plug> Fight::choosePlug()
     }
 
     
-    return std::unique_ptr<Plug>( std::move( choosenPlug ) );
+    return choosenPlug;
 }
 
 const ChooseWeaponResult Fight::chooseWeapon( Plug* const choosenPlug )
@@ -222,7 +222,7 @@ const ChooseWeaponResult Fight::chooseWeapon( Plug* const choosenPlug )
             new UseWeapon(
                 player_,
                 choosenPlug,
-                *w,
+                w->get(),
                 data::Weapon::resultUseWeapon( choosenPlug->name(), (*w)->damageWeapon() )
             )
         );

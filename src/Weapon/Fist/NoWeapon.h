@@ -23,6 +23,8 @@ class NoWeapon : public Weapon
         {
 
         }
+
+        ~NoWeapon() override = default;
 };
 
 #endif

@@ -12,7 +12,7 @@
 FightWriter::FightWriter
 ( 
     const Player* const player, 
-    const std::vector<Plug>& plugs 
+    const std::vector<Plug*>& plugs 
 ) :
     player_( player ),
     plugs_( plugs )
@@ -85,15 +85,15 @@ void FightWriter::writeGameBoard() const
     for( long unsigned int i = 0; i < plugs_.size(); i++ )
     {
         // display plugs only if they are not dead
-        if ( !(plugs_[i].dead()) )
+        if ( !(plugs_[i]->dead()) )
         {
-            nameFighters.push_back( plugs_[i].name() );
+            nameFighters.push_back( plugs_[i]->name() );
             lifePointsFighters.push_back( 
-                std::to_string( plugs_[i].nbLifePoints() ) + " points de vie" 
+                std::to_string( plugs_[i]->nbLifePoints() ) + " points de vie" 
             );
-            nameWeaponFighters.push_back( plugs_[i].weapon()->name() );
+            nameWeaponFighters.push_back( plugs_[i]->weapon()->name() );
             damageWeaponFighters.push_back(
-                std::to_string( plugs_[i].weapon()->damageWeapon() ) + " points d'attaque"
+                std::to_string( plugs_[i]->weapon()->damageWeapon() ) + " points d'attaque"
             );
         }
     }

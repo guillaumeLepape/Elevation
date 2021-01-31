@@ -73,7 +73,7 @@ void Level5::startLevel()
 
     Fight firstFight( 
         player_,
-        { guetteur },
+        { &guetteur },
         { comboFistMeleeWeapon.get() },
         options_.noRule_,
         false
@@ -98,7 +98,7 @@ void Level5::startLevel()
 
     Fight secondFight(
         player_,
-        { garde },
+        { &garde },
         { comboDoubleMeleeWeapon.get() },
         options_.noRule_,
         false
@@ -123,7 +123,7 @@ void Level5::startLevel()
 
     Fight thirdFight(
         player_,
-        { secondGarde },
+        { &secondGarde },
         {},
         options_.noRule_,
         false
@@ -159,7 +159,7 @@ void Level5::startLevel()
 
     Fight fight( 
         player_, 
-        { sacAPV, kamikaze, soutien },
+        { &sacAPV, &kamikaze, &soutien },
         { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(), comboQuadrupleCutter.get() },
         options_.noRule_
     );

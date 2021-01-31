@@ -12,10 +12,10 @@ class FightWriter
 {
     private:
         const Player* const player_;
-        const std::vector<Plug>& plugs_;
+        const std::vector<Plug*>& plugs_;
         
     public:
-        FightWriter( const Player* const player, const std::vector<Plug>& plugs );
+        FightWriter( const Player* const player, const std::vector<Plug*>& plugs );
 
         void writeHeader( const int& nbTurns ) const;
         void writeGameBoard() const;

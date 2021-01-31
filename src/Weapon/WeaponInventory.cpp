@@ -4,55 +4,44 @@
 
 #include "WeaponInventory.h"
 
-WeaponInventory::WeaponInventory( const int& size, const Weapon* weapon ) :
-    std::vector<const Weapon*>( size, weapon )
+WeaponInventory::WeaponInventory( const int& size, const Weapon* weapon )
 {
-
-}
-
-WeaponInventory::WeaponInventory( const std::vector<const Weapon*>& weapons ) :
-    std::vector<const Weapon*>( weapons )
-{
-
-}
-
-WeaponInventory::WeaponInventory( const WeaponInventory& weaponInventory ) :
-    std::vector<const Weapon*>()
-{
-    for ( long unsigned int i = 0; i < weaponInventory.size(); i++ )
-    {
-        std::vector<const Weapon*>::push_back( new Weapon(*(weaponInventory[i])) );
+    for ( int i = 0; i < size; i++ )
+    {    
+        std::list<std::unique_ptr<const Weapon>>::emplace_back( weapon );
     }
 }
 
-WeaponInventory::~WeaponInventory()
+WeaponInventory::WeaponInventory( const std::list<const Weapon*>& weapons )
 {
-    for ( long unsigned int i = 0; i < std::vector<const Weapon*>::size(); i++ )
+    for ( auto w = weapons.cbegin(); w != weapons.cend(); w++ )
     {
-        delete std::vector<const Weapon*>::operator[](i);
+        std::list<std::unique_ptr<const Weapon>>::emplace_back( *w );
     }
 }
 
 bool WeaponInventory::addWeapon( const Weapon* weapon )
 {
     auto it = std::find_if( 
-        std::vector<const Weapon*>::cbegin(), 
-        std::vector<const Weapon*>::cend(), 
-        [&weapon]( const Weapon* const lWeapon )
+        std::list<std::unique_ptr<const Weapon>>::cbegin(), 
+        std::list<std::unique_ptr<const Weapon>>::cend(), 
+        [&weapon]( const std::unique_ptr<const Weapon>& lWeapon )
         {
             return *(weapon) == *(lWeapon);
         } 
     );
 
-    bool present = (it != std::vector<const Weapon*>::cend());
+    bool present = (it != std::list<std::unique_ptr<const Weapon>>::cend());
     
     // If this condition is true, weapon is not in weapons_ so add it and sort the weapons_ vector
     if ( !present )
     {
-        std::vector<const Weapon*>::push_back( weapon );
+        std::list<std::unique_ptr<const Weapon>>::emplace_back( weapon );
         // sort on the number of damage Weapon
-        std::sort( std::vector<const Weapon*>::begin(), std::vector<const Weapon*>::end(), 
-            []( const Weapon* const weapon1, const Weapon* const weapon2 ) -> bool
+
+        std::list<std::unique_ptr<const Weapon>>::sort(
+            []( const std::unique_ptr<const Weapon>& weapon1, 
+                const std::unique_ptr<const Weapon>& weapon2 ) -> bool
         {
             if ( weapon1->weaponType() == weapon2->weaponType() )
             {
@@ -70,24 +59,12 @@ bool WeaponInventory::addWeapon( const Weapon* weapon )
 
 void WeaponInventory::deleteWeapon( const std::string& nameWeapon )
 {
-    for(int i = 0; i < std::vector<const Weapon*>::size(); i++ )
-    {
-        if ( std::vector<const Weapon*>::operator[](i)->name() == nameWeapon )
-        {
-            delete std::vector<const Weapon*>::operator[](i);
-            std::vector<const Weapon*>::operator[](i) = nullptr;
-        }
-    }
-    
-    std::vector<const Weapon*>::erase
+    std::list<std::unique_ptr<const Weapon>>::remove_if
     (
-        std::remove
-        (
-            std::vector<const Weapon*>::begin(), 
-            std::vector<const Weapon*>::end(), 
-            nullptr
-        ), 
-         std::vector<const Weapon*>::end()
+        [&nameWeapon]( const std::unique_ptr<const Weapon>& weapon ) -> bool
+        {
+            return nameWeapon == weapon->name();
+        }
     );
 }
 
@@ -96,24 +73,27 @@ void WeaponInventory::deleteWeapon( const Weapon& weapon )
     deleteWeapon( weapon.name() );
 }
 
-const Weapon* WeaponInventory::weaponFromName( const std::string& nameWeapon ) const
-{
-    for ( auto w = std::vector<const Weapon*>::cbegin(); w != std::vector<const Weapon*>::cend(); w++ )
-    {
-        if ( (*w)->name() == nameWeapon )
-        {
-            return &(**w);
-        }
-    }
+// const Weapon* WeaponInventory::weaponFromName( const std::string& nameWeapon ) const
+// {
+//     for ( 
+//         auto w = std::list<std::unique_ptr<const Weapon>>::cbegin(); 
+//         w != std::list<std::unique_ptr<const Weapon>>::cend(); 
+//         w++ )
+//     {
+//         if ( (*w)->name() == nameWeapon )
+//         {
+//             return &(**w);
+//         }
+//     }
 
-    assert(false);
-}
+//     assert(false);
+// }
 
 bool WeaponInventory::containWeaponType( const WeaponType& weaponType ) const
 {
     for ( 
-        auto w = std::vector<const Weapon*>::cbegin(); 
-        w != std::vector<const Weapon*>::cend(); 
+        auto w = std::list<std::unique_ptr<const Weapon>>::cbegin(); 
+        w != std::list<std::unique_ptr<const Weapon>>::cend(); 
         w++ 
     )
     {

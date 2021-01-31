@@ -5,7 +5,6 @@
     * \file Selection.h
 */
 
-#include "Action.h"
 #include "SelectionWriter.h"
 
 class Selection

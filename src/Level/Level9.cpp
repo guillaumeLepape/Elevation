@@ -25,6 +25,7 @@
 #include "AK47.h"
 #include "Chopper.h"
 #include "NoWeapon.h"
+#include "Fist.h"
 
 #include "Languages.h"
 
@@ -50,12 +51,12 @@ void Level9::startLevel()
     MessageWriter messageWriter0( data::Level9::message0, player_->name(), plug.name() );
     messageWriter0.writeMessage();
 
-    std::unique_ptr<Fist> fist( new Fist() );
+    const Fist* fist = new Fist();
     UseWeapon useWeapon
     (
         player_,
         &plug,
-        fist.get(),
+        fist,
         data::Weapon::resultUseWeapon( plug.name(), fist->damageWeapon() )
     );
     useWeapon.triggerAction();
@@ -105,7 +106,7 @@ void Level9::startLevel()
 
     Fight fight(
         player_,
-        { plug },
+        { &plug },
         { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(), comboQuadrupleCutter.get() },
         options_.noRule_
     );

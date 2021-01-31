@@ -9,20 +9,22 @@
 
 #include "Entity.h"
 
-#include "Fist.h"
+#include "NoWeapon.h"
 
 class Plug : public Entity
 {
     private:
-        std::shared_ptr<const Weapon> weapon_;
+        std::unique_ptr<const Weapon> weapon_;
 
     public:
         explicit Plug
         ( 
             const std::string& name, 
             const int& nbLifePoints = 100, 
-            const Weapon* weapon = new Fist() 
+            const Weapon* weapon = new NoWeapon() 
         );
+
+        ~Plug() override = default;
 
         void changeWeapon( const Weapon* newWeapon );
 

@@ -27,7 +27,7 @@ Player::Player
     const int& nbLevelSuceeded,
     const int& nbLifePoints,
     const int& money,
-    const std::vector<const Weapon*>& weapons
+    const std::list<const Weapon*>& weapons
 ) :
     Entity( pseudo, nbLifePoints, MAX_LIFE_POINTS_PLAYER ),
     id_( id ),
@@ -63,7 +63,7 @@ nlohmann::json Player::writeJson() const
 
 Player* Player::readJson( const nlohmann::json& jsonInput )
 {   
-    std::vector<const Weapon*> weapons;
+    std::list<const Weapon*> weapons;
     for ( auto wJson = jsonInput["weapons"].cbegin(); wJson != jsonInput["weapons"].cend(); wJson++ )
     {
         bool nbAmmoPresent = wJson->count("nbAmmo");

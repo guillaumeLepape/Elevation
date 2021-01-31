@@ -17,6 +17,8 @@ class DivineStrike : public Weapon
         {
 
         }
+
+        ~DivineStrike() override = default;
 };
 
 #endif

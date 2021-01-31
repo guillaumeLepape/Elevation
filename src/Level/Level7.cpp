@@ -42,7 +42,7 @@ void Level7::startLevel()
 
     Fight fight(
         player_,
-        { boss },
+        { &boss },
         { comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(), comboQuadrupleCutter.get() },
         options_.noRule_
     );

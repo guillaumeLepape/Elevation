@@ -45,7 +45,7 @@ class InformationWeaponInventory : public Action
 
             for (auto w = weaponInventory_->cbegin(); w != weaponInventory_->end(); w++ )
             {
-                WeaponWriter weaponWriter( *w );
+                WeaponWriter weaponWriter( (*w).get() );
                 weaponWriter.informationWeapon();
             }
         }

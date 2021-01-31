@@ -32,7 +32,7 @@ class FireArm : public Weapon
         }    
 
     public:
-        ~FireArm() override {}
+        ~FireArm() override = default;
 
         nlohmann::json writeJson() const override
         {

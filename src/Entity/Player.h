@@ -46,7 +46,7 @@ class Player : public Entity
             const int& nbLevelSuceeded,
             const int& nbLifePoints,
             const int& money,
-            const std::vector<const Weapon*>& weapons
+            const std::list<const Weapon*>& weapons
         );
 
     public:
@@ -62,6 +62,8 @@ class Player : public Entity
         Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded );
 
         Player( const Player& player ) = delete;
+
+        ~Player() override = default;
 
         /*!
             * \brief id accesor, initialized at the creation of Player, unmodifiable argument

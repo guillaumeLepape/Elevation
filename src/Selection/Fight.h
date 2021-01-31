@@ -17,7 +17,7 @@ class Fight
 {
     private:
         Player* const player_;
-        std::vector<Plug> plugs_;
+        std::vector<Plug*> plugs_;
         std::vector<Combo*> combos_;
         bool regeneration_;
 
@@ -29,7 +29,7 @@ class Fight
         int methodNumberOfDeadPlug() const;
         bool enemiesDeadOrNot() const;
 
-        const std::unique_ptr<Plug> choosePlug();
+        Plug* const choosePlug();
 
         const ChooseWeaponResult chooseWeapon( Plug* const plug );
 
@@ -43,7 +43,7 @@ class Fight
         Fight
         ( 
             Player* const player, 
-            const std::vector<Plug>& plugs, 
+            const std::vector<Plug*>& plugs, 
             const std::vector<Combo*>& combos,
             const bool& noRule,
             const bool& regeneration = true
