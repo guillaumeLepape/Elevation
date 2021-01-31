@@ -5,7 +5,7 @@
 #include "ComboFistMeleeWeapon.h"
 #include "Selection.h"
 
-#include "WeaponFactory.h"
+#include "WeaponFistCombo.h"
 
 #include "Languages.h"
 

@@ -7,6 +7,12 @@
 
 #include "Combo.h"
 
+struct ChooseWeaponResult
+{
+    int resultUseWeapon;
+    std::vector<Action*> useWeapons;
+};
+
 class Fight
 {
     private:
@@ -22,6 +28,17 @@ class Fight
 
         int methodNumberOfDeadPlug() const;
         bool enemiesDeadOrNot() const;
+
+        const std::unique_ptr<Plug> choosePlug();
+
+        const ChooseWeaponResult chooseWeapon( Plug* const plug );
+
+        void runCombos
+        ( 
+            Plug* const choosenPlug, 
+            const int& resultUseWeapon, 
+            const std::vector<Action*>& useWeapons 
+        );
     public:
         Fight
         ( 
