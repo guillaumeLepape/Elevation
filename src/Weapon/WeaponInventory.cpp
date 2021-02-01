@@ -53,6 +53,10 @@ bool WeaponInventory::addWeapon( const Weapon* weapon )
             }
         });
     }
+    else
+    {
+        delete weapon;
+    }
 
     return present;
 }
@@ -72,22 +76,6 @@ void WeaponInventory::deleteWeapon( const Weapon& weapon )
 {
     deleteWeapon( weapon.name() );
 }
-
-// const Weapon* WeaponInventory::weaponFromName( const std::string& nameWeapon ) const
-// {
-//     for ( 
-//         auto w = std::list<std::unique_ptr<const Weapon>>::cbegin(); 
-//         w != std::list<std::unique_ptr<const Weapon>>::cend(); 
-//         w++ )
-//     {
-//         if ( (*w)->name() == nameWeapon )
-//         {
-//             return &(**w);
-//         }
-//     }
-
-//     assert(false);
-// }
 
 bool WeaponInventory::containWeaponType( const WeaponType& weaponType ) const
 {

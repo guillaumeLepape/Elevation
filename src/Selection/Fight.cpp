@@ -98,16 +98,12 @@ void Fight::startFight()
         if ( numberOfDeadPlug_ != countNumberOfDeadPlug )
         {
             numberOfDeadPlug_ = countNumberOfDeadPlug;
-            const Weapon* weapon
-            (
-                choosenPlug->weapon()
-            );
             AddWeaponAction addWeaponAction
             ( 
                 player_, 
-                weapon, 
+                choosenPlug, 
                 "", 
-                data::Action::resultAddWeapon(weapon->name()) 
+                data::Action::resultAddWeapon(choosenPlug->weapon()->name()) 
             );
             addWeaponAction.triggerAction();
 
@@ -116,15 +112,18 @@ void Fight::startFight()
 
         for ( auto e = plugs_.begin(); e != plugs_.end(); e++ )
         {
-            auto message = data::Action::resultPlugAttack((*e)->name(), (*e)->weapon()->damageWeapon());
-            PlugAttack plugAttack
-            ( 
-                player_, 
-                *e, 
-                "", 
-                message
-            );
-            plugAttack.triggerAction();
+            if ( !((*e)->dead()) )
+            {
+                auto message = data::Action::resultPlugAttack((*e)->name(), (*e)->weapon()->damageWeapon());
+                PlugAttack plugAttack
+                ( 
+                    player_, 
+                    *e, 
+                    "", 
+                    message
+                );
+                plugAttack.triggerAction();
+            }
 
             if ( player_->dead() )
             {

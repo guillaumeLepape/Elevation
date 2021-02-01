@@ -259,32 +259,33 @@ set(SOURCE_WRITER
 
 add_compile_options(-g -Wall -Wextra)
 
+set(HEADER_MAIN
+    ${HEADER_ACTION}
+    ${HEADER_DATA}
+    ${HEADER_DATAFILES}
+    ${HEADER_LEVEL}
+    ${HEADER_ENTITY}
+    ${HEADER_SELECTION}
+    ${HEADER_WRITER}
+    ${HEADER_WEAPON}
+)
+
+set(SOURCE_MAIN 
+    ${SOURCE_ACTION}
+    ${SOURCE_DATA}
+    ${SOURCE_DATAFILES}
+    ${SOURCE_LEVEL}
+    ${SOURCE_ENTITY}
+    ${SOURCE_SELECTION}
+    ${SOURCE_WRITER}
+    ${SOURCE_WEAPON}
+)
+
 add_executable(main
     src/main.cpp
     
-    ${HEADER_ACTION}
-    ${SOURCE_ACTION}
-
-    ${HEADER_DATA}
-    ${SOURCE_DATA}
-
-    ${HEADER_DATAFILES}
-    ${SOURCE_DATAFILES}
-
-    ${HEADER_LEVEL}
-    ${SOURCE_LEVEL}
-
-    ${HEADER_ENTITY}
-    ${SOURCE_ENTITY}
-
-    ${HEADER_SELECTION}
-    ${SOURCE_SELECTION}
-
-    ${HEADER_WRITER}
-    ${SOURCE_WRITER}
-
-    ${HEADER_WEAPON}
-    ${SOURCE_WEAPON}
+    ${HEADER_MAIN}
+    ${SOURCE_MAIN}
 )   
 
 add_executable(dataset

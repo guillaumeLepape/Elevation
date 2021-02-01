@@ -9,12 +9,28 @@
 AddWeaponAction::AddWeaponAction
 ( 
     Player* const player,
-    const Weapon* const weapon,
+    Plug* const plug,
     const std::string& statement, 
     const std::string& result 
 ) :
     Action( statement, result ),
     player_( player ),
+    plug_( plug ),
+    weapon_( nullptr )
+{
+
+}
+
+AddWeaponAction::AddWeaponAction
+(
+    Player* const player,
+    const Weapon* weapon,
+    const std::string& statement, 
+    const std::string& result  
+) :
+    Action( statement, result ),
+    player_( player ),
+    plug_( nullptr ),
     weapon_( weapon )
 {
 
@@ -23,13 +39,28 @@ AddWeaponAction::AddWeaponAction
 
 void AddWeaponAction::triggerAction()
 {
-    if ( weapon_->weaponType() != WeaponType::noWeapon )
+    if ( weapon_ == nullptr )
     {
-        bool present = player_->weapons()->addWeapon( weapon_ );
-
-        if ( !present )
+        if ( plug_->weapon()->weaponType() != WeaponType::noWeapon )
         {
-            actionWriter_.writeResult();
+            bool present = player_->weapons()->addWeapon( plug_->realeaseWeapon() );
+
+            if ( !present )
+            {
+                actionWriter_.writeResult();
+            }
+        }
+    }
+    else
+    {
+        if ( weapon_->weaponType() != WeaponType::noWeapon )
+        {
+            bool present = player_->weapons()->addWeapon( weapon_ );
+
+            if ( !present )
+            {
+                actionWriter_.writeResult();
+            }
         }
     }
 }

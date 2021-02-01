@@ -20,7 +20,6 @@ class WeaponInventory : public std::list<std::unique_ptr<const Weapon>>
         bool addWeapon( const Weapon* weapon );
         void deleteWeapon( const std::string& nameWeapon );
         void deleteWeapon( const Weapon& weapon );
-        // const Weapon* weaponFromName( const std::string& nameWeapon ) const;
         bool containWeaponType( const WeaponType& weaponType ) const;
 };
 
