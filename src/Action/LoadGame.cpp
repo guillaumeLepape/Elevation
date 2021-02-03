@@ -58,7 +58,7 @@ void LoadGame::triggerAction()
             actions.push_back( startGame );
         }
 
-        int result = Selection::select(
+        Selection::select(
             actions,
             data::Menu::titleLoadGameMenu
         );     

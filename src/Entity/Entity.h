@@ -53,6 +53,12 @@ class Entity
         // Decrease the number of life points by the arg nbLifePoints
         void decreaseLifePoints( const int& nbLifePoints ) { nbLifePoints_ -= nbLifePoints; }
 
+        void increaseMaxLifePoints( int maxNbLifePoints ) 
+        { 
+            maxNbLifePoints_ += maxNbLifePoints;
+            nbLifePoints_ += maxNbLifePoints;
+        }
+
         bool fullLife() const { return nbLifePoints_ == maxNbLifePoints_; }
 
         /*!

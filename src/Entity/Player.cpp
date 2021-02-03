@@ -26,10 +26,11 @@ Player::Player
     const std::string& id,
     const int& nbLevelSuceeded,
     const int& nbLifePoints,
+    const int& maxLifePoints,
     const int& money,
     const std::list<const Weapon*>& weapons
 ) :
-    Entity( pseudo, nbLifePoints, MAX_LIFE_POINTS_PLAYER ),
+    Entity( pseudo, nbLifePoints, maxLifePoints ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
     money_(money),
@@ -54,6 +55,7 @@ nlohmann::json Player::writeJson() const
         { "id", id_ },
         { "nbLevelSuceeded", nbLevelSuceeded_ },
         { "nbLifePoints", nbLifePoints_ },
+        { "maxLifePoints", maxNbLifePoints_ },
         { "money", money_ },
         { "weapons", jsonWeaponArray }
     };
@@ -88,6 +90,7 @@ Player* Player::readJson( const nlohmann::json& jsonInput )
         jsonInput["id"],
         jsonInput["nbLevelSuceeded"],
         jsonInput["nbLifePoints"],
+        jsonInput["maxLifePoints"],
         jsonInput["money"],
         weapons
     );

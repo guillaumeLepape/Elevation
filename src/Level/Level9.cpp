@@ -20,6 +20,7 @@
 
 #include "PlugAttack.h"
 #include "RegenerateAllLife.h"
+#include "IncreaseMaxLifePoints.h"
 
 #include "Knife.h"
 #include "AK47.h"
@@ -114,6 +115,17 @@ void Level9::startLevel()
 
     MessageWriter messageWriter5( data::Level9::message5, player_->name(), plug.name() );
     messageWriter5.writeMessage();
+
+    regenerateAllLife.triggerAction();
+
+    IncreaseMaxLifePoints increaseMaxLifePoints
+    ( 
+        player_, 
+        3900, 
+        "", 
+        data::Action::resultsIncreaseMaxLifePoints( 3900 ) 
+    );
+    increaseMaxLifePoints.triggerAction();
 
     Level9::endOfLevel();
     std::cout << "\n";

@@ -47,7 +47,7 @@ class Regeneration : public Action
                         nbLifePointsRegeneration = 90;
                         break;
                     case 10:
-                        nbLifePointsRegeneration = -20;
+                        nbLifePointsRegeneration = -100;
                         break;
                     default:
                         nbLifePointsRegeneration = 0;

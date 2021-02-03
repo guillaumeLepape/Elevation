@@ -45,6 +45,7 @@ class Player : public Entity
             const std::string& id,
             const int& nbLevelSuceeded,
             const int& nbLifePoints,
+            const int& maxLifePoints,
             const int& money,
             const std::list<const Weapon*>& weapons
         );

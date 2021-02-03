@@ -35,6 +35,7 @@ set(HEADER_ACTION
     ${FOLDER_ACTION}/Regeneration.h
     ${FOLDER_ACTION}/RegenerateAllLife.h
     ${FOLDER_ACTION}/AddWeaponAction.h
+    ${FOLDER_ACTION}/IncreaseMaxLifePoints.h
 
     ${FOLDER_ACTION}/InformationCombo.h
     ${FOLDER_ACTION}/InformationWeaponInventory.h

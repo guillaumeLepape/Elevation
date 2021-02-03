@@ -37,14 +37,18 @@ Fight::Fight
 
 }
 
-void Fight::startFight()
+void Fight::startFight
+( 
+    const std::vector<MessageWriter>& messageWriter,
+    std::function<bool(Player* const player)> predicate 
+)
 {
     int nbTurns = 0;
 
     FightWriter fightWriter( player_, plugs_ );
 
     // while all enemies are not dead or player is not dead
-    while ( !enemiesDeadOrNot() && !player_->dead() && nbTurns < 1000 )
+    while ( !enemiesDeadOrNot() && !predicate(player_) && nbTurns < 1000 )
     {
         nbTurns++;
 
@@ -139,6 +143,12 @@ void Fight::startFight()
             regeneration.triggerAction();
         }
 
+        // Check if the index is valid 
+        if ( nbTurns - 1 < messageWriter.size() )
+        {        
+            messageWriter[nbTurns - 1].writeMessage(); 
+        }
+
         for ( int i = 0; i < chooseWeaponResult.useWeapons.size(); i++ )
         {
             delete chooseWeaponResult.useWeapons[i];
@@ -175,7 +185,7 @@ int Fight::methodNumberOfDeadPlug() const
     return numberOfDead;
 }
 
-Plug* const Fight::choosePlug()
+Plug* Fight::choosePlug()
 {
     std::vector<Action*> choosePlugActions;
 

@@ -6,6 +6,7 @@
 */
 
 #include "Combo.h"
+#include "MessageWriter.h"
 
 struct ChooseWeaponResult
 {
@@ -29,7 +30,7 @@ class Fight
         int methodNumberOfDeadPlug() const;
         bool enemiesDeadOrNot() const;
 
-        Plug* const choosePlug();
+        Plug* choosePlug();
 
         const ChooseWeaponResult chooseWeapon( Plug* const plug );
 
@@ -49,7 +50,11 @@ class Fight
             const bool& regeneration = true
         );
 
-        void startFight();
+        void startFight
+        (   
+            const std::vector<MessageWriter>& messageWriter = {}, 
+            std::function<bool(Player* const player)> predicate = []( Player* const player ){ return player->dead(); }
+        );
 
 };
 

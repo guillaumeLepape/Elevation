@@ -1,7 +1,6 @@
 #ifndef FRENCH_DATA_H
 #define FRENCH_DATA_H
 
-#include <memory>
 #include <cassert>
 
 #include "NameSpeaker.h"
@@ -371,7 +370,15 @@ namespace data
         inline int minut = 30;
 
         inline Message message0 = {
+            {NameSpeaker::player, "Est ce qui se passe, mon corps !"},
+            {NameSpeaker::plug, "La drogue te décompose."},
+            {NameSpeaker::plug, "Tu es donc bien faible face à ma puissance."},
+            {NameSpeaker::plug, "Ah, tu es encore en vie. Je te laisse encore une chance."}
+        };
 
+        inline Message message1 = {
+            {NameSpeaker::plug, "Tu t'es pris pour qui."},
+            {NameSpeaker::plug, "Tu as peut-être détruit toutes ces imbéciles, mais face à moi tu ne peux rien."}
         };
     } // namespace Level10
 
@@ -421,6 +428,11 @@ namespace data
         inline std::string resultAddWeapon( const std::string& nameWeapon )
         {
             return nameWeapon + " ajouté à votre inventaire.";
+        }
+
+        inline std::string resultsIncreaseMaxLifePoints( const int& maxLifePoints )
+        {
+            return "Votre nombre de points de vie maximal augmente de " + std::to_string(maxLifePoints) + " points.";
         }
     } // namespace Action
 
