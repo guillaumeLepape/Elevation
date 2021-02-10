@@ -19,10 +19,10 @@ namespace data
 
         // Messages data
         inline Message message0 = {
-            {NameSpeaker::description, "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée que vous avez passé chez votre ami."},
-            {NameSpeaker::description, "C'est certainement dû à la consommation massive et diverse de drogues."},
-            {NameSpeaker::description, "Il vous faudra donc persister sur cette lancée en allant vous approvisionnez auprès de vos 9 dealeurs préférés."},
-            {NameSpeaker::description, "La consommation de ces 9 drogues est votre seul moyen de changer radicalement votre existence."}
+            {NameSpeaker::description, "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée que vous avez passé chez votre amie."},
+            {NameSpeaker::player, "C'est certainement dû à la consommation massive et diverse de drogues."},
+            {NameSpeaker::player, "Il me faut persister sur cette lancée en allant m'approvisionnez auprès de mes 10 dealeurs préférés."},
+            {NameSpeaker::description, "La consommation de ces 10 drogues est votre seul moyen de changer radicalement votre existence."}
         };
 
         inline Message message1 = {
@@ -137,7 +137,7 @@ namespace data
             {NameSpeaker::player, "Ok, ca va être juste."},
             {NameSpeaker::plug, "C'est 20 balles ou rien."},
             {NameSpeaker::description, "Vous vous taisez. Vous serrez le poing."},
-            {NameSpeaker::plug, "Qu'est ce qui t'arrive, frère ? Tu as l'air grave défoncé."},
+            {NameSpeaker::plug, "Qu'est ce qui t'arrive, meuf ? Tu as l'air grave défoncée."},
             {NameSpeaker::description, "Il a raison."},
             {NameSpeaker::description, "J'ai pas le temps pour ça. Le sang me monte à la tête."}
         };
@@ -164,6 +164,10 @@ namespace data
             {NameSpeaker::plug, "Ah."},
             {NameSpeaker::description, "Le produit tombe au sol ainsi qu'un couteau."},
             {NameSpeaker::description, "Vous mettez le shit dans votre poche et saisissez le couteau."}
+        };
+
+        inline Message message5 = {
+            {NameSpeaker::description, "Roule. Fume."}
         };
     } // namespace Level3
 
@@ -228,7 +232,7 @@ namespace data
         };
 
         inline Message message3 = {
-            {NameSpeaker::player, "Encore une personne tué de ma main, pas le choix faut que je continue."},
+            {NameSpeaker::player, "Encore une personne tuée de ma main, pas le choix faut que je continue."},
             {NameSpeaker::player, "N'empêche j'ai plus d'armes, comment je vais faire."},
             {NameSpeaker::description, "Vous ouvrez la porte qui va vous mener au produit tant convoité."},
             {NameSpeaker::plug, "Non pas ce fou furieux !"}
@@ -246,7 +250,7 @@ namespace data
 
         inline Message message6 = {
             {NameSpeaker::player, "En allant par là, je devrais trouver la drogue."},
-            {NameSpeaker::plug, "Putain c'est la pétasse qui a buté tout le monde. On se le fait."},
+            {NameSpeaker::plug, "Putain c'est la pétasse qui a buté tout le monde. On s'la fait."},
             {NameSpeaker::player, "Enfin. J'ai plus qu'à buter ces 3 batards et c'est torché."}
         };
 
@@ -265,7 +269,7 @@ namespace data
 
         inline Message message0 = {
             {NameSpeaker::player, "Avec toutes ces histoires, il est temps de rentrer chez soi."},
-            {NameSpeaker::description, "Arrivé chez vous, vous vous asseyez sur le canapé."},
+            {NameSpeaker::description, "Arrivée chez vous, vous vous asseyez sur le canapé."},
             {NameSpeaker::player, "Ca tourne, sa mère. J'ai pas fini mais faut que je me repose."},
             {NameSpeaker::player, "Il me reste quelque champis, parfait."},
             {NameSpeaker::description, "Poele. Soupe de champis"},
@@ -321,7 +325,7 @@ namespace data
             {NameSpeaker::description, "BANG ! "},
             {NameSpeaker::description, "PAW !"},
             {NameSpeaker::player, "Deux balles dans le crane ca devrait suffire."},
-            {NameSpeaker::player, "Le crack est là, je vais le fumer ici."},
+            {NameSpeaker::player, "Il y a du crack, je vais le fumer ici."},
             {NameSpeaker::description, "Pipe à crack. Briquet."}
         };
     } // namespace Level8

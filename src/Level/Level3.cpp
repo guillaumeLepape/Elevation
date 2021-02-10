@@ -80,6 +80,9 @@ void Level3::startLevel()
         data::Action::titleChooseWeapon
     );
 
+    MessageWriter messageWriter5( data::Level3::message5, player_->name(), plug.name() );
+    messageWriter5.writeMessage();
+
     Level::endOfLevel();
 
     std::cout << "\n";
