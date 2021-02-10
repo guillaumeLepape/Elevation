@@ -137,6 +137,7 @@ set(HEADER_LEVEL
     ${FOLDER_LEVEL}/Level8.h
     ${FOLDER_LEVEL}/Level9.h
     ${FOLDER_LEVEL}/Level10.h
+    ${FOLDER_LEVEL}/Outro.h
 )
 
 set(SOURCE_LEVEL
@@ -152,6 +153,7 @@ set(SOURCE_LEVEL
     ${FOLDER_LEVEL}/Level8.cpp
     ${FOLDER_LEVEL}/Level9.cpp
     ${FOLDER_LEVEL}/Level10.cpp
+    ${FOLDER_LEVEL}/Outro.cpp
 )
 
 #
@@ -179,6 +181,7 @@ set(HEADER_WEAPON
     ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/Hammer.h
     ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/Katana.h
     ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/Chopper.h
+    ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/Heroine.h
     ${FOLDER_WEAPON}/${FOLDER_MELEE_WEAPON}/WeaponFistCombo.h
     ${FOLDER_WEAPON}/${FOLDER_FIRE_ARM}/FireArm.h
     ${FOLDER_WEAPON}/${FOLDER_FIRE_ARM}/Ninemm.h

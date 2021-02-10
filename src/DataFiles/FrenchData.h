@@ -306,7 +306,7 @@ namespace data
             return {
                 {NameSpeaker::player, "Ca part en couilles là. Il faut que j'aille voir " + plugName + " pour qu'elle m'aide."},
                 {NameSpeaker::player, "J'ai pas de sang sur moi, je peux tappe des hallus maintenant."},
-                {NameSpeaker::description, "Malgré votre état, vous arrivez enfin devant chez " + plugName + ", l'un de vos plus fidèles amies."},
+                {NameSpeaker::description, "Malgré votre état, vous arrivez enfin devant chez " + plugName + ", l'une de vos plus fidèles amies."},
                 {NameSpeaker::description, "Arrivé devant la porte, celle-ci s'ouvre par miracle."},
                 {NameSpeaker::plug, "Pourquoi ?"},
                 {NameSpeaker::player, "Ah merde mon couteau."},
@@ -343,7 +343,7 @@ namespace data
         };
 
         inline Message message2 = {
-            {NameSpeaker::plug, "Creve sale pute."}
+            {NameSpeaker::plug, "Crêve sale pute."}
         };
 
         inline Message message3 = {
@@ -359,7 +359,19 @@ namespace data
         };
 
         inline Message message5 = {
-            {NameSpeaker::player, ""}
+            {NameSpeaker::player, "Cette sensation."},
+            {NameSpeaker::player, "Je n'ai jamais rien vécu de tel."},
+            {NameSpeaker::player, "Ce sentiment de plénitude."},
+            {NameSpeaker::player, "Tous ces meurtres auront servis à quelque chose."}
+        };
+
+        inline Message message6 = {
+            {NameSpeaker::player, "Encore."},
+            {NameSpeaker::player, "Toujours plus de puissance."}
+        };
+
+        inline Message message7 = {
+            {NameSpeaker::player, "Ca y est, je deviens un dieu."}
         };
     } // namespace Level9
 
@@ -368,6 +380,12 @@ namespace data
         inline std::string nameLevel = "Niveau 10 : Héroine (Désillusion)";
         inline int hour = 7;
         inline int minut = 30;
+
+        inline Message messageMinus1 = {
+            {NameSpeaker::plug, "Que fais tu petit chose ?"},
+            {NameSpeaker::player, "Viens là, j'ai pas peur de toi."},
+            {NameSpeaker::plug, "Tiens, tu peux combattre avec ca."}
+        };
 
         inline Message message0 = {
             {NameSpeaker::player, "Est ce qui se passe, mon corps !"},
@@ -380,7 +398,36 @@ namespace data
             {NameSpeaker::plug, "Tu t'es pris pour qui."},
             {NameSpeaker::plug, "Tu as peut-être détruit toutes ces imbéciles, mais face à moi tu ne peux rien."}
         };
+
+        inline Message message2 = {
+            {NameSpeaker::plug, "J'ai décidé de te laisser accomplir ta quête. Tiens prends ca."},
+            {NameSpeaker::action, "Héroine ajouté à votre inventaire."},
+            {NameSpeaker::description, "Vous consommez le dernier produit tant convoité."},
+            {NameSpeaker::player, "J'y suis arrivé."}
+        };
+
+        inline Message message3 = {
+            {NameSpeaker::player, "Encore."}
+        };
+
+        inline Message message4 = {
+            {NameSpeaker::plug, "Il est temps que cette imposture cesse."},
+            {NameSpeaker::description, "Vous êtes mort."}
+        };
     } // namespace Level10
+
+    namespace Outro
+    {
+        inline std::string nameLevel = "Crédits";
+        inline int hour = 0;
+        inline int minut = 0;
+
+        inline Message message0 = {
+            {NameSpeaker::description, "Programmeur : Jess H."},
+            {NameSpeaker::description, "Merci d'avoir jouer à ce jeu !"},
+            {NameSpeaker::description, "A la prochaine."}
+        };
+    } // namespace Outro
 
     namespace Action
     {
@@ -687,6 +734,7 @@ namespace data
         inline std::string nameHammer = "Marteau";
         inline std::string nameKatana = "Katana";
         inline std::string nameChopper = "Hachoir";
+        inline std::string nameHeroine = "Heroine";
 
         inline std::string nameNinemm = "9mm";
         inline std::string nameAK47 = "AK47"; 

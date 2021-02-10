@@ -113,18 +113,28 @@ void Level9::startLevel()
     );
     fight.startFight();
 
+    regenerateAllLife.triggerAction();
+
     MessageWriter messageWriter5( data::Level9::message5, player_->name(), plug.name() );
     messageWriter5.writeMessage();
-
-    regenerateAllLife.triggerAction();
 
     IncreaseMaxLifePoints increaseMaxLifePoints
     ( 
         player_, 
-        3900, 
+        1100, 
         "", 
-        data::Action::resultsIncreaseMaxLifePoints( 3900 ) 
+        data::Action::resultsIncreaseMaxLifePoints( 1100 ) 
     );
+    increaseMaxLifePoints.triggerAction();
+
+    MessageWriter messageWriter6( data::Level9::message6, player_->name(), plug.name() );
+    messageWriter6.writeMessage();
+
+    increaseMaxLifePoints.triggerAction();
+
+    MessageWriter messageWriter7( data::Level9::message7, player_->name(), plug.name() );
+    messageWriter7.writeMessage();
+
     increaseMaxLifePoints.triggerAction();
 
     Level9::endOfLevel();
