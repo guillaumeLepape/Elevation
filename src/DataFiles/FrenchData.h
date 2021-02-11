@@ -289,7 +289,7 @@ namespace data
             {NameSpeaker::description, "Boum."},
             {NameSpeaker::player, "AHHHHHHHHHHHHHH. QU'EST CE QUI SE PASSE PUTAIN DE MERDE !" },
             {NameSpeaker::description, "Kaboom."},
-            {NameSpeaker::plug, "CC je suis là te buter."}
+            {NameSpeaker::plug, "CC je suis là pour te buter."}
         };
 
         inline Message message1 = {
@@ -618,7 +618,7 @@ namespace data
 
         // Third Answer 
         inline std::string answer3Question3(
-            "Pour cacher que toutes gouvernements sont à la solde d'un organisation secrète dirigé par les reptiliens." );
+            "Pour cacher que toutes gouvernements sont à la solde d'une organisation secrète dirigée par les reptiliens." );v
         inline bool correctOrNotAnswer3Question3 = true;
     } // namespace Question
 
@@ -633,7 +633,7 @@ namespace data
                 "A chaque tour, vous choisissez d'abord quelle ennemi vous souhaitez attaquer et avec quelle arme.",
                 "Une fois que vous avez attaqué, c'est au tour des ennemis.",
                 "Ils attaquent avec l'arme dont ils disposent à tour de rôle.",
-                "Vous avez " + std::to_string(maxNbLifePoints) + " points de vie. Lorsqu'il descende en dessous de 0, vous mort.",
+                "Vous avez " + std::to_string(maxNbLifePoints) + " points de vie. Lorsqu'il descende en dessous de 0, vous êtes mort.",
                 "Le combat prend fin lorsque tous les ennemis sont morts ou lorsque vous êtes mort.",
                 "Lorsque vous tuez un ennemi vous pouvez récupérer leurs armes."
             };
