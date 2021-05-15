@@ -618,7 +618,7 @@ namespace data
 
         // Third Answer 
         inline std::string answer3Question3(
-            "Pour cacher que toutes gouvernements sont à la solde d'une organisation secrète dirigée par les reptiliens." );v
+            "Pour cacher que toutes gouvernements sont à la solde d'une organisation secrète dirigée par les reptiliens." );
         inline bool correctOrNotAnswer3Question3 = true;
     } // namespace Question
 
