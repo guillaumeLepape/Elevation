@@ -10,7 +10,7 @@
 
 #include "WeaponFactory.h"
 
-Player::Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded ) :
+Player::Player( const std::string& pseudo, const int& id, const int& nbLevelSuceeded ) :
     Entity( pseudo, MAX_LIFE_POINTS_PLAYER, MAX_LIFE_POINTS_PLAYER ),
     id_( id ),
     nbLevelSuceeded_( nbLevelSuceeded ),
@@ -23,7 +23,7 @@ Player::Player( const std::string& pseudo, const std::string& id, const int& nbL
 Player::Player
 ( 
     const std::string& pseudo, 
-    const std::string& id,
+    const int& id,
     const int& nbLevelSuceeded,
     const int& nbLifePoints,
     const int& maxLifePoints,

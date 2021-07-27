@@ -21,7 +21,7 @@ class Player : public Entity
 {
     private:
         /*< Unique id */
-        std::string id_;
+        int id_;
 
         /*< Number of level suceeded by the player */
         int nbLevelSuceeded_;    
@@ -42,7 +42,7 @@ class Player : public Entity
         Player
         ( 
             const std::string& pseudo, 
-            const std::string& id,
+            const int& id,
             const int& nbLevelSuceeded,
             const int& nbLifePoints,
             const int& maxLifePoints,
@@ -60,7 +60,7 @@ class Player : public Entity
             * \param id : unique id, used to save game
             * \param nbLevelSuceeded : number of level suceeded by player
         */
-        Player( const std::string& pseudo, const std::string& id, const int& nbLevelSuceeded );
+        Player( const std::string& pseudo, const int& id, const int& nbLevelSuceeded );
 
         Player( const Player& player ) = delete;
 
@@ -70,7 +70,7 @@ class Player : public Entity
             * \brief id accesor, initialized at the creation of Player, unmodifiable argument
             * \return unique id 
         */
-        const std::string& id() const { return id_; }
+        const int& id() const { return id_; }
 
         /*!
             * \brief nbLevelSuceeded accesor

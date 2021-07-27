@@ -9,6 +9,3 @@
 	url = git@github.com:jupyter-xeus/cpp-terminal.git
 
 	
-[submodule "libraries/boost"]
-	path = libraries/boost
-	url = git@github.com:boostorg/boost.git

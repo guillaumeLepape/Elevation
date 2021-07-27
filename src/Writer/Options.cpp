@@ -4,32 +4,35 @@
 
 #include "Options.h"
 #include <iostream>
+#include <set>
+#include <algorithm>
 
 Options::Options( int argc, char* argv[] ) : 
     noRule_(false), 
-    help_(false), 
-    desc_("Allowed options")
+    help_(false)
 {
     initializeAttribute( argc, argv );
 }
 
 void Options::initializeAttribute( int argc, char* argv[] )
 {
-    try 
-    {
-        desc_.add_options()
-        ("help,h", boost::program_options::bool_switch(&help_), "print usage message")
-        ("rule,r", boost::program_options::bool_switch(&noRule_), "If this option is selected, the rules and tutorials are not printed");
+    std::set<std::string_view> argv_set;
 
-        boost::program_options::variables_map vm;
-        boost::program_options::store(
-            boost::program_options::parse_command_line(argc, argv, desc_), 
-            vm
-        );
-        boost::program_options::notify(vm);    
-    }
-    catch (std::exception& e) 
+    for (int i = 0; i < argc; i++)
     {
-        std::cerr << e.what() << "\n";
+        argv_set.insert( argv[i] );
     }
+
+    noRule_ = std::binary_search( std::cbegin(argv_set), std::cend(argv_set), "-r" ) 
+        or std::binary_search( std::cbegin(argv_set), std::cend(argv_set), "--rule" );
+
+    help_ = std::binary_search( std::cbegin(argv_set), std::cend(argv_set), "-h" ) 
+        or std::binary_search( std::cbegin(argv_set), std::cend(argv_set), "--help" );
+}
+
+void Options::print_help() const
+{
+    std::cout << "Allowed options :\n";
+    std::cout << "-h, --help : print help message\n";
+    std::cout << "-r, --rule : If this option is selected, the rules and tutorials are not printed\n";
 }

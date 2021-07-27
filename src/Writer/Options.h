@@ -5,8 +5,6 @@
     * \file Options.h
 */
 
-#include <boost/program_options.hpp>
-
 class Options
 {
     private:
@@ -15,9 +13,10 @@ class Options
     public:
         Options( int argc, char* argv[] );
 
+        void print_help() const;
+
         bool noRule_;
         bool help_;
-        boost::program_options::options_description desc_;
 };
 
 #endif

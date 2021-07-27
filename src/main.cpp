@@ -22,7 +22,7 @@ int main( int argc, char* argv[] )
     // and exit program
     if ( options.help_ )
     {
-        std::cout << options.desc_ << "\n";
+        options.print_help();
         return 0;
     }
     

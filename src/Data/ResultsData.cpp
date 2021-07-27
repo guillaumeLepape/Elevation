@@ -30,7 +30,7 @@ void ResultsData::readData()
 
 void ResultsData::addResult( Player* const player )
 {
-    const std::string& id = player->id();
+    const int& id = player->id();
     auto x = [&id]( Player* const player_lambda ) { return player_lambda->id() == id; };
     results_.remove_if( x );
 

@@ -303,45 +303,11 @@ add_subdirectory( libraries/json )
 
 add_subdirectory( libraries/cpp-terminal )
 
-# --------------------------------
-# Compile Boost
-# --------------------------------
-
-# Options for boost
-option(Boost_DEBUG "Set to ON to enable debug output from FindBoost." OFF)
-option(Boost_DETAILED_FAILURE_MSG "Set to ON to get detailed information" OFF)
-
-if(NOT DEFINED BOOST_ROOT)
-    set(BOOST_ROOT $ENV{BOOST_ROOT})
-endif()
-
-if((${CMAKE_SYSTEM_NAME} STREQUAL "Linux") AND (NOT BOOST_ROOT))
-    message(STATUS "setting boost_root for Linux")
-    set(BOOST_ROOT ${PROJECT_SOURCE_DIR}/libraries/boost)
-endif()
-message("BOOST_ROOT is ${BOOST_ROOT}") #2020-01-15
-
-find_package(Boost 
-    REQUIRED 
-    COMPONENTS program_options
-)
-
-message("Boost_FOUND is ${Boost_FOUND}")
-message("Boost_INCLUDE_DIRS is ${Boost_INCLUDE_DIRS}")
-message("Boost_LIBRARIES is ${Boost_LIBRARIES}")
-message("Boost_LIB_DIAGNOSTIC_DEFINITIONS is ${Boost_LIB_DIAGNOSTIC_DEFINITIONS}")
-message("Boost_DIR is ${Boost_DIR}")
-message("Boost_CONFIG is ${Boost_CONFIG}")
-message("Boost_VERSION is ${Boost_VERSION}")
-
-include_directories( ${PROJECT_SOURCE_DIR}/libraries/boost )
-
 target_link_libraries(
     main 
     PRIVATE nlohmann_json::nlohmann_json 
     PRIVATE tabulate::tabulate
     PRIVATE cpp-terminal
-    PRIVATE Boost::program_options
 )
 
 target_link_libraries(
