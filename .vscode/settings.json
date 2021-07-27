@@ -89,5 +89,6 @@
         "libraries/**": true,
         "build/**": true,
         "doc/**": true
-    }
+    },
+    "cmake.useCMakePresets":"always"
 }
