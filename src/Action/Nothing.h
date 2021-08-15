@@ -2,28 +2,17 @@
 #define NOTHING_H
 
 /*!
-    * \file Nothing.h
-*/
+ * \file Nothing.h
+ */
 
 #include "Action.h"
 
-class Nothing : public Action
-{
-    public:
-        Nothing
-        (
-            const std::string& statement,
-            const std::string& result
-        ) :
-            Action( statement, result )
-        {
-            
-        }
+class Nothing : public Action {
+ public:
+  Nothing(const std::string& statement, const std::string& result)
+      : Action(statement, result) {}
 
-        void triggerAction() override
-        {
-
-        }
+  void triggerAction() override {}
 };
 
 #endif

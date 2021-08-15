@@ -2,19 +2,15 @@
 #define SELECTION_H
 
 /*!
-    * \file Selection.h
-*/
+ * \file Selection.h
+ */
 
 #include "SelectionWriter.h"
 
-class Selection
-{
-    public:
-        static int select
-        (
-            const std::vector<Action*>& actions,
-            const std::string& title
-        );
+class Selection {
+ public:
+  static int select(const std::vector<Action*>& actions,
+                    const std::string& title);
 };
 
 #endif

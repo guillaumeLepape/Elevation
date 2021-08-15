@@ -2,29 +2,20 @@
 #define WEAPON_FIST_COMBO_H
 
 /*!
-    * \file WeaponFistCombo.h
-*/
-
-#include "Weapon.h"
+ * \file WeaponFistCombo.h
+ */
 
 #include "Languages.h"
+#include "Weapon.h"
 
-class WeaponFistCombo : public Weapon
-{
-    public:
-        WeaponFistCombo( const Weapon* weapon ) :
-            Weapon
-            ( 
-                weapon->name() + "FistCombo", 
-                weapon->damageWeapon()/2, 
-                weapon->weaponType(), 
-                data::Weapon::statementCombo( weapon->name() )
-            )
-        {
+class WeaponFistCombo : public Weapon {
+ public:
+  WeaponFistCombo(const Weapon* weapon)
+      : Weapon(weapon->name() + "FistCombo", weapon->damageWeapon() / 2,
+               weapon->weaponType(),
+               data::Weapon::statementCombo(weapon->name())) {}
 
-        }
-
-        ~WeaponFistCombo() override = default;
+  ~WeaponFistCombo() override = default;
 };
 
 #endif

@@ -2,33 +2,29 @@
 #define MESSAGE_WRITER_H
 
 /*!
-    * \file MessageWriter.h
-*/
+ * \file MessageWriter.h
+ */
 
 #include <string>
 
 #include "NameSpeaker.h"
 
-class MessageWriter
-{
-    private:    
-        Message message_;
-        std::string pseudo_;
-        std::string plugName_;
+class MessageWriter {
+ private:
+  Message message_;
+  std::string pseudo_;
+  std::string plugName_;
 
-        void writeName( const int& i ) const;
+  void writeName(const int& i) const;
 
-        void writeOneMessage( const int& i) const;
+  void writeOneMessage(const int& i) const;
 
-    public: 
-        MessageWriter
-        (
-            const std::vector<std::tuple<NameSpeaker, std::string>>& message,
-            const std::string& pseudo,
-            const std::string& plugName
-        );
+ public:
+  MessageWriter(
+      const std::vector<std::tuple<NameSpeaker, std::string>>& message,
+      const std::string& pseudo, const std::string& plugName);
 
-        void writeMessage() const;
+  void writeMessage() const;
 };
 
 #endif

@@ -2,26 +2,23 @@
 #define SELECTION_WRITER_H
 
 /*!
-    * \file SelectionWriter.h
-*/
+ * \file SelectionWriter.h
+ */
 
-#include "Action.h"
 #include <vector>
 
-class SelectionWriter
-{
-    private:
-        std::vector<Action*> actions_;
-        std::string title_;
+#include "Action.h"
 
-    public:
-        SelectionWriter
-        (
-            const std::vector<Action*>& actions,
-            const std::string& title
-        );
+class SelectionWriter {
+ private:
+  std::vector<Action*> actions_;
+  std::string title_;
 
-        void writeSelection() const;
+ public:
+  SelectionWriter(const std::vector<Action*>& actions,
+                  const std::string& title);
+
+  void writeSelection() const;
 };
 
 #endif

@@ -2,23 +2,19 @@
 #define KATANA_H
 
 /*!
-    * \file Katana.h
-*/
-
-#include "Weapon.h"
+ * \file Katana.h
+ */
 
 #include "Languages.h"
+#include "Weapon.h"
 
-class Katana : public Weapon
-{   
-    public:
-        Katana() :
-            Weapon( data::Weapon::nameKatana, 50, WeaponType::meleeWeapon, data::Weapon::statementUseKatana )
-        {
+class Katana : public Weapon {
+ public:
+  Katana()
+      : Weapon(data::Weapon::nameKatana, 50, WeaponType::meleeWeapon,
+               data::Weapon::statementUseKatana) {}
 
-        }
-
-        ~Katana() override = default;
+  ~Katana() override = default;
 };
 
 #endif

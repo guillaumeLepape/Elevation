@@ -2,20 +2,19 @@
 #define COMBO_WRITER_H
 
 /*!
-    * \file ComboWriter.h
-*/
+ * \file ComboWriter.h
+ */
 
 #include "Combo.h"
 
-class ComboWriter
-{
-    private:
-        const Combo* const combo_;
+class ComboWriter {
+ private:
+  const Combo* const combo_;
 
-    public:
-        ComboWriter( const Combo* const combo );
+ public:
+  ComboWriter(const Combo* const combo);
 
-        void informationCombo() const;
+  void informationCombo() const;
 };
 
 #endif

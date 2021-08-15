@@ -2,23 +2,19 @@
 #define KNIFE_H
 
 /*!
-    * \file Knife.h
-*/
-
-#include "Weapon.h"
+ * \file Knife.h
+ */
 
 #include "Languages.h"
+#include "Weapon.h"
 
-class Knife : public Weapon
-{
-    public: 
-        Knife() :
-            Weapon( data::Weapon::nameKnife, 30, WeaponType::meleeWeapon, data::Weapon::statementUseKnife )
-        {
+class Knife : public Weapon {
+ public:
+  Knife()
+      : Weapon(data::Weapon::nameKnife, 30, WeaponType::meleeWeapon,
+               data::Weapon::statementUseKnife) {}
 
-        }
-
-        ~Knife() override = default;
+  ~Knife() override = default;
 };
 
 #endif

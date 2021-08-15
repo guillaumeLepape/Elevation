@@ -1,34 +1,23 @@
 /*!
-    * \file Level6.h
-*/
+ * \file Level6.h
+ */
 
 #include "Level6.h"
 
 #include <iostream>
 
 #include "HeaderWriter.h"
+#include "Languages.h"
 #include "MessageWriter.h"
 
-#include "Languages.h"
+void Level6::startLevel() {
+  HeaderWriter headerWriter(data::Level6::nameLevel, data::Level6::hour,
+                            data::Level6::minut);
+  headerWriter.writeHeader();
 
-void Level6::startLevel()
-{
-    HeaderWriter headerWriter
-    ( 
-        data::Level6::nameLevel, 
-        data::Level6::hour, 
-        data::Level6::minut 
-    );
-    headerWriter.writeHeader();
+  MessageWriter messageWriter(data::Level6::message0, player_->name(), "");
+  messageWriter.writeMessage();
 
-    MessageWriter messageWriter
-    (
-        data::Level6::message0,
-        player_->name(),
-        ""
-    );
-    messageWriter.writeMessage();
-
-    Level::endOfLevel();
-    std::cout << "\n";
+  Level::endOfLevel();
+  std::cout << "\n";
 }

@@ -1,40 +1,32 @@
 #ifndef ACTION_H
 #define ACTION_H
 
-/*! 
-    * \file Action.h
-*/
+/*!
+ * \file Action.h
+ */
 
 #include "ActionWriter.h"
 
 /*! \class Action
-    * \brief Abstract class Action to introduce various actions (herited classes)
-*/
+ * \brief Abstract class Action to introduce various actions (herited classes)
+ */
 
-class Action
-{
-    protected:
-        ActionWriter actionWriter_;
+class Action {
+ protected:
+  ActionWriter actionWriter_;
 
-    public:
-        explicit Action
-        (
-            const std::string& statement, 
-            const std::string& result
-        ) :
-            actionWriter_( statement, result )
-        {
-        
-        }
+ public:
+  explicit Action(const std::string& statement, const std::string& result)
+      : actionWriter_(statement, result) {}
 
-        Action( const Action& action ) = delete;
-        Action& operator=( const Action& action ) = delete;
+  Action(const Action& action) = delete;
+  Action& operator=(const Action& action) = delete;
 
-        const ActionWriter& actionWriter() const { return actionWriter_; }
+  const ActionWriter& actionWriter() const { return actionWriter_; }
 
-        virtual void triggerAction() = 0;
+  virtual void triggerAction() = 0;
 
-        virtual ~Action() = default;
+  virtual ~Action() = default;
 };
 
 #endif

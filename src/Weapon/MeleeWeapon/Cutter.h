@@ -2,23 +2,19 @@
 #define CUTTER_H
 
 /*!
-    * \file Cutter.h
-*/
-
-#include "Weapon.h"
+ * \file Cutter.h
+ */
 
 #include "Languages.h"
+#include "Weapon.h"
 
-class Cutter : public Weapon
-{
-    public:
-        Cutter() :
-            Weapon( data::Weapon::nameCutter, 15, WeaponType::meleeWeapon, data::Weapon::statementUseCutter )
-        {
+class Cutter : public Weapon {
+ public:
+  Cutter()
+      : Weapon(data::Weapon::nameCutter, 15, WeaponType::meleeWeapon,
+               data::Weapon::statementUseCutter) {}
 
-        }
-
-        ~Cutter() override = default;
+  ~Cutter() override = default;
 };
 
 #endif

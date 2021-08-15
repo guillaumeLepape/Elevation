@@ -2,19 +2,17 @@
 #define ID_H
 
 /*!
-    * \file Id.h
-*/
+ * \file Id.h
+ */
 
 #include <random>
 
-class Id
-{
-    public:
-        static unsigned int generateId()
-        {
-            std::random_device rd;
-	        return rd();
-        }
+class Id {
+ public:
+  static unsigned int generateId() {
+    std::random_device rd;
+    return rd();
+  }
 };
 
 #endif

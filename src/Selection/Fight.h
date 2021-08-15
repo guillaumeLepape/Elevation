@@ -2,60 +2,48 @@
 #define FIGHT_H
 
 /*!
-    * \file Fight.h
-*/
+ * \file Fight.h
+ */
 
 #include "Combo.h"
 #include "MessageWriter.h"
 
-struct ChooseWeaponResult
-{
-    int resultUseWeapon;
-    std::vector<Action*> useWeapons;
+struct ChooseWeaponResult {
+  int resultUseWeapon;
+  std::vector<Action*> useWeapons;
 };
 
-class Fight
-{
-    private:
-        Player* const player_;
-        std::vector<Plug*> plugs_;
-        std::vector<Combo*> combos_;
-        bool regeneration_;
+class Fight {
+ private:
+  Player* const player_;
+  std::vector<Plug*> plugs_;
+  std::vector<Combo*> combos_;
+  bool regeneration_;
 
-        int numberOfDeadPlug_;
+  int numberOfDeadPlug_;
 
-        bool information_;
-        bool noRule_;
+  bool information_;
+  bool noRule_;
 
-        int methodNumberOfDeadPlug() const;
-        bool enemiesDeadOrNot() const;
+  int methodNumberOfDeadPlug() const;
+  bool enemiesDeadOrNot() const;
 
-        Plug* choosePlug();
+  Plug* choosePlug();
 
-        const ChooseWeaponResult chooseWeapon( Plug* const plug );
+  const ChooseWeaponResult chooseWeapon(Plug* const plug);
 
-        void runCombos
-        ( 
-            Plug* const choosenPlug, 
-            const int& resultUseWeapon, 
-            const std::vector<Action*>& useWeapons 
-        );
-    public:
-        Fight
-        ( 
-            Player* const player, 
-            const std::vector<Plug*>& plugs, 
-            const std::vector<Combo*>& combos,
-            const bool& noRule,
-            const bool& regeneration = true
-        );
+  void runCombos(Plug* const choosenPlug, const int& resultUseWeapon,
+                 const std::vector<Action*>& useWeapons);
 
-        void startFight
-        (   
-            const std::vector<MessageWriter>& messageWriter = {}, 
-            std::function<bool(Player* const player)> predicate = []( Player* const player ){ return player->dead(); }
-        );
+ public:
+  Fight(Player* const player, const std::vector<Plug*>& plugs,
+        const std::vector<Combo*>& combos, const bool& noRule,
+        const bool& regeneration = true);
 
+  void startFight(
+      const std::vector<MessageWriter>& messageWriter = {},
+      std::function<bool(Player* const player)> predicate =
+          [](Player* const player) { return player->dead(); });
 };
 
 #endif

@@ -2,28 +2,23 @@
 #define DEAD_H
 
 /*!
-    * \file Dead.h
-*/
+ * \file Dead.h
+ */
 
 #include "Action.h"
 
 // forward declaration of Plug class
 class Plug;
 
-class Dead : public Action
-{
-    private:
-        const Plug* const plug_;
+class Dead : public Action {
+ private:
+  const Plug* const plug_;
 
-    public:
-        Dead
-        (
-            const Plug* const plug,
-            const std::string& statement,
-            const std::string& result
-        );
+ public:
+  Dead(const Plug* const plug, const std::string& statement,
+       const std::string& result);
 
-        void triggerAction() override;
+  void triggerAction() override;
 };
 
 #endif

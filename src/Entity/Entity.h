@@ -2,72 +2,69 @@
 #define ENTITY_H
 
 /*!
-    * \file Entity.h
-*/
+ * \file Entity.h
+ */
 
 #include <string>
 
-class Entity
-{
-    protected:
-        std::string name_;
-        int nbLifePoints_;
-        int maxNbLifePoints_;
+class Entity {
+ protected:
+  std::string name_;
+  int nbLifePoints_;
+  int maxNbLifePoints_;
 
-        Entity( const std::string& name, const int& nbLifePoints, const int& maxNbLifePoints );
+  Entity(const std::string& name, const int& nbLifePoints,
+         const int& maxNbLifePoints);
 
-    public:
-        virtual ~Entity() = default;
+ public:
+  virtual ~Entity() = default;
 
-        /*!
-            * \brief pseudo accesor 
-            * \return pseudo of player
-        */        
-        const std::string& name() const { return name_; }
-        
-        /*!
-            * \brief pseudo mutator 
-            * \param pseudo : new pseudo
-        */        
-        void changeName( const std::string& name ) { name_ = name; }
+  /*!
+   * \brief pseudo accesor
+   * \return pseudo of player
+   */
+  const std::string& name() const { return name_; }
 
-        // Accessor of nbLifePoints_ attribute
-        const int& nbLifePoints() const { return nbLifePoints_; }
+  /*!
+   * \brief pseudo mutator
+   * \param pseudo : new pseudo
+   */
+  void changeName(const std::string& name) { name_ = name; }
 
-        int missingLifePoints() const { return maxNbLifePoints_ - nbLifePoints_; }
+  // Accessor of nbLifePoints_ attribute
+  const int& nbLifePoints() const { return nbLifePoints_; }
 
-        const int& maxLifePoints() const { return maxNbLifePoints_; }
+  int missingLifePoints() const { return maxNbLifePoints_ - nbLifePoints_; }
 
-        // Increase the number of life points by the arg nbLifePoints
-        void increaseLifePoints( const int& nbLifePoints ) 
-        { 
-            if ( nbLifePoints_ + nbLifePoints >= maxNbLifePoints_ )
-            {
-                nbLifePoints_ = maxNbLifePoints_;
-            }
-            else
-            {
-                nbLifePoints_ += nbLifePoints; 
-            }
-        }
-        // Decrease the number of life points by the arg nbLifePoints
-        void decreaseLifePoints( const int& nbLifePoints ) { nbLifePoints_ -= nbLifePoints; }
+  const int& maxLifePoints() const { return maxNbLifePoints_; }
 
-        void increaseMaxLifePoints( int maxNbLifePoints ) 
-        { 
-            maxNbLifePoints_ += maxNbLifePoints;
-            nbLifePoints_ += maxNbLifePoints;
-        }
+  // Increase the number of life points by the arg nbLifePoints
+  void increaseLifePoints(const int& nbLifePoints) {
+    if (nbLifePoints_ + nbLifePoints >= maxNbLifePoints_) {
+      nbLifePoints_ = maxNbLifePoints_;
+    } else {
+      nbLifePoints_ += nbLifePoints;
+    }
+  }
+  // Decrease the number of life points by the arg nbLifePoints
+  void decreaseLifePoints(const int& nbLifePoints) {
+    nbLifePoints_ -= nbLifePoints;
+  }
 
-        bool fullLife() const { return nbLifePoints_ == maxNbLifePoints_; }
+  void increaseMaxLifePoints(int maxNbLifePoints) {
+    maxNbLifePoints_ += maxNbLifePoints;
+    nbLifePoints_ += maxNbLifePoints;
+  }
 
-        /*!
-            \brief State of player : dead or alive 
-            \return true if the number of life points is null or negative, false else
-        */
-        bool dead() const { return ( nbLifePoints_ <= 0 ); }
+  bool fullLife() const { return nbLifePoints_ == maxNbLifePoints_; }
 
-        std::string healthBar() const;
+  /*!
+      \brief State of player : dead or alive
+      \return true if the number of life points is null or negative, false else
+  */
+  bool dead() const { return (nbLifePoints_ <= 0); }
+
+  std::string healthBar() const;
 };
 
 #endif

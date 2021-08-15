@@ -2,26 +2,25 @@
 #define NAME_DATA_H
 
 /*!
-    * \file ListNameData.h
-*/
-
-#include "Data.h"
+ * \file ListNameData.h
+ */
 
 #include <set>
 
-class ListNameData : public Data
-{
-    private:
-        std::set<std::string> listName_;
+#include "Data.h"
 
-    public:
-        ListNameData( const std::string& folderFromRoot, const std::string& nameFile );
+class ListNameData : public Data {
+ private:
+  std::set<std::string> listName_;
 
-        void readData() override;
+ public:
+  ListNameData(const std::string& folderFromRoot, const std::string& nameFile);
 
-        const std::set<std::string>& listName() const { return listName_; }
+  void readData() override;
 
-        ~ListNameData() override = default;
+  const std::set<std::string>& listName() const { return listName_; }
+
+  ~ListNameData() override = default;
 };
 
 #endif

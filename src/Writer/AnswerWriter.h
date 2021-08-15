@@ -2,25 +2,20 @@
 #define ANSWER_WRITER_H
 
 /*!
-    * \file AnswerWriter.h
-*/
+ * \file AnswerWriter.h
+ */
 
 #include "ActionWriter.h"
 
-class AnswerWriter : public ActionWriter
-{
-    private:
-        bool correctOrNot_;
+class AnswerWriter : public ActionWriter {
+ private:
+  bool correctOrNot_;
 
-    public:
-        AnswerWriter
-        ( 
-            const std::string& statement, 
-            const std::string& result, 
-            const bool& correctOrNot 
-        );
+ public:
+  AnswerWriter(const std::string& statement, const std::string& result,
+               const bool& correctOrNot);
 
-        const bool& correctOrNot() const { return correctOrNot_; }
+  const bool& correctOrNot() const { return correctOrNot_; }
 };
 
 #endif

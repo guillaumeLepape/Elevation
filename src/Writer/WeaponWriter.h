@@ -2,22 +2,21 @@
 #define WEAPON_WRITER_H
 
 /*!
-    * \file WeaponWriter.h
-*/
+ * \file WeaponWriter.h
+ */
 
 #include "Weapon.h"
 
-class WeaponWriter
-{
-    private:
-        const Weapon* const weapon_;
+class WeaponWriter {
+ private:
+  const Weapon* const weapon_;
 
-        std::string informationWeaponType() const;
+  std::string informationWeaponType() const;
 
-    public:
-        WeaponWriter( const Weapon* weapon );
+ public:
+  WeaponWriter(const Weapon* weapon);
 
-        virtual void informationWeapon() const;
+  virtual void informationWeapon() const;
 };
 
-#endif 
+#endif

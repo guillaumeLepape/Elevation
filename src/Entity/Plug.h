@@ -2,34 +2,28 @@
 #define PLUG_H
 
 /*!
-    * \file Plug.h
-*/
+ * \file Plug.h
+ */
 
 #include <memory>
 
 #include "Entity.h"
-
 #include "NoWeapon.h"
 
-class Plug : public Entity
-{
-    private:
-        std::unique_ptr<const Weapon> weapon_;
+class Plug : public Entity {
+ private:
+  std::unique_ptr<const Weapon> weapon_;
 
-    public:
-        explicit Plug
-        ( 
-            const std::string& name, 
-            const int& nbLifePoints = 100, 
-            const Weapon* weapon = new NoWeapon() 
-        );
+ public:
+  explicit Plug(const std::string& name, const int& nbLifePoints = 100,
+                const Weapon* weapon = new NoWeapon());
 
-        ~Plug() override = default;
+  ~Plug() override = default;
 
-        void changeWeapon( const Weapon* newWeapon );
+  void changeWeapon(const Weapon* newWeapon);
 
-        const Weapon* weapon() const { return weapon_.get(); }
-        const Weapon* realeaseWeapon() { return weapon_.release(); }
+  const Weapon* weapon() const { return weapon_.get(); }
+  const Weapon* realeaseWeapon() { return weapon_.release(); }
 };
 
 #endif

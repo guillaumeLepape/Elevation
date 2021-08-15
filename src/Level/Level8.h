@@ -2,23 +2,20 @@
 #define LEVEL_8_H
 
 /*!
-    * \file "Level8.h"
-*/
+ * \file "Level8.h"
+ */
 
 #include "Level.h"
 
-class Level8 : public Level
-{
-    public:
-        Level8( Player* const player, ResultsData* const resultsData, const Options& options ) :    
-            Level(player, resultsData, options)
-        {
+class Level8 : public Level {
+ public:
+  Level8(Player* const player, ResultsData* const resultsData,
+         const Options& options)
+      : Level(player, resultsData, options) {}
 
-        }
+  void startLevel() override;
 
-        void startLevel() override;
-
-        ~Level8() override = default;
+  ~Level8() override = default;
 };
 
 #endif

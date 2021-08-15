@@ -2,26 +2,22 @@
 #define TUTORIAL_WRITER_H
 
 /*!
-    * \file TutorialWriter.h
-*/
+ * \file TutorialWriter.h
+ */
 
-#include <vector>
 #include <string>
+#include <vector>
 
-class TutorialWriter
-{
-    private:
-        std::string title_;
-        std::vector<std::string> tutorialStatement_;
+class TutorialWriter {
+ private:
+  std::string title_;
+  std::vector<std::string> tutorialStatement_;
 
-    public:
-        TutorialWriter
-        (
-            const std::string& title,
-            const std::vector<std::string>& tutorialStatement
-        );
+ public:
+  TutorialWriter(const std::string& title,
+                 const std::vector<std::string>& tutorialStatement);
 
-        void writeTutorial() const;
+  void writeTutorial() const;
 };
 
 #endif

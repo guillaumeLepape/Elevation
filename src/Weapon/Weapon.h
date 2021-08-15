@@ -2,53 +2,41 @@
 #define WEAPON_H
 
 /*!
-    * \file Weapon.h
-*/
+ * \file Weapon.h
+ */
 
 #include <nlohmann/json.hpp>
 
 #include "Entity.h"
 
-enum class WeaponType
-{
-    noWeapon = -1,
-    fist = 0,
-    meleeWeapon = 1,
-    fireArm = 2
-};
+enum class WeaponType { noWeapon = -1, fist = 0, meleeWeapon = 1, fireArm = 2 };
 
-class Weapon 
-{
-    private: 
-        std::string name_;
-        int damageWeapon_;
-        WeaponType weaponType_;
-        const std::string statement_;
+class Weapon {
+ private:
+  std::string name_;
+  int damageWeapon_;
+  WeaponType weaponType_;
+  const std::string statement_;
 
-    protected:
-        Weapon
-        ( 
-            const std::string& name, 
-            const int& damageWeapon,
-            WeaponType weaponType,
-            const std::string& statement
-        );
-        
-    public:
-        Weapon& operator=( const Weapon& weapon ) = delete;
+ protected:
+  Weapon(const std::string& name, const int& damageWeapon,
+         WeaponType weaponType, const std::string& statement);
 
-        virtual ~Weapon() = default;
+ public:
+  Weapon& operator=(const Weapon& weapon) = delete;
 
-        const std::string& name() const { return name_; }
-        const int& damageWeapon() const { return damageWeapon_; }
-        const WeaponType& weaponType() const { return weaponType_; }
-        const std::string& statement() const { return statement_; }
+  virtual ~Weapon() = default;
 
-        friend bool operator==( const Weapon& weapon1, const Weapon& weapon2 );
+  const std::string& name() const { return name_; }
+  const int& damageWeapon() const { return damageWeapon_; }
+  const WeaponType& weaponType() const { return weaponType_; }
+  const std::string& statement() const { return statement_; }
 
-        virtual nlohmann::json writeJson() const;
+  friend bool operator==(const Weapon& weapon1, const Weapon& weapon2);
 
-        virtual void attack( Entity* const entity ) const;
+  virtual nlohmann::json writeJson() const;
+
+  virtual void attack(Entity* const entity) const;
 };
 
 #endif

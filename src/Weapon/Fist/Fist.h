@@ -2,25 +2,21 @@
 #define FIST_H
 
 /*!
-    * \file Fist.h
-*/
-
-#include "Weapon.h"
+ * \file Fist.h
+ */
 
 #include "Languages.h"
+#include "Weapon.h"
 
-class Fist : public Weapon
-{
-    public:
-        Fist() :
-            Weapon( data::Weapon::nameFist, 20, WeaponType::fist, data::Weapon::statementUseFist )
-        {
+class Fist : public Weapon {
+ public:
+  Fist()
+      : Weapon(data::Weapon::nameFist, 20, WeaponType::fist,
+               data::Weapon::statementUseFist) {}
 
-        }
+  Fist(const Fist& fist) = delete;
 
-        Fist( const Fist& fist ) = delete;
-
-        ~Fist() override = default;
+  ~Fist() override = default;
 };
 
 #endif

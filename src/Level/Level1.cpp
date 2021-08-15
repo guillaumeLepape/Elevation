@@ -1,38 +1,32 @@
 /*!
-    * \file Level1.cpp
-*/
+ * \file Level1.cpp
+ */
 
 #include "Level1.h"
 
 #include <iostream>
 
 #include "HeaderWriter.h"
-#include "MessageWriter.h"
-
 #include "Languages.h"
-
+#include "MessageWriter.h"
 #include "Plug.h"
 
-void Level1::startLevel()
-{
-    Plug plug( "Petite frappe" );
+void Level1::startLevel() {
+  Plug plug("Petite frappe");
 
-    HeaderWriter headerWriter( 
-        data::Level1::nameLevel,
-        data::Level1::hour,
-        data::Level1::minut
-    );
-    headerWriter.writeHeader();
+  HeaderWriter headerWriter(data::Level1::nameLevel, data::Level1::hour,
+                            data::Level1::minut);
+  headerWriter.writeHeader();
 
-    int price = 20;
-    auto message = data::Level1::message0( player_->name(), plug.name(), price );
+  int price = 20;
+  auto message = data::Level1::message0(player_->name(), plug.name(), price);
 
-    MessageWriter messageWriter( message, player_->name(), plug.name() );
-    messageWriter.writeMessage();
+  MessageWriter messageWriter(message, player_->name(), plug.name());
+  messageWriter.writeMessage();
 
-    player_->decreaseMoney( price );
+  player_->decreaseMoney(price);
 
-    Level::endOfLevel();
+  Level::endOfLevel();
 
-    std::cout << "\n";
+  std::cout << "\n";
 }
