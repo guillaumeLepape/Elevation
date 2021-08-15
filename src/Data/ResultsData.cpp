@@ -31,8 +31,7 @@ void ResultsData::readData()
 void ResultsData::addResult( Player* const player )
 {
     const int& id = player->id();
-    auto x = [&id]( Player* const player_lambda ) { return player_lambda->id() == id; };
-    results_.remove_if( x );
+    results_.remove_if( [&id]( Player* const player_lambda ) { return player_lambda->id() == id; } );
 
     results_.push_back( player );
 }
@@ -49,11 +48,14 @@ void ResultsData::writeData() const
 
     nlohmann::json jsonObjectOutput;
 
-    for ( auto r = results_.cbegin(); r != results_.cend(); r++ )
-    {
-        nlohmann::json jsonPlayer = (*r)->writeJson();
-        jsonObjectOutput.push_back( jsonPlayer );
-    }
+    std::for_each( 
+        std::cbegin(results_), 
+        std::cend(results_), 
+        [&jsonObjectOutput](const auto& res) { 
+            nlohmann::json jsonPlayer = res->writeJson();
+            jsonObjectOutput.push_back( jsonPlayer ); 
+        } 
+    );
 
     // read jsonfile 
     jsonFile << std::setw(4) << jsonObjectOutput;

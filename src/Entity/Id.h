@@ -10,7 +10,7 @@
 class Id
 {
     public:
-        static int generateId()
+        static unsigned int generateId()
         {
             std::random_device rd;
 	        return rd();

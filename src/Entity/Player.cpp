@@ -66,23 +66,19 @@ nlohmann::json Player::writeJson() const
 Player* Player::readJson( const nlohmann::json& jsonInput )
 {   
     std::list<const Weapon*> weapons;
-    for ( auto wJson = jsonInput["weapons"].cbegin(); wJson != jsonInput["weapons"].cend(); wJson++ )
-    {
-        bool nbAmmoPresent = wJson->count("nbAmmo");
-        if ( nbAmmoPresent  )
-        {
-            weapons.push_back( 
-                WeaponFactory::newFireArm( (*wJson)["name"], (*wJson)["nbAmmo"] )
-            );
+    std::transform(
+        jsonInput["weapons"].cbegin(),
+        jsonInput["weapons"].cend(),
+        std::back_inserter(weapons),
+        [](const auto& weaponJson){
+            if (weaponJson.count("nbAmmo")) {
+                return WeaponFactory::newFireArm(weaponJson["name"], weaponJson["nbAmmo"]);
+            }
+            else {
+                return WeaponFactory::newWeapon(weaponJson["name"]);
+            }
         }
-        else
-        {
-            weapons.push_back
-            (
-                WeaponFactory::newWeapon( (*wJson)["name"] )
-            );
-        }
-    }
+    );
 
     Player* player = new Player
     ( 

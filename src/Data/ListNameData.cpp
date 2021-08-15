@@ -12,9 +12,11 @@ ListNameData::ListNameData( const std::string& folderFromRoot, const std::string
 
 void ListNameData::readData()
 {
-    for ( auto i = jsonObject_.cbegin(); i != jsonObject_.cend(); i++ )
-    {
-        std::string name = (std::string) *i;
-        listName_.insert( name );
-    }
+    std::for_each(
+        jsonObject_.cbegin(),
+        jsonObject_.cend(),
+        [this](const auto& name) {
+            listName_.insert(static_cast<std::string>(name));
+        }
+    );
 }
