@@ -18,7 +18,6 @@ include_directories(
 
 set(HEADER_ACTION
     ${FOLDER_ACTION}/Action.h
-    ${FOLDER_ACTION}/Actions.h
 
     ${FOLDER_ACTION}/StartGame.h
     ${FOLDER_ACTION}/LoadGame.h
