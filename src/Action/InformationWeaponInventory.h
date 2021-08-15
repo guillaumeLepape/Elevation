@@ -5,6 +5,8 @@
  * \file InformationWeaponInventory.h
  */
 
+#include <cpp-terminal/terminal.h>
+
 #include "Action.h"
 #include "WeaponWriter.h"
 

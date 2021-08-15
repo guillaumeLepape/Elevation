@@ -5,6 +5,8 @@
  * \file GameOver.h
  */
 
+#include <iostream>
+
 #include "Action.h"
 
 class GameOver : public Action {

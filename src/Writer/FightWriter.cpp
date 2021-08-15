@@ -10,8 +10,8 @@
 
 #include "Pause.h"
 
-FightWriter::FightWriter(const Player *const player,
-                         const std::vector<Plug *> &plugs)
+FightWriter::FightWriter(const Player* const player,
+                         const std::vector<Plug*>& plugs)
     : player_(player), plugs_(plugs) {
   Pause::pause();
   std::cout << "\n " << Term::color(Term::fg::yellow)
@@ -19,7 +19,7 @@ FightWriter::FightWriter(const Player *const player,
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
 }
 
-void FightWriter::writeHeader(const int &nbTurns) const {
+void FightWriter::writeHeader(const int& nbTurns) const {
   Pause::pause();
 
   std::cout << "\n"
@@ -53,12 +53,12 @@ void FightWriter::writeGameBoard() const {
             << Term::color(Term::style::reset);
 
   tabulate::Table fighters;
-  std::vector<variant<std::string, const char *, tabulate::Table>> nameFighters;
-  std::vector<variant<std::string, const char *, tabulate::Table>>
+  std::vector<variant<std::string, const char*, tabulate::Table>> nameFighters;
+  std::vector<variant<std::string, const char*, tabulate::Table>>
       lifePointsFighters;
-  std::vector<variant<std::string, const char *, tabulate::Table>>
+  std::vector<variant<std::string, const char*, tabulate::Table>>
       nameWeaponFighters;
-  std::vector<variant<std::string, const char *, tabulate::Table>>
+  std::vector<variant<std::string, const char*, tabulate::Table>>
       damageWeaponFighters;
 
   // build a vector of name and life points of plugs
@@ -80,16 +80,16 @@ void FightWriter::writeGameBoard() const {
   fighters.add_row(nameWeaponFighters);
   fighters.add_row(damageWeaponFighters);
 
-  std::vector<variant<std::string, const char *, tabulate::Table>> emptyLine(
+  std::vector<variant<std::string, const char*, tabulate::Table>> emptyLine(
       nameFighters.size(), "");
   fighters.add_row(emptyLine);
 
-  std::vector<variant<std::string, const char *, tabulate::Table>> playerLine(
+  std::vector<variant<std::string, const char*, tabulate::Table>> playerLine(
       nameFighters.size(), "");
   playerLine[nameFighters.size() / 2] = player_->name();
   fighters.add_row(playerLine);
 
-  std::vector<variant<std::string, const char *, tabulate::Table>>
+  std::vector<variant<std::string, const char*, tabulate::Table>>
       lifePlayerPoints(nameFighters.size(), "");
   lifePlayerPoints[nameFighters.size() / 2] =
       std::to_string(player_->nbLifePoints()) + " points de vie";

@@ -8,7 +8,7 @@
 
 #include "Pause.h"
 
-void Rules::displayRules(const Options &options) {
+void Rules::displayRules(const Options& options) {
   system("clear");
 
   std::cout << "\n " << Term::color(Term::fg::black)
