@@ -40,5 +40,5 @@ To make build faster, you can compile in parallel with the `-j` flag
 
 Once the program is compiled, run `main` executable by writing
 ```shell
-    ./<build_folder>/main
+    ./<build_folder>/src/main
 ```

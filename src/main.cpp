@@ -3,6 +3,7 @@
  */
 
 #include <iostream>
+#include <string_view>
 
 #include "Languages.h"
 #include "LoadGame.h"
@@ -32,8 +33,21 @@ int main(int argc, char* argv[]) {
   // // Quit the game
   Quit quit(data::Menu::statementQuit, data::Menu::resultLoadGame);
 
-  Selection::select({&startGame, &loadGame, &quit},
-                    data::Menu::titleStartGameMenu);
+  auto result = Select::select(
+      data::Menu::titleStartGameMenu,
+      {startGame.statement(), loadGame.statement(), quit.statement()});
+
+  switch (result) {
+    case 0:
+      startGame.triggerAction();
+      break;
+    case 1:
+      loadGame.triggerAction();
+      break;
+    case 2:
+      quit.triggerAction();
+      break;
+  }
 
   return 0;
 }
