@@ -5,16 +5,19 @@
  * \file HeaderWriter.h
  */
 
-#include <string>
+#include <string_view>
+
+#include "NameType.h"
 
 class HeaderWriter {
  private:
-  std::string nameLevel_;
-  int hour_;
-  int minut_;
+  std::string_view nameLevel_;
+  Hour hour_;
+  Minut minut_;
 
  public:
-  HeaderWriter(const std::string& nameLevel, const int& hour, const int& minut);
+  HeaderWriter(const std::string_view& nameLevel, const Hour& hour,
+               const Minut& minut);
 
   void writeHeader() const;
 };

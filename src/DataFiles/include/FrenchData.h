@@ -4,6 +4,7 @@
 #include <cassert>
 
 #include "NameSpeaker.h"
+#include "NameType.h"
 
 namespace data {
 namespace Introduction {
@@ -11,9 +12,9 @@ namespace Introduction {
 // ***********************************
 
 // Header data
-inline std::string nameLevel = "Introduction : Dur réveil";
-inline int hour = 13;
-inline int minut = 12;
+constexpr std::string_view nameLevel = "Introduction : Dur réveil";
+constexpr Hour hour = Hour(13);
+constexpr Minut minut = Minut(12);
 
 // Messages data
 inline Message message0 = {
@@ -49,9 +50,9 @@ namespace Level1 {
 // ***********************************
 
 // Header data
-inline std::string nameLevel = "Niveau 1 : Beuh";
-inline int hour = 14;
-inline int minut = 35;
+constexpr std::string_view nameLevel = "Niveau 1 : Beuh";
+constexpr Hour hour = Hour(14);
+constexpr Minut minut = Minut(35);
 
 // Messages data
 inline Message message0(const std::string& pseudo, const std::string& plugName,
@@ -76,9 +77,9 @@ namespace Level2 {
 // ***********************************
 
 // Header data
-inline std::string nameLevel = "Niveau 2 : Coke";
-inline int hour = 15;
-inline int minut = 10;
+constexpr std::string_view nameLevel = "Niveau 2 : Coke";
+constexpr Hour hour = Hour(15);
+constexpr Minut minut = Minut(10);
 
 // Messages data
 inline Message message0(const std::string& plugName, const int& pricePlug) {
@@ -107,9 +108,9 @@ inline Message message5 = {{NameSpeaker::player, "Merci. Salut."},
 }  // namespace Level2
 
 namespace Level3 {
-inline std::string nameLevel = "Niveau 3 : Shit";
-inline int hour = 16;
-inline int minut = 4;
+constexpr std::string_view nameLevel = "Niveau 3 : Shit";
+constexpr Hour hour = Hour(16);
+constexpr Minut minut = Minut(4);
 
 inline Message message0 = {
     {NameSpeaker::description, "Vous arrivez en bas du bloc."},
@@ -149,9 +150,9 @@ inline Message message5 = {{NameSpeaker::description, "Roule. Fume."}};
 }  // namespace Level3
 
 namespace Level4 {
-inline std::string nameLevel = "Niveau 4 : Lean";
-inline int hour = 17;
-inline int minut = 15;
+constexpr std::string_view nameLevel = "Niveau 4 : Lean";
+constexpr Hour hour = Hour(17);
+constexpr Minut minut = Minut(15);
 
 inline Message message0(const std::string& pseudo) {
   return {
@@ -183,9 +184,9 @@ inline Message message3 = {{NameSpeaker::plug, "Quelle niveau ! Tiens."},
 }  // namespace Level4
 
 namespace Level5 {
-inline std::string nameLevel = "Niveau 5 : Xanax";
-inline int hour = 19;
-inline int minut = 2;
+constexpr std::string_view nameLevel = "Niveau 5 : Xanax";
+constexpr Hour hour = Hour(19);
+constexpr Minut minut = Minut(2);
 
 inline Message message0 = {{NameSpeaker::description,
                             "Vous arrivez en bas du Bones factory tenu par le "
@@ -235,9 +236,9 @@ inline Message message7 = {
 }  // namespace Level5
 
 namespace Level6 {
-inline std::string nameLevel = "Niveau 6 : Champis";
-inline int hour = 21;
-inline int minut = 10;
+constexpr std::string_view nameLevel = "Niveau 6 : Champis";
+constexpr Hour hour = Hour(21);
+constexpr Minut minut = Minut(10);
 
 inline Message message0 = {
     {NameSpeaker::player,
@@ -254,9 +255,9 @@ inline Message message0 = {
 }  // namespace Level6
 
 namespace Level7 {
-inline std::string nameLevel = "Niveau 7 : Kétamine";
-inline int hour = 0;
-inline int minut = 10;
+constexpr std::string_view nameLevel = "Niveau 7 : Kétamine";
+constexpr Hour hour = Hour(0);
+constexpr Minut minut = Minut(10);
 
 inline Message message0 = {
     {NameSpeaker::description, "Boum."},
@@ -273,9 +274,9 @@ inline Message message1 = {
 }  // namespace Level7
 
 namespace Level8 {
-inline std::string nameLevel = "Niveau 8 : Crack (Interlude)";
-inline int hour = 2;
-inline int minut = 12;
+constexpr std::string_view nameLevel = "Niveau 8 : Crack (Interlude)";
+constexpr Hour hour = Hour(2);
+constexpr Minut minut = Minut(12);
 
 inline Message message0(const std::string& plugName) {
   return {
@@ -307,9 +308,9 @@ inline Message message1 = {
 }  // namespace Level8
 
 namespace Level9 {
-inline std::string nameLevel = "Niveau 9 : LSD (Révélation)";
-inline int hour = 3;
-inline int minut = 35;
+constexpr std::string_view nameLevel = "Niveau 9 : LSD (Révélation)";
+constexpr Hour hour = Hour(3);
+constexpr Minut minut = Minut(35);
 
 inline Message message0 = {{NameSpeaker::player, "Dégage de là."}};
 
@@ -346,9 +347,9 @@ inline Message message7 = {
 }  // namespace Level9
 
 namespace Level10 {
-inline std::string nameLevel = "Niveau 10 : Héroine (Désillusion)";
-inline int hour = 7;
-inline int minut = 30;
+constexpr std::string_view nameLevel = "Niveau 10 : Héroine (Désillusion)";
+constexpr Hour hour = Hour(7);
+constexpr Minut minut = Minut(30);
 
 inline Message messageMinus1 = {
     {NameSpeaker::plug, "Que fais tu petit chose ?"},
@@ -383,9 +384,9 @@ inline Message message4 = {
 }  // namespace Level10
 
 namespace Outro {
-inline std::string nameLevel = "Crédits";
-inline int hour = 0;
-inline int minut = 0;
+constexpr std::string_view nameLevel = "Crédits";
+constexpr Hour hour = Hour(0);
+constexpr Minut minut = Minut(0);
 
 inline Message message0 = {
     {NameSpeaker::description, "Programmeur : Jess H."},

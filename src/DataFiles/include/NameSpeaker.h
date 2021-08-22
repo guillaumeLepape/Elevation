@@ -7,6 +7,6 @@
 
 enum class NameSpeaker { player = 0, plug, description, action };
 
-typedef std::vector<std::tuple<NameSpeaker, std::string>> Message;
+using Message = std::vector<std::tuple<NameSpeaker, std::string>>;
 
 #endif
