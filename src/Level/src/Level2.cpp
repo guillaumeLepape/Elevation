@@ -15,9 +15,8 @@
 void Level2::startLevel() {
   Plug plug("Jean-Luc Delarue");
 
-  HeaderWriter headerWriter(data::Level2::nameLevel, data::Level2::hour,
-                            data::Level2::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level2::nameLevel, data::Level2::hour,
+                data::Level2::minut);
 
   int price = 80;
   auto message = data::Level2::message0(plug.name(), price);

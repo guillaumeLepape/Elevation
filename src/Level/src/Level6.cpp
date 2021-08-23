@@ -11,9 +11,8 @@
 #include "MessageWriter.h"
 
 void Level6::startLevel() {
-  HeaderWriter headerWriter(data::Level6::nameLevel, data::Level6::hour,
-                            data::Level6::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level6::nameLevel, data::Level6::hour,
+                data::Level6::minut);
 
   MessageWriter messageWriter(data::Level6::message0, player_->name(), "");
   messageWriter.writeMessage();

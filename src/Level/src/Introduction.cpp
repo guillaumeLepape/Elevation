@@ -12,10 +12,8 @@
 #include "Pseudo.h"
 
 void Introduction::startLevel() {
-  HeaderWriter headerWriter(data::Introduction::nameLevel,
-                            data::Introduction::hour,
-                            data::Introduction::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Introduction::nameLevel, data::Introduction::hour,
+                data::Introduction::minut);
 
   MessageWriter messageWriter0(data::Introduction::message0, player_->name(),
                                "");

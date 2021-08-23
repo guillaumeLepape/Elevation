@@ -9,17 +9,8 @@
 
 #include "NameType.h"
 
-class HeaderWriter {
- private:
-  std::string_view nameLevel_;
-  Hour hour_;
-  Minut minut_;
-
- public:
-  HeaderWriter(const std::string_view& nameLevel, const Hour& hour,
-               const Minut& minut);
-
-  void writeHeader() const;
-};
+namespace Header {
+void write(const std::string_view&, const Hour& hour, const Minut& minut);
+}
 
 #endif

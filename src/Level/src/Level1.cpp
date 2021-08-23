@@ -14,9 +14,8 @@
 void Level1::startLevel() {
   Plug plug("Petite frappe");
 
-  HeaderWriter headerWriter(data::Level1::nameLevel, data::Level1::hour,
-                            data::Level1::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level1::nameLevel, data::Level1::hour,
+                data::Level1::minut);
 
   int price = 20;
   auto message = data::Level1::message0(player_->name(), plug.name(), price);

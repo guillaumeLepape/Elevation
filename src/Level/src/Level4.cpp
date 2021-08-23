@@ -16,9 +16,8 @@
 void Level4::startLevel() {
   Plug plug("Freeze Corleone", 20);
 
-  HeaderWriter headerWriter(data::Level4::nameLevel, data::Level4::hour,
-                            data::Level4::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level4::nameLevel, data::Level4::hour,
+                data::Level4::minut);
 
   auto message = data::Level4::message0(player_->name());
   MessageWriter messageWriter0(message, player_->name(), plug.name());

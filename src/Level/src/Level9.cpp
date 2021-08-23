@@ -25,9 +25,8 @@
 #include "Selection.h"
 
 void Level9::startLevel() {
-  HeaderWriter headerWriter(data::Level9::nameLevel, data::Level9::hour,
-                            data::Level9::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level9::nameLevel, data::Level9::hour,
+                data::Level9::minut);
 
   const Knife* knife = new Knife();
   Plug plug("Psychopathe", 250, knife);

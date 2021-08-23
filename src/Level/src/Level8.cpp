@@ -16,9 +16,8 @@
 void Level8::startLevel() {
   Plug plug("Mathilde", 30);
 
-  HeaderWriter headerWriter(data::Level8::nameLevel, data::Level8::hour,
-                            data::Level8::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level8::nameLevel, data::Level8::hour,
+                data::Level8::minut);
 
   MessageWriter messageWriter0(data::Level8::message0(plug.name()),
                                player_->name(), plug.name());

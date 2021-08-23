@@ -18,9 +18,8 @@
 void Level3::startLevel() {
   Plug plug("V", 100);
 
-  HeaderWriter headerWriter(data::Level3::nameLevel, data::Level3::hour,
-                            data::Level3::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level3::nameLevel, data::Level3::hour,
+                data::Level3::minut);
 
   MessageWriter messageWriter0(data::Level3::message0, player_->name(),
                                plug.name());

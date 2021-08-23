@@ -21,9 +21,8 @@
 #include "RegenerateAllLife.h"
 
 void Level7::startLevel() {
-  HeaderWriter headerWriter(data::Level7::nameLevel, data::Level7::hour,
-                            data::Level7::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level7::nameLevel, data::Level7::hour,
+                data::Level7::minut);
 
   Plug boss("Tueur professionnel", 200, new Hammer());
 

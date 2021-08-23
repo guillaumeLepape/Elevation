@@ -22,9 +22,8 @@
 #include "TutorialWriter.h"
 
 void Level5::startLevel() {
-  HeaderWriter headerWriter(data::Level5::nameLevel, data::Level5::hour,
-                            data::Level5::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level5::nameLevel, data::Level5::hour,
+                data::Level5::minut);
 
   Plug guetteur("Guetteur", 35, new Fist());
 

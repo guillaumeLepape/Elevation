@@ -19,9 +19,8 @@
 #include "PlugAttack.h"
 
 void Level10::startLevel() {
-  HeaderWriter headerWriter(data::Level10::nameLevel, data::Level10::hour,
-                            data::Level10::minut);
-  headerWriter.writeHeader();
+  Header::write(data::Level10::nameLevel, data::Level10::hour,
+                data::Level10::minut);
 
   const DivineStrike* divineStrike = new DivineStrike();
   Plug plug("Dieu", 10000000, divineStrike);
