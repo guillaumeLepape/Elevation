@@ -29,7 +29,7 @@ Fight::Fight(Player* const player, const std::vector<Plug*>& plugs,
 
 void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
                        std::function<bool(Player* const player)> predicate) {
-  int nbTurns = 0;
+  std::size_t nbTurns = 0;
 
   FightWriter fightWriter(player_, plugs_);
 
@@ -137,7 +137,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
       messageWriter[nbTurns - 1].writeMessage();
     }
 
-    for (int i = 0; i < chooseWeaponResult.useWeapons.size(); i++) {
+    for (std::size_t i = 0; i < chooseWeaponResult.useWeapons.size(); i++) {
       delete chooseWeaponResult.useWeapons[i];
     }
   }
@@ -193,7 +193,7 @@ Plug* Fight::choosePlug() {
   Plug* const choosenPlug(
       ((ChoosePlug*)choosePlugActions[resultChoosePlug])->plug());
 
-  for (int i = 0; i < choosePlugActions.size(); i++) {
+  for (std::size_t i = 0; i < choosePlugActions.size(); i++) {
     delete choosePlugActions[i];
   }
 

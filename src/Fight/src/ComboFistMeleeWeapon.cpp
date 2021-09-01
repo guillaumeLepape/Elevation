@@ -27,7 +27,7 @@ void ComboFistMeleeWeapon::triggerCombo(
     // Build vector of useWeapon actions without the fist action
     std::vector<const Weapon*> weaponFistComboVector;
 
-    for (long unsigned int i = 0; i < useWeapon.size(); i++) {
+    for (std::size_t i = 0; i < useWeapon.size(); i++) {
       // Generate combo weapon, if the weapon is a melee weapon
       if (useWeapon[i]->weapon()->weaponType() == WeaponType::meleeWeapon) {
         const Weapon* weaponFistCombo =
@@ -38,7 +38,7 @@ void ComboFistMeleeWeapon::triggerCombo(
 
     std::vector<Action*> useWeaponFistCombo;
 
-    for (int i = 0; i < weaponFistComboVector.size(); i++) {
+    for (std::size_t i = 0; i < weaponFistComboVector.size(); i++) {
       useWeaponFistCombo.push_back(new UseWeapon(
           player_, plug, weaponFistComboVector[i],
           data::Weapon::resultUseWeapon(
@@ -54,11 +54,11 @@ void ComboFistMeleeWeapon::triggerCombo(
 
     useWeaponFistCombo[result]->triggerAction();
 
-    for (int i = 0; i < weaponFistComboVector.size(); i++) {
+    for (std::size_t i = 0; i < weaponFistComboVector.size(); i++) {
       delete weaponFistComboVector[i];
     }
 
-    for (int i = 0; i < useWeaponFistCombo.size(); i++) {
+    for (std::size_t i = 0; i < useWeaponFistCombo.size(); i++) {
       delete useWeaponFistCombo[i];
     }
   }

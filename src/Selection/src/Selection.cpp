@@ -10,8 +10,7 @@
 
 int Select::select(const std::string& title,
                    const std::vector<std::string>& statements) {
-  SelectionWriter selectionWriter(title, statements);
-  selectionWriter.writeSelection();
+  Selection::write(title, statements);
 
   long unsigned int choice = 0;
 
@@ -33,10 +32,8 @@ int Select::select(const std::string& title,
     // throw away garbage input
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    selectionWriter.writeSelection();
+    Selection::write(title, statements);
   }
-
-  // statements[choice - 1]->triggerAction();
 
   return choice - 1;
 }
