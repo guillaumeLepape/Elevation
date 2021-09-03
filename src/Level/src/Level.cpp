@@ -23,7 +23,7 @@ void Level::endOfLevel() const {
   writeResults.triggerAction();
 
   std::unique_ptr<Nothing> continueAction(
-      new Nothing(data::Menu::statementContinue, ""));
+      new Nothing(data::Menu::statementContinue));
   std::unique_ptr<SaveAndQuit> quit(
       new SaveAndQuit(data::Menu::statementQuit, data::Menu::resultQuit));
 

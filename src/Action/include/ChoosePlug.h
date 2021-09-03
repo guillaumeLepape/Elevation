@@ -5,18 +5,22 @@
  * \file ChoosePlug.h
  */
 
-#include "Action.h"
+#include "NameType.h"
 
-class ChoosePlug : public Action {
+class ChoosePlug {
  private:
+  const Statement& statement_;
+  const Result& result_;
+
   Plug* const plug_;
 
  public:
-  ChoosePlug(Plug* const plug, const std::string& statement,
-             const std::string& result)
-      : Action(statement, result), plug_(plug) {}
+  ChoosePlug(Plug* const plug, const Statement& statement, const Result& result)
+      : statement_(statement), result_(result), plug_(plug) {}
 
-  void triggerAction() override {}
+  const std::string& statement() const { return statement_.get(); }
+
+  void triggerAction() {}
 
   Plug* plug() const { return plug_; }
 };

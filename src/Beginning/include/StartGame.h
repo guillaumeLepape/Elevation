@@ -5,28 +5,31 @@
  * \file StartGame.h
  */
 
-#include "Action.h"
 #include "Id.h"
+#include "NameType.h"
 #include "Player.h"
 #include "ResultsData.h"
 
 class Options;
 
-class StartGame : public Action {
+class StartGame {
  private:
+  const Statement& statement_;
+
   const std::unique_ptr<Player> player_;
   const std::unique_ptr<ResultsData> resultsData_;
   const Options& options_;
 
  public:
-  StartGame(const std::string& statement, const std::string& result,
-            const Options& options,
+  StartGame(const Statement& statement, const Options& options,
             Player* const player = new Player("Joueur", Id::generateId(), 0),
             ResultsData* const resultsData = new ResultsData());
 
   StartGame(const StartGame& startGame) = delete;
 
-  void triggerAction() override;
+  const std::string& statement() const { return statement_.get(); }
+
+  void triggerAction();
 };
 
 #endif

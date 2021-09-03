@@ -6,7 +6,6 @@
 
 #include <iostream>
 
-#include "AddWeaponAction.h"
 #include "ComboDoubleMeleeWeapon.h"
 #include "ComboFistMeleeWeapon.h"
 #include "ComboQuadrupleCutter.h"
@@ -105,7 +104,7 @@ void Level5::startLevel() {
   MessageWriter messageWriter4(data::Level5::message4, player_->name(), "");
   messageWriter4.writeMessage();
 
-  RegenerateAllLife regenerateAllLife(player_, "", "");
+  RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();
 
   MessageWriter messageWriter5(data::Level5::message5, player_->name(), "");

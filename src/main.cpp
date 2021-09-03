@@ -25,13 +25,11 @@ int main(int argc, char* argv[]) {
   Rules::displayRules(options);
 
   // // Start the game at the begining
-  StartGame startGame(data::Menu::statementStartGame,
-                      data::Menu::resultStartGame, options);
+  StartGame startGame(data::Menu::statementStartGame, options);
   // // Load previous game from results.json file
-  LoadGame loadGame(data::Menu::statementLoadGame, data::Menu::resultLoadGame,
-                    options);
+  LoadGame loadGame(data::Menu::statementLoadGame, options);
   // // Quit the game
-  Quit quit(data::Menu::statementQuit, data::Menu::resultLoadGame);
+  Quit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
   auto result = Select::select(
       data::Menu::titleStartGameMenu,

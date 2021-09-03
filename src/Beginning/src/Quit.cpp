@@ -6,8 +6,8 @@
 
 #include <iostream>
 
-Quit::Quit(const std::string& statement, const std::string& result)
-    : Action(statement, result) {}
+Quit::Quit(const Statement& statement, const Result& result)
+    : statement_(statement), actionWriter_(statement_.get(), result.get()) {}
 
 void Quit::triggerAction() {
   actionWriter_.writeResult();

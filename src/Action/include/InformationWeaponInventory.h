@@ -7,20 +7,23 @@
 
 #include <cpp-terminal/terminal.h>
 
-#include "Action.h"
+#include "NameType.h"
 #include "WeaponWriter.h"
 
-class InformationWeaponInventory : public Action {
+class InformationWeaponInventory {
  private:
+  Statement statement_;
+
   const WeaponInventory* const weaponInventory_;
 
  public:
   InformationWeaponInventory(const WeaponInventory* const weaponInventory,
-                             const std::string& statement,
-                             const std::string& result)
-      : Action(statement, result), weaponInventory_(weaponInventory) {}
+                             const Statement& statement)
+      : statement_(statement), weaponInventory_(weaponInventory) {}
 
-  void triggerAction() override {
+  const std::string& statement() const { return statement_.get(); }
+
+  void triggerAction() {
     std::cout << "\n " << Term::color(Term::bg::magenta)
               << Term::color(Term::style::bold)
               << "Informations à propos des armes que vous possèdez"

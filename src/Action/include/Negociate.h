@@ -5,23 +5,26 @@
  * \file Negociate.h
  */
 
-#include "Action.h"
+#include "ActionWriter.h"
+#include "NameType.h"
 
 class Player;
 class Plug;
 
-class Negociate : public Action {
+class Negociate {
  private:
+  ActionWriter actionWriter_;
+
   Player* const player_;
   Plug* const plug_;
   int plugPrice_;
 
  public:
   explicit Negociate(Player* const player, Plug* const plug,
-                     const int& plugPrice, const std::string& statement,
-                     const std::string& result);
+                     const int& plugPrice, const Statement& statement,
+                     const Result& result);
 
-  void triggerAction() override;
+  void triggerAction();
 };
 
 #endif

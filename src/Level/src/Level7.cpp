@@ -46,7 +46,7 @@ void Level7::startLevel() {
   MessageWriter messageWriter1(data::Level7::message1, player_->name(), "");
   messageWriter1.writeMessage();
 
-  RegenerateAllLife regenerateAllLife(player_, "", "");
+  RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();
 
   Level::endOfLevel();

@@ -36,7 +36,7 @@ void ComboFistMeleeWeapon::triggerCombo(
       }
     }
 
-    std::vector<Action*> useWeaponFistCombo;
+    std::vector<UseWeapon*> useWeaponFistCombo;
 
     for (std::size_t i = 0; i < weaponFistComboVector.size(); i++) {
       useWeaponFistCombo.push_back(new UseWeapon(

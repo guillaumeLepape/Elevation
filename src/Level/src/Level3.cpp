@@ -57,7 +57,7 @@ void Level3::startLevel() {
   messageWriter4.writeMessage();
 
   const Knife* knife = new Knife();
-  AddWeaponAction addWeaponAction(player_, knife, "",
+  AddWeaponAction addWeaponAction(player_, knife,
                                   data::Action::resultAddWeapon(knife->name()));
   addWeaponAction.triggerAction();
 

@@ -12,7 +12,6 @@
 #include "Fight.h"
 #include "HeaderWriter.h"
 #include "Heroine.h"
-#include "IncreaseMaxLifePoints.h"
 #include "Languages.h"
 #include "MessageWriter.h"
 #include "Plug.h"
@@ -30,7 +29,7 @@ void Level10::startLevel() {
   messageWriterMinus1.writeMessage();
 
   const AK47* ak47 = new AK47(100);
-  AddWeaponAction addWeaponAction(player_, ak47, "",
+  AddWeaponAction addWeaponAction(player_, ak47,
                                   data::Action::resultAddWeapon(ak47->name()));
   addWeaponAction.triggerAction();
 
@@ -51,7 +50,7 @@ void Level10::startLevel() {
   messageWriter0.writeMessage();
 
   Plug heroine("Heroine", 100, new Heroine());
-  PlugAttack plugAttack(player_, &heroine, "", "");
+  PlugAttack plugAttack(player_, &heroine, Result(""));
 
   MessageWriter messageWriter1(data::Level10::message3, player_->name(), "");
 

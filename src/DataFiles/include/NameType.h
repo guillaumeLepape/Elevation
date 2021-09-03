@@ -1,6 +1,9 @@
 #ifndef NAME_TYPE_H
 #define NAME_TYPE_H
 
+#include <string>
+#include <utility>
+
 template <typename T, typename Parameter>
 class NamedType {
  public:
@@ -18,5 +21,11 @@ using Hour = NamedType<unsigned, struct HourParameter>;
 
 struct MinutParameter {};
 using Minut = NamedType<unsigned, struct MinutParameter>;
+
+struct StatementParameter {};
+using Statement = NamedType<std::string, struct StatementParameter>;
+
+struct ResultParameter {};
+using Result = NamedType<std::string, struct ResultParameter>;
 
 #endif

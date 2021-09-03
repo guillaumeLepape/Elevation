@@ -5,21 +5,23 @@
  * \file IncreaseMaxLifePoints.h
  */
 
-#include "Action.h"
+#include "NameType.h"
 
-class IncreaseMaxLifePoints : public Action {
+class IncreaseMaxLifePoints {
  private:
+  ActionWriter actionWriter_;
+
   Player* const player_;
   int maxLifePointsIncreasing_;
 
  public:
   IncreaseMaxLifePoints(Player* const player, int maxLifePointsIncreasing,
-                        const std::string& statement, const std::string& result)
-      : Action(statement, result),
+                        const Result& result)
+      : actionWriter_("", result.get()),
         player_(player),
         maxLifePointsIncreasing_(maxLifePointsIncreasing) {}
 
-  void triggerAction() override {
+  void triggerAction() {
     player_->increaseMaxLifePoints(maxLifePointsIncreasing_);
     actionWriter_.writeResult();
   }

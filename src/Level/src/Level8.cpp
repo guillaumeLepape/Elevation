@@ -25,7 +25,7 @@ void Level8::startLevel() {
 
   const Ninemm* ninemm = new Ninemm(3);
   AddWeaponAction addWeaponAction(
-      player_, ninemm, "", data::Action::resultAddWeapon(ninemm->name()));
+      player_, ninemm, data::Action::resultAddWeapon(ninemm->name()));
   addWeaponAction.triggerAction();
 
   MessageWriter messageWriter1(data::Level8::message1, player_->name(),

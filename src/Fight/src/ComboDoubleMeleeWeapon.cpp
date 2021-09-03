@@ -26,7 +26,7 @@ void ComboDoubleMeleeWeapon::triggerCombo(
             plug->name(),
             useWeapon[resultChooseWeapon]->weapon()->damageWeapon()));
 
-    Nothing nothing(data::Combo::statementDontCombo, "");
+    Nothing nothing(data::Combo::statementDontCombo);
 
     int result =
         Select::select(data::Combo::titleDoubleMeleeWeapon,

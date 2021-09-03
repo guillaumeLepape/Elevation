@@ -24,11 +24,11 @@ void Level4::startLevel() {
   messageWriter0.writeMessage();
 
   // first question
-  Answer answer0_0(data::Question::answer1Question1, "",
+  Answer answer0_0(data::Question::answer1Question1,
                    data::Question::correctOrNotAnswer1Question1);
-  Answer answer1_0(data::Question::answer2Question1, "",
+  Answer answer1_0(data::Question::answer2Question1,
                    data::Question::correctOrNotAnswer2Question1);
-  Answer answer2_0(data::Question::answer3Question1, "",
+  Answer answer2_0(data::Question::answer3Question1,
                    data::Question::correctOrNotAnswer3Question1);
 
   MessageWriter messageWriter1(data::Level4::message1, player_->name(),
@@ -47,11 +47,11 @@ void Level4::startLevel() {
   messageWriter2.writeMessage();
 
   // second question
-  Answer answer0_1(data::Question::answer1Question2, "",
+  Answer answer0_1(data::Question::answer1Question2,
                    data::Question::correctOrNotAnswer1Question2);
-  Answer answer1_1(data::Question::answer2Question2, "",
+  Answer answer1_1(data::Question::answer2Question2,
                    data::Question::correctOrNotAnswer2Question2);
-  Answer answer2_1(data::Question::answer3Question2, "",
+  Answer answer2_1(data::Question::answer3Question2,
                    data::Question::correctOrNotAnswer3Question2);
 
   while (!Question::question(
@@ -65,11 +65,11 @@ void Level4::startLevel() {
   messageWriter2.writeMessage();
 
   // third question
-  Answer answer0_2(data::Question::answer1Question3, "",
+  Answer answer0_2(data::Question::answer1Question3,
                    data::Question::correctOrNotAnswer1Question3);
-  Answer answer1_2(data::Question::answer2Question3, "",
+  Answer answer1_2(data::Question::answer2Question3,
                    data::Question::correctOrNotAnswer2Question3);
-  Answer answer2_2(data::Question::answer3Question3, "",
+  Answer answer2_2(data::Question::answer3Question3,
                    data::Question::correctOrNotAnswer3Question3);
 
   while (!Question::question(

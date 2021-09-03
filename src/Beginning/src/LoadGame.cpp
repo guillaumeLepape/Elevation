@@ -12,9 +12,8 @@
 #include "Selection.h"
 #include "StartGame.h"
 
-LoadGame::LoadGame(const std::string& statement, const std::string& result,
-                   const Options& options)
-    : Action(statement, result),
+LoadGame::LoadGame(const Statement& statement, const Options& options)
+    : statement_(statement),
       resultsData_(new ResultsData()),
       options_(options) {}
 
@@ -30,14 +29,12 @@ void LoadGame::triggerAction() {
 
     std::cout << "\n";
   } else {
-    std::vector<Action*> actions;
+    std::vector<StartGame*> actions;
     for (auto r = results.cbegin(); r != results.cend(); r++) {
-      Action* startGame = new StartGame(
-          data::Menu::statementChooseLoadedGame((*r)->name(),
-                                                (*r)->nbLevelSuceeded()),
-          data::Menu::resultChooseLoadedGame, options_, *r, resultsData_.get());
-
-      actions.push_back(startGame);
+      actions.push_back(
+          new StartGame(data::Menu::statementChooseLoadedGame(
+                            (*r)->name(), (*r)->nbLevelSuceeded()),
+                        options_, *r, resultsData_.get()));
     }
 
     std::vector<std::string> statements;

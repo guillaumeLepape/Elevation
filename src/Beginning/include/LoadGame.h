@@ -7,22 +7,25 @@
 
 #include <memory>
 
-#include "Action.h"
+#include "NameType.h"
 
 // forward declaration of Options class
 class Options;
 class ResultsData;
 
-class LoadGame : public Action {
+class LoadGame {
  private:
+  const Statement& statement_;
+
   std::unique_ptr<ResultsData> resultsData_;
   const Options& options_;
 
  public:
-  LoadGame(const std::string& statement, const std::string& result,
-           const Options& options);
+  LoadGame(const Statement& statement, const Options& options);
 
-  void triggerAction() override;
+  const std::string& statement() const { return statement_.get(); }
+
+  void triggerAction();
 };
 
 #endif

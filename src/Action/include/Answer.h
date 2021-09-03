@@ -5,20 +5,23 @@
  * \file Answer.h
  */
 
-#include "Action.h"
 #include "AnswerWriter.h"
+#include "NameType.h"
 
-class Answer : public Action {
+class Answer {
  private:
+  const Statement& statement_;
+
   const AnswerWriter answerWriter_;
 
  public:
-  explicit Answer(const std::string& statement, const std::string& result,
-                  const bool& correctOrNot)
-      : Action(statement, result),
-        answerWriter_(statement, result, correctOrNot) {}
+  explicit Answer(const Statement& statement, const bool& correctOrNot)
+      : statement_(statement),
+        answerWriter_(statement.get(), "", correctOrNot) {}
 
-  void triggerAction() override {}
+  const std::string& statement() const { return statement_.get(); }
+
+  void triggerAction() {}
 
   const bool& correctOrNot() const { return answerWriter_.correctOrNot(); }
 };

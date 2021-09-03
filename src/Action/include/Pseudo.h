@@ -5,21 +5,24 @@
  * \file Pseudo.h
  */
 
-#include "Action.h"
+#include "ActionWriter.h"
+#include "NameType.h"
 
 class Player;
 
-class Pseudo : public Action {
+class Pseudo {
  private:
+  ActionWriter actionWriter_;
+
   Player* const player_;
 
   void formatString(std::string& str);
 
  public:
-  explicit Pseudo(Player* const player, const std::string& statement,
-                  const std::string& result);
+  explicit Pseudo(Player* const player, const Statement& statement,
+                  const Result& result);
 
-  void triggerAction() override;
+  void triggerAction();
 };
 
 #endif

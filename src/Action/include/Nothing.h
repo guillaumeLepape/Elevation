@@ -5,14 +5,18 @@
  * \file Nothing.h
  */
 
-#include "Action.h"
+#include "NameType.h"
 
-class Nothing : public Action {
+class Nothing {
+ private:
+  const Statement& statement_;
+
  public:
-  Nothing(const std::string& statement, const std::string& result)
-      : Action(statement, result) {}
+  Nothing(const Statement& statement) : statement_(statement) {}
 
-  void triggerAction() override {}
+  void triggerAction() {}
+
+  const std::string& statement() const { return statement_.get(); }
 };
 
 #endif

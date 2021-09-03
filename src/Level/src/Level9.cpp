@@ -32,7 +32,7 @@ void Level9::startLevel() {
   Plug plug("Psychopathe", 250, knife);
 
   PlugAttack plugAttack0(
-      player_, &plug, "",
+      player_, &plug,
       data::Action::resultPlugAttack(plug.name(), knife->damageWeapon()));
   plugAttack0.triggerAction();
   plugAttack0.triggerAction();
@@ -48,7 +48,7 @@ void Level9::startLevel() {
       data::Weapon::resultUseWeapon(plug.name(), fist->damageWeapon()));
   useWeapon.triggerAction();
 
-  RegenerateAllLife regenerateAllLife(player_, "", "");
+  RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();
 
   MessageWriter messageWriter1(data::Level9::message1, player_->name(),
@@ -61,7 +61,7 @@ void Level9::startLevel() {
   plug.changeWeapon(chopper);
 
   PlugAttack plugAttack1(
-      player_, &plug, "",
+      player_, &plug,
       data::Action::resultPlugAttack(plug.name(), chopper->damageWeapon()));
   plugAttack1.triggerAction();
   regenerateAllLife.triggerAction();
@@ -107,7 +107,7 @@ void Level9::startLevel() {
   messageWriter5.writeMessage();
 
   IncreaseMaxLifePoints increaseMaxLifePoints(
-      player_, 1100, "", data::Action::resultsIncreaseMaxLifePoints(1100));
+      player_, 1100, data::Action::resultsIncreaseMaxLifePoints(1100));
   increaseMaxLifePoints.triggerAction();
 
   MessageWriter messageWriter6(data::Level9::message6, player_->name(),

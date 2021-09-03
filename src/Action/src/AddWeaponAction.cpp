@@ -7,17 +7,15 @@
 #include "Player.h"
 
 AddWeaponAction::AddWeaponAction(Player* const player, Plug* const plug,
-                                 const std::string& statement,
-                                 const std::string& result)
-    : Action(statement, result),
+                                 const Result& result)
+    : actionWriter_("", result.get()),
       player_(player),
       plug_(plug),
       weapon_(nullptr) {}
 
 AddWeaponAction::AddWeaponAction(Player* const player, const Weapon* weapon,
-                                 const std::string& statement,
-                                 const std::string& result)
-    : Action(statement, result),
+                                 const Result& result)
+    : actionWriter_("", result.get()),
       player_(player),
       plug_(nullptr),
       weapon_(weapon) {}

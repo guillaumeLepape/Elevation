@@ -7,26 +7,28 @@
 
 #include <memory>
 
-#include "Action.h"
+#include "ActionWriter.h"
+#include "NameType.h"
 #include "Plug.h"
 #include "Weapon.h"
 
 class Player;
 
-class AddWeaponAction : public Action {
+class AddWeaponAction {
  private:
+  ActionWriter actionWriter_;
+
   Player* const player_;
   Plug* const plug_;
   const Weapon* weapon_;
 
  public:
-  AddWeaponAction(Player* const player, Plug* const plug,
-                  const std::string& statement, const std::string& result);
+  AddWeaponAction(Player* const player, Plug* const plug, const Result& result);
 
   AddWeaponAction(Player* const player, const Weapon* weapon,
-                  const std::string& statement, const std::string& result);
+                  const Result& result);
 
-  void triggerAction() override;
+  void triggerAction();
 };
 
 #endif

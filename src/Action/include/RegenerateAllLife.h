@@ -5,18 +5,19 @@
  * \file RegenerateAllLife.h
  */
 
-#include "Action.h"
+#include "NameType.h"
 
-class RegenerateAllLife : public Action {
+class RegenerateAllLife {
  private:
+  ActionWriter actionWriter_;
+
   Player* const player_;
 
  public:
-  RegenerateAllLife(Player* const player, const std::string& statement,
-                    const std::string& result)
-      : Action(statement, result), player_(player) {}
+  RegenerateAllLife(Player* const player, const Result& result)
+      : actionWriter_("", result.get()), player_(player) {}
 
-  void triggerAction() override {
+  void triggerAction() {
     // if player is full life or dead, do nothing, else regenerate him
     if (!(player_->fullLife()) && !(player_->dead())) {
       actionWriter_.updateResult(

@@ -8,30 +8,33 @@
 #include "Dead.h"
 #include "FireArm.h"
 #include "Languages.h"
+#include "NameType.h"
 #include "Player.h"
 #include "Plug.h"
 
-class UseWeapon : public Action {
+class UseWeapon {
  private:
+  ActionWriter actionWriter_;
+
   const Weapon* weapon_;
   Player* const player_;
   Plug* const plug_;
 
  public:
   UseWeapon(Player* const player, Plug* const plug, const Weapon* weapon,
-            const std::string& result)
-      : Action(weapon->statement(), result),
+            const Result& result)
+      : actionWriter_(weapon->statement(), result.get()),
         weapon_(weapon),
         player_(player),
         plug_(plug) {}
 
-  void triggerAction() override {
+  void triggerAction() {
     plug_->decreaseLifePoints(weapon_->damageWeapon());
     // weapon_->attack(plug_);
 
     actionWriter_.writeResult();
 
-    Dead dead(plug_, "", data::Action::resultDead(plug_->name()));
+    Dead dead(plug_, data::Action::resultDead(plug_->name()));
     dead.triggerAction();
 
     // if weapon is fireArm and has no ammo, delete it
@@ -42,6 +45,8 @@ class UseWeapon : public Action {
       }
     }
   }
+
+  const std::string& statement() const { return weapon_->statement(); }
 
   const std::string& nameWeapon() const { return weapon_->name(); }
   const Weapon* weapon() const { return weapon_; }

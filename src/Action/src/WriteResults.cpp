@@ -10,9 +10,10 @@
 #include "ResultsData.h"
 
 WriteResults::WriteResults(Player* const player, ResultsData* const resultsData,
-                           const std::string& statement,
-                           const std::string& result)
-    : Action(statement, result), player_(player), resultsData_(resultsData) {}
+                           const Statement& statement, const Result& result)
+    : actionWriter_(statement.get(), result.get()),
+      player_(player),
+      resultsData_(resultsData) {}
 
 void WriteResults::triggerAction() {
   resultsData_->addResult(player_);

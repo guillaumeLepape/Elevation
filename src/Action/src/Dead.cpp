@@ -6,9 +6,8 @@
 
 #include "Plug.h"
 
-Dead::Dead(const Plug* const plug, const std::string& statement,
-           const std::string& result)
-    : Action(statement, result), plug_(plug) {}
+Dead::Dead(const Plug* const plug, const Result& result)
+    : actionWriter_("", result.get()), plug_(plug) {}
 
 void Dead::triggerAction() {
   if (plug_->dead()) {

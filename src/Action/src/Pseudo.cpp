@@ -11,9 +11,9 @@
 #include "MessageWriter.h"
 #include "Player.h"
 
-Pseudo::Pseudo(Player* const player, const std::string& statement,
-               const std::string& result)
-    : Action(statement, result), player_(player) {}
+Pseudo::Pseudo(Player* const player, const Statement& statement,
+               const Result& result)
+    : actionWriter_(statement.get(), result.get()), player_(player) {}
 
 void Pseudo::triggerAction() {
   ListNameData feminineNameData("dataset", "prenoms_feminins");
@@ -59,7 +59,7 @@ void Pseudo::triggerAction() {
 
   player_->changeName(*ptrPseudo);
 
-  actionWriter_.updateResult(data::Action::resultPseudo(player_->name()));
+  actionWriter_.updateResult(data::Action::resultPseudo(player_->name()).get());
   actionWriter_.writeResult();
 }
 

@@ -5,13 +5,21 @@
  * \file Quit.h
  */
 
-#include "Action.h"
+#include "ActionWriter.h"
+#include "NameType.h"
 
-class Quit : public Action {
+class Quit {
+ private:
+  const Statement& statement_;
+
+  ActionWriter actionWriter_;
+
  public:
-  Quit(const std::string& statement, const std::string& result);
+  Quit(const Statement& statement, const Result& result);
 
-  void triggerAction() override;
+  const std::string& statement() const { return statement_.get(); }
+
+  void triggerAction();
 };
 
 #endif

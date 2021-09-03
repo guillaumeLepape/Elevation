@@ -20,11 +20,11 @@ class Action {
   explicit Action(const std::string& statement, const std::string& result)
       : actionWriter_(statement, result), statement_(statement) {}
 
-  Action(const Action& action) = delete;
-  Action& operator=(const Action& action) = delete;
+  Action(const Action&) = delete;
+  Action(Action&&) = default;
 
-  const ActionWriter& actionWriter() const { return actionWriter_; }
-  const std::string& statement() const { return statement_; }
+  Action& operator=(const Action&) = delete;
+  Action& operator=(Action&&) = default;
 
   virtual void triggerAction() = 0;
 

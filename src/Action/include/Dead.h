@@ -5,20 +5,22 @@
  * \file Dead.h
  */
 
-#include "Action.h"
+#include "ActionWriter.h"
+#include "NameType.h"
 
 // forward declaration of Plug class
 class Plug;
 
-class Dead : public Action {
+class Dead {
  private:
+  ActionWriter actionWriter_;
+
   const Plug* const plug_;
 
  public:
-  Dead(const Plug* const plug, const std::string& statement,
-       const std::string& result);
+  Dead(const Plug* const plug, const Result& result);
 
-  void triggerAction() override;
+  void triggerAction();
 };
 
 #endif

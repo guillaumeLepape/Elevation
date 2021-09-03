@@ -2,19 +2,27 @@
 #define SAVE_AND_QUIT_H
 
 /*!
- * \file Regeneration.h
+ * \file SaveAndQuit.h
  */
 
 #include <iostream>
 
-#include "Action.h"
+#include "ActionWriter.h"
+#include "NameType.h"
 
-class SaveAndQuit : public Action {
+class SaveAndQuit {
+ private:
+  const Statement& statement_;
+
+  ActionWriter actionWriter_;
+
  public:
-  SaveAndQuit(const std::string& statement, const std::string& result)
-      : Action(statement, result) {}
+  SaveAndQuit(const Statement& statement, const Result& result)
+      : statement_(statement), actionWriter_(statement.get(), result.get()) {}
 
-  void triggerAction() override {
+  const std::string& statement() const { return statement_.get(); }
+
+  void triggerAction() {
     actionWriter_.writeResult();
     std::cout << "\n";
     exit(0);

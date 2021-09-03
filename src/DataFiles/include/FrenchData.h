@@ -398,32 +398,32 @@ namespace Action {
 inline std::string titleChooseWeapon = "Choix de l'arme";
 inline std::string titleChoosePlug = "Choix de l'ennemi";
 
-inline std::string statementChoosePlug(const std::string& plugName) {
-  return "Attaquer " + plugName + ".";
+inline auto statementChoosePlug(const std::string& plugName) {
+  return Statement("Attaquer " + plugName + ".");
 }
-inline std::string resultChoosePlug(const std::string& plugName) {
-  return "Vous avez choisi d'attaquer " + plugName + ".";
+inline auto resultChoosePlug(const std::string& plugName) {
+  return Result("Vous avez choisi d'attaquer " + plugName + ".");
 }
-inline std::string resultPlugAttack(const std::string& plugName,
-                                    const int& damagePlug) {
-  return plugName + " vous inflige " + std::to_string(damagePlug) +
-         " points de vie.";
+inline auto resultPlugAttack(const std::string& plugName,
+                             const int& damagePlug) {
+  return Result(plugName + " vous inflige " + std::to_string(damagePlug) +
+                " points de vie.");
 }
 
-inline std::string resultDead(const std::string& plugName) {
-  return plugName + " est mort.";
+inline auto resultDead(const std::string& plugName) {
+  return Result(plugName + " est mort.");
 }
 
 // data for pseudo action
-inline std::string statementPseudo("Entrez votre prénom");
-inline std::string resultPseudo(const std::string& pseudo) {
-  return "Votre prénom est à présent : " + pseudo + ".";
+inline auto statementPseudo = Statement("Entrez votre prénom");
+inline auto resultPseudo(const std::string& pseudo) {
+  return Result("Votre prénom est à présent : " + pseudo + ".");
 }
 
 // data for negociate action
-inline std::string statementNegociate("Entrez votre montant");
-inline std::string resultNegociate(const int& pricePlayer) {
-  return "Vous perdez " + std::to_string(pricePlayer) + "€.";
+inline auto statementNegociate = Statement("Entrez votre montant");
+inline auto resultNegociate(const int& pricePlayer) {
+  return Result("Vous perdez " + std::to_string(pricePlayer) + "€.");
 }
 
 // data for regeneration action
@@ -432,13 +432,13 @@ inline std::string resultRegeneration(const int& lifePointsRegeneration) {
          " points de vie.";
 }
 
-inline std::string resultAddWeapon(const std::string& nameWeapon) {
-  return nameWeapon + " ajouté à votre inventaire.";
+inline auto resultAddWeapon(const std::string& nameWeapon) {
+  return Result(nameWeapon + " ajouté à votre inventaire.");
 }
 
-inline std::string resultsIncreaseMaxLifePoints(const int& maxLifePoints) {
-  return "Votre nombre de points de vie maximal augmente de " +
-         std::to_string(maxLifePoints) + " points.";
+inline auto resultsIncreaseMaxLifePoints(const int& maxLifePoints) {
+  return Result("Votre nombre de points de vie maximal augmente de " +
+                std::to_string(maxLifePoints) + " points.");
 }
 }  // namespace Action
 
@@ -447,25 +447,26 @@ namespace Menu {
 inline std::string titleStartGameMenu = "Menu";
 
 // data for startGame action
-inline std::string statementStartGame("Commencer une nouvelle partie");
+inline auto statementStartGame = Statement("Commencer une nouvelle partie");
 inline std::string resultStartGame("La partie commence.");
 
 // data for loadGame action
-inline std::string statementLoadGame("Charger une partie");
-inline std::string resultLoadGame("Vous avez choisi de charger une partie.");
+inline auto statementLoadGame = Statement("Charger une partie");
+// inline auto resultLoadGame = Statement("Vous avez choisi de charger une
+// partie.");
 
 // data for quit action
-inline std::string statementQuit("Quitter le jeu");
-inline std::string resultQuit("Fin du jeu");
+inline auto statementQuit = Statement("Quitter le jeu");
+inline auto resultQuit = Result("Fin du jeu");
 
 // title of loadGame menu
 inline std::string titleLoadGameMenu = "Choix de la partie";
 
 // data for the choice of the loaded game
-inline std::string statementChooseLoadedGame(const std::string& pseudo,
-                                             const int& levelNumber) {
-  return "Charger la partie " + pseudo + " au niveau " +
-         std::to_string(levelNumber);
+inline Statement statementChooseLoadedGame(const std::string& pseudo,
+                                           const int& levelNumber) {
+  return Statement("Charger la partie " + pseudo + " au niveau " +
+                   std::to_string(levelNumber));
 }
 inline std::string resultChooseLoadedGame(
     "Vous avez chois charger une partie.");
@@ -474,14 +475,14 @@ inline std::string resultChooseLoadedGame(
 inline std::string titleContinueMenu = "Niveau terminé";
 
 // data for continue action
-inline std::string statementContinue("Continuer votre partie");
+inline auto statementContinue = Statement("Continuer votre partie");
 
 // data for save and quit action
-inline std::string statementSaveAndQuit("Quitter");
-inline std::string resultSaveAndQuit("Partie sauvegardée");
+inline auto statementSaveAndQuit = Statement("Quitter");
+inline auto resultSaveAndQuit = Result("Partie sauvegardée");
 
 // data for game Over action
-inline std::string resultGameOver("Vous etes mort. Game Over.");
+inline auto resultGameOver = Result("Vous etes mort. Game Over.");
 }  // namespace Menu
 
 namespace Combo {
@@ -511,20 +512,20 @@ inline std::string triggeredStatementQuadrupleCutter =
 inline std::string malusStatementQuadrupleCutter =
     "Le cutter est détruit et vous ne pouvez plus l'utiliser.";
 
-inline std::string statementDontCombo = "Ne pas déclencher le combo";
+inline auto statementDontCombo = Statement("Ne pas déclencher le combo");
 }  // namespace Combo
 
 namespace Information {
 inline std::string titleInformation = "Informations";
-inline std::string statementInformationWeapon =
-    "Informations sur les armes que vous possèdez.";
-inline std::string statementInformationCombo =
-    "Informations sur les combos disponible lors de ce combat.";
-inline std::string statementNoInformation =
-    "Je ne souhaite pas avoir d'informations.";
-inline std::string statementNoInformationAnymore =
+inline auto statementInformationWeapon =
+    Statement("Informations sur les armes que vous possèdez.");
+inline auto statementInformationCombo =
+    Statement("Informations sur les combos disponible lors de ce combat.");
+inline auto statementNoInformation =
+    Statement("Je ne souhaite pas avoir d'informations.");
+inline auto statementNoInformationAnymore = Statement(
     "Je ne souhaite pas avoir d'informations et je ne souhaite plus voir le "
-    "menu d'informations lors de ce combat.";
+    "menu d'informations lors de ce combat.");
 }  // namespace Information
 
 namespace Question {
@@ -533,16 +534,17 @@ inline std::string titleFirstQuestion =
     "Les hommes sont-ils allez sur la Lune ?";
 
 // First Answer
-inline std::string answer1Question1("Oui, bien sur !");
+inline auto answer1Question1 = Statement("Oui, bien sur !");
 inline bool correctOrNotAnswer1Question1 = false;
 
 // Second Answer
-inline std::string answer2Question1(
-    "Bien sur, les américains l'ont fait pour niquer les russes.");
+inline auto answer2Question1 =
+    Statement("Bien sur, les américains l'ont fait pour niquer les russes.");
 inline bool correctOrNotAnswer2Question1 = false;
 
 // Third Answer
-inline std::string answer3Question1("Non, l'alunissage a eu lieu au Nevada.");
+inline auto answer3Question1 =
+    Statement("Non, l'alunissage a eu lieu au Nevada.");
 inline bool correctOrNotAnswer3Question1 = true;
 
 // Second question title
@@ -550,37 +552,37 @@ inline std::string titleSecondQuestion =
     "Pourquoi le faux alunissage a été caché ?";
 
 // First Answer
-inline std::string answer1Question2("Euh ...");
+inline auto answer1Question2 = Statement("Euh ...");
 inline bool correctOrNotAnswer1Question2 = false;
 
 // Second Answer
-inline std::string answer2Question2(
+inline auto answer2Question2 = Statement(
     "Pour montrer leurs supériorités, les américains ont préféré mentir car "
     "ils n'avaient pas les moyens technologiques d'y aller.");
 inline bool correctOrNotAnswer2Question2 = false;
 
 // Third Answer
-inline std::string answer3Question2(
-    "Pour cacher qu'en fait la Terre est plate.");
+inline auto answer3Question2 =
+    Statement("Pour cacher qu'en fait la Terre est plate.");
 inline bool correctOrNotAnswer3Question2 = true;
 
 // Third question title
 inline std::string titleThirdQuestion = "Pourquoi vouloir masquer tout ça ?";
 
 // First Answer
-inline std::string answer1Question3(
+inline auto answer1Question3 = Statement(
     "Pour cacher la grand plan des élites qui consiste à réduire drastiquement "
     "la population.");
 inline bool correctOrNotAnswer1Question3 = true;
 
 // Second Answer
-inline std::string answer2Question3(
+inline auto answer2Question3 = Statement(
     "Pour cacher le projet d'Elon Musk, Bill Gates et Laurent Alexandre "
     "constitant à implémenter des puces à la population pour les controler.");
 inline bool correctOrNotAnswer2Question3 = true;
 
 // Third Answer
-inline std::string answer3Question3(
+inline auto answer3Question3 = Statement(
     "Pour cacher que toutes gouvernements sont à la solde d'une organisation "
     "secrète dirigée par les reptiliens.");
 inline bool correctOrNotAnswer3Question3 = true;
@@ -690,9 +692,10 @@ inline std::string statementUseNinemm("Tirez ! (9mm)");
 inline std::string statementUseAK47("Rafalez ! (AK47)");
 
 // generic UseWeapon data result
-inline std::string resultUseWeapon(const std::string& plugName,
-                                   const int& damageWeapon) {
-  return plugName + " perd " + std::to_string(damageWeapon) + " points de vie.";
+inline auto resultUseWeapon(const std::string& plugName,
+                            const int& damageWeapon) {
+  return Result(plugName + " perd " + std::to_string(damageWeapon) +
+                " points de vie.");
 }
 
 inline std::string statementCombo(const std::string& nameWeapon) {

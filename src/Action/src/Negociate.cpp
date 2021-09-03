@@ -13,9 +13,9 @@
 #include "Plug.h"
 
 Negociate::Negociate(Player* const player, Plug* const plug,
-                     const int& plugPrice, const std::string& statement,
-                     const std::string& result)
-    : Action(statement, result),
+                     const int& plugPrice, const Statement& statement,
+                     const Result& result)
+    : actionWriter_(statement.get(), result.get()),
       player_(player),
       plug_(plug),
       plugPrice_(plugPrice) {}
@@ -65,7 +65,7 @@ void Negociate::triggerAction() {
 
       player_->increaseMoney(-price);
 
-      actionWriter_.updateResult(data::Action::resultNegociate(price));
+      actionWriter_.updateResult(data::Action::resultNegociate(price).get());
       actionWriter_.writeResult();
     } else {
       MessageWriter messageWriter3(data::Level2::message3, player_->name(),
