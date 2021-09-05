@@ -4,13 +4,14 @@
 
 #include "Dead.h"
 
+#include "ActionWriter.h"
 #include "Plug.h"
 
 Dead::Dead(const Plug* const plug, const Result& result)
-    : actionWriter_("", result.get()), plug_(plug) {}
+    : result_(result), plug_(plug) {}
 
 void Dead::triggerAction() {
   if (plug_->dead()) {
-    actionWriter_.writeResult();
+    Action::writeResult(result_);
   }
 }

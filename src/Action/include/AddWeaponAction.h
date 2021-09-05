@@ -7,7 +7,6 @@
 
 #include <memory>
 
-#include "ActionWriter.h"
 #include "NameType.h"
 #include "Plug.h"
 #include "Weapon.h"
@@ -16,8 +15,7 @@ class Player;
 
 class AddWeaponAction {
  private:
-  ActionWriter actionWriter_;
-
+  const Result& result_;
   Player* const player_;
   Plug* const plug_;
   const Weapon* weapon_;

@@ -4,21 +4,16 @@
 
 #include "AddWeaponAction.h"
 
+#include "ActionWriter.h"
 #include "Player.h"
 
 AddWeaponAction::AddWeaponAction(Player* const player, Plug* const plug,
                                  const Result& result)
-    : actionWriter_("", result.get()),
-      player_(player),
-      plug_(plug),
-      weapon_(nullptr) {}
+    : result_(result), player_(player), plug_(plug), weapon_(nullptr) {}
 
 AddWeaponAction::AddWeaponAction(Player* const player, const Weapon* weapon,
                                  const Result& result)
-    : actionWriter_("", result.get()),
-      player_(player),
-      plug_(nullptr),
-      weapon_(weapon) {}
+    : result_(result), player_(player), plug_(nullptr), weapon_(weapon) {}
 
 void AddWeaponAction::triggerAction() {
   if (weapon_ == nullptr) {
@@ -26,7 +21,7 @@ void AddWeaponAction::triggerAction() {
       bool present = player_->weapons()->addWeapon(plug_->realeaseWeapon());
 
       if (!present) {
-        actionWriter_.writeResult();
+        Action::writeResult(result_);
       }
     }
   } else {
@@ -34,7 +29,7 @@ void AddWeaponAction::triggerAction() {
       bool present = player_->weapons()->addWeapon(weapon_);
 
       if (!present) {
-        actionWriter_.writeResult();
+        Action::writeResult(result_);
       }
     }
   }

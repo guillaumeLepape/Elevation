@@ -15,7 +15,8 @@
 Negociate::Negociate(Player* const player, Plug* const plug,
                      const int& plugPrice, const Statement& statement,
                      const Result& result)
-    : actionWriter_(statement.get(), result.get()),
+    : statement_(statement),
+      result_(result),
       player_(player),
       plug_(plug),
       plugPrice_(plugPrice) {}
@@ -28,7 +29,7 @@ void Negociate::triggerAction() {
   messageWriter1.writeMessage();
 
   while (!out) {
-    actionWriter_.writeStatement();
+    Action::writeStatement(statement_);
 
     int price;
     std::cin >> price;
@@ -45,7 +46,7 @@ void Negociate::triggerAction() {
 
         Pause::pause();
 
-        actionWriter_.writeStatement();
+        Action::writeStatement(statement_);
         std::cin >> price;
       }
       if (!std::cin.fail()) {
@@ -65,8 +66,7 @@ void Negociate::triggerAction() {
 
       player_->increaseMoney(-price);
 
-      actionWriter_.updateResult(data::Action::resultNegociate(price).get());
-      actionWriter_.writeResult();
+      Action::writeResult(data::Action::resultNegociate(price));
     } else {
       MessageWriter messageWriter3(data::Level2::message3, player_->name(),
                                    plug_->name());

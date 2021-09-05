@@ -427,9 +427,9 @@ inline auto resultNegociate(const int& pricePlayer) {
 }
 
 // data for regeneration action
-inline std::string resultRegeneration(const int& lifePointsRegeneration) {
-  return "Vous gagnez " + std::to_string(lifePointsRegeneration) +
-         " points de vie.";
+inline auto resultRegeneration(const int& lifePointsRegeneration) {
+  return Result("Vous gagnez " + std::to_string(lifePointsRegeneration) +
+                " points de vie.");
 }
 
 inline auto resultAddWeapon(const std::string& nameWeapon) {

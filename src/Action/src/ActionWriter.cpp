@@ -8,21 +8,18 @@
 
 #include "Pause.h"
 
-ActionWriter::ActionWriter(const std::string& statement,
-                           const std::string& result)
-    : statement_(statement), result_(result) {}
-
-void ActionWriter::writeStatement() const {
+namespace Action {
+void writeStatement(const Statement& statement) {
   std::cout << "\n " << Term::color(Term::fg::black)
             << Term::color(Term::bg::yellow) << Term::color(Term::style::bold)
-            << statement_ << Term::color(Term::fg::reset)
+            << statement.get() << Term::color(Term::fg::reset)
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset)
             << " : ";
 }
-
-void ActionWriter::writeResult() const {
+void writeResult(const Result& result) {
   Pause::pause();
   std::cout << "\n " << Term::color(Term::fg::yellow)
-            << Term::color(Term::style::bold) << result_
+            << Term::color(Term::style::bold) << result.get()
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
 }
+}  // namespace Action

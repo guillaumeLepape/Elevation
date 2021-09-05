@@ -12,7 +12,8 @@ class Player;
 
 class Pseudo {
  private:
-  ActionWriter actionWriter_;
+  const Statement& statement_;
+  const Result& result_;
 
   Player* const player_;
 

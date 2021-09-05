@@ -13,17 +13,16 @@
 class SaveAndQuit {
  private:
   const Statement& statement_;
-
-  ActionWriter actionWriter_;
+  const Result& result_;
 
  public:
   SaveAndQuit(const Statement& statement, const Result& result)
-      : statement_(statement), actionWriter_(statement.get(), result.get()) {}
+      : statement_(statement), result_(result) {}
 
   const std::string& statement() const { return statement_.get(); }
 
   void triggerAction() {
-    actionWriter_.writeResult();
+    Action::writeResult(result_);
     std::cout << "\n";
     exit(0);
   }

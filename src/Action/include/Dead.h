@@ -5,7 +5,6 @@
  * \file Dead.h
  */
 
-#include "ActionWriter.h"
 #include "NameType.h"
 
 // forward declaration of Plug class
@@ -13,8 +12,8 @@ class Plug;
 
 class Dead {
  private:
-  ActionWriter actionWriter_;
-
+  // ActionWriter actionWriter_;
+  const Result& result_;
   const Plug* const plug_;
 
  public:

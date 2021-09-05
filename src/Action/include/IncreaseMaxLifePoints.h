@@ -9,7 +9,7 @@
 
 class IncreaseMaxLifePoints {
  private:
-  ActionWriter actionWriter_;
+  const Result& result_;
 
   Player* const player_;
   int maxLifePointsIncreasing_;
@@ -17,13 +17,13 @@ class IncreaseMaxLifePoints {
  public:
   IncreaseMaxLifePoints(Player* const player, int maxLifePointsIncreasing,
                         const Result& result)
-      : actionWriter_("", result.get()),
+      : result_(result),
         player_(player),
         maxLifePointsIncreasing_(maxLifePointsIncreasing) {}
 
   void triggerAction() {
     player_->increaseMaxLifePoints(maxLifePointsIncreasing_);
-    actionWriter_.writeResult();
+    Action::writeResult(result_);
   }
 };
 

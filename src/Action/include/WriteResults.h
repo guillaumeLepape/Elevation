@@ -13,7 +13,7 @@ class ResultsData;
 
 class WriteResults {
  private:
-  ActionWriter actionWriter_;
+  const Result& result_;
 
   Player* const player_;
   ResultsData* const resultsData_;

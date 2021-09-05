@@ -7,9 +7,9 @@
 #include <iostream>
 
 Quit::Quit(const Statement& statement, const Result& result)
-    : statement_(statement), actionWriter_(statement_.get(), result.get()) {}
+    : statement_(statement), result_(result) {}
 
 void Quit::triggerAction() {
-  actionWriter_.writeResult();
+  Action::writeResult(result_);
   std::cout << "\n";
 }

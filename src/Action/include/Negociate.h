@@ -13,7 +13,8 @@ class Plug;
 
 class Negociate {
  private:
-  ActionWriter actionWriter_;
+  const Statement& statement_;
+  const Result& result_;
 
   Player* const player_;
   Plug* const plug_;

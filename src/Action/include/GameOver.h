@@ -7,17 +7,18 @@
 
 #include <iostream>
 
+#include "ActionWriter.h"
 #include "NameType.h"
 
 class GameOver {
  private:
-  ActionWriter actionWriter_;
+  const Result& result_;
 
  public:
-  explicit GameOver(const Result& result) : actionWriter_("", result.get()) {}
+  explicit GameOver(const Result& result) : result_(result) {}
 
   void triggerAction() {
-    actionWriter_.writeResult();
+    Action::writeResult(result_);
     std::cout << "\n";
     exit(0);
   }

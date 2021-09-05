@@ -11,14 +11,12 @@
 
 WriteResults::WriteResults(Player* const player, ResultsData* const resultsData,
                            const Statement& statement, const Result& result)
-    : actionWriter_(statement.get(), result.get()),
-      player_(player),
-      resultsData_(resultsData) {}
+    : result_(result), player_(player), resultsData_(resultsData) {}
 
 void WriteResults::triggerAction() {
   resultsData_->addResult(player_);
   resultsData_->writeData();
 
-  actionWriter_.writeResult();
+  Action::writeResult(result_);
   std::cout << "\n";
 }

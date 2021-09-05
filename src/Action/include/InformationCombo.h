@@ -10,7 +10,7 @@
 
 class InformationCombo {
  private:
-  Statement statement_;
+  const Statement& statement_;
 
   std::vector<Combo*> combos_;
 

@@ -3,7 +3,6 @@ project(action)
 add_library(
     ${PROJECT_NAME}
     src/ActionWriter.cpp
-    src/AnswerWriter.cpp
     src/Dead.cpp
     src/AddWeaponAction.cpp
     src/Negociate.cpp

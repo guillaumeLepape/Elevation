@@ -12,7 +12,7 @@
 
 class InformationWeaponInventory {
  private:
-  Statement statement_;
+  const Statement& statement_;
 
   const WeaponInventory* const weaponInventory_;
 

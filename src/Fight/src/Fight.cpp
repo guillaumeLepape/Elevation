@@ -127,7 +127,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 
     // If player is not dead, regenerate her
     if (regeneration_) {
-      Regeneration regeneration(player_, Statement(""), Result(""));
+      Regeneration regeneration(player_, Result(""));
       regeneration.triggerAction();
     }
 

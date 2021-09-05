@@ -13,7 +13,7 @@
 
 Pseudo::Pseudo(Player* const player, const Statement& statement,
                const Result& result)
-    : actionWriter_(statement.get(), result.get()), player_(player) {}
+    : statement_(statement), result_(result), player_(player) {}
 
 void Pseudo::triggerAction() {
   ListNameData feminineNameData("dataset", "prenoms_feminins");
@@ -30,7 +30,7 @@ void Pseudo::triggerAction() {
     MessageWriter messageWriter(data::Introduction::message1, player_->name(),
                                 "");
     messageWriter.writeMessage();
-    actionWriter_.writeStatement();
+    Action::writeStatement(statement_);
 
     // Get pseudo from user
     std::string pseudo;
@@ -59,8 +59,7 @@ void Pseudo::triggerAction() {
 
   player_->changeName(*ptrPseudo);
 
-  actionWriter_.updateResult(data::Action::resultPseudo(player_->name()).get());
-  actionWriter_.writeResult();
+  Action::writeResult(data::Action::resultPseudo(player_->name()));
 }
 
 void Pseudo::formatString(std::string& str) {

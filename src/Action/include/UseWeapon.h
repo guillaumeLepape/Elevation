@@ -5,6 +5,7 @@
  * \brief UseWeapon.h
  */
 
+#include "ActionWriter.h"
 #include "Dead.h"
 #include "FireArm.h"
 #include "Languages.h"
@@ -14,7 +15,7 @@
 
 class UseWeapon {
  private:
-  ActionWriter actionWriter_;
+  const Result& result_;
 
   const Weapon* weapon_;
   Player* const player_;
@@ -23,16 +24,13 @@ class UseWeapon {
  public:
   UseWeapon(Player* const player, Plug* const plug, const Weapon* weapon,
             const Result& result)
-      : actionWriter_(weapon->statement(), result.get()),
-        weapon_(weapon),
-        player_(player),
-        plug_(plug) {}
+      : result_(result), weapon_(weapon), player_(player), plug_(plug) {}
 
   void triggerAction() {
     plug_->decreaseLifePoints(weapon_->damageWeapon());
     // weapon_->attack(plug_);
 
-    actionWriter_.writeResult();
+    Action::writeResult(result_);
 
     Dead dead(plug_, data::Action::resultDead(plug_->name()));
     dead.triggerAction();

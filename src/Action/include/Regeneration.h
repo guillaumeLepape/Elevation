@@ -9,14 +9,13 @@
 
 class Regeneration {
  private:
-  ActionWriter actionWriter_;
+  const Result& result_;
 
   Player* const player_;
 
  public:
-  Regeneration(Player* const player, const Statement& statement,
-               const Result& result)
-      : actionWriter_(statement.get(), result.get()), player_(player) {}
+  Regeneration(Player* const player, const Result& result)
+      : result_(result), player_(player) {}
 
   void triggerAction() {
     int nbLifePointsRegeneration = 0;
@@ -47,9 +46,8 @@ class Regeneration {
       int nbLifePoints_previous = player_->nbLifePoints();
 
       player_->increaseLifePoints(nbLifePointsRegeneration);
-      actionWriter_.updateResult(data::Action::resultRegeneration(
+      Action::writeResult(data::Action::resultRegeneration(
           player_->nbLifePoints() - nbLifePoints_previous));
-      actionWriter_.writeResult();
     }
   }
 };

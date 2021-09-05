@@ -11,8 +11,7 @@
 class Quit {
  private:
   const Statement& statement_;
-
-  ActionWriter actionWriter_;
+  const Result& result_;
 
  public:
   Quit(const Statement& statement, const Result& result);
