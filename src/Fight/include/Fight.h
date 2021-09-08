@@ -10,7 +10,7 @@
 
 struct ChooseWeaponResult {
   int resultUseWeapon;
-  std::vector<UseWeapon*> useWeapons;
+  std::vector<UseWeapon> useWeapons;
 };
 
 class Fight {
@@ -33,7 +33,7 @@ class Fight {
   const ChooseWeaponResult chooseWeapon(Plug* const plug);
 
   void runCombos(Plug* const choosenPlug, const int& resultUseWeapon,
-                 const std::vector<UseWeapon*>& useWeapons);
+                 const std::vector<UseWeapon>& useWeapons);
 
  public:
   Fight(Player* const player, const std::vector<Plug*>& plugs,

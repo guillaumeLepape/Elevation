@@ -12,7 +12,7 @@ class ComboDoubleMeleeWeapon : public Combo {
   ComboDoubleMeleeWeapon(Player* const player);
 
   void triggerCombo(Plug* const plug, const int& resultChooseWeapon,
-                    const std::vector<UseWeapon*>& useWeapon) override;
+                    const std::vector<UseWeapon>& useWeapon) override;
 
   ~ComboDoubleMeleeWeapon() override = default;
 };

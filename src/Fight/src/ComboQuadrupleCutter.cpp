@@ -14,15 +14,15 @@ ComboQuadrupleCutter::ComboQuadrupleCutter(Player* const player)
 
 void ComboQuadrupleCutter::triggerCombo(
     Plug* const plug, const int& resultChooseWeapon,
-    const std::vector<UseWeapon*>& useWeapon) {
-  if (useWeapon[resultChooseWeapon]->weapon()->name() == "Cutter") {
-    UseWeapon* useWeaponCombo = useWeapon[resultChooseWeapon];
+    const std::vector<UseWeapon>& useWeapon) {
+  if (useWeapon[resultChooseWeapon].weapon()->name() == "Cutter") {
+    UseWeapon useWeaponCombo = useWeapon[resultChooseWeapon];
     const std::string& nameWeapon =
-        useWeapon[resultChooseWeapon]->weapon()->name();
+        useWeapon[resultChooseWeapon].weapon()->name();
 
-    useWeaponCombo->triggerAction();
-    useWeaponCombo->triggerAction();
-    useWeaponCombo->triggerAction();
+    useWeaponCombo.triggerAction();
+    useWeaponCombo.triggerAction();
+    useWeaponCombo.triggerAction();
     player_->weapons()->deleteWeapon(nameWeapon);
   }
 }

@@ -29,7 +29,7 @@ class Combo {
         player_(player) {}
 
   virtual void triggerCombo(Plug* const plug, const int& resultChooseWeapon,
-                            const std::vector<UseWeapon*>& useWeapon) = 0;
+                            const std::vector<UseWeapon>& useWeapon) = 0;
 
   virtual ~Combo() = default;
 

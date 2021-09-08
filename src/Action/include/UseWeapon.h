@@ -15,16 +15,19 @@
 
 class UseWeapon {
  private:
-  const Result& result_;
+  Result result_;
 
   const Weapon* weapon_;
   Player* const player_;
   Plug* const plug_;
 
  public:
-  UseWeapon(Player* const player, Plug* const plug, const Weapon* weapon,
-            const Result& result)
-      : result_(result), weapon_(weapon), player_(player), plug_(plug) {}
+  UseWeapon(Player* const player, Plug* const plug, const Weapon* weapon)
+      : result_(data::Weapon::resultUseWeapon(plug->name(),
+                                              weapon->damageWeapon())),
+        weapon_(weapon),
+        player_(player),
+        plug_(plug) {}
 
   void triggerAction() {
     plug_->decreaseLifePoints(weapon_->damageWeapon());

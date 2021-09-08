@@ -14,7 +14,7 @@ class Options;
 
 class StartGame {
  private:
-  const Statement& statement_;
+  Statement statement_;
 
   const std::unique_ptr<Player> player_;
   const std::unique_ptr<ResultsData> resultsData_;

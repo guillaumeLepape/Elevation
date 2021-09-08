@@ -134,9 +134,9 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
       messageWriter[nbTurns - 1].writeMessage();
     }
 
-    for (std::size_t i = 0; i < chooseWeaponResult.useWeapons.size(); i++) {
-      delete chooseWeaponResult.useWeapons[i];
-    }
+    // for (std::size_t i = 0; i < useWeapons.size(); i++) {
+    //   delete useWeapons[i];
+    // }
   }
 
   fightWriter.writeEndOfFight();
@@ -198,31 +198,27 @@ Plug* Fight::choosePlug() {
 }
 
 const ChooseWeaponResult Fight::chooseWeapon(Plug* const choosenPlug) {
-  std::vector<UseWeapon*> useWeapons;
+  std::vector<UseWeapon> useWeapons;
 
   for (auto w = player_->weapons()->cbegin(); w != player_->weapons()->cend();
        w++) {
-    useWeapons.push_back(
-        new UseWeapon(player_, choosenPlug, w->get(),
-                      data::Weapon::resultUseWeapon(choosenPlug->name(),
-                                                    (*w)->damageWeapon())));
+    useWeapons.push_back(UseWeapon(player_, choosenPlug, w->get()));
   }
 
   std::vector<std::string> statements;
   std::transform(useWeapons.cbegin(), useWeapons.cend(),
                  std::back_inserter(statements),
-                 [](const auto useWeapon) { return useWeapon->statement(); });
+                 [](const auto& useWeapon) { return useWeapon.statement(); });
   int resultUseWeapon =
       Select::select(data::Action::titleChooseWeapon, statements);
-  useWeapons[resultUseWeapon]->triggerAction();
+  useWeapons[resultUseWeapon].triggerAction();
 
   return {resultUseWeapon, useWeapons};
 }
 
 void Fight::runCombos(Plug* const choosenPlug, const int& resultUseWeapon,
-                      const std::vector<UseWeapon*>& useWeapons) {
+                      const std::vector<UseWeapon>& useWeapons) {
   for (auto c = combos_.cbegin(); c != combos_.cend(); c++) {
-    (*c)->triggerCombo(choosenPlug, resultUseWeapon,
-                       (const std::vector<UseWeapon*>&)useWeapons);
+    (*c)->triggerCombo(choosenPlug, resultUseWeapon, useWeapons);
   }
 }

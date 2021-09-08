@@ -15,16 +15,13 @@ ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon(Player* const player)
 
 void ComboDoubleMeleeWeapon::triggerCombo(
     Plug* const plug, const int& resultChooseWeapon,
-    const std::vector<UseWeapon*>& useWeapon) {
-  if ((useWeapon[resultChooseWeapon]->nameWeapon() == data::Weapon::nameKnife ||
-       useWeapon[resultChooseWeapon]->nameWeapon() ==
+    const std::vector<UseWeapon>& useWeapon) {
+  if ((useWeapon[resultChooseWeapon].nameWeapon() == data::Weapon::nameKnife ||
+       useWeapon[resultChooseWeapon].nameWeapon() ==
            data::Weapon::nameHammer) &&
       !(plug->dead())) {
-    UseWeapon useWeaponCombo(
-        player_, plug, useWeapon[resultChooseWeapon]->weapon(),
-        data::Weapon::resultUseWeapon(
-            plug->name(),
-            useWeapon[resultChooseWeapon]->weapon()->damageWeapon()));
+    UseWeapon useWeaponCombo(player_, plug,
+                             useWeapon[resultChooseWeapon].weapon());
 
     Nothing nothing(data::Combo::statementDontCombo);
 
@@ -39,12 +36,6 @@ void ComboDoubleMeleeWeapon::triggerCombo(
       case 1:
         nothing.triggerAction();
         break;
-    }
-
-    // if player choose to trigger combo, destroy the melee weapon
-    if (result == 0) {
-      player_->weapons()->deleteWeapon(
-          useWeapon[resultChooseWeapon]->nameWeapon());
     }
   }
 }

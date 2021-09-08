@@ -37,7 +37,7 @@ nlohmann::json WeaponInventory::writeJson() const {
   return result;
 }
 
-WeaponInventory readJson(const nlohmann::json& jsonInput) {
+WeaponInventory WeaponInventory::readJson(const nlohmann::json& jsonInput) {
   WeaponInventory weaponInventory;
   std::for_each(std::cbegin(jsonInput), std::cend(jsonInput),
                 [&weaponInventory](const auto& weaponJson) {

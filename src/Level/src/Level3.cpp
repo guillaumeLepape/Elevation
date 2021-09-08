@@ -26,9 +26,7 @@ void Level3::startLevel() {
   messageWriter0.writeMessage();
 
   const std::unique_ptr<Fist> fist(new Fist());
-  std::unique_ptr<UseWeapon> useFist(new UseWeapon(
-      player_, &plug, fist.get(),
-      data::Weapon::resultUseWeapon(plug.name(), fist->damageWeapon())));
+  std::unique_ptr<UseWeapon> useFist(new UseWeapon(player_, &plug, fist.get()));
   useFist->triggerAction();
 
   MessageWriter messageWriter1(data::Level3::message1, player_->name(),
@@ -61,9 +59,7 @@ void Level3::startLevel() {
   addWeaponAction.triggerAction();
 
   auto knife = new Knife();
-  std::unique_ptr<UseWeapon> useKnife(new UseWeapon(
-      player_, &plug, knife,
-      data::Weapon::resultUseWeapon(plug.name(), knife->damageWeapon())));
+  std::unique_ptr<UseWeapon> useKnife(new UseWeapon(player_, &plug, knife));
 
   auto result = Select::select(data::Action::titleChooseWeapon,
                                {useFist->statement(), useKnife->statement()});

@@ -12,7 +12,7 @@ class ComboQuadrupleCutter : public Combo {
   ComboQuadrupleCutter(Player* const player);
 
   void triggerCombo(Plug* const plug, const int& resultChooseWeapon,
-                    const std::vector<UseWeapon*>& useWeapon) override;
+                    const std::vector<UseWeapon>& useWeapon) override;
 
   ~ComboQuadrupleCutter() override = default;
 };

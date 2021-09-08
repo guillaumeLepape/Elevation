@@ -16,11 +16,11 @@ ComboFistMeleeWeapon::ComboFistMeleeWeapon(Player* const player)
 
 void ComboFistMeleeWeapon::triggerCombo(
     Plug* const plug, const int& resultChooseWeapon,
-    const std::vector<UseWeapon*>& useWeapon) {
+    const std::vector<UseWeapon>& useWeapon) {
   // if the player has attack with his fist, trigger the combo
   // and the ennemy is not dead
   // and player has at least one melee weapon
-  if (useWeapon[resultChooseWeapon]->weapon()->weaponType() ==
+  if (useWeapon[resultChooseWeapon].weapon()->weaponType() ==
           WeaponType::fist &&
       !(plug->dead()) &&
       player_->weapons()->containWeaponType(WeaponType::meleeWeapon)) {
@@ -29,37 +29,31 @@ void ComboFistMeleeWeapon::triggerCombo(
 
     for (std::size_t i = 0; i < useWeapon.size(); i++) {
       // Generate combo weapon, if the weapon is a melee weapon
-      if (useWeapon[i]->weapon()->weaponType() == WeaponType::meleeWeapon) {
+      if (useWeapon[i].weapon()->weaponType() == WeaponType::meleeWeapon) {
         const Weapon* weaponFistCombo =
-            new WeaponFistCombo(useWeapon[i]->weapon());
+            new WeaponFistCombo(useWeapon[i].weapon());
         weaponFistComboVector.push_back(weaponFistCombo);
       }
     }
 
-    std::vector<UseWeapon*> useWeaponFistCombo;
+    std::vector<UseWeapon> useWeaponFistCombo;
 
     for (std::size_t i = 0; i < weaponFistComboVector.size(); i++) {
-      useWeaponFistCombo.push_back(new UseWeapon(
-          player_, plug, weaponFistComboVector[i],
-          data::Weapon::resultUseWeapon(
-              plug->name(), weaponFistComboVector[i]->damageWeapon())));
+      useWeaponFistCombo.push_back(
+          UseWeapon(player_, plug, weaponFistComboVector[i]));
     }
 
     std::vector<std::string> statements;
     std::transform(useWeaponFistCombo.cbegin(), useWeaponFistCombo.cend(),
                    std::back_inserter(statements),
-                   [](auto action) { return action->statement(); });
+                   [](const auto& action) { return action.statement(); });
 
     auto result = Select::select(data::Combo::titleFistMeleeWeapon, statements);
 
-    useWeaponFistCombo[result]->triggerAction();
+    useWeaponFistCombo[result].triggerAction();
 
     for (std::size_t i = 0; i < weaponFistComboVector.size(); i++) {
       delete weaponFistComboVector[i];
-    }
-
-    for (std::size_t i = 0; i < useWeaponFistCombo.size(); i++) {
-      delete useWeaponFistCombo[i];
     }
   }
 }
