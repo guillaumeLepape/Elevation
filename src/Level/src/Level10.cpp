@@ -28,9 +28,8 @@ void Level10::startLevel() {
                                     player_->name(), plug.name());
   messageWriterMinus1.writeMessage();
 
-  const AK47* ak47 = new AK47(100);
-  AddWeaponAction addWeaponAction(player_, ak47,
-                                  data::Action::resultAddWeapon(ak47->name()));
+  AddWeaponAction addWeaponAction(player_,
+                                  std::unique_ptr<const Weapon>(new AK47(100)));
   addWeaponAction.triggerAction();
 
   std::vector<MessageWriter> messageWriters;

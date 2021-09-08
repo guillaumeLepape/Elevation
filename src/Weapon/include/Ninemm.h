@@ -8,15 +8,6 @@
 #include "FireArm.h"
 #include "Languages.h"
 
-// class Ninemm : public FireArm {
-//  public:
-//   Ninemm(const int& nbAmmo)
-//       : FireArm(data::Weapon::nameNinemm, 70, nbAmmo, 1,
-//                 data::Weapon::statementUseNinemm) {}
-
-//   ~Ninemm() override = default;
-// };
-
 struct Ninemm : FireArm {
   Ninemm(int nbAmmo) : nbAmmo_(nbAmmo) {}
 

@@ -8,16 +8,6 @@
 #include "Languages.h"
 #include "Weapon.h"
 
-// class WeaponFistCombo : public Weapon {
-//  public:
-//   WeaponFistCombo(const Weapon* weapon)
-//       : Weapon(weapon->name() + "FistCombo", weapon->damageWeapon() / 2,
-//                weapon->weaponType(),
-//                data::Weapon::statementCombo(weapon->name())) {}
-
-//   ~WeaponFistCombo() override = default;
-// };
-
 struct WeaponFistCombo : Weapon {
   WeaponFistCombo(const Weapon* const weapon)
       : weapon_{weapon},

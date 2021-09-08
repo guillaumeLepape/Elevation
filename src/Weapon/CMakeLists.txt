@@ -2,7 +2,6 @@ project(weapon)
 
 add_library(
     ${PROJECT_NAME}
-    src/Weapon.cpp
     src/WeaponInventory.cpp
     src/WeaponWriter.cpp
 )

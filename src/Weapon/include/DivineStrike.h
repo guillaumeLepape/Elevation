@@ -8,15 +8,6 @@
 #include "Languages.h"
 #include "Weapon.h"
 
-// class DivineStrike : public Weapon {
-//  public:
-//   DivineStrike()
-//       : Weapon(data::Weapon::nameDivineStrike, 1000, WeaponType::fist,
-//                data::Weapon::statementDivineStrike) {}
-
-//   ~DivineStrike() override = default;
-// };
-
 struct DivineStrike : Weapon {
   const std::string& name() const override {
     return data::Weapon::nameDivineStrike;

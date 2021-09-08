@@ -56,11 +56,11 @@ void Level3::startLevel() {
                                plug.name());
   messageWriter4.writeMessage();
 
-  const Knife* knife = new Knife();
-  AddWeaponAction addWeaponAction(player_, knife,
-                                  data::Action::resultAddWeapon(knife->name()));
+  AddWeaponAction addWeaponAction(player_,
+                                  std::unique_ptr<const Weapon>(new Knife()));
   addWeaponAction.triggerAction();
 
+  auto knife = new Knife();
   std::unique_ptr<UseWeapon> useKnife(new UseWeapon(
       player_, &plug, knife,
       data::Weapon::resultUseWeapon(plug.name(), knife->damageWeapon())));

@@ -37,21 +37,16 @@ nlohmann::json WeaponInventory::writeJson() const {
   return result;
 }
 
-// WeaponInventory readJson(const nlohmann::json& jsonInput) {
-//   WeaponInventory weaponInventory;
-//   std::for_each(
-//     std::cbegin(jsonInput),
-//     std::cend(jsonInput),
-//     // std::back_inserter(weaponInventory.weapons_),
-//     [&weaponInventory](const auto& weaponJson) {
-//       weaponInventory.addWeapon(
-//         weaponJson.count("nbAmmo")
-//           ? WeaponFactory::newFireArm(weaponJson["name"],
-//           weaponJson["nbAmmo"]) :
-//           WeaponFactory::newWeapon(weaponJson["name"])
-//       );
-//     }
-//   );
+WeaponInventory readJson(const nlohmann::json& jsonInput) {
+  WeaponInventory weaponInventory;
+  std::for_each(std::cbegin(jsonInput), std::cend(jsonInput),
+                [&weaponInventory](const auto& weaponJson) {
+                  weaponInventory.addWeapon(
+                      weaponJson.count("nbAmmo")
+                          ? WeaponFactory::newFireArm(weaponJson["name"],
+                                                      weaponJson["nbAmmo"])
+                          : WeaponFactory::newWeapon(weaponJson["name"]));
+                });
 
-//   return weaponInventory;
-// }
+  return weaponInventory;
+}

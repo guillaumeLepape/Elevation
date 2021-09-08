@@ -11,12 +11,12 @@
 #include "WeaponFactory.h"
 
 Player::Player(const std::string& pseudo, const int& id,
-               const int& nbLevelSuceeded)
+               const int& nbLevelSuceeded, WeaponInventory&& weaponInventory)
     : Entity(pseudo, MAX_LIFE_POINTS_PLAYER, MAX_LIFE_POINTS_PLAYER),
       id_(id),
       nbLevelSuceeded_(nbLevelSuceeded),
       money_(200),
-      weapons_(std::unique_ptr<Weapon>(new Fist())) {}
+      weapons_(std::move(weaponInventory)) {}
 
 Player::Player(const std::string& pseudo, const int& id,
                const int& nbLevelSuceeded, const int& nbLifePoints,

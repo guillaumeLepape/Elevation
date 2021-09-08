@@ -11,34 +11,6 @@
 
 enum class WeaponType { noWeapon = -1, fist = 0, meleeWeapon = 1, fireArm = 2 };
 
-// class Weapon {
-//  private:
-//   std::string name_;
-//   int damageWeapon_;
-//   WeaponType weaponType_;
-//   const std::string statement_;
-
-//  protected:
-//   Weapon(const std::string& name, const int& damageWeapon,
-//          WeaponType weaponType, const std::string& statement);
-
-//  public:
-//   Weapon& operator=(const Weapon& weapon) = delete;
-
-//   virtual ~Weapon() = default;
-
-//   const std::string& name() const { return name_; }
-//   const int& damageWeapon() const { return damageWeapon_; }
-//   const WeaponType& weaponType() const { return weaponType_; }
-//   const std::string& statement() const { return statement_; }
-
-//   friend bool operator==(const Weapon& weapon1, const Weapon& weapon2);
-
-//   virtual nlohmann::json writeJson() const;
-
-//   virtual void attack(Entity* const entity) const;
-// };
-
 static auto writeJsonNonFireArm =
     [](const std::string& name) -> nlohmann::json {
   return {{"name", name}};

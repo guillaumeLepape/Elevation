@@ -52,7 +52,9 @@ class Player : public Entity {
    * \param id : unique id, used to save game
    * \param nbLevelSuceeded : number of level suceeded by player
    */
-  Player(const std::string& pseudo, const int& id, const int& nbLevelSuceeded);
+  Player(const std::string& pseudo, const int& id, const int& nbLevelSuceeded,
+         WeaponInventory&& weaponInventory =
+             std::unique_ptr<const Weapon>(new Fist()));
 
   Player(const Player& player) = delete;
 

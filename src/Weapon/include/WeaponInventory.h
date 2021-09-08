@@ -42,28 +42,7 @@ class WeaponInventory {
   bool containWeaponType(WeaponType weaponType) const;
 
   nlohmann::json writeJson() const;
-  static WeaponInventory readJson(const nlohmann::json& jsonInput) {
-    WeaponInventory weaponInventory;
-    std::for_each(std::cbegin(jsonInput), std::cend(jsonInput),
-                  // std::back_inserter(weaponInventory.weapons_),
-                  [&weaponInventory](const auto& weaponJson) {
-                    if (weaponJson.count("nbAmmo")) {
-                      weaponInventory.addWeapon(WeaponFactory::newFireArm(
-                          weaponJson["name"], weaponJson["nbAmmo"]));
-                    } else {
-                      weaponInventory.addWeapon(
-                          WeaponFactory::newWeapon(weaponJson["name"]));
-                    }
-                    // weaponInventory.addWeapon(
-                    //   weaponJson.count("nbAmmo")
-                    //     ? WeaponFactory::newFireArm(weaponJson["name"],
-                    //     weaponJson["nbAmmo"]) :
-                    //     WeaponFactory::newWeapon(weaponJson["name"])
-                    // );
-                  });
-
-    return weaponInventory;
-  }
+  static WeaponInventory readJson(const nlohmann::json& jsonInput);
 
   decltype(weapons_)::const_iterator cbegin() const noexcept {
     return weapons_.cbegin();

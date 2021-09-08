@@ -5,15 +5,6 @@
  * \file Chopper.h
  */
 
-// class Chopper : public Weapon {
-//  public:
-//   Chopper()
-//       : Weapon(data::Weapon::nameChopper, 80, WeaponType::meleeWeapon,
-//                data::Weapon::statementUseChopper) {}
-
-//   ~Chopper() override {} = default;
-// };
-
 struct Chopper : Weapon {
   const std::string& name() const override { return data::Weapon::nameChopper; }
   int damageWeapon() const override { return 80; }

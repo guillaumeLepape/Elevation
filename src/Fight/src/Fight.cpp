@@ -103,9 +103,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 
     if (numberOfDeadPlug_ != countNumberOfDeadPlug) {
       numberOfDeadPlug_ = countNumberOfDeadPlug;
-      AddWeaponAction addWeaponAction(
-          player_, choosenPlug,
-          data::Action::resultAddWeapon(choosenPlug->weapon()->name()));
+      AddWeaponAction addWeaponAction(player_, choosenPlug->realeaseWeapon());
       addWeaponAction.triggerAction();
 
       fightWriter.writeRemoveDeadBody();
