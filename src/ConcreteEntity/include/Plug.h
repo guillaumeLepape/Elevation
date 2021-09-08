@@ -23,7 +23,7 @@ class Plug : public Entity {
   void changeWeapon(const Weapon* newWeapon);
 
   const Weapon* weapon() const { return weapon_.get(); }
-  const Weapon* realeaseWeapon() { return weapon_.release(); }
+  std::unique_ptr<const Weapon> realeaseWeapon() { return std::move(weapon_); }
 };
 
 #endif

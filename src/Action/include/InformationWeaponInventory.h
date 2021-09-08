@@ -35,7 +35,7 @@ class InformationWeaponInventory {
               << "========" << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset);
 
-    for (auto w = weaponInventory_->cbegin(); w != weaponInventory_->end();
+    for (auto w = weaponInventory_->cbegin(); w != weaponInventory_->cend();
          w++) {
       WeaponWriter weaponWriter((*w).get());
       weaponWriter.informationWeapon();

@@ -8,13 +8,20 @@
 #include "Languages.h"
 #include "Weapon.h"
 
-class Katana : public Weapon {
- public:
-  Katana()
-      : Weapon(data::Weapon::nameKatana, 50, WeaponType::meleeWeapon,
-               data::Weapon::statementUseKatana) {}
-
-  ~Katana() override = default;
+struct Katana : Weapon {
+  const std::string& name() const override { return data::Weapon::nameKatana; }
+  int damageWeapon() const override { return 50; }
+  WeaponType weaponType() const override { return WeaponType::meleeWeapon; }
+  const std::string& statement() const override {
+    return data::Weapon::statementUseKatana;
+  }
+  nlohmann::json writeJson() const override {
+    return writeJsonNonFireArm(name());
+  }
+  void attack(Entity* const entity) const override {
+    entity->decreaseLifePoints(damageWeapon());
+  }
+  ~Katana() = default;
 };
 
 #endif

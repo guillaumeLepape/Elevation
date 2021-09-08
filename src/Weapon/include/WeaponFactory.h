@@ -17,35 +17,35 @@
 
 class WeaponFactory {
  public:
-  static const Weapon* newWeapon(const std::string& nameWeapon) {
+  static std::unique_ptr<Weapon> newWeapon(const std::string& nameWeapon) {
     if (nameWeapon == data::Weapon::nameFist) {
-      return new Fist();
+      return std::unique_ptr<Weapon>(new Fist());
     }
     if (nameWeapon == data::Weapon::nameKnife) {
-      return new Knife();
+      return std::unique_ptr<Weapon>(new Knife());
     }
     if (nameWeapon == data::Weapon::nameKatana) {
-      return new Katana();
+      return std::unique_ptr<Weapon>(new Katana());
     }
     if (nameWeapon == data::Weapon::nameCutter) {
-      return new Cutter();
+      return std::unique_ptr<Weapon>(new Cutter());
     }
     if (nameWeapon == data::Weapon::nameHammer) {
-      return new Hammer();
+      return std::unique_ptr<Weapon>(new Hammer());
     }
     if (nameWeapon == data::Weapon::nameChopper) {
-      return new Chopper();
+      return std::unique_ptr<Weapon>(new Chopper());
     }
     assert(false);
   }
 
-  static const Weapon* newFireArm(const std::string& nameWeapon,
-                                  const int& nbAmmo) {
+  static std::unique_ptr<Weapon> newFireArm(const std::string& nameWeapon,
+                                            const int& nbAmmo) {
     if (nameWeapon == data::Weapon::nameNinemm) {
-      return new Ninemm(nbAmmo);
+      return std::unique_ptr<Weapon>(new Ninemm(nbAmmo));
     }
     if (nameWeapon == data::Weapon::nameAK47) {
-      return new AK47(nbAmmo);
+      return std::unique_ptr<Weapon>(new AK47(nbAmmo));
     }
     assert(false);
   }

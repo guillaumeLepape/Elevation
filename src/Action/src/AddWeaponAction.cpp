@@ -26,7 +26,8 @@ void AddWeaponAction::triggerAction() {
     }
   } else {
     if (weapon_->weaponType() != WeaponType::noWeapon) {
-      bool present = player_->weapons()->addWeapon(weapon_);
+      bool present =
+          player_->weapons()->addWeapon(std::unique_ptr<const Weapon>(weapon_));
 
       if (!present) {
         Action::writeResult(result_);

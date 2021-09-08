@@ -40,7 +40,7 @@ class Player : public Entity {
    */
   Player(const std::string& pseudo, const int& id, const int& nbLevelSuceeded,
          const int& nbLifePoints, const int& maxLifePoints, const int& money,
-         const std::list<const Weapon*>& weapons);
+         WeaponInventory&& weapons);
 
  public:
   /*!

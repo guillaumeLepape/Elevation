@@ -7,7 +7,7 @@ project(Elevation VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_compile_options(-O3 -Wall -Wextra)
+add_compile_options(-O3 -g -Wall -Wextra)
 
 add_subdirectory(src)
 
@@ -20,3 +20,19 @@ add_subdirectory(libraries/json)
 
 # add cpp-terminal library
 add_subdirectory(libraries/cpp-terminal)
+
+##
+## TESTS
+## create and configure the unit test target
+##
+
+option(Elevation_BuildTests "Build the unit tests when BUILD_TESTING is enabled." ON)
+
+include(CTest) #adds option BUILD_TESTING (default ON)
+
+if(BUILD_TESTING AND Elevation_BuildTests)
+    #add google test library
+    add_subdirectory(libraries/googletest)
+    enable_testing()
+    add_subdirectory(test_elevation)
+endif()

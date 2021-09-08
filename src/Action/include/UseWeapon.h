@@ -28,7 +28,6 @@ class UseWeapon {
 
   void triggerAction() {
     plug_->decreaseLifePoints(weapon_->damageWeapon());
-    // weapon_->attack(plug_);
 
     Action::writeResult(result_);
 
