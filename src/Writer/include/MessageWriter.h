@@ -7,24 +7,23 @@
 
 #include <string>
 
-#include "NameSpeaker.h"
+#include "NameType.h"
 
-class MessageWriter {
- private:
-  Message message_;
+struct MessageWriter {
+  Message_t messages_;
   std::string pseudo_;
   std::string plugName_;
 
-  void writeName(const int& i) const;
-
-  void writeOneMessage(const int& i) const;
-
- public:
-  MessageWriter(
-      const std::vector<std::tuple<NameSpeaker, std::string>>& message,
-      const std::string& pseudo, const std::string& plugName);
-
-  void writeMessage() const;
+  MessageWriter(const Message_t& messages, const std::string& pseudo,
+                const std::string& plugName)
+      : messages_(messages), pseudo_(pseudo), plugName_(plugName) {}
 };
+
+namespace Message {
+void write(const Message_t& messages, const std::string& pseudo,
+           const std::string& plugName);
+
+void write(const MessageWriter& message1);
+}  // namespace Message
 
 #endif

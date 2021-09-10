@@ -129,7 +129,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 
     // Check if the index is valid
     if (nbTurns - 1 < messageWriter.size()) {
-      messageWriter[nbTurns - 1].writeMessage();
+      Message::write(messageWriter[nbTurns - 1]);
     }
   }
 

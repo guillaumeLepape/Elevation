@@ -2,7 +2,9 @@
 #define NAME_TYPE_H
 
 #include <string>
+#include <tuple>
 #include <utility>
+#include <vector>
 
 template <typename T, typename Parameter>
 class NamedType {
@@ -30,5 +32,8 @@ using Result = NamedType<std::string, struct ResultParameter>;
 
 struct TitleParameter {};
 using Title = NamedType<std::string_view, struct TitleParameter>;
+
+enum class NameSpeaker { player = 0, plug, description, action };
+using Message_t = std::vector<std::tuple<NameSpeaker, std::string>>;
 
 #endif

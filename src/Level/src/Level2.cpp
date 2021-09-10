@@ -20,8 +20,7 @@ void Level2::startLevel() {
 
   int price = 80;
   auto message = data::Level2::message0(plug.name(), price);
-  MessageWriter messageWriter(message, player_->name(), plug.name());
-  messageWriter.writeMessage();
+  Message::write(message, player_->name(), plug.name());
 
   Negociate negociate(player_, &plug, price, data::Action::statementNegociate,
                       data::Action::resultNegociate(0));

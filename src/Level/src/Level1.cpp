@@ -20,8 +20,7 @@ void Level1::startLevel() {
   int price = 20;
   auto message = data::Level1::message0(player_->name(), plug.name(), price);
 
-  MessageWriter messageWriter(message, player_->name(), plug.name());
-  messageWriter.writeMessage();
+  Message::write(message, player_->name(), plug.name());
 
   player_->decreaseMoney(price);
 

@@ -26,9 +26,7 @@ void Level7::startLevel() {
 
   Plug boss("Tueur professionnel", 200, new Hammer());
 
-  MessageWriter messageWriter0(data::Level7::message0, player_->name(),
-                               boss.name());
-  messageWriter0.writeMessage();
+  Message::write(data::Level7::message0, player_->name(), boss.name());
 
   std::unique_ptr<Combo> comboFistMeleeWeapon(
       new ComboFistMeleeWeapon(player_));
@@ -43,8 +41,7 @@ void Level7::startLevel() {
               options_.noRule_);
   fight.startFight();
 
-  MessageWriter messageWriter1(data::Level7::message1, player_->name(), "");
-  messageWriter1.writeMessage();
+  Message::write(data::Level7::message1, player_->name(), "");
 
   RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();

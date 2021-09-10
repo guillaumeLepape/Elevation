@@ -50,7 +50,7 @@ class LevelFactory {
       return std::make_unique<Level10>(player, resultsData, options);
     if (levelNumber == 11)
       return std::make_unique<Outro>(player, resultsData, options);
-    assert(false);
+    static_assert([]() { return false; });
   }
 };
 

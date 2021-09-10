@@ -5,8 +5,9 @@
  * \file RegenerateAllLife.h
  */
 
-#include "NameType.h"
+#include <iostream>
 
+#include "NameType.h"
 class RegenerateAllLife {
  private:
   Result result_;
@@ -20,9 +21,9 @@ class RegenerateAllLife {
   void triggerAction() {
     // if player is full life or dead, do nothing, else regenerate him
     if (!(player_->fullLife()) && !(player_->dead())) {
-      player_->increaseLifePoints(player_->missingLifePoints());
       Action::writeResult(
           data::Action::resultRegeneration(player_->missingLifePoints()));
+      player_->increaseLifePoints(player_->missingLifePoints());
     }
   }
 };

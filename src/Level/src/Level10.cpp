@@ -24,9 +24,7 @@ void Level10::startLevel() {
   const DivineStrike* divineStrike = new DivineStrike();
   Plug plug("Dieu", 10000000, divineStrike);
 
-  MessageWriter messageWriterMinus1(data::Level10::messageMinus1,
-                                    player_->name(), plug.name());
-  messageWriterMinus1.writeMessage();
+  Message::write(data::Level10::messageMinus1, player_->name(), plug.name());
 
   AddWeaponAction addWeaponAction(player_,
                                   std::unique_ptr<const Weapon>(new AK47(100)));
@@ -44,23 +42,17 @@ void Level10::startLevel() {
         return player_->nbLifePoints() < divineStrike->damageWeapon();
       });
 
-  MessageWriter messageWriter0(data::Level10::message2, player_->name(),
-                               plug.name());
-  messageWriter0.writeMessage();
+  Message::write(data::Level10::message2, player_->name(), plug.name());
 
   Plug heroine("Heroine", 100, new Heroine());
   PlugAttack plugAttack(player_, &heroine, Result(""));
 
-  MessageWriter messageWriter1(data::Level10::message3, player_->name(), "");
-
   while (!(player_->dead())) {
     plugAttack.triggerAction();
-    messageWriter1.writeMessage();
+    Message::write(data::Level10::message3, player_->name(), "");
   }
 
-  MessageWriter messageWriter2(data::Level10::message4, player_->name(),
-                               plug.name());
-  messageWriter2.writeMessage();
+  Message::write(data::Level10::message4, player_->name(), plug.name());
 
   Level::endOfLevel();
   std::cout << "\n";

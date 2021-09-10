@@ -3,7 +3,6 @@
 
 #include <cassert>
 
-#include "NameSpeaker.h"
 #include "NameType.h"
 
 namespace data {
@@ -17,7 +16,7 @@ static constexpr auto hour = Hour(13);
 static constexpr auto minut = Minut(12);
 
 // Messages data
-inline Message message0 = {
+inline Message_t message0 = {
     {NameSpeaker::description,
      "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée que "
      "vous avez passé chez votre amie."},
@@ -30,16 +29,16 @@ inline Message message0 = {
      "La consommation de ces 10 drogues est votre seul moyen de changer "
      "radicalement votre existence."}};
 
-inline Message message1 = {
+inline Message_t message1 = {
     {NameSpeaker::player,
      "Je ne souviens plus de mon prénom. Comment je m'appelle ?"}};
 
-inline Message message2 = {
+inline Message_t message2 = {
     {NameSpeaker::player, "Euh, je suis plutôt sûr d'être une femme."}};
 
-inline Message message3 = {{NameSpeaker::player, "Ce prénom n'existe pas."}};
+inline Message_t message3 = {{NameSpeaker::player, "Ce prénom n'existe pas."}};
 
-inline Message message4(const std::string& pseudo) {
+inline Message_t message4(const std::string& pseudo) {
   return {
       {NameSpeaker::player, "Bon d'accord " + pseudo + ", ça fera l'affaire."}};
 }
@@ -55,8 +54,8 @@ static constexpr auto hour = Hour(14);
 static constexpr auto minut = Minut(35);
 
 // Messages data
-inline Message message0(const std::string& pseudo, const std::string& plugName,
-                        const int& pricePlug) {
+inline Message_t message0(const std::string& pseudo,
+                          const std::string& plugName, const int& pricePlug) {
   return {
       {NameSpeaker::player, "Bon, c'est parti."},
       {NameSpeaker::description, "Vous arrivez en bas du batiment"},
@@ -82,7 +81,7 @@ static constexpr auto hour = Hour(15);
 static constexpr auto minut = Minut(10);
 
 // Messages data
-inline Message message0(const std::string& plugName, const int& pricePlug) {
+inline Message_t message0(const std::string& plugName, const int& pricePlug) {
   return {{NameSpeaker::player, "Salut, " + plugName + "."},
           {NameSpeaker::plug, "Ca va ? Tu cherches quoi ?"},
           {NameSpeaker::player, "De la C."},
@@ -93,18 +92,19 @@ inline Message message0(const std::string& plugName, const int& pricePlug) {
           {NameSpeaker::player, "Aller j'ai pas masse de tunes."}};
 }
 
-inline Message message1 = {
+inline Message_t message1 = {
     {NameSpeaker::plug, "Ok, je veux bien négocier. Tu proposes combien ?"}};
 
-inline Message message2 = {{NameSpeaker::plug, "T'es con ou quoi ?"}};
+inline Message_t message2 = {{NameSpeaker::plug, "T'es con ou quoi ?"}};
 
-inline Message message3 = {{NameSpeaker::plug, "Je peux pas me permettre ca."}};
+inline Message_t message3 = {
+    {NameSpeaker::plug, "Je peux pas me permettre ca."}};
 
-inline Message message4 = {
+inline Message_t message4 = {
     {NameSpeaker::plug, "Ca me convient. Tiens. A la prochaine."}};
 
-inline Message message5 = {{NameSpeaker::player, "Merci. Salut."},
-                           {NameSpeaker::description, "Carte VISA. Sniffe."}};
+inline Message_t message5 = {{NameSpeaker::player, "Merci. Salut."},
+                             {NameSpeaker::description, "Carte VISA. Sniffe."}};
 }  // namespace Level2
 
 namespace Level3 {
@@ -112,7 +112,7 @@ static constexpr auto nameLevel = Title("Niveau 3 : Shit");
 static constexpr auto hour = Hour(16);
 static constexpr auto minut = Minut(4);
 
-inline Message message0 = {
+inline Message_t message0 = {
     {NameSpeaker::description, "Vous arrivez en bas du bloc."},
     {NameSpeaker::player, "Salut !"},
     {NameSpeaker::plug, "Tu veux quoi."},
@@ -127,26 +127,26 @@ inline Message message0 = {
     {NameSpeaker::description,
      "J'ai pas le temps pour ça. Le sang me monte à la tête."}};
 
-inline Message message1 = {
+inline Message_t message1 = {
     {NameSpeaker::plug, "Qu'est ce qui te prends, sale pute."},
     {NameSpeaker::description, "Vous venez de le frapper."},
     {NameSpeaker::plug, "Tu peux pas juste payer ta dose et te casser."}};
 
-inline Message message2(const std::string& plugName) {
+inline Message_t message2(const std::string& plugName) {
   return {{NameSpeaker::description,
            "Vous vous placez sur le torse de " + plugName + "."},
           {NameSpeaker::plug, "Batard !"}};
 }
 
-inline Message message3 = {{NameSpeaker::plug, "Salope !"}};
+inline Message_t message3 = {{NameSpeaker::plug, "Salope !"}};
 
-inline Message message4 = {
+inline Message_t message4 = {
     {NameSpeaker::plug, "Ah."},
     {NameSpeaker::description, "Le produit tombe au sol ainsi qu'un couteau."},
     {NameSpeaker::description,
      "Vous mettez le shit dans votre poche et saisissez le couteau."}};
 
-inline Message message5 = {{NameSpeaker::description, "Roule. Fume."}};
+inline Message_t message5 = {{NameSpeaker::description, "Roule. Fume."}};
 }  // namespace Level3
 
 namespace Level4 {
@@ -154,7 +154,7 @@ static constexpr auto nameLevel = Title("Niveau 4 : Lean");
 static constexpr auto hour = Hour(17);
 static constexpr auto minut = Minut(15);
 
-inline Message message0(const std::string& pseudo) {
+inline Message_t message0(const std::string& pseudo) {
   return {
       {NameSpeaker::description,
        "Vous arrivez en bas d'un petit appartement où vous trouverez le "
@@ -174,13 +174,14 @@ inline Message message0(const std::string& pseudo) {
       {NameSpeaker::plug, "Première question."}};
 }
 
-inline Message message1 = {{NameSpeaker::plug, "Non, c'est pas ça, réessaie."}};
+inline Message_t message1 = {
+    {NameSpeaker::plug, "Non, c'est pas ça, réessaie."}};
 
-inline Message message2 = {
+inline Message_t message2 = {
     {NameSpeaker::plug, "Yep, c'est ca, question suivante."}};
 
-inline Message message3 = {{NameSpeaker::plug, "Quelle niveau ! Tiens."},
-                           {NameSpeaker::description, "Gobelet. Sip."}};
+inline Message_t message3 = {{NameSpeaker::plug, "Quelle niveau ! Tiens."},
+                             {NameSpeaker::description, "Gobelet. Sip."}};
 }  // namespace Level4
 
 namespace Level5 {
@@ -188,21 +189,22 @@ static constexpr auto nameLevel = Title("Niveau 5 : Xanax");
 static constexpr auto hour = Hour(19);
 static constexpr auto minut = Minut(2);
 
-inline Message message0 = {{NameSpeaker::description,
-                            "Vous arrivez en bas du Bones factory tenu par le "
-                            "celebre gang des Bones."},
-                           {NameSpeaker::plug, "Tu rentres pas."}};
+inline Message_t message0 = {
+    {NameSpeaker::description,
+     "Vous arrivez en bas du Bones factory tenu par le "
+     "celebre gang des Bones."},
+    {NameSpeaker::plug, "Tu rentres pas."}};
 
-inline Message message1 = {{NameSpeaker::player, "Je vais te buter."}};
+inline Message_t message1 = {{NameSpeaker::player, "Je vais te buter."}};
 
-inline Message message2 = {
+inline Message_t message2 = {
     {NameSpeaker::description,
      "Après avoir tabasser le pauvre homme, vous pénetrez dans le batiment."},
     {NameSpeaker::player, "Fait chier, je controle plus grand chose là."},
     {NameSpeaker::plug, "Hey, toi là."},
     {NameSpeaker::player, "Et merde."}};
 
-inline Message message3 = {
+inline Message_t message3 = {
     {NameSpeaker::player,
      "Encore une personne tuée de ma main, pas le choix faut que je continue."},
     {NameSpeaker::player,
@@ -211,23 +213,23 @@ inline Message message3 = {
      "Vous ouvrez la porte qui va vous mener au produit tant convoité."},
     {NameSpeaker::plug, "Non pas ce fou furieux !"}};
 
-inline Message message4 = {
+inline Message_t message4 = {
     {NameSpeaker::player, "Putain, il m'a fait mal ce batard."},
     {NameSpeaker::player,
      "Au moins, j'ai récupéré son couteau, ca pourra mettre utile."}};
 
-inline Message message5 = {
+inline Message_t message5 = {
     {NameSpeaker::player, "Qu'est ce qu'il se passe ? Je me sens mieux là."},
     {NameSpeaker::player, "Ca doit être les effets de la drogue."}};
 
-inline Message message6 = {
+inline Message_t message6 = {
     {NameSpeaker::player, "En allant par là, je devrais trouver la drogue."},
     {NameSpeaker::plug,
      "Putain c'est la pétasse qui a buté tout le monde. On s'la fait."},
     {NameSpeaker::player,
      "Enfin. J'ai plus qu'à buter ces 3 batards et c'est torché."}};
 
-inline Message message7 = {
+inline Message_t message7 = {
     {NameSpeaker::description,
      "Après avoir buter tout le monde, vous ramassez les 3 cachetons qui reste "
      "dans la poche du kamikaze."},
@@ -240,7 +242,7 @@ static constexpr auto nameLevel = Title("Niveau 6 : Champis");
 static constexpr auto hour = Hour(21);
 static constexpr auto minut = Minut(10);
 
-inline Message message0 = {
+inline Message_t message0 = {
     {NameSpeaker::player,
      "Avec toutes ces histoires, il est temps de rentrer chez soi."},
     {NameSpeaker::description,
@@ -259,14 +261,14 @@ static constexpr auto nameLevel = Title("Niveau 7 : Kétamine");
 static constexpr auto hour = Hour(0);
 static constexpr auto minut = Minut(10);
 
-inline Message message0 = {
+inline Message_t message0 = {
     {NameSpeaker::description, "Boum."},
     {NameSpeaker::player,
      "AHHHHHHHHHHHHHH. QU'EST CE QUI SE PASSE PUTAIN DE MERDE !"},
     {NameSpeaker::description, "Kaboom."},
     {NameSpeaker::plug, "CC je suis là pour te buter."}};
 
-inline Message message1 = {
+inline Message_t message1 = {
     {NameSpeaker::player, "Tu as pensé à mon sommeil."},
     {NameSpeaker::player,
      "Au moins, tu as des trucs sur toi. De la ké parfait."},
@@ -278,7 +280,7 @@ static constexpr auto nameLevel = Title("Niveau 8 : Crack (Interlude)");
 static constexpr auto hour = Hour(2);
 static constexpr auto minut = Minut(12);
 
-inline Message message0(const std::string& plugName) {
+inline Message_t message0(const std::string& plugName) {
   return {
       {NameSpeaker::player,
        "Ca part en couilles là. Il faut que j'aille voir " + plugName +
@@ -299,7 +301,7 @@ inline Message message0(const std::string& plugName) {
       {NameSpeaker::player, "Avec ce gun c'est parfait."}};
 }
 
-inline Message message1 = {
+inline Message_t message1 = {
     {NameSpeaker::description, "BANG ! "},
     {NameSpeaker::description, "PAW !"},
     {NameSpeaker::player, "Deux balles dans le crane ca devrait suffire."},
@@ -312,37 +314,37 @@ static constexpr auto nameLevel = Title("Niveau 9 : LSD (Révélation)");
 static constexpr auto hour = Hour(3);
 static constexpr auto minut = Minut(35);
 
-inline Message message0 = {{NameSpeaker::player, "Dégage de là."}};
+inline Message_t message0 = {{NameSpeaker::player, "Dégage de là."}};
 
-inline Message message1 = {
+inline Message_t message1 = {
     {NameSpeaker::player, "Tu te prends pour qui pour me poignarder 3 fois."},
     {NameSpeaker::plug, "C'est toi qui bute tout le monde depuis ce matin."},
     {NameSpeaker::player, "T'as planté la mauvaise personne."}};
 
-inline Message message2 = {{NameSpeaker::plug, "Crêve sale pute."}};
+inline Message_t message2 = {{NameSpeaker::plug, "Crêve sale pute."}};
 
-inline Message message3 = {
+inline Message_t message3 = {
     {NameSpeaker::plug,
      "Ca cicatrise tout seul, il faut que j'tappe plus fort."}};
 
-inline Message message4 = {
+inline Message_t message4 = {
     {NameSpeaker::plug, "J'ai jamais vu ca. T'es un putain d'alien."},
     {NameSpeaker::player, "Non, juste un Dieu."},
     {NameSpeaker::plug, "S'il te plait, me tue pas."},
     {NameSpeaker::player, "J'hésite."},
     {NameSpeaker::player, "Allez, pour s'amuser."}};
 
-inline Message message5 = {
+inline Message_t message5 = {
     {NameSpeaker::player, "Cette sensation."},
     {NameSpeaker::player, "Je n'ai jamais rien vécu de tel."},
     {NameSpeaker::player, "Ce sentiment de plénitude."},
     {NameSpeaker::player, "Tous ces meurtres auront servis à quelque chose."}};
 
-inline Message message6 = {
+inline Message_t message6 = {
     {NameSpeaker::player, "Encore."},
     {NameSpeaker::player, "Toujours plus de puissance."}};
 
-inline Message message7 = {
+inline Message_t message7 = {
     {NameSpeaker::player, "Ca y est, je deviens un dieu."}};
 }  // namespace Level9
 
@@ -351,24 +353,24 @@ static constexpr auto nameLevel = Title("Niveau 10 : Héroine (Désillusion)");
 static constexpr auto hour = Hour(7);
 static constexpr auto minut = Minut(30);
 
-inline Message messageMinus1 = {
+inline Message_t messageMinus1 = {
     {NameSpeaker::plug, "Que fais tu petit chose ?"},
     {NameSpeaker::player, "Viens là, j'ai pas peur de toi."},
     {NameSpeaker::plug, "Tiens, tu peux combattre avec ca."}};
 
-inline Message message0 = {
+inline Message_t message0 = {
     {NameSpeaker::player, "Est ce qui se passe, mon corps !"},
     {NameSpeaker::plug, "La drogue te décompose."},
     {NameSpeaker::plug, "Tu es donc bien faible face à ma puissance."},
     {NameSpeaker::plug,
      "Ah, tu es encore en vie. Je te laisse encore une chance."}};
 
-inline Message message1 = {{NameSpeaker::plug, "Tu t'es pris pour qui."},
-                           {NameSpeaker::plug,
-                            "Tu as peut-être détruit toutes ces imbéciles, "
-                            "mais face à moi tu ne peux rien."}};
+inline Message_t message1 = {{NameSpeaker::plug, "Tu t'es pris pour qui."},
+                             {NameSpeaker::plug,
+                              "Tu as peut-être détruit toutes ces imbéciles, "
+                              "mais face à moi tu ne peux rien."}};
 
-inline Message message2 = {
+inline Message_t message2 = {
     {NameSpeaker::plug,
      "J'ai décidé de te laisser accomplir ta quête. Tiens prends ca."},
     {NameSpeaker::action, "Héroine ajouté à votre inventaire."},
@@ -376,9 +378,9 @@ inline Message message2 = {
      "Vous consommez le dernier produit tant convoité."},
     {NameSpeaker::player, "J'y suis arrivé."}};
 
-inline Message message3 = {{NameSpeaker::player, "Encore."}};
+inline Message_t message3 = {{NameSpeaker::player, "Encore."}};
 
-inline Message message4 = {
+inline Message_t message4 = {
     {NameSpeaker::plug, "Il est temps que cette imposture cesse."},
     {NameSpeaker::description, "Vous êtes mort."}};
 }  // namespace Level10
@@ -388,7 +390,7 @@ static constexpr auto nameLevel = Title("Crédits");
 static constexpr auto hour = Hour(0);
 static constexpr auto minut = Minut(0);
 
-inline Message message0 = {
+inline Message_t message0 = {
     {NameSpeaker::description, "Programmeur : Jess H."},
     {NameSpeaker::description, "Merci d'avoir jouer à ce jeu !"},
     {NameSpeaker::description, "A la prochaine."}};

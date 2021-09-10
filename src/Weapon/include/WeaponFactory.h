@@ -36,7 +36,7 @@ class WeaponFactory {
     if (nameWeapon == data::Weapon::nameChopper) {
       return std::unique_ptr<Weapon>(new Chopper());
     }
-    assert(false);
+    static_assert([]() { return false; });
   }
 
   static std::unique_ptr<Weapon> newFireArm(const std::string& nameWeapon,
@@ -47,7 +47,7 @@ class WeaponFactory {
     if (nameWeapon == data::Weapon::nameAK47) {
       return std::unique_ptr<Weapon>(new AK47(nbAmmo));
     }
-    assert(false);
+    static_assert([]() { return false; });
   }
 };
 

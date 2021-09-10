@@ -15,17 +15,14 @@ void Introduction::startLevel() {
   Header::write(data::Introduction::nameLevel, data::Introduction::hour,
                 data::Introduction::minut);
 
-  MessageWriter messageWriter0(data::Introduction::message0, player_->name(),
-                               "");
-  messageWriter0.writeMessage();
+  Message::write(data::Introduction::message0, player_->name(), "");
 
   Pseudo pseudo(player_, data::Action::statementPseudo,
                 data::Action::resultPseudo(player_->name()));
   pseudo.triggerAction();
 
-  MessageWriter messageWriter4(data::Introduction::message4(player_->name()),
-                               player_->name(), "");
-  messageWriter4.writeMessage();
+  Message::write(data::Introduction::message4(player_->name()), player_->name(),
+                 "");
 
   Level::endOfLevel();
 

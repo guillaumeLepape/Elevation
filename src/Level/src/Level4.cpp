@@ -20,8 +20,7 @@ void Level4::startLevel() {
                 data::Level4::minut);
 
   auto message = data::Level4::message0(player_->name());
-  MessageWriter messageWriter0(message, player_->name(), plug.name());
-  messageWriter0.writeMessage();
+  Message::write(message, player_->name(), plug.name());
 
   // first question
   Answer answer0_0(data::Question::answer1Question1,
@@ -31,20 +30,17 @@ void Level4::startLevel() {
   Answer answer2_0(data::Question::answer3Question1,
                    data::Question::correctOrNotAnswer3Question1);
 
-  MessageWriter messageWriter1(data::Level4::message1, player_->name(),
-                               plug.name());
-  MessageWriter messageWriter2(data::Level4::message2, player_->name(),
-                               plug.name());
+  Message::write(data::Level4::message2, player_->name(), plug.name());
 
   while (!Question::question(
       data::Question::titleFirstQuestion,
       {answer0_0.statement(), answer1_0.statement(), answer2_0.statement()},
       {answer0_0.correctOrNot(), answer1_0.correctOrNot(),
        answer2_0.correctOrNot()})) {
-    messageWriter1.writeMessage();
+    Message::write(data::Level4::message1, player_->name(), plug.name());
   }
 
-  messageWriter2.writeMessage();
+  Message::write(data::Level4::message2, player_->name(), plug.name());
 
   // second question
   Answer answer0_1(data::Question::answer1Question2,
@@ -59,10 +55,10 @@ void Level4::startLevel() {
       {answer0_1.statement(), answer1_1.statement(), answer2_1.statement()},
       {answer0_1.correctOrNot(), answer1_1.correctOrNot(),
        answer2_1.correctOrNot()})) {
-    messageWriter1.writeMessage();
+    Message::write(data::Level4::message1, player_->name(), plug.name());
   }
 
-  messageWriter2.writeMessage();
+  Message::write(data::Level4::message2, player_->name(), plug.name());
 
   // third question
   Answer answer0_2(data::Question::answer1Question3,
@@ -77,10 +73,10 @@ void Level4::startLevel() {
       {answer0_2.statement(), answer1_2.statement(), answer2_2.statement()},
       {answer0_2.correctOrNot(), answer1_2.correctOrNot(),
        answer2_2.correctOrNot()})) {
-    messageWriter1.writeMessage();
+    Message::write(data::Level4::message1, player_->name(), plug.name());
   }
 
-  messageWriter2.writeMessage();
+  Message::write(data::Level4::message2, player_->name(), plug.name());
 
   Level::endOfLevel();
 

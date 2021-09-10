@@ -38,9 +38,7 @@ void Level9::startLevel() {
   plugAttack0.triggerAction();
   plugAttack0.triggerAction();
 
-  MessageWriter messageWriter0(data::Level9::message0, player_->name(),
-                               plug.name());
-  messageWriter0.writeMessage();
+  Message::write(data::Level9::message0, player_->name(), plug.name());
 
   const Fist* fist = new Fist();
   UseWeapon useWeapon(player_, &plug, fist);
@@ -49,9 +47,7 @@ void Level9::startLevel() {
   RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();
 
-  MessageWriter messageWriter1(data::Level9::message1, player_->name(),
-                               plug.name());
-  messageWriter1.writeMessage();
+  Message::write(data::Level9::message1, player_->name(), plug.name());
 
   regenerateAllLife.triggerAction();
 
@@ -64,23 +60,17 @@ void Level9::startLevel() {
   plugAttack1.triggerAction();
   regenerateAllLife.triggerAction();
 
-  MessageWriter messageWriter2(data::Level9::message2, player_->name(),
-                               plug.name());
-  messageWriter2.writeMessage();
+  Message::write(data::Level9::message2, player_->name(), plug.name());
 
   plugAttack1.triggerAction();
   regenerateAllLife.triggerAction();
 
-  MessageWriter messageWriter3(data::Level9::message3, player_->name(),
-                               plug.name());
-  messageWriter3.writeMessage();
+  Message::write(data::Level9::message3, player_->name(), plug.name());
 
   plugAttack1.triggerAction();
   regenerateAllLife.triggerAction();
 
-  MessageWriter messageWriter4(data::Level9::message4, player_->name(),
-                               plug.name());
-  messageWriter4.writeMessage();
+  Message::write(data::Level9::message4, player_->name(), plug.name());
 
   const NoWeapon* noWeapon = new NoWeapon();
   plug.changeWeapon(noWeapon);
@@ -100,23 +90,17 @@ void Level9::startLevel() {
 
   regenerateAllLife.triggerAction();
 
-  MessageWriter messageWriter5(data::Level9::message5, player_->name(),
-                               plug.name());
-  messageWriter5.writeMessage();
+  Message::write(data::Level9::message5, player_->name(), plug.name());
 
   IncreaseMaxLifePoints increaseMaxLifePoints(
       player_, 1100, data::Action::resultsIncreaseMaxLifePoints(1100));
   increaseMaxLifePoints.triggerAction();
 
-  MessageWriter messageWriter6(data::Level9::message6, player_->name(),
-                               plug.name());
-  messageWriter6.writeMessage();
+  Message::write(data::Level9::message6, player_->name(), plug.name());
 
   increaseMaxLifePoints.triggerAction();
 
-  MessageWriter messageWriter7(data::Level9::message7, player_->name(),
-                               plug.name());
-  messageWriter7.writeMessage();
+  Message::write(data::Level9::message7, player_->name(), plug.name());
 
   increaseMaxLifePoints.triggerAction();
 

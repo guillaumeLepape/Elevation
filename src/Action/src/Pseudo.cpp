@@ -27,9 +27,7 @@ void Pseudo::triggerAction() {
 
   while (!out) {
     // Inform the user that he have to enter an information (his pseudo)
-    MessageWriter messageWriter(data::Introduction::message1, player_->name(),
-                                "");
-    messageWriter.writeMessage();
+    Message::write(data::Introduction::message1, player_->name(), "");
     Action::writeStatement(statement_);
 
     // Get pseudo from user
@@ -44,16 +42,12 @@ void Pseudo::triggerAction() {
     }
     // Check if chosen pseudo is in the masculine name dataset
     else if (masculineName.find(pseudo) != masculineName.end()) {
-      MessageWriter messageWriter2(data::Introduction::message2,
-                                   player_->name(), "");
-      messageWriter2.writeMessage();
+      Message::write(data::Introduction::message2, player_->name(), "");
     }
     // If pseudo doesn't appear in the two previous dataset,
     // consider that this name doesn't exist
     else {
-      MessageWriter messageWriter3(data::Introduction::message3,
-                                   player_->name(), "");
-      messageWriter3.writeMessage();
+      Message::write(data::Introduction::message3, player_->name(), "");
     }
   }
 

@@ -21,38 +21,29 @@ void Level3::startLevel() {
   Header::write(data::Level3::nameLevel, data::Level3::hour,
                 data::Level3::minut);
 
-  MessageWriter messageWriter0(data::Level3::message0, player_->name(),
-                               plug.name());
-  messageWriter0.writeMessage();
+  Message::write(data::Level3::message0, player_->name(), plug.name());
 
   const std::unique_ptr<Fist> fist(new Fist());
   std::unique_ptr<UseWeapon> useFist(new UseWeapon(player_, &plug, fist.get()));
   useFist->triggerAction();
 
-  MessageWriter messageWriter1(data::Level3::message1, player_->name(),
-                               plug.name());
-  messageWriter1.writeMessage();
+  Message::write(data::Level3::message1, player_->name(), plug.name());
 
   Select::select(data::Action::titleChooseWeapon, {useFist->statement()});
   useFist->triggerAction();
 
   auto message = data::Level3::message2(plug.name());
-  MessageWriter messageWriter2(message, player_->name(), plug.name());
-  messageWriter2.writeMessage();
+  Message::write(message, player_->name(), plug.name());
 
   Select::select(data::Action::titleChooseWeapon, {useFist->statement()});
   useFist->triggerAction();
 
-  MessageWriter messageWriter3(data::Level3::message3, player_->name(),
-                               plug.name());
-  messageWriter3.writeMessage();
+  Message::write(data::Level3::message3, player_->name(), plug.name());
 
   Select::select(data::Action::titleChooseWeapon, {useFist->statement()});
   useFist->triggerAction();
 
-  MessageWriter messageWriter4(data::Level3::message4, player_->name(),
-                               plug.name());
-  messageWriter4.writeMessage();
+  Message::write(data::Level3::message4, player_->name(), plug.name());
 
   AddWeaponAction addWeaponAction(player_,
                                   std::unique_ptr<const Weapon>(new Knife()));
@@ -72,9 +63,7 @@ void Level3::startLevel() {
       break;
   }
 
-  MessageWriter messageWriter5(data::Level3::message5, player_->name(),
-                               plug.name());
-  messageWriter5.writeMessage();
+  Message::write(data::Level3::message5, player_->name(), plug.name());
 
   Level::endOfLevel();
 

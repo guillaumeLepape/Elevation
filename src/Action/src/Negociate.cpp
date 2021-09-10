@@ -24,9 +24,7 @@ Negociate::Negociate(Player* const player, Plug* const plug,
 void Negociate::triggerAction() {
   bool out = false;
 
-  MessageWriter messageWriter1(data::Level2::message1, player_->name(),
-                               plug_->name());
-  messageWriter1.writeMessage();
+  Message::write(data::Level2::message1, player_->name(), plug_->name());
 
   while (!out) {
     Action::writeStatement(statement_);
@@ -55,26 +53,18 @@ void Negociate::triggerAction() {
     }
 
     if (price > plugPrice_) {
-      MessageWriter messageWriter2(data::Level2::message2, player_->name(),
-                                   plug_->name());
-      messageWriter2.writeMessage();
+      Message::write(data::Level2::message2, player_->name(), plug_->name());
     } else if (price <= plugPrice_ && plugPrice_ - 30 <= price) {
       out = true;
-      MessageWriter messageWriter4(data::Level2::message4, player_->name(),
-                                   plug_->name());
-      messageWriter4.writeMessage();
+      Message::write(data::Level2::message4, player_->name(), plug_->name());
 
       player_->increaseMoney(-price);
 
       Action::writeResult(data::Action::resultNegociate(price));
     } else {
-      MessageWriter messageWriter3(data::Level2::message3, player_->name(),
-                                   plug_->name());
-      messageWriter3.writeMessage();
+      Message::write(data::Level2::message3, player_->name(), plug_->name());
     }
   }
 
-  MessageWriter messageWriter5(data::Level2::message5, player_->name(),
-                               plug_->name());
-  messageWriter5.writeMessage();
+  Message::write(data::Level2::message5, player_->name(), plug_->name());
 }
