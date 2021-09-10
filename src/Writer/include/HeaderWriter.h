@@ -10,7 +10,7 @@
 #include "NameType.h"
 
 namespace Header {
-void write(const std::string_view&, const Hour& hour, const Minut& minut);
+void write(const Title&, const Hour& hour, const Minut& minut);
 }
 
 #endif

@@ -11,13 +11,12 @@
 #include "Pause.h"
 
 namespace Header {
-void write(const std::string_view& nameLevel, const Hour& hour,
-           const Minut& minut) {
+void write(const Title& nameLevel, const Hour& hour, const Minut& minut) {
   Pause::pause();
 
   // print level name
   std::cout << "\n " << Term::color(Term::bg::red)
-            << Term::color(Term::style::bold) << nameLevel
+            << Term::color(Term::style::bold) << nameLevel.get()
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
   std::cout << "\n"

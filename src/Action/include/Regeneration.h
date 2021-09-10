@@ -9,7 +9,7 @@
 
 class Regeneration {
  private:
-  const Result& result_;
+  Result result_;
 
   Player* const player_;
 

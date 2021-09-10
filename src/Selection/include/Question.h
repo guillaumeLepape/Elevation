@@ -8,9 +8,11 @@
 #include <string>
 #include <vector>
 
+#include "NameType.h"
+
 class Question {
  public:
-  static bool question(const std::string& title,
+  static bool question(const Title& title,
                        const std::vector<std::string>& statements,
                        const std::vector<bool>& answers);
 };

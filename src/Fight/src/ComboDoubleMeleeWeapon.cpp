@@ -25,16 +25,14 @@ void ComboDoubleMeleeWeapon::triggerCombo(
 
     Nothing nothing(data::Combo::statementDontCombo);
 
-    int result =
-        Select::select(data::Combo::titleDoubleMeleeWeapon,
-                       {useWeaponCombo.statement(), nothing.statement()});
+    int result = Select::select(
+        title_, {useWeaponCombo.statement(), nothing.statement()});
 
     switch (result) {
       case 0:
         useWeaponCombo.triggerAction();
         break;
       case 1:
-        nothing.triggerAction();
         break;
     }
   }

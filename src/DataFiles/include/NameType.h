@@ -28,4 +28,7 @@ using Statement = NamedType<std::string, struct StatementParameter>;
 struct ResultParameter {};
 using Result = NamedType<std::string, struct ResultParameter>;
 
+struct TitleParameter {};
+using Title = NamedType<std::string_view, struct TitleParameter>;
+
 #endif

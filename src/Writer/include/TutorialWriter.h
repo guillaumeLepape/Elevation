@@ -8,16 +8,11 @@
 #include <string>
 #include <vector>
 
-class TutorialWriter {
- private:
-  std::string title_;
-  std::vector<std::string> tutorialStatement_;
+#include "NameType.h"
 
- public:
-  TutorialWriter(const std::string& title,
-                 const std::vector<std::string>& tutorialStatement);
-
-  void writeTutorial() const;
-};
+namespace Tutorial {
+void write(const Title& title,
+           const std::vector<std::string>& tutorialStatement);
+}
 
 #endif

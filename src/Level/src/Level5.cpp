@@ -35,16 +35,13 @@ void Level5::startLevel() {
   messageWriter1.writeMessage();
 
   if (!options_.noRule_) {
-    TutorialWriter tutorialCombatSystem(
+    Tutorial::write(
         data::Tutorial::titleCombatSystem,
         data::Tutorial::statementCombatSystem(player_->maxLifePoints()));
-    tutorialCombatSystem.writeTutorial();
   }
 
   if (!options_.noRule_) {
-    TutorialWriter tutorialCombo(data::Tutorial::titleCombo,
-                                 data::Tutorial::statementCombo);
-    tutorialCombo.writeTutorial();
+    Tutorial::write(data::Tutorial::titleCombo, data::Tutorial::statementCombo);
   }
 
   // Declare combos
@@ -57,10 +54,8 @@ void Level5::startLevel() {
 
   // First fight (introduction to Fist - Melee Weapon combo)
   if (!options_.noRule_) {
-    TutorialWriter tutorialFistMeleeWeapon(
-        data::Tutorial::titleComboFistMeleeWeapon,
-        data::Tutorial::statementComboFistMeleeWeapon);
-    tutorialFistMeleeWeapon.writeTutorial();
+    Tutorial::write(data::Tutorial::titleComboFistMeleeWeapon,
+                    data::Tutorial::statementComboFistMeleeWeapon);
   }
 
   Fight firstFight(player_, {&guetteur}, {comboFistMeleeWeapon.get()},
@@ -75,10 +70,8 @@ void Level5::startLevel() {
   messageWriter2.writeMessage();
 
   if (!options_.noRule_) {
-    TutorialWriter tutorialDoubleMeleeWeapon(
-        data::Tutorial::titleComboDoubleMeleeWeapon,
-        data::Tutorial::statementComboDoubleMeleeWeapon);
-    tutorialDoubleMeleeWeapon.writeTutorial();
+    Tutorial::write(data::Tutorial::titleComboDoubleMeleeWeapon,
+                    data::Tutorial::statementComboDoubleMeleeWeapon);
   }
 
   Fight secondFight(player_, {&garde}, {comboDoubleMeleeWeapon.get()},
@@ -93,9 +86,8 @@ void Level5::startLevel() {
   messageWriter3.writeMessage();
 
   if (!options_.noRule_) {
-    TutorialWriter tutorialNoWeapon(data::Tutorial::titleNoWeapon,
-                                    data::Tutorial::statementNoWeapon);
-    tutorialNoWeapon.writeTutorial();
+    Tutorial::write(data::Tutorial::titleNoWeapon,
+                    data::Tutorial::statementNoWeapon);
   }
 
   Fight thirdFight(player_, {&secondGarde}, {}, options_.noRule_, false);
@@ -111,9 +103,8 @@ void Level5::startLevel() {
   messageWriter5.writeMessage();
 
   if (!options_.noRule_) {
-    TutorialWriter tutorialRegeneration(data::Tutorial::titleRegeneration,
-                                        data::Tutorial::statementRegeneration);
-    tutorialRegeneration.writeTutorial();
+    Tutorial::write(data::Tutorial::titleRegeneration,
+                    data::Tutorial::statementRegeneration);
   }
 
   // Fourth fight

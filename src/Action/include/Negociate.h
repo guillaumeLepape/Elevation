@@ -13,8 +13,8 @@ class Plug;
 
 class Negociate {
  private:
-  const Statement& statement_;
-  const Result& result_;
+  Statement statement_;
+  Result result_;
 
   Player* const player_;
   Plug* const plug_;

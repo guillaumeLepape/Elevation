@@ -12,7 +12,7 @@
 
 class GameOver {
  private:
-  const Result& result_;
+  Result result_;
 
  public:
   explicit GameOver(const Result& result) : result_(result) {}

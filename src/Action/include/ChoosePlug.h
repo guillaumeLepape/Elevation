@@ -9,8 +9,8 @@
 
 class ChoosePlug {
  private:
-  const Statement& statement_;
-  const Result& result_;
+  Statement statement_;
+  Result result_;
 
   Plug* const plug_;
 
@@ -19,8 +19,6 @@ class ChoosePlug {
       : statement_(statement), result_(result), plug_(plug) {}
 
   const std::string& statement() const { return statement_.get(); }
-
-  void triggerAction() {}
 
   Plug* plug() const { return plug_; }
 };

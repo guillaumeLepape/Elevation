@@ -9,12 +9,10 @@
 
 class Nothing {
  private:
-  const Statement& statement_;
+  Statement statement_;
 
  public:
   Nothing(const Statement& statement) : statement_(statement) {}
-
-  void triggerAction() {}
 
   const std::string& statement() const { return statement_.get(); }
 };

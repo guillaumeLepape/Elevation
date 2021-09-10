@@ -48,7 +48,7 @@ void ComboFistMeleeWeapon::triggerCombo(
                    std::back_inserter(statements),
                    [](const auto& action) { return action.statement(); });
 
-    auto result = Select::select(data::Combo::titleFistMeleeWeapon, statements);
+    auto result = Select::select(title_, statements);
 
     useWeaponFistCombo[result].triggerAction();
 

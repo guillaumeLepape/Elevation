@@ -11,7 +11,7 @@
 
 class Select {
  public:
-  static int select(const std::string& title,
+  static int select(const Title& title,
                     const std::vector<std::string>& statements);
 };
 

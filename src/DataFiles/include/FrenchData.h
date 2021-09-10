@@ -12,9 +12,9 @@ namespace Introduction {
 // ***********************************
 
 // Header data
-constexpr std::string_view nameLevel = "Introduction : Dur réveil";
-constexpr Hour hour = Hour(13);
-constexpr Minut minut = Minut(12);
+static constexpr auto nameLevel = Title("Introduction : Dur réveil");
+static constexpr auto hour = Hour(13);
+static constexpr auto minut = Minut(12);
 
 // Messages data
 inline Message message0 = {
@@ -50,9 +50,9 @@ namespace Level1 {
 // ***********************************
 
 // Header data
-constexpr std::string_view nameLevel = "Niveau 1 : Beuh";
-constexpr Hour hour = Hour(14);
-constexpr Minut minut = Minut(35);
+static constexpr auto nameLevel = Title("Niveau 1 : Beuh");
+static constexpr auto hour = Hour(14);
+static constexpr auto minut = Minut(35);
 
 // Messages data
 inline Message message0(const std::string& pseudo, const std::string& plugName,
@@ -77,9 +77,9 @@ namespace Level2 {
 // ***********************************
 
 // Header data
-constexpr std::string_view nameLevel = "Niveau 2 : Coke";
-constexpr Hour hour = Hour(15);
-constexpr Minut minut = Minut(10);
+static constexpr auto nameLevel = Title("Niveau 2 : Coke");
+static constexpr auto hour = Hour(15);
+static constexpr auto minut = Minut(10);
 
 // Messages data
 inline Message message0(const std::string& plugName, const int& pricePlug) {
@@ -108,9 +108,9 @@ inline Message message5 = {{NameSpeaker::player, "Merci. Salut."},
 }  // namespace Level2
 
 namespace Level3 {
-constexpr std::string_view nameLevel = "Niveau 3 : Shit";
-constexpr Hour hour = Hour(16);
-constexpr Minut minut = Minut(4);
+static constexpr auto nameLevel = Title("Niveau 3 : Shit");
+static constexpr auto hour = Hour(16);
+static constexpr auto minut = Minut(4);
 
 inline Message message0 = {
     {NameSpeaker::description, "Vous arrivez en bas du bloc."},
@@ -150,9 +150,9 @@ inline Message message5 = {{NameSpeaker::description, "Roule. Fume."}};
 }  // namespace Level3
 
 namespace Level4 {
-constexpr std::string_view nameLevel = "Niveau 4 : Lean";
-constexpr Hour hour = Hour(17);
-constexpr Minut minut = Minut(15);
+static constexpr auto nameLevel = Title("Niveau 4 : Lean");
+static constexpr auto hour = Hour(17);
+static constexpr auto minut = Minut(15);
 
 inline Message message0(const std::string& pseudo) {
   return {
@@ -184,9 +184,9 @@ inline Message message3 = {{NameSpeaker::plug, "Quelle niveau ! Tiens."},
 }  // namespace Level4
 
 namespace Level5 {
-constexpr std::string_view nameLevel = "Niveau 5 : Xanax";
-constexpr Hour hour = Hour(19);
-constexpr Minut minut = Minut(2);
+static constexpr auto nameLevel = Title("Niveau 5 : Xanax");
+static constexpr auto hour = Hour(19);
+static constexpr auto minut = Minut(2);
 
 inline Message message0 = {{NameSpeaker::description,
                             "Vous arrivez en bas du Bones factory tenu par le "
@@ -236,9 +236,9 @@ inline Message message7 = {
 }  // namespace Level5
 
 namespace Level6 {
-constexpr std::string_view nameLevel = "Niveau 6 : Champis";
-constexpr Hour hour = Hour(21);
-constexpr Minut minut = Minut(10);
+static constexpr auto nameLevel = Title("Niveau 6 : Champis");
+static constexpr auto hour = Hour(21);
+static constexpr auto minut = Minut(10);
 
 inline Message message0 = {
     {NameSpeaker::player,
@@ -255,9 +255,9 @@ inline Message message0 = {
 }  // namespace Level6
 
 namespace Level7 {
-constexpr std::string_view nameLevel = "Niveau 7 : Kétamine";
-constexpr Hour hour = Hour(0);
-constexpr Minut minut = Minut(10);
+static constexpr auto nameLevel = Title("Niveau 7 : Kétamine");
+static constexpr auto hour = Hour(0);
+static constexpr auto minut = Minut(10);
 
 inline Message message0 = {
     {NameSpeaker::description, "Boum."},
@@ -274,9 +274,9 @@ inline Message message1 = {
 }  // namespace Level7
 
 namespace Level8 {
-constexpr std::string_view nameLevel = "Niveau 8 : Crack (Interlude)";
-constexpr Hour hour = Hour(2);
-constexpr Minut minut = Minut(12);
+static constexpr auto nameLevel = Title("Niveau 8 : Crack (Interlude)");
+static constexpr auto hour = Hour(2);
+static constexpr auto minut = Minut(12);
 
 inline Message message0(const std::string& plugName) {
   return {
@@ -308,9 +308,9 @@ inline Message message1 = {
 }  // namespace Level8
 
 namespace Level9 {
-constexpr std::string_view nameLevel = "Niveau 9 : LSD (Révélation)";
-constexpr Hour hour = Hour(3);
-constexpr Minut minut = Minut(35);
+static constexpr auto nameLevel = Title("Niveau 9 : LSD (Révélation)");
+static constexpr auto hour = Hour(3);
+static constexpr auto minut = Minut(35);
 
 inline Message message0 = {{NameSpeaker::player, "Dégage de là."}};
 
@@ -347,9 +347,9 @@ inline Message message7 = {
 }  // namespace Level9
 
 namespace Level10 {
-constexpr std::string_view nameLevel = "Niveau 10 : Héroine (Désillusion)";
-constexpr Hour hour = Hour(7);
-constexpr Minut minut = Minut(30);
+static constexpr auto nameLevel = Title("Niveau 10 : Héroine (Désillusion)");
+static constexpr auto hour = Hour(7);
+static constexpr auto minut = Minut(30);
 
 inline Message messageMinus1 = {
     {NameSpeaker::plug, "Que fais tu petit chose ?"},
@@ -384,9 +384,9 @@ inline Message message4 = {
 }  // namespace Level10
 
 namespace Outro {
-constexpr std::string_view nameLevel = "Crédits";
-constexpr Hour hour = Hour(0);
-constexpr Minut minut = Minut(0);
+static constexpr auto nameLevel = Title("Crédits");
+static constexpr auto hour = Hour(0);
+static constexpr auto minut = Minut(0);
 
 inline Message message0 = {
     {NameSpeaker::description, "Programmeur : Jess H."},
@@ -395,8 +395,8 @@ inline Message message0 = {
 }  // namespace Outro
 
 namespace Action {
-inline std::string titleChooseWeapon = "Choix de l'arme";
-inline std::string titleChoosePlug = "Choix de l'ennemi";
+static constexpr auto titleChooseWeapon = Title("Choix de l'arme");
+static constexpr auto titleChoosePlug = Title("Choix de l'ennemi");
 
 inline auto statementChoosePlug(const std::string& plugName) {
   return Statement("Attaquer " + plugName + ".");
@@ -444,7 +444,7 @@ inline auto resultsIncreaseMaxLifePoints(const int& maxLifePoints) {
 
 namespace Menu {
 // title of startGame menu
-inline std::string titleStartGameMenu = "Menu";
+static constexpr auto titleStartGameMenu = Title("Menu");
 
 // data for startGame action
 inline auto statementStartGame = Statement("Commencer une nouvelle partie");
@@ -460,7 +460,7 @@ inline auto statementQuit = Statement("Quitter le jeu");
 inline auto resultQuit = Result("Fin du jeu");
 
 // title of loadGame menu
-inline std::string titleLoadGameMenu = "Choix de la partie";
+static constexpr auto titleLoadGameMenu = Title("Choix de la partie");
 
 // data for the choice of the loaded game
 inline Statement statementChooseLoadedGame(const std::string& pseudo,
@@ -472,7 +472,7 @@ inline std::string resultChooseLoadedGame(
     "Vous avez chois charger une partie.");
 
 // title of endOfLevel menu
-inline std::string titleContinueMenu = "Niveau terminé";
+static constexpr auto titleContinueMenu = Title("Niveau terminé");
 
 // data for continue action
 inline auto statementContinue = Statement("Continuer votre partie");
@@ -486,7 +486,7 @@ inline auto resultGameOver = Result("Vous etes mort. Game Over.");
 }  // namespace Menu
 
 namespace Combo {
-inline std::string titleFistMeleeWeapon = "Combo Poing-Arme de mélée";
+static constexpr auto titleFistMeleeWeapon = Title("Combo Poing-Arme de mélée");
 inline std::string triggerStatementFistMeleeWeapon =
     "Attaquer un ennemi avec le poing";
 inline std::string triggeredStatementFistMeleeWeapon =
@@ -495,7 +495,7 @@ inline std::string triggeredStatementFistMeleeWeapon =
 inline std::string malusStatementFistMeleeWeapon =
     "L'attaque avec l'arme de mélée inflige moitié moins de dégats";
 
-inline std::string titleDoubleMeleeWeapon = "Combo Double Couteau";
+static constexpr auto titleDoubleMeleeWeapon = Title("Combo Double Couteau");
 inline std::string triggerStatementDoubleMeleeWeapon =
     "Attaquer un ennemi avec le couteau.";
 inline std::string triggeredStatementDoubleMeleeWeapon =
@@ -504,7 +504,7 @@ inline std::string malusStatementDoubleMeleeWeapon =
     "Le couteau que vous avez utilisé est détruit. Vous pouvez ne pas "
     "déclencher le combo. Dans ce cas le couteau n'est pas détruit.";
 
-inline std::string titleQuadrupleCutter = "Combo Quadruple Cutter";
+static constexpr auto titleQuadrupleCutter = Title("Combo Quadruple Cutter");
 inline std::string triggerStatementQuadrupleCutter =
     "Attaquer un ennemu avec le cutter";
 inline std::string triggeredStatementQuadrupleCutter =
@@ -516,7 +516,7 @@ inline auto statementDontCombo = Statement("Ne pas déclencher le combo");
 }  // namespace Combo
 
 namespace Information {
-inline std::string titleInformation = "Informations";
+static constexpr auto titleInformation = Title("Informations");
 inline auto statementInformationWeapon =
     Statement("Informations sur les armes que vous possèdez.");
 inline auto statementInformationCombo =
@@ -530,66 +530,67 @@ inline auto statementNoInformationAnymore = Statement(
 
 namespace Question {
 // First question title
-inline std::string titleFirstQuestion =
-    "Les hommes sont-ils allez sur la Lune ?";
+static constexpr auto titleFirstQuestion =
+    Title("Les hommes sont-ils allez sur la Lune ?");
 
 // First Answer
 inline auto answer1Question1 = Statement("Oui, bien sur !");
-inline bool correctOrNotAnswer1Question1 = false;
+static constexpr auto correctOrNotAnswer1Question1 = false;
 
 // Second Answer
 inline auto answer2Question1 =
     Statement("Bien sur, les américains l'ont fait pour niquer les russes.");
-inline bool correctOrNotAnswer2Question1 = false;
+static constexpr auto correctOrNotAnswer2Question1 = false;
 
 // Third Answer
 inline auto answer3Question1 =
     Statement("Non, l'alunissage a eu lieu au Nevada.");
-inline bool correctOrNotAnswer3Question1 = true;
+static constexpr auto correctOrNotAnswer3Question1 = true;
 
 // Second question title
-inline std::string titleSecondQuestion =
-    "Pourquoi le faux alunissage a été caché ?";
+static constexpr auto titleSecondQuestion =
+    Title("Pourquoi le faux alunissage a été caché ?");
 
 // First Answer
 inline auto answer1Question2 = Statement("Euh ...");
-inline bool correctOrNotAnswer1Question2 = false;
+static constexpr auto correctOrNotAnswer1Question2 = false;
 
 // Second Answer
 inline auto answer2Question2 = Statement(
     "Pour montrer leurs supériorités, les américains ont préféré mentir car "
     "ils n'avaient pas les moyens technologiques d'y aller.");
-inline bool correctOrNotAnswer2Question2 = false;
+static constexpr auto correctOrNotAnswer2Question2 = false;
 
 // Third Answer
 inline auto answer3Question2 =
     Statement("Pour cacher qu'en fait la Terre est plate.");
-inline bool correctOrNotAnswer3Question2 = true;
+static constexpr auto correctOrNotAnswer3Question2 = true;
 
 // Third question title
-inline std::string titleThirdQuestion = "Pourquoi vouloir masquer tout ça ?";
+static constexpr auto titleThirdQuestion =
+    Title("Pourquoi vouloir masquer tout ça ?");
 
 // First Answer
 inline auto answer1Question3 = Statement(
     "Pour cacher la grand plan des élites qui consiste à réduire drastiquement "
     "la population.");
-inline bool correctOrNotAnswer1Question3 = true;
+static constexpr auto correctOrNotAnswer1Question3 = true;
 
 // Second Answer
 inline auto answer2Question3 = Statement(
     "Pour cacher le projet d'Elon Musk, Bill Gates et Laurent Alexandre "
     "constitant à implémenter des puces à la population pour les controler.");
-inline bool correctOrNotAnswer2Question3 = true;
+static constexpr auto correctOrNotAnswer2Question3 = true;
 
 // Third Answer
 inline auto answer3Question3 = Statement(
     "Pour cacher que toutes gouvernements sont à la solde d'une organisation "
     "secrète dirigée par les reptiliens.");
-inline bool correctOrNotAnswer3Question3 = true;
+static constexpr auto correctOrNotAnswer3Question3 = true;
 }  // namespace Question
 
 namespace Tutorial {
-inline std::string titleCombatSystem = "Tutoriel : Système de combat";
+static constexpr auto titleCombatSystem = Title("Tutoriel : Système de combat");
 inline std::vector<std::string> statementCombatSystem(
     const int& maxNbLifePoints) {
   return {
@@ -605,7 +606,7 @@ inline std::vector<std::string> statementCombatSystem(
       "Lorsque vous tuez un ennemi vous pouvez récupérer leurs armes."};
 }
 
-inline std::string titleCombo = "Tutoriel : Enchaînements";
+static constexpr auto titleCombo = Title("Tutoriel : Enchaînements");
 inline std::vector<std::string> statementCombo = {
     "Lors des combats des enchaînements peuvent être réalisés pour faire plus "
     "de dégats aux ennemis.",
@@ -614,8 +615,8 @@ inline std::vector<std::string> statementCombo = {
     "vous pouvez frapper avec plusieurs fois. Attention, chaque combo possède "
     "un malus."};
 
-inline std::string titleComboFistMeleeWeapon =
-    "Tutoriel : Combo Poing - Arme de mélée";
+static constexpr auto titleComboFistMeleeWeapon =
+    Title("Tutoriel : Combo Poing - Arme de mélée");
 inline std::vector<std::string> statementComboFistMeleeWeapon = {
     "En frappant avec le poing un ennemi,",
     "vous pouvez, lors du même tour, frapper le même ennemi avec un arme de "
@@ -624,8 +625,8 @@ inline std::vector<std::string> statementComboFistMeleeWeapon = {
     "En réfléchissant bien, vous pourrez tuer le prochain ennemi en 1 tour,",
     "au lieu de 2. Vous perdez de fait moins de points de vie."};
 
-inline std::string titleComboDoubleMeleeWeapon =
-    "Tutoriel : Arme de mélée + Arme de mélée";
+static constexpr auto titleComboDoubleMeleeWeapon =
+    Title("Tutoriel : Arme de mélée + Arme de mélée");
 inline std::vector<std::string> statementComboDoubleMeleeWeapon = {
     "En frappant avec une arme de mélée un ennemi,",
     "vous pouvez, lors du même tour, frapper le même ennemi avec la même arme "
@@ -636,14 +637,14 @@ inline std::vector<std::string> statementComboDoubleMeleeWeapon = {
     "Grace à ce combo, vous pourrez vaincre le prochain ennemi en 1 tour,",
     "sans perdre de points de vie."};
 
-inline std::string titleNoWeapon = "Tutoriel : Subir et revenir";
+static constexpr auto titleNoWeapon = Title("Tutoriel : Subir et revenir");
 inline std::vector<std::string> statementNoWeapon = {
     "Vos poings sont la seule arme qu'il vous reste.",
     "Pas le choix, vous devez subir et revenir.",
     "Pour cela, lorsque vous tuez un ennemi, vous pouvez récupérer son arme si "
     "vous n'en disposez pas déjà."};
 
-inline std::string titleRegeneration = "Tutoriel : Regeneration";
+static constexpr auto titleRegeneration = Title("Tutoriel : Regeneration");
 inline std::vector<std::string> statementRegeneration = {
     "Les drogues sont très bonnes pour la santé (dans ce jeu en tout cas).",
     "Elles ouvrent de nouvelles capacité au corps humain.",

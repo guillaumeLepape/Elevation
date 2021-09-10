@@ -10,15 +10,13 @@
 
 #include "Pause.h"
 
-TutorialWriter::TutorialWriter(
-    const std::string& title, const std::vector<std::string>& tutorialStatement)
-    : title_(title), tutorialStatement_(tutorialStatement) {}
-
-void TutorialWriter::writeTutorial() const {
+namespace Tutorial {
+void write(const Title& title,
+           const std::vector<std::string>& tutorialStatement) {
   Pause::pause();
 
   std::cout << "\n " << Term::color(Term::bg::magenta)
-            << Term::color(Term::style::bold) << title_
+            << Term::color(Term::style::bold) << title.get()
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
   std::cout << "\n"
@@ -26,14 +24,15 @@ void TutorialWriter::writeTutorial() const {
             << "========" << Term::color(Term::fg::reset)
             << Term::color(Term::style::reset);
 
-  for (long unsigned int i = 0; i < tutorialStatement_.size(); i++) {
+  for (long unsigned int i = 0; i < tutorialStatement.size(); i++) {
     Pause::pause();
 
     std::cout << "\n " << Term::color(Term::fg::magenta)
-              << Term::color(Term::style::bold) << tutorialStatement_[i]
+              << Term::color(Term::style::bold) << tutorialStatement[i]
               << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset);
   }
 
   std::cout << "\n";
 }
+}  // namespace Tutorial

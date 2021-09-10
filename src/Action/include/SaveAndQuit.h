@@ -12,8 +12,8 @@
 
 class SaveAndQuit {
  private:
-  const Statement& statement_;
-  const Result& result_;
+  Statement statement_;
+  Result result_;
 
  public:
   SaveAndQuit(const Statement& statement, const Result& result)

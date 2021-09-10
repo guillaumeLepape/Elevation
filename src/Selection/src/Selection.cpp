@@ -8,7 +8,7 @@
 
 #include "Pause.h"
 
-int Select::select(const std::string& title,
+int Select::select(const Title& title,
                    const std::vector<std::string>& statements) {
   Selection::write(title, statements);
 

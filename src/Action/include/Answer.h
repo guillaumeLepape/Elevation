@@ -18,8 +18,6 @@ class Answer {
 
   const std::string& statement() const { return statement_.get(); }
 
-  void triggerAction() {}
-
   const bool& correctOrNot() const { return correctOrNot_; }
 };
 

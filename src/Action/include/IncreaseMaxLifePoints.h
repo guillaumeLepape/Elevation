@@ -9,7 +9,7 @@
 
 class IncreaseMaxLifePoints {
  private:
-  const Result& result_;
+  Result result_;
 
   Player* const player_;
   int maxLifePointsIncreasing_;

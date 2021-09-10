@@ -8,7 +8,7 @@
 
 bool WeaponInventory::addWeapon(std::unique_ptr<const Weapon>&& weapon) {
   auto [positionWeapon, present] = weapons_.insert(std::move(weapon));
-  return present;
+  return !present;
 }
 
 void WeaponInventory::deleteWeapon(const std::string& nameWeapon) {

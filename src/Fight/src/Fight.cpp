@@ -68,10 +68,8 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
             informationCombo.triggerAction();
             break;
           case 2:
-            noInformation.triggerAction();
             break;
           case 3:
-            noInformationAnymore.triggerAction();
             break;
         }
 
@@ -133,10 +131,6 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
     if (nbTurns - 1 < messageWriter.size()) {
       messageWriter[nbTurns - 1].writeMessage();
     }
-
-    // for (std::size_t i = 0; i < useWeapons.size(); i++) {
-    //   delete useWeapons[i];
-    // }
   }
 
   fightWriter.writeEndOfFight();
@@ -185,7 +179,6 @@ Plug* Fight::choosePlug() {
                  });
   int resultChoosePlug =
       Select::select(data::Action::titleChoosePlug, statements);
-  choosePlugActions[resultChoosePlug]->triggerAction();
 
   Plug* const choosenPlug(
       ((ChoosePlug*)choosePlugActions[resultChoosePlug])->plug());

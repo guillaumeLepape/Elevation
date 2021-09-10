@@ -7,13 +7,12 @@
 #include "Pause.h"
 
 namespace Selection {
-void write(const std::string& title,
-           const std::vector<std::string>& statements) {
+void write(const Title& title, const std::vector<std::string>& statements) {
   Pause::pause();
 
   std::cout << "\n " << Term::color(Term::fg::black)
             << Term::color(Term::bg::green) << Term::color(Term::style::bold)
-            << title << Term::color(Term::fg::reset)
+            << title.get() << Term::color(Term::fg::reset)
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
   std::cout << "\n"

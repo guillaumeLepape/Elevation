@@ -22,21 +22,17 @@ void Level::endOfLevel() const {
                             data::Menu::resultSaveAndQuit);
   writeResults.triggerAction();
 
-  std::unique_ptr<Nothing> continueAction(
-      new Nothing(data::Menu::statementContinue));
-  std::unique_ptr<SaveAndQuit> quit(
-      new SaveAndQuit(data::Menu::statementQuit, data::Menu::resultQuit));
+  Nothing continueAction(data::Menu::statementContinue);
+  SaveAndQuit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
-  auto result =
-      Select::select(data::Menu::titleContinueMenu,
-                     {continueAction->statement(), quit->statement()});
+  auto result = Select::select(data::Menu::titleContinueMenu,
+                               {continueAction.statement(), quit.statement()});
 
   switch (result) {
     case 0:
-      continueAction->triggerAction();
       break;
     case 1:
-      quit->triggerAction();
+      quit.triggerAction();
       break;
   }
 }

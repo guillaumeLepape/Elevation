@@ -8,11 +8,11 @@
 #include <string_view>
 #include <vector>
 
+#include "NameType.h"
 #include "Pause.h"
 
 namespace Selection {
-void write(const std::string& title,
-           const std::vector<std::string>& statements);
+void write(const Title& title, const std::vector<std::string>& statements);
 }
 
 #endif
