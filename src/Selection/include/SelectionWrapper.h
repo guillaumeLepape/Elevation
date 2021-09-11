@@ -23,6 +23,16 @@ void select(const Title& title, Args&... actions) {
   int index = 0;
   ((index++ == result ? actions.triggerAction() : nothing()), ...);
 }
+
+template <Action Arg>
+void select(const Title& title, const std::vector<Arg>& actions) {
+  std::vector<std::string> statements;
+  std::transform(std::cbegin(actions), std::cend(actions),
+                 std::back_inserter(statements),
+                 [](const auto& action) { return action.statement(); });
+  auto result = Select::select(title, statements);
+  actions[result].triggerAction();
+}
 }  // namespace SelectionWrapper
 
 #endif

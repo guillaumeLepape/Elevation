@@ -10,7 +10,6 @@
 #include "LoadGame.h"
 #include "Quit.h"
 #include "Rules.h"
-#include "Selection.h"
 #include "SelectionWrapper.h"
 #include "StartGame.h"
 
