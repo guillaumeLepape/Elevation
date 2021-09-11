@@ -4,12 +4,14 @@
 
 #include <iostream>
 #include <string_view>
+#include <tuple>
 
 #include "Languages.h"
 #include "LoadGame.h"
 #include "Quit.h"
 #include "Rules.h"
 #include "Selection.h"
+#include "SelectionWrapper.h"
 #include "StartGame.h"
 
 int main(int argc, char* argv[]) {
@@ -31,21 +33,8 @@ int main(int argc, char* argv[]) {
   // // Quit the game
   Quit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
-  auto result = Select::select(
-      data::Menu::titleStartGameMenu,
-      {startGame.statement(), loadGame.statement(), quit.statement()});
-
-  switch (result) {
-    case 0:
-      startGame.triggerAction();
-      break;
-    case 1:
-      loadGame.triggerAction();
-      break;
-    case 2:
-      quit.triggerAction();
-      break;
-  }
+  SelectionWrapper::select(data::Menu::titleStartGameMenu, startGame, loadGame,
+                           quit);
 
   return 0;
 }

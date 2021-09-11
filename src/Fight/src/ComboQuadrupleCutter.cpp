@@ -23,6 +23,6 @@ void ComboQuadrupleCutter::triggerCombo(
     useWeaponCombo.triggerAction();
     useWeaponCombo.triggerAction();
     useWeaponCombo.triggerAction();
-    player_->weapons()->deleteWeapon(nameWeapon);
+    player_->weapons().deleteWeapon(nameWeapon);
   }
 }

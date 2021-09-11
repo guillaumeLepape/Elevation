@@ -41,7 +41,7 @@ class UseWeapon {
     if (weapon_->weaponType() == WeaponType::fireArm) {
       if (((FireArm*)weapon_)->nbAmmo() <= 0) {
         std::string nameWeapon = weapon_->name();
-        player_->weapons()->deleteWeapon(nameWeapon);
+        player_->weapons().deleteWeapon(nameWeapon);
       }
     }
   }
@@ -51,5 +51,24 @@ class UseWeapon {
   const std::string& nameWeapon() const { return weapon_->name(); }
   const Weapon* weapon() const { return weapon_; }
 };
+
+struct UseWeapon1 {
+  Player& player_;
+  Plug& plug_;
+  std::unique_ptr<const Weapon> weapon_;
+  Result result_;
+  UseWeapon1(Player& player, Plug& plug, std::unique_ptr<const Weapon>&& weapon)
+      : player_(player),
+        plug_(plug),
+        weapon_(std::move(weapon)),
+        result_(data::Weapon::resultUseWeapon(plug_.name(),
+                                              weapon_->damageWeapon())) {}
+
+  const std::string& statement() const { return weapon_->statement(); }
+};
+
+namespace t {
+void trigger(const UseWeapon1& useWeapon);
+}
 
 #endif

@@ -83,7 +83,7 @@ class Player : public Entity {
    * \brief Accesor to weapon inventory
    * \return Reference to weapon inventory
    */
-  WeaponInventory* weapons() { return &weapons_; }
+  WeaponInventory& weapons() { return weapons_; }
 
   nlohmann::json writeJson() const;
 

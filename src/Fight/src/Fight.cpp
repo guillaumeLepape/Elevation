@@ -46,7 +46,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
       bool out = false;
 
       InformationWeaponInventory informationWeaponInventory(
-          player_->weapons(), data::Information::statementInformationWeapon);
+          &(player_->weapons()), data::Information::statementInformationWeapon);
       InformationCombo informationCombo(
           combos_, data::Information::statementInformationCombo);
       Nothing noInformation(data::Information::statementNoInformation);
@@ -193,7 +193,7 @@ Plug* Fight::choosePlug() {
 const ChooseWeaponResult Fight::chooseWeapon(Plug* const choosenPlug) {
   std::vector<UseWeapon> useWeapons;
 
-  for (auto w = player_->weapons()->cbegin(); w != player_->weapons()->cend();
+  for (auto w = player_->weapons().cbegin(); w != player_->weapons().cend();
        w++) {
     useWeapons.push_back(UseWeapon(player_, choosenPlug, w->get()));
   }

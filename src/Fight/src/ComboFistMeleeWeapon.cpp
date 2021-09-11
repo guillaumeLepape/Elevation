@@ -23,7 +23,7 @@ void ComboFistMeleeWeapon::triggerCombo(
   if (useWeapon[resultChooseWeapon].weapon()->weaponType() ==
           WeaponType::fist &&
       !(plug->dead()) &&
-      player_->weapons()->containWeaponType(WeaponType::meleeWeapon)) {
+      player_->weapons().containWeaponType(WeaponType::meleeWeapon)) {
     // Build vector of useWeapon actions without the fist action
     std::vector<const Weapon*> weaponFistComboVector;
 

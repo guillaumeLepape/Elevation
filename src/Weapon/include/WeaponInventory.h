@@ -17,16 +17,15 @@ static auto comparatorWeapon = [](const auto& weapon1, const auto& weapon2) {
              : weapon1->weaponType() < weapon2->weaponType();
 };
 
-class WeaponInventory {
- public:
-  std::set<std::unique_ptr<const Weapon>, decltype(comparatorWeapon)> weapons_;
+using WeaponInventoryBase =
+    std::set<std::unique_ptr<const Weapon>, decltype(comparatorWeapon)>;
 
- public:
-  WeaponInventory() : weapons_{comparatorWeapon} {};
+struct WeaponInventory : public WeaponInventoryBase {
+  WeaponInventory() : WeaponInventoryBase{comparatorWeapon} {};
 
   WeaponInventory(std::unique_ptr<const Weapon>&& weapon)
-      : weapons_{comparatorWeapon} {
-    weapons_.insert(std::move(weapon));
+      : WeaponInventoryBase{comparatorWeapon} {
+    WeaponInventoryBase::insert(std::move(weapon));
   }
   WeaponInventory(const WeaponInventory&) = delete;
   WeaponInventory(WeaponInventory&&) = default;
@@ -43,13 +42,6 @@ class WeaponInventory {
 
   nlohmann::json writeJson() const;
   static WeaponInventory readJson(const nlohmann::json& jsonInput);
-
-  decltype(weapons_)::const_iterator cbegin() const noexcept {
-    return weapons_.cbegin();
-  }
-  decltype(weapons_)::const_iterator cend() const noexcept {
-    return weapons_.cend();
-  }
 };
 
 #endif
