@@ -4,6 +4,9 @@
 #include <string_view>
 #include <tuple>
 
+#include "NameType.h"
+#include "Selection.h"
+
 namespace SelectionWrapper {
 template <typename T>
 concept bool Action = requires(T& action) {
@@ -11,7 +14,7 @@ concept bool Action = requires(T& action) {
   action.triggerAction();
 };
 
-void nothing() {}
+void nothing();
 
 template <Action... Args>
 void select(const Title& title, Args&... actions) {

@@ -17,5 +17,4 @@ target_link_libraries(
     PUBLIC entity
     PUBLIC data_files
     PUBLIC data
-    PUBLIC cpp-terminal
 )

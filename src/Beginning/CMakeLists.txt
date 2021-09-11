@@ -15,6 +15,4 @@ target_include_directories(
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC level
-    PUBLIC action
-    PUBLIC selection
 )
