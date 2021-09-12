@@ -14,61 +14,44 @@
 #include "Plug.h"
 
 class UseWeapon {
- private:
-  Result result_;
-
-  const Weapon* weapon_;
-  Player* const player_;
-  Plug* const plug_;
+  Player& player_;
+  Plug& plug_;
+  const std::string& nameWeapon_;
 
  public:
-  UseWeapon(Player* const player, Plug* const plug, const Weapon* weapon)
-      : result_(data::Weapon::resultUseWeapon(plug->name(),
-                                              weapon->damageWeapon())),
-        weapon_(weapon),
-        player_(player),
-        plug_(plug) {}
+  UseWeapon(Player& player, Plug& plug, const std::string& nameWeapon)
+      : player_(player), plug_(plug), nameWeapon_(nameWeapon) {}
 
   void triggerAction() {
-    plug_->decreaseLifePoints(weapon_->damageWeapon());
+    auto weapon = player_.weapons().find(nameWeapon_);
 
-    Action::writeResult(result_);
+    weapon->attack(&plug_);
 
-    Dead dead(plug_, data::Action::resultDead(plug_->name()));
+    auto result = Result(
+        data::Weapon::resultUseWeapon(plug_.name(), weapon->damageWeapon()));
+    Action::writeResult(result);
+
+    Dead dead(&plug_, data::Action::resultDead(plug_.name()));
     dead.triggerAction();
 
     // if weapon is fireArm and has no ammo, delete it
-    if (weapon_->weaponType() == WeaponType::fireArm) {
-      if (((FireArm*)weapon_)->nbAmmo() <= 0) {
-        std::string nameWeapon = weapon_->name();
-        player_->weapons().deleteWeapon(nameWeapon);
+    if (player_.weapons().find(nameWeapon_)->weaponType() ==
+        WeaponType::fireArm) {
+      if (((const FireArm* const)player_.weapons().find(nameWeapon_))
+              ->nbAmmo() <= 0) {
+        player_.weapons().deleteWeapon(nameWeapon_);
       }
     }
   }
 
-  const std::string& statement() const { return weapon_->statement(); }
+  const std::string& statement() const {
+    return player_.weapons().find(nameWeapon_)->statement();
+  }
+  const std::string& name() const { return nameWeapon_; }
 
-  const std::string& nameWeapon() const { return weapon_->name(); }
-  const Weapon* weapon() const { return weapon_; }
+  WeaponType weaponType() const {
+    return player_.weapons().find(nameWeapon_)->weaponType();
+  }
 };
-
-struct UseWeapon1 {
-  Player& player_;
-  Plug& plug_;
-  std::unique_ptr<const Weapon> weapon_;
-  Result result_;
-  UseWeapon1(Player& player, Plug& plug, std::unique_ptr<const Weapon>&& weapon)
-      : player_(player),
-        plug_(plug),
-        weapon_(std::move(weapon)),
-        result_(data::Weapon::resultUseWeapon(plug_.name(),
-                                              weapon_->damageWeapon())) {}
-
-  const std::string& statement() const { return weapon_->statement(); }
-};
-
-namespace t {
-void trigger(const UseWeapon1& useWeapon);
-}
 
 #endif

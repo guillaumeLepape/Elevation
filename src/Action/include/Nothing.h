@@ -14,6 +14,8 @@ class Nothing {
  public:
   Nothing(const Statement& statement) : statement_(statement) {}
 
+  void triggerAction() {}
+
   const std::string& statement() const { return statement_.get(); }
 };
 

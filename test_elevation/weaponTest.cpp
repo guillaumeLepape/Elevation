@@ -73,10 +73,8 @@ TEST(weapon_test, AK47) {
 
   Plug plug("Jean-Michel", 100);
 
-  (*(player.weapons().cbegin()))->attack(&plug);
-
-  // UseWeapon* useAK47 = new UseWeapon(&player, &plug, data::Weapon::nameAK47);
-  // useAK47->triggerAction();
+  UseWeapon useAK47(player, plug, data::Weapon::nameAK47);
+  useAK47.triggerAction();
 
   for (const auto& weapon : player.weapons()) {
     if (weapon->name() == data::Weapon::nameAK47) {

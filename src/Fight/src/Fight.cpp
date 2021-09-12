@@ -14,7 +14,7 @@
 #include "Pause.h"
 #include "PlugAttack.h"
 #include "Regeneration.h"
-#include "Selection.h"
+#include "SelectionWrapper.h"
 
 Fight::Fight(Player* const player, const std::vector<Plug*>& plugs,
              const std::vector<Combo*>& combos, const bool& noRule,
@@ -193,18 +193,14 @@ Plug* Fight::choosePlug() {
 const ChooseWeaponResult Fight::chooseWeapon(Plug* const choosenPlug) {
   std::vector<UseWeapon> useWeapons;
 
-  for (auto w = player_->weapons().cbegin(); w != player_->weapons().cend();
-       w++) {
-    useWeapons.push_back(UseWeapon(player_, choosenPlug, w->get()));
-  }
+  std::transform(std::cbegin(player_->weapons()), std::cend(player_->weapons()),
+                 std::back_inserter(useWeapons),
+                 [this, &choosenPlug](const auto& weapon) {
+                   return UseWeapon(*player_, *choosenPlug, weapon->name());
+                 });
 
-  std::vector<std::string> statements;
-  std::transform(useWeapons.cbegin(), useWeapons.cend(),
-                 std::back_inserter(statements),
-                 [](const auto& useWeapon) { return useWeapon.statement(); });
-  int resultUseWeapon =
-      Select::select(data::Action::titleChooseWeapon, statements);
-  useWeapons[resultUseWeapon].triggerAction();
+  auto resultUseWeapon =
+      SelectionWrapper::select(data::Action::titleChooseWeapon, useWeapons);
 
   return {resultUseWeapon, useWeapons};
 }

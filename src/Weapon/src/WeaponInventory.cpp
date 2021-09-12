@@ -32,6 +32,18 @@ bool WeaponInventory::containWeaponType(WeaponType weaponType) const {
                       }) != WeaponInventoryBase::cend();
 }
 
+const Weapon* const WeaponInventory::find(const std::string& name) {
+  auto weaponPtr = std::find_if(
+      WeaponInventoryBase::cbegin(), WeaponInventoryBase::cend(),
+      [&name](const auto& weapon) { return weapon->name() == name; });
+
+  if (weaponPtr == WeaponInventoryBase::cend()) {
+    return new const NoWeapon();
+  } else {
+    return weaponPtr->get();
+  }
+}
+
 nlohmann::json WeaponInventory::writeJson() const {
   nlohmann::json result;
   std::for_each(

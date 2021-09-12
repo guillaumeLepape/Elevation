@@ -5,7 +5,7 @@
 #include "ComboDoubleMeleeWeapon.h"
 
 #include "Nothing.h"
-#include "Selection.h"
+#include "SelectionWrapper.h"
 
 ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon(Player* const player)
     : Combo(player, data::Combo::titleDoubleMeleeWeapon,
@@ -16,24 +16,17 @@ ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon(Player* const player)
 void ComboDoubleMeleeWeapon::triggerCombo(
     Plug* const plug, const int& resultChooseWeapon,
     const std::vector<UseWeapon>& useWeapon) {
-  if ((useWeapon[resultChooseWeapon].nameWeapon() == data::Weapon::nameKnife ||
-       useWeapon[resultChooseWeapon].nameWeapon() ==
-           data::Weapon::nameHammer) &&
+  if ((useWeapon[resultChooseWeapon].name() == data::Weapon::nameKnife ||
+       useWeapon[resultChooseWeapon].name() == data::Weapon::nameHammer) &&
       !(plug->dead())) {
-    UseWeapon useWeaponCombo(player_, plug,
-                             useWeapon[resultChooseWeapon].weapon());
+    UseWeapon useWeaponCombo(*player_, *plug,
+                             useWeapon[resultChooseWeapon].name());
 
     Nothing nothing(data::Combo::statementDontCombo);
 
-    int result = Select::select(
-        title_, {useWeaponCombo.statement(), nothing.statement()});
-
-    switch (result) {
-      case 0:
-        useWeaponCombo.triggerAction();
-        break;
-      case 1:
-        break;
+    int result = SelectionWrapper::select(title_, useWeaponCombo, nothing);
+    if (result == 0) {
+      player_->weapons().deleteWeapon(useWeapon[resultChooseWeapon].name());
     }
   }
 }

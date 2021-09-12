@@ -8,8 +8,9 @@
 #include <set>
 #include <type_traits>
 
+#include "Fist.h"
+#include "NoWeapon.h"
 #include "Weapon.h"
-#include "WeaponFactory.h"
 
 static auto comparatorWeapon = [](const auto& weapon1, const auto& weapon2) {
   return weapon1->weaponType() == weapon2->weaponType()
@@ -39,6 +40,8 @@ struct WeaponInventory : public WeaponInventoryBase {
   void deleteWeapon(const std::string& nameWeapon);
   void deleteWeapon(std::unique_ptr<const Weapon>&& weapon);
   bool containWeaponType(WeaponType weaponType) const;
+
+  const Weapon* const find(const std::string& name);
 
   nlohmann::json writeJson() const;
   static WeaponInventory readJson(const nlohmann::json& jsonInput);

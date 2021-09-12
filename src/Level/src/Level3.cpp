@@ -24,7 +24,7 @@ void Level3::startLevel() {
 
   Message::write(data::Level3::message0, player_->name(), plug.name());
 
-  UseWeapon useFist(player_, &plug, new Fist());
+  UseWeapon useFist(*player_, plug, data::Weapon::nameFist);
   useFist.triggerAction();
 
   Message::write(data::Level3::message1, player_->name(), plug.name());
@@ -46,7 +46,7 @@ void Level3::startLevel() {
                                   std::unique_ptr<const Weapon>(new Knife()));
   addWeaponAction.triggerAction();
 
-  UseWeapon useKnife(player_, &plug, new Knife());
+  UseWeapon useKnife(*player_, plug, data::Weapon::nameKnife);
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist, useKnife);
 

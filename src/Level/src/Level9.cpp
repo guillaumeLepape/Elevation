@@ -40,8 +40,7 @@ void Level9::startLevel() {
 
   Message::write(data::Level9::message0, player_->name(), plug.name());
 
-  const Fist* fist = new Fist();
-  UseWeapon useWeapon(player_, &plug, fist);
+  UseWeapon useWeapon(*player_, plug, data::Weapon::nameFist);
   useWeapon.triggerAction();
 
   RegenerateAllLife regenerateAllLife(player_, Result(""));

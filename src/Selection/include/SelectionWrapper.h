@@ -17,21 +17,23 @@ concept bool Action = requires(T& action) {
 void nothing();
 
 template <Action... Args>
-void select(const Title& title, Args&... actions) {
+int select(const Title& title, Args&... actions) {
   auto result = Select::select(title, {actions.statement()...});
 
   int index = 0;
   ((index++ == result ? actions.triggerAction() : nothing()), ...);
+  return result;
 }
 
 template <Action Arg>
-void select(const Title& title, const std::vector<Arg>& actions) {
+int select(const Title& title, std::vector<Arg>& actions) {
   std::vector<std::string> statements;
   std::transform(std::cbegin(actions), std::cend(actions),
                  std::back_inserter(statements),
                  [](const auto& action) { return action.statement(); });
   auto result = Select::select(title, statements);
   actions[result].triggerAction();
+  return result;
 }
 }  // namespace SelectionWrapper
 
