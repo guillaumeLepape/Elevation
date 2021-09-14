@@ -22,8 +22,8 @@ static constexpr int NB_LEVEL = 12;
 
 class LevelFactory {
  public:
-  static std::unique_ptr<Level> newLevel(Player* const player,
-                                         ResultsData* const resultsData,
+  static std::unique_ptr<Level> newLevel(Player& player,
+                                         ResultsData& resultsData,
                                          const Options& options,
                                          const int& levelNumber) {
     if (levelNumber == 0)

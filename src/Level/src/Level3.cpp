@@ -22,35 +22,35 @@ void Level3::startLevel() {
   Header::write(data::Level3::nameLevel, data::Level3::hour,
                 data::Level3::minut);
 
-  Message::write(data::Level3::message0, player_->name(), plug.name());
+  Message::write(data::Level3::message0, player_.name(), plug.name());
 
-  UseWeapon useFist(*player_, plug, data::Weapon::nameFist);
+  UseWeapon useFist(player_, plug, data::Weapon::nameFist);
   useFist.triggerAction();
 
-  Message::write(data::Level3::message1, player_->name(), plug.name());
+  Message::write(data::Level3::message1, player_.name(), plug.name());
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message2(plug.name()), player_->name(),
+  Message::write(data::Level3::message2(plug.name()), player_.name(),
                  plug.name());
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message3, player_->name(), plug.name());
+  Message::write(data::Level3::message3, player_.name(), plug.name());
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message4, player_->name(), plug.name());
+  Message::write(data::Level3::message4, player_.name(), plug.name());
 
-  AddWeaponAction addWeaponAction(player_,
+  AddWeaponAction addWeaponAction(&player_,
                                   std::unique_ptr<const Weapon>(new Knife()));
   addWeaponAction.triggerAction();
 
-  UseWeapon useKnife(*player_, plug, data::Weapon::nameKnife);
+  UseWeapon useKnife(player_, plug, data::Weapon::nameKnife);
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist, useKnife);
 
-  Message::write(data::Level3::message5, player_->name(), plug.name());
+  Message::write(data::Level3::message5, player_.name(), plug.name());
 
   Level::endOfLevel();
 

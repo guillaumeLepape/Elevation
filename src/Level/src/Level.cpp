@@ -10,14 +10,13 @@
 #include "Selection.h"
 #include "WriteResults.h"
 
-Level::Level(Player* const player, ResultsData* const resultsData,
-             const Options& options)
+Level::Level(Player& player, ResultsData& resultsData, const Options& options)
     : player_(player), resultsData_(resultsData), options_(options) {}
 
 void Level::endOfLevel() const {
-  player_->nextLevel();
+  player_.nextLevel();
 
-  WriteResults writeResults(player_, resultsData_,
+  WriteResults writeResults(&player_, &resultsData_,
                             data::Menu::statementSaveAndQuit,
                             data::Menu::resultSaveAndQuit);
   writeResults.triggerAction();

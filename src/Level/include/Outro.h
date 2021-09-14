@@ -9,8 +9,7 @@
 
 class Outro : public Level {
  public:
-  Outro(Player* const player, ResultsData* const resultsData,
-        const Options& options)
+  Outro(Player& player, ResultsData& resultsData, const Options& options)
       : Level(player, resultsData, options) {}
 
   void startLevel() override;

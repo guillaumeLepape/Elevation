@@ -7,23 +7,22 @@
 
 #include "Id.h"
 #include "NameType.h"
+#include "Options.h"
 #include "Player.h"
 #include "ResultsData.h"
-
-class Options;
 
 class StartGame {
  private:
   Statement statement_;
 
-  const std::unique_ptr<Player> player_;
-  const std::unique_ptr<ResultsData> resultsData_;
+  Player player_;
+  ResultsData resultsData_;
   const Options& options_;
 
  public:
   StartGame(const Statement& statement, const Options& options,
-            Player* const player = new Player("Joueur", Id::generateId(), 0),
-            ResultsData* const resultsData = new ResultsData());
+            Player&& player = Player("Joueur", Id::generateId(), 0),
+            ResultsData&& resultsData = ResultsData());
 
   StartGame(const StartGame& startGame) = delete;
 

@@ -13,19 +13,25 @@
 
 class ResultsData : public Data {
  private:
-  std::list<Player*> results_;
+  std::vector<Player> results_;
 
  public:
   ResultsData();
 
-  ~ResultsData() override;
+  ResultsData(const ResultsData&) = delete;
+  ResultsData(ResultsData&&) = default;
+
+  ResultsData& operator=(const ResultsData&) = delete;
+  ResultsData& operator=(ResultsData&&) = default;
+
+  virtual ~ResultsData() = default;
 
   void readData() override;
 
   void addResult(Player* const player);
   void writeData() const;
 
-  const std::list<Player*>& results() const { return results_; }
+  const std::vector<Player>& results() const { return results_; }
 };
 
 #endif

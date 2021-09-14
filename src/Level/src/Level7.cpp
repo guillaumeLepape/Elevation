@@ -26,24 +26,24 @@ void Level7::startLevel() {
 
   Plug boss("Tueur professionnel", 200, new Hammer());
 
-  Message::write(data::Level7::message0, player_->name(), boss.name());
+  Message::write(data::Level7::message0, player_.name(), boss.name());
 
   std::unique_ptr<Combo> comboFistMeleeWeapon(
-      new ComboFistMeleeWeapon(player_));
+      new ComboFistMeleeWeapon(&player_));
   std::unique_ptr<Combo> comboDoubleMeleeWeapon(
-      new ComboDoubleMeleeWeapon(player_));
+      new ComboDoubleMeleeWeapon(&player_));
   std::unique_ptr<Combo> comboQuadrupleCutter(
-      new ComboQuadrupleCutter(player_));
+      new ComboQuadrupleCutter(&player_));
 
-  Fight fight(player_, {&boss},
+  Fight fight(&player_, {&boss},
               {comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(),
                comboQuadrupleCutter.get()},
               options_.noRule_);
   fight.startFight();
 
-  Message::write(data::Level7::message1, player_->name(), "");
+  Message::write(data::Level7::message1, player_.name(), "");
 
-  RegenerateAllLife regenerateAllLife(player_, Result(""));
+  RegenerateAllLife regenerateAllLife(&player_, Result(""));
   regenerateAllLife.triggerAction();
 
   Level::endOfLevel();

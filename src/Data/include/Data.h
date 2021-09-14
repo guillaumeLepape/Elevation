@@ -27,7 +27,11 @@ class Data {
  public:
   Data(const std::string& folderFromRoot, const std::string& fileName);
 
-  Data(const Data& data) = delete;
+  Data(const Data&) = delete;
+  Data(Data&&) = default;
+
+  Data& operator=(const Data&) = delete;
+  Data& operator=(Data&&) = default;
 
   virtual ~Data() = default;
 };

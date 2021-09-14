@@ -8,16 +8,14 @@
 #include <memory>
 
 #include "NameType.h"
-
-// forward declaration of Options class
-class Options;
-class ResultsData;
+#include "Options.h"
+#include "ResultsData.h"
 
 class LoadGame {
  private:
   const Statement& statement_;
 
-  std::unique_ptr<ResultsData> resultsData_;
+  ResultsData resultsData_;
   const Options& options_;
 
  public:

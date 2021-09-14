@@ -8,24 +8,19 @@
 
 ResultsData::ResultsData() : Data("results", "results") { readData(); }
 
-ResultsData::~ResultsData() {
-  for (auto p = results_.cbegin(); p != results_.cend(); p++) {
-    delete *p;
-  }
-}
-
 void ResultsData::readData() {
   for (auto i = jsonObject_.cbegin(); i != jsonObject_.cend(); i++) {
-    results_.push_back(Player::readJson(*i));
+    results_.push_back(std::move(*Player::readJson(*i)));
   }
 }
 
 void ResultsData::addResult(Player* const player) {
-  const int& id = player->id();
-  results_.remove_if(
-      [&id](Player* const player_lambda) { return player_lambda->id() == id; });
-
-  results_.push_back(player);
+  if (std::find_if(std::cbegin(results_), std::cend(results_),
+                   [&player](const auto& p) {
+                     return p.id() == player->id();
+                   }) == std::cend(results_)) {
+    results_.push_back(std::move(*player));
+  }
 }
 
 void ResultsData::writeData() const {
@@ -41,7 +36,7 @@ void ResultsData::writeData() const {
 
   std::for_each(std::cbegin(results_), std::cend(results_),
                 [&jsonObjectOutput](const auto& res) {
-                  nlohmann::json jsonPlayer = res->writeJson();
+                  nlohmann::json jsonPlayer = res.writeJson();
                   jsonObjectOutput.push_back(jsonPlayer);
                 });
 

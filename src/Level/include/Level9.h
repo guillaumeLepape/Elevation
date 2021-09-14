@@ -9,8 +9,7 @@
 
 class Level9 : public Level {
  public:
-  Level9(Player* const player, ResultsData* const resultsData,
-         const Options& options)
+  Level9(Player& player, ResultsData& resultsData, const Options& options)
       : Level(player, resultsData, options) {}
 
   void startLevel() override;

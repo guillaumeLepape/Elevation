@@ -19,14 +19,14 @@ void Level8::startLevel() {
   Header::write(data::Level8::nameLevel, data::Level8::hour,
                 data::Level8::minut);
 
-  Message::write(data::Level8::message0(plug.name()), player_->name(),
+  Message::write(data::Level8::message0(plug.name()), player_.name(),
                  plug.name());
 
-  AddWeaponAction addWeaponAction(player_,
+  AddWeaponAction addWeaponAction(&player_,
                                   std::unique_ptr<const Weapon>(new Ninemm(3)));
   addWeaponAction.triggerAction();
 
-  Message::write(data::Level8::message1, player_->name(), plug.name());
+  Message::write(data::Level8::message1, player_.name(), plug.name());
 
   Level::endOfLevel();
 

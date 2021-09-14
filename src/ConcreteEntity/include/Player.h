@@ -56,9 +56,13 @@ class Player : public Entity {
          WeaponInventory&& weaponInventory =
              std::unique_ptr<const Weapon>(new Fist()));
 
-  Player(const Player& player) = delete;
+  Player(const Player&) = delete;
+  Player(Player&&) = default;
 
-  ~Player() override = default;
+  Player& operator=(const Player&) = delete;
+  Player& operator=(Player&&) = default;
+
+  virtual ~Player() = default;
 
   /*!
    * \brief id accesor, initialized at the creation of Player, unmodifiable
