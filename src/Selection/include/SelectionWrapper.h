@@ -17,21 +17,21 @@ concept bool Action = requires(T& action) {
 void nothing();
 
 template <Action... Args>
-int select(const Title& title, Args&... actions) {
-  auto result = Select::select(title, {actions.statement()...});
+std::size_t select(const Title& title, Args&... actions) {
+  auto result = Selection::select(title, {actions.statement()...});
 
-  int index = 0;
+  std::size_t index = 0;
   ((index++ == result ? actions.triggerAction() : nothing()), ...);
   return result;
 }
 
 template <Action Arg>
-int select(const Title& title, std::vector<Arg>& actions) {
+std::size_t select(const Title& title, std::vector<Arg>& actions) {
   std::vector<std::string> statements;
   std::transform(std::cbegin(actions), std::cend(actions),
                  std::back_inserter(statements),
                  [](const auto& action) { return action.statement(); });
-  auto result = Select::select(title, statements);
+  auto result = Selection::select(title, statements);
   actions[result].triggerAction();
   return result;
 }

@@ -9,10 +9,9 @@
 
 #include "SelectionWriter.h"
 
-class Select {
- public:
-  static int select(const Title& title,
-                    const std::vector<std::string>& statements);
-};
+namespace Selection {
+std::size_t select(const Title& title,
+                   const std::vector<std::string>& statements);
+}
 
 #endif

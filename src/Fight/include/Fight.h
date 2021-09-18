@@ -9,7 +9,7 @@
 #include "MessageWriter.h"
 
 struct ChooseWeaponResult {
-  int resultUseWeapon;
+  std::size_t resultUseWeapon;
   std::vector<UseWeapon> useWeapons;
 };
 

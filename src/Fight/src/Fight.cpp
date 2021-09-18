@@ -54,7 +54,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
           data::Information::statementNoInformationAnymore);
 
       while (!out) {
-        int resultInformation = Select::select(
+        int resultInformation = Selection::select(
             data::Information::titleInformation,
             {informationWeaponInventory.statement(),
              informationCombo.statement(), noInformation.statement(),
@@ -178,7 +178,7 @@ Plug& Fight::choosePlug() {
                    return choosePlugAction.statement();
                  });
   int resultChoosePlug =
-      Select::select(data::Action::titleChoosePlug, statements);
+      Selection::select(data::Action::titleChoosePlug, statements);
 
   Plug& choosenPlug = choosePlugActions[resultChoosePlug].plug();
 

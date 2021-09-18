@@ -8,11 +8,10 @@
 
 #include "Pause.h"
 
-int Select::select(const Title& title,
+namespace Selection {
+std::size_t select(const Title& title,
                    const std::vector<std::string>& statements) {
-  Selection::write(title, statements);
-
-  long unsigned int choice = 0;
+  std::size_t choice = 0;
 
   while (!(std::cin >> choice) || (choice > statements.size() || choice < 1)) {
     if (statements.size() != 1) {
@@ -37,3 +36,4 @@ int Select::select(const Title& title,
 
   return choice - 1;
 }
+}  // namespace Selection
