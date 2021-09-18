@@ -489,30 +489,30 @@ inline auto resultGameOver = Result("Vous etes mort. Game Over.");
 
 namespace Combo {
 static constexpr auto titleFistMeleeWeapon = Title("Combo Poing-Arme de mélée");
-inline std::string triggerStatementFistMeleeWeapon =
-    "Attaquer un ennemi avec le poing";
-inline std::string triggeredStatementFistMeleeWeapon =
+static constexpr auto triggerStatementFistMeleeWeapon =
+    TriggerStatement("Attaquer un ennemi avec le poing");
+static constexpr auto triggeredStatementFistMeleeWeapon = TriggeredStatement(
     "Attaquer le même ennemi avec l'arme de mélée de votre choix. Le combo "
-    "n'est pas déclenché si vous ne possèdez pas d'arme de mélée.";
-inline std::string malusStatementFistMeleeWeapon =
-    "L'attaque avec l'arme de mélée inflige moitié moins de dégats";
+    "n'est pas déclenché si vous ne possèdez pas d'arme de mélée.");
+static constexpr auto malusStatementFistMeleeWeapon = MalusStatement(
+    "L'attaque avec l'arme de mélée inflige moitié moins de dégats");
 
 static constexpr auto titleDoubleMeleeWeapon = Title("Combo Double Couteau");
-inline std::string triggerStatementDoubleMeleeWeapon =
-    "Attaquer un ennemi avec le couteau.";
-inline std::string triggeredStatementDoubleMeleeWeapon =
-    "Attaquer le même ennemi avec la même arme.";
-inline std::string malusStatementDoubleMeleeWeapon =
+static constexpr auto triggerStatementDoubleMeleeWeapon =
+    TriggerStatement("Attaquer un ennemi avec le couteau.");
+static constexpr auto triggeredStatementDoubleMeleeWeapon =
+    TriggeredStatement("Attaquer le même ennemi avec la même arme.");
+static constexpr auto malusStatementDoubleMeleeWeapon = MalusStatement(
     "Le couteau que vous avez utilisé est détruit. Vous pouvez ne pas "
-    "déclencher le combo. Dans ce cas le couteau n'est pas détruit.";
+    "déclencher le combo. Dans ce cas le couteau n'est pas détruit.");
 
 static constexpr auto titleQuadrupleCutter = Title("Combo Quadruple Cutter");
-inline std::string triggerStatementQuadrupleCutter =
-    "Attaquer un ennemu avec le cutter";
-inline std::string triggeredStatementQuadrupleCutter =
-    "Attaquer le même ennemi avec le cutter à 3 reprises.";
-inline std::string malusStatementQuadrupleCutter =
-    "Le cutter est détruit et vous ne pouvez plus l'utiliser.";
+static constexpr auto triggerStatementQuadrupleCutter =
+    TriggerStatement("Attaquer un ennemu avec le cutter");
+static constexpr auto triggeredStatementQuadrupleCutter =
+    TriggeredStatement("Attaquer le même ennemi avec le cutter à 3 reprises.");
+static constexpr auto malusStatementQuadrupleCutter =
+    MalusStatement("Le cutter est détruit et vous ne pouvez plus l'utiliser.");
 
 inline auto statementDontCombo = Statement("Ne pas déclencher le combo");
 }  // namespace Combo

@@ -11,17 +11,18 @@
 class Combo {
  protected:
   Title title_;
-  std::string triggerStatement_;
-  std::string triggeredStatement_;
-  std::string malusStatement_;
+  const TriggerStatement& triggerStatement_;
+  const TriggeredStatement& triggeredStatement_;
+  const MalusStatement& malusStatement_;
 
  protected:
   Player& player_;
 
  public:
-  Combo(Player& player, const Title& title, const std::string& triggerStatement,
-        const std::string& triggeredStatement,
-        const std::string& malusStatement)
+  Combo(Player& player, const Title& title,
+        const TriggerStatement& triggerStatement,
+        const TriggeredStatement& triggeredStatement,
+        const MalusStatement& malusStatement)
       : title_(title),
         triggerStatement_(triggerStatement),
         triggeredStatement_(triggeredStatement),
@@ -34,9 +35,15 @@ class Combo {
   virtual ~Combo() = default;
 
   const std::string_view& title() const { return title_.get(); }
-  const std::string& triggerStatement() const { return triggerStatement_; }
-  const std::string& triggeredStatement() const { return triggeredStatement_; }
-  const std::string& malusStatement() const { return malusStatement_; }
+  const std::string_view& triggerStatement() const {
+    return triggerStatement_.get();
+  }
+  const std::string_view& triggeredStatement() const {
+    return triggeredStatement_.get();
+  }
+  const std::string_view& malusStatement() const {
+    return malusStatement_.get();
+  }
 };
 
 #endif

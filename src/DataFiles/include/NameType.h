@@ -1,6 +1,7 @@
 #ifndef NAME_TYPE_H
 #define NAME_TYPE_H
 
+#include <array>
 #include <string>
 #include <tuple>
 #include <utility>
@@ -32,6 +33,18 @@ using Result = NamedType<std::string, struct ResultParameter>;
 
 struct TitleParameter {};
 using Title = NamedType<std::string_view, struct TitleParameter>;
+
+struct TriggerStatementParameter {};
+using TriggerStatement =
+    NamedType<std::string_view, struct TriggerStatementParameter>;
+
+struct TriggeredStatementParameter {};
+using TriggeredStatement =
+    NamedType<std::string_view, struct TriggeredStatementParameter>;
+
+struct MalusStatementParameter {};
+using MalusStatement =
+    NamedType<std::string_view, struct MalusStatementParameter>;
 
 enum class NameSpeaker { player = 0, plug, description, action };
 using Message_t = std::vector<std::tuple<NameSpeaker, std::string>>;
