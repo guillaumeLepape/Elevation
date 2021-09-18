@@ -7,12 +7,8 @@
 
 #include <random>
 
-class Id {
- public:
-  static unsigned int generateId() {
-    std::random_device rd;
-    return rd();
-  }
-};
+namespace Id {
+unsigned int generate();
+}
 
 #endif

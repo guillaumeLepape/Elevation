@@ -12,7 +12,6 @@ class Plug;
 
 class Dead {
  private:
-  // ActionWriter actionWriter_;
   Result result_;
   const Plug& plug_;
 

@@ -12,7 +12,7 @@ StartGame::StartGame(const Statement& statement, const Options& options)
     : statement_(statement),
       options_(options),
       indexResultData_(0),
-      resultsData_(ResultsData(Player("Joueur", Id::generateId(), 0))),
+      resultsData_(ResultsData(Player("Joueur", Id::generate(), 0))),
       player_(resultsData_.results()[indexResultData_]) {}
 
 StartGame::StartGame(const Statement& statement, const Options& options,
