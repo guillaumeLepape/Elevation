@@ -9,9 +9,9 @@
 
 class ComboFistMeleeWeapon : public Combo {
  public:
-  ComboFistMeleeWeapon(Player* const player);
+  ComboFistMeleeWeapon(Player& player);
 
-  void triggerCombo(Plug* const plug, const int& resultChooseWeapon,
+  void triggerCombo(Plug& plug, const int& resultChooseWeapon,
                     const std::vector<UseWeapon>& useWeapon) override;
 
   ~ComboFistMeleeWeapon() override = default;

@@ -12,18 +12,18 @@ class RegenerateAllLife {
  private:
   Result result_;
 
-  Player* const player_;
+  Player& player_;
 
  public:
-  RegenerateAllLife(Player* const player, const Result& result)
+  RegenerateAllLife(Player& player, const Result& result)
       : result_(result), player_(player) {}
 
   void triggerAction() {
     // if player is full life or dead, do nothing, else regenerate him
-    if (!(player_->fullLife()) && !(player_->dead())) {
+    if (!(player_.fullLife()) && !(player_.dead())) {
       Action::writeResult(
-          data::Action::resultRegeneration(player_->missingLifePoints()));
-      player_->increaseLifePoints(player_->missingLifePoints());
+          data::Action::resultRegeneration(player_.missingLifePoints()));
+      player_.increaseLifePoints(player_.missingLifePoints());
     }
   }
 };

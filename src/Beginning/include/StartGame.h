@@ -14,15 +14,16 @@
 class StartGame {
  private:
   Statement statement_;
-
-  Player player_;
-  ResultsData resultsData_;
   const Options& options_;
 
+  std::size_t indexResultData_;
+  ResultsData resultsData_;
+  Player& player_;
+
  public:
+  StartGame(const Statement& statement, const Options& options);
   StartGame(const Statement& statement, const Options& options,
-            Player&& player = Player("Joueur", Id::generateId(), 0),
-            ResultsData&& resultsData = ResultsData());
+            int indexResultData, ResultsData&& resultsData);
 
   StartGame(const StartGame& startGame) = delete;
 

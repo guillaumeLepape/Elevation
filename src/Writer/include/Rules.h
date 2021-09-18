@@ -7,9 +7,8 @@
 
 #include "Options.h"
 
-class Rules {
- public:
-  static void displayRules(const Options& options);
-};
+namespace Rules {
+void write(const Options& options);
+}
 
 #endif

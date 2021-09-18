@@ -6,7 +6,6 @@
  */
 
 #include <fstream>
-#include <list>
 
 #include "Data.h"
 #include "Player.h"
@@ -17,6 +16,7 @@ class ResultsData : public Data {
 
  public:
   ResultsData();
+  ResultsData(Player&&);
 
   ResultsData(const ResultsData&) = delete;
   ResultsData(ResultsData&&) = default;
@@ -28,10 +28,10 @@ class ResultsData : public Data {
 
   void readData() override;
 
-  void addResult(Player* const player);
+  void addResult(Player&& player);
   void writeData() const;
 
-  const std::vector<Player>& results() const { return results_; }
+  std::vector<Player>& results() { return results_; }
 };
 
 #endif

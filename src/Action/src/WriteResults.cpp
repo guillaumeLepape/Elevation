@@ -9,13 +9,13 @@
 #include "Player.h"
 #include "ResultsData.h"
 
-WriteResults::WriteResults(Player* const player, ResultsData* const resultsData,
+WriteResults::WriteResults(Player& player, ResultsData& resultsData,
                            const Statement& statement, const Result& result)
     : result_(result), player_(player), resultsData_(resultsData) {}
 
 void WriteResults::triggerAction() {
-  resultsData_->addResult(player_);
-  resultsData_->writeData();
+  resultsData_.addResult(std::move(player_));
+  resultsData_.writeData();
 
   Action::writeResult(result_);
   std::cout << "\n";

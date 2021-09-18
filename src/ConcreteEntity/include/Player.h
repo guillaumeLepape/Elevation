@@ -99,7 +99,7 @@ class Player : public Entity {
    *
    * \param jsonInput : json object containing result from previous game
    */
-  static Player* readJson(const nlohmann::json& jsonInput);
+  static Player readJson(const nlohmann::json& jsonInput);
 };
 
 #endif

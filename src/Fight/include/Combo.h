@@ -16,11 +16,10 @@ class Combo {
   std::string malusStatement_;
 
  protected:
-  Player* const player_;
+  Player& player_;
 
  public:
-  Combo(Player* const player, const Title& title,
-        const std::string& triggerStatement,
+  Combo(Player& player, const Title& title, const std::string& triggerStatement,
         const std::string& triggeredStatement,
         const std::string& malusStatement)
       : title_(title),
@@ -29,7 +28,7 @@ class Combo {
         malusStatement_(malusStatement),
         player_(player) {}
 
-  virtual void triggerCombo(Plug* const plug, const int& resultChooseWeapon,
+  virtual void triggerCombo(Plug& plug, const int& resultChooseWeapon,
                             const std::vector<UseWeapon>& useWeapon) = 0;
 
   virtual ~Combo() = default;

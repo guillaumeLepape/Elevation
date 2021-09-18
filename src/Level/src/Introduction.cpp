@@ -17,7 +17,7 @@ void Introduction::startLevel() {
 
   Message::write(data::Introduction::message0, player_.name(), "");
 
-  Pseudo pseudo(&player_, data::Action::statementPseudo,
+  Pseudo pseudo(player_, data::Action::statementPseudo,
                 data::Action::resultPseudo(player_.name()));
   pseudo.triggerAction();
 

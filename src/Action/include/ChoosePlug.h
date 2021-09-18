@@ -12,15 +12,15 @@ class ChoosePlug {
   Statement statement_;
   Result result_;
 
-  Plug* const plug_;
+  Plug& plug_;
 
  public:
-  ChoosePlug(Plug* const plug, const Statement& statement, const Result& result)
+  ChoosePlug(Plug& plug, const Statement& statement, const Result& result)
       : statement_(statement), result_(result), plug_(plug) {}
 
   const std::string& statement() const { return statement_.get(); }
 
-  Plug* plug() const { return plug_; }
+  Plug& plug() const { return plug_; }
 };
 
 #endif

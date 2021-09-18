@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     return 0;
   }
 
-  Rules::displayRules(options);
+  Rules::write(options);
 
   // // Start the game at the begining
   StartGame startGame(data::Menu::statementStartGame, options);

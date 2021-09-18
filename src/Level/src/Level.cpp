@@ -7,7 +7,7 @@
 #include "Languages.h"
 #include "Nothing.h"
 #include "SaveAndQuit.h"
-#include "Selection.h"
+#include "SelectionWrapper.h"
 #include "WriteResults.h"
 
 Level::Level(Player& player, ResultsData& resultsData, const Options& options)
@@ -16,7 +16,7 @@ Level::Level(Player& player, ResultsData& resultsData, const Options& options)
 void Level::endOfLevel() const {
   player_.nextLevel();
 
-  WriteResults writeResults(&player_, &resultsData_,
+  WriteResults writeResults(player_, resultsData_,
                             data::Menu::statementSaveAndQuit,
                             data::Menu::resultSaveAndQuit);
   writeResults.triggerAction();
@@ -24,14 +24,5 @@ void Level::endOfLevel() const {
   Nothing continueAction(data::Menu::statementContinue);
   SaveAndQuit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
-  auto result = Select::select(data::Menu::titleContinueMenu,
-                               {continueAction.statement(), quit.statement()});
-
-  switch (result) {
-    case 0:
-      break;
-    case 1:
-      quit.triggerAction();
-      break;
-  }
+  SelectionWrapper::select(data::Menu::titleContinueMenu, continueAction, quit);
 }

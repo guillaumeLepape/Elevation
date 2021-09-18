@@ -19,7 +19,7 @@ FightWriter::FightWriter(const Player* const player,
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
 }
 
-void FightWriter::writeHeader(const int& nbTurns) const {
+void FightWriter::writeHeader(const int nbTurns) const {
   Pause::pause();
 
   std::cout << "\n"

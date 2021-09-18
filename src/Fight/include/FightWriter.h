@@ -16,7 +16,7 @@ class FightWriter {
  public:
   FightWriter(const Player* const player, const std::vector<Plug*>& plugs);
 
-  void writeHeader(const int& nbTurns) const;
+  void writeHeader(const int nbTurns) const;
   void writeGameBoard() const;
   void writeRemoveDeadBody();
   void writeEndOfFight() const;

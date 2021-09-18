@@ -18,7 +18,13 @@ class Plug : public Entity {
   explicit Plug(const std::string& name, const int& nbLifePoints = 100,
                 const Weapon* weapon = new NoWeapon());
 
-  ~Plug() override = default;
+  Plug(const Plug&) = delete;
+  Plug(Plug&&) = default;
+
+  Plug& operator=(const Plug&) = delete;
+  Plug& operator=(Plug&&) = default;
+
+  virtual ~Plug() = default;
 
   void changeWeapon(const Weapon* newWeapon);
 

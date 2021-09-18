@@ -15,11 +15,11 @@
 TEST(weapon_test, UseWeapon) {
   Player player("Guillaume", 15611653, 0);
 
-  AddWeaponAction addWeaponFist(&player,
+  AddWeaponAction addWeaponFist(player,
                                 std::unique_ptr<const Weapon>(new Fist()));
   addWeaponFist.triggerAction();
 
-  AddWeaponAction addWeaponAK47(&player,
+  AddWeaponAction addWeaponAK47(player,
                                 std::unique_ptr<const Weapon>(new AK47(100)));
   addWeaponAK47.triggerAction();
 
@@ -41,7 +41,7 @@ TEST(weapon_test, UseWeapon) {
 TEST(weapon_test, Fist) {
   Player player("Guillaume", 15611653, 0, WeaponInventory{});
 
-  AddWeaponAction addWeaponFist(&player,
+  AddWeaponAction addWeaponFist(player,
                                 std::unique_ptr<const Weapon>(new Fist()));
   addWeaponFist.triggerAction();
 
@@ -56,7 +56,7 @@ TEST(weapon_test, Fist) {
 TEST(weapon_test, AK47) {
   Player player("Guillaume", 15611653, 0, WeaponInventory{});
 
-  AddWeaponAction addWeaponAK47(&player,
+  AddWeaponAction addWeaponAK47(player,
                                 std::unique_ptr<const AK47>{new AK47{40}});
   addWeaponAK47.triggerAction();
 

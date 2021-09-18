@@ -26,7 +26,7 @@ void Level10::startLevel() {
 
   Message::write(data::Level10::messageMinus1, player_.name(), plug.name());
 
-  AddWeaponAction addWeaponAction(&player_,
+  AddWeaponAction addWeaponAction(player_,
                                   std::unique_ptr<const Weapon>(new AK47(100)));
   addWeaponAction.triggerAction();
 
@@ -45,7 +45,7 @@ void Level10::startLevel() {
   Message::write(data::Level10::message2, player_.name(), plug.name());
 
   Plug heroine("Heroine", 100, new Heroine());
-  PlugAttack plugAttack(&player_, &heroine, Result(""));
+  PlugAttack plugAttack(player_, heroine, Result(""));
 
   while (!(player_.dead())) {
     plugAttack.triggerAction();

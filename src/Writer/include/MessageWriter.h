@@ -23,7 +23,7 @@ namespace Message {
 void write(const Message_t& messages, const std::string& pseudo,
            const std::string& plugName);
 
-void write(const MessageWriter& message1);
+void write(const MessageWriter& message);
 }  // namespace Message
 
 #endif

@@ -31,7 +31,7 @@ class UseWeapon {
         data::Weapon::resultUseWeapon(plug_.name(), weapon->damageWeapon()));
     Action::writeResult(result);
 
-    Dead dead(&plug_, data::Action::resultDead(plug_.name()));
+    Dead dead(plug_, data::Action::resultDead(plug_.name()));
     dead.triggerAction();
 
     // if weapon is fireArm and has no ammo, delete it

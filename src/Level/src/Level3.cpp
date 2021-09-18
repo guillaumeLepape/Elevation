@@ -42,7 +42,7 @@ void Level3::startLevel() {
 
   Message::write(data::Level3::message4, player_.name(), plug.name());
 
-  AddWeaponAction addWeaponAction(&player_,
+  AddWeaponAction addWeaponAction(player_,
                                   std::unique_ptr<const Weapon>(new Knife()));
   addWeaponAction.triggerAction();
 

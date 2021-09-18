@@ -15,12 +15,12 @@ class Pseudo {
   Statement statement_;
   Result result_;
 
-  Player* const player_;
+  Player& player_;
 
   void formatString(std::string& str);
 
  public:
-  explicit Pseudo(Player* const player, const Statement& statement,
+  explicit Pseudo(Player& player, const Statement& statement,
                   const Result& result);
 
   void triggerAction();

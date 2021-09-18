@@ -11,18 +11,18 @@ class Regeneration {
  private:
   Result result_;
 
-  Player* const player_;
+  Player& player_;
 
  public:
-  Regeneration(Player* const player, const Result& result)
+  Regeneration(Player& player, const Result& result)
       : result_(result), player_(player) {}
 
   void triggerAction() {
     int nbLifePointsRegeneration = 0;
 
     // if player is full life or dead, do nothing, else regenerate him
-    if (!(player_->fullLife()) && !(player_->dead())) {
-      switch (player_->nbLevelSuceeded()) {
+    if (!(player_.fullLife()) && !(player_.dead())) {
+      switch (player_.nbLevelSuceeded()) {
         case 0 ... 4:
           nbLifePointsRegeneration = 10;
           break;
@@ -43,11 +43,11 @@ class Regeneration {
           break;
       }
 
-      int nbLifePoints_previous = player_->nbLifePoints();
+      int nbLifePoints_previous = player_.nbLifePoints();
 
-      player_->increaseLifePoints(nbLifePointsRegeneration);
+      player_.increaseLifePoints(nbLifePointsRegeneration);
       Action::writeResult(data::Action::resultRegeneration(
-          player_->nbLifePoints() - nbLifePoints_previous));
+          player_.nbLifePoints() - nbLifePoints_previous));
     }
   }
 };

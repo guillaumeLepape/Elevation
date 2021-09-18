@@ -16,14 +16,13 @@ class Negociate {
   Statement statement_;
   Result result_;
 
-  Player* const player_;
-  Plug* const plug_;
+  Player& player_;
+  const Plug& plug_;
   int plugPrice_;
 
  public:
-  explicit Negociate(Player* const player, Plug* const plug,
-                     const int& plugPrice, const Statement& statement,
-                     const Result& result);
+  explicit Negociate(Player& player, const Plug& plug, const int& plugPrice,
+                     const Statement& statement, const Result& result);
 
   void triggerAction();
 };

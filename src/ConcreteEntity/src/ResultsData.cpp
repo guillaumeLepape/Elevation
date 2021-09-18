@@ -8,18 +8,23 @@
 
 ResultsData::ResultsData() : Data("results", "results") { readData(); }
 
-void ResultsData::readData() {
-  for (auto i = jsonObject_.cbegin(); i != jsonObject_.cend(); i++) {
-    results_.push_back(std::move(*Player::readJson(*i)));
-  }
+ResultsData::ResultsData(Player&& player) : Data("results", "results") {
+  results_.push_back(std::move(player));
+  readData();
 }
 
-void ResultsData::addResult(Player* const player) {
+void ResultsData::readData() {
+  std::transform(std::cbegin(jsonObject_), std::cend(jsonObject_),
+                 std::back_inserter(results_),
+                 [](const auto& result) { return Player::readJson(result); });
+}
+
+void ResultsData::addResult(Player&& player) {
   if (std::find_if(std::cbegin(results_), std::cend(results_),
                    [&player](const auto& p) {
-                     return p.id() == player->id();
+                     return p.id() == player.id();
                    }) == std::cend(results_)) {
-    results_.push_back(std::move(*player));
+    results_.push_back(std::move(player));
   }
 }
 

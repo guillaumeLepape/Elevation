@@ -15,11 +15,11 @@ class WriteResults {
  private:
   Result result_;
 
-  Player* const player_;
-  ResultsData* const resultsData_;
+  Player& player_;
+  ResultsData& resultsData_;
 
  public:
-  WriteResults(Player* const player, ResultsData* const resultsData,
+  WriteResults(Player& player, ResultsData& resultsData,
                const Statement& statement, const Result& result);
 
   void triggerAction();

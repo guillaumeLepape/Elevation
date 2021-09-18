@@ -14,10 +14,10 @@ class Dead {
  private:
   // ActionWriter actionWriter_;
   Result result_;
-  const Plug* const plug_;
+  const Plug& plug_;
 
  public:
-  Dead(const Plug* const plug, const Result& result);
+  Dead(const Plug& plug, const Result& result);
 
   void triggerAction();
 };

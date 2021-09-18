@@ -14,10 +14,10 @@ class InformationWeaponInventory {
  private:
   Statement statement_;
 
-  const WeaponInventory* const weaponInventory_;
+  const WeaponInventory& weaponInventory_;
 
  public:
-  InformationWeaponInventory(const WeaponInventory* const weaponInventory,
+  InformationWeaponInventory(const WeaponInventory& weaponInventory,
                              const Statement& statement)
       : statement_(statement), weaponInventory_(weaponInventory) {}
 
@@ -35,11 +35,11 @@ class InformationWeaponInventory {
               << "========" << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset);
 
-    for (auto w = weaponInventory_->cbegin(); w != weaponInventory_->cend();
-         w++) {
-      WeaponWriter weaponWriter((*w).get());
-      weaponWriter.informationWeapon();
-    }
+    std::for_each(std::cbegin(weaponInventory_), std::cend(weaponInventory_),
+                  [](const auto& weapon) {
+                    WeaponWriter weaponWriter(weapon.get());
+                    weaponWriter.informationWeapon();
+                  });
   }
 };
 

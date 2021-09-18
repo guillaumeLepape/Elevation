@@ -42,11 +42,11 @@ void Level5::startLevel() {
 
   // Declare combos
   std::unique_ptr<Combo> comboFistMeleeWeapon(
-      new ComboFistMeleeWeapon(&player_));
+      new ComboFistMeleeWeapon(player_));
   std::unique_ptr<Combo> comboDoubleMeleeWeapon(
-      new ComboDoubleMeleeWeapon(&player_));
+      new ComboDoubleMeleeWeapon(player_));
   std::unique_ptr<Combo> comboQuadrupleCutter(
-      new ComboQuadrupleCutter(&player_));
+      new ComboQuadrupleCutter(player_));
 
   // First fight (introduction to Fist - Melee Weapon combo)
   if (!options_.noRule_) {
@@ -87,7 +87,7 @@ void Level5::startLevel() {
 
   Message::write(data::Level5::message4, player_.name(), "");
 
-  RegenerateAllLife regenerateAllLife(&player_, Result(""));
+  RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();
 
   Message::write(data::Level5::message5, player_.name(), "");

@@ -40,9 +40,9 @@ nlohmann::json Player::writeJson() const {
   return jsonObjectOutput;
 }
 
-Player* Player::readJson(const nlohmann::json& jsonInput) {
-  return new Player(jsonInput["pseudo"], jsonInput["id"],
-                    jsonInput["nbLevelSuceeded"], jsonInput["nbLifePoints"],
-                    jsonInput["maxLifePoints"], jsonInput["money"],
-                    WeaponInventory::readJson(jsonInput["weapons"]));
+Player Player::readJson(const nlohmann::json& jsonInput) {
+  return Player(jsonInput["pseudo"], jsonInput["id"],
+                jsonInput["nbLevelSuceeded"], jsonInput["nbLifePoints"],
+                jsonInput["maxLifePoints"], jsonInput["money"],
+                WeaponInventory::readJson(jsonInput["weapons"]));
 }

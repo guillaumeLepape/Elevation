@@ -29,11 +29,11 @@ void Level7::startLevel() {
   Message::write(data::Level7::message0, player_.name(), boss.name());
 
   std::unique_ptr<Combo> comboFistMeleeWeapon(
-      new ComboFistMeleeWeapon(&player_));
+      new ComboFistMeleeWeapon(player_));
   std::unique_ptr<Combo> comboDoubleMeleeWeapon(
-      new ComboDoubleMeleeWeapon(&player_));
+      new ComboDoubleMeleeWeapon(player_));
   std::unique_ptr<Combo> comboQuadrupleCutter(
-      new ComboQuadrupleCutter(&player_));
+      new ComboQuadrupleCutter(player_));
 
   Fight fight(&player_, {&boss},
               {comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(),
@@ -43,7 +43,7 @@ void Level7::startLevel() {
 
   Message::write(data::Level7::message1, player_.name(), "");
 
-  RegenerateAllLife regenerateAllLife(&player_, Result(""));
+  RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();
 
   Level::endOfLevel();

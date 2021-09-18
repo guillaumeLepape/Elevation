@@ -28,11 +28,11 @@ class Fight {
   int methodNumberOfDeadPlug() const;
   bool enemiesDeadOrNot() const;
 
-  Plug* choosePlug();
+  Plug& choosePlug();
 
-  const ChooseWeaponResult chooseWeapon(Plug* const plug);
+  const ChooseWeaponResult chooseWeapon(Plug& plug);
 
-  void runCombos(Plug* const choosenPlug, const int& resultUseWeapon,
+  void runCombos(Plug& choosenPlug, const int& resultUseWeapon,
                  const std::vector<UseWeapon>& useWeapons);
 
  public:

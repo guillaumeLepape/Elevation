@@ -8,7 +8,8 @@
 
 #include "Pause.h"
 
-void Rules::displayRules(const Options& options) {
+namespace Rules {
+void write(const Options& options) {
   system("clear");
 
   std::cout << "\n " << Term::color(Term::fg::black)
@@ -74,3 +75,4 @@ void Rules::displayRules(const Options& options) {
     std::cout << "\n";
   }
 }
+}  // namespace Rules

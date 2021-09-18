@@ -8,12 +8,20 @@
 #include "Options.h"
 #include "Player.h"
 
-StartGame::StartGame(const Statement& statement, const Options& options,
-                     Player&& player, ResultsData&& resultsData)
+StartGame::StartGame(const Statement& statement, const Options& options)
     : statement_(statement),
-      player_(std::move(player)),
+      options_(options),
+      indexResultData_(0),
+      resultsData_(ResultsData(Player("Joueur", Id::generateId(), 0))),
+      player_(resultsData_.results()[indexResultData_]) {}
+
+StartGame::StartGame(const Statement& statement, const Options& options,
+                     int indexResultData, ResultsData&& resultsData)
+    : statement_(statement),
+      options_(options),
+      indexResultData_(indexResultData),
       resultsData_(std::move(resultsData)),
-      options_(options) {}
+      player_(resultsData_.results()[indexResultData_]) {}
 
 void StartGame::triggerAction() {
   for (int i = player_.nbLevelSuceeded(); i < NB_LEVEL; i++) {

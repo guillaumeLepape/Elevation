@@ -12,6 +12,16 @@ class Options {
  public:
   Options(int argc, char* argv[]);
 
+  Options() = delete;
+
+  Options(const Options&) = delete;
+  Options(Options&&) = default;
+
+  Options& operator=(const Options&) = delete;
+  Options& operator=(Options&&) = default;
+
+  ~Options() = default;
+
   void print_help() const;
 
   bool noRule_;
