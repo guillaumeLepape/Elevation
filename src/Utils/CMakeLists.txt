@@ -3,6 +3,7 @@ project(utils)
 add_library(
     ${PROJECT_NAME}
     src/Options.cpp
+    src/Pause.cpp
 )
 
 target_include_directories(

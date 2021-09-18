@@ -24,7 +24,8 @@ void Level7::startLevel() {
   Header::write(data::Level7::nameLevel, data::Level7::hour,
                 data::Level7::minut);
 
-  Plug boss("Tueur professionnel", 200, new Hammer());
+  Plug boss("Tueur professionnel", 200,
+            std::unique_ptr<const Weapon>(new Hammer()));
 
   Message::write(data::Level7::message0, player_.name(), boss.name());
 

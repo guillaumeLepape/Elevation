@@ -28,12 +28,11 @@ void Level9::startLevel() {
   Header::write(data::Level9::nameLevel, data::Level9::hour,
                 data::Level9::minut);
 
-  const Knife* knife = new Knife();
-  Plug plug("Psychopathe", 250, knife);
+  Plug plug("Psychopathe", 250, std::unique_ptr<const Weapon>(new Knife()));
 
-  PlugAttack plugAttack0(
-      player_, plug,
-      data::Action::resultPlugAttack(plug.name(), knife->damageWeapon()));
+  PlugAttack plugAttack0(player_, plug,
+                         data::Action::resultPlugAttack(
+                             plug.name(), plug.weapon()->damageWeapon()));
   plugAttack0.triggerAction();
   plugAttack0.triggerAction();
   plugAttack0.triggerAction();

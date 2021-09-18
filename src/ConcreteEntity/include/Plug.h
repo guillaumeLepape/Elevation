@@ -15,8 +15,9 @@ class Plug : public Entity {
   std::unique_ptr<const Weapon> weapon_;
 
  public:
-  explicit Plug(const std::string& name, const int& nbLifePoints = 100,
-                const Weapon* weapon = new NoWeapon());
+  Plug(const std::string& name, const int& nbLifePoints = 100,
+       std::unique_ptr<const Weapon>&& weapon =
+           std::unique_ptr<const Weapon>(new NoWeapon()));
 
   Plug(const Plug&) = delete;
   Plug(Plug&&) = default;
