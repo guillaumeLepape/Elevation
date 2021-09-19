@@ -1,0 +1,14 @@
+echo "Formatting dataset folder"
+cd dataset
+find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format -style=google -i {} \;
+cd ..
+
+echo "Formatting src folder"
+cd src 
+find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format -style=google -i {} \;
+cd ..
+
+echo "Formatting test folder"
+cd test_elevation
+find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format -style=google -i {} \;
+cd ..
