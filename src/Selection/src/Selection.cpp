@@ -11,6 +11,8 @@
 namespace Selection {
 std::size_t select(const Title& title,
                    const std::vector<std::string>& statements) {
+  Selection::write(title, statements);
+
   std::size_t choice = 0;
 
   while (!(std::cin >> choice) || (choice > statements.size() || choice < 1)) {

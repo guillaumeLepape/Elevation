@@ -13,7 +13,7 @@
 #include "SelectionWrapper.h"
 #include "StartGame.h"
 
-int main(int argc, char* argv[]) {
+auto main(int argc, char* argv[]) -> int {
   const Options options(argc, argv);
 
   // If user selected -h option, print options descriptions
@@ -25,15 +25,13 @@ int main(int argc, char* argv[]) {
 
   Rules::write(options);
 
-  // // Start the game at the begining
+  // Start the game at the begining
   StartGame startGame(data::Menu::statementStartGame, options);
-  // // Load previous game from results.json file
+  // Load previous game from results.json file
   LoadGame loadGame(data::Menu::statementLoadGame, options);
-  // // Quit the game
+  // Quit the game
   Quit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
   SelectionWrapper::select(data::Menu::titleStartGameMenu, startGame, loadGame,
                            quit);
-
-  return 0;
 }
