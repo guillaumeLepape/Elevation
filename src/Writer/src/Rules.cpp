@@ -10,7 +10,7 @@
 
 namespace Rules {
 void write(const Options& options) {
-  system("clear");
+  std::system("clear");
 
   std::cout << "\n " << Term::color(Term::fg::black)
             << Term::color(Term::bg::green) << Term::color(Term::style::bold)

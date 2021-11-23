@@ -34,9 +34,6 @@ void Level5::startLevel() {
     Tutorial::write(
         data::Tutorial::titleCombatSystem,
         data::Tutorial::statementCombatSystem(player_.maxLifePoints()));
-  }
-
-  if (!options_.noRule_) {
     Tutorial::write(data::Tutorial::titleCombo, data::Tutorial::statementCombo);
   }
 

@@ -7,8 +7,7 @@
 #include "WeaponFactory.h"
 
 bool WeaponInventory::addWeapon(std::unique_ptr<const Weapon>&& weapon) {
-  auto [positionWeapon, present] =
-      WeaponInventoryBase::insert(std::move(weapon));
+  auto [_, present] = WeaponInventoryBase::insert(std::move(weapon));
   return !present;
 }
 
