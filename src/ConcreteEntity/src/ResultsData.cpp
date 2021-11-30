@@ -16,7 +16,7 @@ ResultsData::ResultsData(Player&& player) : Data("results", "results") {
 void ResultsData::readData() {
   std::transform(std::cbegin(jsonObject_), std::cend(jsonObject_),
                  std::back_inserter(results_),
-                 [](const auto& result) { return Player::readJson(result); });
+                 [](const auto& result) { return Player{result}; });
 }
 
 void ResultsData::addResult(Player&& player) {

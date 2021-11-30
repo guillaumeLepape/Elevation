@@ -7,6 +7,7 @@
 #include <cpp-terminal/terminal.h>
 
 #include "Pause.h"
+#include "UtilsWriter.h"
 
 namespace Rules {
 void write(const Options& options) {
@@ -17,10 +18,7 @@ void write(const Options& options) {
             << "Interface" << Term::color(Term::fg::reset)
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
-  std::cout << "\n"
-            << Term::color(Term::fg::black) << Term::color(Term::style::bold)
-            << "========" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  utils::writeSeparators();
 
   std::cout << "\n Une fois que vous avez lu un message, appuyez sur entrée "
                "pour passer au suivant.";

@@ -32,22 +32,18 @@ class WeaponFactory {
     }
     if (nameWeapon == data::Weapon::nameHammer) {
       return std::unique_ptr<Weapon>(new Hammer());
-    }
-    if (nameWeapon == data::Weapon::nameChopper) {
+    } else {
       return std::unique_ptr<Weapon>(new Chopper());
     }
-    static_assert([]() { return false; });
   }
 
   static std::unique_ptr<Weapon> newFireArm(const std::string& nameWeapon,
                                             const int& nbAmmo) {
     if (nameWeapon == data::Weapon::nameNinemm) {
       return std::unique_ptr<Weapon>(new Ninemm(nbAmmo));
-    }
-    if (nameWeapon == data::Weapon::nameAK47) {
+    } else {
       return std::unique_ptr<Weapon>(new AK47(nbAmmo));
     }
-    static_assert([]() { return false; });
   }
 };
 

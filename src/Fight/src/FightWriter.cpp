@@ -9,6 +9,7 @@
 #include <tabulate/table.hpp>
 
 #include "Pause.h"
+#include "UtilsWriter.h"
 
 FightWriter::FightWriter(const Player* const player,
                          const std::vector<Plug*>& plugs)
@@ -19,23 +20,25 @@ FightWriter::FightWriter(const Player* const player,
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
 }
 
-void FightWriter::writeHeader(const int nbTurns) const {
-  Pause::pause();
-
-  std::cout << "\n"
+void FightWriter::writeSeparator() const {
+    std::cout << "\n"
             << Term::color(Term::fg::blue) << Term::color(Term::style::bold)
             << "====================" << Term::color(Term::fg::reset)
             << Term::color(Term::style::reset);
+}
+
+
+void FightWriter::writeHeader(const int nbTurns) const {
+  Pause::pause();
+
+  writeSeparator();
 
   std::cout << "\n " << Term::color(Term::fg::black)
             << Term::color(Term::bg::green) << Term::color(Term::style::bold)
             << "Tour " << nbTurns << Term::color(Term::fg::reset)
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
-  std::cout << "\n"
-            << Term::color(Term::fg::blue) << Term::color(Term::style::bold)
-            << "====================" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  writeSeparator();
 }
 
 void FightWriter::writeGameBoard() const {
@@ -47,10 +50,7 @@ void FightWriter::writeGameBoard() const {
             << Term::color(Term::fg::reset) << Term::color(Term::bg::reset)
             << Term::color(Term::style::reset);
 
-  std::cout << "\n"
-            << Term::color(Term::fg::black) << Term::color(Term::style::bold)
-            << "========" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  utils::writeSeparators();
 
   tabulate::Table fighters;
   std::vector<variant<std::string, const char*, tabulate::Table>> nameFighters;

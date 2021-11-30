@@ -9,6 +9,7 @@
 #include <iomanip>
 
 #include "Pause.h"
+#include "UtilsWriter.h"
 
 namespace Header {
 void write(const Title& nameLevel, const Hour& hour, const Minut& minut) {
@@ -19,10 +20,7 @@ void write(const Title& nameLevel, const Hour& hour, const Minut& minut) {
             << Term::color(Term::style::bold) << nameLevel.get()
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
-  std::cout << "\n"
-            << Term::color(Term::fg::black) << Term::color(Term::style::bold)
-            << "========" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  utils::writeSeparators();
 
   // print the hour
   std::cout << "\n " << Term::color(Term::style::bold);
@@ -31,9 +29,6 @@ void write(const Title& nameLevel, const Hour& hour, const Minut& minut) {
   std::cout << std::setfill('0') << std::setw(2) << minut.get();
   std::cout << Term::color(Term::style::reset);
 
-  std::cout << "\n"
-            << Term::color(Term::fg::black) << Term::color(Term::style::bold)
-            << "========" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  utils::writeSeparators();
 }
 }  // namespace Header

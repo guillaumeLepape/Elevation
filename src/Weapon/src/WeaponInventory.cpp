@@ -4,10 +4,10 @@
 
 #include "WeaponInventory.h"
 
-#include "WeaponFactory.h"
-
 bool WeaponInventory::addWeapon(std::unique_ptr<const Weapon>&& weapon) {
-  auto [_, present] = WeaponInventoryBase::insert(std::move(weapon));
+  bool present = true;
+  std::tie(std::ignore, present) =
+      WeaponInventoryBase::insert(std::move(weapon));
   return !present;
 }
 
@@ -31,7 +31,7 @@ bool WeaponInventory::containWeaponType(WeaponType weaponType) const {
                       }) != WeaponInventoryBase::cend();
 }
 
-const Weapon* const WeaponInventory::find(const std::string& name) {
+const Weapon* WeaponInventory::find(const std::string& name) {
   auto weaponPtr = std::find_if(
       WeaponInventoryBase::cbegin(), WeaponInventoryBase::cend(),
       [&name](const auto& weapon) { return weapon->name() == name; });
@@ -49,18 +49,4 @@ nlohmann::json WeaponInventory::writeJson() const {
       WeaponInventoryBase::cbegin(), WeaponInventoryBase::cend(),
       [&result](const auto& weapon) { result.push_back(weapon->writeJson()); });
   return result;
-}
-
-WeaponInventory WeaponInventory::readJson(const nlohmann::json& jsonInput) {
-  WeaponInventory weaponInventory;
-  std::for_each(std::cbegin(jsonInput), std::cend(jsonInput),
-                [&weaponInventory](const auto& weaponJson) {
-                  weaponInventory.addWeapon(
-                      weaponJson.count("nbAmmo")
-                          ? WeaponFactory::newFireArm(weaponJson["name"],
-                                                      weaponJson["nbAmmo"])
-                          : WeaponFactory::newWeapon(weaponJson["name"]));
-                });
-
-  return weaponInventory;
 }

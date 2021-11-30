@@ -8,6 +8,7 @@
 #include <cpp-terminal/terminal.h>
 
 #include "NameType.h"
+#include "UtilsWriter.h"
 #include "WeaponWriter.h"
 
 class InformationWeaponInventory {
@@ -30,10 +31,7 @@ class InformationWeaponInventory {
               << Term::color(Term::bg::reset)
               << Term::color(Term::style::reset);
 
-    std::cout << "\n"
-              << Term::color(Term::fg::black) << Term::color(Term::style::bold)
-              << "========" << Term::color(Term::fg::reset)
-              << Term::color(Term::style::reset);
+    utils::writeSeparators();
 
     std::for_each(std::cbegin(weaponInventory_), std::cend(weaponInventory_),
                   [](const auto& weapon) {

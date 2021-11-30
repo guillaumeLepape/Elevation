@@ -5,6 +5,7 @@
 #include "SelectionWriter.h"
 
 #include "Pause.h"
+#include "UtilsWriter.h"
 
 namespace Selection {
 void write(const Title& title, const std::vector<std::string>& statements) {
@@ -15,10 +16,7 @@ void write(const Title& title, const std::vector<std::string>& statements) {
             << title.get() << Term::color(Term::fg::reset)
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
-  std::cout << "\n"
-            << Term::color(Term::fg::black) << Term::color(Term::style::bold)
-            << "========" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  utils::writeSeparators();
 
   for (long unsigned int i = 0; i < statements.size(); i++) {
     std::cout << "\n " << std::to_string(i + 1) << "- "

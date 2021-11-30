@@ -31,6 +31,7 @@ class Player : public Entity {
   /*< List of weapons own by player */
   WeaponInventory weapons_;
 
+ public:
   /*!
    * \brief Private Constructor
    *
@@ -42,7 +43,8 @@ class Player : public Entity {
          const int& nbLifePoints, const int& maxLifePoints, const int& money,
          WeaponInventory&& weapons);
 
- public:
+  Player(const nlohmann::json& jsonInput);
+
   /*!
    * \brief Constructor
    *
@@ -90,16 +92,6 @@ class Player : public Entity {
   WeaponInventory& weapons() { return weapons_; }
 
   nlohmann::json writeJson() const;
-
-  /*!
-   * \brief
-   *
-   * Create Player instance from json file results
-   * This result file contains all the previously saved game
-   *
-   * \param jsonInput : json object containing result from previous game
-   */
-  static Player readJson(const nlohmann::json& jsonInput);
 };
 
 #endif

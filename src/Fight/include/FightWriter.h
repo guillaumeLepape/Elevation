@@ -13,6 +13,8 @@ class FightWriter {
   const Player* const player_;
   const std::vector<Plug*>& plugs_;
 
+  void writeSeparator() const;
+
  public:
   FightWriter(const Player* const player, const std::vector<Plug*>& plugs);
 

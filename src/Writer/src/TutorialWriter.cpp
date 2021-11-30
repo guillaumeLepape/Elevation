@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "Pause.h"
+#include "UtilsWriter.h"
 
 namespace Tutorial {
 void write(const Title& title,
@@ -19,10 +20,7 @@ void write(const Title& title,
             << Term::color(Term::style::bold) << title.get()
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
-  std::cout << "\n"
-            << Term::color(Term::fg::black) << Term::color(Term::style::bold)
-            << "========" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  utils::writeSeparators();
 
   for (long unsigned int i = 0; i < tutorialStatement.size(); i++) {
     Pause::pause();

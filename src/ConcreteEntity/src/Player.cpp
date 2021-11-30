@@ -18,6 +18,11 @@ Player::Player(const std::string& pseudo, const int& id,
       money_(200),
       weapons_(std::move(weaponInventory)) {}
 
+Player::Player(const nlohmann::json& jsonInput)
+    : Player(jsonInput["pseudo"], jsonInput["id"], jsonInput["nbLevelSuceeded"],
+             jsonInput["nbLifePoints"], jsonInput["maxLifePoints"],
+             jsonInput["money"], WeaponInventory{jsonInput["weapons"]}) {}
+
 Player::Player(const std::string& pseudo, const int& id,
                const int& nbLevelSuceeded, const int& nbLifePoints,
                const int& maxLifePoints, const int& money,
@@ -38,11 +43,4 @@ nlohmann::json Player::writeJson() const {
                                   {"weapons", weapons_.writeJson()}};
 
   return jsonObjectOutput;
-}
-
-Player Player::readJson(const nlohmann::json& jsonInput) {
-  return Player(jsonInput["pseudo"], jsonInput["id"],
-                jsonInput["nbLevelSuceeded"], jsonInput["nbLifePoints"],
-                jsonInput["maxLifePoints"], jsonInput["money"],
-                WeaponInventory::readJson(jsonInput["weapons"]));
 }

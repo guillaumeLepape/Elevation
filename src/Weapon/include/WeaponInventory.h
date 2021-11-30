@@ -11,6 +11,7 @@
 #include "Fist.h"
 #include "NoWeapon.h"
 #include "Weapon.h"
+#include "WeaponFactory.h"
 
 static auto comparatorWeapon = [](const auto& weapon1, const auto& weapon2) {
   return weapon1->weaponType() == weapon2->weaponType()
@@ -22,12 +23,31 @@ using WeaponInventoryBase =
     std::set<std::unique_ptr<const Weapon>, decltype(comparatorWeapon)>;
 
 struct WeaponInventory : public WeaponInventoryBase {
-  WeaponInventory() : WeaponInventoryBase{comparatorWeapon} {};
+  WeaponInventory() : WeaponInventoryBase{comparatorWeapon} {}
+
+  WeaponInventory(const nlohmann::json& jsonInput)
+      : WeaponInventory{[&jsonInput]() {
+          WeaponInventory weaponInventory;
+          std::for_each(
+              std::cbegin(jsonInput), std::cend(jsonInput),
+              [&weaponInventory](const auto& weaponJson) {
+                weaponInventory.addWeapon(
+                    weaponJson.count("nbAmmo")
+                        ? WeaponFactory::newFireArm(weaponJson["name"],
+                                                    weaponJson["nbAmmo"])
+                        : WeaponFactory::newWeapon(weaponJson["name"]));
+              });
+
+          return weaponInventory;
+        }()} {}
 
   WeaponInventory(std::unique_ptr<const Weapon>&& weapon)
-      : WeaponInventoryBase{comparatorWeapon} {
-    WeaponInventoryBase::insert(std::move(weapon));
-  }
+      : WeaponInventoryBase{[&weapon]() {
+          auto result = WeaponInventoryBase{comparatorWeapon};
+          result.insert(std::move(weapon));
+          return result;
+        }()} {}
+
   WeaponInventory(const WeaponInventory&) = delete;
   WeaponInventory(WeaponInventory&&) = default;
 
@@ -41,10 +61,9 @@ struct WeaponInventory : public WeaponInventoryBase {
   void deleteWeapon(std::unique_ptr<const Weapon>&& weapon);
   bool containWeaponType(WeaponType weaponType) const;
 
-  const Weapon* const find(const std::string& name);
+  const Weapon* find(const std::string& name);
 
   nlohmann::json writeJson() const;
-  static WeaponInventory readJson(const nlohmann::json& jsonInput);
 };
 
 #endif

@@ -7,6 +7,7 @@ add_library(
     src/MessageWriter.cpp
     src/SelectionWriter.cpp
     src/TutorialWriter.cpp
+    src/UtilsWriter.cpp
 )
 
 target_include_directories(

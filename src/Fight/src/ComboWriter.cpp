@@ -7,6 +7,7 @@
 #include <cpp-terminal/terminal.h>
 
 #include "Pause.h"
+#include "UtilsWriter.h"
 
 ComboWriter::ComboWriter(const Combo* const combo) : combo_(combo) {}
 
@@ -17,10 +18,7 @@ void ComboWriter::informationCombo() const {
             << Term::color(Term::style::bold) << combo_->title()
             << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
 
-  std::cout << "\n"
-            << Term::color(Term::fg::black) << Term::color(Term::style::bold)
-            << "========" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  utils::writeSeparators();
 
   std::cout << "\n " << Term::color(Term::fg::magenta)
             << Term::color(Term::style::bold)
