@@ -101,7 +101,8 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 
     if (numberOfDeadPlug_ != countNumberOfDeadPlug) {
       numberOfDeadPlug_ = countNumberOfDeadPlug;
-      AddWeaponAction addWeaponAction(*player_, choosenPlug.realeaseWeapon());
+      AddWeaponAction addWeaponAction(*player_,
+                                      std::move(choosenPlug.weapon()));
       addWeaponAction.triggerAction();
 
       fightWriter.writeRemoveDeadBody();
@@ -109,8 +110,8 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 
     for (auto e = plugs_.begin(); e != plugs_.end(); e++) {
       if (!((*e)->dead())) {
-        auto message = data::Action::resultPlugAttack(
-            (*e)->name(), (*e)->weapon()->damageWeapon());
+        auto message = data::Action::resultPlugAttack((*e)->name(),
+                                                      (*e)->weapon().nb_damage);
         PlugAttack plugAttack(*player_, **e, message);
         plugAttack.triggerAction();
       }
@@ -191,7 +192,7 @@ const ChooseWeaponResult Fight::chooseWeapon(Plug& choosenPlug) {
   std::transform(std::cbegin(player_->weapons()), std::cend(player_->weapons()),
                  std::back_inserter(useWeapons),
                  [this, &choosenPlug](const auto& weapon) {
-                   return UseWeapon(*player_, choosenPlug, weapon->name());
+                   return UseWeapon(*player_, choosenPlug, weapon.name);
                  });
 
   auto resultUseWeapon =

@@ -6,6 +6,7 @@
  */
 
 #include <string>
+#include "Weapon.h"
 
 class Entity {
  protected:
@@ -66,5 +67,7 @@ class Entity {
 
   std::string healthBar() const;
 };
+
+void attack(Entity* const entity, const weapon::Weapon& weapon);
 
 #endif

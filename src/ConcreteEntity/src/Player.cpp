@@ -8,10 +8,9 @@
 #include <cassert>
 #include <iostream>
 
-#include "WeaponFactory.h"
-
 Player::Player(const std::string& pseudo, const int& id,
-               const int& nbLevelSuceeded, WeaponInventory&& weaponInventory)
+               const int& nbLevelSuceeded,
+               weapon::WeaponInventory&& weaponInventory)
     : Entity(pseudo, MAX_LIFE_POINTS_PLAYER, MAX_LIFE_POINTS_PLAYER),
       id_(id),
       nbLevelSuceeded_(nbLevelSuceeded),
@@ -21,12 +20,13 @@ Player::Player(const std::string& pseudo, const int& id,
 Player::Player(const nlohmann::json& jsonInput)
     : Player(jsonInput["pseudo"], jsonInput["id"], jsonInput["nbLevelSuceeded"],
              jsonInput["nbLifePoints"], jsonInput["maxLifePoints"],
-             jsonInput["money"], WeaponInventory{jsonInput["weapons"]}) {}
+             jsonInput["money"],
+             weapon::make_weapon_inventory(jsonInput["weapons"])) {}
 
 Player::Player(const std::string& pseudo, const int& id,
                const int& nbLevelSuceeded, const int& nbLifePoints,
                const int& maxLifePoints, const int& money,
-               WeaponInventory&& weapons)
+               weapon::WeaponInventory&& weapons)
     : Entity(pseudo, nbLifePoints, maxLifePoints),
       id_(id),
       nbLevelSuceeded_(nbLevelSuceeded),
@@ -40,7 +40,7 @@ nlohmann::json Player::writeJson() const {
                                   {"nbLifePoints", nbLifePoints_},
                                   {"maxLifePoints", maxNbLifePoints_},
                                   {"money", money_},
-                                  {"weapons", weapons_.writeJson()}};
+                                  {"weapons", weapon::write(weapons_)}};
 
   return jsonObjectOutput;
 }

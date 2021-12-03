@@ -8,16 +8,14 @@
 #include <memory>
 
 #include "Entity.h"
-#include "NoWeapon.h"
 
 class Plug : public Entity {
  private:
-  std::unique_ptr<const Weapon> weapon_;
+  weapon::Weapon weapon_;
 
  public:
   Plug(const std::string& name, const int& nbLifePoints = 100,
-       std::unique_ptr<const Weapon>&& weapon =
-           std::unique_ptr<const Weapon>(new NoWeapon()));
+       weapon::Weapon&& weapon = weapon::NoWeapon());
 
   Plug(const Plug&) = delete;
   Plug(Plug&&) = default;
@@ -27,10 +25,9 @@ class Plug : public Entity {
 
   virtual ~Plug() = default;
 
-  void changeWeapon(const Weapon* newWeapon);
+  void changeWeapon(weapon::Weapon&& newWeapon);
 
-  const Weapon* weapon() const { return weapon_.get(); }
-  std::unique_ptr<const Weapon> realeaseWeapon() { return std::move(weapon_); }
+  weapon::Weapon& weapon() { return weapon_; }
 };
 
 #endif

@@ -10,12 +10,9 @@
 #include "ComboFistMeleeWeapon.h"
 #include "ComboQuadrupleCutter.h"
 #include "Fight.h"
-#include "Hammer.h"
 #include "HeaderWriter.h"
-#include "Knife.h"
 #include "Languages.h"
 #include "MessageWriter.h"
-#include "Ninemm.h"
 #include "Player.h"
 #include "Plug.h"
 #include "RegenerateAllLife.h"
@@ -24,8 +21,7 @@ void Level7::startLevel() {
   Header::write(data::Level7::nameLevel, data::Level7::hour,
                 data::Level7::minut);
 
-  Plug boss("Tueur professionnel", 200,
-            std::unique_ptr<const Weapon>(new Hammer()));
+  Plug boss("Tueur professionnel", 200, weapon::Hammer());
 
   Message::write(data::Level7::message0, player_.name(), boss.name());
 

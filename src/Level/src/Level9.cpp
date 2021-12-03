@@ -6,19 +6,14 @@
 
 #include <iostream>
 
-#include "AK47.h"
-#include "Chopper.h"
 #include "ComboDoubleMeleeWeapon.h"
 #include "ComboFistMeleeWeapon.h"
 #include "ComboQuadrupleCutter.h"
 #include "Fight.h"
-#include "Fist.h"
 #include "HeaderWriter.h"
 #include "IncreaseMaxLifePoints.h"
-#include "Knife.h"
 #include "Languages.h"
 #include "MessageWriter.h"
-#include "NoWeapon.h"
 #include "Plug.h"
 #include "PlugAttack.h"
 #include "RegenerateAllLife.h"
@@ -28,11 +23,11 @@ void Level9::startLevel() {
   Header::write(data::Level9::nameLevel, data::Level9::hour,
                 data::Level9::minut);
 
-  Plug plug("Psychopathe", 250, std::unique_ptr<const Weapon>(new Knife()));
+  Plug plug("Psychopathe", 250, weapon::Knife());
 
-  PlugAttack plugAttack0(player_, plug,
-                         data::Action::resultPlugAttack(
-                             plug.name(), plug.weapon()->damageWeapon()));
+  PlugAttack plugAttack0(
+      player_, plug,
+      data::Action::resultPlugAttack(plug.name(), plug.weapon().nb_damage));
   plugAttack0.triggerAction();
   plugAttack0.triggerAction();
   plugAttack0.triggerAction();
@@ -49,12 +44,9 @@ void Level9::startLevel() {
 
   regenerateAllLife.triggerAction();
 
-  const Chopper* chopper = new Chopper();
-  plug.changeWeapon(chopper);
+  plug.changeWeapon(weapon::Chopper());
 
-  PlugAttack plugAttack1(
-      player_, plug,
-      data::Action::resultPlugAttack(plug.name(), chopper->damageWeapon()));
+  PlugAttack plugAttack1(player_, plug, Result(""));
   plugAttack1.triggerAction();
   regenerateAllLife.triggerAction();
 
@@ -70,8 +62,7 @@ void Level9::startLevel() {
 
   Message::write(data::Level9::message4, player_.name(), plug.name());
 
-  const NoWeapon* noWeapon = new NoWeapon();
-  plug.changeWeapon(noWeapon);
+  plug.changeWeapon(weapon::NoWeapon());
 
   std::unique_ptr<Combo> comboFistMeleeWeapon(
       new ComboFistMeleeWeapon(player_));

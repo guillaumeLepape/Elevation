@@ -7,7 +7,6 @@
 
 #include "ActionWriter.h"
 #include "Dead.h"
-#include "FireArm.h"
 #include "Languages.h"
 #include "NameType.h"
 #include "Player.h"
@@ -23,34 +22,57 @@ class UseWeapon {
       : player_(player), plug_(plug), nameWeapon_(nameWeapon) {}
 
   void triggerAction() {
-    auto weapon = player_.weapons().find(nameWeapon_);
+    auto weapon =
+        std::find_if(std::cbegin(player_.weapons()),
+                     std::cend(player_.weapons()), [this](const auto& weapon) {
+                       return weapon.name == this->nameWeapon_;
+                     });
 
-    weapon->attack(&plug_);
+    if (weapon != std::cend(player_.weapons())) {
+      attack(&plug_, *weapon);
 
-    auto result = Result(
-        data::Weapon::resultUseWeapon(plug_.name(), weapon->damageWeapon()));
-    Action::writeResult(result);
+      auto result = Result(
+          data::Weapon::resultUseWeapon(plug_.name(), weapon->nb_damage));
+      Action::writeResult(result);
 
-    Dead dead(plug_, data::Action::resultDead(plug_.name()));
-    dead.triggerAction();
+      Dead dead(plug_, data::Action::resultDead(plug_.name()));
+      dead.triggerAction();
 
-    // if weapon is fireArm and has no ammo, delete it
-    if (player_.weapons().find(nameWeapon_)->weaponType() ==
-        WeaponType::fireArm) {
-      if (((const FireArm* const)player_.weapons().find(nameWeapon_))
-              ->nbAmmo() <= 0) {
-        player_.weapons().deleteWeapon(nameWeapon_);
+      // if weapon is fireArm and has no ammo, delete it
+      if (weapon->type == weapon::Type::fireArm and weapon->durability <= 0) {
+        weapon::remove(player_.weapons(), nameWeapon_);
       }
     }
   }
 
   const std::string& statement() const {
-    return player_.weapons().find(nameWeapon_)->statement();
+    auto weapon =
+        std::find_if(std::cbegin(player_.weapons()),
+                     std::cend(player_.weapons()), [this](const auto& weapon) {
+                       return weapon.name == this->nameWeapon_;
+                     });
+
+    if (weapon != std::cend(player_.weapons())) {
+      return weapon->statement;
+    } else {
+      return data::Weapon::statementEmpty;
+    }
   }
+
   const std::string& name() const { return nameWeapon_; }
 
-  WeaponType weaponType() const {
-    return player_.weapons().find(nameWeapon_)->weaponType();
+  weapon::Type type() const {
+    auto weapon =
+        std::find_if(std::cbegin(player_.weapons()),
+                     std::cend(player_.weapons()), [this](const auto& weapon) {
+                       return weapon.name == this->nameWeapon_;
+                     });
+
+    if (weapon != std::cend(player_.weapons())) {
+      return weapon->type;
+    } else {
+      return weapon::Type::noWeapon;
+    }
   }
 };
 

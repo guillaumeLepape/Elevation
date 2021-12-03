@@ -6,10 +6,10 @@
 
 #include <cpp-terminal/terminal.h>
 
-#include "FireArm.h"
 #include "Pause.h"
 
-WeaponWriter::WeaponWriter(const Weapon* weapon) : weapon_(weapon) {}
+namespace weapon {
+WeaponWriter::WeaponWriter(const Weapon& weapon) : weapon_(weapon) {}
 
 void WeaponWriter::informationWeapon() const {
   Pause::pause();
@@ -20,7 +20,7 @@ void WeaponWriter::informationWeapon() const {
             << Term::color(Term::style::reset);
 
   std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-            << weapon_->name() << Term::color(Term::fg::reset)
+            << weapon_.name << Term::color(Term::fg::reset)
             << Term::color(Term::style::reset);
 
   std::cout << "\n " << Term::color(Term::fg::magenta)
@@ -29,7 +29,7 @@ void WeaponWriter::informationWeapon() const {
             << Term::color(Term::style::reset);
 
   std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-            << weapon_->damageWeapon() << Term::color(Term::fg::reset)
+            << weapon_.nb_damage << Term::color(Term::fg::reset)
             << Term::color(Term::style::reset);
 
   std::cout << "\n " << Term::color(Term::fg::magenta)
@@ -41,14 +41,14 @@ void WeaponWriter::informationWeapon() const {
             << informationWeaponType() << Term::color(Term::fg::reset)
             << Term::color(Term::style::reset);
 
-  if (weapon_->weaponType() == WeaponType::fireArm) {
+  if (weapon_.type == weapon::Type::fireArm) {
     std::cout << "\n " << Term::color(Term::fg::magenta)
               << Term::color(Term::style::bold)
               << "Nombre de munitions : " << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset);
 
     std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-              << ((FireArm*)weapon_)->nbAmmo() << Term::color(Term::fg::reset)
+              << weapon_.durability << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset);
 
     std::cout << "\n " << Term::color(Term::fg::magenta)
@@ -58,21 +58,22 @@ void WeaponWriter::informationWeapon() const {
               << Term::color(Term::style::reset);
 
     std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-              << ((FireArm*)weapon_)->nbAmmoForOneShot()
+              << weapon_.durability_loose_per_use
               << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset);
   }
 }
 
 std::string WeaponWriter::informationWeaponType() const {
-  switch (weapon_->weaponType()) {
-    case WeaponType::fist:
+  switch (weapon_.type) {
+    case Type::fist:
       return "poing";
-    case WeaponType::meleeWeapon:
+    case Type::meleeWeapon:
       return "arme de mélée";
-    case WeaponType::fireArm:
+    case Type::fireArm:
       return "arme à feu";
     default:
       return "";
   }
 }
+}  // namespace weapon

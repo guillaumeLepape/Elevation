@@ -6,12 +6,9 @@
 
 #include <iostream>
 
-#include "AK47.h"
 #include "AddWeaponAction.h"
-#include "DivineStrike.h"
 #include "Fight.h"
 #include "HeaderWriter.h"
-#include "Heroine.h"
 #include "Languages.h"
 #include "MessageWriter.h"
 #include "Plug.h"
@@ -21,13 +18,11 @@ void Level10::startLevel() {
   Header::write(data::Level10::nameLevel, data::Level10::hour,
                 data::Level10::minut);
 
-  Plug plug("Dieu", 10000000,
-            std::unique_ptr<const Weapon>(new DivineStrike()));
+  Plug plug("Dieu", 10000000, weapon::DivineStrike());
 
   Message::write(data::Level10::messageMinus1, player_.name(), plug.name());
 
-  AddWeaponAction addWeaponAction(player_,
-                                  std::unique_ptr<const Weapon>(new AK47(100)));
+  AddWeaponAction addWeaponAction(player_, weapon::AK47(100));
   addWeaponAction.triggerAction();
 
   std::vector<MessageWriter> messageWriters;
@@ -38,12 +33,12 @@ void Level10::startLevel() {
 
   Fight fight(&player_, {&plug}, {}, options_.noRule_);
   fight.startFight(messageWriters, [&plug](Player* const player_) -> bool {
-    return player_->nbLifePoints() < plug.weapon()->damageWeapon();
+    return player_->nbLifePoints() < plug.weapon().nb_damage;
   });
 
   Message::write(data::Level10::message2, player_.name(), plug.name());
 
-  Plug heroine("Heroine", 100, std::unique_ptr<const Weapon>(new Heroine()));
+  Plug heroine("Heroine", 100, weapon::Heroine());
   PlugAttack plugAttack(player_, heroine, Result(""));
 
   while (!(player_.dead())) {

@@ -3,9 +3,7 @@
 #include <algorithm>
 #include <iostream>
 
-#include "AK47.h"
 #include "AddWeaponAction.h"
-#include "Fist.h"
 #include "Languages.h"
 #include "Player.h"
 #include "Plug.h"
@@ -15,12 +13,10 @@
 TEST(weapon_test, UseWeapon) {
   Player player("Guillaume", 15611653, 0);
 
-  AddWeaponAction addWeaponFist(player,
-                                std::unique_ptr<const Weapon>(new Fist()));
+  AddWeaponAction addWeaponFist(player, weapon::Fist());
   addWeaponFist.triggerAction();
 
-  AddWeaponAction addWeaponAK47(player,
-                                std::unique_ptr<const Weapon>(new AK47(100)));
+  AddWeaponAction addWeaponAK47(player, weapon::AK47(100));
   addWeaponAK47.triggerAction();
 
   EXPECT_EQ(player.name(), "Guillaume");
@@ -29,7 +25,7 @@ TEST(weapon_test, UseWeapon) {
   std::vector<std::string> weaponsName;
   std::transform(player.weapons().cbegin(), player.weapons().cend(),
                  std::back_inserter(weaponsName),
-                 [](const auto& weapon) { return weapon->name(); });
+                 [](const auto& weapon) { return weapon.name; });
 
   std::vector<std::string> expectWeaponNames = {"Poing", "AK47"};
   EXPECT_EQ(weaponsName.size(), expectWeaponNames.size());
@@ -39,35 +35,32 @@ TEST(weapon_test, UseWeapon) {
 }
 
 TEST(weapon_test, Fist) {
-  Player player("Guillaume", 15611653, 0, WeaponInventory{});
+  Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
 
-  AddWeaponAction addWeaponFist(player,
-                                std::unique_ptr<const Weapon>(new Fist()));
+  AddWeaponAction addWeaponFist(player, weapon::Fist());
   addWeaponFist.triggerAction();
 
   const auto& fist = *(player.weapons().cbegin());
 
-  EXPECT_EQ(fist->name(), data::Weapon::nameFist);
-  EXPECT_EQ(fist->damageWeapon(), 20);
-  EXPECT_EQ(fist->weaponType(), WeaponType::fist);
-  EXPECT_EQ(fist->statement(), data::Weapon::statementUseFist);
+  EXPECT_EQ(fist.name, data::Weapon::nameFist);
+  EXPECT_EQ(fist.nb_damage, 20);
+  EXPECT_EQ(fist.type, weapon::Type::fist);
+  EXPECT_EQ(fist.statement, data::Weapon::statementUseFist);
 }
 
 TEST(weapon_test, AK47) {
-  Player player("Guillaume", 15611653, 0, WeaponInventory{});
+  Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
 
-  AddWeaponAction addWeaponAK47(player,
-                                std::unique_ptr<const AK47>{new AK47{40}});
+  AddWeaponAction addWeaponAK47(player, weapon::AK47(40));
   addWeaponAK47.triggerAction();
 
   for (const auto& weapon : player.weapons()) {
-    if (weapon->name() == data::Weapon::nameAK47) {
-      EXPECT_EQ(weapon->damageWeapon(), 150);
-      EXPECT_EQ(weapon->weaponType(), WeaponType::fireArm);
-      EXPECT_EQ(weapon->statement(), data::Weapon::statementUseAK47);
-      EXPECT_EQ((static_cast<const FireArm*>(weapon.get()))->nbAmmo(), 40);
-      EXPECT_EQ((static_cast<const FireArm*>(weapon.get()))->nbAmmoForOneShot(),
-                10);
+    if (weapon.name == data::Weapon::nameAK47) {
+      EXPECT_EQ(weapon.nb_damage, 150);
+      EXPECT_EQ(weapon.type, weapon::Type::fireArm);
+      EXPECT_EQ(weapon.statement, data::Weapon::statementUseAK47);
+      EXPECT_EQ(weapon.durability, 40);
+      EXPECT_EQ(weapon.durability_loose_per_use, 10);
     }
   }
 
@@ -77,13 +70,12 @@ TEST(weapon_test, AK47) {
   useAK47.triggerAction();
 
   for (const auto& weapon : player.weapons()) {
-    if (weapon->name() == data::Weapon::nameAK47) {
-      EXPECT_EQ(weapon->damageWeapon(), 150);
-      EXPECT_EQ(weapon->weaponType(), WeaponType::fireArm);
-      EXPECT_EQ(weapon->statement(), data::Weapon::statementUseAK47);
-      EXPECT_EQ((static_cast<const FireArm*>(weapon.get()))->nbAmmo(), 30);
-      EXPECT_EQ((static_cast<const FireArm*>(weapon.get()))->nbAmmoForOneShot(),
-                10);
+    if (weapon.name == data::Weapon::nameAK47) {
+      EXPECT_EQ(weapon.nb_damage, 150);
+      EXPECT_EQ(weapon.type, weapon::Type::fireArm);
+      EXPECT_EQ(weapon.statement, data::Weapon::statementUseAK47);
+      EXPECT_EQ(weapon.durability, 30);
+      EXPECT_EQ(weapon.durability_loose_per_use, 10);
     }
   }
 }

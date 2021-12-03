@@ -15,10 +15,10 @@ class InformationWeaponInventory {
  private:
   Statement statement_;
 
-  const WeaponInventory& weaponInventory_;
+  const weapon::WeaponInventory& weaponInventory_;
 
  public:
-  InformationWeaponInventory(const WeaponInventory& weaponInventory,
+  InformationWeaponInventory(const weapon::WeaponInventory& weaponInventory,
                              const Statement& statement)
       : statement_(statement), weaponInventory_(weaponInventory) {}
 
@@ -35,7 +35,7 @@ class InformationWeaponInventory {
 
     std::for_each(std::cbegin(weaponInventory_), std::cend(weaponInventory_),
                   [](const auto& weapon) {
-                    WeaponWriter weaponWriter(weapon.get());
+                    weapon::WeaponWriter weaponWriter(weapon);
                     weaponWriter.informationWeapon();
                   });
   }

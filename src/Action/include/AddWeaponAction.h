@@ -17,10 +17,10 @@ class AddWeaponAction {
  private:
   Result result_;
   Player& player_;
-  std::unique_ptr<const Weapon> weapon_;
+  weapon::Weapon weapon_;
 
  public:
-  AddWeaponAction(Player& player, std::unique_ptr<const Weapon>&& weapon);
+  AddWeaponAction(Player& player, weapon::Weapon&& weapon);
 
   void triggerAction();
 };

@@ -7,17 +7,16 @@
 #include "ActionWriter.h"
 #include "Player.h"
 
-AddWeaponAction::AddWeaponAction(Player& player,
-                                 std::unique_ptr<const Weapon>&& weapon)
-    : result_{data::Action::resultAddWeapon(weapon->name())},
+AddWeaponAction::AddWeaponAction(Player& player, weapon::Weapon&& weapon)
+    : result_{data::Action::resultAddWeapon(weapon.name)},
       player_{player},
       weapon_{std::move(weapon)} {}
 
 void AddWeaponAction::triggerAction() {
-  if (weapon_->weaponType() != WeaponType::noWeapon) {
-    bool present = player_.weapons().addWeapon(std::move(weapon_));
+  if (weapon_.type != weapon::Type::noWeapon) {
+    auto [_, present] = player_.weapons().insert(std::move(weapon_));
 
-    if (!present) {
+    if (not present) {
       Action::writeResult(result_);
     }
   }

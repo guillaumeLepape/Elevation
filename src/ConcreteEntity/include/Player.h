@@ -8,7 +8,6 @@
  */
 
 #include "Entity.h"
-#include "WeaponInventory.h"
 
 static constexpr int MAX_LIFE_POINTS_PLAYER = 100;
 
@@ -29,7 +28,7 @@ class Player : public Entity {
   int money_;
 
   /*< List of weapons own by player */
-  WeaponInventory weapons_;
+  weapon::WeaponInventory weapons_;
 
  public:
   /*!
@@ -41,7 +40,7 @@ class Player : public Entity {
    */
   Player(const std::string& pseudo, const int& id, const int& nbLevelSuceeded,
          const int& nbLifePoints, const int& maxLifePoints, const int& money,
-         WeaponInventory&& weapons);
+         weapon::WeaponInventory&& weapons);
 
   Player(const nlohmann::json& jsonInput);
 
@@ -55,8 +54,11 @@ class Player : public Entity {
    * \param nbLevelSuceeded : number of level suceeded by player
    */
   Player(const std::string& pseudo, const int& id, const int& nbLevelSuceeded,
-         WeaponInventory&& weaponInventory =
-             std::unique_ptr<const Weapon>(new Fist()));
+         weapon::WeaponInventory&& weaponInventory = []() {
+           weapon::WeaponInventory result;
+           result.insert(weapon::Fist());
+           return result;
+         }());
 
   Player(const Player&) = delete;
   Player(Player&&) = default;
@@ -89,7 +91,7 @@ class Player : public Entity {
    * \brief Accesor to weapon inventory
    * \return Reference to weapon inventory
    */
-  WeaponInventory& weapons() { return weapons_; }
+  weapon::WeaponInventory& weapons() { return weapons_; }
 
   nlohmann::json writeJson() const;
 };

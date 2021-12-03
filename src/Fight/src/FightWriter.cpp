@@ -21,12 +21,11 @@ FightWriter::FightWriter(const Player* const player,
 }
 
 void FightWriter::writeSeparator() const {
-    std::cout << "\n"
+  std::cout << "\n"
             << Term::color(Term::fg::blue) << Term::color(Term::style::bold)
             << "====================" << Term::color(Term::fg::reset)
             << Term::color(Term::style::reset);
 }
-
 
 void FightWriter::writeHeader(const int nbTurns) const {
   Pause::pause();
@@ -68,10 +67,9 @@ void FightWriter::writeGameBoard() const {
       nameFighters.push_back(plugs_[i]->name());
       lifePointsFighters.push_back(std::to_string(plugs_[i]->nbLifePoints()) +
                                    " points de vie");
-      nameWeaponFighters.push_back(plugs_[i]->weapon()->name());
+      nameWeaponFighters.push_back(plugs_[i]->weapon().name);
       damageWeaponFighters.push_back(
-          std::to_string(plugs_[i]->weapon()->damageWeapon()) +
-          " points d'attaque");
+          std::to_string(plugs_[i]->weapon().nb_damage) + " points d'attaque");
     }
   }
 

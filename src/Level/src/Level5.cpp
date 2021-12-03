@@ -9,12 +9,8 @@
 #include "ComboDoubleMeleeWeapon.h"
 #include "ComboFistMeleeWeapon.h"
 #include "ComboQuadrupleCutter.h"
-#include "Cutter.h"
 #include "Fight.h"
-#include "Fist.h"
 #include "HeaderWriter.h"
-#include "Katana.h"
-#include "Knife.h"
 #include "Languages.h"
 #include "MessageWriter.h"
 #include "RegenerateAllLife.h"
@@ -24,7 +20,7 @@ void Level5::startLevel() {
   Header::write(data::Level5::nameLevel, data::Level5::hour,
                 data::Level5::minut);
 
-  Plug guetteur("Guetteur", 35, std::unique_ptr<const Weapon>(new Fist()));
+  Plug guetteur("Guetteur", 35, weapon::Fist());
 
   Message::write(data::Level5::message0, player_.name(), guetteur.name());
 
@@ -56,7 +52,7 @@ void Level5::startLevel() {
   firstFight.startFight();
 
   // Second fight (introduction to Double melee Weapon combo )
-  Plug garde("Garde", 50, std::unique_ptr<const Weapon>(new Fist()));
+  Plug garde("Garde", 50, weapon::Fist());
 
   Message::write(data::Level5::message2, player_.name(), garde.name());
 
@@ -70,8 +66,7 @@ void Level5::startLevel() {
   secondFight.startFight();
 
   // Third fight (introduction to Healing and weapon recuperation)
-  Plug secondGarde("Un futur cadavre", 30,
-                   std::unique_ptr<const Weapon>(new Knife()));
+  Plug secondGarde("Un futur cadavre", 30, weapon::Knife());
 
   Message::write(data::Level5::message3, player_.name(), secondGarde.name());
 
@@ -96,9 +91,9 @@ void Level5::startLevel() {
   }
 
   // Fourth fight
-  Plug sacAPV("Sac à PV", 100, std::unique_ptr<const Weapon>(new Cutter()));
-  Plug kamikaze("Kamikaze", 32, std::unique_ptr<const Weapon>(new Katana()));
-  Plug soutien("Soutien", 60, std::unique_ptr<const Weapon>(new Knife()));
+  Plug sacAPV("Sac à PV", 100, weapon::Cutter());
+  Plug kamikaze("Kamikaze", 32, weapon::Katana());
+  Plug soutien("Soutien", 60, weapon::Knife());
 
   Message::write(data::Level5::message6, player_.name(), kamikaze.name());
 

@@ -2,7 +2,8 @@ project(weapon)
 
 add_library(
     ${PROJECT_NAME}
-    src/WeaponInventory.cpp
+    src/Weapon.cpp
+    # src/WeaponInventory.cpp
     src/WeaponWriter.cpp
 )
 
@@ -14,7 +15,6 @@ target_include_directories(
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC utils
-    PUBLIC entity
     PUBLIC data_files
     PUBLIC data
 )

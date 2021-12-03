@@ -672,6 +672,7 @@ inline std::vector<std::string> statementRegeneration = {
 }  // namespace Tutorial
 
 namespace Weapon {
+inline std::string statementEmpty("");
 // generic UseWeapon data statement for fist
 inline std::string statementUseFist("Cognez ! (Poing)");
 // generic UseWeapon data statement for knife

@@ -7,9 +7,7 @@
 #include <iostream>
 
 #include "AddWeaponAction.h"
-#include "Fist.h"
 #include "HeaderWriter.h"
-#include "Knife.h"
 #include "Languages.h"
 #include "MessageWriter.h"
 #include "Selection.h"
@@ -42,8 +40,7 @@ void Level3::startLevel() {
 
   Message::write(data::Level3::message4, player_.name(), plug.name());
 
-  AddWeaponAction addWeaponAction(player_,
-                                  std::unique_ptr<const Weapon>(new Knife()));
+  AddWeaponAction addWeaponAction(player_, weapon::Knife());
   addWeaponAction.triggerAction();
 
   UseWeapon useKnife(player_, plug, data::Weapon::nameKnife);

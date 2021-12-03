@@ -7,16 +7,18 @@
 
 #include "Weapon.h"
 
+namespace weapon {
 class WeaponWriter {
  private:
-  const Weapon* const weapon_;
+  const Weapon& weapon_;
 
   std::string informationWeaponType() const;
 
  public:
-  WeaponWriter(const Weapon* weapon);
+  WeaponWriter(const Weapon& weapon);
 
-  virtual void informationWeapon() const;
+  void informationWeapon() const;
 };
+}  // namespace weapon
 
 #endif
