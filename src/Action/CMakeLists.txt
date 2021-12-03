@@ -18,5 +18,5 @@ target_include_directories(
 target_link_libraries(
     ${PROJECT_NAME} 
     PUBLIC writer
-    PUBLIC concrete_entity
+    PUBLIC entity
 )

@@ -1,6 +1,5 @@
 add_subdirectory(Action)
 add_subdirectory(Beginning)
-add_subdirectory(ConcreteEntity)
 add_subdirectory(Data)
 add_subdirectory(DataFiles)
 add_subdirectory(Entity)

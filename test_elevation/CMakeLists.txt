@@ -8,7 +8,6 @@ add_executable(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PRIVATE concrete_entity
     PRIVATE weapon
     PRIVATE data_files
     PRIVATE action

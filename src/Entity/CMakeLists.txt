@@ -2,7 +2,11 @@ project(entity)
 
 add_library(
     ${PROJECT_NAME} 
-    src/Entity.cpp 
+    src/Entity.cpp
+    src/Id.cpp
+    src/Player.cpp 
+    src/Plug.cpp 
+    src/ResultsData.cpp
 )
 
 target_include_directories(
