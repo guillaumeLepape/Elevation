@@ -26,7 +26,7 @@ void readListeDesPrenoms(std::set<std::string>& listFemaleName,
                          std::set<std::string>& listMasculineName) {
   nlohmann::json jsonObject = readJsonFile("../dataset/liste_des_prenoms.json");
 
-  for (auto i = jsonObject.cbegin(); i != jsonObject.cend(); i++) {
+  for (auto i = std::cbegin(jsonObject); i != std::cend(jsonObject); i++) {
     std::string name = (std::string)(*i)["fields"]["prenoms"];
 
     if (((std::string)(*i)["fields"]["sexe"]) == "F") {

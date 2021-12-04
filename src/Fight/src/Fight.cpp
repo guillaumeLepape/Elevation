@@ -108,7 +108,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
       fightWriter.writeRemoveDeadBody();
     }
 
-    for (auto e = plugs_.begin(); e != plugs_.end(); e++) {
+    for (auto e = std::begin(plugs_); e != std::end(plugs_); e++) {
       if (!((*e)->dead())) {
         auto message = data::Action::resultPlugAttack((*e)->name(),
                                                       (*e)->weapon().nb_damage);
@@ -142,7 +142,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 bool Fight::enemiesDeadOrNot() const {
   bool result = true;
 
-  for (auto e = plugs_.cbegin(); e != plugs_.cend(); e++) {
+  for (auto e = std::cbegin(plugs_); e != std::cend(plugs_); e++) {
     result = result && (*e)->dead();
   }
 
@@ -151,7 +151,7 @@ bool Fight::enemiesDeadOrNot() const {
 
 int Fight::methodNumberOfDeadPlug() const {
   int numberOfDead = 0;
-  for (auto e = plugs_.cbegin(); e != plugs_.cend(); e++) {
+  for (auto e = std::cbegin(plugs_); e != std::cend(plugs_); e++) {
     if ((*e)->dead()) {
       numberOfDead++;
     }
@@ -173,7 +173,7 @@ Plug& Fight::choosePlug() {
   }
 
   std::vector<std::string> statements;
-  std::transform(choosePlugActions.cbegin(), choosePlugActions.cend(),
+  std::transform(std::cbegin(choosePlugActions), std::cend(choosePlugActions),
                  std::back_inserter(statements),
                  [](const auto& choosePlugAction) {
                    return choosePlugAction.statement();
@@ -203,7 +203,7 @@ const ChooseWeaponResult Fight::chooseWeapon(Plug& choosenPlug) {
 
 void Fight::runCombos(Plug& choosenPlug, const int& resultUseWeapon,
                       const std::vector<UseWeapon>& useWeapons) {
-  for (auto c = combos_.cbegin(); c != combos_.cend(); c++) {
+  for (auto c = std::cbegin(combos_); c != std::cend(combos_); c++) {
     (*c)->triggerCombo(choosenPlug, resultUseWeapon, useWeapons);
   }
 }

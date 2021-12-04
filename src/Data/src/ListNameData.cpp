@@ -11,7 +11,7 @@ ListNameData::ListNameData(const std::string& folderFromRoot,
 }
 
 void ListNameData::readData() {
-  std::for_each(jsonObject_.cbegin(), jsonObject_.cend(),
+  std::for_each(std::cbegin(jsonObject_), std::cend(jsonObject_),
                 [this](const auto& name) {
                   listName_.insert(static_cast<std::string>(name));
                 });

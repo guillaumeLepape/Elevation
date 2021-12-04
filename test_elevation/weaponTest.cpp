@@ -23,7 +23,7 @@ TEST(weapon_test, UseWeapon) {
   EXPECT_EQ(player.id(), 15611653);
 
   std::vector<std::string> weaponsName;
-  std::transform(player.weapons().cbegin(), player.weapons().cend(),
+  std::transform(std::cbegin(player.weapons()), std::cend(player.weapons()),
                  std::back_inserter(weaponsName),
                  [](const auto& weapon) { return weapon.name; });
 
@@ -40,7 +40,7 @@ TEST(weapon_test, Fist) {
   AddWeaponAction addWeaponFist(player, weapon::Fist());
   addWeaponFist.triggerAction();
 
-  const auto& fist = *(player.weapons().cbegin());
+  const auto& fist = *(std::cbegin(player.weapons()));
 
   EXPECT_EQ(fist.name, data::Weapon::nameFist);
   EXPECT_EQ(fist.nb_damage, 20);
