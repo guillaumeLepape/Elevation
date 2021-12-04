@@ -20,7 +20,8 @@ class PlugAttack {
 
   void triggerAction() {
     // if plug is not dead and has a weapon, he can attack
-    if (!(plug_.dead()) && plug_.weapon().type != weapon::Type::noWeapon) {
+    if (!(plug_.healthBar().dead()) &&
+        plug_.weapon().type != weapon::Type::noWeapon) {
       attack(&player_, plug_.weapon());
 
       Action::writeResult(data::Action::resultPlugAttack(

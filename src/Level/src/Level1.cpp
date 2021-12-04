@@ -18,9 +18,9 @@ void Level1::startLevel() {
                 data::Level1::minut);
 
   int price = 20;
-  auto message = data::Level1::message0(player_.name(), plug.name(), price);
+  auto message = data::Level1::message0(player_.pseudo(), plug.name(), price);
 
-  Message::write(message, player_.name(), plug.name());
+  Message::write(message, player_.pseudo(), plug.name());
 
   player_.decreaseMoney(price);
 

@@ -18,7 +18,7 @@ void ComboDoubleMeleeWeapon::triggerCombo(
     const std::vector<UseWeapon>& useWeapon) {
   if ((useWeapon[resultChooseWeapon].name() == data::Weapon::nameKnife ||
        useWeapon[resultChooseWeapon].name() == data::Weapon::nameHammer) &&
-      !(plug.dead())) {
+      !(plug.healthBar().dead())) {
     UseWeapon useWeaponCombo(player_, plug,
                              useWeapon[resultChooseWeapon].name());
 

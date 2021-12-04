@@ -8,14 +8,26 @@
 #include <cassert>
 #include <iostream>
 
-Player::Player(const std::string& pseudo, const int& id,
+Player::Player(const std::string& pseudo, const unsigned int& id,
                const int& nbLevelSuceeded,
                weapon::WeaponInventory&& weaponInventory)
-    : Entity(pseudo, MAX_LIFE_POINTS_PLAYER, MAX_LIFE_POINTS_PLAYER),
+    : pseudo_{pseudo},
+      id_{id},
+      nbLevelSuceeded_{nbLevelSuceeded},
+      money_{200},
+      weapons_{std::move(weaponInventory)},
+      healthBar_{MAX_LIFE_POINTS_PLAYER, MAX_LIFE_POINTS_PLAYER} {}
+
+Player::Player(const std::string& pseudo, const unsigned int& id,
+               const int& nbLevelSuceeded, const int& nbLifePoints,
+               const int& maxLifePoints, const int& money,
+               weapon::WeaponInventory&& weapons)
+    : pseudo_{pseudo},
       id_(id),
-      nbLevelSuceeded_(nbLevelSuceeded),
-      money_(200),
-      weapons_(std::move(weaponInventory)) {}
+      nbLevelSuceeded_{nbLevelSuceeded},
+      money_{money},
+      weapons_{std::move(weapons)},
+      healthBar_{nbLifePoints, maxLifePoints} {}
 
 Player::Player(const nlohmann::json& jsonInput)
     : Player(jsonInput["pseudo"], jsonInput["id"], jsonInput["nbLevelSuceeded"],
@@ -23,22 +35,12 @@ Player::Player(const nlohmann::json& jsonInput)
              jsonInput["money"],
              weapon::make_weapon_inventory(jsonInput["weapons"])) {}
 
-Player::Player(const std::string& pseudo, const int& id,
-               const int& nbLevelSuceeded, const int& nbLifePoints,
-               const int& maxLifePoints, const int& money,
-               weapon::WeaponInventory&& weapons)
-    : Entity(pseudo, nbLifePoints, maxLifePoints),
-      id_(id),
-      nbLevelSuceeded_(nbLevelSuceeded),
-      money_(money),
-      weapons_(std::move(weapons)) {}
-
-nlohmann::json Player::writeJson() const {
-  nlohmann::json jsonObjectOutput{{"pseudo", name_},
+nlohmann::json Player::write() const {
+  nlohmann::json jsonObjectOutput{{"pseudo", pseudo_},
                                   {"id", id_},
                                   {"nbLevelSuceeded", nbLevelSuceeded_},
-                                  {"nbLifePoints", nbLifePoints_},
-                                  {"maxLifePoints", maxNbLifePoints_},
+                                  {"nbLifePoints", healthBar_.nbLifePoints()},
+                                  {"maxLifePoints", healthBar_.maxLifePoints()},
                                   {"money", money_},
                                   {"weapons", weapon::write(weapons_)}};
 

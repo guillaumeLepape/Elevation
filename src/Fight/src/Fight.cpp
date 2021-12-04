@@ -109,14 +109,14 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
     }
 
     for (auto e = std::begin(plugs_); e != std::end(plugs_); e++) {
-      if (!((*e)->dead())) {
+      if (!((*e)->healthBar().dead())) {
         auto message = data::Action::resultPlugAttack((*e)->name(),
                                                       (*e)->weapon().nb_damage);
         PlugAttack plugAttack(*player_, **e, message);
         plugAttack.triggerAction();
       }
 
-      if (player_->dead()) {
+      if (player_->healthBar().dead()) {
         GameOver gameOver(data::Menu::resultGameOver);
         gameOver.triggerAction();
       }
@@ -143,7 +143,7 @@ bool Fight::enemiesDeadOrNot() const {
   bool result = true;
 
   for (auto e = std::cbegin(plugs_); e != std::cend(plugs_); e++) {
-    result = result && (*e)->dead();
+    result = result && (*e)->healthBar().dead();
   }
 
   return result;
@@ -152,7 +152,7 @@ bool Fight::enemiesDeadOrNot() const {
 int Fight::methodNumberOfDeadPlug() const {
   int numberOfDead = 0;
   for (auto e = std::cbegin(plugs_); e != std::cend(plugs_); e++) {
-    if ((*e)->dead()) {
+    if ((*e)->healthBar().dead()) {
       numberOfDead++;
     }
   }
@@ -164,7 +164,7 @@ Plug& Fight::choosePlug() {
 
   for (auto p = plugs_.begin(); p != plugs_.end(); p++) {
     // user cannot attack dead plugs
-    if (!((*p)->dead())) {
+    if (!((*p)->healthBar().dead())) {
       ChoosePlug choosePlug(**p,
                             data::Action::statementChoosePlug((*p)->name()),
                             data::Action::resultChoosePlug((*p)->name()));

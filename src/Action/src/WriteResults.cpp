@@ -10,7 +10,7 @@
 #include "ResultsData.h"
 
 WriteResults::WriteResults(Player& player, ResultsData& resultsData,
-                           const Statement& statement, const Result& result)
+                           const Statement&, const Result& result)
     : result_(result), player_(player), resultsData_(resultsData) {}
 
 void WriteResults::triggerAction() {

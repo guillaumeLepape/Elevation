@@ -14,7 +14,9 @@ AddWeaponAction::AddWeaponAction(Player& player, weapon::Weapon&& weapon)
 
 void AddWeaponAction::triggerAction() {
   if (weapon_.type != weapon::Type::noWeapon) {
-    auto [_, present] = player_.weapons().insert(std::move(weapon_));
+    bool present;
+    std::tie(std::ignore, present) =
+        player_.weapons().insert(std::move(weapon_));
 
     if (not present) {
       Action::writeResult(result_);

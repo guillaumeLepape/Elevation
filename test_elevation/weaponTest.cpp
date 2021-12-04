@@ -19,7 +19,7 @@ TEST(weapon_test, UseWeapon) {
   AddWeaponAction addWeaponAK47(player, weapon::AK47(100));
   addWeaponAK47.triggerAction();
 
-  EXPECT_EQ(player.name(), "Guillaume");
+  EXPECT_EQ(player.pseudo(), "Guillaume");
   EXPECT_EQ(player.id(), 15611653);
 
   std::vector<std::string> weaponsName;

@@ -22,14 +22,14 @@ void Level5::startLevel() {
 
   Plug guetteur("Guetteur", 35, weapon::Fist());
 
-  Message::write(data::Level5::message0, player_.name(), guetteur.name());
+  Message::write(data::Level5::message0, player_.pseudo(), guetteur.name());
 
-  Message::write(data::Level5::message1, player_.name(), guetteur.name());
+  Message::write(data::Level5::message1, player_.pseudo(), guetteur.name());
 
   if (!options_.noRule_) {
-    Tutorial::write(
-        data::Tutorial::titleCombatSystem,
-        data::Tutorial::statementCombatSystem(player_.maxLifePoints()));
+    Tutorial::write(data::Tutorial::titleCombatSystem,
+                    data::Tutorial::statementCombatSystem(
+                        player_.healthBar().maxLifePoints()));
     Tutorial::write(data::Tutorial::titleCombo, data::Tutorial::statementCombo);
   }
 
@@ -54,7 +54,7 @@ void Level5::startLevel() {
   // Second fight (introduction to Double melee Weapon combo )
   Plug garde("Garde", 50, weapon::Fist());
 
-  Message::write(data::Level5::message2, player_.name(), garde.name());
+  Message::write(data::Level5::message2, player_.pseudo(), garde.name());
 
   if (!options_.noRule_) {
     Tutorial::write(data::Tutorial::titleComboDoubleMeleeWeapon,
@@ -68,7 +68,7 @@ void Level5::startLevel() {
   // Third fight (introduction to Healing and weapon recuperation)
   Plug secondGarde("Un futur cadavre", 30, weapon::Knife());
 
-  Message::write(data::Level5::message3, player_.name(), secondGarde.name());
+  Message::write(data::Level5::message3, player_.pseudo(), secondGarde.name());
 
   if (!options_.noRule_) {
     Tutorial::write(data::Tutorial::titleNoWeapon,
@@ -78,12 +78,12 @@ void Level5::startLevel() {
   Fight thirdFight(&player_, {&secondGarde}, {}, options_.noRule_, false);
   thirdFight.startFight();
 
-  Message::write(data::Level5::message4, player_.name(), "");
+  Message::write(data::Level5::message4, player_.pseudo(), "");
 
   RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();
 
-  Message::write(data::Level5::message5, player_.name(), "");
+  Message::write(data::Level5::message5, player_.pseudo(), "");
 
   if (!options_.noRule_) {
     Tutorial::write(data::Tutorial::titleRegeneration,
@@ -95,7 +95,7 @@ void Level5::startLevel() {
   Plug kamikaze("Kamikaze", 32, weapon::Katana());
   Plug soutien("Soutien", 60, weapon::Knife());
 
-  Message::write(data::Level5::message6, player_.name(), kamikaze.name());
+  Message::write(data::Level5::message6, player_.pseudo(), kamikaze.name());
 
   Fight fight(&player_, {&sacAPV, &kamikaze, &soutien},
               {comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(),
@@ -103,7 +103,7 @@ void Level5::startLevel() {
               options_.noRule_);
   fight.startFight();
 
-  Message::write(data::Level5::message7, player_.name(), "");
+  Message::write(data::Level5::message7, player_.pseudo(), "");
 
   regenerateAllLife.triggerAction();
 

@@ -11,7 +11,7 @@ Dead::Dead(const Plug& plug, const Result& result)
     : result_(result), plug_(plug) {}
 
 void Dead::triggerAction() {
-  if (plug_.dead()) {
+  if (plug_.healthBar().dead()) {
     Action::writeResult(result_);
   }
 }

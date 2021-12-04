@@ -21,19 +21,16 @@ void Pseudo::triggerAction() {
   ListNameData masculineNameData("dataset", "prenoms_masculins");
   std::set<std::string> masculineName = masculineNameData.listName();
 
-  std::string* ptrPseudo(0);
+  std::string pseudo;
   bool out = false;
 
   while (!out) {
     // Inform the user that he have to enter an information (his pseudo)
-    Message::write(data::Introduction::message1, player_.name(), "");
+    Message::write(data::Introduction::message1, player_.pseudo(), "");
     Action::writeStatement(statement_);
 
-    // Get pseudo from user
-    std::string pseudo;
     std::cin >> pseudo;
     formatString(pseudo);
-    ptrPseudo = &pseudo;
 
     // Check if chosen pseudo is in the feminine name dataset
     if (feminineName.find(pseudo) != feminineName.end()) {
@@ -41,18 +38,18 @@ void Pseudo::triggerAction() {
     }
     // Check if chosen pseudo is in the masculine name dataset
     else if (masculineName.find(pseudo) != masculineName.end()) {
-      Message::write(data::Introduction::message2, player_.name(), "");
+      Message::write(data::Introduction::message2, player_.pseudo(), "");
     }
     // If pseudo doesn't appear in the two previous dataset,
     // consider that this name doesn't exist
     else {
-      Message::write(data::Introduction::message3, player_.name(), "");
+      Message::write(data::Introduction::message3, player_.pseudo(), "");
     }
   }
 
-  player_.changeName(*ptrPseudo);
+  player_.changePseudo(pseudo);
 
-  Action::writeResult(data::Action::resultPseudo(player_.name()));
+  Action::writeResult(data::Action::resultPseudo(player_.pseudo()));
 }
 
 void Pseudo::formatString(std::string& str) {

@@ -7,7 +7,7 @@ project(Elevation VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_compile_options(-O3 -Wall -Wextra -fconcepts)
+add_compile_options(-O3 -Wall -Wextra -Werror -fconcepts)
 
 add_subdirectory(src)
 

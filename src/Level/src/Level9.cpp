@@ -32,7 +32,7 @@ void Level9::startLevel() {
   plugAttack0.triggerAction();
   plugAttack0.triggerAction();
 
-  Message::write(data::Level9::message0, player_.name(), plug.name());
+  Message::write(data::Level9::message0, player_.pseudo(), plug.name());
 
   UseWeapon useWeapon(player_, plug, data::Weapon::nameFist);
   useWeapon.triggerAction();
@@ -40,7 +40,7 @@ void Level9::startLevel() {
   RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.triggerAction();
 
-  Message::write(data::Level9::message1, player_.name(), plug.name());
+  Message::write(data::Level9::message1, player_.pseudo(), plug.name());
 
   regenerateAllLife.triggerAction();
 
@@ -50,17 +50,17 @@ void Level9::startLevel() {
   plugAttack1.triggerAction();
   regenerateAllLife.triggerAction();
 
-  Message::write(data::Level9::message2, player_.name(), plug.name());
+  Message::write(data::Level9::message2, player_.pseudo(), plug.name());
 
   plugAttack1.triggerAction();
   regenerateAllLife.triggerAction();
 
-  Message::write(data::Level9::message3, player_.name(), plug.name());
+  Message::write(data::Level9::message3, player_.pseudo(), plug.name());
 
   plugAttack1.triggerAction();
   regenerateAllLife.triggerAction();
 
-  Message::write(data::Level9::message4, player_.name(), plug.name());
+  Message::write(data::Level9::message4, player_.pseudo(), plug.name());
 
   plug.changeWeapon(weapon::NoWeapon());
 
@@ -79,17 +79,17 @@ void Level9::startLevel() {
 
   regenerateAllLife.triggerAction();
 
-  Message::write(data::Level9::message5, player_.name(), plug.name());
+  Message::write(data::Level9::message5, player_.pseudo(), plug.name());
 
   IncreaseMaxLifePoints increaseMaxLifePoints(
       player_, 1100, data::Action::resultsIncreaseMaxLifePoints(1100));
   increaseMaxLifePoints.triggerAction();
 
-  Message::write(data::Level9::message6, player_.name(), plug.name());
+  Message::write(data::Level9::message6, player_.pseudo(), plug.name());
 
   increaseMaxLifePoints.triggerAction();
 
-  Message::write(data::Level9::message7, player_.name(), plug.name());
+  Message::write(data::Level9::message7, player_.pseudo(), plug.name());
 
   increaseMaxLifePoints.triggerAction();
 

@@ -22,7 +22,7 @@ class IncreaseMaxLifePoints {
         maxLifePointsIncreasing_(maxLifePointsIncreasing) {}
 
   void triggerAction() {
-    player_.increaseMaxLifePoints(maxLifePointsIncreasing_);
+    player_.healthBar().increaseMaxLifePoints(maxLifePointsIncreasing_);
     Action::writeResult(result_);
   }
 };

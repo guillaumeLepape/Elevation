@@ -13,7 +13,7 @@ ComboQuadrupleCutter::ComboQuadrupleCutter(Player& player)
             data::Combo::malusStatementQuadrupleCutter) {}
 
 void ComboQuadrupleCutter::triggerCombo(
-    Plug& plug, const int& resultChooseWeapon,
+    Plug&, const int& resultChooseWeapon,
     const std::vector<UseWeapon>& useWeapon) {
   if (useWeapon[resultChooseWeapon].name() == "Cutter") {
     UseWeapon useWeaponCombo = useWeapon[resultChooseWeapon];

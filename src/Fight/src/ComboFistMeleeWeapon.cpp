@@ -20,7 +20,7 @@ void ComboFistMeleeWeapon::triggerCombo(
   // and the ennemy is not dead
   // and player has at least one melee weapon
   if (useWeapon[resultChooseWeapon].type() == weapon::Type::fist &&
-      !(plug.dead()) &&
+      !(plug.healthBar().dead()) &&
       weapon::contains(player_.weapons(), weapon::Type::meleeWeapon)) {
     std::vector<UseWeapon> useWeaponFistCombo;
 

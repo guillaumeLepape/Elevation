@@ -20,33 +20,33 @@ void Level10::startLevel() {
 
   Plug plug("Dieu", 10000000, weapon::DivineStrike());
 
-  Message::write(data::Level10::messageMinus1, player_.name(), plug.name());
+  Message::write(data::Level10::messageMinus1, player_.pseudo(), plug.name());
 
   AddWeaponAction addWeaponAction(player_, weapon::AK47(100));
   addWeaponAction.triggerAction();
 
   std::vector<MessageWriter> messageWriters;
   messageWriters.push_back(
-      MessageWriter(data::Level10::message0, player_.name(), plug.name()));
+      MessageWriter(data::Level10::message0, player_.pseudo(), plug.name()));
   messageWriters.push_back(
-      MessageWriter(data::Level10::message1, player_.name(), plug.name()));
+      MessageWriter(data::Level10::message1, player_.pseudo(), plug.name()));
 
   Fight fight(&player_, {&plug}, {}, options_.noRule_);
   fight.startFight(messageWriters, [&plug](Player* const player_) -> bool {
-    return player_->nbLifePoints() < plug.weapon().nb_damage;
+    return player_->healthBar().nbLifePoints() < plug.weapon().nb_damage;
   });
 
-  Message::write(data::Level10::message2, player_.name(), plug.name());
+  Message::write(data::Level10::message2, player_.pseudo(), plug.name());
 
   Plug heroine("Heroine", 100, weapon::Heroine());
   PlugAttack plugAttack(player_, heroine, Result(""));
 
-  while (!(player_.dead())) {
+  while (!(player_.healthBar().dead())) {
     plugAttack.triggerAction();
-    Message::write(data::Level10::message3, player_.name(), "");
+    Message::write(data::Level10::message3, player_.pseudo(), "");
   }
 
-  Message::write(data::Level10::message4, player_.name(), plug.name());
+  Message::write(data::Level10::message4, player_.pseudo(), plug.name());
 
   Level::endOfLevel();
   std::cout << "\n";

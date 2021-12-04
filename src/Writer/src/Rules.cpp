@@ -11,7 +11,7 @@
 
 namespace Rules {
 void write(const Options& options) {
-  std::system("clear");
+  std::ignore = std::system("clear");
 
   std::cout << "\n " << Term::color(Term::fg::black)
             << Term::color(Term::bg::green) << Term::color(Term::style::bold)

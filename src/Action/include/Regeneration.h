@@ -21,7 +21,7 @@ class Regeneration {
     int nbLifePointsRegeneration = 0;
 
     // if player is full life or dead, do nothing, else regenerate him
-    if (!(player_.fullLife()) && !(player_.dead())) {
+    if (!(player_.healthBar().fullLife()) && !(player_.healthBar().dead())) {
       switch (player_.nbLevelSuceeded()) {
         case 0 ... 4:
           nbLifePointsRegeneration = 10;
@@ -43,11 +43,11 @@ class Regeneration {
           break;
       }
 
-      int nbLifePoints_previous = player_.nbLifePoints();
+      int nbLifePoints_previous = player_.healthBar().nbLifePoints();
 
-      player_.increaseLifePoints(nbLifePointsRegeneration);
+      player_.healthBar().increaseLifePoints(nbLifePointsRegeneration);
       Action::writeResult(data::Action::resultRegeneration(
-          player_.nbLifePoints() - nbLifePoints_previous));
+          player_.healthBar().nbLifePoints() - nbLifePoints_previous));
     }
   }
 };

@@ -31,7 +31,8 @@ void LoadGame::triggerAction() {
     std::transform(std::cbegin(results), std::cend(results),
                    std::back_inserter(statements), [](const auto& resultData) {
                      return data::Menu::statementChooseLoadedGame(
-                                resultData.name(), resultData.nbLevelSuceeded())
+                                resultData.pseudo(),
+                                resultData.nbLevelSuceeded())
                          .get();
                    });
     auto result = Selection::select(data::Menu::titleLoadGameMenu, statements);

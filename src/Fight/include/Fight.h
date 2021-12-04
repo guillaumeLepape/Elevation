@@ -42,7 +42,9 @@ class Fight {
 
   void startFight(const std::vector<MessageWriter>& messageWriter = {},
                   std::function<bool(Player* const player)> predicate =
-                      [](Player* const player) { return player->dead(); });
+                      [](Player* const player) {
+                        return player->healthBar().dead();
+                      });
 };
 
 #endif

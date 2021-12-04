@@ -41,7 +41,7 @@ void ResultsData::writeData() const {
 
   std::for_each(std::cbegin(results_), std::cend(results_),
                 [&jsonObjectOutput](const auto& res) {
-                  nlohmann::json jsonPlayer = res.writeJson();
+                  nlohmann::json jsonPlayer = res.write();
                   jsonObjectOutput.push_back(jsonPlayer);
                 });
 

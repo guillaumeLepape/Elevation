@@ -20,25 +20,25 @@ void Level3::startLevel() {
   Header::write(data::Level3::nameLevel, data::Level3::hour,
                 data::Level3::minut);
 
-  Message::write(data::Level3::message0, player_.name(), plug.name());
+  Message::write(data::Level3::message0, player_.pseudo(), plug.name());
 
   UseWeapon useFist(player_, plug, data::Weapon::nameFist);
   useFist.triggerAction();
 
-  Message::write(data::Level3::message1, player_.name(), plug.name());
+  Message::write(data::Level3::message1, player_.pseudo(), plug.name());
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message2(plug.name()), player_.name(),
+  Message::write(data::Level3::message2(plug.name()), player_.pseudo(),
                  plug.name());
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message3, player_.name(), plug.name());
+  Message::write(data::Level3::message3, player_.pseudo(), plug.name());
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message4, player_.name(), plug.name());
+  Message::write(data::Level3::message4, player_.pseudo(), plug.name());
 
   AddWeaponAction addWeaponAction(player_, weapon::Knife());
   addWeaponAction.triggerAction();
@@ -47,7 +47,7 @@ void Level3::startLevel() {
 
   SelectionWrapper::select(data::Action::titleChooseWeapon, useFist, useKnife);
 
-  Message::write(data::Level3::message5, player_.name(), plug.name());
+  Message::write(data::Level3::message5, player_.pseudo(), plug.name());
 
   Level::endOfLevel();
 

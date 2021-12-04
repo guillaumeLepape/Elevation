@@ -5,13 +5,16 @@
  * \file Plug.h
  */
 
-#include <memory>
+#include "HealthBar.h"
+#include "Weapon.h"
 
-#include "Entity.h"
-
-class Plug : public Entity {
+class Plug {
  private:
+  std::string name_;
   weapon::Weapon weapon_;
+
+ public:
+  HealthBar healthBar_;
 
  public:
   Plug(const std::string& name, const int& nbLifePoints = 100,
@@ -25,9 +28,13 @@ class Plug : public Entity {
 
   virtual ~Plug() = default;
 
+  const std::string& name() const { return name_; }
   void changeWeapon(weapon::Weapon&& newWeapon);
 
   weapon::Weapon& weapon() { return weapon_; }
+
+  const HealthBar& healthBar() const { return healthBar_; }
+  HealthBar& healthBar() { return healthBar_; }
 };
 
 #endif
