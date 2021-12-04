@@ -6,27 +6,21 @@
 
 #include <algorithm>
 #include <iostream>
-#include <set>
 
-Options::Options(int argc, char* argv[]) : noRule_(false), help_(false) {
-  initializeAttribute(argc, argv);
-}
-
-void Options::initializeAttribute(int argc, char* argv[]) {
-  std::set<std::string_view> argv_set;
-
-  for (int i = 0; i < argc; i++) {
-    argv_set.insert(argv[i]);
-  }
-
-  noRule_ =
-      std::binary_search(std::cbegin(argv_set), std::cend(argv_set), "-r") or
-      std::binary_search(std::cbegin(argv_set), std::cend(argv_set), "--rule");
-
-  help_ =
-      std::binary_search(std::cbegin(argv_set), std::cend(argv_set), "-h") or
-      std::binary_search(std::cbegin(argv_set), std::cend(argv_set), "--help");
-}
+Options::Options(int argc, char* argv[])
+    : argv_{[&argc, &argv]() {
+        std::set<std::string_view> result;
+        for (int i = 0; i < argc; ++i) {
+          result.insert(argv[i]);
+        }
+        return result;
+      }()},
+      noRule_{
+          std::binary_search(std::cbegin(argv_), std::cend(argv_), "-r") or
+          std::binary_search(std::cbegin(argv_), std::cend(argv_), "--rule")},
+      help_{
+          std::binary_search(std::cbegin(argv_), std::cend(argv_), "-h") or
+          std::binary_search(std::cbegin(argv_), std::cend(argv_), "--help")} {}
 
 void Options::print_help() const {
   std::cout << "Allowed options :\n";

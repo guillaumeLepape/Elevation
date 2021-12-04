@@ -5,9 +5,11 @@
  * \file Options.h
  */
 
+#include <set>
+
 class Options {
  private:
-  void initializeAttribute(int argc, char* argv[]);
+  std::set<std::string_view> argv_;
 
  public:
   Options(int argc, char* argv[]);
