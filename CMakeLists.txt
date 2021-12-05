@@ -21,8 +21,6 @@ add_subdirectory(libraries/json)
 # add cpp-terminal library
 add_subdirectory(libraries/cpp-terminal)
 
-add_subdirectory(dataset)
-
 ##
 ## TESTS
 ## create and configure the unit test target
