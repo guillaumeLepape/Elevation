@@ -24,7 +24,7 @@ nlohmann::json readJsonFile(const std::string& path) {
 
 void readListeDesPrenoms(std::set<std::string>& listFemaleName,
                          std::set<std::string>& listMasculineName) {
-  nlohmann::json jsonObject = readJsonFile("../dataset/liste_des_prenoms.json");
+  nlohmann::json jsonObject = readJsonFile("dataset/liste_des_prenoms.json");
 
   for (auto i = std::cbegin(jsonObject); i != std::cend(jsonObject); i++) {
     std::string name = (std::string)(*i)["fields"]["prenoms"];
@@ -41,7 +41,7 @@ void writeListName(const std::set<std::string>& listName,
                    const std::string& nameFile) {
   nlohmann::json jsonObject(listName);
 
-  std::ofstream jsonFile("../dataset/" + nameFile + ".json",
+  std::ofstream jsonFile("dataset/" + nameFile + ".json",
                          std::ofstream::binary);
 
   jsonFile << jsonObject;
