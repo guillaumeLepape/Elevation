@@ -65,12 +65,3 @@ Open the documentation with
 ```
 firefox html/index.html
 ```
-
-## Graph dependencies
-
-Generate graph dependencies with 
-```
-cmake src --graphviz=doc/dependenciesGraph/graph --build build/
-```
-
-Graphs can be find in `doc/dependenciesGraph`

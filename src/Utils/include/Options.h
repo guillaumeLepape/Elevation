@@ -6,6 +6,7 @@
  */
 
 #include <set>
+#include <string_view>
 
 class Options {
  private:
