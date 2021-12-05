@@ -1,4 +1,4 @@
-project(test_elevation)
+project(test1)
 
 add_executable(
     ${PROJECT_NAME}

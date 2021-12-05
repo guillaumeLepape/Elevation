@@ -34,7 +34,7 @@ if(BUILD_TESTING AND Elevation_BuildTests)
     #add google test library
     add_subdirectory(libraries/googletest)
     enable_testing()
-    add_subdirectory(test_elevation)
+    add_subdirectory(test)
 endif()
 
 add_custom_target(graphviz ALL

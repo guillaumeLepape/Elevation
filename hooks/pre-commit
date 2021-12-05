@@ -9,6 +9,6 @@ find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format -style=google -i {
 cd ..
 
 echo "Formatting test folder"
-cd test_elevation
+cd test
 find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format -style=google -i {} \;
 cd ..
