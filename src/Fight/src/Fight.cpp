@@ -162,7 +162,7 @@ int Fight::methodNumberOfDeadPlug() const {
 Plug& Fight::choosePlug() {
   std::vector<ChoosePlug> choosePlugActions;
 
-  for (auto p = plugs_.begin(); p != plugs_.end(); p++) {
+  for (auto p = std::begin(plugs_); p != std::end(plugs_); p++) {
     // user cannot attack dead plugs
     if (!((*p)->healthBar().dead())) {
       ChoosePlug choosePlug(**p,

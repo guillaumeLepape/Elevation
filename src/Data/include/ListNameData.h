@@ -6,21 +6,11 @@
  */
 
 #include <set>
+#include <string>
 
-#include "Data.h"
-
-class ListNameData : public Data {
- private:
-  std::set<std::string> listName_;
-
- public:
-  ListNameData(const std::string& folderFromRoot, const std::string& nameFile);
-
-  void readData() override;
-
-  const std::set<std::string>& listName() const { return listName_; }
-
-  ~ListNameData() override = default;
-};
+namespace data {
+std::set<std::string> read_list_name(const std::string& nameFolder,
+                                     const std::string& nameFile);
+}
 
 #endif

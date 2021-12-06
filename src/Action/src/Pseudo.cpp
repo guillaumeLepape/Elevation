@@ -15,11 +15,8 @@ Pseudo::Pseudo(Player& player, const Statement& statement, const Result& result)
     : statement_(statement), result_(result), player_(player) {}
 
 void Pseudo::triggerAction() {
-  ListNameData feminineNameData("dataset", "prenoms_feminins");
-  std::set<std::string> feminineName = feminineNameData.listName();
-
-  ListNameData masculineNameData("dataset", "prenoms_masculins");
-  std::set<std::string> masculineName = masculineNameData.listName();
+  auto feminineName = data::read_list_name("dataset", "prenoms_feminins");
+  auto masculineName = data::read_list_name("dataset", "prenoms_masculins");
 
   std::string pseudo;
   bool out = false;
@@ -33,11 +30,11 @@ void Pseudo::triggerAction() {
     formatString(pseudo);
 
     // Check if chosen pseudo is in the feminine name dataset
-    if (feminineName.find(pseudo) != feminineName.end()) {
+    if (feminineName.find(pseudo) != std::cend(feminineName)) {
       out = true;
     }
     // Check if chosen pseudo is in the masculine name dataset
-    else if (masculineName.find(pseudo) != masculineName.end()) {
+    else if (masculineName.find(pseudo) != std::cend(masculineName)) {
       Message::write(data::Introduction::message2, player_.pseudo(), "");
     }
     // If pseudo doesn't appear in the two previous dataset,
