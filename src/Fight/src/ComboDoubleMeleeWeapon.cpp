@@ -24,7 +24,7 @@ void ComboDoubleMeleeWeapon::triggerCombo(
 
     Nothing nothing(data::Combo::statementDontCombo);
 
-    int result = SelectionWrapper::select(title_, useWeaponCombo, nothing);
+    int result = selection::select(title_, useWeaponCombo, nothing);
     if (result == 0) {
       weapon::remove(player_.weapons(), useWeapon[resultChooseWeapon].name());
     }

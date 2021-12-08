@@ -4,7 +4,6 @@ add_library(
     ${PROJECT_NAME} 
     src/Question.cpp
     src/Selection.cpp
-    src/SelectionWrapper.cpp
 )
 
 target_include_directories(

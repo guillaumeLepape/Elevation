@@ -32,6 +32,5 @@ auto main(int argc, char* argv[]) -> int {
   // Quit the game
   Quit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
-  SelectionWrapper::select(data::Menu::titleStartGameMenu, startGame, loadGame,
-                           quit);
+  selection::select(data::Menu::titleStartGameMenu, startGame, loadGame, quit);
 }

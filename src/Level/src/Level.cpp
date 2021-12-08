@@ -25,5 +25,5 @@ void Level::endOfLevel() const {
   Nothing continueAction(data::Menu::statementContinue);
   SaveAndQuit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
-  SelectionWrapper::select(data::Menu::titleContinueMenu, continueAction, quit);
+  selection::select(data::Menu::titleContinueMenu, continueAction, quit);
 }

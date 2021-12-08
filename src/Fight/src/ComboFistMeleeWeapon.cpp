@@ -31,6 +31,6 @@ void ComboFistMeleeWeapon::triggerCombo(
       }
     }
 
-    SelectionWrapper::select(title_, useWeaponFistCombo);
+    selection::select(title_, useWeaponFistCombo);
   }
 }

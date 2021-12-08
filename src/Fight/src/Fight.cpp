@@ -196,7 +196,7 @@ const ChooseWeaponResult Fight::chooseWeapon(Plug& choosenPlug) {
                  });
 
   auto resultUseWeapon =
-      SelectionWrapper::select(data::Action::titleChooseWeapon, useWeapons);
+      selection::select(data::Action::titleChooseWeapon, useWeapons);
 
   return {resultUseWeapon, useWeapons};
 }

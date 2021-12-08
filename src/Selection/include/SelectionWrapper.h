@@ -7,21 +7,19 @@
 #include "NameType.h"
 #include "Selection.h"
 
-namespace SelectionWrapper {
+namespace selection {
 template <typename T>
 concept bool Action = requires(T& action) {
   action.statement();
   action.triggerAction();
 };
 
-void nothing();
-
 template <Action... Args>
 std::size_t select(const Title& title, Args&... actions) {
   auto result = Selection::select(title, {actions.statement()...});
 
   std::size_t index = 0;
-  ((index++ == result ? actions.triggerAction() : nothing()), ...);
+  ((index++ == result ? actions.triggerAction() : []() {}()), ...);
   return result;
 }
 
@@ -35,6 +33,6 @@ std::size_t select(const Title& title, std::vector<Arg>& actions) {
   actions[result].triggerAction();
   return result;
 }
-}  // namespace SelectionWrapper
+}  // namespace selection
 
 #endif

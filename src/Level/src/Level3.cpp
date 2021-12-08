@@ -27,16 +27,16 @@ void Level3::startLevel() {
 
   Message::write(data::Level3::message1, player_.pseudo(), plug.name());
 
-  SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
+  selection::select(data::Action::titleChooseWeapon, useFist);
 
   Message::write(data::Level3::message2(plug.name()), player_.pseudo(),
                  plug.name());
 
-  SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
+  selection::select(data::Action::titleChooseWeapon, useFist);
 
   Message::write(data::Level3::message3, player_.pseudo(), plug.name());
 
-  SelectionWrapper::select(data::Action::titleChooseWeapon, useFist);
+  selection::select(data::Action::titleChooseWeapon, useFist);
 
   Message::write(data::Level3::message4, player_.pseudo(), plug.name());
 
@@ -45,7 +45,7 @@ void Level3::startLevel() {
 
   UseWeapon useKnife(player_, plug, data::Weapon::nameKnife);
 
-  SelectionWrapper::select(data::Action::titleChooseWeapon, useFist, useKnife);
+  selection::select(data::Action::titleChooseWeapon, useFist, useKnife);
 
   Message::write(data::Level3::message5, player_.pseudo(), plug.name());
 
