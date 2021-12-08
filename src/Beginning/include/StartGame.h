@@ -9,7 +9,7 @@
 #include "NameType.h"
 #include "Options.h"
 #include "Player.h"
-#include "ResultsData.h"
+#include "Results.h"
 
 class StartGame {
  private:
@@ -17,13 +17,12 @@ class StartGame {
   const Options& options_;
 
   std::size_t indexResultData_;
-  ResultsData resultsData_;
-  Player& player_;
+  Player player_;
 
  public:
   StartGame(const Statement& statement, const Options& options);
   StartGame(const Statement& statement, const Options& options,
-            int indexResultData, ResultsData&& resultsData);
+            int indexResultData, Player&& player);
 
   StartGame(const StartGame& startGame) = delete;
 

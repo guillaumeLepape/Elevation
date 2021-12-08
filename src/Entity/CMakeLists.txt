@@ -5,7 +5,7 @@ add_library(
     src/Id.cpp
     src/Player.cpp 
     src/Plug.cpp 
-    src/ResultsData.cpp
+    src/Results.cpp
 )
 
 target_include_directories(

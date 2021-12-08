@@ -10,14 +10,15 @@
 #include "SelectionWrapper.h"
 #include "WriteResults.h"
 
-Level::Level(Player& player, ResultsData& resultsData, const Options& options)
-    : player_(player), resultsData_(resultsData), options_(options) {}
+Level::Level(Player& player, const Options& options)
+    : player_(player), options_(options) {}
 
 void Level::endOfLevel() const {
   player_.nextLevel();
 
-  WriteResults writeResults(player_, resultsData_,
-                            data::Menu::statementSaveAndQuit,
+  auto results = data::read_results("results", "results");
+
+  WriteResults writeResults(player_, results, data::Menu::statementSaveAndQuit,
                             data::Menu::resultSaveAndQuit);
   writeResults.triggerAction();
 

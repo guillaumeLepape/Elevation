@@ -9,9 +9,8 @@
 
 class Level3 : public Level {
  public:
-  explicit Level3(Player& player, ResultsData& resultsData,
-                  const Options& options)
-      : Level(player, resultsData, options) {}
+  explicit Level3(Player& player, const Options& options)
+      : Level(player, options) {}
   void startLevel() override;
   ~Level3() override = default;
 };

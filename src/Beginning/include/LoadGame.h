@@ -9,13 +9,11 @@
 
 #include "NameType.h"
 #include "Options.h"
-#include "ResultsData.h"
+#include "Results.h"
 
 class LoadGame {
  private:
   const Statement& statement_;
-
-  ResultsData resultsData_;
   const Options& options_;
 
  public:

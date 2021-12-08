@@ -7,15 +7,14 @@
 #include <iostream>
 
 #include "Player.h"
-#include "ResultsData.h"
 
-WriteResults::WriteResults(Player& player, ResultsData& resultsData,
+WriteResults::WriteResults(Player& player, data::Results& results,
                            const Statement&, const Result& result)
-    : result_(result), player_(player), resultsData_(resultsData) {}
+    : result_(result), player_(player), results_(results) {}
 
 void WriteResults::triggerAction() {
-  resultsData_.addResult(std::move(player_));
-  resultsData_.writeData();
+  data::add(results_, std::move(player_));
+  data::write(results_, "results", "results");
 
   Action::writeResult(result_);
   std::cout << "\n";

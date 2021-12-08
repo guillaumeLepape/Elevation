@@ -7,19 +7,18 @@
 
 #include "ActionWriter.h"
 #include "NameType.h"
-
-class Player;
-class ResultsData;
+#include "Player.h"
+#include "Results.h"
 
 class WriteResults {
  private:
   Result result_;
 
   Player& player_;
-  ResultsData& resultsData_;
+  data::Results& results_;
 
  public:
-  WriteResults(Player& player, ResultsData& resultsData,
+  WriteResults(Player& player, data::Results& results,
                const Statement& statement, const Result& result);
 
   void triggerAction();

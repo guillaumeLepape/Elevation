@@ -6,13 +6,11 @@
 
 #include <fstream>
 
-Data::Data(const std::string& folderFromRoot, const std::string& fileName) {
-  openFile(folderFromRoot, fileName);
-}
-
-void Data::openFile(const std::string& folderFromRoot,
-                    const std::string& fileName) {
-  std::string path = folderFromRoot + "/" + fileName + ".json";
+namespace data {
+nlohmann::json read_json_file(std::string&& folderFromRoot,
+                              std::string&& fileName) {
+  std::string path = std::forward<decltype(folderFromRoot)>(folderFromRoot) +
+                     "/" + std::forward<decltype(fileName)>(fileName) + ".json";
 
   // open json file
   std::ifstream messageFile(path, std::ifstream::binary);
@@ -21,7 +19,11 @@ void Data::openFile(const std::string& folderFromRoot,
   assert(messageFile.is_open());
 
   // read jsonfile
-  messageFile >> jsonObject_;
+  nlohmann::json jsonObject;
+  messageFile >> jsonObject;
 
   messageFile.close();
+
+  return jsonObject;
 }
+}  // namespace data

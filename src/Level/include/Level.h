@@ -7,19 +7,17 @@
 
 #include "Options.h"
 #include "Player.h"
-#include "ResultsData.h"
+#include "Results.h"
 
 class Level {
  protected:
   Player& player_;
-  ResultsData& resultsData_;
   const Options& options_;
 
   void endOfLevel() const;
 
  public:
-  explicit Level(Player& player, ResultsData& resultsData,
-                 const Options& options);
+  explicit Level(Player& player, const Options& options);
   virtual void startLevel() = 0;
   virtual ~Level() = default;
 };

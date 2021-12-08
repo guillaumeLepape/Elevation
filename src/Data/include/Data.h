@@ -7,33 +7,9 @@
 
 #include <nlohmann/json.hpp>
 
-/*! \class Data
- * \brief Abstract class for data
- *
- * Abstract class containing the json data for various type of data (herited
- * class) and reader of json file
- *
- */
-
-class Data {
- private:
-  void openFile(const std::string& folderFromRoot, const std::string& fileName);
-
- protected:
-  nlohmann::json jsonObject_;
-
-  virtual void readData() = 0;
-
- public:
-  Data(const std::string& folderFromRoot, const std::string& fileName);
-
-  Data(const Data&) = delete;
-  Data(Data&&) = default;
-
-  Data& operator=(const Data&) = delete;
-  Data& operator=(Data&&) = default;
-
-  virtual ~Data() = default;
-};
+namespace data {
+nlohmann::json read_json_file(std::string&& folderFromRoot,
+                              std::string&& fileName);
+}
 
 #endif

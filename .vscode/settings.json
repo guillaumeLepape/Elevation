@@ -83,7 +83,9 @@
         "compare": "cpp",
         "concepts": "cpp",
         "ranges": "cpp",
-        "stop_token": "cpp"
+        "stop_token": "cpp",
+        "numbers": "cpp",
+        "filesystem": "cpp"
     },
     "files.watcherExclude": {
         "**/.git/objects/**": true,

@@ -4,23 +4,17 @@
 
 #include "ListNameData.h"
 
-#include <cassert>
 #include <fstream>
 #include <nlohmann/json.hpp>
 
+#include "Data.h"
+
 namespace data {
-std::set<std::string> read_list_name(const std::string& nameFolder,
-                                     const std::string& nameFile) {
-  std::string path = nameFolder + "/" + nameFile + ".json";
-
-  std::ifstream messageFile(path, std::ifstream::binary);
-
-  assert(messageFile.is_open());
-
-  nlohmann::json jsonObject;
-  messageFile >> jsonObject;
-
-  messageFile.close();
+std::set<std::string> read_list_name(std::string&& nameFolder,
+                                     std::string&& nameFile) {
+  auto jsonObject =
+      read_json_file(std::forward<decltype(nameFolder)>(nameFolder),
+                     std::forward<decltype(nameFile)>(nameFile));
 
   std::set<std::string> result;
 

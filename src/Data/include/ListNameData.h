@@ -9,8 +9,8 @@
 #include <string>
 
 namespace data {
-std::set<std::string> read_list_name(const std::string& nameFolder,
-                                     const std::string& nameFile);
+std::set<std::string> read_list_name(std::string&& nameFolder,
+                                     std::string&& nameFile);
 }
 
 #endif

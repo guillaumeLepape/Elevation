@@ -9,9 +9,8 @@
 
 class Introduction : public Level {
  public:
-  explicit Introduction(Player& player, ResultsData& resultsData,
-                        const Options& options)
-      : Level(player, resultsData, options) {}
+  explicit Introduction(Player& player, const Options& options)
+      : Level(player, options) {}
 
   void startLevel() override;
   ~Introduction() override = default;
