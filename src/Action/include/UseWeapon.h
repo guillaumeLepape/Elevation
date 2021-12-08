@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Plug.h"
 
+namespace action {
 class UseWeapon {
   Player& player_;
   Plug& plug_;
@@ -21,7 +22,7 @@ class UseWeapon {
   UseWeapon(Player& player, Plug& plug, const std::string& nameWeapon)
       : player_(player), plug_(plug), nameWeapon_(nameWeapon) {}
 
-  void triggerAction() {
+  void trigger() {
     auto weapon =
         std::find_if(std::cbegin(player_.weapons()),
                      std::cend(player_.weapons()), [this](const auto& weapon) {
@@ -33,10 +34,10 @@ class UseWeapon {
 
       auto result = Result(
           data::Weapon::resultUseWeapon(plug_.name(), weapon->nb_damage));
-      Action::writeResult(result);
+      action::writeResult(result);
 
-      Dead dead(plug_, data::Action::resultDead(plug_.name()));
-      dead.triggerAction();
+      action::Dead dead(plug_, data::Action::resultDead(plug_.name()));
+      dead.trigger();
 
       // if weapon is fireArm and has no ammo, delete it
       if (weapon->type == weapon::Type::fireArm and weapon->durability <= 0) {
@@ -75,5 +76,6 @@ class UseWeapon {
     }
   }
 };
+}  // namespace action
 
 #endif

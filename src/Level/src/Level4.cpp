@@ -23,12 +23,12 @@ void Level4::startLevel() {
   Message::write(message, player_.pseudo(), plug.name());
 
   // first question
-  Answer answer0_0(data::Question::answer1Question1,
-                   data::Question::correctOrNotAnswer1Question1);
-  Answer answer1_0(data::Question::answer2Question1,
-                   data::Question::correctOrNotAnswer2Question1);
-  Answer answer2_0(data::Question::answer3Question1,
-                   data::Question::correctOrNotAnswer3Question1);
+  action::Answer answer0_0(data::Question::answer1Question1,
+                           data::Question::correctOrNotAnswer1Question1);
+  action::Answer answer1_0(data::Question::answer2Question1,
+                           data::Question::correctOrNotAnswer2Question1);
+  action::Answer answer2_0(data::Question::answer3Question1,
+                           data::Question::correctOrNotAnswer3Question1);
 
   Message::write(data::Level4::message2, player_.pseudo(), plug.name());
 
@@ -43,12 +43,12 @@ void Level4::startLevel() {
   Message::write(data::Level4::message2, player_.pseudo(), plug.name());
 
   // second question
-  Answer answer0_1(data::Question::answer1Question2,
-                   data::Question::correctOrNotAnswer1Question2);
-  Answer answer1_1(data::Question::answer2Question2,
-                   data::Question::correctOrNotAnswer2Question2);
-  Answer answer2_1(data::Question::answer3Question2,
-                   data::Question::correctOrNotAnswer3Question2);
+  action::Answer answer0_1(data::Question::answer1Question2,
+                           data::Question::correctOrNotAnswer1Question2);
+  action::Answer answer1_1(data::Question::answer2Question2,
+                           data::Question::correctOrNotAnswer2Question2);
+  action::Answer answer2_1(data::Question::answer3Question2,
+                           data::Question::correctOrNotAnswer3Question2);
 
   while (!Question::question(
       data::Question::titleSecondQuestion,
@@ -61,12 +61,12 @@ void Level4::startLevel() {
   Message::write(data::Level4::message2, player_.pseudo(), plug.name());
 
   // third question
-  Answer answer0_2(data::Question::answer1Question3,
-                   data::Question::correctOrNotAnswer1Question3);
-  Answer answer1_2(data::Question::answer2Question3,
-                   data::Question::correctOrNotAnswer2Question3);
-  Answer answer2_2(data::Question::answer3Question3,
-                   data::Question::correctOrNotAnswer3Question3);
+  action::Answer answer0_2(data::Question::answer1Question3,
+                           data::Question::correctOrNotAnswer1Question3);
+  action::Answer answer1_2(data::Question::answer2Question3,
+                           data::Question::correctOrNotAnswer2Question3);
+  action::Answer answer2_2(data::Question::answer3Question3,
+                           data::Question::correctOrNotAnswer3Question3);
 
   while (!Question::question(
       data::Question::titleThirdQuestion,

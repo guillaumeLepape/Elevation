@@ -13,11 +13,11 @@
 TEST(weapon_test, UseWeapon) {
   Player player("Guillaume", 15611653, 0);
 
-  AddWeaponAction addWeaponFist(player, weapon::Fist());
-  addWeaponFist.triggerAction();
+  action::AddWeaponAction addWeaponFist(player, weapon::Fist());
+  addWeaponFist.trigger();
 
-  AddWeaponAction addWeaponAK47(player, weapon::AK47(100));
-  addWeaponAK47.triggerAction();
+  action::AddWeaponAction addWeaponAK47(player, weapon::AK47(100));
+  addWeaponAK47.trigger();
 
   EXPECT_EQ(player.pseudo(), "Guillaume");
   EXPECT_EQ(player.id(), 15611653);
@@ -37,8 +37,8 @@ TEST(weapon_test, UseWeapon) {
 TEST(weapon_test, Fist) {
   Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
 
-  AddWeaponAction addWeaponFist(player, weapon::Fist());
-  addWeaponFist.triggerAction();
+  action::AddWeaponAction addWeaponFist(player, weapon::Fist());
+  addWeaponFist.trigger();
 
   const auto& fist = *(std::cbegin(player.weapons()));
 
@@ -51,8 +51,8 @@ TEST(weapon_test, Fist) {
 TEST(weapon_test, AK47) {
   Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
 
-  AddWeaponAction addWeaponAK47(player, weapon::AK47(40));
-  addWeaponAK47.triggerAction();
+  action::AddWeaponAction addWeaponAK47(player, weapon::AK47(40));
+  addWeaponAK47.trigger();
 
   for (const auto& weapon : player.weapons()) {
     if (weapon.name == data::Weapon::nameAK47) {
@@ -66,8 +66,8 @@ TEST(weapon_test, AK47) {
 
   Plug plug("Jean-Michel", 100);
 
-  UseWeapon useAK47(player, plug, data::Weapon::nameAK47);
-  useAK47.triggerAction();
+  action::UseWeapon useAK47(player, plug, data::Weapon::nameAK47);
+  useAK47.trigger();
 
   for (const auto& weapon : player.weapons()) {
     if (weapon.name == data::Weapon::nameAK47) {

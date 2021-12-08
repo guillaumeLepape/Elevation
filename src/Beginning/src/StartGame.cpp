@@ -21,7 +21,7 @@ StartGame::StartGame(const Statement& statement, const Options& options,
       indexResultData_(indexResultData),
       player_(std::forward<decltype(player)>(player)) {}
 
-void StartGame::triggerAction() {
+void StartGame::trigger() {
   for (int i = player_.nbLevelSuceeded(); i < NB_LEVEL; i++) {
     std::unique_ptr<Level> level = LevelFactory::newLevel(player_, options_, i);
     level->startLevel();

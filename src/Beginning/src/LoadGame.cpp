@@ -15,7 +15,7 @@
 LoadGame::LoadGame(const Statement& statement, const Options& options)
     : statement_(statement), options_(options) {}
 
-void LoadGame::triggerAction() {
+void LoadGame::trigger() {
   auto results = data::read_results("results", "results");
 
   if (results.data.size() == 0) {
@@ -40,6 +40,6 @@ void LoadGame::triggerAction() {
     StartGame startGame(Statement(statements[result]), options_, result,
                         std::move(results.data[result]));
 
-    startGame.triggerAction();
+    startGame.trigger();
   }
 }

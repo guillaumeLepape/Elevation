@@ -7,6 +7,7 @@
 
 #include "NameType.h"
 
+namespace action {
 class Answer {
  private:
   const Statement& statement_;
@@ -20,5 +21,6 @@ class Answer {
 
   const bool& correctOrNot() const { return correctOrNot_; }
 };
+}  // namespace action
 
 #endif

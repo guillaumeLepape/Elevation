@@ -8,7 +8,7 @@
 
 #include "Pause.h"
 
-namespace Action {
+namespace action {
 void writeStatement(const Statement& statement) {
   std::cout << "\n " << Term::color(Term::fg::black)
             << Term::color(Term::bg::yellow) << Term::color(Term::style::bold)
@@ -22,4 +22,4 @@ void writeResult(const Result& result) {
             << Term::color(Term::style::bold) << result.get()
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
 }
-}  // namespace Action
+}  // namespace action

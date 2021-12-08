@@ -6,10 +6,9 @@
  */
 
 #include "NameType.h"
+#include "Plug.h"
 
-// forward declaration of Plug class
-class Plug;
-
+namespace action {
 class Dead {
  private:
   Result result_;
@@ -18,7 +17,8 @@ class Dead {
  public:
   Dead(const Plug& plug, const Result& result);
 
-  void triggerAction();
+  void trigger();
 };
+}  // namespace action
 
 #endif

@@ -9,9 +9,9 @@
 
 #include "NameType.h"
 
-namespace Action {
+namespace action {
 void writeStatement(const Statement& statement);
 void writeResult(const Result& result);
-}  // namespace Action
+}  // namespace action
 
 #endif

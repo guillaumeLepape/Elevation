@@ -7,6 +7,7 @@
 
 #include "NameType.h"
 
+namespace action {
 class Nothing {
  private:
   Statement statement_;
@@ -14,9 +15,10 @@ class Nothing {
  public:
   Nothing(const Statement& statement) : statement_(statement) {}
 
-  void triggerAction() {}
+  void trigger() {}
 
   const std::string& statement() const { return statement_.get(); }
 };
+}  // namespace action
 
 #endif

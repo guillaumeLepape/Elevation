@@ -18,12 +18,13 @@ void Level::endOfLevel() const {
 
   auto results = data::read_results("results", "results");
 
-  WriteResults writeResults(player_, results, data::Menu::statementSaveAndQuit,
-                            data::Menu::resultSaveAndQuit);
-  writeResults.triggerAction();
+  action::WriteResults writeResults(player_, results,
+                                    data::Menu::statementSaveAndQuit,
+                                    data::Menu::resultSaveAndQuit);
+  writeResults.trigger();
 
-  Nothing continueAction(data::Menu::statementContinue);
-  SaveAndQuit quit(data::Menu::statementQuit, data::Menu::resultQuit);
+  action::Nothing continueAction(data::Menu::statementContinue);
+  action::SaveAndQuit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
   selection::select(data::Menu::titleContinueMenu, continueAction, quit);
 }

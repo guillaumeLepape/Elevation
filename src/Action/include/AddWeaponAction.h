@@ -8,11 +8,11 @@
 #include <memory>
 
 #include "NameType.h"
+#include "Player.h"
 #include "Plug.h"
 #include "Weapon.h"
 
-class Player;
-
+namespace action {
 class AddWeaponAction {
  private:
   Result result_;
@@ -22,7 +22,8 @@ class AddWeaponAction {
  public:
   AddWeaponAction(Player& player, weapon::Weapon&& weapon);
 
-  void triggerAction();
+  void trigger();
 };
+}  // namespace action
 
 #endif

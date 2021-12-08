@@ -7,6 +7,7 @@
 
 #include "NameType.h"
 
+namespace action {
 class ChoosePlug {
  private:
   Statement statement_;
@@ -22,5 +23,6 @@ class ChoosePlug {
 
   Plug& plug() const { return plug_; }
 };
+}  // namespace action
 
 #endif

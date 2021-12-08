@@ -7,6 +7,7 @@
 
 #include "NameType.h"
 
+namespace action {
 class IncreaseMaxLifePoints {
  private:
   Result result_;
@@ -21,10 +22,11 @@ class IncreaseMaxLifePoints {
         player_(player),
         maxLifePointsIncreasing_(maxLifePointsIncreasing) {}
 
-  void triggerAction() {
+  void trigger() {
     player_.healthBar().increaseMaxLifePoints(maxLifePointsIncreasing_);
-    Action::writeResult(result_);
+    action::writeResult(result_);
   }
 };
+}  // namespace action
 
 #endif

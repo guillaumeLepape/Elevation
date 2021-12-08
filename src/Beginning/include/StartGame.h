@@ -28,7 +28,7 @@ class StartGame {
 
   const std::string& statement() const { return statement_.get(); }
 
-  void triggerAction();
+  void trigger();
 };
 
 #endif

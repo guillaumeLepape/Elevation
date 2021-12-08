@@ -25,40 +25,40 @@ void Level9::startLevel() {
 
   Plug plug("Psychopathe", 250, weapon::Knife());
 
-  PlugAttack plugAttack0(
+  action::PlugAttack plugAttack0(
       player_, plug,
       data::Action::resultPlugAttack(plug.name(), plug.weapon().nb_damage));
-  plugAttack0.triggerAction();
-  plugAttack0.triggerAction();
-  plugAttack0.triggerAction();
+  plugAttack0.trigger();
+  plugAttack0.trigger();
+  plugAttack0.trigger();
 
   Message::write(data::Level9::message0, player_.pseudo(), plug.name());
 
-  UseWeapon useWeapon(player_, plug, data::Weapon::nameFist);
-  useWeapon.triggerAction();
+  action::UseWeapon useWeapon(player_, plug, data::Weapon::nameFist);
+  useWeapon.trigger();
 
-  RegenerateAllLife regenerateAllLife(player_, Result(""));
-  regenerateAllLife.triggerAction();
+  action::RegenerateAllLife regenerateAllLife(player_, Result(""));
+  regenerateAllLife.trigger();
 
   Message::write(data::Level9::message1, player_.pseudo(), plug.name());
 
-  regenerateAllLife.triggerAction();
+  regenerateAllLife.trigger();
 
   plug.changeWeapon(weapon::Chopper());
 
-  PlugAttack plugAttack1(player_, plug, Result(""));
-  plugAttack1.triggerAction();
-  regenerateAllLife.triggerAction();
+  action::PlugAttack plugAttack1(player_, plug, Result(""));
+  plugAttack1.trigger();
+  regenerateAllLife.trigger();
 
   Message::write(data::Level9::message2, player_.pseudo(), plug.name());
 
-  plugAttack1.triggerAction();
-  regenerateAllLife.triggerAction();
+  plugAttack1.trigger();
+  regenerateAllLife.trigger();
 
   Message::write(data::Level9::message3, player_.pseudo(), plug.name());
 
-  plugAttack1.triggerAction();
-  regenerateAllLife.triggerAction();
+  plugAttack1.trigger();
+  regenerateAllLife.trigger();
 
   Message::write(data::Level9::message4, player_.pseudo(), plug.name());
 
@@ -77,21 +77,21 @@ void Level9::startLevel() {
               options_.noRule_);
   fight.startFight();
 
-  regenerateAllLife.triggerAction();
+  regenerateAllLife.trigger();
 
   Message::write(data::Level9::message5, player_.pseudo(), plug.name());
 
-  IncreaseMaxLifePoints increaseMaxLifePoints(
+  action::IncreaseMaxLifePoints increaseMaxLifePoints(
       player_, 1100, data::Action::resultsIncreaseMaxLifePoints(1100));
-  increaseMaxLifePoints.triggerAction();
+  increaseMaxLifePoints.trigger();
 
   Message::write(data::Level9::message6, player_.pseudo(), plug.name());
 
-  increaseMaxLifePoints.triggerAction();
+  increaseMaxLifePoints.trigger();
 
   Message::write(data::Level9::message7, player_.pseudo(), plug.name());
 
-  increaseMaxLifePoints.triggerAction();
+  increaseMaxLifePoints.trigger();
 
   Level9::endOfLevel();
   std::cout << "\n";

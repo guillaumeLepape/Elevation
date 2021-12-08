@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Plug.h"
 
+namespace action {
 Negociate::Negociate(Player& player, const Plug& plug, const int& plugPrice,
                      const Statement& statement, const Result& result)
     : statement_(statement),
@@ -20,13 +21,13 @@ Negociate::Negociate(Player& player, const Plug& plug, const int& plugPrice,
       plug_(plug),
       plugPrice_(plugPrice) {}
 
-void Negociate::triggerAction() {
+void Negociate::trigger() {
   bool out = false;
 
   Message::write(data::Level2::message1, player_.pseudo(), plug_.name());
 
   while (!out) {
-    Action::writeStatement(statement_);
+    action::writeStatement(statement_);
 
     int price;
     std::cin >> price;
@@ -43,7 +44,7 @@ void Negociate::triggerAction() {
 
         Pause::pause();
 
-        Action::writeStatement(statement_);
+        action::writeStatement(statement_);
         std::cin >> price;
       }
       if (!std::cin.fail()) {
@@ -59,7 +60,7 @@ void Negociate::triggerAction() {
 
       player_.increaseMoney(-price);
 
-      Action::writeResult(data::Action::resultNegociate(price));
+      action::writeResult(data::Action::resultNegociate(price));
     } else {
       Message::write(data::Level2::message3, player_.pseudo(), plug_.name());
     }
@@ -67,3 +68,4 @@ void Negociate::triggerAction() {
 
   Message::write(data::Level2::message5, player_.pseudo(), plug_.name());
 }
+}  // namespace action

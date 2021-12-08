@@ -11,7 +11,7 @@ namespace selection {
 template <typename T>
 concept bool Action = requires(T& action) {
   action.statement();
-  action.triggerAction();
+  action.trigger();
 };
 
 template <Action... Args>
@@ -19,7 +19,7 @@ std::size_t select(const Title& title, Args&... actions) {
   auto result = Selection::select(title, {actions.statement()...});
 
   std::size_t index = 0;
-  ((index++ == result ? actions.triggerAction() : []() {}()), ...);
+  ((index++ == result ? actions.trigger() : []() {}()), ...);
   return result;
 }
 
@@ -30,7 +30,7 @@ std::size_t select(const Title& title, std::vector<Arg>& actions) {
                  std::back_inserter(statements),
                  [](const auto& action) { return action.statement(); });
   auto result = Selection::select(title, statements);
-  actions[result].triggerAction();
+  actions[result].trigger();
   return result;
 }
 }  // namespace selection

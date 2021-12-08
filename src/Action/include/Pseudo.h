@@ -7,9 +7,9 @@
 
 #include "ActionWriter.h"
 #include "NameType.h"
+#include "Player.h"
 
-class Player;
-
+namespace action {
 class Pseudo {
  private:
   Statement statement_;
@@ -23,7 +23,8 @@ class Pseudo {
   explicit Pseudo(Player& player, const Statement& statement,
                   const Result& result);
 
-  void triggerAction();
+  void trigger();
 };
+}  // namespace action
 
 #endif

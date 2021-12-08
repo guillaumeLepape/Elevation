@@ -7,6 +7,7 @@
 
 #include "NameType.h"
 
+namespace action {
 class Regeneration {
  private:
   Result result_;
@@ -17,7 +18,7 @@ class Regeneration {
   Regeneration(Player& player, const Result& result)
       : result_(result), player_(player) {}
 
-  void triggerAction() {
+  void trigger() {
     int nbLifePointsRegeneration = 0;
 
     // if player is full life or dead, do nothing, else regenerate him
@@ -46,10 +47,11 @@ class Regeneration {
       int nbLifePoints_previous = player_.healthBar().nbLifePoints();
 
       player_.healthBar().increaseLifePoints(nbLifePointsRegeneration);
-      Action::writeResult(data::Action::resultRegeneration(
+      action::writeResult(data::Action::resultRegeneration(
           player_.healthBar().nbLifePoints() - nbLifePoints_previous));
     }
   }
 };
+}  // namespace action
 
 #endif

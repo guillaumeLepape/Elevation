@@ -7,11 +7,13 @@
 #include "ActionWriter.h"
 #include "Plug.h"
 
+namespace action {
 Dead::Dead(const Plug& plug, const Result& result)
     : result_(result), plug_(plug) {}
 
-void Dead::triggerAction() {
+void Dead::trigger() {
   if (plug_.healthBar().dead()) {
-    Action::writeResult(result_);
+    action::writeResult(result_);
   }
 }
+}  // namespace action

@@ -7,10 +7,10 @@
 
 #include "ActionWriter.h"
 #include "NameType.h"
+#include "Player.h"
+#include "Plug.h"
 
-class Player;
-class Plug;
-
+namespace action {
 class Negociate {
  private:
   Statement statement_;
@@ -24,7 +24,8 @@ class Negociate {
   explicit Negociate(Player& player, const Plug& plug, const int& plugPrice,
                      const Statement& statement, const Result& result);
 
-  void triggerAction();
+  void trigger();
 };
+}  // namespace action
 
 #endif

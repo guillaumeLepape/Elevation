@@ -10,6 +10,7 @@
 #include "ActionWriter.h"
 #include "NameType.h"
 
+namespace action {
 class GameOver {
  private:
   Result result_;
@@ -17,11 +18,12 @@ class GameOver {
  public:
   explicit GameOver(const Result& result) : result_(result) {}
 
-  void triggerAction() {
-    Action::writeResult(result_);
+  void trigger() {
+    action::writeResult(result_);
     std::cout << "\n";
     exit(0);
   }
 };
+}  // namespace action
 
 #endif

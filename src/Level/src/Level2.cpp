@@ -22,9 +22,10 @@ void Level2::startLevel() {
   auto message = data::Level2::message0(plug.name(), price);
   Message::write(message, player_.pseudo(), plug.name());
 
-  Negociate negociate(player_, plug, price, data::Action::statementNegociate,
-                      data::Action::resultNegociate(0));
-  negociate.triggerAction();
+  action::Negociate negociate(player_, plug, price,
+                              data::Action::statementNegociate,
+                              data::Action::resultNegociate(0));
+  negociate.trigger();
 
   Level::endOfLevel();
 

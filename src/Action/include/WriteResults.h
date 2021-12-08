@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Results.h"
 
+namespace action {
 class WriteResults {
  private:
   Result result_;
@@ -21,7 +22,8 @@ class WriteResults {
   WriteResults(Player& player, data::Results& results,
                const Statement& statement, const Result& result);
 
-  void triggerAction();
+  void trigger();
 };
+}  // namespace action
 
 #endif

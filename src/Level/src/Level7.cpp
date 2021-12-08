@@ -40,8 +40,8 @@ void Level7::startLevel() {
 
   Message::write(data::Level7::message1, player_.pseudo(), "");
 
-  RegenerateAllLife regenerateAllLife(player_, Result(""));
-  regenerateAllLife.triggerAction();
+  action::RegenerateAllLife regenerateAllLife(player_, Result(""));
+  regenerateAllLife.trigger();
 
   Level::endOfLevel();
   std::cout << "\n";

@@ -8,6 +8,8 @@
 #include <iostream>
 
 #include "NameType.h"
+
+namespace action {
 class RegenerateAllLife {
  private:
   Result result_;
@@ -18,15 +20,16 @@ class RegenerateAllLife {
   RegenerateAllLife(Player& player, const Result& result)
       : result_(result), player_(player) {}
 
-  void triggerAction() {
+  void trigger() {
     // if player is full life or dead, do nothing, else regenerate him
     if (!(player_.healthBar().fullLife()) && !(player_.healthBar().dead())) {
-      Action::writeResult(data::Action::resultRegeneration(
+      action::writeResult(data::Action::resultRegeneration(
           player_.healthBar().missingLifePoints()));
       player_.healthBar().increaseLifePoints(
           player_.healthBar().missingLifePoints());
     }
   }
 };
+}  // namespace action
 
 #endif

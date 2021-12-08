@@ -21,8 +21,8 @@ void Level8::startLevel() {
   Message::write(data::Level8::message0(plug.name()), player_.pseudo(),
                  plug.name());
 
-  AddWeaponAction addWeaponAction(player_, weapon::Ninemm(3));
-  addWeaponAction.triggerAction();
+  action::AddWeaponAction addWeaponAction(player_, weapon::Ninemm(3));
+  addWeaponAction.trigger();
 
   Message::write(data::Level8::message1, player_.pseudo(), plug.name());
 

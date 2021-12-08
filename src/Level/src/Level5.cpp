@@ -80,8 +80,8 @@ void Level5::startLevel() {
 
   Message::write(data::Level5::message4, player_.pseudo(), "");
 
-  RegenerateAllLife regenerateAllLife(player_, Result(""));
-  regenerateAllLife.triggerAction();
+  action::RegenerateAllLife regenerateAllLife(player_, Result(""));
+  regenerateAllLife.trigger();
 
   Message::write(data::Level5::message5, player_.pseudo(), "");
 
@@ -105,7 +105,7 @@ void Level5::startLevel() {
 
   Message::write(data::Level5::message7, player_.pseudo(), "");
 
-  regenerateAllLife.triggerAction();
+  regenerateAllLife.trigger();
 
   Level::endOfLevel();
 

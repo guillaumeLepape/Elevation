@@ -11,6 +11,7 @@
 #include "UtilsWriter.h"
 #include "WeaponWriter.h"
 
+namespace action {
 class InformationWeaponInventory {
  private:
   Statement statement_;
@@ -24,7 +25,7 @@ class InformationWeaponInventory {
 
   const std::string& statement() const { return statement_.get(); }
 
-  void triggerAction() {
+  void trigger() {
     std::cout << "\n " << Term::color(Term::bg::magenta)
               << Term::color(Term::style::bold)
               << "Informations à propos des armes que vous possèdez"
@@ -40,5 +41,6 @@ class InformationWeaponInventory {
                   });
   }
 };
+}  // namespace action
 
 #endif

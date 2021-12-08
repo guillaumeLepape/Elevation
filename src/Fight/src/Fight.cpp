@@ -45,12 +45,12 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
     if (information_ && !noRule_) {
       bool out = false;
 
-      InformationWeaponInventory informationWeaponInventory(
+      action::InformationWeaponInventory informationWeaponInventory(
           player_->weapons(), data::Information::statementInformationWeapon);
-      InformationCombo informationCombo(
+      action::InformationCombo informationCombo(
           combos_, data::Information::statementInformationCombo);
-      Nothing noInformation(data::Information::statementNoInformation);
-      Nothing noInformationAnymore(
+      action::Nothing noInformation(data::Information::statementNoInformation);
+      action::Nothing noInformationAnymore(
           data::Information::statementNoInformationAnymore);
 
       while (!out) {
@@ -62,10 +62,10 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 
         switch (resultInformation) {
           case 0:
-            informationWeaponInventory.triggerAction();
+            informationWeaponInventory.trigger();
             break;
           case 1:
-            informationCombo.triggerAction();
+            informationCombo.trigger();
             break;
           case 2:
             break;
@@ -101,9 +101,9 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 
     if (numberOfDeadPlug_ != countNumberOfDeadPlug) {
       numberOfDeadPlug_ = countNumberOfDeadPlug;
-      AddWeaponAction addWeaponAction(*player_,
-                                      std::move(choosenPlug.weapon()));
-      addWeaponAction.triggerAction();
+      action::AddWeaponAction addWeaponAction(*player_,
+                                              std::move(choosenPlug.weapon()));
+      addWeaponAction.trigger();
 
       fightWriter.writeRemoveDeadBody();
     }
@@ -112,20 +112,20 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
       if (!((*e)->healthBar().dead())) {
         auto message = data::Action::resultPlugAttack((*e)->name(),
                                                       (*e)->weapon().nb_damage);
-        PlugAttack plugAttack(*player_, **e, message);
-        plugAttack.triggerAction();
+        action::PlugAttack plugAttack(*player_, **e, message);
+        plugAttack.trigger();
       }
 
       if (player_->healthBar().dead()) {
-        GameOver gameOver(data::Menu::resultGameOver);
-        gameOver.triggerAction();
+        action::GameOver gameOver(data::Menu::resultGameOver);
+        gameOver.trigger();
       }
     }
 
     // If player is not dead, regenerate her
     if (regeneration_) {
-      Regeneration regeneration(*player_, Result(""));
-      regeneration.triggerAction();
+      action::Regeneration regeneration(*player_, Result(""));
+      regeneration.trigger();
     }
 
     // Check if the index is valid
@@ -160,14 +160,14 @@ int Fight::methodNumberOfDeadPlug() const {
 }
 
 Plug& Fight::choosePlug() {
-  std::vector<ChoosePlug> choosePlugActions;
+  std::vector<action::ChoosePlug> choosePlugActions;
 
   for (auto p = std::begin(plugs_); p != std::end(plugs_); p++) {
     // user cannot attack dead plugs
     if (!((*p)->healthBar().dead())) {
-      ChoosePlug choosePlug(**p,
-                            data::Action::statementChoosePlug((*p)->name()),
-                            data::Action::resultChoosePlug((*p)->name()));
+      action::ChoosePlug choosePlug(
+          **p, data::Action::statementChoosePlug((*p)->name()),
+          data::Action::resultChoosePlug((*p)->name()));
       choosePlugActions.push_back(choosePlug);
     }
   }
@@ -187,12 +187,12 @@ Plug& Fight::choosePlug() {
 }
 
 const ChooseWeaponResult Fight::chooseWeapon(Plug& choosenPlug) {
-  std::vector<UseWeapon> useWeapons;
+  std::vector<action::UseWeapon> useWeapons;
 
   std::transform(std::cbegin(player_->weapons()), std::cend(player_->weapons()),
                  std::back_inserter(useWeapons),
                  [this, &choosenPlug](const auto& weapon) {
-                   return UseWeapon(*player_, choosenPlug, weapon.name);
+                   return action::UseWeapon(*player_, choosenPlug, weapon.name);
                  });
 
   auto resultUseWeapon =
@@ -202,7 +202,7 @@ const ChooseWeaponResult Fight::chooseWeapon(Plug& choosenPlug) {
 }
 
 void Fight::runCombos(Plug& choosenPlug, const int& resultUseWeapon,
-                      const std::vector<UseWeapon>& useWeapons) {
+                      const std::vector<action::UseWeapon>& useWeapons) {
   for (auto c = std::cbegin(combos_); c != std::cend(combos_); c++) {
     (*c)->triggerCombo(choosenPlug, resultUseWeapon, useWeapons);
   }

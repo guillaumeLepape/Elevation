@@ -10,6 +10,7 @@
 #include "ActionWriter.h"
 #include "NameType.h"
 
+namespace action {
 class SaveAndQuit {
  private:
   Statement statement_;
@@ -21,10 +22,12 @@ class SaveAndQuit {
 
   const std::string& statement() const { return statement_.get(); }
 
-  void triggerAction() {
-    Action::writeResult(result_);
+  void trigger() {
+    action::writeResult(result_);
     std::cout << "\n";
     exit(0);
   }
 };
+}  // namespace action
+
 #endif

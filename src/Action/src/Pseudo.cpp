@@ -11,10 +11,11 @@
 #include "MessageWriter.h"
 #include "Player.h"
 
+namespace action {
 Pseudo::Pseudo(Player& player, const Statement& statement, const Result& result)
     : statement_(statement), result_(result), player_(player) {}
 
-void Pseudo::triggerAction() {
+void Pseudo::trigger() {
   auto feminineName = data::read_list_name("dataset", "prenoms_feminins");
   auto masculineName = data::read_list_name("dataset", "prenoms_masculins");
 
@@ -24,7 +25,7 @@ void Pseudo::triggerAction() {
   while (!out) {
     // Inform the user that he have to enter an information (his pseudo)
     Message::write(data::Introduction::message1, player_.pseudo(), "");
-    Action::writeStatement(statement_);
+    action::writeStatement(statement_);
 
     std::cin >> pseudo;
     formatString(pseudo);
@@ -46,7 +47,7 @@ void Pseudo::triggerAction() {
 
   player_.changePseudo(pseudo);
 
-  Action::writeResult(data::Action::resultPseudo(player_.pseudo()));
+  action::writeResult(data::Action::resultPseudo(player_.pseudo()));
 }
 
 void Pseudo::formatString(std::string& str) {
@@ -55,3 +56,4 @@ void Pseudo::formatString(std::string& str) {
     str[i] = std::tolower(str[i]);
   }
 }
+}  // namespace action
