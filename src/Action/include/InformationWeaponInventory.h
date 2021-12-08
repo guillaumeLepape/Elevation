@@ -35,10 +35,7 @@ class InformationWeaponInventory {
     utils::writeSeparators();
 
     std::for_each(std::cbegin(weaponInventory_), std::cend(weaponInventory_),
-                  [](const auto& weapon) {
-                    weapon::WeaponWriter weaponWriter(weapon);
-                    weaponWriter.informationWeapon();
-                  });
+                  [](const auto& weapon) { weapon::print(weapon); });
   }
 };
 }  // namespace action

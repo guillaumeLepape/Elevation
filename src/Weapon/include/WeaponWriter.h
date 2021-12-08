@@ -8,17 +8,8 @@
 #include "Weapon.h"
 
 namespace weapon {
-class WeaponWriter {
- private:
-  const Weapon& weapon_;
-
-  std::string informationWeaponType() const;
-
- public:
-  WeaponWriter(const Weapon& weapon);
-
-  void informationWeapon() const;
-};
+void print(const Weapon& weapon);
+std::string informationWeaponType(const Weapon& weapon);
 }  // namespace weapon
 
 #endif
