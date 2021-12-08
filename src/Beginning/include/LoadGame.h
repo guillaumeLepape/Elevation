@@ -11,6 +11,7 @@
 #include "Options.h"
 #include "Results.h"
 
+namespace action {
 class LoadGame {
  private:
   const Statement& statement_;
@@ -23,5 +24,6 @@ class LoadGame {
 
   void trigger();
 };
+}  // namespace action
 
 #endif

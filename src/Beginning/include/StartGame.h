@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Results.h"
 
+namespace action {
 class StartGame {
  private:
   Statement statement_;
@@ -30,5 +31,6 @@ class StartGame {
 
   void trigger();
 };
+}  // namespace action
 
 #endif

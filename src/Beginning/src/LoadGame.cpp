@@ -12,6 +12,7 @@
 #include "Selection.h"
 #include "StartGame.h"
 
+namespace action {
 LoadGame::LoadGame(const Statement& statement, const Options& options)
     : statement_(statement), options_(options) {}
 
@@ -43,3 +44,4 @@ void LoadGame::trigger() {
     startGame.trigger();
   }
 }
+}  // namespace action

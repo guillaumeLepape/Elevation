@@ -8,6 +8,7 @@
 #include "ActionWriter.h"
 #include "NameType.h"
 
+namespace action {
 class Quit {
  private:
   const Statement& statement_;
@@ -20,5 +21,6 @@ class Quit {
 
   void trigger();
 };
+}  // namespace action
 
 #endif

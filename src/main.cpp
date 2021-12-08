@@ -26,11 +26,11 @@ auto main(int argc, char* argv[]) -> int {
   Rules::write(options);
 
   // Start the game at the begining
-  StartGame startGame(data::Menu::statementStartGame, options);
+  action::StartGame startGame(data::Menu::statementStartGame, options);
   // Load previous game from results.json file
-  LoadGame loadGame(data::Menu::statementLoadGame, options);
+  action::LoadGame loadGame(data::Menu::statementLoadGame, options);
   // Quit the game
-  Quit quit(data::Menu::statementQuit, data::Menu::resultQuit);
+  action::Quit quit(data::Menu::statementQuit, data::Menu::resultQuit);
 
   selection::select(data::Menu::titleStartGameMenu, startGame, loadGame, quit);
 }

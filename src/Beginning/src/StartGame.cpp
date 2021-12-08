@@ -8,6 +8,7 @@
 #include "Options.h"
 #include "Player.h"
 
+namespace action {
 StartGame::StartGame(const Statement& statement, const Options& options)
     : statement_(statement),
       options_(options),
@@ -27,3 +28,4 @@ void StartGame::trigger() {
     level->startLevel();
   }
 }
+}  // namespace action
