@@ -16,14 +16,12 @@ class StartGame {
  private:
   Statement statement_;
   const Options& options_;
-
-  std::size_t indexResultData_;
   Player player_;
 
  public:
   StartGame(const Statement& statement, const Options& options);
   StartGame(const Statement& statement, const Options& options,
-            int indexResultData, Player&& player);
+            Player&& player);
 
   StartGame(const StartGame& startGame) = delete;
 
