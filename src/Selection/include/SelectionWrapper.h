@@ -10,8 +10,10 @@
 namespace selection {
 template <typename T>
 concept bool Action = requires(T& action) {
-  action.statement();
-  action.trigger();
+  { action.statement() }
+  ->const std::string&;
+  { action.trigger() }
+  ->void;
 };
 
 template <Action... Args>
