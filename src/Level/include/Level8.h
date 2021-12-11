@@ -9,7 +9,8 @@
 
 class Level8 : public Level {
  public:
-  Level8(Player& player, const Options& options) : Level(player, options) {}
+  Level8(Player& player, const utils::Options& options)
+      : Level(player, options) {}
 
   void startLevel() override;
 

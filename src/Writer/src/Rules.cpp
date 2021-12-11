@@ -10,7 +10,7 @@
 #include "UtilsWriter.h"
 
 namespace Rules {
-void write(const Options& options) {
+void write(const utils::Options& options) {
   std::ignore = std::system("clear");
 
   std::cout << "\n " << Term::color(Term::fg::black)
@@ -24,7 +24,7 @@ void write(const Options& options) {
                "pour passer au suivant.";
 
   if (!options.noRule_) {
-    Pause::pause();
+    utils::pause();
 
     std::cout << "\n Si un champ doit etre rempli pour continuer le jeu, cela "
                  "sera indiqué par la couleur "
@@ -33,28 +33,28 @@ void write(const Options& options) {
               << Term::color(Term::fg::reset) << Term::color(Term::bg::reset)
               << Term::color(Term::style::reset) << ".";
 
-    Pause::pause();
+    utils::pause();
 
     std::cout << "\n Le prénom du joueur est affiché en "
               << Term::color(Term::fg::green) << Term::color(Term::style::bold)
               << "vert" << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset) << ".";
 
-    Pause::pause();
+    utils::pause();
 
     std::cout << "\n Le nom du dealer est affiché en "
               << Term::color(Term::fg::red) << Term::color(Term::style::bold)
               << "rouge" << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset) << ".";
 
-    Pause::pause();
+    utils::pause();
 
     std::cout << "\n Les dialogues sont affichés en "
               << Term::color(Term::fg::blue) << Term::color(Term::style::bold)
               << "bleu" << Term::color(Term::fg::reset)
               << Term::color(Term::style::reset) << ".";
 
-    Pause::pause();
+    utils::pause();
 
     std::cout << "\n Les descriptions sont affichées en "
               << Term::color(Term::fg::magenta)
@@ -62,7 +62,7 @@ void write(const Options& options) {
               << Term::color(Term::fg::reset) << Term::color(Term::style::reset)
               << ".";
 
-    Pause::pause();
+    utils::pause();
 
     std::cout
         << "\n Les effets résultant des actions du joueur sont affichés en "

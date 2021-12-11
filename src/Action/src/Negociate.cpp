@@ -42,7 +42,7 @@ void Negociate::trigger() {
                   << Term::color(Term::bg::reset)
                   << Term::color(Term::style::reset);
 
-        Pause::pause();
+        utils::pause();
 
         action::writeStatement(statement_);
         std::cin >> price;

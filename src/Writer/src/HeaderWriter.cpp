@@ -13,7 +13,7 @@
 
 namespace Header {
 void write(const Title& nameLevel, const Hour& hour, const Minut& minut) {
-  Pause::pause();
+  utils::pause();
 
   // print level name
   std::cout << "\n " << Term::color(Term::bg::red)

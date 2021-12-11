@@ -9,7 +9,7 @@
 
 namespace Selection {
 void write(const Title& title, const std::vector<std::string>& statements) {
-  Pause::pause();
+  utils::pause();
 
   std::cout << "\n " << Term::color(Term::fg::black)
             << Term::color(Term::bg::green) << Term::color(Term::style::bold)

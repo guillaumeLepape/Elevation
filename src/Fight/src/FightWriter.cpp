@@ -14,7 +14,7 @@
 FightWriter::FightWriter(const Player* const player,
                          const std::vector<Plug*>& plugs)
     : player_(player), plugs_(plugs) {
-  Pause::pause();
+  utils::pause();
   std::cout << "\n " << Term::color(Term::fg::yellow)
             << Term::color(Term::style::bold) << "Début du combat"
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
@@ -28,7 +28,7 @@ void FightWriter::writeSeparator() const {
 }
 
 void FightWriter::writeHeader(const int nbTurns) const {
-  Pause::pause();
+  utils::pause();
 
   writeSeparator();
 
@@ -41,7 +41,7 @@ void FightWriter::writeHeader(const int nbTurns) const {
 }
 
 void FightWriter::writeGameBoard() const {
-  Pause::pause();
+  utils::pause();
 
   std::cout << "\n"
             << Term::color(Term::fg::black) << Term::color(Term::bg::green)
@@ -142,14 +142,14 @@ void FightWriter::writeGameBoard() const {
 }
 
 void FightWriter::writeRemoveDeadBody() {
-  Pause::pause();
+  utils::pause();
   std::cout << "\n " << Term::color(Term::fg::yellow)
             << Term::color(Term::style::bold) << "Evacuation des cadavres."
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
 }
 
 void FightWriter::writeEndOfFight() const {
-  Pause::pause();
+  utils::pause();
   std::cout << "\n " << Term::color(Term::fg::yellow)
             << Term::color(Term::style::bold) << "Fin du combat"
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);

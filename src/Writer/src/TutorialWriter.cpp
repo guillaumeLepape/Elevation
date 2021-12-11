@@ -14,7 +14,7 @@
 namespace Tutorial {
 void write(const Title& title,
            const std::vector<std::string>& tutorialStatement) {
-  Pause::pause();
+  utils::pause();
 
   std::cout << "\n " << Term::color(Term::bg::magenta)
             << Term::color(Term::style::bold) << title.get()
@@ -23,7 +23,7 @@ void write(const Title& title,
   utils::writeSeparators();
 
   for (long unsigned int i = 0; i < tutorialStatement.size(); i++) {
-    Pause::pause();
+    utils::pause();
 
     std::cout << "\n " << Term::color(Term::fg::magenta)
               << Term::color(Term::style::bold) << tutorialStatement[i]

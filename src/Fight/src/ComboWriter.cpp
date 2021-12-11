@@ -12,7 +12,7 @@
 ComboWriter::ComboWriter(const Combo* const combo) : combo_(combo) {}
 
 void ComboWriter::informationCombo() const {
-  Pause::pause();
+  utils::pause();
 
   std::cout << "\n " << Term::color(Term::bg::magenta)
             << Term::color(Term::style::bold) << combo_->title()

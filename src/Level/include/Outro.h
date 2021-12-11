@@ -9,7 +9,8 @@
 
 class Outro : public Level {
  public:
-  Outro(Player& player, const Options& options) : Level(player, options) {}
+  Outro(Player& player, const utils::Options& options)
+      : Level(player, options) {}
 
   void startLevel() override;
 

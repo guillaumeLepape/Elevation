@@ -14,7 +14,7 @@
 #include "StartGame.h"
 
 auto main(int argc, char* argv[]) -> int {
-  const Options options(argc, argv);
+  const utils::Options options(argc, argv);
 
   // If user selected -h option, print options descriptions
   // and exit program

@@ -13,7 +13,7 @@
 #include "StartGame.h"
 
 namespace action {
-LoadGame::LoadGame(const Statement& statement, const Options& options)
+LoadGame::LoadGame(const Statement& statement, const utils::Options& options)
     : statement_(statement), options_(options) {}
 
 void LoadGame::trigger() {

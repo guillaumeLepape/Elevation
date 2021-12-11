@@ -12,7 +12,7 @@ namespace Message {
 void write(const Message_t& messages, const std::string& pseudo,
            const std::string& plugName) {
   for (const auto& message : messages) {
-    Pause::pause();
+    utils::pause();
 
     switch (std::get<0>(message)) {
       case NameSpeaker::player:

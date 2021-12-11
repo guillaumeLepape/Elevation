@@ -1,12 +1,10 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-/*!
- * \file Options.h
- */
-
 #include <set>
 #include <string_view>
+
+namespace utils {
 
 class Options {
  private:
@@ -30,5 +28,6 @@ class Options {
   bool noRule_;
   bool help_;
 };
+}  // namespace utils
 
 #endif

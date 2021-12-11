@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <iostream>
 
+namespace utils {
 Options::Options(int argc, char* argv[])
     : argv_{[&argc, &argv]() {
         std::set<std::string_view> result;
@@ -28,3 +29,4 @@ void Options::print_help() const {
   std::cout << "-r, --rule : If this option is selected, the rules and "
                "tutorials are not printed\n";
 }
+}  // namespace utils

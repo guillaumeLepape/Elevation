@@ -17,7 +17,7 @@ void writeStatement(const Statement& statement) {
             << " : ";
 }
 void writeResult(const Result& result) {
-  Pause::pause();
+  utils::pause();
   std::cout << "\n " << Term::color(Term::fg::yellow)
             << Term::color(Term::style::bold) << result.get()
             << Term::color(Term::fg::reset) << Term::color(Term::style::reset);

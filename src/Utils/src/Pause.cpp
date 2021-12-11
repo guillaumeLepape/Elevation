@@ -4,7 +4,7 @@
 
 #include "Pause.h"
 
-namespace Pause {
+namespace utils {
 void pause() {
   try {
     Term::Terminal term;
@@ -23,4 +23,4 @@ void pause() {
     std::cerr << "Unknown error." << std::endl;
   }
 }
-}  // namespace Pause
+}  // namespace utils

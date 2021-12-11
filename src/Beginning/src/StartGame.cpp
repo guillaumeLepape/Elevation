@@ -9,12 +9,12 @@
 #include "Player.h"
 
 namespace action {
-StartGame::StartGame(const Statement& statement, const Options& options)
+StartGame::StartGame(const Statement& statement, const utils::Options& options)
     : statement_(statement),
       options_(options),
       player_("Joueur", Id::generate(), 0) {}
 
-StartGame::StartGame(const Statement& statement, const Options& options,
+StartGame::StartGame(const Statement& statement, const utils::Options& options,
                      Player&& player)
     : statement_(statement),
       options_(options),

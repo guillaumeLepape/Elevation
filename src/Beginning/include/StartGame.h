@@ -15,12 +15,12 @@ namespace action {
 class StartGame {
  private:
   Statement statement_;
-  const Options& options_;
+  const utils::Options& options_;
   Player player_;
 
  public:
-  StartGame(const Statement& statement, const Options& options);
-  StartGame(const Statement& statement, const Options& options,
+  StartGame(const Statement& statement, const utils::Options& options);
+  StartGame(const Statement& statement, const utils::Options& options,
             Player&& player);
 
   StartGame(const StartGame& startGame) = delete;

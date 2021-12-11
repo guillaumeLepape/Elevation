@@ -15,10 +15,10 @@ namespace action {
 class LoadGame {
  private:
   const Statement& statement_;
-  const Options& options_;
+  const utils::Options& options_;
 
  public:
-  LoadGame(const Statement& statement, const Options& options);
+  LoadGame(const Statement& statement, const utils::Options& options);
 
   const std::string& statement() const { return statement_.get(); }
 

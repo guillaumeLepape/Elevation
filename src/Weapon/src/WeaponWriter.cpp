@@ -10,7 +10,7 @@
 
 namespace weapon {
 void print(const Weapon& weapon) {
-  Pause::pause();
+  utils::pause();
 
   std::cout << "\n " << Term::color(Term::fg::magenta)
             << Term::color(Term::style::bold)

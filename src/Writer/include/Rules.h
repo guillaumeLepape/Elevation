@@ -8,7 +8,7 @@
 #include "Options.h"
 
 namespace Rules {
-void write(const Options& options);
+void write(const utils::Options& options);
 }
 
 #endif
