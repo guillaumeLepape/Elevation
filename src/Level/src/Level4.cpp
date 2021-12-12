@@ -14,7 +14,7 @@
 #include "Question.h"
 
 void Level4::startLevel() {
-  Plug plug("Freeze Corleone", 20);
+  entity::Plug plug("Freeze Corleone", 20);
 
   Header::write(data::Level4::nameLevel, data::Level4::hour,
                 data::Level4::minut);

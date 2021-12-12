@@ -13,7 +13,7 @@
 #include "Plug.h"
 
 void Level2::startLevel() {
-  Plug plug("Jean-Luc Delarue");
+  entity::Plug plug("Jean-Luc Delarue");
 
   Header::write(data::Level2::nameLevel, data::Level2::hour,
                 data::Level2::minut);

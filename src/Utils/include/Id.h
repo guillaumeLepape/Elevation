@@ -7,7 +7,7 @@
 
 #include <random>
 
-namespace Id {
+namespace utils::id {
 unsigned int generate();
 }
 

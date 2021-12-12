@@ -11,7 +11,7 @@
 #include "Weapon.h"
 
 TEST(weapon_test, UseWeapon) {
-  Player player("Guillaume", 15611653, 0);
+  entity::Player player("Guillaume", 15611653, 0);
 
   action::AddWeaponAction addWeaponFist(player, weapon::Fist());
   addWeaponFist.trigger();
@@ -35,7 +35,7 @@ TEST(weapon_test, UseWeapon) {
 }
 
 TEST(weapon_test, Fist) {
-  Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
+  entity::Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
 
   action::AddWeaponAction addWeaponFist(player, weapon::Fist());
   addWeaponFist.trigger();
@@ -49,7 +49,7 @@ TEST(weapon_test, Fist) {
 }
 
 TEST(weapon_test, AK47) {
-  Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
+  entity::Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
 
   action::AddWeaponAction addWeaponAK47(player, weapon::AK47(40));
   addWeaponAK47.trigger();
@@ -64,7 +64,7 @@ TEST(weapon_test, AK47) {
     }
   }
 
-  Plug plug("Jean-Michel", 100);
+  entity::Plug plug("Jean-Michel", 100);
 
   action::UseWeapon useAK47(player, plug, data::Weapon::nameAK47);
   useAK47.trigger();

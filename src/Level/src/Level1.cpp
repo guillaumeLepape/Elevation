@@ -12,7 +12,7 @@
 #include "Plug.h"
 
 void Level1::startLevel() {
-  Plug plug("Petite frappe");
+  entity::Plug plug("Petite frappe");
 
   Header::write(data::Level1::nameLevel, data::Level1::hour,
                 data::Level1::minut);

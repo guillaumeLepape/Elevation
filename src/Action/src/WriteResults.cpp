@@ -9,9 +9,9 @@
 #include "Player.h"
 
 namespace action {
-WriteResults::WriteResults(Player& player, data::Results& results,
+WriteResults::WriteResults(entity::Player& player, data::Results& results,
                            const Statement&, const Result& result)
-    : result_(result), player_(player), results_(results) {}
+    : result_{result}, player_{player}, results_{results} {}
 
 void WriteResults::trigger() {
   data::add(results_, std::move(player_));

@@ -16,7 +16,8 @@
 #include "Regeneration.h"
 #include "SelectionWrapper.h"
 
-Fight::Fight(Player* const player, const std::vector<Plug*>& plugs,
+Fight::Fight(entity::Player* const player,
+             const std::vector<entity::Plug*>& plugs,
              const std::vector<Combo*>& combos, const bool& noRule,
              const bool& regeneration)
     : player_(player),
@@ -27,8 +28,9 @@ Fight::Fight(Player* const player, const std::vector<Plug*>& plugs,
       information_(true),
       noRule_(noRule) {}
 
-void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
-                       std::function<bool(Player* const player)> predicate) {
+void Fight::startFight(
+    const std::vector<MessageWriter>& messageWriter,
+    std::function<bool(entity::Player* const player)> predicate) {
   std::size_t nbTurns = 0;
 
   FightWriter fightWriter(player_, plugs_);
@@ -88,7 +90,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
     }
 
     // Choose the plug which player want to attack
-    Plug& choosenPlug = choosePlug();
+    entity::Plug& choosenPlug = choosePlug();
 
     // Choose the weapon to attack choosenPlug
     ChooseWeaponResult chooseWeaponResult = chooseWeapon(choosenPlug);
@@ -159,7 +161,7 @@ int Fight::methodNumberOfDeadPlug() const {
   return numberOfDead;
 }
 
-Plug& Fight::choosePlug() {
+entity::Plug& Fight::choosePlug() {
   std::vector<action::ChoosePlug> choosePlugActions;
 
   for (auto p = std::begin(plugs_); p != std::end(plugs_); p++) {
@@ -181,12 +183,12 @@ Plug& Fight::choosePlug() {
   int resultChoosePlug =
       Selection::select(data::Action::titleChoosePlug, statements);
 
-  Plug& choosenPlug = choosePlugActions[resultChoosePlug].plug();
+  entity::Plug& choosenPlug = choosePlugActions[resultChoosePlug].plug();
 
   return choosenPlug;
 }
 
-const ChooseWeaponResult Fight::chooseWeapon(Plug& choosenPlug) {
+const ChooseWeaponResult Fight::chooseWeapon(entity::Plug& choosenPlug) {
   std::vector<action::UseWeapon> useWeapons;
 
   std::transform(std::cbegin(player_->weapons()), std::cend(player_->weapons()),
@@ -201,7 +203,7 @@ const ChooseWeaponResult Fight::chooseWeapon(Plug& choosenPlug) {
   return {resultUseWeapon, useWeapons};
 }
 
-void Fight::runCombos(Plug& choosenPlug, const int& resultUseWeapon,
+void Fight::runCombos(entity::Plug& choosenPlug, const int& resultUseWeapon,
                       const std::vector<action::UseWeapon>& useWeapons) {
   for (auto c = std::cbegin(combos_); c != std::cend(combos_); c++) {
     (*c)->triggerCombo(choosenPlug, resultUseWeapon, useWeapons);

@@ -15,11 +15,11 @@ class WriteResults {
  private:
   Result result_;
 
-  Player& player_;
+  entity::Player& player_;
   data::Results& results_;
 
  public:
-  WriteResults(Player& player, data::Results& results,
+  WriteResults(entity::Player& player, data::Results& results,
                const Statement& statement, const Result& result);
 
   void trigger();

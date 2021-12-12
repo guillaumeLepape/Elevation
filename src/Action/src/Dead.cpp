@@ -8,8 +8,8 @@
 #include "Plug.h"
 
 namespace action {
-Dead::Dead(const Plug& plug, const Result& result)
-    : result_(result), plug_(plug) {}
+Dead::Dead(const entity::Plug& plug, const Result& result)
+    : result_{result}, plug_{plug} {}
 
 void Dead::trigger() {
   if (plug_.healthBar().dead()) {

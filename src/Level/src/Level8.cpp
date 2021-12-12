@@ -13,7 +13,7 @@
 #include "Plug.h"
 
 void Level8::startLevel() {
-  Plug plug("Mathilde", 30);
+  entity::Plug plug("Mathilde", 30);
 
   Header::write(data::Level8::nameLevel, data::Level8::hour,
                 data::Level8::minut);

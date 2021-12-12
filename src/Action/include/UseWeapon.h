@@ -14,13 +14,14 @@
 
 namespace action {
 class UseWeapon {
-  Player& player_;
-  Plug& plug_;
+  entity::Player& player_;
+  entity::Plug& plug_;
   const std::string& nameWeapon_;
 
  public:
-  UseWeapon(Player& player, Plug& plug, const std::string& nameWeapon)
-      : player_(player), plug_(plug), nameWeapon_(nameWeapon) {}
+  UseWeapon(entity::Player& player, entity::Plug& plug,
+            const std::string& nameWeapon)
+      : player_{player}, plug_{plug}, nameWeapon_{nameWeapon} {}
 
   void trigger() {
     auto weapon =
@@ -30,7 +31,7 @@ class UseWeapon {
                      });
 
     if (weapon != std::cend(player_.weapons())) {
-      attack(&plug_, *weapon);
+      entity::attack(&plug_, *weapon);
 
       auto result = Result(
           data::Weapon::resultUseWeapon(plug_.name(), weapon->nb_damage));

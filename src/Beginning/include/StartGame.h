@@ -16,12 +16,12 @@ class StartGame {
  private:
   Statement statement_;
   const utils::Options& options_;
-  Player player_;
+  entity::Player player_;
 
  public:
   StartGame(const Statement& statement, const utils::Options& options);
   StartGame(const Statement& statement, const utils::Options& options,
-            Player&& player);
+            entity::Player&& player);
 
   StartGame(const StartGame& startGame) = delete;
 

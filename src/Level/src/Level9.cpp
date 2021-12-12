@@ -23,7 +23,7 @@ void Level9::startLevel() {
   Header::write(data::Level9::nameLevel, data::Level9::hour,
                 data::Level9::minut);
 
-  Plug plug("Psychopathe", 250, weapon::Knife());
+  entity::Plug plug("Psychopathe", 250, weapon::Knife());
 
   action::PlugAttack plugAttack0(
       player_, plug,

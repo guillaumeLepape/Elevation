@@ -7,14 +7,14 @@
 #include "Languages.h"
 #include "SelectionWrapper.h"
 
-ComboFistMeleeWeapon::ComboFistMeleeWeapon(Player& player)
-    : Combo(player, data::Combo::titleFistMeleeWeapon,
+ComboFistMeleeWeapon::ComboFistMeleeWeapon(entity::Player& player)
+    : Combo{player, data::Combo::titleFistMeleeWeapon,
             data::Combo::triggerStatementFistMeleeWeapon,
             data::Combo::triggeredStatementFistMeleeWeapon,
-            data::Combo::malusStatementFistMeleeWeapon) {}
+            data::Combo::malusStatementFistMeleeWeapon} {}
 
 void ComboFistMeleeWeapon::triggerCombo(
-    Plug& plug, const int& resultChooseWeapon,
+    entity::Plug& plug, const int& resultChooseWeapon,
     const std::vector<action::UseWeapon>& useWeapon) {
   // if the player has attack with his fist, trigger the combo
   // and the ennemy is not dead

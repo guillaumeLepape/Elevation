@@ -2,6 +2,7 @@ project(utils)
 
 add_library(
     ${PROJECT_NAME}
+    src/Id.cpp
     src/Options.cpp
     src/Pause.cpp
 )

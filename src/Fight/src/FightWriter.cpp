@@ -11,8 +11,8 @@
 #include "Pause.h"
 #include "UtilsWriter.h"
 
-FightWriter::FightWriter(const Player* const player,
-                         const std::vector<Plug*>& plugs)
+FightWriter::FightWriter(const entity::Player* const player,
+                         const std::vector<entity::Plug*>& plugs)
     : player_(player), plugs_(plugs) {
   utils::pause();
   std::cout << "\n " << Term::color(Term::fg::yellow)

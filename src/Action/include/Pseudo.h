@@ -15,12 +15,12 @@ class Pseudo {
   Statement statement_;
   Result result_;
 
-  Player& player_;
+  entity::Player& player_;
 
   void formatString(std::string& str);
 
  public:
-  explicit Pseudo(Player& player, const Statement& statement,
+  explicit Pseudo(entity::Player& player, const Statement& statement,
                   const Result& result);
 
   void trigger();

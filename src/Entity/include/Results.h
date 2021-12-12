@@ -1,10 +1,6 @@
 #ifndef RESULTS_H
 #define RESULTS_H
 
-/*!
- * \file Results.h
- */
-
 #include <fstream>
 
 #include "Data.h"
@@ -13,7 +9,7 @@
 namespace data {
 struct Results {
   Results() = default;
-  Results(Player&&);
+  Results(entity::Player&&);
 
   Results(const Results&) = delete;
   Results(Results&&) = default;
@@ -23,12 +19,12 @@ struct Results {
 
   virtual ~Results() = default;
 
-  std::vector<Player> data;
+  std::vector<entity::Player> data;
 };
 
 Results read_results(std::string&& nameFolder, std::string&& nameFile);
 
-void add(Results& results, Player&& player);
+void add(Results& results, entity::Player&& player);
 
 void write(const Results& results, std::string&& nameFolder,
            std::string&& nameFile);

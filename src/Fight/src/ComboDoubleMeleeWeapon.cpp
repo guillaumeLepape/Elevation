@@ -7,14 +7,14 @@
 #include "Nothing.h"
 #include "SelectionWrapper.h"
 
-ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon(Player& player)
-    : Combo(player, data::Combo::titleDoubleMeleeWeapon,
+ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon(entity::Player& player)
+    : Combo{player, data::Combo::titleDoubleMeleeWeapon,
             data::Combo::triggerStatementDoubleMeleeWeapon,
             data::Combo::triggeredStatementDoubleMeleeWeapon,
-            data::Combo::malusStatementDoubleMeleeWeapon) {}
+            data::Combo::malusStatementDoubleMeleeWeapon} {}
 
 void ComboDoubleMeleeWeapon::triggerCombo(
-    Plug& plug, const int& resultChooseWeapon,
+    entity::Plug& plug, const int& resultChooseWeapon,
     const std::vector<action::UseWeapon>& useWeapon) {
   if ((useWeapon[resultChooseWeapon].name() == data::Weapon::nameKnife ||
        useWeapon[resultChooseWeapon].name() == data::Weapon::nameHammer) &&

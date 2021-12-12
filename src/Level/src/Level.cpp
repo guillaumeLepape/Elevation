@@ -10,8 +10,8 @@
 #include "SelectionWrapper.h"
 #include "WriteResults.h"
 
-Level::Level(Player& player, const utils::Options& options)
-    : player_(player), options_(options) {}
+Level::Level(entity::Player& player, const utils::Options& options)
+    : player_{player}, options_{options} {}
 
 void Level::endOfLevel() const {
   player_.nextLevel();

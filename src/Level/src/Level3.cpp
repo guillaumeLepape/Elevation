@@ -15,7 +15,7 @@
 #include "UseWeapon.h"
 
 void Level3::startLevel() {
-  Plug plug("V", 100);
+  entity::Plug plug("V", 100);
 
   Header::write(data::Level3::nameLevel, data::Level3::hour,
                 data::Level3::minut);

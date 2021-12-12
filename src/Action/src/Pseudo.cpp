@@ -12,7 +12,8 @@
 #include "Player.h"
 
 namespace action {
-Pseudo::Pseudo(Player& player, const Statement& statement, const Result& result)
+Pseudo::Pseudo(entity::Player& player, const Statement& statement,
+               const Result& result)
     : statement_(statement), result_(result), player_(player) {}
 
 void Pseudo::trigger() {

@@ -22,7 +22,7 @@ static constexpr int NB_LEVEL = 12;
 
 class LevelFactory {
  public:
-  static std::unique_ptr<Level> newLevel(Player& player,
+  static std::unique_ptr<Level> newLevel(entity::Player& player,
                                          const utils::Options& options,
                                          const int& levelNumber) {
     switch (levelNumber) {

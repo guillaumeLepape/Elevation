@@ -1,13 +1,10 @@
 #ifndef PLUG_H
 #define PLUG_H
 
-/*!
- * \file Plug.h
- */
-
 #include "HealthBar.h"
 #include "Weapon.h"
 
+namespace entity {
 class Plug {
  private:
   std::string name_;
@@ -36,5 +33,6 @@ class Plug {
   const HealthBar& healthBar() const { return healthBar_; }
   HealthBar& healthBar() { return healthBar_; }
 };
+}  // namespace entity
 
 #endif

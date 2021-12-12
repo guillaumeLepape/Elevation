@@ -16,11 +16,11 @@ namespace action {
 class AddWeaponAction {
  private:
   Result result_;
-  Player& player_;
+  entity::Player& player_;
   weapon::Weapon weapon_;
 
  public:
-  AddWeaponAction(Player& player, weapon::Weapon&& weapon);
+  AddWeaponAction(entity::Player& player, weapon::Weapon&& weapon);
 
   void trigger();
 };

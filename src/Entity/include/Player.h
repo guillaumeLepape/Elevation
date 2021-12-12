@@ -1,22 +1,12 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-/*!
- * \file Player.h
- * \brief Player file containing player class
- * \author jessH
- */
-
 #include "HealthBar.h"
 #include "Weapon.h"
 
 static constexpr int MAX_LIFE_POINTS_PLAYER = 100;
 
-/*!
- * \class Player class
- * \brief
- */
-
+namespace entity {
 class Player {
  private:
   std::string pseudo_;
@@ -76,4 +66,5 @@ void attack(Entity* const entity, const weapon::Weapon& weapon) {
     weapon.durability -= weapon.durability_loose_per_use;
   }
 }
+}  // namespace entity
 #endif

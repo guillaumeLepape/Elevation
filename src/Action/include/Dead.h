@@ -12,10 +12,10 @@ namespace action {
 class Dead {
  private:
   Result result_;
-  const Plug& plug_;
+  const entity::Plug& plug_;
 
  public:
-  Dead(const Plug& plug, const Result& result);
+  Dead(const entity::Plug& plug, const Result& result);
 
   void trigger();
 };

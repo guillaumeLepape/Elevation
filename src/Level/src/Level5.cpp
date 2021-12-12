@@ -20,7 +20,7 @@ void Level5::startLevel() {
   Header::write(data::Level5::nameLevel, data::Level5::hour,
                 data::Level5::minut);
 
-  Plug guetteur("Guetteur", 35, weapon::Fist());
+  entity::Plug guetteur("Guetteur", 35, weapon::Fist());
 
   Message::write(data::Level5::message0, player_.pseudo(), guetteur.name());
 
@@ -52,7 +52,7 @@ void Level5::startLevel() {
   firstFight.startFight();
 
   // Second fight (introduction to Double melee Weapon combo )
-  Plug garde("Garde", 50, weapon::Fist());
+  entity::Plug garde("Garde", 50, weapon::Fist());
 
   Message::write(data::Level5::message2, player_.pseudo(), garde.name());
 
@@ -66,7 +66,7 @@ void Level5::startLevel() {
   secondFight.startFight();
 
   // Third fight (introduction to Healing and weapon recuperation)
-  Plug secondGarde("Un futur cadavre", 30, weapon::Knife());
+  entity::Plug secondGarde("Un futur cadavre", 30, weapon::Knife());
 
   Message::write(data::Level5::message3, player_.pseudo(), secondGarde.name());
 
@@ -91,9 +91,9 @@ void Level5::startLevel() {
   }
 
   // Fourth fight
-  Plug sacAPV("Sac à PV", 100, weapon::Cutter());
-  Plug kamikaze("Kamikaze", 32, weapon::Katana());
-  Plug soutien("Soutien", 60, weapon::Knife());
+  entity::Plug sacAPV("Sac à PV", 100, weapon::Cutter());
+  entity::Plug kamikaze("Kamikaze", 32, weapon::Katana());
+  entity::Plug soutien("Soutien", 60, weapon::Knife());
 
   Message::write(data::Level5::message6, player_.pseudo(), kamikaze.name());
 

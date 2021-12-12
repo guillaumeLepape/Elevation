@@ -16,21 +16,21 @@ class Combo {
   const MalusStatement& malusStatement_;
 
  protected:
-  Player& player_;
+  entity::Player& player_;
 
  public:
-  Combo(Player& player, const Title& title,
+  Combo(entity::Player& player, const Title& title,
         const TriggerStatement& triggerStatement,
         const TriggeredStatement& triggeredStatement,
         const MalusStatement& malusStatement)
-      : title_(title),
-        triggerStatement_(triggerStatement),
-        triggeredStatement_(triggeredStatement),
-        malusStatement_(malusStatement),
-        player_(player) {}
+      : title_{title},
+        triggerStatement_{triggerStatement},
+        triggeredStatement_{triggeredStatement},
+        malusStatement_{malusStatement},
+        player_{player} {}
 
   virtual void triggerCombo(
-      Plug& plug, const int& resultChooseWeapon,
+      entity::Plug& plug, const int& resultChooseWeapon,
       const std::vector<action::UseWeapon>& useWeapon) = 0;
 
   virtual ~Combo() = default;

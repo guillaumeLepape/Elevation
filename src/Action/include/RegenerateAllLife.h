@@ -14,11 +14,11 @@ class RegenerateAllLife {
  private:
   Result result_;
 
-  Player& player_;
+  entity::Player& player_;
 
  public:
-  RegenerateAllLife(Player& player, const Result& result)
-      : result_(result), player_(player) {}
+  RegenerateAllLife(entity::Player& player, const Result& result)
+      : result_{result}, player_{player} {}
 
   void trigger() {
     // if player is full life or dead, do nothing, else regenerate him

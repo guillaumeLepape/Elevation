@@ -12,11 +12,11 @@ class Regeneration {
  private:
   Result result_;
 
-  Player& player_;
+  entity::Player& player_;
 
  public:
-  Regeneration(Player& player, const Result& result)
-      : result_(result), player_(player) {}
+  Regeneration(entity::Player& player, const Result& result)
+      : result_{result}, player_{player} {}
 
   void trigger() {
     int nbLifePointsRegeneration = 0;

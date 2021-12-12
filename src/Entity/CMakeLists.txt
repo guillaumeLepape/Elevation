@@ -2,7 +2,6 @@ project(entity)
 
 add_library(
     ${PROJECT_NAME} 
-    src/Id.cpp
     src/Player.cpp 
     src/Plug.cpp 
     src/Results.cpp

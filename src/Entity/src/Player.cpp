@@ -1,13 +1,10 @@
-/*!
- * \file Player.cpp
- */
-
 #include "Player.h"
 
 #include <algorithm>
 #include <cassert>
 #include <iostream>
 
+namespace entity {
 Player::Player(const std::string& pseudo, const unsigned int& id,
                const int& nbLevelSuceeded,
                weapon::WeaponInventory&& weaponInventory)
@@ -23,7 +20,7 @@ Player::Player(const std::string& pseudo, const unsigned int& id,
                const int& maxLifePoints, const int& money,
                weapon::WeaponInventory&& weapons)
     : pseudo_{pseudo},
-      id_(id),
+      id_{id},
       nbLevelSuceeded_{nbLevelSuceeded},
       money_{money},
       weapons_{std::move(weapons)},
@@ -46,3 +43,4 @@ nlohmann::json Player::write() const {
 
   return jsonObjectOutput;
 }
+}  // namespace entity

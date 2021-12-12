@@ -8,9 +8,9 @@
 
 namespace data {
 
-Results::Results(Player&& player)
+Results::Results(entity::Player&& player)
     : data{[&player]() {
-        std::vector<Player> result;
+        std::vector<entity::Player> result;
         result.push_back(std::forward<decltype(player)>(player));
         return result;
       }()} {}
@@ -24,12 +24,12 @@ Results read_results(std::string&& nameFolder, std::string&& nameFile) {
 
   std::transform(std::cbegin(jsonObject), std::cend(jsonObject),
                  std::back_inserter(results.data),
-                 [](const auto& result) { return Player{result}; });
+                 [](const auto& result) { return entity::Player{result}; });
 
   return results;
 }
 
-void add(Results& results, Player&& player) {
+void add(Results& results, entity::Player&& player) {
   auto is_same_player = [&player](const auto& p) {
     return p.id() == player.id();
   };

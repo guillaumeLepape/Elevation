@@ -13,13 +13,14 @@
 #include "Plug.h"
 
 namespace action {
-Negociate::Negociate(Player& player, const Plug& plug, const int& plugPrice,
-                     const Statement& statement, const Result& result)
-    : statement_(statement),
-      result_(result),
-      player_(player),
-      plug_(plug),
-      plugPrice_(plugPrice) {}
+Negociate::Negociate(entity::Player& player, const entity::Plug& plug,
+                     const int& plugPrice, const Statement& statement,
+                     const Result& result)
+    : statement_{statement},
+      result_{result},
+      player_{player},
+      plug_{plug},
+      plugPrice_{plugPrice} {}
 
 void Negociate::trigger() {
   bool out = false;

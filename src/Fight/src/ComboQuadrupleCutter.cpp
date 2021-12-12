@@ -6,14 +6,14 @@
 
 #include "Languages.h"
 
-ComboQuadrupleCutter::ComboQuadrupleCutter(Player& player)
-    : Combo(player, data::Combo::titleQuadrupleCutter,
+ComboQuadrupleCutter::ComboQuadrupleCutter(entity::Player& player)
+    : Combo{player, data::Combo::titleQuadrupleCutter,
             data::Combo::triggerStatementQuadrupleCutter,
             data::Combo::triggeredStatementQuadrupleCutter,
-            data::Combo::malusStatementQuadrupleCutter) {}
+            data::Combo::malusStatementQuadrupleCutter} {}
 
 void ComboQuadrupleCutter::triggerCombo(
-    Plug&, const int& resultChooseWeapon,
+    entity::Plug&, const int& resultChooseWeapon,
     const std::vector<action::UseWeapon>& useWeapon) {
   if (useWeapon[resultChooseWeapon].name() == "Cutter") {
     action::UseWeapon useWeaponCombo = useWeapon[resultChooseWeapon];

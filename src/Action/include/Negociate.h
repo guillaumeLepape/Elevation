@@ -16,13 +16,14 @@ class Negociate {
   Statement statement_;
   Result result_;
 
-  Player& player_;
-  const Plug& plug_;
+  entity::Player& player_;
+  const entity::Plug& plug_;
   int plugPrice_;
 
  public:
-  explicit Negociate(Player& player, const Plug& plug, const int& plugPrice,
-                     const Statement& statement, const Result& result);
+  explicit Negociate(entity::Player& player, const entity::Plug& plug,
+                     const int& plugPrice, const Statement& statement,
+                     const Result& result);
 
   void trigger();
 };

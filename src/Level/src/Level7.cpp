@@ -21,7 +21,7 @@ void Level7::startLevel() {
   Header::write(data::Level7::nameLevel, data::Level7::hour,
                 data::Level7::minut);
 
-  Plug boss("Tueur professionnel", 200, weapon::Hammer());
+  entity::Plug boss("Tueur professionnel", 200, weapon::Hammer());
 
   Message::write(data::Level7::message0, player_.pseudo(), boss.name());
 

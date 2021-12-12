@@ -1,6 +1,7 @@
 #ifndef HEALTH_BAR_H
 #define HEALTH_BAR_H
 
+namespace entity {
 class HealthBar {
  private:
   int nbLifePoints_;
@@ -33,5 +34,6 @@ class HealthBar {
   bool fullLife() const { return nbLifePoints_ == maxNbLifePoints_; }
   bool dead() const { return (nbLifePoints_ <= 0); }
 };
+}  // namespace entity
 
 #endif

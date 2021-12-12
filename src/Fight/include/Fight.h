@@ -15,8 +15,8 @@ struct ChooseWeaponResult {
 
 class Fight {
  private:
-  Player* const player_;
-  std::vector<Plug*> plugs_;
+  entity::Player* const player_;
+  std::vector<entity::Plug*> plugs_;
   std::vector<Combo*> combos_;
   bool regeneration_;
 
@@ -28,21 +28,21 @@ class Fight {
   int methodNumberOfDeadPlug() const;
   bool enemiesDeadOrNot() const;
 
-  Plug& choosePlug();
+  entity::Plug& choosePlug();
 
-  const ChooseWeaponResult chooseWeapon(Plug& plug);
+  const ChooseWeaponResult chooseWeapon(entity::Plug& plug);
 
-  void runCombos(Plug& choosenPlug, const int& resultUseWeapon,
+  void runCombos(entity::Plug& choosenPlug, const int& resultUseWeapon,
                  const std::vector<action::UseWeapon>& useWeapons);
 
  public:
-  Fight(Player* const player, const std::vector<Plug*>& plugs,
+  Fight(entity::Player* const player, const std::vector<entity::Plug*>& plugs,
         const std::vector<Combo*>& combos, const bool& noRule,
         const bool& regeneration = true);
 
   void startFight(const std::vector<MessageWriter>& messageWriter = {},
-                  std::function<bool(Player* const player)> predicate =
-                      [](Player* const player) {
+                  std::function<bool(entity::Player* const player)> predicate =
+                      [](entity::Player* const player) {
                         return player->healthBar().dead();
                       });
 };

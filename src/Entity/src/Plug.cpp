@@ -1,9 +1,6 @@
-/*!
- * \file Plug.cpp
- */
-
 #include "Plug.h"
 
+namespace entity {
 Plug::Plug(const std::string& name, const int& nbLifePoints,
            weapon::Weapon&& weapon)
     : name_{name},
@@ -13,3 +10,4 @@ Plug::Plug(const std::string& name, const int& nbLifePoints,
 void Plug::changeWeapon(weapon::Weapon&& newWeapon) {
   weapon_ = std::move(newWeapon);
 }
+}  // namespace entity

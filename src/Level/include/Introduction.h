@@ -9,7 +9,7 @@
 
 class Introduction : public Level {
  public:
-  explicit Introduction(Player& player, const utils::Options& options)
+  explicit Introduction(entity::Player& player, const utils::Options& options)
       : Level(player, options) {}
 
   void startLevel() override;
