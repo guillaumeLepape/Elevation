@@ -36,7 +36,7 @@ void LoadGame::trigger() {
                                 resultData.nbLevelSuceeded())
                          .get();
                    });
-    auto result = Selection::select(data::Menu::titleLoadGameMenu, statements);
+    auto result = selection::select(data::Menu::titleLoadGameMenu, statements);
 
     StartGame startGame(Statement(statements[result]), options_,
                         std::move(results.data[result]));

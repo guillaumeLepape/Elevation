@@ -11,7 +11,7 @@
 #include "NameType.h"
 #include "Pause.h"
 
-namespace Selection {
+namespace selection {
 void write(const Title& title, const std::vector<std::string>& statements);
 }
 

@@ -23,7 +23,7 @@ void write(const utils::Options& options) {
   std::cout << "\n Une fois que vous avez lu un message, appuyez sur entrée "
                "pour passer au suivant.";
 
-  if (!options.noRule_) {
+  if (not options.noRule_) {
     utils::pause();
 
     std::cout << "\n Si un champ doit etre rempli pour continuer le jeu, cela "

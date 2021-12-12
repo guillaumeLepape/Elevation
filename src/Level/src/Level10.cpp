@@ -42,7 +42,7 @@ void Level10::startLevel() {
   entity::Plug heroine("Heroine", 100, weapon::Heroine());
   action::PlugAttack plugAttack(player_, heroine, Result(""));
 
-  while (!(player_.healthBar().dead())) {
+  while (player_.healthBar().alive()) {
     plugAttack.trigger();
     Message::write(data::Level10::message3, player_.pseudo(), "");
   }

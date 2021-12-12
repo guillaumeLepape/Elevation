@@ -33,6 +33,7 @@ class HealthBar {
   }
   bool fullLife() const { return nbLifePoints_ == maxNbLifePoints_; }
   bool dead() const { return (nbLifePoints_ <= 0); }
+  bool alive() const { return not dead(); }
 };
 }  // namespace entity
 

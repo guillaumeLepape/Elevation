@@ -6,10 +6,10 @@
 
 #include "Selection.h"
 
-namespace Question {
+namespace selection {
 bool question(const Title& title, const std::vector<std::string>& statements,
               const std::vector<bool>& answers) {
-  std::size_t result = Selection::select(title, statements);
+  std::size_t result = selection::select(title, statements);
   return answers[result];
 }
-}  // namespace Question
+}  // namespace selection

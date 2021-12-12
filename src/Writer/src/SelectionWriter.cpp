@@ -7,7 +7,7 @@
 #include "Pause.h"
 #include "UtilsWriter.h"
 
-namespace Selection {
+namespace selection {
 void write(const Title& title, const std::vector<std::string>& statements) {
   utils::pause();
 
@@ -39,4 +39,4 @@ void write(const Title& title, const std::vector<std::string>& statements) {
               << " : ";
   }
 }
-}  // namespace Selection
+}  // namespace selection

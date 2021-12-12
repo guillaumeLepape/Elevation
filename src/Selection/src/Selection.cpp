@@ -8,14 +8,15 @@
 
 #include "Pause.h"
 
-namespace Selection {
+namespace selection {
 std::size_t select(const Title& title,
                    const std::vector<std::string>& statements) {
-  Selection::write(title, statements);
+  selection::write(title, statements);
 
   std::size_t choice = 0;
 
-  while (!(std::cin >> choice) || (choice > statements.size() || choice < 1)) {
+  while (not(std::cin >> choice) or
+         (choice > statements.size() or choice < 1)) {
     if (statements.size() != 1) {
       std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
                 << "Selection invalide - Entrez un nombre compris entre 1 et "
@@ -33,9 +34,9 @@ std::size_t select(const Title& title,
     // throw away garbage input
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    Selection::write(title, statements);
+    selection::write(title, statements);
   }
 
   return choice - 1;
 }
-}  // namespace Selection
+}  // namespace selection

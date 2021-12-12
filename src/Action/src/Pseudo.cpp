@@ -23,7 +23,7 @@ void Pseudo::trigger() {
   std::string pseudo;
   bool out = false;
 
-  while (!out) {
+  while (not out) {
     // Inform the user that he have to enter an information (his pseudo)
     Message::write(data::Introduction::message1, player_.pseudo(), "");
     action::writeStatement(statement_);

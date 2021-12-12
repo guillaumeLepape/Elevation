@@ -32,7 +32,7 @@ void Level4::startLevel() {
 
   Message::write(data::Level4::message2, player_.pseudo(), plug.name());
 
-  while (!Question::question(
+  while (not selection::question(
       data::Question::titleFirstQuestion,
       {answer0_0.statement(), answer1_0.statement(), answer2_0.statement()},
       {answer0_0.correctOrNot(), answer1_0.correctOrNot(),
@@ -50,7 +50,7 @@ void Level4::startLevel() {
   action::Answer answer2_1(data::Question::answer3Question2,
                            data::Question::correctOrNotAnswer3Question2);
 
-  while (!Question::question(
+  while (not selection::question(
       data::Question::titleSecondQuestion,
       {answer0_1.statement(), answer1_1.statement(), answer2_1.statement()},
       {answer0_1.correctOrNot(), answer1_1.correctOrNot(),
@@ -68,7 +68,7 @@ void Level4::startLevel() {
   action::Answer answer2_2(data::Question::answer3Question3,
                            data::Question::correctOrNotAnswer3Question3);
 
-  while (!Question::question(
+  while (not selection::question(
       data::Question::titleThirdQuestion,
       {answer0_2.statement(), answer1_2.statement(), answer2_2.statement()},
       {answer0_2.correctOrNot(), answer1_2.correctOrNot(),

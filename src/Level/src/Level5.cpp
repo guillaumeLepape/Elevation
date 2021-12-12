@@ -26,7 +26,7 @@ void Level5::startLevel() {
 
   Message::write(data::Level5::message1, player_.pseudo(), guetteur.name());
 
-  if (!options_.noRule_) {
+  if (not options_.noRule_) {
     Tutorial::write(data::Tutorial::titleCombatSystem,
                     data::Tutorial::statementCombatSystem(
                         player_.healthBar().maxLifePoints()));
@@ -42,7 +42,7 @@ void Level5::startLevel() {
       new ComboQuadrupleCutter(player_));
 
   // First fight (introduction to Fist - Melee Weapon combo)
-  if (!options_.noRule_) {
+  if (not options_.noRule_) {
     Tutorial::write(data::Tutorial::titleComboFistMeleeWeapon,
                     data::Tutorial::statementComboFistMeleeWeapon);
   }
@@ -56,7 +56,7 @@ void Level5::startLevel() {
 
   Message::write(data::Level5::message2, player_.pseudo(), garde.name());
 
-  if (!options_.noRule_) {
+  if (not options_.noRule_) {
     Tutorial::write(data::Tutorial::titleComboDoubleMeleeWeapon,
                     data::Tutorial::statementComboDoubleMeleeWeapon);
   }
@@ -70,7 +70,7 @@ void Level5::startLevel() {
 
   Message::write(data::Level5::message3, player_.pseudo(), secondGarde.name());
 
-  if (!options_.noRule_) {
+  if (not options_.noRule_) {
     Tutorial::write(data::Tutorial::titleNoWeapon,
                     data::Tutorial::statementNoWeapon);
   }
@@ -85,7 +85,7 @@ void Level5::startLevel() {
 
   Message::write(data::Level5::message5, player_.pseudo(), "");
 
-  if (!options_.noRule_) {
+  if (not options_.noRule_) {
     Tutorial::write(data::Tutorial::titleRegeneration,
                     data::Tutorial::statementRegeneration);
   }

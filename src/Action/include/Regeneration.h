@@ -22,7 +22,8 @@ class Regeneration {
     int nbLifePointsRegeneration = 0;
 
     // if player is full life or dead, do nothing, else regenerate him
-    if (!(player_.healthBar().fullLife()) && !(player_.healthBar().dead())) {
+    if ((not player_.healthBar().fullLife()) and
+        (not player_.healthBar().dead())) {
       switch (player_.nbLevelSuceeded()) {
         case 0 ... 4:
           nbLifePointsRegeneration = 10;

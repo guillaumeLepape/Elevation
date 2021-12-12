@@ -27,7 +27,7 @@ void Negociate::trigger() {
 
   Message::write(data::Level2::message1, player_.pseudo(), plug_.name());
 
-  while (!out) {
+  while (not out) {
     action::writeStatement(statement_);
 
     int price;
@@ -48,14 +48,14 @@ void Negociate::trigger() {
         action::writeStatement(statement_);
         std::cin >> price;
       }
-      if (!std::cin.fail()) {
+      if (not std::cin.fail()) {
         break;
       }
     }
 
     if (price > plugPrice_) {
       Message::write(data::Level2::message2, player_.pseudo(), plug_.name());
-    } else if (price <= plugPrice_ && plugPrice_ - 30 <= price) {
+    } else if (price <= plugPrice_ and plugPrice_ - 30 <= price) {
       out = true;
       Message::write(data::Level2::message4, player_.pseudo(), plug_.name());
 

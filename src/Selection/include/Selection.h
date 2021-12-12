@@ -9,7 +9,7 @@
 
 #include "SelectionWriter.h"
 
-namespace Selection {
+namespace selection {
 std::size_t select(const Title& title,
                    const std::vector<std::string>& statements);
 }

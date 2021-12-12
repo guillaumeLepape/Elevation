@@ -22,7 +22,8 @@ class RegenerateAllLife {
 
   void trigger() {
     // if player is full life or dead, do nothing, else regenerate him
-    if (!(player_.healthBar().fullLife()) && !(player_.healthBar().dead())) {
+    if ((not player_.healthBar().fullLife()) and
+        (player_.healthBar().alive())) {
       action::writeResult(data::Action::resultRegeneration(
           player_.healthBar().missingLifePoints()));
       player_.healthBar().increaseLifePoints(

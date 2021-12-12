@@ -18,7 +18,7 @@ concept bool Action = requires(T& action) {
 
 template <Action... Args>
 std::size_t select(const Title& title, Args&... actions) {
-  auto result = Selection::select(title, {actions.statement()...});
+  auto result = selection::select(title, {actions.statement()...});
 
   std::size_t index = 0;
   ((index++ == result ? actions.trigger() : []() {}()), ...);
@@ -31,7 +31,7 @@ std::size_t select(const Title& title, std::vector<Arg>& actions) {
   std::transform(std::cbegin(actions), std::cend(actions),
                  std::back_inserter(statements),
                  [](const auto& action) { return action.statement(); });
-  auto result = Selection::select(title, statements);
+  auto result = selection::select(title, statements);
   actions[result].trigger();
   return result;
 }

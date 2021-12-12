@@ -87,7 +87,7 @@ WeaponInventory make_weapon_inventory(const nlohmann::json& json) {
 bool add(WeaponInventory& weaponInventory, Weapon&& weapon) {
   bool present = true;
   std::tie(std::ignore, present) = weaponInventory.insert(std::move(weapon));
-  return !present;
+  return not present;
 }
 
 bool contains(const WeaponInventory& weaponInventory, Type&& type) {

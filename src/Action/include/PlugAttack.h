@@ -21,7 +21,7 @@ class PlugAttack {
 
   void trigger() {
     // if plug is not dead and has a weapon, he can attack
-    if (!(plug_.healthBar().dead()) &&
+    if (plug_.healthBar().alive() and
         plug_.weapon().type != weapon::Type::noWeapon) {
       entity::attack(&player_, plug_.weapon());
 

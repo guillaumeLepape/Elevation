@@ -36,7 +36,8 @@ void Fight::startFight(
   FightWriter fightWriter(player_, plugs_);
 
   // while all enemies are not dead or player is not dead
-  while (!enemiesDeadOrNot() && !predicate(player_) && nbTurns < 1000) {
+  while ((not enemiesDeadOrNot()) and (not predicate(player_)) and
+         nbTurns < 1000) {
     nbTurns++;
 
     fightWriter.writeHeader(nbTurns);
@@ -44,7 +45,7 @@ void Fight::startFight(
 
     // Allow player to print informations about plugs and combos
     // if the information_ is true and -r flag was selected
-    if (information_ && !noRule_) {
+    if (information_ and (not noRule_)) {
       bool out = false;
 
       action::InformationWeaponInventory informationWeaponInventory(
@@ -55,8 +56,8 @@ void Fight::startFight(
       action::Nothing noInformationAnymore(
           data::Information::statementNoInformationAnymore);
 
-      while (!out) {
-        int resultInformation = Selection::select(
+      while (not out) {
+        int resultInformation = selection::select(
             data::Information::titleInformation,
             {informationWeaponInventory.statement(),
              informationCombo.statement(), noInformation.statement(),
@@ -111,7 +112,7 @@ void Fight::startFight(
     }
 
     for (auto e = std::begin(plugs_); e != std::end(plugs_); e++) {
-      if (!((*e)->healthBar().dead())) {
+      if ((*e)->healthBar().alive()) {
         auto message = data::Action::resultPlugAttack((*e)->name(),
                                                       (*e)->weapon().nb_damage);
         action::PlugAttack plugAttack(*player_, **e, message);
@@ -145,7 +146,7 @@ bool Fight::enemiesDeadOrNot() const {
   bool result = true;
 
   for (auto e = std::cbegin(plugs_); e != std::cend(plugs_); e++) {
-    result = result && (*e)->healthBar().dead();
+    result = result and (*e)->healthBar().dead();
   }
 
   return result;
@@ -166,7 +167,7 @@ entity::Plug& Fight::choosePlug() {
 
   for (auto p = std::begin(plugs_); p != std::end(plugs_); p++) {
     // user cannot attack dead plugs
-    if (!((*p)->healthBar().dead())) {
+    if (((*p)->healthBar().alive())) {
       action::ChoosePlug choosePlug(
           **p, data::Action::statementChoosePlug((*p)->name()),
           data::Action::resultChoosePlug((*p)->name()));
@@ -181,7 +182,7 @@ entity::Plug& Fight::choosePlug() {
                    return choosePlugAction.statement();
                  });
   int resultChoosePlug =
-      Selection::select(data::Action::titleChoosePlug, statements);
+      selection::select(data::Action::titleChoosePlug, statements);
 
   entity::Plug& choosenPlug = choosePlugActions[resultChoosePlug].plug();
 
