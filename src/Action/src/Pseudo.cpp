@@ -53,7 +53,7 @@ void Pseudo::trigger() {
 
 void Pseudo::formatString(std::string& str) {
   str[0] = std::toupper(str[0]);
-  for (long unsigned int i = 1; i < str.length(); i++) {
+  for (std::size_t i = 1; i < str.length(); i++) {
     str[i] = std::tolower(str[i]);
   }
 }

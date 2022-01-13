@@ -23,7 +23,7 @@ class InformationCombo {
   const std::string& statement() const { return statement_.get(); }
 
   void trigger() {
-    for (long unsigned int i = 0; i < combos_.size(); i++) {
+    for (std::size_t i = 0; i < combos_.size(); i++) {
       ComboWriter comboWriter(combos_[i]);
       comboWriter.informationCombo();
     }

@@ -40,11 +40,12 @@ class Fight {
         const std::vector<Combo*>& combos, const bool& noRule,
         const bool& regeneration = true);
 
-  void startFight(const std::vector<MessageWriter>& messageWriter = {},
-                  std::function<bool(entity::Player* const player)> predicate =
-                      [](entity::Player* const player) {
-                        return player->healthBar().dead();
-                      });
+  void startFight(
+      const std::vector<MessageWriter>& messageWriter = {},
+      std::function<bool(entity::Player* const player)> predicate =
+          [](entity::Player* const player) {
+            return player->healthBar().dead();
+          });
 };
 
 #endif

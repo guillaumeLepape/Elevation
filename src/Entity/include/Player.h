@@ -17,13 +17,14 @@ class Player {
   HealthBar healthBar_;
 
  public:
-  Player(const std::string& pseudo, const unsigned int& id,
-         const int& nbLevelSuceeded,
-         weapon::WeaponInventory&& weaponInventory = []() {
-           weapon::WeaponInventory result;
-           result.insert(weapon::Fist());
-           return result;
-         }());
+  Player(
+      const std::string& pseudo, const unsigned int& id,
+      const int& nbLevelSuceeded,
+      weapon::WeaponInventory&& weaponInventory = []() {
+        weapon::WeaponInventory result;
+        result.insert(weapon::Fist());
+        return result;
+      }());
 
   Player(const std::string& pseudo, const unsigned int& id,
          const int& nbLevelSuceeded, const int& nbLifePoints,

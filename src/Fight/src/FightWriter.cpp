@@ -61,7 +61,7 @@ void FightWriter::writeGameBoard() const {
       damageWeaponFighters;
 
   // build a vector of name and life points of plugs
-  for (long unsigned int i = 0; i < plugs_.size(); i++) {
+  for (std::size_t i = 0; i < plugs_.size(); i++) {
     // display plugs only if they are not dead
     if (plugs_[i]->healthBar().alive()) {
       nameFighters.push_back(plugs_[i]->name());

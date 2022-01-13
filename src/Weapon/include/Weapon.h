@@ -5,11 +5,10 @@
  * \file Weapon.h
  */
 
+#include <nlohmann/json.hpp>
 #include <optional>
 #include <set>
 #include <variant>
-
-#include <nlohmann/json.hpp>
 
 #include "Languages.h"
 

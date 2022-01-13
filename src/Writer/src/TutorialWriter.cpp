@@ -22,7 +22,7 @@ void write(const Title& title,
 
   utils::writeSeparators();
 
-  for (long unsigned int i = 0; i < tutorialStatement.size(); i++) {
+  for (std::size_t i = 0; i < tutorialStatement.size(); i++) {
     utils::pause();
 
     std::cout << "\n " << Term::color(Term::fg::magenta)

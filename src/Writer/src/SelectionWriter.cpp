@@ -18,7 +18,7 @@ void write(const Title& title, const std::vector<std::string>& statements) {
 
   utils::writeSeparators();
 
-  for (long unsigned int i = 0; i < statements.size(); i++) {
+  for (std::size_t i = 0; i < statements.size(); i++) {
     std::cout << "\n " << std::to_string(i + 1) << "- "
               << Term::color(Term::fg::yellow) << Term::color(Term::style::bold)
               << statements[i] << Term::color(Term::fg::reset)

@@ -36,9 +36,3 @@ if(BUILD_TESTING AND Elevation_BuildTests)
     enable_testing()
     add_subdirectory(test)
 endif()
-
-add_custom_target(graphviz ALL
-    COMMAND ${CMAKE_COMMAND} "--graphviz=graph.dot" .
-    COMMAND dot -Tpng graph.dot -o graph.png
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-)

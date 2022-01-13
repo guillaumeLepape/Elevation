@@ -59,7 +59,9 @@ class LevelFactory {
       case 10: {
         return std::make_unique<Level10>(player, options);
       }
-      default: { return std::make_unique<Outro>(player, options); }
+      default: {
+        return std::make_unique<Outro>(player, options);
+      }
     }
   }
 };
