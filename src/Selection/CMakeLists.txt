@@ -3,7 +3,6 @@ project(selection)
 add_library(
     ${PROJECT_NAME} 
     src/Question.cpp
-    src/Selection.cpp
 )
 
 target_include_directories(

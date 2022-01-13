@@ -7,7 +7,7 @@
 #include "Languages.h"
 #include "Nothing.h"
 #include "SaveAndQuit.h"
-#include "SelectionWrapper.h"
+#include "Selection.h"
 #include "WriteResults.h"
 
 Level::Level(entity::Player& player, const utils::Options& options)

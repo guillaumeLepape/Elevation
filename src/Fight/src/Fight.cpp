@@ -14,7 +14,7 @@
 #include "Pause.h"
 #include "PlugAttack.h"
 #include "Regeneration.h"
-#include "SelectionWrapper.h"
+#include "Selection.h"
 
 Fight::Fight(entity::Player* const player,
              const std::vector<entity::Plug*>& plugs,
@@ -58,10 +58,8 @@ void Fight::startFight(
 
       while (not out) {
         int resultInformation = selection::select(
-            data::Information::titleInformation,
-            {informationWeaponInventory.statement(),
-             informationCombo.statement(), noInformation.statement(),
-             noInformationAnymore.statement()});
+            data::Information::titleInformation, informationWeaponInventory,
+            informationCombo, noInformation, noInformationAnymore);
 
         switch (resultInformation) {
           case 0:

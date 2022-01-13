@@ -11,7 +11,6 @@
 #include "Languages.h"
 #include "MessageWriter.h"
 #include "Selection.h"
-#include "SelectionWrapper.h"
 #include "UseWeapon.h"
 
 void Level3::startLevel() {

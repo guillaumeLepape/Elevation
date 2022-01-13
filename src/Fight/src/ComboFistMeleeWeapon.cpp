@@ -5,7 +5,7 @@
 #include "ComboFistMeleeWeapon.h"
 
 #include "Languages.h"
-#include "SelectionWrapper.h"
+#include "Selection.h"
 
 ComboFistMeleeWeapon::ComboFistMeleeWeapon(entity::Player& player)
     : Combo{player, data::Combo::titleFistMeleeWeapon,

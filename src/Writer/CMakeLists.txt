@@ -5,7 +5,6 @@ add_library(
     src/Rules.cpp
     src/HeaderWriter.cpp
     src/MessageWriter.cpp
-    src/SelectionWriter.cpp
     src/TutorialWriter.cpp
     src/UtilsWriter.cpp
 )

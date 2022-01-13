@@ -10,7 +10,7 @@
 #include "LoadGame.h"
 #include "Quit.h"
 #include "Rules.h"
-#include "SelectionWrapper.h"
+#include "Selection.h"
 #include "StartGame.h"
 
 auto main(int argc, char* argv[]) -> int {

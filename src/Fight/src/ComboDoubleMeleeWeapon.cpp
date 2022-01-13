@@ -5,7 +5,7 @@
 #include "ComboDoubleMeleeWeapon.h"
 
 #include "Nothing.h"
-#include "SelectionWrapper.h"
+#include "Selection.h"
 
 ComboDoubleMeleeWeapon::ComboDoubleMeleeWeapon(entity::Player& player)
     : Combo{player, data::Combo::titleDoubleMeleeWeapon,
