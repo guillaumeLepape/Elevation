@@ -20,6 +20,14 @@ class LoadGame {
  public:
   LoadGame(const Statement& statement, const utils::Options& options);
 
+  LoadGame(const LoadGame&) = delete;
+  LoadGame(LoadGame&&) = default;
+
+  LoadGame& operator=(const LoadGame&) = delete;
+  LoadGame& operator=(LoadGame&&) = default;
+
+  ~LoadGame() = default;
+
   const std::string& statement() const { return statement_.get(); }
 
   void trigger();

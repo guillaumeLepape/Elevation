@@ -17,7 +17,7 @@ struct Results {
   Results& operator=(const Results&) = delete;
   Results& operator=(Results&&) = default;
 
-  virtual ~Results() = default;
+  ~Results() = default;
 
   std::vector<entity::Player> data;
 };

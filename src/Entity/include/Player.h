@@ -39,7 +39,7 @@ class Player {
   Player& operator=(const Player&) = delete;
   Player& operator=(Player&&) = default;
 
-  virtual ~Player() = default;
+  ~Player() = default;
 
   const std::string& pseudo() const { return pseudo_; }
   void changePseudo(const std::string& pseudo) { pseudo_ = pseudo; }

@@ -14,7 +14,7 @@
 
 namespace action {
 LoadGame::LoadGame(const Statement& statement, const utils::Options& options)
-    : statement_(statement), options_(options) {}
+    : statement_{statement}, options_{options} {}
 
 void LoadGame::trigger() {
   auto results = data::read_results("results", "results");
@@ -38,7 +38,7 @@ void LoadGame::trigger() {
                    });
     auto result = selection::select(data::Menu::titleLoadGameMenu, statements);
 
-    StartGame startGame(Statement(statements[result]), options_,
+    StartGame startGame(Statement{statements[result]}, options_,
                         std::move(results.data[result]));
 
     startGame.trigger();

@@ -17,6 +17,14 @@ class Quit {
  public:
   Quit(const Statement& statement, const Result& result);
 
+  Quit(const Quit&) = delete;
+  Quit(Quit&&) = default;
+
+  Quit& operator=(const Quit&) = delete;
+  Quit& operator=(Quit&&) = default;
+
+  ~Quit() = default;
+
   const std::string& statement() const { return statement_.get(); }
 
   void trigger();

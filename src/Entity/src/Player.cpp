@@ -27,10 +27,13 @@ Player::Player(const std::string& pseudo, const unsigned int& id,
       healthBar_{nbLifePoints, maxLifePoints} {}
 
 Player::Player(const nlohmann::json& jsonInput)
-    : Player(jsonInput["pseudo"], jsonInput["id"], jsonInput["nbLevelSuceeded"],
-             jsonInput["nbLifePoints"], jsonInput["maxLifePoints"],
+    : Player{jsonInput["pseudo"],
+             jsonInput["id"],
+             jsonInput["nbLevelSuceeded"],
+             jsonInput["nbLifePoints"],
+             jsonInput["maxLifePoints"],
              jsonInput["money"],
-             weapon::make_weapon_inventory(jsonInput["weapons"])) {}
+             weapon::make_weapon_inventory(jsonInput["weapons"])} {}
 
 nlohmann::json Player::write() const {
   nlohmann::json jsonObjectOutput{{"pseudo", pseudo_},

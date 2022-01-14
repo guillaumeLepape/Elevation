@@ -23,7 +23,7 @@ class Plug {
   Plug& operator=(const Plug&) = delete;
   Plug& operator=(Plug&&) = default;
 
-  virtual ~Plug() = default;
+  ~Plug() = default;
 
   const std::string& name() const { return name_; }
   void changeWeapon(weapon::Weapon&& newWeapon);

@@ -23,7 +23,13 @@ class StartGame {
   StartGame(const Statement& statement, const utils::Options& options,
             entity::Player&& player);
 
-  StartGame(const StartGame& startGame) = delete;
+  StartGame(const StartGame&) = delete;
+  StartGame(StartGame&&) = default;
+
+  StartGame& operator=(const StartGame&) = delete;
+  StartGame& operator=(StartGame&&) = default;
+
+  ~StartGame() = default;
 
   const std::string& statement() const { return statement_.get(); }
 
