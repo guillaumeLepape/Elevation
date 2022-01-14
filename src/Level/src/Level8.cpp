@@ -9,10 +9,11 @@
 #include "AddWeaponAction.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Plug.h"
 
-void Level8::startLevel() {
+void Level8::start() {
   entity::Plug plug("Mathilde", 30);
 
   Header::write(data::Level8::nameLevel, data::Level8::hour,
@@ -26,7 +27,7 @@ void Level8::startLevel() {
 
   Message::write(data::Level8::message1, player_.pseudo(), plug.name());
 
-  Level::endOfLevel();
+  endoflevel(player_);
 
   std::cout << "\n";
 }

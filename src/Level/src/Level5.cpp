@@ -12,11 +12,12 @@
 #include "Fight.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "RegenerateAllLife.h"
 #include "TutorialWriter.h"
 
-void Level5::startLevel() {
+void Level5::start() {
   Header::write(data::Level5::nameLevel, data::Level5::hour,
                 data::Level5::minut);
 
@@ -107,7 +108,7 @@ void Level5::startLevel() {
 
   regenerateAllLife.trigger();
 
-  Level::endOfLevel();
+  endoflevel(player_);
 
   std::cout << "\n";
 }

@@ -8,10 +8,11 @@
 
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Plug.h"
 
-void Level1::startLevel() {
+void Level1::start() {
   entity::Plug plug("Petite frappe");
 
   Header::write(data::Level1::nameLevel, data::Level1::hour,
@@ -24,7 +25,7 @@ void Level1::startLevel() {
 
   player_.decreaseMoney(price);
 
-  Level::endOfLevel();
+  endoflevel(player_);
 
   std::cout << "\n";
 }

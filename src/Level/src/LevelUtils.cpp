@@ -1,8 +1,4 @@
-/*!
- * \file Level.cpp
- */
-
-#include "Level.h"
+#include "LevelUtils.h"
 
 #include "Languages.h"
 #include "Nothing.h"
@@ -10,15 +6,12 @@
 #include "Selection.h"
 #include "WriteResults.h"
 
-Level::Level(entity::Player& player, const utils::Options& options)
-    : player_{player}, options_{options} {}
-
-void Level::endOfLevel() const {
-  player_.nextLevel();
+void endoflevel(entity::Player& player) {
+  player.nextLevel();
 
   auto results = data::read_results("results", "results");
 
-  action::WriteResults writeResults(player_, results,
+  action::WriteResults writeResults(player, results,
                                     data::Menu::statementSaveAndQuit,
                                     data::Menu::resultSaveAndQuit);
   writeResults.trigger();

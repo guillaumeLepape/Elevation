@@ -5,16 +5,24 @@
  * \file Outro.h
  */
 
-#include "Level.h"
+#include "Player.h"
 
-class Outro : public Level {
+class Outro {
+ private:
+  entity::Player& player_;
+
  public:
-  Outro(entity::Player& player, const utils::Options& options)
-      : Level(player, options) {}
+  Outro(entity::Player& player) : player_{player} {}
 
-  void startLevel() override;
+  Outro(const Outro&) = delete;
+  Outro(Outro&&) = default;
 
-  ~Outro() override = default;
+  Outro& operator=(const Outro&) = delete;
+  Outro& operator=(Outro&&) = default;
+
+  ~Outro() = default;
+
+  void start();
 };
 
 #endif

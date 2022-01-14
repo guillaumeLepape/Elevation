@@ -9,11 +9,12 @@
 #include "Answer.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Plug.h"
 #include "Question.h"
 
-void Level4::startLevel() {
+void Level4::start() {
   entity::Plug plug("Freeze Corleone", 20);
 
   Header::write(data::Level4::nameLevel, data::Level4::hour,
@@ -78,7 +79,7 @@ void Level4::startLevel() {
 
   Message::write(data::Level4::message2, player_.pseudo(), plug.name());
 
-  Level::endOfLevel();
+  endoflevel(player_);
 
   std::cout << "\n";
 }

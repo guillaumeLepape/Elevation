@@ -2,7 +2,6 @@ project(level)
 
 add_library(
     ${PROJECT_NAME}
-    src/Level.cpp
     src/Introduction.cpp
     src/Level1.cpp
     src/Level2.cpp
@@ -15,6 +14,7 @@ add_library(
     src/Level9.cpp
     src/Level10.cpp
     src/Outro.cpp
+    src/LevelUtils.cpp
 )
 
 target_include_directories(

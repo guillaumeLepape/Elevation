@@ -5,15 +5,24 @@
  * \file Introduction.h
  */
 
-#include "Level.h"
+#include "Player.h"
 
-class Introduction : public Level {
+class Introduction {
+ private:
+  entity::Player& player_;
+
  public:
-  explicit Introduction(entity::Player& player, const utils::Options& options)
-      : Level(player, options) {}
+  Introduction(entity::Player& player) : player_{player} {}
 
-  void startLevel() override;
-  ~Introduction() override = default;
+  Introduction(const Introduction&) = delete;
+  Introduction(Introduction&&) = default;
+
+  Introduction& operator=(const Introduction&) = delete;
+  Introduction& operator=(Introduction&&) = default;
+
+  ~Introduction() = default;
+
+  void start();
 };
 
 #endif

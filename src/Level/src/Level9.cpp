@@ -13,13 +13,14 @@
 #include "HeaderWriter.h"
 #include "IncreaseMaxLifePoints.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Plug.h"
 #include "PlugAttack.h"
 #include "RegenerateAllLife.h"
 #include "Selection.h"
 
-void Level9::startLevel() {
+void Level9::start() {
   Header::write(data::Level9::nameLevel, data::Level9::hour,
                 data::Level9::minut);
 
@@ -93,6 +94,6 @@ void Level9::startLevel() {
 
   increaseMaxLifePoints.trigger();
 
-  Level9::endOfLevel();
+  endoflevel(player_);
   std::cout << "\n";
 }

@@ -9,11 +9,12 @@
 #include "AddWeaponAction.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Selection.h"
 #include "UseWeapon.h"
 
-void Level3::startLevel() {
+void Level3::start() {
   entity::Plug plug("V", 100);
 
   Header::write(data::Level3::nameLevel, data::Level3::hour,
@@ -48,7 +49,7 @@ void Level3::startLevel() {
 
   Message::write(data::Level3::message5, player_.pseudo(), plug.name());
 
-  Level::endOfLevel();
+  endoflevel(player_);
 
   std::cout << "\n";
 }

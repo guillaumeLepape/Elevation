@@ -8,10 +8,11 @@
 
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Pseudo.h"
 
-void Introduction::startLevel() {
+void Introduction::start() {
   Header::write(data::Introduction::nameLevel, data::Introduction::hour,
                 data::Introduction::minut);
 
@@ -24,7 +25,7 @@ void Introduction::startLevel() {
   Message::write(data::Introduction::message4(player_.pseudo()),
                  player_.pseudo(), "");
 
-  Level::endOfLevel();
+  endoflevel(player_);
 
   std::cout << "\n";
 }

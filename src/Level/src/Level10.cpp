@@ -10,11 +10,12 @@
 #include "Fight.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Plug.h"
 #include "PlugAttack.h"
 
-void Level10::startLevel() {
+void Level10::start() {
   Header::write(data::Level10::nameLevel, data::Level10::hour,
                 data::Level10::minut);
 
@@ -49,6 +50,6 @@ void Level10::startLevel() {
 
   Message::write(data::Level10::message4, player_.pseudo(), plug.name());
 
-  Level::endOfLevel();
+  endoflevel(player_);
   std::cout << "\n";
 }

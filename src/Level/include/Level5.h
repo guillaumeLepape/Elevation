@@ -5,16 +5,27 @@
  * \file Level5.h
  */
 
-#include "Level.h"
+#include "Options.h"
+#include "Player.h"
 
-class Level5 : public Level {
+class Level5 {
+ private:
+  entity::Player& player_;
+  const utils::Options& options_;
+
  public:
-  explicit Level5(entity::Player& player, const utils::Options& options)
-      : Level(player, options) {}
+  Level5(entity::Player& player, const utils::Options& options)
+      : player_{player}, options_{options} {}
 
-  void startLevel() override;
+  Level5(const Level5&) = delete;
+  Level5(Level5&&) = default;
 
-  ~Level5() override = default;
+  Level5& operator=(const Level5&) = delete;
+  Level5& operator=(Level5&&) = default;
+
+  ~Level5() = default;
+
+  void start();
 };
 
 #endif

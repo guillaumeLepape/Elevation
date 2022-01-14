@@ -12,12 +12,13 @@
 #include "Fight.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Player.h"
 #include "Plug.h"
 #include "RegenerateAllLife.h"
 
-void Level7::startLevel() {
+void Level7::start() {
   Header::write(data::Level7::nameLevel, data::Level7::hour,
                 data::Level7::minut);
 
@@ -43,6 +44,6 @@ void Level7::startLevel() {
   action::RegenerateAllLife regenerateAllLife(player_, Result(""));
   regenerateAllLife.trigger();
 
-  Level::endOfLevel();
+  endoflevel(player_);
   std::cout << "\n";
 }

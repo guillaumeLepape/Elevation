@@ -8,11 +8,12 @@
 
 #include "HeaderWriter.h"
 #include "Languages.h"
+#include "LevelUtils.h"
 #include "MessageWriter.h"
 #include "Negociate.h"
 #include "Plug.h"
 
-void Level2::startLevel() {
+void Level2::start() {
   entity::Plug plug("Jean-Luc Delarue");
 
   Header::write(data::Level2::nameLevel, data::Level2::hour,
@@ -27,7 +28,7 @@ void Level2::startLevel() {
                               data::Action::resultNegociate(0));
   negociate.trigger();
 
-  Level::endOfLevel();
+  endoflevel(player_);
 
   std::cout << "\n";
 }
