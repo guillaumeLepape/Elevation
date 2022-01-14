@@ -1,7 +1,3 @@
-/*!
- * \file Results.cpp
- */
-
 #include "Results.h"
 
 #include <iomanip>

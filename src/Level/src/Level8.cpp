@@ -1,7 +1,3 @@
-/*!
- * \file Level8.cpp
- */
-
 #include "Level8.h"
 
 #include <iostream>

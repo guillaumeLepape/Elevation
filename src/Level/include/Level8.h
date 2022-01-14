@@ -1,10 +1,6 @@
 #ifndef LEVEL_8_H
 #define LEVEL_8_H
 
-/*!
- * \file "Level8.h"
- */
-
 #include "Player.h"
 
 class Level8 {

@@ -1,10 +1,6 @@
 #ifndef HEADER_WRITER_H
 #define HEADER_WRITER_H
 
-/*!
- * \file HeaderWriter.h
- */
-
 #include <string_view>
 
 #include "NameType.h"

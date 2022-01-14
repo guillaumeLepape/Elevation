@@ -1,7 +1,3 @@
-/*!
- * \file ComboDoubleMeleeWeapon.cpp
- */
-
 #include "ComboDoubleMeleeWeapon.h"
 
 #include "Nothing.h"

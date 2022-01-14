@@ -1,10 +1,6 @@
 #ifndef INCREASE_MAX_LIFE_POINTS_H
 #define INCREASE_MAX_LIFE_POINTS_H
 
-/*!
- * \file IncreaseMaxLifePoints.h
- */
-
 #include "NameType.h"
 
 namespace action {

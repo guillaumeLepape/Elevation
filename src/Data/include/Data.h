@@ -1,10 +1,6 @@
 #ifndef DATA_H
 #define DATA_H
 
-/*!
- * \file Data.h
- */
-
 #include <nlohmann/json.hpp>
 
 namespace data {

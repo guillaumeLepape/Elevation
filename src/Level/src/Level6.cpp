@@ -1,7 +1,3 @@
-/*!
- * \file Level6.h
- */
-
 #include "Level6.h"
 
 #include <iostream>

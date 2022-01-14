@@ -1,10 +1,6 @@
 #ifndef LEVEL_FACTORY_H
 #define LEVEL_FACTORY_H
 
-/*!
- * \file Level.h
- */
-
 #include "Introduction.h"
 #include "Level1.h"
 #include "Level10.h"

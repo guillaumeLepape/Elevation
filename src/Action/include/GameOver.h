@@ -1,10 +1,6 @@
 #ifndef GAME_OVER_H
 #define GAME_OVER_H
 
-/*!
- * \file GameOver.h
- */
-
 #include <iostream>
 
 #include "ActionWriter.h"

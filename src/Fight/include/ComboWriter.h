@@ -1,10 +1,6 @@
 #ifndef COMBO_WRITER_H
 #define COMBO_WRITER_H
 
-/*!
- * \file ComboWriter.h
- */
-
 #include "Combo.h"
 
 class ComboWriter {

@@ -1,10 +1,6 @@
 #ifndef COMBO_FIST_MELEE_WEAPON_H
 #define COMBO_FIST_MELEE_WEAPON_H
 
-/*!
- * \file ComboFistMeleeWeapon.h
- */
-
 #include "Combo.h"
 
 class ComboFistMeleeWeapon : public Combo {

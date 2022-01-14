@@ -1,10 +1,6 @@
 #ifndef PSEUDO_H
 #define PSEUDO_H
 
-/*!
- * \file Pseudo.h
- */
-
 #include "ActionWriter.h"
 #include "NameType.h"
 #include "Player.h"

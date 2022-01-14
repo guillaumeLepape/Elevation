@@ -1,10 +1,6 @@
 #ifndef FIGHT_H
 #define FIGHT_H
 
-/*!
- * \file Fight.h
- */
-
 #include "Combo.h"
 #include "MessageWriter.h"
 

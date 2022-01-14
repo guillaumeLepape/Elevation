@@ -1,7 +1,3 @@
-/*!
- * \file FightWriter.cpp
- */
-
 #include "FightWriter.h"
 
 #include <cpp-terminal/terminal.h>

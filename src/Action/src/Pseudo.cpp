@@ -1,7 +1,3 @@
-/*!
- * \file Pseudo.cpp
- */
-
 #include "Pseudo.h"
 
 #include <iostream>

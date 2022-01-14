@@ -1,7 +1,3 @@
-/*!
- * \file ComboFistMeleeWeapon.cpp
- */
-
 #include "ComboFistMeleeWeapon.h"
 
 #include "Languages.h"

@@ -1,10 +1,6 @@
 #ifndef WEAPON_H
 #define WEAPON_H
 
-/*!
- * \file Weapon.h
- */
-
 #include <nlohmann/json.hpp>
 #include <optional>
 #include <set>

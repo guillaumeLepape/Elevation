@@ -1,7 +1,3 @@
-/*!
- * \file WriteResults.cpp
- */
-
 #include "WriteResults.h"
 
 #include <iostream>

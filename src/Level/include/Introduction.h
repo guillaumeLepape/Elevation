@@ -1,10 +1,6 @@
 #ifndef INTRODUCTION_H
 #define INTRODUCTION_H
 
-/*!
- * \file Introduction.h
- */
-
 #include "Player.h"
 
 class Introduction {

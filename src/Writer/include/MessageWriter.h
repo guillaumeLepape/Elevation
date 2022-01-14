@@ -1,10 +1,6 @@
 #ifndef MESSAGE_WRITER_H
 #define MESSAGE_WRITER_H
 
-/*!
- * \file MessageWriter.h
- */
-
 #include <string>
 
 #include "NameType.h"

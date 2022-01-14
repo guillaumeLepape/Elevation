@@ -1,10 +1,6 @@
 #ifndef LEVEL_5_H
 #define LEVEL_5_H
 
-/*!
- * \file Level5.h
- */
-
 #include "Options.h"
 #include "Player.h"
 

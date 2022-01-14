@@ -1,10 +1,6 @@
 #ifndef INFORMATION_COMBO_H
 #define INFORMATION_COMBO_H
 
-/*!
- * \file InformationCombo.h
- */
-
 #include "ComboWriter.h"
 #include "NameType.h"
 

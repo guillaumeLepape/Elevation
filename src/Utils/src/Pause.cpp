@@ -1,7 +1,3 @@
-/*!
- * \file Pause.cpp
- */
-
 #include "Pause.h"
 
 namespace utils {

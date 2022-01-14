@@ -1,10 +1,6 @@
 #ifndef QUIT_H
 #define QUIT_H
 
-/*!
- * \file Quit.h
- */
-
 #include "ActionWriter.h"
 #include "NameType.h"
 

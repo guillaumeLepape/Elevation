@@ -1,10 +1,6 @@
 #ifndef WEAPON_WRITER_H
 #define WEAPON_WRITER_H
 
-/*!
- * \file WeaponWriter.h
- */
-
 #include "Weapon.h"
 
 namespace weapon {

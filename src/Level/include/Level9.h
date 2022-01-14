@@ -1,10 +1,6 @@
 #ifndef LEVEL_9_H
 #define LEVEL_9_H
 
-/*!
- * \file Level9.h
- */
-
 #include "Options.h"
 #include "Player.h"
 

@@ -1,7 +1,3 @@
-/*!
- * \file Question.cpp
- */
-
 #include "Question.h"
 
 #include "Selection.h"

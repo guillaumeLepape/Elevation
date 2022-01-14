@@ -1,7 +1,3 @@
-/*!
- * \file Outro.cpp
- */
-
 #include "Outro.h"
 
 #include <iostream>

@@ -1,7 +1,3 @@
-/*!
- * \file StartGame.cpp
- */
-
 #include "StartGame.h"
 
 #include "Level.h"

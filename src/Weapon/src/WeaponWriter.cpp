@@ -1,7 +1,3 @@
-/*!
- * \file WeaponWriter.cpp
- */
-
 #include "WeaponWriter.h"
 
 #include <cpp-terminal/terminal.h>

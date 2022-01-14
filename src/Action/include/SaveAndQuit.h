@@ -1,10 +1,6 @@
 #ifndef SAVE_AND_QUIT_H
 #define SAVE_AND_QUIT_H
 
-/*!
- * \file SaveAndQuit.h
- */
-
 #include <iostream>
 
 #include "ActionWriter.h"

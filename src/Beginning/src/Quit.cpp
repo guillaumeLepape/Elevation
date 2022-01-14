@@ -1,7 +1,3 @@
-/*!
- * \file Quit.cpp
- */
-
 #include "Quit.h"
 
 #include <iostream>

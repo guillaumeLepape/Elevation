@@ -1,7 +1,3 @@
-/*!
- * \file Negociate.cpp
- */
-
 #include "Negociate.h"
 
 #include <iostream>

@@ -1,7 +1,3 @@
-/*!
- * \file ListNameData.cpp
- */
-
 #include "ListNameData.h"
 
 #include <fstream>

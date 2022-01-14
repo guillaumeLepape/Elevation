@@ -1,10 +1,6 @@
 #ifndef DEAD_H
 #define DEAD_H
 
-/*!
- * \file Dead.h
- */
-
 #include "NameType.h"
 #include "Plug.h"
 

@@ -1,10 +1,6 @@
 #ifndef SELECTION_WRITER_H
 #define SELECTION_WRITER_H
 
-/*!
- * \file SelectionWriter.h
- */
-
 #include <string_view>
 #include <vector>
 

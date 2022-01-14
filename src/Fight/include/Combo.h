@@ -1,10 +1,6 @@
 #ifndef COMBO_H
 #define COMBO_H
 
-/*!
- * \file Combo.h
- */
-
 #include "NameType.h"
 #include "UseWeapon.h"
 

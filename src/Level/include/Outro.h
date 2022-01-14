@@ -1,10 +1,6 @@
 #ifndef OUTRO_H
 #define OUTRO_H
 
-/*!
- * \file Outro.h
- */
-
 #include "Player.h"
 
 class Outro {

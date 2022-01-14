@@ -1,10 +1,6 @@
 #ifndef PLUG_ATTACK_H
 #define PLUG_ATTACK_H
 
-/*!
- * \file PlugAttack.h
- */
-
 #include "NameType.h"
 
 namespace action {

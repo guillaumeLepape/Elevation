@@ -1,10 +1,6 @@
 #ifndef WRITE_RESULTS_H
 #define WRITE_RESULTS_H
 
-/*!
- * \file WriteResults.h
- */
-
 #include "ActionWriter.h"
 #include "NameType.h"
 #include "Player.h"

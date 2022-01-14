@@ -1,10 +1,6 @@
 #ifndef REGENERATE_ALL_LIFE
 #define REGENERATE_ALL_LIFE
 
-/*!
- * \file RegenerateAllLife.h
- */
-
 #include <iostream>
 
 #include "NameType.h"

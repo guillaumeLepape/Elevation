@@ -1,7 +1,3 @@
-/*!
- * \file Options.cpp
- */
-
 #include "Options.h"
 
 #include <algorithm>

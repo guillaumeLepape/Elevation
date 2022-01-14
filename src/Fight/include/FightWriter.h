@@ -1,10 +1,6 @@
 #ifndef FIGHT_WRITER_H
 #define FIGHT_WRITER_H
 
-/*!
- * \file FightWriter.h
- */
-
 #include "Player.h"
 #include "Plug.h"
 

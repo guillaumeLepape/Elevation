@@ -1,7 +1,3 @@
-/*!
- * \file Dead.cpp
- */
-
 #include "Dead.h"
 
 #include "ActionWriter.h"

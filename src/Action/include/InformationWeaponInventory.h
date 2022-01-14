@@ -1,10 +1,6 @@
 #ifndef INFORMATION_WEAPON_INVENTORY_H
 #define INFORMATION_WEAPON_INVENTORY_H
 
-/*!
- * \file InformationWeaponInventory.h
- */
-
 #include <cpp-terminal/terminal.h>
 
 #include "NameType.h"

@@ -1,10 +1,6 @@
 #ifndef CHOOSE_PLUG
 #define CHOOSE_PLUG
 
-/*!
- * \file ChoosePlug.h
- */
-
 #include "NameType.h"
 
 namespace action {

@@ -1,7 +1,3 @@
-/*!
- * \file Level2.cpp
- */
-
 #include "Level2.h"
 
 #include <iostream>

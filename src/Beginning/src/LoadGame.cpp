@@ -1,7 +1,3 @@
-/*!
- * \file LoadGame.cpp
- */
-
 #include "LoadGame.h"
 
 #include <cpp-terminal/terminal.h>

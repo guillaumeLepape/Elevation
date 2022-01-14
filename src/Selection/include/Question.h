@@ -1,10 +1,6 @@
 #ifndef QUESTION_H
 #define QUESTION_H
 
-/*!
- * \file Question.h
- */
-
 #include <string>
 #include <vector>
 

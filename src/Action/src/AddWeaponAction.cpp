@@ -1,7 +1,3 @@
-/*!
- * \file AddWeaponAction.cpp
- */
-
 #include "AddWeaponAction.h"
 
 #include "ActionWriter.h"

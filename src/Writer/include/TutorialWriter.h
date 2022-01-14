@@ -1,10 +1,6 @@
 #ifndef TUTORIAL_WRITER_H
 #define TUTORIAL_WRITER_H
 
-/*!
- * \file TutorialWriter.h
- */
-
 #include <string>
 #include <vector>
 

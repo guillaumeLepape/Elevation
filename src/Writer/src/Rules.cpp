@@ -1,7 +1,3 @@
-/*!
- * \file Rules.cpp
- */
-
 #include "Rules.h"
 
 #include <cpp-terminal/terminal.h>

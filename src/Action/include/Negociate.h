@@ -1,10 +1,6 @@
 #ifndef NEGOCIATE_H
 #define NEGOCIATE_H
 
-/*!
- * \file Negociate.h
- */
-
 #include "ActionWriter.h"
 #include "NameType.h"
 #include "Player.h"

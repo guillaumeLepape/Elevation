@@ -1,7 +1,3 @@
-/*!
- * \file ComboWriter.cpp
- */
-
 #include "ComboWriter.h"
 
 #include <cpp-terminal/terminal.h>

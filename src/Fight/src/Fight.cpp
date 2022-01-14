@@ -1,7 +1,3 @@
-/*!
- * \file Fight.cpp
- */
-
 #include "Fight.h"
 
 #include "AddWeaponAction.h"

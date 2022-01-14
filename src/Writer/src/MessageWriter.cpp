@@ -1,7 +1,3 @@
-/*!
- * \file MessageWriter.cpp
- */
-
 #include "MessageWriter.h"
 
 #include <cassert>

@@ -1,10 +1,6 @@
 #ifndef LEVEL_7_H
 #define LEVEL_7_H
 
-/*!
- * \file "Level7.h"
- */
-
 #include "Options.h"
 #include "Player.h"
 

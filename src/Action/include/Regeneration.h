@@ -1,10 +1,6 @@
 #ifndef REGENERATION_H
 #define REGENERATION_H
 
-/*!
- * \file Regeneration.h
- */
-
 #include "NameType.h"
 
 namespace action {

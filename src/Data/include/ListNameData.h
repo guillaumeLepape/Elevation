@@ -1,10 +1,6 @@
 #ifndef NAME_DATA_H
 #define NAME_DATA_H
 
-/*!
- * \file ListNameData.h
- */
-
 #include <set>
 #include <string>
 

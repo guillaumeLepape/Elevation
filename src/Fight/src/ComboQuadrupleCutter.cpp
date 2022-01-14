@@ -1,7 +1,3 @@
-/*!
- * \file ComboQuadrupleCutter.cpp
- */
-
 #include "ComboQuadrupleCutter.h"
 
 #include "Languages.h"

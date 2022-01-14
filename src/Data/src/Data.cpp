@@ -1,7 +1,3 @@
-/*!
- * \file Data.cpp
- */
-
 #include "Data.h"
 
 #include <fstream>

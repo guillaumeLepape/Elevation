@@ -1,7 +1,3 @@
-/*!
- * \file Introduction.cpp
- */
-
 #include "Introduction.h"
 
 #include <iostream>

@@ -1,10 +1,6 @@
 #ifndef START_GAME_H
 #define START_GAME_H
 
-/*!
- * \file StartGame.h
- */
-
 #include "Id.h"
 #include "NameType.h"
 #include "Options.h"

@@ -1,10 +1,6 @@
 #ifndef USE_WEAPON_H
 #define USE_WEAPON_H
 
-/*!
- * \brief UseWeapon.h
- */
-
 #include "ActionWriter.h"
 #include "Dead.h"
 #include "Languages.h"

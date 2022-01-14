@@ -1,10 +1,6 @@
 #ifndef ANSWER_H
 #define ANSWER_H
 
-/*!
- * \file Answer.h
- */
-
 #include "NameType.h"
 
 namespace action {

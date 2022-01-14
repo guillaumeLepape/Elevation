@@ -1,10 +1,6 @@
 #ifndef ADD_WEAPON_ACTION_H
 #define ADD_WEAPON_ACTION_H
 
-/*!
- * \file AddWeaponAction.h
- */
-
 #include <memory>
 
 #include "NameType.h"

@@ -1,7 +1,3 @@
-/*!
- * \file HeaderWriter.cpp
- */
-
 #include "HeaderWriter.h"
 
 #include <cpp-terminal/terminal.h>

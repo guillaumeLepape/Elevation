@@ -1,7 +1,3 @@
-/*!
- * \file TutorialWriter.cpp
- */
-
 #include "TutorialWriter.h"
 
 #include <cpp-terminal/terminal.h>

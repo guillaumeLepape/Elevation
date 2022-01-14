@@ -1,7 +1,3 @@
-/*!
- * \file ActionWriter.cpp
- */
-
 #include "ActionWriter.h"
 
 #include <cpp-terminal/terminal.h>
