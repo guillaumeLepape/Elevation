@@ -14,15 +14,16 @@ class InformationCombo {
  public:
   InformationCombo(const std::vector<Combo*>& combos,
                    const Statement& statement)
-      : statement_(statement), combos_(combos) {}
+      : statement_{statement}, combos_{combos} {}
 
   const std::string& statement() const { return statement_.get(); }
 
   void trigger() {
-    for (std::size_t i = 0; i < combos_.size(); i++) {
-      ComboWriter comboWriter(combos_[i]);
-      comboWriter.informationCombo();
-    }
+    std::for_each(std::cbegin(combos_), std::cend(combos_),
+                  [](const Combo* combo) {
+                    ComboWriter comboWriter{combo};
+                    comboWriter.informationCombo();
+                  });
   }
 };
 }  // namespace action

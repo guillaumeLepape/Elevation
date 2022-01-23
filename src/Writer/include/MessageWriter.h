@@ -12,7 +12,7 @@ struct MessageWriter {
 
   MessageWriter(const Message_t& messages, const std::string& pseudo,
                 const std::string& plugName)
-      : messages_(messages), pseudo_(pseudo), plugName_(plugName) {}
+      : messages_{messages}, pseudo_{pseudo}, plugName_{plugName} {}
 };
 
 namespace Message {

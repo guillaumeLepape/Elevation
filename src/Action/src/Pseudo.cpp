@@ -10,7 +10,7 @@
 namespace action {
 Pseudo::Pseudo(entity::Player& player, const Statement& statement,
                const Result& result)
-    : statement_(statement), result_(result), player_(player) {}
+    : statement_{statement}, result_{result}, player_{player} {}
 
 void Pseudo::trigger() {
   auto feminineName = data::read_list_name("dataset", "prenoms_feminins");

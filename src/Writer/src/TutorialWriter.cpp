@@ -18,14 +18,15 @@ void write(const Title& title,
 
   utils::writeSeparators();
 
-  for (std::size_t i = 0; i < tutorialStatement.size(); i++) {
-    utils::pause();
+  std::for_each(std::cbegin(tutorialStatement), std::cend(tutorialStatement),
+                [](const auto& statement) {
+                  utils::pause();
 
-    std::cout << "\n " << Term::color(Term::fg::magenta)
-              << Term::color(Term::style::bold) << tutorialStatement[i]
-              << Term::color(Term::fg::reset)
-              << Term::color(Term::style::reset);
-  }
+                  std::cout << "\n " << Term::color(Term::fg::magenta)
+                            << Term::color(Term::style::bold) << statement
+                            << Term::color(Term::fg::reset)
+                            << Term::color(Term::style::reset);
+                });
 
   std::cout << "\n";
 }

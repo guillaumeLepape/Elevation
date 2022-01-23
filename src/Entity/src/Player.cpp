@@ -5,8 +5,7 @@
 #include <iostream>
 
 namespace entity {
-Player::Player(const std::string& pseudo, const unsigned int& id,
-               const int& nbLevelSuceeded,
+Player::Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
                weapon::WeaponInventory&& weaponInventory)
     : pseudo_{pseudo},
       id_{id},
@@ -15,9 +14,8 @@ Player::Player(const std::string& pseudo, const unsigned int& id,
       weapons_{std::move(weaponInventory)},
       healthBar_{MAX_LIFE_POINTS_PLAYER, MAX_LIFE_POINTS_PLAYER} {}
 
-Player::Player(const std::string& pseudo, const unsigned int& id,
-               const int& nbLevelSuceeded, const int& nbLifePoints,
-               const int& maxLifePoints, const int& money,
+Player::Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
+               int nbLifePoints, int maxLifePoints, int money,
                weapon::WeaponInventory&& weapons)
     : pseudo_{pseudo},
       id_{id},
@@ -36,14 +34,12 @@ Player::Player(const nlohmann::json& jsonInput)
              weapon::make_weapon_inventory(jsonInput["weapons"])} {}
 
 nlohmann::json Player::write() const {
-  nlohmann::json jsonObjectOutput{{"pseudo", pseudo_},
-                                  {"id", id_},
-                                  {"nbLevelSuceeded", nbLevelSuceeded_},
-                                  {"nbLifePoints", healthBar_.nbLifePoints()},
-                                  {"maxLifePoints", healthBar_.maxLifePoints()},
-                                  {"money", money_},
-                                  {"weapons", weapon::write(weapons_)}};
-
-  return jsonObjectOutput;
+  return nlohmann::json{{"pseudo", pseudo_},
+                        {"id", id_},
+                        {"nbLevelSuceeded", nbLevelSuceeded_},
+                        {"nbLifePoints", healthBar_.nbLifePoints()},
+                        {"maxLifePoints", healthBar_.maxLifePoints()},
+                        {"money", money_},
+                        {"weapons", weapon::write(weapons_)}};
 }
 }  // namespace entity

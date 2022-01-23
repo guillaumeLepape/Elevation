@@ -6,7 +6,7 @@
 
 nlohmann::json readJsonFile(const std::string& path) {
   // open json file
-  std::ifstream jsonFile(path, std::ifstream::binary);
+  std::ifstream jsonFile{path, std::ifstream::binary};
 
   // check if the file is opened
   assert(jsonFile.is_open());
@@ -41,8 +41,8 @@ void writeListName(const std::set<std::string>& listName,
                    const std::string& nameFile) {
   nlohmann::json jsonObject(listName);
 
-  std::ofstream jsonFile("dataset/" + nameFile + ".json",
-                         std::ofstream::binary);
+  std::ofstream jsonFile{"dataset/" + nameFile + ".json",
+                         std::ofstream::binary};
 
   jsonFile << jsonObject;
 

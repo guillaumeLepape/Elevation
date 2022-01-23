@@ -10,7 +10,7 @@
 #include "Plug.h"
 
 void Level8::start() {
-  entity::Plug plug("Mathilde", 30);
+  entity::Plug plug{"Mathilde", 30};
 
   Header::write(data::Level8::nameLevel, data::Level8::hour,
                 data::Level8::minut);
@@ -18,7 +18,7 @@ void Level8::start() {
   Message::write(data::Level8::message0(plug.name()), player_.pseudo(),
                  plug.name());
 
-  action::AddWeaponAction addWeaponAction(player_, weapon::Ninemm(3));
+  action::AddWeaponAction addWeaponAction{player_, weapon::Ninemm(3)};
   addWeaponAction.trigger();
 
   Message::write(data::Level8::message1, player_.pseudo(), plug.name());

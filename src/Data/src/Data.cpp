@@ -9,7 +9,7 @@ nlohmann::json read_json_file(std::string&& folderFromRoot,
                      "/" + std::forward<decltype(fileName)>(fileName) + ".json";
 
   // open json file
-  std::ifstream messageFile(path, std::ifstream::binary);
+  std::ifstream messageFile{path, std::ifstream::binary};
 
   // check if the file is opened
   assert(messageFile.is_open());

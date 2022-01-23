@@ -9,7 +9,7 @@
 
 FightWriter::FightWriter(const entity::Player* const player,
                          const std::vector<entity::Plug*>& plugs)
-    : player_(player), plugs_(plugs) {
+    : player_{player}, plugs_{plugs} {
   utils::pause();
   std::cout << "\n " << Term::color(Term::fg::yellow)
             << Term::color(Term::style::bold) << "Début du combat"

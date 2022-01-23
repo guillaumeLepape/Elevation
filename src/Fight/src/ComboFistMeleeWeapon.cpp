@@ -10,7 +10,7 @@ ComboFistMeleeWeapon::ComboFistMeleeWeapon(entity::Player& player)
             data::Combo::malusStatementFistMeleeWeapon} {}
 
 void ComboFistMeleeWeapon::triggerCombo(
-    entity::Plug& plug, const int& resultChooseWeapon,
+    entity::Plug& plug, int resultChooseWeapon,
     const std::vector<action::UseWeapon>& useWeapon) {
   // if the player has attack with his fist, trigger the combo
   // and the ennemy is not dead
@@ -24,7 +24,7 @@ void ComboFistMeleeWeapon::triggerCombo(
          weapon != std::cend(player_.weapons()); ++weapon) {
       if (weapon->type == weapon::Type::meleeWeapon) {
         useWeaponFistCombo.push_back(
-            action::UseWeapon(player_, plug, weapon->name));
+            action::UseWeapon{player_, plug, weapon->name});
       }
     }
 

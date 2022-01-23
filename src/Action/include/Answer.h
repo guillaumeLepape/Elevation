@@ -10,12 +10,12 @@ class Answer {
   bool correctOrNot_;
 
  public:
-  explicit Answer(const Statement& statement, const bool& correctOrNot)
-      : statement_(statement), correctOrNot_(correctOrNot) {}
+  explicit Answer(const Statement& statement, bool correctOrNot)
+      : statement_{statement}, correctOrNot_{correctOrNot} {}
 
   const std::string& statement() const { return statement_.get(); }
 
-  const bool& correctOrNot() const { return correctOrNot_; }
+  bool correctOrNot() const { return correctOrNot_; }
 };
 }  // namespace action
 

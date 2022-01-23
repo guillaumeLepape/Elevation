@@ -9,7 +9,7 @@ ComboQuadrupleCutter::ComboQuadrupleCutter(entity::Player& player)
             data::Combo::malusStatementQuadrupleCutter} {}
 
 void ComboQuadrupleCutter::triggerCombo(
-    entity::Plug&, const int& resultChooseWeapon,
+    entity::Plug&, int resultChooseWeapon,
     const std::vector<action::UseWeapon>& useWeapon) {
   if (useWeapon[resultChooseWeapon].name() == "Cutter") {
     action::UseWeapon useWeaponCombo = useWeapon[resultChooseWeapon];

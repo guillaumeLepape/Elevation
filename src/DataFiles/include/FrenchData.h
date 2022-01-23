@@ -11,9 +11,9 @@ namespace Introduction {
 // ***********************************
 
 // Header data
-static constexpr auto nameLevel = Title("Introduction : Dur réveil");
-static constexpr auto hour = Hour(13);
-static constexpr auto minut = Minut(12);
+static constexpr auto nameLevel = Title{"Introduction : Dur réveil"};
+static constexpr auto hour = Hour{13};
+static constexpr auto minut = Minut{12};
 
 // Messages data
 inline Message_t message0 = {
@@ -49,13 +49,13 @@ namespace Level1 {
 // ***********************************
 
 // Header data
-static constexpr auto nameLevel = Title("Niveau 1 : Beuh");
-static constexpr auto hour = Hour(14);
-static constexpr auto minut = Minut(35);
+static constexpr auto nameLevel = Title{"Niveau 1 : Beuh"};
+static constexpr auto hour = Hour{14};
+static constexpr auto minut = Minut{35};
 
 // Messages data
 inline Message_t message0(const std::string& pseudo,
-                          const std::string& plugName, const int& pricePlug) {
+                          const std::string& plugName, int pricePlug) {
   return {
       {NameSpeaker::player, "Bon, c'est parti."},
       {NameSpeaker::description, "Vous arrivez en bas du batiment"},
@@ -76,12 +76,12 @@ namespace Level2 {
 // ***********************************
 
 // Header data
-static constexpr auto nameLevel = Title("Niveau 2 : Coke");
-static constexpr auto hour = Hour(15);
-static constexpr auto minut = Minut(10);
+static constexpr auto nameLevel = Title{"Niveau 2 : Coke"};
+static constexpr auto hour = Hour{15};
+static constexpr auto minut = Minut{10};
 
 // Messages data
-inline Message_t message0(const std::string& plugName, const int& pricePlug) {
+inline Message_t message0(const std::string& plugName, int pricePlug) {
   return {{NameSpeaker::player, "Salut, " + plugName + "."},
           {NameSpeaker::plug, "Ca va ? Tu cherches quoi ?"},
           {NameSpeaker::player, "De la C."},
@@ -108,9 +108,9 @@ inline Message_t message5 = {{NameSpeaker::player, "Merci. Salut."},
 }  // namespace Level2
 
 namespace Level3 {
-static constexpr auto nameLevel = Title("Niveau 3 : Shit");
-static constexpr auto hour = Hour(16);
-static constexpr auto minut = Minut(4);
+static constexpr auto nameLevel = Title{"Niveau 3 : Shit"};
+static constexpr auto hour = Hour{16};
+static constexpr auto minut = Minut{4};
 
 inline Message_t message0 = {
     {NameSpeaker::description, "Vous arrivez en bas du bloc."},
@@ -150,9 +150,9 @@ inline Message_t message5 = {{NameSpeaker::description, "Roule. Fume."}};
 }  // namespace Level3
 
 namespace Level4 {
-static constexpr auto nameLevel = Title("Niveau 4 : Lean");
-static constexpr auto hour = Hour(17);
-static constexpr auto minut = Minut(15);
+static constexpr auto nameLevel = Title{"Niveau 4 : Lean"};
+static constexpr auto hour = Hour{17};
+static constexpr auto minut = Minut{15};
 
 inline Message_t message0(const std::string& pseudo) {
   return {
@@ -185,9 +185,9 @@ inline Message_t message3 = {{NameSpeaker::plug, "Quelle niveau ! Tiens."},
 }  // namespace Level4
 
 namespace Level5 {
-static constexpr auto nameLevel = Title("Niveau 5 : Xanax");
-static constexpr auto hour = Hour(19);
-static constexpr auto minut = Minut(2);
+static constexpr auto nameLevel = Title{"Niveau 5 : Xanax"};
+static constexpr auto hour = Hour{19};
+static constexpr auto minut = Minut{2};
 
 inline Message_t message0 = {
     {NameSpeaker::description,
@@ -238,9 +238,9 @@ inline Message_t message7 = {
 }  // namespace Level5
 
 namespace Level6 {
-static constexpr auto nameLevel = Title("Niveau 6 : Champis");
-static constexpr auto hour = Hour(21);
-static constexpr auto minut = Minut(10);
+static constexpr auto nameLevel = Title{"Niveau 6 : Champis"};
+static constexpr auto hour = Hour{21};
+static constexpr auto minut = Minut{10};
 
 inline Message_t message0 = {
     {NameSpeaker::player,
@@ -257,9 +257,9 @@ inline Message_t message0 = {
 }  // namespace Level6
 
 namespace Level7 {
-static constexpr auto nameLevel = Title("Niveau 7 : Kétamine");
-static constexpr auto hour = Hour(0);
-static constexpr auto minut = Minut(10);
+static constexpr auto nameLevel = Title{"Niveau 7 : Kétamine"};
+static constexpr auto hour = Hour{0};
+static constexpr auto minut = Minut{10};
 
 inline Message_t message0 = {
     {NameSpeaker::description, "Boum."},
@@ -276,9 +276,9 @@ inline Message_t message1 = {
 }  // namespace Level7
 
 namespace Level8 {
-static constexpr auto nameLevel = Title("Niveau 8 : Crack (Interlude)");
-static constexpr auto hour = Hour(2);
-static constexpr auto minut = Minut(12);
+static constexpr auto nameLevel = Title{"Niveau 8 : Crack (Interlude)"};
+static constexpr auto hour = Hour{2};
+static constexpr auto minut = Minut{12};
 
 inline Message_t message0(const std::string& plugName) {
   return {
@@ -310,9 +310,9 @@ inline Message_t message1 = {
 }  // namespace Level8
 
 namespace Level9 {
-static constexpr auto nameLevel = Title("Niveau 9 : LSD (Révélation)");
-static constexpr auto hour = Hour(3);
-static constexpr auto minut = Minut(35);
+static constexpr auto nameLevel = Title{"Niveau 9 : LSD (Révélation)"};
+static constexpr auto hour = Hour{3};
+static constexpr auto minut = Minut{35};
 
 inline Message_t message0 = {{NameSpeaker::player, "Dégage de là."}};
 
@@ -349,9 +349,9 @@ inline Message_t message7 = {
 }  // namespace Level9
 
 namespace Level10 {
-static constexpr auto nameLevel = Title("Niveau 10 : Héroine (Désillusion)");
-static constexpr auto hour = Hour(7);
-static constexpr auto minut = Minut(30);
+static constexpr auto nameLevel = Title{"Niveau 10 : Héroine (Désillusion)"};
+static constexpr auto hour = Hour{7};
+static constexpr auto minut = Minut{30};
 
 inline Message_t messageMinus1 = {
     {NameSpeaker::plug, "Que fais tu petit chose ?"},
@@ -386,9 +386,9 @@ inline Message_t message4 = {
 }  // namespace Level10
 
 namespace Outro {
-static constexpr auto nameLevel = Title("Crédits");
-static constexpr auto hour = Hour(0);
-static constexpr auto minut = Minut(0);
+static constexpr auto nameLevel = Title{"Crédits"};
+static constexpr auto hour = Hour{0};
+static constexpr auto minut = Minut{0};
 
 inline Message_t message0 = {
     {NameSpeaker::description, "Programmeur : Jess H."},
@@ -397,204 +397,200 @@ inline Message_t message0 = {
 }  // namespace Outro
 
 namespace Action {
-static constexpr auto titleChooseWeapon = Title("Choix de l'arme");
-static constexpr auto titleChoosePlug = Title("Choix de l'ennemi");
+static constexpr auto titleChooseWeapon = Title{"Choix de l'arme"};
+static constexpr auto titleChoosePlug = Title{"Choix de l'ennemi"};
 
 inline auto statementChoosePlug(const std::string& plugName) {
-  return Statement("Attaquer " + plugName + ".");
+  return Statement{"Attaquer " + plugName + "."};
 }
 inline auto resultChoosePlug(const std::string& plugName) {
-  return Result("Vous avez choisi d'attaquer " + plugName + ".");
+  return Result{"Vous avez choisi d'attaquer " + plugName + "."};
 }
-inline auto resultPlugAttack(const std::string& plugName,
-                             const int& damagePlug) {
-  return Result(plugName + " vous inflige " + std::to_string(damagePlug) +
-                " points de vie.");
+inline auto resultPlugAttack(const std::string& plugName, int damagePlug) {
+  return Result{plugName + " vous inflige " + std::to_string(damagePlug) +
+                " points de vie."};
 }
 
 inline auto resultDead(const std::string& plugName) {
-  return Result(plugName + " est mort.");
+  return Result{plugName + " est mort."};
 }
 
 // data for pseudo action
-inline auto statementPseudo = Statement("Entrez votre prénom");
+inline auto statementPseudo = Statement{"Entrez votre prénom"};
 inline auto resultPseudo(const std::string& pseudo) {
-  return Result("Votre prénom est à présent : " + pseudo + ".");
+  return Result{"Votre prénom est à présent : " + pseudo + "."};
 }
 
 // data for negociate action
-inline auto statementNegociate = Statement("Entrez votre montant");
-inline auto resultNegociate(const int& pricePlayer) {
-  return Result("Vous perdez " + std::to_string(pricePlayer) + "€.");
+inline auto statementNegociate = Statement{"Entrez votre montant"};
+inline auto resultNegociate(int pricePlayer) {
+  return Result{"Vous perdez " + std::to_string(pricePlayer) + "€."};
 }
 
 // data for regeneration action
-inline auto resultRegeneration(const int& lifePointsRegeneration) {
-  return Result("Vous gagnez " + std::to_string(lifePointsRegeneration) +
-                " points de vie.");
+inline auto resultRegeneration(int lifePointsRegeneration) {
+  return Result{"Vous gagnez " + std::to_string(lifePointsRegeneration) +
+                " points de vie."};
 }
 
 inline auto resultAddWeapon(const std::string& nameWeapon) {
-  return Result(nameWeapon + " ajouté à votre inventaire.");
+  return Result{nameWeapon + " ajouté à votre inventaire."};
 }
 
-inline auto resultsIncreaseMaxLifePoints(const int& maxLifePoints) {
-  return Result("Votre nombre de points de vie maximal augmente de " +
-                std::to_string(maxLifePoints) + " points.");
+inline auto resultsIncreaseMaxLifePoints(int maxLifePoints) {
+  return Result{"Votre nombre de points de vie maximal augmente de " +
+                std::to_string(maxLifePoints) + " points."};
 }
 }  // namespace Action
 
 namespace Menu {
 // title of startGame menu
-static constexpr auto titleStartGameMenu = Title("Menu");
+static constexpr auto titleStartGameMenu = Title{"Menu"};
 
 // data for startGame action
-inline auto statementStartGame = Statement("Commencer une nouvelle partie");
-inline std::string resultStartGame("La partie commence.");
+inline auto statementStartGame = Statement{"Commencer une nouvelle partie"};
+inline std::string resultStartGame{"La partie commence."};
 
 // data for loadGame action
-inline auto statementLoadGame = Statement("Charger une partie");
-// inline auto resultLoadGame = Statement("Vous avez choisi de charger une
-// partie.");
+inline auto statementLoadGame = Statement{"Charger une partie"};
 
 // data for quit action
-inline auto statementQuit = Statement("Quitter le jeu");
-inline auto resultQuit = Result("Fin du jeu");
+inline auto statementQuit = Statement{"Quitter le jeu"};
+inline auto resultQuit = Result{"Fin du jeu"};
 
 // title of loadGame menu
-static constexpr auto titleLoadGameMenu = Title("Choix de la partie");
+static constexpr auto titleLoadGameMenu = Title{"Choix de la partie"};
 
 // data for the choice of the loaded game
 inline Statement statementChooseLoadedGame(const std::string& pseudo,
-                                           const int& levelNumber) {
-  return Statement("Charger la partie " + pseudo + " au niveau " +
-                   std::to_string(levelNumber));
+                                           int levelNumber) {
+  return Statement{"Charger la partie " + pseudo + " au niveau " +
+                   std::to_string(levelNumber)};
 }
-inline std::string resultChooseLoadedGame(
-    "Vous avez chois charger une partie.");
+inline std::string resultChooseLoadedGame{
+    "Vous avez chois charger une partie."};
 
 // title of endOfLevel menu
-static constexpr auto titleContinueMenu = Title("Niveau terminé");
+static constexpr auto titleContinueMenu = Title{"Niveau terminé"};
 
 // data for continue action
-inline auto statementContinue = Statement("Continuer votre partie");
+inline auto statementContinue = Statement{"Continuer votre partie"};
 
 // data for save and quit action
-inline auto statementSaveAndQuit = Statement("Quitter");
-inline auto resultSaveAndQuit = Result("Partie sauvegardée");
+inline auto statementSaveAndQuit = Statement{"Quitter"};
+inline auto resultSaveAndQuit = Result{"Partie sauvegardée"};
 
 // data for game Over action
-inline auto resultGameOver = Result("Vous etes mort. Game Over.");
+inline auto resultGameOver = Result{"Vous etes mort. Game Over."};
 }  // namespace Menu
 
 namespace Combo {
-static constexpr auto titleFistMeleeWeapon = Title("Combo Poing-Arme de mélée");
+static constexpr auto titleFistMeleeWeapon = Title{"Combo Poing-Arme de mélée"};
 static constexpr auto triggerStatementFistMeleeWeapon =
-    TriggerStatement("Attaquer un ennemi avec le poing");
-static constexpr auto triggeredStatementFistMeleeWeapon = TriggeredStatement(
+    TriggerStatement{"Attaquer un ennemi avec le poing"};
+static constexpr auto triggeredStatementFistMeleeWeapon = TriggeredStatement{
     "Attaquer le même ennemi avec l'arme de mélée de votre choix. Le combo "
-    "n'est pas déclenché si vous ne possèdez pas d'arme de mélée.");
-static constexpr auto malusStatementFistMeleeWeapon = MalusStatement(
-    "L'attaque avec l'arme de mélée inflige moitié moins de dégats");
+    "n'est pas déclenché si vous ne possèdez pas d'arme de mélée."};
+static constexpr auto malusStatementFistMeleeWeapon = MalusStatement{
+    "L'attaque avec l'arme de mélée inflige moitié moins de dégats"};
 
-static constexpr auto titleDoubleMeleeWeapon = Title("Combo Double Couteau");
+static constexpr auto titleDoubleMeleeWeapon = Title{"Combo Double Couteau"};
 static constexpr auto triggerStatementDoubleMeleeWeapon =
-    TriggerStatement("Attaquer un ennemi avec le couteau.");
+    TriggerStatement{"Attaquer un ennemi avec le couteau."};
 static constexpr auto triggeredStatementDoubleMeleeWeapon =
-    TriggeredStatement("Attaquer le même ennemi avec la même arme.");
-static constexpr auto malusStatementDoubleMeleeWeapon = MalusStatement(
+    TriggeredStatement{"Attaquer le même ennemi avec la même arme."};
+static constexpr auto malusStatementDoubleMeleeWeapon = MalusStatement{
     "Le couteau que vous avez utilisé est détruit. Vous pouvez ne pas "
-    "déclencher le combo. Dans ce cas le couteau n'est pas détruit.");
+    "déclencher le combo. Dans ce cas le couteau n'est pas détruit."};
 
-static constexpr auto titleQuadrupleCutter = Title("Combo Quadruple Cutter");
+static constexpr auto titleQuadrupleCutter = Title{"Combo Quadruple Cutter"};
 static constexpr auto triggerStatementQuadrupleCutter =
-    TriggerStatement("Attaquer un ennemu avec le cutter");
+    TriggerStatement{"Attaquer un ennemu avec le cutter"};
 static constexpr auto triggeredStatementQuadrupleCutter =
-    TriggeredStatement("Attaquer le même ennemi avec le cutter à 3 reprises.");
+    TriggeredStatement{"Attaquer le même ennemi avec le cutter à 3 reprises."};
 static constexpr auto malusStatementQuadrupleCutter =
-    MalusStatement("Le cutter est détruit et vous ne pouvez plus l'utiliser.");
+    MalusStatement{"Le cutter est détruit et vous ne pouvez plus l'utiliser."};
 
-inline auto statementDontCombo = Statement("Ne pas déclencher le combo");
+inline auto statementDontCombo = Statement{"Ne pas déclencher le combo"};
 }  // namespace Combo
 
 namespace Information {
-static constexpr auto titleInformation = Title("Informations");
+static constexpr auto titleInformation = Title{"Informations"};
 inline auto statementInformationWeapon =
-    Statement("Informations sur les armes que vous possèdez.");
+    Statement{"Informations sur les armes que vous possèdez."};
 inline auto statementInformationCombo =
-    Statement("Informations sur les combos disponible lors de ce combat.");
+    Statement{"Informations sur les combos disponible lors de ce combat."};
 inline auto statementNoInformation =
-    Statement("Je ne souhaite pas avoir d'informations.");
-inline auto statementNoInformationAnymore = Statement(
+    Statement{"Je ne souhaite pas avoir d'informations."};
+inline auto statementNoInformationAnymore = Statement{
     "Je ne souhaite pas avoir d'informations et je ne souhaite plus voir le "
-    "menu d'informations lors de ce combat.");
+    "menu d'informations lors de ce combat."};
 }  // namespace Information
 
 namespace Question {
 // First question title
 static constexpr auto titleFirstQuestion =
-    Title("Les hommes sont-ils allez sur la Lune ?");
+    Title{"Les hommes sont-ils allez sur la Lune ?"};
 
 // First Answer
-inline auto answer1Question1 = Statement("Oui, bien sur !");
+inline auto answer1Question1 = Statement{"Oui, bien sur !"};
 static constexpr auto correctOrNotAnswer1Question1 = false;
 
 // Second Answer
 inline auto answer2Question1 =
-    Statement("Bien sur, les américains l'ont fait pour niquer les russes.");
+    Statement{"Bien sur, les américains l'ont fait pour niquer les russes."};
 static constexpr auto correctOrNotAnswer2Question1 = false;
 
 // Third Answer
 inline auto answer3Question1 =
-    Statement("Non, l'alunissage a eu lieu au Nevada.");
+    Statement{"Non, l'alunissage a eu lieu au Nevada."};
 static constexpr auto correctOrNotAnswer3Question1 = true;
 
 // Second question title
 static constexpr auto titleSecondQuestion =
-    Title("Pourquoi le faux alunissage a été caché ?");
+    Title{"Pourquoi le faux alunissage a été caché ?"};
 
 // First Answer
-inline auto answer1Question2 = Statement("Euh ...");
+inline auto answer1Question2 = Statement{"Euh ..."};
 static constexpr auto correctOrNotAnswer1Question2 = false;
 
 // Second Answer
-inline auto answer2Question2 = Statement(
+inline auto answer2Question2 = Statement{
     "Pour montrer leurs supériorités, les américains ont préféré mentir car "
-    "ils n'avaient pas les moyens technologiques d'y aller.");
+    "ils n'avaient pas les moyens technologiques d'y aller."};
 static constexpr auto correctOrNotAnswer2Question2 = false;
 
 // Third Answer
 inline auto answer3Question2 =
-    Statement("Pour cacher qu'en fait la Terre est plate.");
+    Statement{"Pour cacher qu'en fait la Terre est plate."};
 static constexpr auto correctOrNotAnswer3Question2 = true;
 
 // Third question title
 static constexpr auto titleThirdQuestion =
-    Title("Pourquoi vouloir masquer tout ça ?");
+    Title{"Pourquoi vouloir masquer tout ça ?"};
 
 // First Answer
-inline auto answer1Question3 = Statement(
+inline auto answer1Question3 = Statement{
     "Pour cacher la grand plan des élites qui consiste à réduire drastiquement "
-    "la population.");
+    "la population."};
 static constexpr auto correctOrNotAnswer1Question3 = true;
 
 // Second Answer
-inline auto answer2Question3 = Statement(
+inline auto answer2Question3 = Statement{
     "Pour cacher le projet d'Elon Musk, Bill Gates et Laurent Alexandre "
-    "constitant à implémenter des puces à la population pour les controler.");
+    "constitant à implémenter des puces à la population pour les controler."};
 static constexpr auto correctOrNotAnswer2Question3 = true;
 
 // Third Answer
-inline auto answer3Question3 = Statement(
+inline auto answer3Question3 = Statement{
     "Pour cacher que toutes gouvernements sont à la solde d'une organisation "
-    "secrète dirigée par les reptiliens.");
+    "secrète dirigée par les reptiliens."};
 static constexpr auto correctOrNotAnswer3Question3 = true;
 }  // namespace Question
 
 namespace Tutorial {
-static constexpr auto titleCombatSystem = Title("Tutoriel : Système de combat");
-inline std::vector<std::string> statementCombatSystem(
-    const int& maxNbLifePoints) {
+static constexpr auto titleCombatSystem = Title{"Tutoriel : Système de combat"};
+inline std::vector<std::string> statementCombatSystem(int maxNbLifePoints) {
   return {
       "Dans ce jeu, les combats se déroulent ainsi.",
       "A chaque tour, vous choisissez d'abord quelle ennemi vous souhaitez "
@@ -608,8 +604,8 @@ inline std::vector<std::string> statementCombatSystem(
       "Lorsque vous tuez un ennemi vous pouvez récupérer leurs armes."};
 }
 
-static constexpr auto titleCombo = Title("Tutoriel : Enchaînements");
-inline std::vector<std::string> statementCombo = {
+static constexpr auto titleCombo = Title{"Tutoriel : Enchaînements"};
+inline std::vector<std::string> statementCombo{
     "Lors des combats des enchaînements peuvent être réalisés pour faire plus "
     "de dégats aux ennemis.",
     "Ainsi, au lieu de frapper avec une arme une unique fois lors de votre "
@@ -618,8 +614,8 @@ inline std::vector<std::string> statementCombo = {
     "un malus."};
 
 static constexpr auto titleComboFistMeleeWeapon =
-    Title("Tutoriel : Combo Poing - Arme de mélée");
-inline std::vector<std::string> statementComboFistMeleeWeapon = {
+    Title{"Tutoriel : Combo Poing - Arme de mélée"};
+inline std::vector<std::string> statementComboFistMeleeWeapon{
     "En frappant avec le poing un ennemi,",
     "vous pouvez, lors du même tour, frapper le même ennemi avec un arme de "
     "mélée.",
@@ -628,8 +624,8 @@ inline std::vector<std::string> statementComboFistMeleeWeapon = {
     "au lieu de 2. Vous perdez de fait moins de points de vie."};
 
 static constexpr auto titleComboDoubleMeleeWeapon =
-    Title("Tutoriel : Arme de mélée + Arme de mélée");
-inline std::vector<std::string> statementComboDoubleMeleeWeapon = {
+    Title{"Tutoriel : Arme de mélée + Arme de mélée"};
+inline std::vector<std::string> statementComboDoubleMeleeWeapon{
     "En frappant avec une arme de mélée un ennemi,",
     "vous pouvez, lors du même tour, frapper le même ennemi avec la même arme "
     "de mélée.",
@@ -639,15 +635,15 @@ inline std::vector<std::string> statementComboDoubleMeleeWeapon = {
     "Grace à ce combo, vous pourrez vaincre le prochain ennemi en 1 tour,",
     "sans perdre de points de vie."};
 
-static constexpr auto titleNoWeapon = Title("Tutoriel : Subir et revenir");
-inline std::vector<std::string> statementNoWeapon = {
+static constexpr auto titleNoWeapon = Title{"Tutoriel : Subir et revenir"};
+inline std::vector<std::string> statementNoWeapon{
     "Vos poings sont la seule arme qu'il vous reste.",
     "Pas le choix, vous devez subir et revenir.",
     "Pour cela, lorsque vous tuez un ennemi, vous pouvez récupérer son arme si "
     "vous n'en disposez pas déjà."};
 
-static constexpr auto titleRegeneration = Title("Tutoriel : Regeneration");
-inline std::vector<std::string> statementRegeneration = {
+static constexpr auto titleRegeneration = Title{"Tutoriel : Regeneration"};
+inline std::vector<std::string> statementRegeneration{
     "Les drogues sont très bonnes pour la santé (dans ce jeu en tout cas).",
     "Elles ouvrent de nouvelles capacité au corps humain.",
     "Parfois, elles permettent de se régénerer de ces blessures.",
@@ -672,34 +668,33 @@ inline std::vector<std::string> statementRegeneration = {
 }  // namespace Tutorial
 
 namespace Weapon {
-inline std::string statementEmpty("");
+inline std::string statementEmpty{""};
 // generic UseWeapon data statement for fist
-inline std::string statementUseFist("Cognez ! (Poing)");
+inline std::string statementUseFist{"Cognez ! (Poing)"};
 // generic UseWeapon data statement for knife
-inline std::string statementUseKnife("Plantez ! (Couteau)");
+inline std::string statementUseKnife{"Plantez ! (Couteau)"};
 // generic UseWeapon data statement for katana
-inline std::string statementUseKatana("Découpez ! (Katana)");
+inline std::string statementUseKatana{"Découpez ! (Katana)"};
 // generic UseWeapon data statement for cutter
-inline std::string statementUseCutter("Tailladez ! (Cutter)");
+inline std::string statementUseCutter{"Tailladez ! (Cutter)"};
 // generic UseWeapon data statement for hammer
-inline std::string statementUseHammer("Martelez ! (Marteau)");
+inline std::string statementUseHammer{"Martelez ! (Marteau)"};
 
-inline std::string statementDivineStrike(
-    "Frappez comme un Dieu! (Frappe divine)");
+inline std::string statementDivineStrike{
+    "Frappez comme un Dieu! (Frappe divine)"};
 
-inline std::string statementUseChopper("Hachez ! (Hachoir)");
-inline std::string statementUseNoWeapon("");
+inline std::string statementUseChopper{"Hachez ! (Hachoir)"};
+inline std::string statementUseNoWeapon{""};
 
 // generic UseWeapon data statement for 9mm
-inline std::string statementUseNinemm("Tirez ! (9mm)");
+inline std::string statementUseNinemm{"Tirez ! (9mm)"};
 // generic UseWeapon data statement for 9mm
-inline std::string statementUseAK47("Rafalez ! (AK47)");
+inline std::string statementUseAK47{"Rafalez ! (AK47)"};
 
 // generic UseWeapon data result
-inline auto resultUseWeapon(const std::string& plugName,
-                            const int& damageWeapon) {
-  return Result(plugName + " perd " + std::to_string(damageWeapon) +
-                " points de vie.");
+inline auto resultUseWeapon(const std::string& plugName, int damageWeapon) {
+  return Result{plugName + " perd " + std::to_string(damageWeapon) +
+                " points de vie."};
 }
 
 inline std::string statementCombo(const std::string& nameWeapon) {
@@ -707,20 +702,20 @@ inline std::string statementCombo(const std::string& nameWeapon) {
 }
 
 // Name of all weapons
-inline std::string nameNoWeapon = "Pas d'arme";
+inline std::string nameNoWeapon{"Pas d'arme"};
 
-inline std::string nameFist = "Poing";
-inline std::string nameDivineStrike = "Frappe Divine";
+inline std::string nameFist{"Poing"};
+inline std::string nameDivineStrike{"Frappe Divine"};
 
-inline std::string nameCutter = "Cutter";
-inline std::string nameKnife = "Couteau";
-inline std::string nameHammer = "Marteau";
-inline std::string nameKatana = "Katana";
-inline std::string nameChopper = "Hachoir";
-inline std::string nameHeroine = "Heroine";
+inline std::string nameCutter{"Cutter"};
+inline std::string nameKnife{"Couteau"};
+inline std::string nameHammer{"Marteau"};
+inline std::string nameKatana{"Katana"};
+inline std::string nameChopper{"Hachoir"};
+inline std::string nameHeroine{"Heroine"};
 
-inline std::string nameNinemm = "9mm";
-inline std::string nameAK47 = "AK47";
+inline std::string nameNinemm{"9mm"};
+inline std::string nameAK47{"AK47"};
 }  // namespace Weapon
 
 }  // namespace data

@@ -5,7 +5,7 @@
 #include "Pause.h"
 #include "UtilsWriter.h"
 
-ComboWriter::ComboWriter(const Combo* const combo) : combo_(combo) {}
+ComboWriter::ComboWriter(const Combo* const combo) : combo_{combo} {}
 
 void ComboWriter::informationCombo() const {
   utils::pause();

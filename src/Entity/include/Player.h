@@ -17,18 +17,12 @@ class Player {
   HealthBar healthBar_;
 
  public:
-  Player(
-      const std::string& pseudo, const unsigned int& id,
-      const int& nbLevelSuceeded,
-      weapon::WeaponInventory&& weaponInventory = []() {
-        weapon::WeaponInventory result;
-        result.insert(weapon::Fist());
-        return result;
-      }());
+  Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
+         weapon::WeaponInventory&& weaponInventory = weapon::WeaponInventory{
+             weapon::Fist()});
 
-  Player(const std::string& pseudo, const unsigned int& id,
-         const int& nbLevelSuceeded, const int& nbLifePoints,
-         const int& maxLifePoints, const int& money,
+  Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
+         int nbLifePoints, int maxLifePoints, int money,
          weapon::WeaponInventory&& weapons);
 
   Player(const nlohmann::json& jsonInput);
@@ -44,13 +38,13 @@ class Player {
   const std::string& pseudo() const { return pseudo_; }
   void changePseudo(const std::string& pseudo) { pseudo_ = pseudo; }
 
-  const unsigned int& id() const { return id_; }
+  unsigned int id() const { return id_; }
 
-  const int& nbLevelSuceeded() const { return nbLevelSuceeded_; }
+  int nbLevelSuceeded() const { return nbLevelSuceeded_; }
   void nextLevel() { nbLevelSuceeded_++; }
 
-  void increaseMoney(const int& money) { money_ += money; }
-  void decreaseMoney(const int& money) { money_ -= money; }
+  void increaseMoney(int money) { money_ += money; }
+  void decreaseMoney(int money) { money_ -= money; }
 
   weapon::WeaponInventory& weapons() { return weapons_; }
 
@@ -61,9 +55,9 @@ class Player {
 };
 
 template <typename Entity>
-void attack(Entity* const entity, const weapon::Weapon& weapon) {
+void attack(Entity& entity, const weapon::Weapon& weapon) {
   if (weapon.durability > 0) {
-    entity->healthBar().decreaseLifePoints(weapon.nb_damage);
+    entity.healthBar().decreaseLifePoints(weapon.nb_damage);
     weapon.durability -= weapon.durability_loose_per_use;
   }
 }

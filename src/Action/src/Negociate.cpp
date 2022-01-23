@@ -10,7 +10,7 @@
 
 namespace action {
 Negociate::Negociate(entity::Player& player, const entity::Plug& plug,
-                     const int& plugPrice, const Statement& statement,
+                     int plugPrice, const Statement& statement,
                      const Result& result)
     : statement_{statement},
       result_{result},

@@ -41,7 +41,7 @@ void write(const Results& results, std::string&& nameFolder,
                      std::forward<decltype(nameFile)>(nameFile) + ".json";
 
   // open json file
-  std::ofstream jsonFile(path);
+  std::ofstream jsonFile{path};
 
   // check if the file is opened
   assert(jsonFile.is_open());

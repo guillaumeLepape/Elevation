@@ -28,13 +28,13 @@ class Fight {
 
   const ChooseWeaponResult chooseWeapon(entity::Plug& plug);
 
-  void runCombos(entity::Plug& choosenPlug, const int& resultUseWeapon,
+  void runCombos(entity::Plug& choosenPlug, int resultUseWeapon,
                  const std::vector<action::UseWeapon>& useWeapons);
 
  public:
   Fight(entity::Player* const player, const std::vector<entity::Plug*>& plugs,
-        const std::vector<Combo*>& combos, const bool& noRule,
-        const bool& regeneration = true);
+        const std::vector<Combo*>& combos, bool noRule,
+        bool regeneration = true);
 
   void startFight(
       const std::vector<MessageWriter>& messageWriter = {},

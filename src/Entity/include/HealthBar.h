@@ -11,22 +11,20 @@ class HealthBar {
   constexpr HealthBar(int nbLifePoints, int maxNbLifePoints)
       : nbLifePoints_{nbLifePoints}, maxNbLifePoints_{maxNbLifePoints} {}
 
-  const int& nbLifePoints() const { return nbLifePoints_; }
+  int nbLifePoints() const { return nbLifePoints_; }
 
   int missingLifePoints() const { return maxNbLifePoints_ - nbLifePoints_; }
 
-  const int& maxLifePoints() const { return maxNbLifePoints_; }
+  int maxLifePoints() const { return maxNbLifePoints_; }
 
-  void increaseLifePoints(const int& nbLifePoints) {
+  void increaseLifePoints(int nbLifePoints) {
     if (nbLifePoints_ + nbLifePoints >= maxNbLifePoints_) {
       nbLifePoints_ = maxNbLifePoints_;
     } else {
       nbLifePoints_ += nbLifePoints;
     }
   }
-  void decreaseLifePoints(const int& nbLifePoints) {
-    nbLifePoints_ -= nbLifePoints;
-  }
+  void decreaseLifePoints(int nbLifePoints) { nbLifePoints_ -= nbLifePoints; }
   void increaseMaxLifePoints(int maxNbLifePoints) {
     maxNbLifePoints_ += maxNbLifePoints;
     nbLifePoints_ += maxNbLifePoints;

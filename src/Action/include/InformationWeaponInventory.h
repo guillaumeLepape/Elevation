@@ -17,7 +17,7 @@ class InformationWeaponInventory {
  public:
   InformationWeaponInventory(const weapon::WeaponInventory& weaponInventory,
                              const Statement& statement)
-      : statement_(statement), weaponInventory_(weaponInventory) {}
+      : statement_{statement}, weaponInventory_{weaponInventory} {}
 
   const std::string& statement() const { return statement_.get(); }
 

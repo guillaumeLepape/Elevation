@@ -11,14 +11,14 @@
 #include "UseWeapon.h"
 
 void Level3::start() {
-  entity::Plug plug("V", 100);
+  entity::Plug plug{"V", 100};
 
   Header::write(data::Level3::nameLevel, data::Level3::hour,
                 data::Level3::minut);
 
   Message::write(data::Level3::message0, player_.pseudo(), plug.name());
 
-  action::UseWeapon useFist(player_, plug, data::Weapon::nameFist);
+  action::UseWeapon useFist{player_, plug, data::Weapon::nameFist};
   useFist.trigger();
 
   Message::write(data::Level3::message1, player_.pseudo(), plug.name());
@@ -36,10 +36,10 @@ void Level3::start() {
 
   Message::write(data::Level3::message4, player_.pseudo(), plug.name());
 
-  action::AddWeaponAction addWeaponAction(player_, weapon::Knife());
+  action::AddWeaponAction addWeaponAction{player_, weapon::Knife()};
   addWeaponAction.trigger();
 
-  action::UseWeapon useKnife(player_, plug, data::Weapon::nameKnife);
+  action::UseWeapon useKnife{player_, plug, data::Weapon::nameKnife};
 
   selection::select(data::Action::titleChooseWeapon, useFist, useKnife);
 

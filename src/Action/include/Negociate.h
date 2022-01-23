@@ -18,7 +18,7 @@ class Negociate {
 
  public:
   explicit Negociate(entity::Player& player, const entity::Plug& plug,
-                     const int& plugPrice, const Statement& statement,
+                     int plugPrice, const Statement& statement,
                      const Result& result);
 
   void trigger();

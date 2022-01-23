@@ -7,7 +7,7 @@ class ComboQuadrupleCutter : public Combo {
  public:
   ComboQuadrupleCutter(entity::Player& player);
 
-  void triggerCombo(entity::Plug& plug, const int& resultChooseWeapon,
+  void triggerCombo(entity::Plug& plug, int resultChooseWeapon,
                     const std::vector<action::UseWeapon>& useWeapon) override;
 
   ~ComboQuadrupleCutter() override = default;

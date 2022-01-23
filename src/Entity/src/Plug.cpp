@@ -1,8 +1,7 @@
 #include "Plug.h"
 
 namespace entity {
-Plug::Plug(const std::string& name, const int& nbLifePoints,
-           weapon::Weapon&& weapon)
+Plug::Plug(const std::string& name, int nbLifePoints, weapon::Weapon&& weapon)
     : name_{name},
       weapon_{std::move(weapon)},
       healthBar_{nbLifePoints, nbLifePoints} {}

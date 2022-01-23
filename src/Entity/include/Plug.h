@@ -14,7 +14,7 @@ class Plug {
   HealthBar healthBar_;
 
  public:
-  Plug(const std::string& name, const int& nbLifePoints = 100,
+  Plug(const std::string& name, int nbLifePoints = 100,
        weapon::Weapon&& weapon = weapon::NoWeapon());
 
   Plug(const Plug&) = delete;

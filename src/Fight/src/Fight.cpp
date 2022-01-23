@@ -14,22 +14,21 @@
 
 Fight::Fight(entity::Player* const player,
              const std::vector<entity::Plug*>& plugs,
-             const std::vector<Combo*>& combos, const bool& noRule,
-             const bool& regeneration)
-    : player_(player),
-      plugs_(plugs),
-      combos_(combos),
-      regeneration_(regeneration),
-      numberOfDeadPlug_(0),
-      information_(true),
-      noRule_(noRule) {}
+             const std::vector<Combo*>& combos, bool noRule, bool regeneration)
+    : player_{player},
+      plugs_{plugs},
+      combos_{combos},
+      regeneration_{regeneration},
+      numberOfDeadPlug_{0},
+      information_{true},
+      noRule_{noRule} {}
 
 void Fight::startFight(
     const std::vector<MessageWriter>& messageWriter,
     std::function<bool(entity::Player* const player)> predicate) {
   std::size_t nbTurns = 0;
 
-  FightWriter fightWriter(player_, plugs_);
+  FightWriter fightWriter{player_, plugs_};
 
   // while all enemies are not dead or player is not dead
   while ((not enemiesDeadOrNot()) and (not predicate(player_)) and
@@ -44,13 +43,13 @@ void Fight::startFight(
     if (information_ and (not noRule_)) {
       bool out = false;
 
-      action::InformationWeaponInventory informationWeaponInventory(
-          player_->weapons(), data::Information::statementInformationWeapon);
-      action::InformationCombo informationCombo(
-          combos_, data::Information::statementInformationCombo);
-      action::Nothing noInformation(data::Information::statementNoInformation);
-      action::Nothing noInformationAnymore(
-          data::Information::statementNoInformationAnymore);
+      action::InformationWeaponInventory informationWeaponInventory{
+          player_->weapons(), data::Information::statementInformationWeapon};
+      action::InformationCombo informationCombo{
+          combos_, data::Information::statementInformationCombo};
+      action::Nothing noInformation{data::Information::statementNoInformation};
+      action::Nothing noInformationAnymore{
+          data::Information::statementNoInformationAnymore};
 
       while (not out) {
         int resultInformation = selection::select(
@@ -98,8 +97,8 @@ void Fight::startFight(
 
     if (numberOfDeadPlug_ != countNumberOfDeadPlug) {
       numberOfDeadPlug_ = countNumberOfDeadPlug;
-      action::AddWeaponAction addWeaponAction(*player_,
-                                              std::move(choosenPlug.weapon()));
+      action::AddWeaponAction addWeaponAction{*player_,
+                                              std::move(choosenPlug.weapon())};
       addWeaponAction.trigger();
 
       fightWriter.writeRemoveDeadBody();
@@ -109,19 +108,19 @@ void Fight::startFight(
       if ((*e)->healthBar().alive()) {
         auto message = data::Action::resultPlugAttack((*e)->name(),
                                                       (*e)->weapon().nb_damage);
-        action::PlugAttack plugAttack(*player_, **e, message);
+        action::PlugAttack plugAttack{*player_, **e, message};
         plugAttack.trigger();
       }
 
       if (player_->healthBar().dead()) {
-        action::GameOver gameOver(data::Menu::resultGameOver);
+        action::GameOver gameOver{data::Menu::resultGameOver};
         gameOver.trigger();
       }
     }
 
     // If player is not dead, regenerate her
     if (regeneration_) {
-      action::Regeneration regeneration(*player_, Result(""));
+      action::Regeneration regeneration{*player_, Result("")};
       regeneration.trigger();
     }
 
@@ -162,9 +161,9 @@ entity::Plug& Fight::choosePlug() {
   for (auto p = std::begin(plugs_); p != std::end(plugs_); p++) {
     // user cannot attack dead plugs
     if (((*p)->healthBar().alive())) {
-      action::ChoosePlug choosePlug(
+      action::ChoosePlug choosePlug{
           **p, data::Action::statementChoosePlug((*p)->name()),
-          data::Action::resultChoosePlug((*p)->name()));
+          data::Action::resultChoosePlug((*p)->name())};
       choosePlugActions.push_back(choosePlug);
     }
   }
@@ -189,7 +188,7 @@ const ChooseWeaponResult Fight::chooseWeapon(entity::Plug& choosenPlug) {
   std::transform(std::cbegin(player_->weapons()), std::cend(player_->weapons()),
                  std::back_inserter(useWeapons),
                  [this, &choosenPlug](const auto& weapon) {
-                   return action::UseWeapon(*player_, choosenPlug, weapon.name);
+                   return action::UseWeapon{*player_, choosenPlug, weapon.name};
                  });
 
   auto resultUseWeapon =
@@ -198,7 +197,7 @@ const ChooseWeaponResult Fight::chooseWeapon(entity::Plug& choosenPlug) {
   return {resultUseWeapon, useWeapons};
 }
 
-void Fight::runCombos(entity::Plug& choosenPlug, const int& resultUseWeapon,
+void Fight::runCombos(entity::Plug& choosenPlug, int resultUseWeapon,
                       const std::vector<action::UseWeapon>& useWeapons) {
   for (auto c = std::cbegin(combos_); c != std::cend(combos_); c++) {
     (*c)->triggerCombo(choosenPlug, resultUseWeapon, useWeapons);

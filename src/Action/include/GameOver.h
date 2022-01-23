@@ -12,7 +12,7 @@ class GameOver {
   Result result_;
 
  public:
-  explicit GameOver(const Result& result) : result_(result) {}
+  explicit GameOver(const Result& result) : result_{result} {}
 
   void trigger() {
     action::writeResult(result_);

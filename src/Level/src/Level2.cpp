@@ -10,7 +10,7 @@
 #include "Plug.h"
 
 void Level2::start() {
-  entity::Plug plug("Jean-Luc Delarue");
+  entity::Plug plug{"Jean-Luc Delarue"};
 
   Header::write(data::Level2::nameLevel, data::Level2::hour,
                 data::Level2::minut);
@@ -19,9 +19,9 @@ void Level2::start() {
   auto message = data::Level2::message0(plug.name(), price);
   Message::write(message, player_.pseudo(), plug.name());
 
-  action::Negociate negociate(player_, plug, price,
+  action::Negociate negociate{player_, plug, price,
                               data::Action::statementNegociate,
-                              data::Action::resultNegociate(0));
+                              data::Action::resultNegociate(0)};
   negociate.trigger();
 
   endoflevel(player_);

@@ -10,7 +10,7 @@
 #include "StartGame.h"
 
 auto main(int argc, char* argv[]) -> int {
-  const utils::Options options(argc, argv);
+  const utils::Options options{argc, argv};
 
   // If user selected -h option, print options descriptions
   // and exit program
@@ -22,11 +22,11 @@ auto main(int argc, char* argv[]) -> int {
   Rules::write(options);
 
   // Start the game at the begining
-  action::StartGame startGame(data::Menu::statementStartGame, options);
+  action::StartGame startGame{data::Menu::statementStartGame, options};
   // Load previous game from results.json file
-  action::LoadGame loadGame(data::Menu::statementLoadGame, options);
+  action::LoadGame loadGame{data::Menu::statementLoadGame, options};
   // Quit the game
-  action::Quit quit(data::Menu::statementQuit, data::Menu::resultQuit);
+  action::Quit quit{data::Menu::statementQuit, data::Menu::resultQuit};
 
   selection::select(data::Menu::titleStartGameMenu, startGame, loadGame, quit);
 }

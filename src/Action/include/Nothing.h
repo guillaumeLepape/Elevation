@@ -9,7 +9,7 @@ class Nothing {
   Statement statement_;
 
  public:
-  Nothing(const Statement& statement) : statement_(statement) {}
+  Nothing(const Statement& statement) : statement_{statement} {}
 
   void trigger() {}
 

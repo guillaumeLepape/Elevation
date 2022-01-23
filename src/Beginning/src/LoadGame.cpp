@@ -34,8 +34,8 @@ void LoadGame::trigger() {
                    });
     auto result = selection::select(data::Menu::titleLoadGameMenu, statements);
 
-    StartGame startGame(Statement{statements[result]}, options_,
-                        std::move(results.data[result]));
+    StartGame startGame{Statement{statements[result]}, options_,
+                        std::move(results.data[result])};
 
     startGame.trigger();
   }
