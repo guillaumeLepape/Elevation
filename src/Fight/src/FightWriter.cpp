@@ -51,7 +51,7 @@ void FightWriter::writeGameBoard() const {
       damageWeaponFighters;
 
   // build a vector of name and life points of plugs
-  for (std::size_t i = 0; i < plugs_.size(); i++) {
+  for (std::size_t i = 0; i < std::size(plugs_); i++) {
     // display plugs only if they are not dead
     if (plugs_[i]->healthBar().alive()) {
       nameFighters.push_back(plugs_[i]->name());
@@ -69,17 +69,17 @@ void FightWriter::writeGameBoard() const {
   fighters.add_row(damageWeaponFighters);
 
   std::vector<variant<std::string, const char*, tabulate::Table>> emptyLine(
-      nameFighters.size(), "");
+      std::size(nameFighters), "");
   fighters.add_row(emptyLine);
 
   std::vector<variant<std::string, const char*, tabulate::Table>> playerLine(
-      nameFighters.size(), "");
-  playerLine[nameFighters.size() / 2] = player_->pseudo();
+      std::size(nameFighters), "");
+  playerLine[std::size(nameFighters) / 2] = player_->pseudo();
   fighters.add_row(playerLine);
 
   std::vector<variant<std::string, const char*, tabulate::Table>>
-      lifePlayerPoints(nameFighters.size(), "");
-  lifePlayerPoints[nameFighters.size() / 2] =
+      lifePlayerPoints(std::size(nameFighters), "");
+  lifePlayerPoints[std::size(nameFighters) / 2] =
       fmt::format("{} points de vie", player_->healthBar().nbLifePoints());
   fighters.add_row(lifePlayerPoints);
 

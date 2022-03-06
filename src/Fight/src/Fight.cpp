@@ -125,7 +125,7 @@ void Fight::startFight(
     }
 
     // Check if the index is valid
-    if (nbTurns - 1 < messageWriter.size()) {
+    if (nbTurns - 1 < std::size(messageWriter)) {
       Message::write(messageWriter[nbTurns - 1]);
     }
   }

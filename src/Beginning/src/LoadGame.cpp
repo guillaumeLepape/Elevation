@@ -15,7 +15,7 @@ LoadGame::LoadGame(const Statement& statement, const utils::Options& options)
 void LoadGame::trigger() {
   auto load_game_statements = data::create_load_game_statements();
 
-  if (load_game_statements.size() == 0) {
+  if (load_game_statements.empty()) {
     fmt::print("\n ");
     fmt::print(bg(fmt::color::red) | fmt::emphasis::bold,
                "Aucune partie ne peut etre chargé.");
