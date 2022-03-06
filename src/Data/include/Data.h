@@ -6,6 +6,7 @@
 namespace data {
 nlohmann::json read_json_file(std::string_view&& folder,
                               std::string_view&& file_name);
-}
+nlohmann::json read_json_file(std::string&& path);
+}  // namespace data
 
 #endif

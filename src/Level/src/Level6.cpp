@@ -12,7 +12,4 @@ void Level6::start() {
                 data::Level6::minut);
 
   Message::write(data::Level6::message0, player_.pseudo(), "");
-
-  endoflevel(player_);
-  std::cout << "\n";
 }

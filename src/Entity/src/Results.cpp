@@ -2,63 +2,49 @@
 
 #include <fmt/color.h>
 
+#include <filesystem>
 #include <iomanip>
+#include <iostream>
+
+namespace fs = std::filesystem;
 
 namespace data {
+std::vector<std::tuple<unsigned, std::string, int>>
+create_load_game_statements() {
+  const fs::path results_path{"results"};
 
-Results::Results(entity::Player&& player)
-    : data{[&player]() {
-        std::vector<entity::Player> result;
-        result.push_back(std::forward<decltype(player)>(player));
-        return result;
-      }()} {}
+  std::vector<std::tuple<unsigned, std::string, int>> vec;
 
-Results read_results(std::string&& nameFolder, std::string&& nameFile) {
-  auto jsonObject =
-      data::read_json_file(std::forward<decltype(nameFolder)>(nameFolder),
-                           std::forward<decltype(nameFile)>(nameFile));
+  for (const auto& dir_entry : fs::directory_iterator{results_path}) {
+    if (dir_entry.is_regular_file() and
+        dir_entry.path().extension() == ".json") {
+      auto jsonObject = data::read_json_file(dir_entry.path());
+      unsigned game_id = jsonObject["game_id"];
+      std::string pseudo = jsonObject["player"]["pseudo"];
+      int nb_level_suceeded = jsonObject["player"]["nb_level_suceeded"];
+      vec.push_back(std::tuple{game_id, pseudo, nb_level_suceeded});
+    }
+  }
 
-  Results results;
-
-  std::transform(std::cbegin(jsonObject), std::cend(jsonObject),
-                 std::back_inserter(results.data),
-                 [](const auto& result) { return entity::Player{result}; });
-
-  return results;
+  return vec;
 }
 
-void add(Results& results, entity::Player&& player) {
-  auto is_same_player = [&player](const auto& p) {
-    return p.id() == player.id();
-  };
-  results.data.erase(std::remove_if(std::begin(results.data),
-                                    std::end(results.data), is_same_player),
-                     std::cend(results.data));
-  results.data.push_back(std::move(player));
+void save(const unsigned id, const entity::Player& player) {
+  nlohmann::json json{{"game_id", id}, {"player", player.write()}};
+
+  std::string path = fmt::format("{}/{}.json", "results", id);
+
+  std::ofstream file{path};
+  file.clear();
+  file << std::setw(4) << json;
+  file.close();
 }
 
-void write(const Results& results, std::string&& nameFolder,
-           std::string&& nameFile) {
-  std::string path =
-      fmt::format("{}/{}.json", std::move(nameFolder), std::move(nameFile));
+nlohmann::json get_saved_data(unsigned id) {
+  return data::read_json_file(fmt::format("results/{}.json", id));
+}
 
-  // open json file
-  std::ofstream jsonFile{path};
-
-  // check if the file is opened
-  assert(jsonFile.is_open());
-
-  nlohmann::json jsonObjectOutput;
-
-  std::for_each(std::cbegin(results.data), std::cend(results.data),
-                [&jsonObjectOutput](const auto& res) {
-                  nlohmann::json jsonPlayer = res.write();
-                  jsonObjectOutput.push_back(jsonPlayer);
-                });
-
-  // read jsonfile
-  jsonFile << std::setw(4) << jsonObjectOutput;
-
-  jsonFile.close();
+bool is_new_game(unsigned id) {
+  return not fs::exists(fmt::format("results/{}.json", id));
 }
 }  // namespace data

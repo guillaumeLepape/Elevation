@@ -40,7 +40,4 @@ void Level7::start() {
 
   action::RegenerateAllLife regenerateAllLife{player_, Result("")};
   regenerateAllLife.trigger();
-
-  endoflevel(player_);
-  std::cout << "\n";
 }

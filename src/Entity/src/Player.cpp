@@ -3,21 +3,20 @@
 #include <algorithm>
 #include <iostream>
 
+#include "Results.h"
+
 namespace entity {
-Player::Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
+Player::Player(const std::string& pseudo, int nbLevelSuceeded,
                weapon::WeaponInventory&& weaponInventory)
     : pseudo_{pseudo},
-      id_{id},
       nbLevelSuceeded_{nbLevelSuceeded},
       money_{200},
       weapons_{std::move(weaponInventory)},
       healthBar_{MAX_LIFE_POINTS_PLAYER, MAX_LIFE_POINTS_PLAYER} {}
 
-Player::Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
-               int nbLifePoints, int maxLifePoints, int money,
-               weapon::WeaponInventory&& weapons)
+Player::Player(const std::string& pseudo, int nbLevelSuceeded, int nbLifePoints,
+               int maxLifePoints, int money, weapon::WeaponInventory&& weapons)
     : pseudo_{pseudo},
-      id_{id},
       nbLevelSuceeded_{nbLevelSuceeded},
       money_{money},
       weapons_{std::move(weapons)},
@@ -25,20 +24,27 @@ Player::Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
 
 Player::Player(const nlohmann::json& jsonInput)
     : Player{jsonInput["pseudo"],
-             jsonInput["id"],
-             jsonInput["nbLevelSuceeded"],
-             jsonInput["nbLifePoints"],
-             jsonInput["maxLifePoints"],
+             jsonInput["nb_level_suceeded"],
+             jsonInput["nb_life_points"],
+             jsonInput["max_life_points"],
              jsonInput["money"],
              weapon::make_weapon_inventory(jsonInput["weapons"])} {}
 
 nlohmann::json Player::write() const {
   return nlohmann::json{{"pseudo", pseudo_},
-                        {"id", id_},
-                        {"nbLevelSuceeded", nbLevelSuceeded_},
-                        {"nbLifePoints", healthBar_.nbLifePoints()},
-                        {"maxLifePoints", healthBar_.maxLifePoints()},
+                        {"nb_level_suceeded", nbLevelSuceeded_},
+                        {"nb_life_points", healthBar_.nbLifePoints()},
+                        {"max_life_points", healthBar_.maxLifePoints()},
                         {"money", money_},
                         {"weapons", weapon::write(weapons_)}};
 }
+
+Player make_player_from_game_id(unsigned id) {
+  if (data::is_new_game(id)) {
+    return Player{"Joueur", 0};
+  } else {
+    return Player{data::get_saved_data(id)["player"]};
+  }
+}
+
 }  // namespace entity

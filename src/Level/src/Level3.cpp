@@ -44,8 +44,4 @@ void Level3::start() {
   selection::select(data::Action::titleChooseWeapon, useFist, useKnife);
 
   Message::write(data::Level3::message5, player_.pseudo(), plug.name());
-
-  endoflevel(player_);
-
-  std::cout << "\n";
 }

@@ -20,8 +20,4 @@ void Introduction::start() {
 
   Message::write(data::Introduction::message4(player_.pseudo()),
                  player_.pseudo(), "");
-
-  endoflevel(player_);
-
-  std::cout << "\n";
 }

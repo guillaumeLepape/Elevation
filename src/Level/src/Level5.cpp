@@ -110,8 +110,4 @@ void Level5::start() {
   Message::write(data::Level5::message7, player_.pseudo(), "");
 
   regenerateAllLife.trigger();
-
-  endoflevel(player_);
-
-  std::cout << "\n";
 }

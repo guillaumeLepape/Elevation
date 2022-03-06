@@ -10,20 +10,20 @@ namespace entity {
 class Player {
  private:
   std::string pseudo_;
-  unsigned int id_;
   int nbLevelSuceeded_;
   int money_;
   weapon::WeaponInventory weapons_;
   HealthBar healthBar_;
 
  public:
-  Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
+  Player(const std::string& pseudo, int nbLevelSuceeded,
          weapon::WeaponInventory&& weaponInventory = weapon::WeaponInventory{
              weapon::Fist()});
 
-  Player(const std::string& pseudo, unsigned int id, int nbLevelSuceeded,
-         int nbLifePoints, int maxLifePoints, int money,
-         weapon::WeaponInventory&& weapons);
+  Player(const std::string& pseudo, int nbLevelSuceeded, int nbLifePoints,
+         int maxLifePoints, int money, weapon::WeaponInventory&& weapons);
+
+  Player(unsigned id);
 
   Player(const nlohmann::json& jsonInput);
 
@@ -37,8 +37,6 @@ class Player {
 
   const std::string& pseudo() const { return pseudo_; }
   void changePseudo(const std::string& pseudo) { pseudo_ = pseudo; }
-
-  unsigned int id() const { return id_; }
 
   int nbLevelSuceeded() const { return nbLevelSuceeded_; }
   void nextLevel() { nbLevelSuceeded_++; }
@@ -61,5 +59,8 @@ void attack(Entity& entity, const weapon::Weapon& weapon) {
     weapon.durability -= weapon.durability_loose_per_use;
   }
 }
+
+Player make_player_from_game_id(unsigned id);
+
 }  // namespace entity
 #endif

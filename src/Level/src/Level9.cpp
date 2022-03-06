@@ -90,7 +90,4 @@ void Level9::start() {
   Message::write(data::Level9::message7, player_.pseudo(), plug.name());
 
   increaseMaxLifePoints.trigger();
-
-  endoflevel(player_);
-  std::cout << "\n";
 }

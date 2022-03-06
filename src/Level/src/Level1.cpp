@@ -20,8 +20,4 @@ void Level1::start() {
   Message::write(message, player_.pseudo(), plug.name());
 
   player_.decreaseMoney(price);
-
-  endoflevel(player_);
-
-  std::cout << "\n";
 }

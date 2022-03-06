@@ -2,6 +2,7 @@ project(beginning)
 
 add_library(
     ${PROJECT_NAME}
+    src/GameEngine.cpp
     src/LoadGame.cpp
     src/Quit.cpp
     src/StartGame.cpp

@@ -10,8 +10,12 @@ nlohmann::json read_json_file(std::string_view&& folder,
   auto path =
       fmt::format("{}/{}.json", std::move(folder), std::move(file_name));
 
+  return read_json_file(std::move(path));
+}
+
+nlohmann::json read_json_file(std::string&& path) {
   // open json file
-  std::ifstream messageFile{path, std::ifstream::binary};
+  std::ifstream messageFile{std::move(path), std::ifstream::binary};
 
   // check if the file is opened
   assert(messageFile.is_open());

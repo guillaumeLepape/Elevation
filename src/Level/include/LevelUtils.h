@@ -3,6 +3,6 @@
 
 #include "Player.h"
 
-void endoflevel(entity::Player& player);
+void endoflevel();
 
 #endif

@@ -4,7 +4,6 @@
 #include "Id.h"
 #include "NameType.h"
 #include "Options.h"
-#include "Player.h"
 #include "Results.h"
 
 namespace action {
@@ -12,12 +11,9 @@ class StartGame {
  private:
   Statement statement_;
   const utils::Options& options_;
-  entity::Player player_;
 
  public:
   StartGame(const Statement& statement, const utils::Options& options);
-  StartGame(const Statement& statement, const utils::Options& options,
-            entity::Player&& player);
 
   StartGame(const StartGame&) = delete;
   StartGame(StartGame&&) = default;

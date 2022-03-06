@@ -23,8 +23,4 @@ void Level2::start() {
                               data::Action::statementNegociate,
                               data::Action::resultNegociate(0)};
   negociate.trigger();
-
-  endoflevel(player_);
-
-  std::cout << "\n";
 }

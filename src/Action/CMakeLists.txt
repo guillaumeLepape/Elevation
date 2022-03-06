@@ -7,7 +7,6 @@ add_library(
     src/AddWeaponAction.cpp
     src/Negociate.cpp
     src/Pseudo.cpp
-    src/WriteResults.cpp
 )
 
 target_include_directories(

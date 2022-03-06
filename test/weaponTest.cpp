@@ -11,7 +11,7 @@
 #include "Weapon.h"
 
 TEST(weapon_test, UseWeapon) {
-  entity::Player player("Guillaume", 15611653, 0);
+  entity::Player player("Guillaume", 0);
 
   action::AddWeaponAction addWeaponFist(player, weapon::Fist());
   addWeaponFist.trigger();
@@ -20,7 +20,6 @@ TEST(weapon_test, UseWeapon) {
   addWeaponAK47.trigger();
 
   EXPECT_EQ(player.pseudo(), "Guillaume");
-  EXPECT_EQ(player.id(), 15611653);
 
   std::vector<std::string> weaponsName;
   std::transform(std::cbegin(player.weapons()), std::cend(player.weapons()),
@@ -35,7 +34,7 @@ TEST(weapon_test, UseWeapon) {
 }
 
 TEST(weapon_test, Fist) {
-  entity::Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
+  entity::Player player("Guillaume", 0, weapon::WeaponInventory{});
 
   action::AddWeaponAction addWeaponFist(player, weapon::Fist());
   addWeaponFist.trigger();
@@ -49,7 +48,7 @@ TEST(weapon_test, Fist) {
 }
 
 TEST(weapon_test, AK47) {
-  entity::Player player("Guillaume", 15611653, 0, weapon::WeaponInventory{});
+  entity::Player player("Guillaume", 0, weapon::WeaponInventory{});
 
   action::AddWeaponAction addWeaponAK47(player, weapon::AK47(40));
   addWeaponAK47.trigger();

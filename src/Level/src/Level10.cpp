@@ -43,7 +43,4 @@ void Level10::start() {
   }
 
   Message::write(data::Level10::message4, player_.pseudo(), plug.name());
-
-  endoflevel(player_);
-  std::cout << "\n";
 }

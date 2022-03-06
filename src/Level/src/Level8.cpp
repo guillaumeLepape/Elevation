@@ -22,8 +22,4 @@ void Level8::start() {
   addWeaponAction.trigger();
 
   Message::write(data::Level8::message1, player_.pseudo(), plug.name());
-
-  endoflevel(player_);
-
-  std::cout << "\n";
 }

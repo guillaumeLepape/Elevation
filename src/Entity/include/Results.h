@@ -7,27 +7,11 @@
 #include "Player.h"
 
 namespace data {
-struct Results {
-  Results() = default;
-  Results(entity::Player&&);
-
-  Results(const Results&) = delete;
-  Results(Results&&) = default;
-
-  Results& operator=(const Results&) = delete;
-  Results& operator=(Results&&) = default;
-
-  ~Results() = default;
-
-  std::vector<entity::Player> data;
-};
-
-Results read_results(std::string&& nameFolder, std::string&& nameFile);
-
-void add(Results& results, entity::Player&& player);
-
-void write(const Results& results, std::string&& nameFolder,
-           std::string&& nameFile);
+std::vector<std::tuple<unsigned, std::string, int>>
+create_load_game_statements();
+void save(const unsigned id, const entity::Player& player);
+nlohmann::json get_saved_data(unsigned id);
+bool is_new_game(unsigned id);
 }  // namespace data
 
 #endif
