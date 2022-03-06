@@ -1,5 +1,7 @@
 #include "Weapon.h"
 
+#include <fmt/color.h>
+
 namespace weapon {
 Weapon NoWeapon() {
   return Weapon{data::Weapon::nameNoWeapon,         0, Type::noWeapon,
@@ -45,7 +47,7 @@ Weapon AK47(int nb_ammo) {
                 data::Weapon::statementUseAK47, nb_ammo, 10};
 }
 Weapon WeaponFistCombo(const Weapon& weapon) {
-  return Weapon{weapon.name + "FistCombo",
+  return Weapon{fmt::format("{}FistCombo", weapon.name),
                 static_cast<int>(weapon.nb_damage / 2),
                 weapon.type,
                 data::Weapon::statementCombo(weapon.name),

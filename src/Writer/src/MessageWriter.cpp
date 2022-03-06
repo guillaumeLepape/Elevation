@@ -1,6 +1,6 @@
 #include "MessageWriter.h"
 
-#include <cassert>
+#include <fmt/color.h>
 
 #include "Pause.h"
 
@@ -12,37 +12,29 @@ void write(const Message_t& messages, const std::string& pseudo,
 
     switch (std::get<0>(message)) {
       case NameSpeaker::player:
-        std::cout << "\n        " << Term::color(Term::fg::green)
-                  << Term::color(Term::style::bold) << pseudo
-                  << Term::color(Term::fg::reset)
-                  << Term::color(Term::style::reset);
-        std::cout << Term::color(Term::fg::blue)
-                  << Term::color(Term::style::bold);
+        fmt::print(fg(fmt::color::green) | fmt::emphasis::bold, "\n        {}",
+                   pseudo);
+        fmt::print(fg(fmt::color::blue) | fmt::emphasis::bold, "\n {}",
+                   std::get<1>(message));
         break;
 
       case NameSpeaker::plug:
-        std::cout << "\n        " << Term::color(Term::fg::red)
-                  << Term::color(Term::style::bold) << plugName
-                  << Term::color(Term::fg::reset)
-                  << Term::color(Term::style::reset);
-        std::cout << Term::color(Term::fg::blue)
-                  << Term::color(Term::style::bold);
+        fmt::print(fg(fmt::color::red) | fmt::emphasis::bold, "\n        {}",
+                   plugName);
+        fmt::print(fg(fmt::color::blue) | fmt::emphasis::bold, "\n {}",
+                   std::get<1>(message));
         break;
 
       case NameSpeaker::description:
-        std::cout << Term::color(Term::fg::magenta)
-                  << Term::color(Term::style::bold);
+        fmt::print(fg(fmt::color::magenta) | fmt::emphasis::bold, "\n {}",
+                   std::get<1>(message));
         break;
 
       case NameSpeaker::action:
-        std::cout << Term::color(Term::fg::yellow)
-                  << Term::color(Term::style::bold);
+        fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, "\n {}",
+                   std::get<1>(message));
         break;
     }
-
-    std::cout << "\n " << (std::get<1>(message));
-    std::cout << Term::color(Term::fg::reset)
-              << Term::color(Term::style::reset);
   }
 }
 

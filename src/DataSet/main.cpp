@@ -1,3 +1,6 @@
+#include <fmt/color.h>
+
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
@@ -22,26 +25,29 @@ nlohmann::json readJsonFile(const std::string& path) {
   return jsonObject;
 }
 
-void readListeDesPrenoms(std::set<std::string>& listFemaleName,
-                         std::set<std::string>& listMasculineName) {
+auto read_list_of_name() {
   nlohmann::json jsonObject = readJsonFile("dataset/liste_des_prenoms.json");
 
-  for (auto i = std::cbegin(jsonObject); i != std::cend(jsonObject); i++) {
-    std::string name = (std::string)(*i)["fields"]["prenoms"];
+  std::set<std::string> list_female_name;
+  std::set<std::string> list_male_name;
 
-    if (((std::string)(*i)["fields"]["sexe"]) == "F") {
-      listFemaleName.insert(name);
-    } else {
-      listMasculineName.insert(name);
-    }
-  }
+  std::for_each(
+      std::cbegin(jsonObject), std::cend(jsonObject), [&](const auto& person) {
+        std::string name =
+            static_cast<std::string>(person["fields"]["prenoms"]);
+        std::string gender = static_cast<std::string>(person["fields"]["sexe"]);
+
+        gender == "F" ? list_female_name.insert(name)
+                      : list_male_name.insert(name);
+      });
+  return std::pair{list_female_name, list_male_name};
 }
 
-void writeListName(const std::set<std::string>& listName,
-                   const std::string& nameFile) {
+void write_list_name(const std::set<std::string>& listName,
+                     std::string&& nameFile) {
   nlohmann::json jsonObject(listName);
 
-  std::ofstream jsonFile{"dataset/" + nameFile + ".json",
+  std::ofstream jsonFile{fmt::format("dataset/{}.json", nameFile),
                          std::ofstream::binary};
 
   jsonFile << jsonObject;
@@ -50,13 +56,10 @@ void writeListName(const std::set<std::string>& listName,
 }
 
 int main() {
-  std::set<std::string> listFeminineName;
-  std::set<std::string> listMasculineName;
+  auto [list_female_name, list_male_name] = read_list_of_name();
 
-  readListeDesPrenoms(listFeminineName, listMasculineName);
-
-  writeListName(listFeminineName, "prenoms_feminins");
-  writeListName(listMasculineName, "prenoms_masculins");
+  write_list_name(list_female_name, "prenoms_feminins");
+  write_list_name(list_male_name, "prenoms_masculins");
 
   return 0;
 }

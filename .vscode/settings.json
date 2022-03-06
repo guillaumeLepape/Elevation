@@ -86,7 +86,8 @@
         "stop_token": "cpp",
         "numbers": "cpp",
         "filesystem": "cpp",
-        "semaphore": "cpp"
+        "semaphore": "cpp",
+        "span": "cpp"
     },
     "files.watcherExclude": {
         "**/.git/objects/**": true,

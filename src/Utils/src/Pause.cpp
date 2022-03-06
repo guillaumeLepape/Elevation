@@ -1,5 +1,7 @@
 #include "Pause.h"
 
+#include <cpp-terminal/terminal.h>
+
 namespace utils {
 void pause() {
   try {

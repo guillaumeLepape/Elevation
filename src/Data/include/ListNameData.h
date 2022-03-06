@@ -5,8 +5,8 @@
 #include <string>
 
 namespace data {
-std::set<std::string> read_list_name(std::string&& nameFolder,
-                                     std::string&& nameFile);
+std::set<std::string> read_list_name(std::string_view&& nameFolder,
+                                     std::string_view&& nameFile);
 }
 
 #endif

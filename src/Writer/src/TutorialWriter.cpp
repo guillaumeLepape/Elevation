@@ -1,7 +1,8 @@
 #include "TutorialWriter.h"
 
-#include <cpp-terminal/terminal.h>
+#include <fmt/color.h>
 
+#include <algorithm>
 #include <iostream>
 
 #include "Pause.h"
@@ -12,9 +13,8 @@ void write(const Title& title,
            const std::vector<std::string>& tutorialStatement) {
   utils::pause();
 
-  std::cout << "\n " << Term::color(Term::bg::magenta)
-            << Term::color(Term::style::bold) << title.get()
-            << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
+  fmt::print("\n ");
+  fmt::print(bg(fmt::color::magenta) | fmt::emphasis::bold, title.get());
 
   utils::writeSeparators();
 
@@ -22,10 +22,8 @@ void write(const Title& title,
                 [](const auto& statement) {
                   utils::pause();
 
-                  std::cout << "\n " << Term::color(Term::fg::magenta)
-                            << Term::color(Term::style::bold) << statement
-                            << Term::color(Term::fg::reset)
-                            << Term::color(Term::style::reset);
+                  fmt::print(fg(fmt::color::magenta) | fmt::emphasis::bold,
+                             "\n {}", statement);
                 });
 
   std::cout << "\n";

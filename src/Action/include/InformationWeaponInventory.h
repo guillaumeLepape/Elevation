@@ -1,7 +1,7 @@
 #ifndef INFORMATION_WEAPON_INVENTORY_H
 #define INFORMATION_WEAPON_INVENTORY_H
 
-#include <cpp-terminal/terminal.h>
+#include <fmt/color.h>
 
 #include "NameType.h"
 #include "UtilsWriter.h"
@@ -22,11 +22,9 @@ class InformationWeaponInventory {
   const std::string& statement() const { return statement_.get(); }
 
   void trigger() {
-    std::cout << "\n " << Term::color(Term::bg::magenta)
-              << Term::color(Term::style::bold)
-              << "Informations à propos des armes que vous possèdez"
-              << Term::color(Term::bg::reset)
-              << Term::color(Term::style::reset);
+    fmt::print("\n ");
+    fmt::print(bg(fmt::color::magenta) | fmt::emphasis::bold,
+               "Informations à propos des armes que vous possèdez");
 
     utils::writeSeparators();
 

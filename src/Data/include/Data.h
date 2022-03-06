@@ -4,8 +4,8 @@
 #include <nlohmann/json.hpp>
 
 namespace data {
-nlohmann::json read_json_file(std::string&& folderFromRoot,
-                              std::string&& fileName);
+nlohmann::json read_json_file(std::string_view&& folder,
+                              std::string_view&& file_name);
 }
 
 #endif

@@ -1,6 +1,6 @@
 #include "Rules.h"
 
-#include <cpp-terminal/terminal.h>
+#include <fmt/color.h>
 
 #include "Pause.h"
 #include "UtilsWriter.h"
@@ -9,64 +9,57 @@ namespace Rules {
 void write(const utils::Options& options) {
   std::ignore = std::system("clear");
 
-  std::cout << "\n " << Term::color(Term::fg::black)
-            << Term::color(Term::bg::green) << Term::color(Term::style::bold)
-            << "Interface" << Term::color(Term::fg::reset)
-            << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
-
+  fmt::print("\n ");
+  fmt::print(
+      fg(fmt::color::black) | bg(fmt::color::green) | fmt::emphasis::bold,
+      "Interface");
   utils::writeSeparators();
 
-  std::cout << "\n Une fois que vous avez lu un message, appuyez sur entrée "
-               "pour passer au suivant.";
+  fmt::print(
+      "\n Une fois que vous avez lu un message, appuyez sur entrée "
+      "pour passer au suivant.");
 
   if (not options.noRule_) {
     utils::pause();
 
-    std::cout << "\n Si un champ doit etre rempli pour continuer le jeu, cela "
-                 "sera indiqué par la couleur "
-              << Term::color(Term::fg::black) << Term::color(Term::bg::yellow)
-              << Term::color(Term::style::bold) << "noir encadré jaune"
-              << Term::color(Term::fg::reset) << Term::color(Term::bg::reset)
-              << Term::color(Term::style::reset) << ".";
+    fmt::print(
+        "\n Si un champ doit etre rempli pour continuer le jeu, cela "
+        "sera indiqué par la couleur ");
+    fmt::print(
+        fg(fmt::color::black) | bg(fmt::color::yellow) | fmt::emphasis::bold,
+        "noir encadré jaune");
+    fmt::print(".");
 
     utils::pause();
 
-    std::cout << "\n Le prénom du joueur est affiché en "
-              << Term::color(Term::fg::green) << Term::color(Term::style::bold)
-              << "vert" << Term::color(Term::fg::reset)
-              << Term::color(Term::style::reset) << ".";
+    fmt::print("\n Le prénom du joueur est affiché en ");
+    fmt::print(fg(fmt::color::green) | fmt::emphasis::bold, "vert");
+    fmt::print(".");
 
     utils::pause();
 
-    std::cout << "\n Le nom du dealer est affiché en "
-              << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-              << "rouge" << Term::color(Term::fg::reset)
-              << Term::color(Term::style::reset) << ".";
+    fmt::print("\n Le nom du dealer est affiché en ");
+    fmt::print(fg(fmt::color::red) | fmt::emphasis::bold, "rouge");
+    fmt::print(".");
 
     utils::pause();
 
-    std::cout << "\n Les dialogues sont affichés en "
-              << Term::color(Term::fg::blue) << Term::color(Term::style::bold)
-              << "bleu" << Term::color(Term::fg::reset)
-              << Term::color(Term::style::reset) << ".";
+    fmt::print("\n Les dialogues sont affichés en ");
+    fmt::print(fg(fmt::color::blue) | fmt::emphasis::bold, "bleu");
+    fmt::print(".");
 
     utils::pause();
 
-    std::cout << "\n Les descriptions sont affichées en "
-              << Term::color(Term::fg::magenta)
-              << Term::color(Term::style::bold) << "magenta"
-              << Term::color(Term::fg::reset) << Term::color(Term::style::reset)
-              << ".";
+    fmt::print("\n Les descriptions sont affichées en ");
+    fmt::print(fg(fmt::color::magenta) | fmt::emphasis::bold, "magenta");
+    fmt::print(".");
 
     utils::pause();
 
-    std::cout
-        << "\n Les effets résultant des actions du joueur sont affichés en "
-        << Term::color(Term::fg::yellow) << Term::color(Term::style::bold)
-        << "jaune" << Term::color(Term::fg::reset)
-        << Term::color(Term::style::reset) << ".";
-
-    std::cout << "\n";
+    fmt::print(
+        "\n Les effets résultant des actions du joueur sont affichés en ");
+    fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, "jaune");
+    fmt::print(".\n");
   }
 }
 }  // namespace Rules

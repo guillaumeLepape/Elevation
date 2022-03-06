@@ -1,5 +1,7 @@
 #include "Negociate.h"
 
+#include <fmt/color.h>
+
 #include <iostream>
 
 #include "Languages.h"
@@ -34,10 +36,9 @@ void Negociate::trigger() {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-        std::cout << "\n " << Term::color(Term::bg::red)
-                  << Term::color(Term::style::bold) << "Entrez le prix valide."
-                  << Term::color(Term::bg::reset)
-                  << Term::color(Term::style::reset);
+        fmt::print("\n ");
+        fmt::print(bg(fmt::color::red) | fmt::emphasis::bold,
+                   "Entrez le prix valide.");
 
         utils::pause();
 

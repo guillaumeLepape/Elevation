@@ -1,12 +1,14 @@
 #include "Data.h"
 
+#include <fmt/color.h>
+
 #include <fstream>
 
 namespace data {
-nlohmann::json read_json_file(std::string&& folderFromRoot,
-                              std::string&& fileName) {
-  std::string path = std::forward<decltype(folderFromRoot)>(folderFromRoot) +
-                     "/" + std::forward<decltype(fileName)>(fileName) + ".json";
+nlohmann::json read_json_file(std::string_view&& folder,
+                              std::string_view&& file_name) {
+  auto path =
+      fmt::format("{}/{}.json", std::move(folder), std::move(file_name));
 
   // open json file
   std::ifstream messageFile{path, std::ifstream::binary};

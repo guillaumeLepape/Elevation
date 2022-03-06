@@ -28,11 +28,13 @@ void Pseudo::trigger() {
     formatString(pseudo);
 
     // Check if chosen pseudo is in the feminine name dataset
-    if (feminineName.find(pseudo) != std::cend(feminineName)) {
+    if (std::binary_search(std::cbegin(feminineName), std::cend(feminineName),
+                           pseudo)) {
       out = true;
     }
     // Check if chosen pseudo is in the masculine name dataset
-    else if (masculineName.find(pseudo) != std::cend(masculineName)) {
+    else if (std::binary_search(std::cbegin(masculineName),
+                                std::cend(masculineName), pseudo)) {
       Message::write(data::Introduction::message2, player_.pseudo(), "");
     }
     // If pseudo doesn't appear in the two previous dataset,

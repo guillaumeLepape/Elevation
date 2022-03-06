@@ -1,7 +1,7 @@
 #ifndef FRENCH_DATA_H
 #define FRENCH_DATA_H
 
-#include <cassert>
+#include <fmt/core.h>
 
 #include "NameType.h"
 
@@ -39,8 +39,8 @@ inline Message_t message2 = {
 inline Message_t message3 = {{NameSpeaker::player, "Ce prénom n'existe pas."}};
 
 inline Message_t message4(const std::string& pseudo) {
-  return {
-      {NameSpeaker::player, "Bon d'accord " + pseudo + ", ça fera l'affaire."}};
+  return {{NameSpeaker::player,
+           fmt::format("Bon d'accord {}, ça fera l'affaire.", pseudo)}};
 }
 }  // namespace Introduction
 
@@ -56,18 +56,17 @@ static constexpr auto minut = Minut{35};
 // Messages data
 inline Message_t message0(const std::string& pseudo,
                           const std::string& plugName, int pricePlug) {
-  return {
-      {NameSpeaker::player, "Bon, c'est parti."},
-      {NameSpeaker::description, "Vous arrivez en bas du batiment"},
-      {NameSpeaker::plug, "Ca va, " + pseudo + " ?"},
-      {NameSpeaker::player, "Et toi, " + plugName + " ?"},
-      {NameSpeaker::plug,
-       "Comme d'habitude ? C'est " + std::to_string(pricePlug) + "€."},
-      {NameSpeaker::player, "Tiens."},
-      {NameSpeaker::action, "Vous perdez " + std::to_string(pricePlug) + "€."},
-      {NameSpeaker::plug, "Bonne journée."},
-      {NameSpeaker::player, "A la prochaine."},
-      {NameSpeaker::description, "Roule. Fume."}};
+  return {{NameSpeaker::player, "Bon, c'est parti."},
+          {NameSpeaker::description, "Vous arrivez en bas du batiment"},
+          {NameSpeaker::plug, fmt::format("Ca va, {} ?", pseudo)},
+          {NameSpeaker::player, fmt::format("Et toi, {} ?", plugName)},
+          {NameSpeaker::plug,
+           fmt::format("Comme d'habitude ? C'est {}€.", pricePlug)},
+          {NameSpeaker::player, "Tiens."},
+          {NameSpeaker::action, fmt::format("Vous perdez {}€.", pricePlug)},
+          {NameSpeaker::plug, "Bonne journée."},
+          {NameSpeaker::player, "A la prochaine."},
+          {NameSpeaker::description, "Roule. Fume."}};
 }
 }  // namespace Level1
 
@@ -82,11 +81,10 @@ static constexpr auto minut = Minut{10};
 
 // Messages data
 inline Message_t message0(const std::string& plugName, int pricePlug) {
-  return {{NameSpeaker::player, "Salut, " + plugName + "."},
+  return {{NameSpeaker::player, fmt::format("Salut, {}.", plugName)},
           {NameSpeaker::plug, "Ca va ? Tu cherches quoi ?"},
           {NameSpeaker::player, "De la C."},
-          {NameSpeaker::plug,
-           "C'est " + std::to_string(pricePlug) + "€ le gramme."},
+          {NameSpeaker::plug, fmt::format("C'est {}€ le gramme.", pricePlug)},
           {NameSpeaker::player, "Putain, c'est un peu cher."},
           {NameSpeaker::plug, "C'est pas négociable."},
           {NameSpeaker::player, "Aller j'ai pas masse de tunes."}};
@@ -134,7 +132,7 @@ inline Message_t message1 = {
 
 inline Message_t message2(const std::string& plugName) {
   return {{NameSpeaker::description,
-           "Vous vous placez sur le torse de " + plugName + "."},
+           fmt::format("Vous vous placez sur le torse de {}.", plugName)},
           {NameSpeaker::plug, "Batard !"}};
 }
 
@@ -160,7 +158,7 @@ inline Message_t message0(const std::string& pseudo) {
        "Vous arrivez en bas d'un petit appartement où vous trouverez le "
        "produit tant convoité."},
       {NameSpeaker::description, "Vous sonnez à la porte."},
-      {NameSpeaker::plug, "Ca va " + pseudo + " ?"},
+      {NameSpeaker::plug, fmt::format("Ca va {} ?", pseudo)},
       {NameSpeaker::player, "Tranquille."},
       {NameSpeaker::description,
        "La porte s'ouvre. Vous montez jusqu'à l'appartement et y pénétrez."},
@@ -282,14 +280,15 @@ static constexpr auto minut = Minut{12};
 
 inline Message_t message0(const std::string& plugName) {
   return {
-      {NameSpeaker::player,
-       "Ca part en couilles là. Il faut que j'aille voir " + plugName +
-           " pour qu'elle m'aide."},
+      {NameSpeaker::player, fmt::format("Ca part en couilles là. Il faut que "
+                                        "j'aille voir {} pour qu'elle m'aide.",
+                                        plugName)},
       {NameSpeaker::player,
        "J'ai pas de sang sur moi, je peux tappe des hallus maintenant."},
       {NameSpeaker::description,
-       "Malgré votre état, vous arrivez enfin devant chez " + plugName +
-           ", l'une de vos plus fidèles amies."},
+       fmt::format("Malgré votre état, vous arrivez enfin devant chez {}, "
+                   "l'une de vos plus fidèles amies.",
+                   plugName)},
       {NameSpeaker::description,
        "Arrivé devant la porte, celle-ci s'ouvre par miracle."},
       {NameSpeaker::plug, "Pourquoi ?"},
@@ -401,45 +400,46 @@ static constexpr auto titleChooseWeapon = Title{"Choix de l'arme"};
 static constexpr auto titleChoosePlug = Title{"Choix de l'ennemi"};
 
 inline auto statementChoosePlug(const std::string& plugName) {
-  return Statement{"Attaquer " + plugName + "."};
+  return Statement{fmt::format("Attaquer {}.", plugName)};
 }
 inline auto resultChoosePlug(const std::string& plugName) {
-  return Result{"Vous avez choisi d'attaquer " + plugName + "."};
+  return Result{fmt::format("Vous avez choisi d'attaquer {}.", plugName)};
 }
 inline auto resultPlugAttack(const std::string& plugName, int damagePlug) {
-  return Result{plugName + " vous inflige " + std::to_string(damagePlug) +
-                " points de vie."};
+  return Result{
+      fmt::format("{} vous inflige {} points de vie.", plugName, damagePlug)};
 }
 
 inline auto resultDead(const std::string& plugName) {
-  return Result{plugName + " est mort."};
+  return Result{fmt::format("{} est mort.", plugName)};
 }
 
 // data for pseudo action
 inline auto statementPseudo = Statement{"Entrez votre prénom"};
 inline auto resultPseudo(const std::string& pseudo) {
-  return Result{"Votre prénom est à présent : " + pseudo + "."};
+  return Result{fmt::format("Votre prénom est à présent : {}.", pseudo)};
 }
 
 // data for negociate action
 inline auto statementNegociate = Statement{"Entrez votre montant"};
 inline auto resultNegociate(int pricePlayer) {
-  return Result{"Vous perdez " + std::to_string(pricePlayer) + "€."};
+  return Result{fmt::format("Vous perdez {}€.", pricePlayer)};
 }
 
 // data for regeneration action
 inline auto resultRegeneration(int lifePointsRegeneration) {
-  return Result{"Vous gagnez " + std::to_string(lifePointsRegeneration) +
-                " points de vie."};
+  return Result{
+      fmt::format("Vous gagnez {} points de vie.", lifePointsRegeneration)};
 }
 
 inline auto resultAddWeapon(const std::string& nameWeapon) {
-  return Result{nameWeapon + " ajouté à votre inventaire."};
+  return Result{fmt::format("{} ajouté à votre inventaire.", nameWeapon)};
 }
 
 inline auto resultsIncreaseMaxLifePoints(int maxLifePoints) {
-  return Result{"Votre nombre de points de vie maximal augmente de " +
-                std::to_string(maxLifePoints) + " points."};
+  return Result{fmt::format(
+      "Votre nombre de points de vie maximal augmente de {} points.",
+      maxLifePoints)};
 }
 }  // namespace Action
 
@@ -464,8 +464,8 @@ static constexpr auto titleLoadGameMenu = Title{"Choix de la partie"};
 // data for the choice of the loaded game
 inline Statement statementChooseLoadedGame(const std::string& pseudo,
                                            int levelNumber) {
-  return Statement{"Charger la partie " + pseudo + " au niveau " +
-                   std::to_string(levelNumber)};
+  return Statement{
+      fmt::format("Charger la partie {} au niveau {}", pseudo, levelNumber)};
 }
 inline std::string resultChooseLoadedGame{
     "Vous avez chois charger une partie."};
@@ -597,8 +597,10 @@ inline std::vector<std::string> statementCombatSystem(int maxNbLifePoints) {
       "attaquer et avec quelle arme.",
       "Une fois que vous avez attaqué, c'est au tour des ennemis.",
       "Ils attaquent avec l'arme dont ils disposent à tour de rôle.",
-      "Vous avez " + std::to_string(maxNbLifePoints) +
+      fmt::format(
+          "Vous avez {}"
           " points de vie. Lorsqu'il descende en dessous de 0, vous êtes mort.",
+          maxNbLifePoints),
       "Le combat prend fin lorsque tous les ennemis sont morts ou lorsque vous "
       "êtes mort.",
       "Lorsque vous tuez un ennemi vous pouvez récupérer leurs armes."};
@@ -693,12 +695,12 @@ inline std::string statementUseAK47{"Rafalez ! (AK47)"};
 
 // generic UseWeapon data result
 inline auto resultUseWeapon(const std::string& plugName, int damageWeapon) {
-  return Result{plugName + " perd " + std::to_string(damageWeapon) +
-                " points de vie."};
+  return Result{
+      fmt::format("{} perd {} points de vie.", plugName, damageWeapon)};
 }
 
 inline std::string statementCombo(const std::string& nameWeapon) {
-  return "Combo avec le " + nameWeapon + " !";
+  return fmt::format("Combo avec le {} !", nameWeapon);
 }
 
 // Name of all weapons

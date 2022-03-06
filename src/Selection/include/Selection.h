@@ -1,6 +1,9 @@
 #ifndef SELECTION_H
 #define SELECTION_H
 
+#include <fmt/color.h>
+
+#include <algorithm>
 #include <vector>
 
 #include "SelectionWriter.h"
@@ -16,15 +19,13 @@ std::size_t select(const Title& title,
   while (not(std::cin >> choice) or
          (choice > std::size(statements) or choice < 1)) {
     if (std::size(statements) != 1) {
-      std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-                << "Selection invalide - Entrez un nombre compris entre 1 et "
-                << std::size(statements) << " !" << Term::color(Term::fg::reset)
-                << Term::color(Term::style::reset) << "\n";
+      fmt::print(
+          fg(fmt::color::red) | fmt::emphasis::bold,
+          "Selection invalide - Entrez un nombre compris entre 1 et {} !\n",
+          std::size(statements));
     } else {
-      std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-                << "Selection invalide - Entrez un nombre égale à 1 !"
-                << Term::color(Term::fg::reset)
-                << Term::color(Term::style::reset) << "\n";
+      fmt::print(fg(fmt::color::red) | fmt::emphasis::bold,
+                 "Selection invalide - Entrez un nombre égale à 1 !\n");
     }
     // reset error flags
     std::cin.clear();
@@ -47,15 +48,13 @@ std::size_t select(const Title& title, const printable&... statements) {
   while (not(std::cin >> choice) or
          (choice > sizeof...(statements) or choice < 1)) {
     if constexpr (sizeof...(statements) != 1) {
-      std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-                << "Selection invalide - Entrez un nombre compris entre 1 et "
-                << sizeof...(statements) << " !" << Term::color(Term::fg::reset)
-                << Term::color(Term::style::reset) << "\n";
+      fmt::print(
+          fg(fmt::color::red) | fmt::emphasis::bold,
+          "Selection invalide - Entrez un nombre compris entre 1 et {} !\n",
+          sizeof...(statements));
     } else {
-      std::cout << Term::color(Term::fg::red) << Term::color(Term::style::bold)
-                << "Selection invalide - Entrez un nombre égale à 1 !"
-                << Term::color(Term::fg::reset)
-                << Term::color(Term::style::reset) << "\n";
+      fmt::print(fg(fmt::color::red) | fmt::emphasis::bold,
+                 "Selection invalide - Entrez un nombre égale à 1 !\n");
     }
     // reset error flags
     std::cin.clear();

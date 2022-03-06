@@ -1,7 +1,6 @@
 #include "Player.h"
 
 #include <algorithm>
-#include <cassert>
 #include <iostream>
 
 namespace entity {

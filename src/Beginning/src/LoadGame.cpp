@@ -1,6 +1,6 @@
 #include "LoadGame.h"
 
-#include <cpp-terminal/terminal.h>
+#include <fmt/color.h>
 
 #include "Languages.h"
 #include "Options.h"
@@ -16,13 +16,10 @@ void LoadGame::trigger() {
   auto results = data::read_results("results", "results");
 
   if (results.data.size() == 0) {
-    std::cout << "\n " << Term::color(Term::bg::red)
-              << Term::color(Term::style::bold)
-              << "Aucune partie ne peut etre chargé."
-              << Term::color(Term::bg::reset)
-              << Term::color(Term::style::reset);
-
-    std::cout << "\n";
+    fmt::print("\n ");
+    fmt::print(bg(fmt::color::red) | fmt::emphasis::bold,
+               "Aucune partie ne peut etre chargé.");
+    fmt::print("\n");
   } else {
     std::vector<std::string> statements;
     std::transform(std::cbegin(results.data), std::cend(results.data),

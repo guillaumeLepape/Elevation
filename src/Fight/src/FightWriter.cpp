@@ -1,6 +1,6 @@
 #include "FightWriter.h"
 
-#include <cpp-terminal/terminal.h>
+#include <fmt/color.h>
 
 #include <tabulate/table.hpp>
 
@@ -11,16 +11,13 @@ FightWriter::FightWriter(const entity::Player* const player,
                          const std::vector<entity::Plug*>& plugs)
     : player_{player}, plugs_{plugs} {
   utils::pause();
-  std::cout << "\n " << Term::color(Term::fg::yellow)
-            << Term::color(Term::style::bold) << "Début du combat"
-            << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
+  fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold,
+             "\n Début du combat");
 }
 
 void FightWriter::writeSeparator() const {
-  std::cout << "\n"
-            << Term::color(Term::fg::blue) << Term::color(Term::style::bold)
-            << "====================" << Term::color(Term::fg::reset)
-            << Term::color(Term::style::reset);
+  fmt::print(fg(fmt::color::blue) | fmt::emphasis::bold,
+             "\n====================");
 }
 
 void FightWriter::writeHeader(const int nbTurns) const {
@@ -28,10 +25,8 @@ void FightWriter::writeHeader(const int nbTurns) const {
 
   writeSeparator();
 
-  std::cout << "\n " << Term::color(Term::fg::black)
-            << Term::color(Term::bg::green) << Term::color(Term::style::bold)
-            << "Tour " << nbTurns << Term::color(Term::fg::reset)
-            << Term::color(Term::bg::reset) << Term::color(Term::style::reset);
+  fmt::print(fg(fmt::color::black) | fmt::emphasis::bold, "\n Tour {}",
+             nbTurns);
 
   writeSeparator();
 }
@@ -39,11 +34,10 @@ void FightWriter::writeHeader(const int nbTurns) const {
 void FightWriter::writeGameBoard() const {
   utils::pause();
 
-  std::cout << "\n"
-            << Term::color(Term::fg::black) << Term::color(Term::bg::green)
-            << Term::color(Term::style::bold) << "Plateau de jeu"
-            << Term::color(Term::fg::reset) << Term::color(Term::bg::reset)
-            << Term::color(Term::style::reset);
+  fmt::print("\n");
+  fmt::print(
+      fg(fmt::color::black) | bg(fmt::color::green) | fmt::emphasis::bold,
+      "Plateau de jeu");
 
   utils::writeSeparators();
 
@@ -61,12 +55,11 @@ void FightWriter::writeGameBoard() const {
     // display plugs only if they are not dead
     if (plugs_[i]->healthBar().alive()) {
       nameFighters.push_back(plugs_[i]->name());
-      lifePointsFighters.push_back(
-          std::to_string(plugs_[i]->healthBar().nbLifePoints()) +
-          " points de vie");
+      lifePointsFighters.push_back(fmt::format(
+          "{} points de vie", plugs_[i]->healthBar().nbLifePoints()));
       nameWeaponFighters.push_back(plugs_[i]->weapon().name);
       damageWeaponFighters.push_back(
-          std::to_string(plugs_[i]->weapon().nb_damage) + " points d'attaque");
+          fmt::format("{} points d'attaque", plugs_[i]->weapon().nb_damage));
     }
   }
 
@@ -87,7 +80,7 @@ void FightWriter::writeGameBoard() const {
   std::vector<variant<std::string, const char*, tabulate::Table>>
       lifePlayerPoints(nameFighters.size(), "");
   lifePlayerPoints[nameFighters.size() / 2] =
-      std::to_string(player_->healthBar().nbLifePoints()) + " points de vie";
+      fmt::format("{} points de vie", player_->healthBar().nbLifePoints());
   fighters.add_row(lifePlayerPoints);
 
   fighters.format()
@@ -139,14 +132,11 @@ void FightWriter::writeGameBoard() const {
 
 void FightWriter::writeRemoveDeadBody() {
   utils::pause();
-  std::cout << "\n " << Term::color(Term::fg::yellow)
-            << Term::color(Term::style::bold) << "Evacuation des cadavres."
-            << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
+  fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold,
+             "\n Evacuation des cadavres.");
 }
 
 void FightWriter::writeEndOfFight() const {
   utils::pause();
-  std::cout << "\n " << Term::color(Term::fg::yellow)
-            << Term::color(Term::style::bold) << "Fin du combat"
-            << Term::color(Term::fg::reset) << Term::color(Term::style::reset);
+  fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, "\n Fin du combat");
 }

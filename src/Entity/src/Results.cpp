@@ -1,5 +1,7 @@
 #include "Results.h"
 
+#include <fmt/color.h>
+
 #include <iomanip>
 
 namespace data {
@@ -37,8 +39,8 @@ void add(Results& results, entity::Player&& player) {
 
 void write(const Results& results, std::string&& nameFolder,
            std::string&& nameFile) {
-  std::string path = std::forward<decltype(nameFolder)>(nameFolder) + "/" +
-                     std::forward<decltype(nameFile)>(nameFile) + ".json";
+  std::string path =
+      fmt::format("{}/{}.json", std::move(nameFolder), std::move(nameFile));
 
   // open json file
   std::ofstream jsonFile{path};

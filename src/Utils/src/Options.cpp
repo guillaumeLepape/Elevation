@@ -1,5 +1,7 @@
 #include "Options.h"
 
+#include <fmt/core.h>
+
 #include <algorithm>
 #include <iostream>
 
@@ -20,9 +22,10 @@ Options::Options(int argc, char* argv[])
           std::binary_search(std::cbegin(argv_), std::cend(argv_), "--help")} {}
 
 void Options::print_help() const {
-  std::cout << "Allowed options :\n";
-  std::cout << "-h, --help : print help message\n";
-  std::cout << "-r, --rule : If this option is selected, the rules and "
-               "tutorials are not printed\n";
+  fmt::print("Allowed options :\n");
+  fmt::print("-h, --help : print help message\n");
+  fmt::print(
+      "-r, --rule : If this option is selected, the rules and "
+      "tutorials are not printed\n");
 }
 }  // namespace utils
