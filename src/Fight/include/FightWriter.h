@@ -4,21 +4,31 @@
 #include "Player.h"
 #include "Plug.h"
 
-class FightWriter {
- private:
-  const entity::Player& player_;
-  const std::vector<entity::Plug*>& plugs_;
+namespace fight {
+namespace start {
+void write();
+}
 
-  void writeSeparator() const;
+namespace separator {
+void write();
+}
 
- public:
-  FightWriter(const entity::Player& player,
-              const std::vector<entity::Plug*>& plugs);
+namespace header {
+void write(const int nbTurns);
+}  // namespace header
 
-  void writeHeader(const int nbTurns) const;
-  void writeGameBoard() const;
-  void writeRemoveDeadBody();
-  void writeEndOfFight() const;
-};
+namespace game_board {
+void write(const entity::Player& player,
+           const std::vector<entity::Plug*>& plugs);
+}
+
+namespace remove_dead_body {
+void write();
+}
+
+namespace end {
+void write();
+}
+}  // namespace fight
 
 #endif

@@ -26,15 +26,13 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
                        std::function<bool(entity::Player& player)> predicate) {
   std::size_t nbTurns = 0;
 
-  FightWriter fightWriter{player_, plugs_};
-
   // while all enemies are not dead or player is not dead
   while ((not enemiesDeadOrNot()) and (not predicate(player_)) and
          nbTurns < 1000) {
     nbTurns++;
 
-    fightWriter.writeHeader(nbTurns);
-    fightWriter.writeGameBoard();
+    fight::header::write(nbTurns);
+    fight::game_board::write(player_, plugs_);
 
     // Allow player to print informations about plugs and combos
     // if the information_ is true and -r flag was selected
@@ -99,7 +97,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
                                               std::move(choosenPlug.weapon())};
       addWeaponAction.trigger();
 
-      fightWriter.writeRemoveDeadBody();
+      fight::remove_dead_body::write();
     }
 
     for (auto e = std::begin(plugs_); e != std::end(plugs_); e++) {
@@ -128,7 +126,7 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
     }
   }
 
-  fightWriter.writeEndOfFight();
+  fight::end::write();
 
   std::cout << "\n";
 }

@@ -7,31 +7,35 @@
 #include "Pause.h"
 #include "UtilsWriter.h"
 
-FightWriter::FightWriter(const entity::Player& player,
-                         const std::vector<entity::Plug*>& plugs)
-    : player_{player}, plugs_{plugs} {
+namespace fight {
+namespace start {
+void write() {
   utils::pause();
   fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold,
              "\n Début du combat");
 }
+}  // namespace start
 
-void FightWriter::writeSeparator() const {
+namespace separator {
+void write() {
   fmt::print(fg(fmt::color::blue) | fmt::emphasis::bold,
              "\n====================");
 }
+}  // namespace separator
 
-void FightWriter::writeHeader(const int nbTurns) const {
+namespace header {
+void write(const int nbTurns) {
   utils::pause();
-
-  writeSeparator();
-
+  separator::write();
   fmt::print(fg(fmt::color::black) | fmt::emphasis::bold, "\n Tour {}",
              nbTurns);
-
-  writeSeparator();
+  separator::write();
 }
+}  // namespace header
 
-void FightWriter::writeGameBoard() const {
+namespace game_board {
+void write(const entity::Player& player,
+           const std::vector<entity::Plug*>& plugs) {
   utils::pause();
 
   fmt::print("\n");
@@ -51,15 +55,15 @@ void FightWriter::writeGameBoard() const {
       damageWeaponFighters;
 
   // build a vector of name and life points of plugs
-  for (std::size_t i = 0; i < std::size(plugs_); i++) {
+  for (std::size_t i = 0; i < std::size(plugs); i++) {
     // display plugs only if they are not dead
-    if (plugs_[i]->healthBar().alive()) {
-      nameFighters.push_back(plugs_[i]->name());
+    if (plugs[i]->healthBar().alive()) {
+      nameFighters.push_back(plugs[i]->name());
       lifePointsFighters.push_back(fmt::format(
-          "{} points de vie", plugs_[i]->healthBar().nbLifePoints()));
-      nameWeaponFighters.push_back(plugs_[i]->weapon().name);
+          "{} points de vie", plugs[i]->healthBar().nbLifePoints()));
+      nameWeaponFighters.push_back(plugs[i]->weapon().name);
       damageWeaponFighters.push_back(
-          fmt::format("{} points d'attaque", plugs_[i]->weapon().nb_damage));
+          fmt::format("{} points d'attaque", plugs[i]->weapon().nb_damage));
     }
   }
 
@@ -74,13 +78,13 @@ void FightWriter::writeGameBoard() const {
 
   std::vector<variant<std::string, const char*, tabulate::Table>> playerLine(
       std::size(nameFighters), "");
-  playerLine[std::size(nameFighters) / 2] = player_.pseudo();
+  playerLine[std::size(nameFighters) / 2] = player.pseudo();
   fighters.add_row(playerLine);
 
   std::vector<variant<std::string, const char*, tabulate::Table>>
       lifePlayerPoints(std::size(nameFighters), "");
   lifePlayerPoints[std::size(nameFighters) / 2] =
-      fmt::format("{} points de vie", player_.healthBar().nbLifePoints());
+      fmt::format("{} points de vie", player.healthBar().nbLifePoints());
   fighters.add_row(lifePlayerPoints);
 
   fighters.format()
@@ -129,14 +133,20 @@ void FightWriter::writeGameBoard() const {
 
   std::cout << "\n" << fighters;
 }
+}  // namespace game_board
 
-void FightWriter::writeRemoveDeadBody() {
+namespace remove_dead_body {
+void write() {
   utils::pause();
   fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold,
              "\n Evacuation des cadavres.");
 }
+}  // namespace remove_dead_body
 
-void FightWriter::writeEndOfFight() const {
+namespace end {
+void write() {
   utils::pause();
   fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, "\n Fin du combat");
 }
+}  // namespace end
+}  // namespace fight
