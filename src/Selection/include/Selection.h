@@ -69,11 +69,11 @@ std::size_t select(const Title& title, const printable&... statements) {
 }
 
 template <typename T>
-concept bool Action = requires(T& action) {
+concept Action = requires(T& action) {
   { action.statement() }
-  ->const std::string&;
+  ->std::convertible_to<const std::string_view&>;
   { action.trigger() }
-  ->void;
+  ->std::same_as<void>;
 };
 
 template <Action... Args>

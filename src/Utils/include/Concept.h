@@ -10,7 +10,7 @@ template <class T, class U>
 concept same_as = detail::SameHelper<T, U>&& detail::SameHelper<U, T>;
 
 template <typename T>
-concept bool Printable = requires(T t) {
+concept Printable = requires(T t) {
   { std::cout << t }
   ->same_as<std::ostream&>;
 };
