@@ -6,13 +6,13 @@
 
 class FightWriter {
  private:
-  const entity::Player* const player_;
+  const entity::Player& player_;
   const std::vector<entity::Plug*>& plugs_;
 
   void writeSeparator() const;
 
  public:
-  FightWriter(const entity::Player* const player,
+  FightWriter(const entity::Player& player,
               const std::vector<entity::Plug*>& plugs);
 
   void writeHeader(const int nbTurns) const;

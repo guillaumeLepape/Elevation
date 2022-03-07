@@ -12,8 +12,7 @@
 #include "Regeneration.h"
 #include "Selection.h"
 
-Fight::Fight(entity::Player* const player,
-             const std::vector<entity::Plug*>& plugs,
+Fight::Fight(entity::Player& player, const std::vector<entity::Plug*>& plugs,
              const std::vector<Combo*>& combos, bool noRule, bool regeneration)
     : player_{player},
       plugs_{plugs},
@@ -23,9 +22,8 @@ Fight::Fight(entity::Player* const player,
       information_{true},
       noRule_{noRule} {}
 
-void Fight::startFight(
-    const std::vector<MessageWriter>& messageWriter,
-    std::function<bool(entity::Player* const player)> predicate) {
+void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
+                       std::function<bool(entity::Player& player)> predicate) {
   std::size_t nbTurns = 0;
 
   FightWriter fightWriter{player_, plugs_};
@@ -44,7 +42,7 @@ void Fight::startFight(
       bool out = false;
 
       action::InformationWeaponInventory informationWeaponInventory{
-          player_->weapons(), data::Information::statementInformationWeapon};
+          player_.weapons(), data::Information::statementInformationWeapon};
       action::InformationCombo informationCombo{
           combos_, data::Information::statementInformationCombo};
       action::Nothing noInformation{data::Information::statementNoInformation};
@@ -97,7 +95,7 @@ void Fight::startFight(
 
     if (numberOfDeadPlug_ != countNumberOfDeadPlug) {
       numberOfDeadPlug_ = countNumberOfDeadPlug;
-      action::AddWeaponAction addWeaponAction{*player_,
+      action::AddWeaponAction addWeaponAction{player_,
                                               std::move(choosenPlug.weapon())};
       addWeaponAction.trigger();
 
@@ -108,11 +106,11 @@ void Fight::startFight(
       if ((*e)->healthBar().alive()) {
         auto message = data::Action::resultPlugAttack((*e)->name(),
                                                       (*e)->weapon().nb_damage);
-        action::PlugAttack plugAttack{*player_, **e, message};
+        action::PlugAttack plugAttack{player_, **e, message};
         plugAttack.trigger();
       }
 
-      if (player_->healthBar().dead()) {
+      if (player_.healthBar().dead()) {
         action::GameOver gameOver{data::Menu::resultGameOver};
         gameOver.trigger();
       }
@@ -120,7 +118,7 @@ void Fight::startFight(
 
     // If player is not dead, regenerate her
     if (regeneration_) {
-      action::Regeneration regeneration{*player_, Result("")};
+      action::Regeneration regeneration{player_, Result("")};
       regeneration.trigger();
     }
 
@@ -185,10 +183,10 @@ entity::Plug& Fight::choosePlug() {
 const ChooseWeaponResult Fight::chooseWeapon(entity::Plug& choosenPlug) {
   std::vector<action::UseWeapon> useWeapons;
 
-  std::transform(std::cbegin(player_->weapons()), std::cend(player_->weapons()),
+  std::transform(std::cbegin(player_.weapons()), std::cend(player_.weapons()),
                  std::back_inserter(useWeapons),
                  [this, &choosenPlug](const auto& weapon) {
-                   return action::UseWeapon{*player_, choosenPlug, weapon.name};
+                   return action::UseWeapon{player_, choosenPlug, weapon.name};
                  });
 
   auto resultUseWeapon =

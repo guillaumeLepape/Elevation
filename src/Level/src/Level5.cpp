@@ -44,7 +44,7 @@ void Level5::start() {
                     data::Tutorial::statementComboFistMeleeWeapon);
   }
 
-  Fight firstFight{&player_,
+  Fight firstFight{player_,
                    {&guetteur},
                    {comboFistMeleeWeapon.get()},
                    options_.noRule_,
@@ -61,7 +61,7 @@ void Level5::start() {
                     data::Tutorial::statementComboDoubleMeleeWeapon);
   }
 
-  Fight secondFight{&player_,
+  Fight secondFight{player_,
                     {&garde},
                     {comboDoubleMeleeWeapon.get()},
                     options_.noRule_,
@@ -78,7 +78,7 @@ void Level5::start() {
                     data::Tutorial::statementNoWeapon);
   }
 
-  Fight thirdFight{&player_, {&secondGarde}, {}, options_.noRule_, false};
+  Fight thirdFight{player_, {&secondGarde}, {}, options_.noRule_, false};
   thirdFight.startFight();
 
   Message::write(data::Level5::message4, player_.pseudo(), "");
@@ -100,7 +100,7 @@ void Level5::start() {
 
   Message::write(data::Level5::message6, player_.pseudo(), kamikaze.name());
 
-  Fight fight{&player_,
+  Fight fight{player_,
               {&sacAPV, &kamikaze, &soutien},
               {comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(),
                comboQuadrupleCutter.get()},

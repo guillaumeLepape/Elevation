@@ -68,7 +68,7 @@ void Level9::start() {
   std::unique_ptr<Combo> comboQuadrupleCutter{
       new ComboQuadrupleCutter(player_)};
 
-  Fight fight{&player_,
+  Fight fight{player_,
               {&plug},
               {comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(),
                comboQuadrupleCutter.get()},

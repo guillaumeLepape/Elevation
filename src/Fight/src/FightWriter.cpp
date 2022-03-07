@@ -7,7 +7,7 @@
 #include "Pause.h"
 #include "UtilsWriter.h"
 
-FightWriter::FightWriter(const entity::Player* const player,
+FightWriter::FightWriter(const entity::Player& player,
                          const std::vector<entity::Plug*>& plugs)
     : player_{player}, plugs_{plugs} {
   utils::pause();
@@ -74,13 +74,13 @@ void FightWriter::writeGameBoard() const {
 
   std::vector<variant<std::string, const char*, tabulate::Table>> playerLine(
       std::size(nameFighters), "");
-  playerLine[std::size(nameFighters) / 2] = player_->pseudo();
+  playerLine[std::size(nameFighters) / 2] = player_.pseudo();
   fighters.add_row(playerLine);
 
   std::vector<variant<std::string, const char*, tabulate::Table>>
       lifePlayerPoints(std::size(nameFighters), "");
   lifePlayerPoints[std::size(nameFighters) / 2] =
-      fmt::format("{} points de vie", player_->healthBar().nbLifePoints());
+      fmt::format("{} points de vie", player_.healthBar().nbLifePoints());
   fighters.add_row(lifePlayerPoints);
 
   fighters.format()
