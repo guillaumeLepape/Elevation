@@ -32,6 +32,7 @@ include(CTest) #adds option BUILD_TESTING (default ON)
 
 if(BUILD_TESTING AND Elevation_BuildTests)
     #add google test library
+    set(BUILD_GMOCK OFF CACHE INTERNAL "")
     add_subdirectory(libraries/googletest)
     enable_testing()
     add_subdirectory(test)
