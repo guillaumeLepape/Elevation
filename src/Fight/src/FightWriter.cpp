@@ -146,7 +146,8 @@ void write() {
 namespace end {
 void write() {
   utils::pause();
-  fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, "\n Fin du combat");
+  fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold,
+             "\n Fin du combat\n");
 }
 }  // namespace end
 }  // namespace fight

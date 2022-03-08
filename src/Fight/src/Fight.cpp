@@ -24,70 +24,28 @@ Fight::Fight(entity::Player& player, const std::vector<entity::Plug*>& plugs,
 
 void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
                        std::function<bool(entity::Player& player)> predicate) {
-  std::size_t nbTurns = 0;
+  std::size_t nbTurns = 1;
 
   // while all enemies are not dead or player is not dead
-  while ((not enemiesDeadOrNot()) and (not predicate(player_)) and
+  while ((not is_all_enemies_dead()) and (not predicate(player_)) and
          nbTurns < 1000) {
-    nbTurns++;
-
     fight::header::write(nbTurns);
     fight::game_board::write(player_, plugs_);
 
     // Allow player to print informations about plugs and combos
     // if the information_ is true and -r flag was selected
     if (information_ and (not noRule_)) {
-      bool out = false;
-
-      action::InformationWeaponInventory informationWeaponInventory{
-          player_.weapons(), data::Information::statementInformationWeapon};
-      action::InformationCombo informationCombo{
-          combos_, data::Information::statementInformationCombo};
-      action::Nothing noInformation{data::Information::statementNoInformation};
-      action::Nothing noInformationAnymore{
-          data::Information::statementNoInformationAnymore};
-
-      while (not out) {
-        int resultInformation = selection::select(
-            data::Information::titleInformation, informationWeaponInventory,
-            informationCombo, noInformation, noInformationAnymore);
-
-        switch (resultInformation) {
-          case 0:
-            informationWeaponInventory.trigger();
-            break;
-          case 1:
-            informationCombo.trigger();
-            break;
-          case 2:
-            break;
-          case 3:
-            break;
-        }
-
-        // If the NoInformation option have been chosen, quit the while loop
-        if (resultInformation == 2) {
-          out = true;
-        }
-        // If the NoInformationAnymore option have been chosen, quit the while
-        // loop and set information_ to true not display this selection for this
-        // fight
-        else if (resultInformation == 3) {
-          out = true;
-          information_ = false;
-        }
-      }
+      print_information();
     }
 
     // Choose the plug which player want to attack
     entity::Plug& choosenPlug = choosePlug();
 
     // Choose the weapon to attack choosenPlug
-    ChooseWeaponResult chooseWeaponResult = chooseWeapon(choosenPlug);
+    auto [resultUseWeapon, useWeapons] = chooseWeapon(choosenPlug);
 
     // run the combos
-    runCombos(choosenPlug, chooseWeaponResult.resultUseWeapon,
-              chooseWeaponResult.useWeapons);
+    runCombos(choosenPlug, resultUseWeapon, useWeapons);
 
     const int countNumberOfDeadPlug = methodNumberOfDeadPlug();
 
@@ -100,11 +58,11 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
       fight::remove_dead_body::write();
     }
 
-    for (auto e = std::begin(plugs_); e != std::end(plugs_); e++) {
-      if ((*e)->healthBar().alive()) {
-        auto message = data::Action::resultPlugAttack((*e)->name(),
-                                                      (*e)->weapon().nb_damage);
-        action::PlugAttack plugAttack{player_, **e, message};
+    for (auto& plug : plugs_) {
+      if (plug->healthBar().alive()) {
+        auto message = data::Action::resultPlugAttack(plug->name(),
+                                                      plug->weapon().nb_damage);
+        action::PlugAttack plugAttack{player_, *plug, message};
         plugAttack.trigger();
       }
 
@@ -128,27 +86,42 @@ void Fight::startFight(const std::vector<MessageWriter>& messageWriter,
 
   fight::end::write();
 
-  std::cout << "\n";
+  nbTurns++;
 }
 
-bool Fight::enemiesDeadOrNot() const {
-  bool result = true;
+void Fight::print_information() {
+  bool out = false;
 
-  for (auto e = std::cbegin(plugs_); e != std::cend(plugs_); e++) {
-    result = result and (*e)->healthBar().dead();
+  action::InformationWeaponInventory informationWeaponInventory{
+      player_.weapons(), data::Information::statementInformationWeapon};
+  action::InformationCombo informationCombo{
+      combos_, data::Information::statementInformationCombo};
+  action::Nothing noInformation{data::Information::statementNoInformation};
+  action::Nothing noInformationAnymore{
+      data::Information::statementNoInformationAnymore};
+
+  while (not out) {
+    int resultInformation = selection::select(
+        data::Information::titleInformation, informationWeaponInventory,
+        informationCombo, noInformation, noInformationAnymore);
+
+    // quit loop if no information has been selected
+    out = resultInformation == 2 or resultInformation == 3;
+
+    // set info to false if noInformationAnymore selected
+    information_ = resultInformation != 3;
   }
+}
 
-  return result;
+bool Fight::is_all_enemies_dead() const {
+  return std::all_of(std::cbegin(plugs_), std::cend(plugs_),
+                     [](const auto& plug) { return plug->healthBar().dead(); });
 }
 
 int Fight::methodNumberOfDeadPlug() const {
-  int numberOfDead = 0;
-  for (auto e = std::cbegin(plugs_); e != std::cend(plugs_); e++) {
-    if ((*e)->healthBar().dead()) {
-      numberOfDead++;
-    }
-  }
-  return numberOfDead;
+  return std::count_if(
+      std::cbegin(plugs_), std::cend(plugs_),
+      [](const auto& plug) { return plug->healthBar().dead(); });
 }
 
 entity::Plug& Fight::choosePlug() {
@@ -178,7 +151,8 @@ entity::Plug& Fight::choosePlug() {
   return choosenPlug;
 }
 
-const ChooseWeaponResult Fight::chooseWeapon(entity::Plug& choosenPlug) {
+const Fight::choose_weapon_result Fight::chooseWeapon(
+    entity::Plug& choosenPlug) {
   std::vector<action::UseWeapon> useWeapons;
 
   std::transform(std::cbegin(player_.weapons()), std::cend(player_.weapons()),
@@ -195,7 +169,7 @@ const ChooseWeaponResult Fight::chooseWeapon(entity::Plug& choosenPlug) {
 
 void Fight::runCombos(entity::Plug& choosenPlug, int resultUseWeapon,
                       const std::vector<action::UseWeapon>& useWeapons) {
-  for (auto c = std::cbegin(combos_); c != std::cend(combos_); c++) {
-    (*c)->triggerCombo(choosenPlug, resultUseWeapon, useWeapons);
-  }
+  std::for_each(std::begin(combos_), std::end(combos_), [&](const auto& combo) {
+    combo->triggerCombo(choosenPlug, resultUseWeapon, useWeapons);
+  });
 }

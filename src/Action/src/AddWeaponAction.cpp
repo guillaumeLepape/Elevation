@@ -12,11 +12,11 @@ AddWeaponAction::AddWeaponAction(entity::Player& player,
 
 void AddWeaponAction::trigger() {
   if (weapon_.type != weapon::Type::noWeapon) {
-    bool present;
-    std::tie(std::ignore, present) =
+    bool not_in_player_weapons;
+    std::tie(std::ignore, not_in_player_weapons) =
         player_.weapons().insert(std::move(weapon_));
 
-    if (not present) {
+    if (not_in_player_weapons) {
       action::writeResult(result_);
     }
   }

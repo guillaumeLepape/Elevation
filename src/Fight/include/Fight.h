@@ -4,11 +4,6 @@
 #include "Combo.h"
 #include "MessageWriter.h"
 
-struct ChooseWeaponResult {
-  std::size_t resultUseWeapon;
-  std::vector<action::UseWeapon> useWeapons;
-};
-
 class Fight {
  private:
   entity::Player& player_;
@@ -21,12 +16,16 @@ class Fight {
   bool information_;
   bool noRule_;
 
+  void print_information();
+
   int methodNumberOfDeadPlug() const;
-  bool enemiesDeadOrNot() const;
+  bool is_all_enemies_dead() const;
 
   entity::Plug& choosePlug();
 
-  const ChooseWeaponResult chooseWeapon(entity::Plug& plug);
+  using choose_weapon_result =
+      std::pair<std::size_t, std::vector<action::UseWeapon>>;
+  const choose_weapon_result chooseWeapon(entity::Plug& plug);
 
   void runCombos(entity::Plug& choosenPlug, int resultUseWeapon,
                  const std::vector<action::UseWeapon>& useWeapons);
