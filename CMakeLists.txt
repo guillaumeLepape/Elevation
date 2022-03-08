@@ -18,12 +18,6 @@ add_subdirectory(libraries/tabulate)
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 add_subdirectory(libraries/json) 
 
-# add cpp-terminal library
-set(CPPTERMINAL_BUILD_EXAMPLES OFF CACHE INTERNAL "")
-set(CPPTERMINAL_ENABLE_INSTALL OFF CACHE INTERNAL "")
-set(CPPTERMINAL_ENABLE_TESING OFF CACHE INTERNAL "")
-add_subdirectory(libraries/cpp-terminal)
-
 # add fmt library
 add_subdirectory(libraries/fmt)
 

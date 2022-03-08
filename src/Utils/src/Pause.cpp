@@ -1,24 +1,18 @@
 #include "Pause.h"
 
-#include <cpp-terminal/terminal.h>
+#include <atomic>
+#include <iostream>
 
 namespace utils {
+std::atomic_bool keep_running{true};
+
 void pause() {
-  try {
-    Term::Terminal term;
-
-    bool on = true;
-    while (on) {
-      int key = term.read_key();
-
-      if (key == Term::Key::ENTER) {
-        on = false;
-      }
+  while (keep_running) {
+    if (std::cin.get() == 10) {
+      keep_running = false;
     }
-  } catch (const std::runtime_error& re) {
-    std::cerr << "Runtime error: " << re.what() << std::endl;
-  } catch (...) {
-    std::cerr << "Unknown error." << std::endl;
   }
+  keep_running = true;
+  return;
 }
 }  // namespace utils
