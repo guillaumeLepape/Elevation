@@ -17,4 +17,5 @@ target_link_libraries(
     PUBLIC utils
     PUBLIC data_files
     PUBLIC data
+    PUBLIC range-v3
 )

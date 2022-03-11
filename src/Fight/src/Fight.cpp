@@ -1,5 +1,9 @@
 #include "Fight.h"
 
+#include <range/v3/algorithm/all_of.hpp>
+#include <range/v3/algorithm/count_if.hpp>
+#include <range/v3/view/transform.hpp>
+
 #include "ChoosePlug.h"
 #include "InformationCombo.h"
 #include "InformationWeaponInventory.h"
@@ -42,14 +46,13 @@ void Fight::print_information() {
 }
 
 bool Fight::is_all_enemies_dead() const {
-  return std::all_of(std::cbegin(plugs_), std::cend(plugs_),
-                     [](const auto& plug) { return plug->healthBar().dead(); });
+  return ranges::all_of(
+      plugs_, [](const auto& plug) { return plug->healthBar().dead(); });
 }
 
 int Fight::methodNumberOfDeadPlug() const {
-  return std::count_if(
-      std::cbegin(plugs_), std::cend(plugs_),
-      [](const auto& plug) { return plug->healthBar().dead(); });
+  return ranges::count_if(
+      plugs_, [](const auto& plug) { return plug->healthBar().dead(); });
 }
 
 entity::Plug& Fight::choosePlug() {

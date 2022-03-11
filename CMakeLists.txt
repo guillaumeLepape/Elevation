@@ -21,6 +21,13 @@ add_subdirectory(libraries/json)
 # add fmt library
 add_subdirectory(libraries/fmt)
 
+# add range-v3 library
+add_subdirectory(libraries/range-v3)
+
+add_custom_target(graphviz ALL
+                  "${CMAKE_COMMAND}" "--graphviz=graph" .
+                  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
+
 ##
 ## TESTS
 ## create and configure the unit test target

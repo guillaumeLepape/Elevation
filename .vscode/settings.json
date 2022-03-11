@@ -87,7 +87,9 @@
         "numbers": "cpp",
         "filesystem": "cpp",
         "semaphore": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "coroutine": "cpp",
+        "source_location": "cpp"
     },
     "files.watcherExclude": {
         "**/.git/objects/**": true,

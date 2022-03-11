@@ -3,6 +3,8 @@
 
 #include <fmt/color.h>
 
+#include <range/v3/algorithm/for_each.hpp>
+
 #include "NameType.h"
 #include "UtilsWriter.h"
 #include "WeaponWriter.h"
@@ -28,8 +30,7 @@ class InformationWeaponInventory {
 
     utils::writeSeparators();
 
-    std::for_each(std::cbegin(weaponInventory_), std::cend(weaponInventory_),
-                  [](const auto& weapon) { weapon::print(weapon); });
+    ranges::for_each(weaponInventory_, weapon::print);
   }
 };
 }  // namespace action

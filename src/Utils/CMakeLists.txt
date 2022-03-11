@@ -15,4 +15,5 @@ target_include_directories(
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC fmt
+    PUBLIC range-v3
 )

@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <range/v3/algorithm/for_each.hpp>
 
 #include "Pause.h"
 #include "UtilsWriter.h"
@@ -18,13 +19,12 @@ void write(const Title& title,
 
   utils::writeSeparators();
 
-  std::for_each(std::cbegin(tutorialStatement), std::cend(tutorialStatement),
-                [](const auto& statement) {
-                  utils::pause();
+  ranges::for_each(tutorialStatement, [](const auto& statement) {
+    utils::pause();
 
-                  fmt::print(fg(fmt::color::magenta) | fmt::emphasis::bold,
-                             "\n {}", statement);
-                });
+    fmt::print(fg(fmt::color::magenta) | fmt::emphasis::bold, "\n {}",
+               statement);
+  });
 
   std::cout << "\n";
 }

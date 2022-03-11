@@ -1,6 +1,8 @@
 #ifndef INFORMATION_COMBO_H
 #define INFORMATION_COMBO_H
 
+#include <range/v3/algorithm/for_each.hpp>
+
 #include "ComboWriter.h"
 #include "NameType.h"
 
@@ -19,11 +21,10 @@ class InformationCombo {
   const std::string& statement() const { return statement_.get(); }
 
   void trigger() {
-    std::for_each(std::cbegin(combos_), std::cend(combos_),
-                  [](const Combo* combo) {
-                    ComboWriter comboWriter{combo};
-                    comboWriter.informationCombo();
-                  });
+    ranges::for_each(combos_, [](const Combo* combo) {
+      ComboWriter comboWriter{combo};
+      comboWriter.informationCombo();
+    });
   }
 };
 }  // namespace action

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
+#include <range/v3/algorithm/for_each.hpp>
 #include <set>
 #include <string>
 
@@ -31,15 +32,12 @@ auto read_list_of_name() {
   std::set<std::string> list_female_name;
   std::set<std::string> list_male_name;
 
-  std::for_each(
-      std::cbegin(jsonObject), std::cend(jsonObject), [&](const auto& person) {
-        std::string name =
-            static_cast<std::string>(person["fields"]["prenoms"]);
-        std::string gender = static_cast<std::string>(person["fields"]["sexe"]);
+  ranges::for_each(jsonObject, [&](const auto& person) {
+    std::string name = person["fields"]["prenoms"];
 
-        gender == "F" ? list_female_name.insert(name)
-                      : list_male_name.insert(name);
-      });
+    person["fields"]["sexe"] == "F" ? list_female_name.insert(name)
+                                    : list_male_name.insert(name);
+  });
   return std::pair{list_female_name, list_male_name};
 }
 
