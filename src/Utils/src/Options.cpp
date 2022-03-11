@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <range/v3/algorithm/binary_search.hpp>
 
 namespace utils {
 Options::Options(int argc, char* argv[])
@@ -14,12 +15,10 @@ Options::Options(int argc, char* argv[])
         }
         return result;
       }()},
-      noRule_{
-          std::binary_search(std::cbegin(argv_), std::cend(argv_), "-r") or
-          std::binary_search(std::cbegin(argv_), std::cend(argv_), "--rule")},
-      help_{
-          std::binary_search(std::cbegin(argv_), std::cend(argv_), "-h") or
-          std::binary_search(std::cbegin(argv_), std::cend(argv_), "--help")} {}
+      noRule_{ranges::binary_search(argv_, "-r") or
+              ranges::binary_search(argv_, "--rule")},
+      help_{ranges::binary_search(argv_, "-h") or
+            ranges::binary_search(argv_, "--help")} {}
 
 void Options::print_help() const {
   fmt::print("Allowed options :\n");

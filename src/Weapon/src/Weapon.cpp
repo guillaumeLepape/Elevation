@@ -2,6 +2,12 @@
 
 #include <fmt/color.h>
 
+#include <range/v3/algorithm/contains.hpp>
+#include <range/v3/algorithm/generate.hpp>
+#include <range/v3/algorithm/remove.hpp>
+#include <range/v3/algorithm/transform.hpp>
+#include <range/v3/iterator/insert_iterators.hpp>
+
 namespace weapon {
 Weapon NoWeapon() {
   return Weapon{data::Weapon::nameNoWeapon,         0, Type::noWeapon,
@@ -72,9 +78,10 @@ Weapon make_weapon(const nlohmann::json& json) {
 
 nlohmann::json write(const WeaponInventory& inventory) {
   nlohmann::json result;
-  std::for_each(
-      std::cbegin(inventory), std::cend(inventory),
-      [&result](const auto& weapon) { result.push_back(write(weapon)); });
+
+  ranges::transform(inventory, ranges::back_inserter(result),
+                    [](const auto& weapon) { return write(weapon); });
+
   return result;
 }
 
@@ -93,16 +100,13 @@ bool add(WeaponInventory& weaponInventory, Weapon&& weapon) {
 }
 
 bool contains(const WeaponInventory& weaponInventory, Type&& type) {
-  return std::find_if(std::cbegin(weaponInventory), std::cend(weaponInventory),
-                      [&type](const auto& weapon) {
-                        return type == weapon.type;
-                      }) != std::cend(weaponInventory);
+  return ranges::contains(weaponInventory, type,
+                          [](const auto& weapon) { return weapon.type; });
 }
 
 void remove(WeaponInventory& weaponInventory, const std::string& name) {
-  weaponInventory.erase(std::find_if(
-      std::cbegin(weaponInventory), std::cend(weaponInventory),
-      [&name](const auto& weapon) { return name == weapon.name; }));
+  std::erase_if(weaponInventory,
+                [&name](const auto& weapon) { return name == weapon.name; });
 }
 
 }  // namespace weapon

@@ -1,6 +1,9 @@
 #ifndef USE_WEAPON_H
 #define USE_WEAPON_H
 
+#include <range/v3/algorithm/find_if.hpp>
+#include <range/v3/range/concepts.hpp>
+
 #include "ActionWriter.h"
 #include "Dead.h"
 #include "Languages.h"
@@ -20,11 +23,9 @@ class UseWeapon {
       : player_{player}, plug_{plug}, nameWeapon_{nameWeapon} {}
 
   void trigger() {
-    auto weapon =
-        std::find_if(std::cbegin(player_.weapons()),
-                     std::cend(player_.weapons()), [this](const auto& weapon) {
-                       return weapon.name == this->nameWeapon_;
-                     });
+    auto weapon = ranges::find_if(player_.weapons(), [&](const auto& weapon) {
+      return weapon.name == nameWeapon_;
+    });
 
     if (weapon != std::cend(player_.weapons())) {
       entity::attack(plug_, *weapon);
@@ -44,11 +45,9 @@ class UseWeapon {
   }
 
   const std::string& statement() const {
-    auto weapon =
-        std::find_if(std::cbegin(player_.weapons()),
-                     std::cend(player_.weapons()), [this](const auto& weapon) {
-                       return weapon.name == this->nameWeapon_;
-                     });
+    auto weapon = ranges::find_if(player_.weapons(), [&](const auto& weapon) {
+      return weapon.name == nameWeapon_;
+    });
 
     if (weapon != std::cend(player_.weapons())) {
       return weapon->statement;
@@ -60,17 +59,12 @@ class UseWeapon {
   const std::string& name() const { return nameWeapon_; }
 
   weapon::Type type() const {
-    auto weapon =
-        std::find_if(std::cbegin(player_.weapons()),
-                     std::cend(player_.weapons()), [this](const auto& weapon) {
-                       return weapon.name == this->nameWeapon_;
-                     });
+    auto weapon = ranges::find_if(player_.weapons(), [&](const auto& weapon) {
+      return weapon.name == nameWeapon_;
+    });
 
-    if (weapon != std::cend(player_.weapons())) {
-      return weapon->type;
-    } else {
-      return weapon::Type::noWeapon;
-    }
+    return weapon != std::cend(player_.weapons()) ? weapon->type
+                                                  : weapon::Type::noWeapon;
   }
 };
 }  // namespace action

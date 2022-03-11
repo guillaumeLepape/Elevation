@@ -1,6 +1,7 @@
 #include "Pseudo.h"
 
 #include <iostream>
+#include <range/v3/algorithm/binary_search.hpp>
 
 #include "Languages.h"
 #include "ListNameData.h"
@@ -28,13 +29,11 @@ void Pseudo::trigger() {
     formatString(pseudo);
 
     // Check if chosen pseudo is in the feminine name dataset
-    if (std::binary_search(std::cbegin(feminineName), std::cend(feminineName),
-                           pseudo)) {
+    if (ranges::binary_search(feminineName, pseudo)) {
       out = true;
     }
     // Check if chosen pseudo is in the masculine name dataset
-    else if (std::binary_search(std::cbegin(masculineName),
-                                std::cend(masculineName), pseudo)) {
+    else if (ranges::binary_search(masculineName, pseudo)) {
       Message::write(data::Introduction::message2, player_.pseudo(), "");
     }
     // If pseudo doesn't appear in the two previous dataset,
