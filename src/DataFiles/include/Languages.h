@@ -5,7 +5,7 @@
 #define FRENCH
 
 #ifdef FRENCH
-#include "FrenchData.h"
+#  include "FrenchData.h"
 #endif
 
 #endif

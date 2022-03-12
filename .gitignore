@@ -38,6 +38,5 @@ doc/Doxygen/html
 Elevation_export
 Elevation_export.zip
 
-.clang-format
 graph*
 results/*.json

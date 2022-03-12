@@ -68,8 +68,7 @@ std::size_t select(const Title& title, const printable&... statements) {
   return choice - 1;
 }
 
-template <typename T>
-concept Action = requires(T& action) {
+template <typename T> concept Action = requires(T& action) {
   { action.statement() }
   ->std::convertible_to<const std::string_view&>;
   { action.trigger() }

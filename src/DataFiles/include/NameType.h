@@ -7,8 +7,7 @@
 #include <utility>
 #include <vector>
 
-template <typename T, typename Parameter>
-class NamedType {
+template <typename T, typename Parameter> class NamedType {
  public:
   constexpr explicit NamedType(T const& value) noexcept : value_{value} {}
   constexpr explicit NamedType(T&& value) noexcept : value_{std::move(value)} {}
