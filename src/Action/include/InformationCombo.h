@@ -20,12 +20,7 @@ class InformationCombo {
 
   const std::string& statement() const { return statement_.get(); }
 
-  void trigger() {
-    ranges::for_each(combos_, [](const Combo* combo) {
-      ComboWriter comboWriter{combo};
-      comboWriter.informationCombo();
-    });
-  }
+  void trigger() { ranges::for_each(combos_, combo::write); }
 };
 }  // namespace action
 

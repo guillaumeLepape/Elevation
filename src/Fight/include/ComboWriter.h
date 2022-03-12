@@ -3,14 +3,8 @@
 
 #include "Combo.h"
 
-class ComboWriter {
- private:
-  const Combo* const combo_;
-
- public:
-  ComboWriter(const Combo* const combo);
-
-  void informationCombo() const;
-};
+namespace combo {
+void write(const Combo* const);
+}
 
 #endif
