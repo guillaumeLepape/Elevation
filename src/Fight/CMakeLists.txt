@@ -2,11 +2,6 @@ project(fight)
 
 add_library(
     ${PROJECT_NAME}
-    src/ComboDoubleMeleeWeapon.cpp
-    src/ComboFistMeleeWeapon.cpp
-    src/ComboQuadrupleCutter.cpp
-    src/ComboWriter.cpp
-    src/Fight.cpp
     src/FightWriter.cpp
 )
 

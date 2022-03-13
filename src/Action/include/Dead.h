@@ -1,19 +1,24 @@
 #ifndef DEAD_H
 #define DEAD_H
 
-#include "NameType.h"
+#include "Concept.h"
 #include "Plug.h"
 
 namespace action {
-class Dead {
+template <utils::Printable U> class Dead {
  private:
-  Result result_;
+  U result_;
   const entity::Plug& plug_;
 
  public:
-  Dead(const entity::Plug& plug, const Result& result);
+  Dead(const entity::Plug& plug, const U& result)
+      : result_{result}, plug_{plug} {}
 
-  void trigger();
+  void trigger() {
+    if (plug_.healthBar().dead()) {
+      result::write(result_);
+    }
+  }
 };
 }  // namespace action
 

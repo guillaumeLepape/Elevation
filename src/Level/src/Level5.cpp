@@ -31,12 +31,12 @@ void Level5::start() {
   }
 
   // Declare combos
-  std::unique_ptr<Combo> comboFistMeleeWeapon{
-      new ComboFistMeleeWeapon(player_)};
-  std::unique_ptr<Combo> comboDoubleMeleeWeapon{
-      new ComboDoubleMeleeWeapon(player_)};
-  std::unique_ptr<Combo> comboQuadrupleCutter{
-      new ComboQuadrupleCutter(player_)};
+  std::unique_ptr<Combo<std::string_view>> comboFistMeleeWeapon{
+      new ComboFistMeleeWeapon<std::string_view>(player_)};
+  std::unique_ptr<Combo<std::string_view>> comboDoubleMeleeWeapon{
+      new ComboDoubleMeleeWeapon<std::string_view>(player_)};
+  std::unique_ptr<Combo<std::string_view>> comboQuadrupleCutter{
+      new ComboQuadrupleCutter<std::string_view>(player_)};
 
   // First fight (introduction to Fist - Melee Weapon combo)
   if (not options_.noRule_) {
@@ -44,12 +44,15 @@ void Level5::start() {
                     data::Tutorial::statementComboFistMeleeWeapon);
   }
 
-  Fight firstFight{player_,
-                   {&guetteur},
-                   {comboFistMeleeWeapon.get()},
-                   options_.noRule_,
-                   false};
-  firstFight.startFight();
+  fight::parameters parameters_1{
+      std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get()},
+      options_.noRule_, false};
+
+  fight::launch(player_, std::vector{&guetteur}, parameters_1);
+
+  // Fight firstFight{
+  //     player_, {&guetteur}, parameters};
+  // firstFight.startFight();
 
   // Second fight (introduction to Double melee Weapon combo )
   entity::Plug garde{"Garde", 50, weapon::Fist()};
@@ -61,12 +64,15 @@ void Level5::start() {
                     data::Tutorial::statementComboDoubleMeleeWeapon);
   }
 
-  Fight secondFight{player_,
-                    {&garde},
-                    {comboDoubleMeleeWeapon.get()},
-                    options_.noRule_,
-                    false};
-  secondFight.startFight();
+  fight::parameters parameters_2{
+      std::vector<Combo<std::string_view>*>{comboDoubleMeleeWeapon.get()},
+      options_.noRule_, false};
+
+  fight::launch(player_, std::vector{&garde}, parameters_2);
+
+  // Fight secondFight{
+  //     player_, {&garde}, {comboDoubleMeleeWeapon}, options_.noRule_, false};
+  // secondFight.startFight();
 
   // Third fight (introduction to Healing and weapon recuperation)
   entity::Plug secondGarde{"Un futur cadavre", 30, weapon::Knife()};
@@ -78,12 +84,15 @@ void Level5::start() {
                     data::Tutorial::statementNoWeapon);
   }
 
-  Fight thirdFight{player_, {&secondGarde}, {}, options_.noRule_, false};
-  thirdFight.startFight();
+  fight::parameters parameters_3{std::vector<Combo<std::string_view>*>{},
+                                 options_.noRule_, false};
+  fight::launch(player_, std::vector{&secondGarde}, parameters_3);
+  // Fight thirdFight{player_, {&secondGarde}, {}, options_.noRule_, false};
+  // thirdFight.startFight();
 
   Message::write(data::Level5::message4, player_.pseudo(), "");
 
-  action::RegenerateAllLife regenerateAllLife{player_, Result("")};
+  action::RegenerateAllLife regenerateAllLife{player_};
   regenerateAllLife.trigger();
 
   Message::write(data::Level5::message5, player_.pseudo(), "");
@@ -100,12 +109,20 @@ void Level5::start() {
 
   Message::write(data::Level5::message6, player_.pseudo(), kamikaze.name());
 
-  Fight fight{player_,
-              {&sacAPV, &kamikaze, &soutien},
-              {comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(),
-               comboQuadrupleCutter.get()},
-              options_.noRule_};
-  fight.startFight();
+  fight::parameters parameters_4{
+      std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get(),
+                                            comboDoubleMeleeWeapon.get(),
+                                            comboQuadrupleCutter.get()},
+      options_.noRule_};
+  fight::launch(player_, std::vector{&sacAPV, &kamikaze, &soutien},
+                parameters_4);
+
+  // Fight fight{
+  //     player_,
+  //     {&sacAPV, &kamikaze, &soutien},
+  //     {comboFistMeleeWeapon, comboDoubleMeleeWeapon, comboQuadrupleCutter},
+  //     options_.noRule_};
+  // fight.startFight();
 
   Message::write(data::Level5::message7, player_.pseudo(), "");
 

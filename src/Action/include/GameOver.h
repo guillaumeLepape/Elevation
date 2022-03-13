@@ -1,21 +1,19 @@
 #ifndef GAME_OVER_H
 #define GAME_OVER_H
 
-#include <iostream>
-
 #include "ActionWriter.h"
-#include "NameType.h"
+#include "Concept.h"
 
 namespace action {
-class GameOver {
+template <utils::Printable T> class GameOver {
  private:
-  Result result_;
+  T result_;
 
  public:
-  explicit GameOver(const Result& result) : result_{result} {}
+  explicit GameOver(const T& result) : result_{result} {}
 
   void trigger() {
-    action::writeResult(result_);
+    result::write(result_);
     std::cout << "\n";
     exit(0);
   }

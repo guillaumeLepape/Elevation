@@ -1,22 +1,21 @@
 #ifndef CHOOSE_PLUG
 #define CHOOSE_PLUG
 
-#include "NameType.h"
+#include "Concept.h"
 
 namespace action {
-class ChoosePlug {
+template <utils::Printable T, utils::Printable U> class ChoosePlug {
  private:
-  Statement statement_;
-  Result result_;
+  T statement_;
+  U result_;
 
   entity::Plug& plug_;
 
  public:
-  ChoosePlug(entity::Plug& plug, const Statement& statement,
-             const Result& result)
+  ChoosePlug(entity::Plug& plug, const T& statement, const U& result)
       : statement_{statement}, result_{result}, plug_{plug} {}
 
-  const std::string& statement() const { return statement_.get(); }
+  const std::string& statement() const { return statement_; }
 
   entity::Plug& plug() const { return plug_; }
 };

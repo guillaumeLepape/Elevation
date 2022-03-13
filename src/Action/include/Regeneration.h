@@ -1,18 +1,15 @@
 #ifndef REGENERATION_H
 #define REGENERATION_H
 
-#include "NameType.h"
+#include "Player.h"
 
 namespace action {
 class Regeneration {
  private:
-  Result result_;
-
   entity::Player& player_;
 
  public:
-  Regeneration(entity::Player& player, const Result& result)
-      : result_{result}, player_{player} {}
+  Regeneration(entity::Player& player) : player_{player} {}
 
   void trigger() {
     int nbLifePointsRegeneration = 0;
@@ -44,7 +41,7 @@ class Regeneration {
       int nbLifePoints_previous = player_.healthBar().nbLifePoints();
 
       player_.healthBar().increaseLifePoints(nbLifePointsRegeneration);
-      action::writeResult(data::Action::resultRegeneration(
+      result::write(data::Action::resultRegeneration(
           player_.healthBar().nbLifePoints() - nbLifePoints_previous));
     }
   }

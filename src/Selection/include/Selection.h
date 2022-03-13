@@ -9,10 +9,10 @@
 #include "SelectionWriter.h"
 
 namespace selection {
-template <utils::Printable printable>
-std::size_t select(const Title& title,
-                   const std::vector<printable>& statements) {
-  selection::write(title, statements);
+template <utils::Printable T, utils::Printable printable>
+std::size_t select_from_statement(T&& title,
+                                  const std::vector<printable>& statements) {
+  selection::write(std::forward<T>(title), statements);
 
   std::size_t choice = 0;
 
@@ -33,15 +33,15 @@ std::size_t select(const Title& title,
     // throw away garbage input
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    selection::write(title, statements);
+    selection::write(std::forward<T>(title), statements);
   }
 
   return choice - 1;
 }
 
-template <utils::Printable... printable>
-std::size_t select(const Title& title, const printable&... statements) {
-  selection::write(title, statements...);
+template <utils::Printable T, utils::Printable... Args>
+std::size_t select_from_statement(T&& title, Args&&... statements) {
+  selection::write(std::forward<T>(title), statements...);
 
   std::size_t choice = 0;
 
@@ -62,35 +62,30 @@ std::size_t select(const Title& title, const printable&... statements) {
     // throw away garbage input
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    selection::write(title, statements...);
+    selection::write(std::forward<T>(title), statements...);
   }
 
   return choice - 1;
 }
 
-template <typename T> concept Action = requires(T& action) {
-  { action.statement() }
-  ->std::convertible_to<const std::string_view&>;
-  { action.trigger() }
-  ->std::same_as<void>;
-};
-
-template <Action... Args>
-std::size_t select(const Title& title, Args&... actions) {
-  auto result = selection::select(title, actions.statement()...);
+template <utils::Printable T, utils::Action... Args>
+std::size_t select(T&& title, Args&&... actions) {
+  auto result = selection::select_from_statement(std::forward<T>(title),
+                                                 actions.statement()...);
 
   std::size_t index = 0;
   ((index++ == result ? actions.trigger() : []() {}()), ...);
   return result;
 }
 
-template <Action Arg>
-std::size_t select(const Title& title, std::vector<Arg>& actions) {
+template <utils::Printable T, utils::Action Arg>
+std::size_t select(T&& title, std::vector<Arg>& actions) {
   std::vector<std::string> statements;
   std::transform(std::cbegin(actions), std::cend(actions),
                  std::back_inserter(statements),
                  [](const auto& action) { return action.statement(); });
-  auto result = selection::select(title, statements);
+  auto result =
+      selection::select_from_statement(std::forward<T>(title), statements);
   actions[result].trigger();
   return result;
 }

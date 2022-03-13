@@ -1,26 +1,26 @@
 #ifndef INCREASE_MAX_LIFE_POINTS_H
 #define INCREASE_MAX_LIFE_POINTS_H
 
-#include "NameType.h"
+#include "Concept.h"
 
 namespace action {
-class IncreaseMaxLifePoints {
+template <utils::Printable U> class IncreaseMaxLifePoints {
  private:
-  Result result_;
+  U result_;
 
   entity::Player& player_;
   int maxLifePointsIncreasing_;
 
  public:
   IncreaseMaxLifePoints(entity::Player& player, int maxLifePointsIncreasing,
-                        const Result& result)
+                        const U& result)
       : result_{result},
         player_{player},
         maxLifePointsIncreasing_{maxLifePointsIncreasing} {}
 
   void trigger() {
     player_.healthBar().increaseMaxLifePoints(maxLifePointsIncreasing_);
-    action::writeResult(result_);
+    action::result::write(result_);
   }
 };
 }  // namespace action

@@ -3,9 +3,7 @@ project(writer)
 add_library(
     ${PROJECT_NAME}
     src/Rules.cpp
-    src/HeaderWriter.cpp
     src/MessageWriter.cpp
-    src/TutorialWriter.cpp
     src/UtilsWriter.cpp
 )
 

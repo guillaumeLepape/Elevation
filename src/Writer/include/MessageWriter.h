@@ -3,20 +3,20 @@
 
 #include <string>
 
-#include "NameType.h"
+#include "Languages.h"
 
 struct MessageWriter {
-  Message_t messages_;
+  data::Message_t messages_;
   std::string pseudo_;
   std::string plugName_;
 
-  MessageWriter(const Message_t& messages, const std::string& pseudo,
+  MessageWriter(const data::Message_t& messages, const std::string& pseudo,
                 const std::string& plugName)
       : messages_{messages}, pseudo_{pseudo}, plugName_{plugName} {}
 };
 
 namespace Message {
-void write(const Message_t& messages, const std::string& pseudo,
+void write(const data::Message_t& messages, const std::string& pseudo,
            const std::string& plugName);
 
 void write(const MessageWriter& message);

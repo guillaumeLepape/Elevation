@@ -1,3 +1,6 @@
+#ifndef CONCEPT_H
+#define CONCEPT_H
+
 #include <concepts>
 #include <iostream>
 
@@ -7,10 +10,12 @@ template <typename T> concept Printable = requires(T t) {
   ->std::same_as<std::ostream&>;
 };
 
-template <typename T> concept Action = requires(T& action) {
+template <typename T> concept Action = requires(T action) {
   { action.statement() }
   ->Printable;
   { action.trigger() }
   ->std::same_as<void>;
 };
 }  // namespace utils
+
+#endif

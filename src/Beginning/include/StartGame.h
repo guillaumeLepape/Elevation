@@ -1,19 +1,21 @@
 #ifndef START_GAME_H
 #define START_GAME_H
 
+#include "Concept.h"
+#include "GameEngine.h"
 #include "Id.h"
-#include "NameType.h"
 #include "Options.h"
 #include "Results.h"
 
 namespace action {
-class StartGame {
+template <utils::Printable T> class StartGame {
  private:
-  Statement statement_;
+  T statement_;
   const utils::Options& options_;
 
  public:
-  StartGame(const Statement& statement, const utils::Options& options);
+  StartGame(const T& statement, const utils::Options& options)
+      : statement_{statement}, options_{options} {}
 
   StartGame(const StartGame&) = delete;
   StartGame(StartGame&&) = default;
@@ -23,9 +25,12 @@ class StartGame {
 
   ~StartGame() = default;
 
-  const std::string& statement() const { return statement_.get(); }
+  const T& statement() const { return statement_; }
 
-  void trigger();
+  void trigger() {
+    const auto game_id = utils::id::generate();
+    game_engine::launch(options_, game_id);
+  }
 };
 }  // namespace action
 

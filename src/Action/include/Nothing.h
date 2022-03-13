@@ -1,19 +1,19 @@
 #ifndef NOTHING_H
 #define NOTHING_H
 
-#include "NameType.h"
+#include "Concept.h"
 
 namespace action {
-class Nothing {
+template <utils::Printable T> class Nothing {
  private:
-  Statement statement_;
+  T statement_;
 
  public:
-  Nothing(const Statement& statement) : statement_{statement} {}
+  Nothing(const T& statement) : statement_{statement} {}
 
   void trigger() {}
 
-  const std::string& statement() const { return statement_.get(); }
+  const T& statement() const { return statement_; }
 };
 }  // namespace action
 

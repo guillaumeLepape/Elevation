@@ -4,23 +4,26 @@
 #include <range/v3/algorithm/for_each.hpp>
 
 #include "ComboWriter.h"
-#include "NameType.h"
+#include "Concept.h"
 
 namespace action {
-class InformationCombo {
+template <utils::Printable T, utils::Printable U> class InformationCombo {
  private:
-  Statement statement_;
+  T statement_;
 
-  std::vector<Combo*> combos_;
+  std::vector<Combo<U>*> combos_;
 
  public:
-  InformationCombo(const std::vector<Combo*>& combos,
-                   const Statement& statement)
+  InformationCombo(const std::vector<Combo<U>*>& combos, const T& statement)
       : statement_{statement}, combos_{combos} {}
 
-  const std::string& statement() const { return statement_.get(); }
+  const T& statement() const { return statement_; }
 
-  void trigger() { ranges::for_each(combos_, combo::write); }
+  void trigger() {
+    for (auto c = std::cbegin(combos_); c != std::cend(combos_); ++c) {
+      combo::write(*c);
+    }
+  }
 };
 }  // namespace action
 

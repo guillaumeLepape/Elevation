@@ -4,22 +4,22 @@
 #include <iostream>
 
 #include "ActionWriter.h"
-#include "NameType.h"
+#include "Concept.h"
 
 namespace action {
-class SaveAndQuit {
+template <utils::Printable T, utils::Printable U> class SaveAndQuit {
  private:
-  Statement statement_;
-  Result result_;
+  T statement_;
+  U result_;
 
  public:
-  SaveAndQuit(const Statement& statement, const Result& result)
+  SaveAndQuit(const T& statement, const U& result)
       : statement_(statement), result_(result) {}
 
-  const std::string& statement() const { return statement_.get(); }
+  const T& statement() const { return statement_; }
 
   void trigger() {
-    action::writeResult(result_);
+    result::write(result_);
     std::cout << "\n";
     exit(0);
   }

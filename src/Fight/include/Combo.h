@@ -1,24 +1,26 @@
 #ifndef COMBO_H
 #define COMBO_H
 
-#include "NameType.h"
+#include <variant>
+
+#include "Concept.h"
+#include "Nothing.h"
+#include "Selection.h"
 #include "UseWeapon.h"
 
-class Combo {
+template <utils::Printable T> class Combo {
  protected:
-  Title title_;
-  const TriggerStatement& triggerStatement_;
-  const TriggeredStatement& triggeredStatement_;
-  const MalusStatement& malusStatement_;
+  T title_;
+  const T& triggerStatement_;
+  const T& triggeredStatement_;
+  const T& malusStatement_;
 
  protected:
   entity::Player& player_;
 
  public:
-  Combo(entity::Player& player, const Title& title,
-        const TriggerStatement& triggerStatement,
-        const TriggeredStatement& triggeredStatement,
-        const MalusStatement& malusStatement)
+  Combo(entity::Player& player, const T& title, const T& triggerStatement,
+        const T& triggeredStatement, const T& malusStatement)
       : title_{title},
         triggerStatement_{triggerStatement},
         triggeredStatement_{triggeredStatement},
@@ -31,16 +33,88 @@ class Combo {
 
   virtual ~Combo() = default;
 
-  const std::string_view& title() const { return title_.get(); }
-  const std::string_view& triggerStatement() const {
-    return triggerStatement_.get();
-  }
-  const std::string_view& triggeredStatement() const {
-    return triggeredStatement_.get();
-  }
-  const std::string_view& malusStatement() const {
-    return malusStatement_.get();
-  }
+  const T& title() const { return title_; }
+  const T& triggerStatement() const { return triggerStatement_; }
+  const T& triggeredStatement() const { return triggeredStatement_; }
+  const T& malusStatement() const { return malusStatement_; }
 };
+
+namespace combo_v2 {
+template <typename T> struct ComboDoubleMeleeWeapon {
+  T title = data::Combo::titleDoubleMeleeWeapon;
+};
+template <typename T> struct ComboFistMeleeWeapon {
+  T title = data::Combo::titleFistMeleeWeapon;
+};
+template <typename T> struct ComboQuadrupleCutter {
+  T title = data::Combo::titleQuadrupleCutter;
+};
+
+template <typename T>
+using Combo = std::variant<ComboDoubleMeleeWeapon<T>, ComboFistMeleeWeapon<T>,
+                           ComboQuadrupleCutter<T>>;
+
+template <class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
+
+template <typename T>
+void trigger(Combo<T>&& combo, entity::Player& player, entity::Plug& plug,
+             int resultChooseWeapon,
+             const std::vector<action::UseWeapon>& useWeapon) {
+  std::visit(
+      overloaded{
+          [&](ComboDoubleMeleeWeapon<T>&& arg) {
+            if ((useWeapon[resultChooseWeapon].name() ==
+                     data::Weapon::nameKnife or
+                 useWeapon[resultChooseWeapon].name() ==
+                     data::Weapon::nameHammer) and
+                plug.healthBar().alive()) {
+              action::UseWeapon useWeaponCombo{
+                  player, plug, useWeapon[resultChooseWeapon].name()};
+
+              action::Nothing nothing{data::Combo::statementDontCombo};
+
+              auto result =
+                  selection::select(arg.title, useWeaponCombo, nothing);
+              if (result == 0) {
+                weapon::remove(player.weapons(),
+                               useWeapon[resultChooseWeapon].name());
+              }
+            }
+          },
+          [&](ComboFistMeleeWeapon<T>&& arg) {
+            // if the player has attack with his fist, trigger the combo
+            // and the ennemy is not dead
+            // and player has at least one melee weapon
+            if (useWeapon[resultChooseWeapon].type() == weapon::Type::fist and
+                plug.healthBar().alive() and
+                weapon::contains(Combo<T>::player_.weapons(),
+                                 weapon::Type::meleeWeapon)) {
+              std::vector<action::UseWeapon> useWeaponFistCombo;
+
+              for (auto weapon = std::cbegin(Combo<T>::player_.weapons());
+                   weapon != std::cend(Combo<T>::player_.weapons()); ++weapon) {
+                if (weapon->type == weapon::Type::meleeWeapon) {
+                  useWeaponFistCombo.push_back(
+                      action::UseWeapon{Combo<T>::player_, plug, weapon->name});
+                }
+              }
+
+              selection::select(Combo<T>::title_, useWeaponFistCombo);
+            }
+          },
+          [&](ComboQuadrupleCutter<T>&& arg) {
+            if (useWeapon[resultChooseWeapon].name() == "Cutter") {
+              action::UseWeapon useWeaponCombo = useWeapon[resultChooseWeapon];
+
+              useWeaponCombo.trigger();
+              useWeaponCombo.trigger();
+              useWeaponCombo.trigger();
+              weapon::remove(Combo<T>::player_.weapons(),
+                             useWeapon[resultChooseWeapon].name());
+            }
+          }},
+      combo);
+}
+}  // namespace combo_v2
 
 #endif

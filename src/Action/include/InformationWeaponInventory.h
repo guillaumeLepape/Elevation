@@ -5,23 +5,23 @@
 
 #include <range/v3/algorithm/for_each.hpp>
 
-#include "NameType.h"
+#include "Concept.h"
 #include "UtilsWriter.h"
 #include "WeaponWriter.h"
 
 namespace action {
-class InformationWeaponInventory {
+template <utils::Printable T> class InformationWeaponInventory {
  private:
-  Statement statement_;
+  T statement_;
 
   const weapon::WeaponInventory& weaponInventory_;
 
  public:
   InformationWeaponInventory(const weapon::WeaponInventory& weaponInventory,
-                             const Statement& statement)
+                             const T& statement)
       : statement_{statement}, weaponInventory_{weaponInventory} {}
 
-  const std::string& statement() const { return statement_.get(); }
+  const T& statement() const { return statement_; }
 
   void trigger() {
     fmt::print("\n ");

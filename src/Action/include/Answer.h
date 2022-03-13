@@ -1,19 +1,19 @@
 #ifndef ANSWER_H
 #define ANSWER_H
 
-#include "NameType.h"
+#include "Concept.h"
 
 namespace action {
-class Answer {
+template <utils::Printable T> class Answer {
  private:
-  const Statement& statement_;
+  const T& statement_;
   bool correctOrNot_;
 
  public:
-  explicit Answer(const Statement& statement, bool correctOrNot)
+  explicit Answer(const T& statement, bool correctOrNot)
       : statement_{statement}, correctOrNot_{correctOrNot} {}
 
-  const std::string& statement() const { return statement_.get(); }
+  const T& statement() const { return statement_; }
 
   bool correctOrNot() const { return correctOrNot_; }
 };

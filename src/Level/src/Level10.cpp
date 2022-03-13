@@ -26,7 +26,10 @@ void Level10::start() {
       MessageWriter(data::Level10::message0, player_.pseudo(), plug.name()),
       MessageWriter(data::Level10::message1, player_.pseudo(), plug.name())};
 
-  Fight fight{player_, {&plug}, {}, options_.noRule_};
+  Fight fight{player_,
+              {&plug},
+              std::vector<Combo<std::string_view>*>{},
+              options_.noRule_};
   fight.startFight(messageWriters, [&plug](entity::Player& player_) -> bool {
     return player_.healthBar().nbLifePoints() < plug.weapon().nb_damage;
   });
@@ -34,7 +37,7 @@ void Level10::start() {
   Message::write(data::Level10::message2, player_.pseudo(), plug.name());
 
   entity::Plug heroine{"Heroine", 100, weapon::Heroine()};
-  action::PlugAttack plugAttack{player_, heroine, Result("")};
+  action::PlugAttack plugAttack{player_, heroine};
 
   while (player_.healthBar().alive()) {
     plugAttack.trigger();

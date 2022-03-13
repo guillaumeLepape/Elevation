@@ -2,20 +2,16 @@ project(action)
 
 add_library(
     ${PROJECT_NAME}
-    src/ActionWriter.cpp
-    src/Dead.cpp
-    src/AddWeaponAction.cpp
-    src/Negociate.cpp
-    src/Pseudo.cpp
+    INTERFACE 
 )
 
 target_include_directories(
     ${PROJECT_NAME}
-    PUBLIC ${PROJECT_SOURCE_DIR}/include
+    INTERFACE ${PROJECT_SOURCE_DIR}/include
 )
 
 target_link_libraries(
     ${PROJECT_NAME} 
-    PUBLIC writer
-    PUBLIC entity
+    INTERFACE writer
+    INTERFACE entity
 )

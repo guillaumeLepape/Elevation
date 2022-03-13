@@ -22,9 +22,7 @@ void Level9::start() {
 
   entity::Plug plug{"Psychopathe", 250, weapon::Knife()};
 
-  action::PlugAttack plugAttack0{
-      player_, plug,
-      data::Action::resultPlugAttack(plug.name(), plug.weapon().nb_damage)};
+  action::PlugAttack plugAttack0{player_, plug};
   plugAttack0.trigger();
   plugAttack0.trigger();
   plugAttack0.trigger();
@@ -34,7 +32,7 @@ void Level9::start() {
   action::UseWeapon useWeapon{player_, plug, data::Weapon::nameFist};
   useWeapon.trigger();
 
-  action::RegenerateAllLife regenerateAllLife{player_, Result("")};
+  action::RegenerateAllLife regenerateAllLife{player_};
   regenerateAllLife.trigger();
 
   Message::write(data::Level9::message1, player_.pseudo(), plug.name());
@@ -43,7 +41,7 @@ void Level9::start() {
 
   plug.changeWeapon(weapon::Chopper());
 
-  action::PlugAttack plugAttack1{player_, plug, Result("")};
+  action::PlugAttack plugAttack1{player_, plug};
   plugAttack1.trigger();
   regenerateAllLife.trigger();
 
@@ -61,19 +59,20 @@ void Level9::start() {
 
   plug.changeWeapon(weapon::NoWeapon());
 
-  std::unique_ptr<Combo> comboFistMeleeWeapon{
-      new ComboFistMeleeWeapon(player_)};
-  std::unique_ptr<Combo> comboDoubleMeleeWeapon{
-      new ComboDoubleMeleeWeapon(player_)};
-  std::unique_ptr<Combo> comboQuadrupleCutter{
-      new ComboQuadrupleCutter(player_)};
+  std::unique_ptr<Combo<std::string_view>> comboFistMeleeWeapon{
+      new ComboFistMeleeWeapon<std::string_view>(player_)};
+  std::unique_ptr<Combo<std::string_view>> comboDoubleMeleeWeapon{
+      new ComboDoubleMeleeWeapon<std::string_view>(player_)};
+  std::unique_ptr<Combo<std::string_view>> comboQuadrupleCutter{
+      new ComboQuadrupleCutter<std::string_view>(player_)};
 
-  Fight fight{player_,
-              {&plug},
-              {comboFistMeleeWeapon.get(), comboDoubleMeleeWeapon.get(),
-               comboQuadrupleCutter.get()},
-              options_.noRule_};
-  fight.startFight();
+  fight::parameters parameters{
+      std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get(),
+                                            comboDoubleMeleeWeapon.get(),
+                                            comboQuadrupleCutter.get()},
+      options_.noRule_};
+
+  fight::launch(player_, std::vector{&plug}, parameters);
 
   regenerateAllLife.trigger();
 

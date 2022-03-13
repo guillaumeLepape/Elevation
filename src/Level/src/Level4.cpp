@@ -31,9 +31,10 @@ void Level4::start() {
 
   while (not selection::question(
       data::Question::titleFirstQuestion,
-      {answer0_0.statement(), answer1_0.statement(), answer2_0.statement()},
-      {answer0_0.correctOrNot(), answer1_0.correctOrNot(),
-       answer2_0.correctOrNot()})) {
+      std::vector{answer0_0.statement(), answer1_0.statement(),
+                  answer2_0.statement()},
+      std::vector{answer0_0.correctOrNot(), answer1_0.correctOrNot(),
+                  answer2_0.correctOrNot()})) {
     Message::write(data::Level4::message1, player_.pseudo(), plug.name());
   }
 
@@ -49,9 +50,10 @@ void Level4::start() {
 
   while (not selection::question(
       data::Question::titleSecondQuestion,
-      {answer0_1.statement(), answer1_1.statement(), answer2_1.statement()},
-      {answer0_1.correctOrNot(), answer1_1.correctOrNot(),
-       answer2_1.correctOrNot()})) {
+      std::vector{answer0_1.statement(), answer1_1.statement(),
+                  answer2_1.statement()},
+      std::vector{answer0_1.correctOrNot(), answer1_1.correctOrNot(),
+                  answer2_1.correctOrNot()})) {
     Message::write(data::Level4::message1, player_.pseudo(), plug.name());
   }
 
@@ -67,9 +69,10 @@ void Level4::start() {
 
   while (not selection::question(
       data::Question::titleThirdQuestion,
-      {answer0_2.statement(), answer1_2.statement(), answer2_2.statement()},
-      {answer0_2.correctOrNot(), answer1_2.correctOrNot(),
-       answer2_2.correctOrNot()})) {
+      std::vector{answer0_2.statement(), answer1_2.statement(),
+                  answer2_2.statement()},
+      std::vector{answer0_2.correctOrNot(), answer1_2.correctOrNot(),
+                  answer2_2.correctOrNot()})) {
     Message::write(data::Level4::message1, player_.pseudo(), plug.name());
   }
 

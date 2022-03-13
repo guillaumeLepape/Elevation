@@ -7,7 +7,6 @@
 #include <vector>
 
 #include "Concept.h"
-#include "NameType.h"
 #include "Pause.h"
 #include "UtilsWriter.h"
 
@@ -22,26 +21,26 @@ void write_statements(const std::vector<printable>& statements) {
   }
 }
 
-template <utils::Printable... printable>
-void write_statements(const printable&... statements) {
+template <utils::Printable... T> void write_statements(T&&... statements) {
   std::size_t index = 1;
 
   (
       [&index](const auto& statement) {
         fmt::print("\n {}- ", index++);
-        fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, statement);
+        fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold,
+                   std::forward<T>(statement));
       }(statements),
       ...);
 }
 
-template <utils::Printable printable>
-void write(const Title& title, const std::vector<printable>& statements) {
+template <utils::Printable T, utils::Printable printable>
+void write(T&& title, const std::vector<printable>& statements) {
   utils::pause();
 
   fmt::print("\n ");
   fmt::print(
       fg(fmt::color::black) | bg(fmt::color::green) | fmt::emphasis::bold,
-      title.get());
+      std::forward<T>(title));
 
   utils::writeSeparators();
 
@@ -62,18 +61,18 @@ void write(const Title& title, const std::vector<printable>& statements) {
   }
 }
 
-template <utils::Printable... printable>
-void write(const Title& title, const printable&... statements) {
+template <utils::Printable T, utils::Printable... Args>
+void write(T&& title, Args&&... statements) {
   utils::pause();
 
   fmt::print("\n ");
   fmt::print(
       fg(fmt::color::black) | bg(fmt::color::green) | fmt::emphasis::bold,
-      title.get());
+      std::forward<T>(title));
 
   utils::writeSeparators();
 
-  write_statements(statements...);
+  write_statements(std::forward<Args>(statements)...);
 
   if constexpr (sizeof...(statements) != 1) {
     fmt::print("\n ");

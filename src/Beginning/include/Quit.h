@@ -2,16 +2,17 @@
 #define QUIT_H
 
 #include "ActionWriter.h"
-#include "NameType.h"
+#include "Concept.h"
 
 namespace action {
-class Quit {
+template <utils::Printable T, utils::Printable U> class Quit {
  private:
-  const Statement& statement_;
-  const Result& result_;
+  const T& statement_;
+  const U& result_;
 
  public:
-  Quit(const Statement& statement, const Result& result);
+  Quit(const T& statement, const U& result)
+      : statement_{statement}, result_{result} {}
 
   Quit(const Quit&) = delete;
   Quit(Quit&&) = default;
@@ -21,9 +22,12 @@ class Quit {
 
   ~Quit() = default;
 
-  const std::string& statement() const { return statement_.get(); }
+  const T& statement() const { return statement_; }
 
-  void trigger();
+  void trigger() {
+    result::write(result_);
+    fmt::print("\n");
+  }
 };
 }  // namespace action
 
