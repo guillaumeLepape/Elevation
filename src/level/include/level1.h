@@ -1,24 +1,27 @@
 #ifndef LEVEL_1_H
 #define LEVEL_1_H
 
+#include "header_writer.h"
+#include "languages.h"
+#include "level_utils.h"
+#include "message_writer.h"
 #include "player.h"
+#include "plug.h"
 
-class Level1 {
- private:
-  entity::Player& player_;
+namespace level1 {
+void start(entity::Player& player) {
+  entity::Plug plug{"Petite frappe"};
 
- public:
-  Level1(entity::Player& player) : player_{player} {}
+  header::write(data::level1::nameLevel, data::level1::hour,
+                data::level1::minut);
 
-  Level1(const Level1&) = delete;
-  Level1(Level1&&) = default;
+  auto price = 20;
+  auto message = data::level1::message0(player.pseudo(), plug.name(), price);
 
-  Level1& operator=(const Level1&) = delete;
-  Level1& operator=(Level1&&) = default;
+  message::write(message, player.pseudo(), plug.name());
 
-  ~Level1() = default;
-
-  void start();
-};
+  player.decreaseMoney(price);
+}
+}  // namespace level1
 
 #endif

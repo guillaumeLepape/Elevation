@@ -1,24 +1,20 @@
 #ifndef OUTRO_H
 #define OUTRO_H
 
+#include "header_writer.h"
+#include "languages.h"
+#include "level_utils.h"
+#include "message_writer.h"
 #include "player.h"
 
-class Outro {
- private:
-  entity::Player& player_;
+namespace outro {
+void start(entity::Player& player) {
+  header::write(data::outro::nameLevel, data::outro::hour, data::outro::minut);
 
- public:
-  Outro(entity::Player& player) : player_{player} {}
+  message::write(data::outro::message0, player.pseudo(), "");
 
-  Outro(const Outro&) = delete;
-  Outro(Outro&&) = default;
-
-  Outro& operator=(const Outro&) = delete;
-  Outro& operator=(Outro&&) = default;
-
-  ~Outro() = default;
-
-  void start();
-};
+  std::cout << "\n";
+}
+}  // namespace outro
 
 #endif

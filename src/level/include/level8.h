@@ -1,24 +1,29 @@
 #ifndef LEVEL_8_H
 #define LEVEL_8_H
 
+#include "add_weapon.h"
+#include "header_writer.h"
+#include "languages.h"
+#include "level_utils.h"
+#include "message_writer.h"
 #include "player.h"
+#include "plug.h"
 
-class Level8 {
- private:
-  entity::Player& player_;
+namespace level8 {
+void start(entity::Player& player) {
+  entity::Plug plug{"Mathilde", 30};
 
- public:
-  Level8(entity::Player& player) : player_{player} {}
+  header::write(data::level8::nameLevel, data::level8::hour,
+                data::level8::minut);
 
-  Level8(const Level8&) = delete;
-  Level8(Level8&&) = default;
+  message::write(data::level8::message0(plug.name()), player.pseudo(),
+                 plug.name());
 
-  Level8& operator=(const Level8&) = delete;
-  Level8& operator=(Level8&&) = default;
+  action::AddWeapon addWeaponAction{player, weapon::Ninemm(3)};
+  addWeaponAction.trigger();
 
-  ~Level8() = default;
-
-  void start();
-};
+  message::write(data::level8::message1, player.pseudo(), plug.name());
+}
+}  // namespace level8
 
 #endif

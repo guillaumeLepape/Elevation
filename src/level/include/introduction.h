@@ -1,24 +1,27 @@
 #ifndef INTRODUCTION_H
 #define INTRODUCTION_H
 
+#include "header_writer.h"
+#include "languages.h"
+#include "level_utils.h"
+#include "message_writer.h"
 #include "player.h"
+#include "pseudo.h"
 
-class Introduction {
- private:
-  entity::Player& player_;
+namespace introduction {
+void start(entity::Player& player) {
+  header::write(data::introduction::nameLevel, data::introduction::hour,
+                data::introduction::minut);
 
- public:
-  Introduction(entity::Player& player) : player_{player} {}
+  message::write(data::introduction::message0, player.pseudo(), "");
 
-  Introduction(const Introduction&) = delete;
-  Introduction(Introduction&&) = default;
+  action::Pseudo pseudo{player, data::action::statementPseudo,
+                        data::action::resultPseudo(player.pseudo())};
+  pseudo.trigger();
 
-  Introduction& operator=(const Introduction&) = delete;
-  Introduction& operator=(Introduction&&) = default;
-
-  ~Introduction() = default;
-
-  void start();
-};
+  message::write(data::introduction::message4(player.pseudo()), player.pseudo(),
+                 "");
+}
+}  // namespace introduction
 
 #endif

@@ -1,24 +1,30 @@
 #ifndef LEVEL_2_H
 #define LEVEL_2_H
 
+#include "header_writer.h"
+#include "languages.h"
+#include "level_utils.h"
+#include "message_writer.h"
+#include "negociate.h"
 #include "player.h"
+#include "plug.h"
 
-class Level2 {
- private:
-  entity::Player& player_;
+namespace level2 {
+void start(entity::Player& player) {
+  entity::Plug plug{"Jean-Luc Delarue"};
 
- public:
-  Level2(entity::Player& player) : player_{player} {}
+  header::write(data::level2::nameLevel, data::level2::hour,
+                data::level2::minut);
 
-  Level2(const Level2&) = delete;
-  Level2(Level2&&) = default;
+  auto price = 80;
+  auto message = data::level2::message0(plug.name(), price);
+  message::write(message, player.pseudo(), plug.name());
 
-  Level2& operator=(const Level2&) = delete;
-  Level2& operator=(Level2&&) = default;
-
-  ~Level2() = default;
-
-  void start();
-};
+  action::Negociate negociate{player, plug, price,
+                              data::action::statementNegociate,
+                              data::action::resultNegociate(0)};
+  negociate.trigger();
+}
+}  // namespace level2
 
 #endif

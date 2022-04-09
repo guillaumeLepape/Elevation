@@ -1,27 +1,53 @@
 #ifndef LEVEL_7_H
 #define LEVEL_7_H
 
+#include "combo_double_melee_weapon.h"
+#include "combo_fist_melee_weapon.h"
+#include "combo_quadruple_cutter.h"
+#include "fight.h"
+#include "header_writer.h"
+#include "languages.h"
+#include "level_utils.h"
+#include "message_writer.h"
 #include "options.h"
 #include "player.h"
+#include "plug.h"
+#include "regenerate_all_life.h"
 
-class Level7 {
- private:
-  entity::Player& player_;
-  const utils::Options& options_;
+namespace level7 {
+void start(entity::Player& player, const utils::Options& options) {
+  header::write(data::level7::nameLevel, data::level7::hour,
+                data::level7::minut);
 
- public:
-  Level7(entity::Player& player, const utils::Options& options)
-      : player_{player}, options_{options} {}
+  entity::Plug boss{"Tueur professionnel", 200, weapon::Hammer()};
 
-  Level7(const Level7&) = delete;
-  Level7(Level7&&) = default;
+  message::write(data::level7::message0, player.pseudo(), boss.name());
 
-  Level7& operator=(const Level7&) = delete;
-  Level7& operator=(Level7&&) = default;
+  std::unique_ptr<Combo<std::string_view>> comboFistMeleeWeapon{
+      new ComboFistMeleeWeapon<std::string_view>(player)};
+  std::unique_ptr<Combo<std::string_view>> comboDoubleMeleeWeapon{
+      new ComboDoubleMeleeWeapon<std::string_view>(player)};
+  std::unique_ptr<Combo<std::string_view>> comboQuadrupleCutter{
+      new ComboQuadrupleCutter<std::string_view>(player)};
 
-  ~Level7() = default;
+  fight::parameters parameters{
+      std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get(),
+                                            comboDoubleMeleeWeapon.get(),
+                                            comboQuadrupleCutter.get()},
+      options.noRule_};
+  fight::launch(player, std::vector{&boss}, parameters);
+  //   Fight fight{
+  //       player,
+  //       {&boss},
+  //       {comboFistMeleeWeapon, comboDoubleMeleeWeapon, comboQuadrupleCutter},
+  //       options_.noRule_};
+  //   fight.startFight();
 
-  void start();
-};
+  message::write(data::level7::message1, player.pseudo(), "");
+
+  action::RegenerateAllLife regenerateAllLife{player};
+  regenerateAllLife.trigger();
+}
+}  // namespace level7
 
 #endif
