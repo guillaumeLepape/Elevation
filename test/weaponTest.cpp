@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iostream>
 
-#include "AddWeaponAction.h"
+#include "AddWeapon.h"
 #include "Languages.h"
 #include "Player.h"
 #include "Plug.h"
@@ -13,10 +13,10 @@
 TEST(weapon_test, UseWeapon) {
   entity::Player player("Guillaume", 0);
 
-  action::AddWeaponAction addWeaponFist(player, weapon::Fist());
+  action::AddWeapon addWeaponFist(player, weapon::Fist());
   addWeaponFist.trigger();
 
-  action::AddWeaponAction addWeaponAK47(player, weapon::AK47(100));
+  action::AddWeapon addWeaponAK47(player, weapon::AK47(100));
   addWeaponAK47.trigger();
 
   EXPECT_EQ(player.pseudo(), "Guillaume");
@@ -36,7 +36,7 @@ TEST(weapon_test, UseWeapon) {
 TEST(weapon_test, Fist) {
   entity::Player player("Guillaume", 0, weapon::WeaponInventory{});
 
-  action::AddWeaponAction addWeaponFist(player, weapon::Fist());
+  action::AddWeapon addWeaponFist(player, weapon::Fist());
   addWeaponFist.trigger();
 
   const auto& fist = *(std::cbegin(player.weapons()));
@@ -50,7 +50,7 @@ TEST(weapon_test, Fist) {
 TEST(weapon_test, AK47) {
   entity::Player player("Guillaume", 0, weapon::WeaponInventory{});
 
-  action::AddWeaponAction addWeaponAK47(player, weapon::AK47(40));
+  action::AddWeapon addWeaponAK47(player, weapon::AK47(40));
   addWeaponAK47.trigger();
 
   const auto& ak47 = *std::find_if(

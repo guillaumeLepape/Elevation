@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "AddWeaponAction.h"
+#include "AddWeapon.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
 #include "LevelUtils.h"
@@ -18,7 +18,7 @@ void Level8::start() {
   message::write(data::level8::message0(plug.name()), player_.pseudo(),
                  plug.name());
 
-  action::AddWeaponAction addWeaponAction{player_, weapon::Ninemm(3)};
+  action::AddWeapon addWeaponAction{player_, weapon::Ninemm(3)};
   addWeaponAction.trigger();
 
   message::write(data::level8::message1, player_.pseudo(), plug.name());

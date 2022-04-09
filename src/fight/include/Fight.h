@@ -5,7 +5,7 @@
 #include <range/v3/algorithm/count_if.hpp>
 #include <range/v3/algorithm/for_each.hpp>
 
-#include "AddWeaponAction.h"
+#include "AddWeapon.h"
 #include "ChoosePlug.h"
 #include "Combo.h"
 #include "FightWriter.h"
@@ -164,8 +164,8 @@ template <utils::Printable T> class Fight {
 
       if (numberOfDeadPlug_ != countNumberOfDeadPlug) {
         numberOfDeadPlug_ = countNumberOfDeadPlug;
-        action::AddWeaponAction addWeaponAction{
-            player_, std::move(choosenPlug.weapon())};
+        action::AddWeapon addWeaponAction{player_,
+                                          std::move(choosenPlug.weapon())};
         addWeaponAction.trigger();
 
         fight::remove_dead_body::write();

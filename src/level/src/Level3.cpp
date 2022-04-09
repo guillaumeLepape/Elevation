@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "AddWeaponAction.h"
+#include "AddWeapon.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
 #include "LevelUtils.h"
@@ -36,7 +36,7 @@ void Level3::start() {
 
   message::write(data::level3::message4, player_.pseudo(), plug.name());
 
-  action::AddWeaponAction addWeaponAction{player_, weapon::Knife()};
+  action::AddWeapon addWeaponAction{player_, weapon::Knife()};
   addWeaponAction.trigger();
 
   action::UseWeapon useKnife{player_, plug, data::weapon::nameKnife};

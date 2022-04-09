@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "AddWeaponAction.h"
+#include "AddWeapon.h"
 #include "Fight.h"
 #include "HeaderWriter.h"
 #include "Languages.h"
@@ -19,7 +19,7 @@ void Level10::start() {
 
   message::write(data::level10::messageMinus1, player_.pseudo(), plug.name());
 
-  action::AddWeaponAction addWeaponAction{player_, weapon::AK47(100)};
+  action::AddWeapon addWeaponAction{player_, weapon::AK47(100)};
   addWeaponAction.trigger();
 
   std::vector<MessageWriter> messageWriters{

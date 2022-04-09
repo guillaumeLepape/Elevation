@@ -8,14 +8,14 @@
 #include "Weapon.h"
 
 namespace action {
-class AddWeaponAction {
+class AddWeapon {
  private:
   std::string result_;
   entity::Player& player_;
   weapon::Weapon weapon_;
 
  public:
-  AddWeaponAction(entity::Player& player, weapon::Weapon&& weapon)
+  AddWeapon(entity::Player& player, weapon::Weapon&& weapon)
       : result_{data::action::resultAddWeapon(weapon.name)},
         player_{player},
         weapon_{std::move(weapon)} {}
