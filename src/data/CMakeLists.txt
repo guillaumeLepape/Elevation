@@ -2,7 +2,7 @@ project(data)
 
 add_library(
     ${PROJECT_NAME}
-    src/ListNameData.cpp
+    src/list_name_data.cpp
 )
 
 target_include_directories(

@@ -2,7 +2,7 @@ project(fight)
 
 add_library(
     ${PROJECT_NAME}
-    src/FightWriter.cpp
+    src/fight_writer.cpp
 )
 
 target_include_directories(

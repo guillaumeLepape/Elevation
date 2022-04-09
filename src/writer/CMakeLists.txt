@@ -2,9 +2,9 @@ project(writer)
 
 add_library(
     ${PROJECT_NAME}
-    src/Rules.cpp
-    src/MessageWriter.cpp
-    src/UtilsWriter.cpp
+    src/rules.cpp
+    src/message_writer.cpp
+    src/utils_writer.cpp
 )
 
 target_include_directories(

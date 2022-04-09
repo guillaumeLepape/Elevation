@@ -2,19 +2,19 @@ project(level)
 
 add_library(
     ${PROJECT_NAME}
-    src/Introduction.cpp
-    src/Level1.cpp
-    src/Level2.cpp
-    src/Level3.cpp
-    src/Level4.cpp
-    src/Level5.cpp
-    src/Level6.cpp
-    src/Level7.cpp
-    src/Level8.cpp
-    src/Level9.cpp
-    src/Level10.cpp
-    src/Outro.cpp
-    src/LevelUtils.cpp
+    src/introduction.cpp
+    src/level1.cpp
+    src/level2.cpp
+    src/level3.cpp
+    src/level4.cpp
+    src/level5.cpp
+    src/level6.cpp
+    src/level7.cpp
+    src/level8.cpp
+    src/level9.cpp
+    src/level10.cpp
+    src/outro.cpp
+    src/level_utils.cpp
 )
 
 target_include_directories(

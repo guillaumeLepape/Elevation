@@ -3,7 +3,7 @@ project(test1)
 add_executable(
     ${PROJECT_NAME}
     test.cpp
-    weaponTest.cpp
+    weapon_test.cpp
 )
 
 target_link_libraries(

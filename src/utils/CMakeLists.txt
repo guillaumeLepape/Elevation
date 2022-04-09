@@ -2,9 +2,9 @@ project(utils)
 
 add_library(
     ${PROJECT_NAME}
-    src/Id.cpp
-    src/Options.cpp
-    src/Pause.cpp
+    src/id.cpp
+    src/options.cpp
+    src/pause.cpp
 )
 
 target_include_directories(

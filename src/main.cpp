@@ -2,12 +2,12 @@
 #include <string_view>
 #include <tuple>
 
-#include "Languages.h"
-#include "LoadGame.h"
-#include "Quit.h"
-#include "Rules.h"
-#include "Selection.h"
-#include "StartGame.h"
+#include "languages.h"
+#include "load_game.h"
+#include "quit.h"
+#include "rules.h"
+#include "selection.h"
+#include "start_game.h"
 
 auto main(int argc, char* argv[]) -> int {
   const utils::Options options{argc, argv};

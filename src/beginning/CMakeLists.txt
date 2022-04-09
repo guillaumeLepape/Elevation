@@ -2,7 +2,7 @@ project(beginning)
 
 add_library(
     ${PROJECT_NAME}
-    src/GameEngine.cpp
+    src/game_engine.cpp
 )
 
 target_include_directories(
