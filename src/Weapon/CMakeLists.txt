@@ -14,8 +14,6 @@ target_include_directories(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PUBLIC utils
     PUBLIC data_files
     PUBLIC data
-    PUBLIC range-v3
 )
