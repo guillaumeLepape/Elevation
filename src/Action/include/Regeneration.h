@@ -12,7 +12,7 @@ class Regeneration {
   Regeneration(entity::Player& player) : player_{player} {}
 
   void trigger() {
-    int nbLifePointsRegeneration = 0;
+    auto nbLifePointsRegeneration = 0;
 
     // if player is full life or dead, do nothing, else regenerate him
     if ((not player_.healthBar().fullLife()) and

@@ -19,8 +19,8 @@ namespace Introduction {
 
 // Header data
 static constexpr auto nameLevel = "Introduction : Dur réveil"sv;
-static constexpr auto hour = unsigned{13};
-static constexpr auto minut = unsigned{12};
+static constexpr auto hour = 13u;
+static constexpr auto minut = 12u;
 
 // Messages data
 inline Message_t message0 = {
@@ -57,8 +57,8 @@ namespace Level1 {
 
 // Header data
 static constexpr auto nameLevel = "Niveau 1 : Beuh"sv;
-static constexpr auto hour = unsigned{14};
-static constexpr auto minut = unsigned{35};
+static constexpr auto hour = 14u;
+static constexpr auto minut = 35u;
 
 // Messages data
 inline Message_t message0(const std::string& pseudo,
@@ -83,8 +83,8 @@ namespace Level2 {
 
 // Header data
 static constexpr auto nameLevel = "Niveau 2 : Coke"sv;
-static constexpr auto hour = unsigned{15};
-static constexpr auto minut = unsigned{10};
+static constexpr auto hour = 15u;
+static constexpr auto minut = 10u;
 
 // Messages data
 inline Message_t message0(const std::string& plugName, int pricePlug) {
@@ -114,8 +114,8 @@ inline Message_t message5 = {{NameSpeaker::player, "Merci. Salut."},
 
 namespace Level3 {
 static constexpr auto nameLevel = "Niveau 3 : Shit"sv;
-static constexpr auto hour = unsigned{16};
-static constexpr auto minut = unsigned{4};
+static constexpr auto hour = 16u;
+static constexpr auto minut = 4u;
 
 inline Message_t message0 = {
     {NameSpeaker::description, "Vous arrivez en bas du bloc."},
@@ -156,8 +156,8 @@ inline Message_t message5 = {{NameSpeaker::description, "Roule. Fume."}};
 
 namespace Level4 {
 static constexpr auto nameLevel = "Niveau 4 : Lean"sv;
-static constexpr auto hour = unsigned{17};
-static constexpr auto minut = unsigned{15};
+static constexpr auto hour = 17u;
+static constexpr auto minut = 15u;
 
 inline Message_t message0(const std::string& pseudo) {
   return {
@@ -191,8 +191,8 @@ inline Message_t message3 = {{NameSpeaker::plug, "Quelle niveau ! Tiens."},
 
 namespace Level5 {
 static constexpr auto nameLevel = "Niveau 5 : Xanax"sv;
-static constexpr auto hour = unsigned{19};
-static constexpr auto minut = unsigned{2};
+static constexpr auto hour = 19u;
+static constexpr auto minut = 2u;
 
 inline Message_t message0 = {
     {NameSpeaker::description,
@@ -244,8 +244,8 @@ inline Message_t message7 = {
 
 namespace Level6 {
 static constexpr auto nameLevel = "Niveau 6 : Champis"sv;
-static constexpr auto hour = unsigned{21};
-static constexpr auto minut = unsigned{10};
+static constexpr auto hour = 21u;
+static constexpr auto minut = 10u;
 
 inline Message_t message0 = {
     {NameSpeaker::player,
@@ -263,8 +263,8 @@ inline Message_t message0 = {
 
 namespace Level7 {
 static constexpr auto nameLevel = "Niveau 7 : Kétamine"sv;
-static constexpr auto hour = unsigned{0};
-static constexpr auto minut = unsigned{10};
+static constexpr auto hour = 0u;
+static constexpr auto minut = 10u;
 
 inline Message_t message0 = {
     {NameSpeaker::description, "Boum."},
@@ -282,8 +282,8 @@ inline Message_t message1 = {
 
 namespace Level8 {
 static constexpr auto nameLevel = "Niveau 8 : Crack (Interlude)"sv;
-static constexpr auto hour = unsigned{2};
-static constexpr auto minut = unsigned{12};
+static constexpr auto hour = 2u;
+static constexpr auto minut = 12u;
 
 inline Message_t message0(const std::string& plugName) {
   return {
@@ -317,8 +317,8 @@ inline Message_t message1 = {
 
 namespace Level9 {
 static constexpr auto nameLevel = "Niveau 9 : LSD (Révélation)"sv;
-static constexpr auto hour = unsigned{3};
-static constexpr auto minut = unsigned{35};
+static constexpr auto hour = 3u;
+static constexpr auto minut = 35u;
 
 inline Message_t message0 = {{NameSpeaker::player, "Dégage de là."}};
 
@@ -356,8 +356,8 @@ inline Message_t message7 = {
 
 namespace Level10 {
 static constexpr auto nameLevel = "Niveau 10 : Héroine (Désillusion)"sv;
-static constexpr auto hour = unsigned{7};
-static constexpr auto minut = unsigned{30};
+static constexpr auto hour = 7u;
+static constexpr auto minut = 30u;
 
 inline Message_t messageMinus1 = {
     {NameSpeaker::plug, "Que fais tu petit chose ?"},
@@ -393,8 +393,8 @@ inline Message_t message4 = {
 
 namespace Outro {
 static constexpr auto nameLevel = "Crédits"sv;
-static constexpr auto hour = unsigned{0};
-static constexpr auto minut = unsigned{0};
+static constexpr auto hour = 0u;
+static constexpr auto minut = 0u;
 
 inline Message_t message0 = {
     {NameSpeaker::description, "Programmeur : Jess H."},

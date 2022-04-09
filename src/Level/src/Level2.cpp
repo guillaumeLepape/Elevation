@@ -15,7 +15,7 @@ void Level2::start() {
   Header::write(data::Level2::nameLevel, data::Level2::hour,
                 data::Level2::minut);
 
-  int price = 80;
+  auto price = 80;
   auto message = data::Level2::message0(plug.name(), price);
   Message::write(message, player_.pseudo(), plug.name());
 

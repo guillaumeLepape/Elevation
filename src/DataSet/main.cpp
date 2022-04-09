@@ -53,7 +53,7 @@ void write_list_name(const std::set<std::string>& listName,
   jsonFile.close();
 }
 
-int main() {
+auto main() -> int {
   auto [list_female_name, list_male_name] = read_list_of_name();
 
   write_list_name(list_female_name, "prenoms_feminins");
