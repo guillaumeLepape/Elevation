@@ -49,7 +49,7 @@ void launch(const utils::Options& options, const std::string& game_id) {
     std::visit([](auto& level) { level(); }, levels[i]);
     player.nextLevel();
     data::save(game_id, player);
-    if (i != NB_LEVEL) utils::level::end();
+    if (i != NB_LEVEL - 1) utils::level::end();
   }
 }
 }  // namespace game_engine
