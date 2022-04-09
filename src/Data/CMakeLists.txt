@@ -2,7 +2,6 @@ project(data)
 
 add_library(
     ${PROJECT_NAME}
-    src/Data.cpp
     src/ListNameData.cpp
 )
 
@@ -13,6 +12,7 @@ target_include_directories(
 
 target_link_libraries(
     ${PROJECT_NAME}
+    PUBLIC utils
     PUBLIC nlohmann_json::nlohmann_json 
     PUBLIC fmt
     PUBLIC range-v3
