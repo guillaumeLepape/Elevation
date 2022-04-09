@@ -41,10 +41,10 @@ TEST(weapon_test, Fist) {
 
   const auto& fist = *(std::cbegin(player.weapons()));
 
-  EXPECT_EQ(fist.name, data::Weapon::nameFist);
+  EXPECT_EQ(fist.name, data::weapon::nameFist);
   EXPECT_EQ(fist.nb_damage, 20);
   EXPECT_EQ(fist.type, weapon::Type::fist);
-  EXPECT_EQ(fist.statement, data::Weapon::statementUseFist);
+  EXPECT_EQ(fist.statement, data::weapon::statementUseFist);
 }
 
 TEST(weapon_test, AK47) {
@@ -55,22 +55,22 @@ TEST(weapon_test, AK47) {
 
   const auto& ak47 = *std::find_if(
       std::cbegin(player.weapons()), std::cend(player.weapons()),
-      [](const auto& weapon) { return weapon.name == data::Weapon::nameAK47; });
+      [](const auto& weapon) { return weapon.name == data::weapon::nameAK47; });
 
   EXPECT_EQ(ak47.nb_damage, 150);
   EXPECT_EQ(ak47.type, weapon::Type::fireArm);
-  EXPECT_EQ(ak47.statement, data::Weapon::statementUseAK47);
+  EXPECT_EQ(ak47.statement, data::weapon::statementUseAK47);
   EXPECT_EQ(ak47.durability, 40);
   EXPECT_EQ(ak47.durability_loose_per_use, 10);
 
   entity::Plug plug("Jean-Michel", 100);
 
-  action::UseWeapon useAK47(player, plug, data::Weapon::nameAK47);
+  action::UseWeapon useAK47(player, plug, data::weapon::nameAK47);
   useAK47.trigger();
 
   EXPECT_EQ(ak47.nb_damage, 150);
   EXPECT_EQ(ak47.type, weapon::Type::fireArm);
-  EXPECT_EQ(ak47.statement, data::Weapon::statementUseAK47);
+  EXPECT_EQ(ak47.statement, data::weapon::statementUseAK47);
   EXPECT_EQ(ak47.durability, 30);
   EXPECT_EQ(ak47.durability_loose_per_use, 10);
 }

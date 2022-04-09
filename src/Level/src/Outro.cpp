@@ -8,9 +8,9 @@
 #include "MessageWriter.h"
 
 void Outro::start() {
-  Header::write(data::Outro::nameLevel, data::Outro::hour, data::Outro::minut);
+  header::write(data::outro::nameLevel, data::outro::hour, data::outro::minut);
 
-  Message::write(data::Outro::message0, player_.pseudo(), "");
+  message::write(data::outro::message0, player_.pseudo(), "");
 
   std::cout << "\n";
 }

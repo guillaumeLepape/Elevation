@@ -9,15 +9,15 @@
 #include "Pseudo.h"
 
 void Introduction::start() {
-  Header::write(data::Introduction::nameLevel, data::Introduction::hour,
-                data::Introduction::minut);
+  header::write(data::introduction::nameLevel, data::introduction::hour,
+                data::introduction::minut);
 
-  Message::write(data::Introduction::message0, player_.pseudo(), "");
+  message::write(data::introduction::message0, player_.pseudo(), "");
 
-  action::Pseudo pseudo{player_, data::Action::statementPseudo,
-                        data::Action::resultPseudo(player_.pseudo())};
+  action::Pseudo pseudo{player_, data::action::statementPseudo,
+                        data::action::resultPseudo(player_.pseudo())};
   pseudo.trigger();
 
-  Message::write(data::Introduction::message4(player_.pseudo()),
+  message::write(data::introduction::message4(player_.pseudo()),
                  player_.pseudo(), "");
 }

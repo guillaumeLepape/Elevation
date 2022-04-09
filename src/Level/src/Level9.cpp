@@ -17,8 +17,8 @@
 #include "Selection.h"
 
 void Level9::start() {
-  Header::write(data::Level9::nameLevel, data::Level9::hour,
-                data::Level9::minut);
+  header::write(data::level9::nameLevel, data::level9::hour,
+                data::level9::minut);
 
   entity::Plug plug{"Psychopathe", 250, weapon::Knife()};
 
@@ -27,15 +27,15 @@ void Level9::start() {
   plugAttack0.trigger();
   plugAttack0.trigger();
 
-  Message::write(data::Level9::message0, player_.pseudo(), plug.name());
+  message::write(data::level9::message0, player_.pseudo(), plug.name());
 
-  action::UseWeapon useWeapon{player_, plug, data::Weapon::nameFist};
+  action::UseWeapon useWeapon{player_, plug, data::weapon::nameFist};
   useWeapon.trigger();
 
   action::RegenerateAllLife regenerateAllLife{player_};
   regenerateAllLife.trigger();
 
-  Message::write(data::Level9::message1, player_.pseudo(), plug.name());
+  message::write(data::level9::message1, player_.pseudo(), plug.name());
 
   regenerateAllLife.trigger();
 
@@ -45,17 +45,17 @@ void Level9::start() {
   plugAttack1.trigger();
   regenerateAllLife.trigger();
 
-  Message::write(data::Level9::message2, player_.pseudo(), plug.name());
+  message::write(data::level9::message2, player_.pseudo(), plug.name());
 
   plugAttack1.trigger();
   regenerateAllLife.trigger();
 
-  Message::write(data::Level9::message3, player_.pseudo(), plug.name());
+  message::write(data::level9::message3, player_.pseudo(), plug.name());
 
   plugAttack1.trigger();
   regenerateAllLife.trigger();
 
-  Message::write(data::Level9::message4, player_.pseudo(), plug.name());
+  message::write(data::level9::message4, player_.pseudo(), plug.name());
 
   plug.changeWeapon(weapon::NoWeapon());
 
@@ -76,17 +76,17 @@ void Level9::start() {
 
   regenerateAllLife.trigger();
 
-  Message::write(data::Level9::message5, player_.pseudo(), plug.name());
+  message::write(data::level9::message5, player_.pseudo(), plug.name());
 
   action::IncreaseMaxLifePoints increaseMaxLifePoints{
-      player_, 1100, data::Action::resultsIncreaseMaxLifePoints(1100)};
+      player_, 1100, data::action::resultsIncreaseMaxLifePoints(1100)};
   increaseMaxLifePoints.trigger();
 
-  Message::write(data::Level9::message6, player_.pseudo(), plug.name());
+  message::write(data::level9::message6, player_.pseudo(), plug.name());
 
   increaseMaxLifePoints.trigger();
 
-  Message::write(data::Level9::message7, player_.pseudo(), plug.name());
+  message::write(data::level9::message7, player_.pseudo(), plug.name());
 
   increaseMaxLifePoints.trigger();
 }

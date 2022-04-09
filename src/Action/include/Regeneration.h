@@ -41,7 +41,7 @@ class Regeneration {
       int nbLifePoints_previous = player_.healthBar().nbLifePoints();
 
       player_.healthBar().increaseLifePoints(nbLifePointsRegeneration);
-      result::write(data::Action::resultRegeneration(
+      result::write(data::action::resultRegeneration(
           player_.healthBar().nbLifePoints() - nbLifePoints_previous));
     }
   }

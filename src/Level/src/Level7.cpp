@@ -15,12 +15,12 @@
 #include "RegenerateAllLife.h"
 
 void Level7::start() {
-  Header::write(data::Level7::nameLevel, data::Level7::hour,
-                data::Level7::minut);
+  header::write(data::level7::nameLevel, data::level7::hour,
+                data::level7::minut);
 
   entity::Plug boss{"Tueur professionnel", 200, weapon::Hammer()};
 
-  Message::write(data::Level7::message0, player_.pseudo(), boss.name());
+  message::write(data::level7::message0, player_.pseudo(), boss.name());
 
   std::unique_ptr<Combo<std::string_view>> comboFistMeleeWeapon{
       new ComboFistMeleeWeapon<std::string_view>(player_)};
@@ -42,7 +42,7 @@ void Level7::start() {
   //       options_.noRule_};
   //   fight.startFight();
 
-  Message::write(data::Level7::message1, player_.pseudo(), "");
+  message::write(data::level7::message1, player_.pseudo(), "");
 
   action::RegenerateAllLife regenerateAllLife{player_};
   regenerateAllLife.trigger();

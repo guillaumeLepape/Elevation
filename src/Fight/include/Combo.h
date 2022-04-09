@@ -41,13 +41,13 @@ template <utils::Printable T> class Combo {
 
 namespace combo_v2 {
 template <typename T> struct ComboDoubleMeleeWeapon {
-  T title = data::Combo::titleDoubleMeleeWeapon;
+  T title = data::combo::titleDoubleMeleeWeapon;
 };
 template <typename T> struct ComboFistMeleeWeapon {
-  T title = data::Combo::titleFistMeleeWeapon;
+  T title = data::combo::titleFistMeleeWeapon;
 };
 template <typename T> struct ComboQuadrupleCutter {
-  T title = data::Combo::titleQuadrupleCutter;
+  T title = data::combo::titleQuadrupleCutter;
 };
 
 template <typename T>
@@ -64,14 +64,14 @@ void trigger(Combo<T>&& combo, entity::Player& player, entity::Plug& plug,
       overloaded{
           [&](ComboDoubleMeleeWeapon<T>&& arg) {
             if ((useWeapon[resultChooseWeapon].name() ==
-                     data::Weapon::nameKnife or
+                     data::weapon::nameKnife or
                  useWeapon[resultChooseWeapon].name() ==
-                     data::Weapon::nameHammer) and
+                     data::weapon::nameHammer) and
                 plug.healthBar().alive()) {
               action::UseWeapon useWeaponCombo{
                   player, plug, useWeapon[resultChooseWeapon].name()};
 
-              action::Nothing nothing{data::Combo::statementDontCombo};
+              action::Nothing nothing{data::combo::statementDontCombo};
 
               auto result =
                   selection::select(arg.title, useWeaponCombo, nothing);

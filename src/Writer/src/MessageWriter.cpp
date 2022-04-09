@@ -4,7 +4,7 @@
 
 #include "Pause.h"
 
-namespace Message {
+namespace message {
 void write(const data::Message_t& messages, const std::string& pseudo,
            const std::string& plugName) {
   for (const auto& message : messages) {
@@ -42,4 +42,4 @@ void write(const MessageWriter& messageWriter) {
   write(messageWriter.messages_, messageWriter.pseudo_,
         messageWriter.plugName_);
 }
-}  // namespace Message
+}  // namespace message

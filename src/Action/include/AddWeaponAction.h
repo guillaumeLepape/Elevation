@@ -16,7 +16,7 @@ class AddWeaponAction {
 
  public:
   AddWeaponAction(entity::Player& player, weapon::Weapon&& weapon)
-      : result_{data::Action::resultAddWeapon(weapon.name)},
+      : result_{data::action::resultAddWeapon(weapon.name)},
         player_{player},
         weapon_{std::move(weapon)} {}
 

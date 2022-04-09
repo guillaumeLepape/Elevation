@@ -19,7 +19,7 @@ class PlugAttack {
         plug_.weapon().type != weapon::Type::noWeapon) {
       entity::attack(player_, plug_.weapon());
 
-      result::write(data::Action::resultPlugAttack(plug_.name(),
+      result::write(data::action::resultPlugAttack(plug_.name(),
                                                    plug_.weapon().nb_damage));
     }
   }

@@ -8,8 +8,8 @@
 #include "MessageWriter.h"
 
 void Level6::start() {
-  Header::write(data::Level6::nameLevel, data::Level6::hour,
-                data::Level6::minut);
+  header::write(data::level6::nameLevel, data::level6::hour,
+                data::level6::minut);
 
-  Message::write(data::Level6::message0, player_.pseudo(), "");
+  message::write(data::level6::message0, player_.pseudo(), "");
 }

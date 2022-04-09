@@ -13,11 +13,11 @@ using namespace std::literals;
 enum class NameSpeaker { player = 0, plug, description, action };
 using Message_t = std::vector<std::tuple<NameSpeaker, std::string>>;
 
-namespace Introduction {
+namespace introduction {
 // Introduction data
 // ***********************************
 
-// Header data
+// header data
 static constexpr auto nameLevel = "Introduction : Dur réveil"sv;
 static constexpr auto hour = 13u;
 static constexpr auto minut = 12u;
@@ -49,13 +49,13 @@ inline Message_t message4(const std::string& pseudo) {
   return {{NameSpeaker::player,
            fmt::format("Bon d'accord {}, ça fera l'affaire.", pseudo)}};
 }
-}  // namespace Introduction
+}  // namespace introduction
 
-namespace Level1 {
+namespace level1 {
 // Level 1 data
 // ***********************************
 
-// Header data
+// header data
 static constexpr auto nameLevel = "Niveau 1 : Beuh"sv;
 static constexpr auto hour = 14u;
 static constexpr auto minut = 35u;
@@ -75,13 +75,13 @@ inline Message_t message0(const std::string& pseudo,
           {NameSpeaker::player, "A la prochaine."},
           {NameSpeaker::description, "Roule. Fume."}};
 }
-}  // namespace Level1
+}  // namespace level1
 
-namespace Level2 {
+namespace level2 {
 // Level 2 data
 // ***********************************
 
-// Header data
+// header data
 static constexpr auto nameLevel = "Niveau 2 : Coke"sv;
 static constexpr auto hour = 15u;
 static constexpr auto minut = 10u;
@@ -110,9 +110,9 @@ inline Message_t message4 = {
 
 inline Message_t message5 = {{NameSpeaker::player, "Merci. Salut."},
                              {NameSpeaker::description, "Carte VISA. Sniffe."}};
-}  // namespace Level2
+}  // namespace level2
 
-namespace Level3 {
+namespace level3 {
 static constexpr auto nameLevel = "Niveau 3 : Shit"sv;
 static constexpr auto hour = 16u;
 static constexpr auto minut = 4u;
@@ -152,9 +152,9 @@ inline Message_t message4 = {
      "Vous mettez le shit dans votre poche et saisissez le couteau."}};
 
 inline Message_t message5 = {{NameSpeaker::description, "Roule. Fume."}};
-}  // namespace Level3
+}  // namespace level3
 
-namespace Level4 {
+namespace level4 {
 static constexpr auto nameLevel = "Niveau 4 : Lean"sv;
 static constexpr auto hour = 17u;
 static constexpr auto minut = 15u;
@@ -187,9 +187,9 @@ inline Message_t message2 = {
 
 inline Message_t message3 = {{NameSpeaker::plug, "Quelle niveau ! Tiens."},
                              {NameSpeaker::description, "Gobelet. Sip."}};
-}  // namespace Level4
+}  // namespace level4
 
-namespace Level5 {
+namespace level5 {
 static constexpr auto nameLevel = "Niveau 5 : Xanax"sv;
 static constexpr auto hour = 19u;
 static constexpr auto minut = 2u;
@@ -240,9 +240,9 @@ inline Message_t message7 = {
      "dans la poche du kamikaze."},
     {NameSpeaker::player, "Tout ca pour."},
     {NameSpeaker::description, "Cachetons sur la langue. Verre d'eau."}};
-}  // namespace Level5
+}  // namespace level5
 
-namespace Level6 {
+namespace level6 {
 static constexpr auto nameLevel = "Niveau 6 : Champis"sv;
 static constexpr auto hour = 21u;
 static constexpr auto minut = 10u;
@@ -259,9 +259,9 @@ inline Message_t message0 = {
     {NameSpeaker::player, "Zzzzzzz."},
     {NameSpeaker::player, "Zzzzzzz."},
     {NameSpeaker::player, "Zzzzzzz."}};
-}  // namespace Level6
+}  // namespace level6
 
-namespace Level7 {
+namespace level7 {
 static constexpr auto nameLevel = "Niveau 7 : Kétamine"sv;
 static constexpr auto hour = 0u;
 static constexpr auto minut = 10u;
@@ -278,9 +278,9 @@ inline Message_t message1 = {
     {NameSpeaker::player,
      "Au moins, tu as des trucs sur toi. De la ké parfait."},
     {NameSpeaker::description, "Feuille à rouler. Para."}};
-}  // namespace Level7
+}  // namespace level7
 
-namespace Level8 {
+namespace level8 {
 static constexpr auto nameLevel = "Niveau 8 : Crack (Interlude)"sv;
 static constexpr auto hour = 2u;
 static constexpr auto minut = 12u;
@@ -313,9 +313,9 @@ inline Message_t message1 = {
     {NameSpeaker::player, "Deux balles dans le crane ca devrait suffire."},
     {NameSpeaker::player, "Il y a du crack, je vais le fumer ici."},
     {NameSpeaker::description, "Pipe à crack. Briquet."}};
-}  // namespace Level8
+}  // namespace level8
 
-namespace Level9 {
+namespace level9 {
 static constexpr auto nameLevel = "Niveau 9 : LSD (Révélation)"sv;
 static constexpr auto hour = 3u;
 static constexpr auto minut = 35u;
@@ -352,9 +352,9 @@ inline Message_t message6 = {
 
 inline Message_t message7 = {
     {NameSpeaker::player, "Ca y est, je deviens un dieu."}};
-}  // namespace Level9
+}  // namespace level9
 
-namespace Level10 {
+namespace level10 {
 static constexpr auto nameLevel = "Niveau 10 : Héroine (Désillusion)"sv;
 static constexpr auto hour = 7u;
 static constexpr auto minut = 30u;
@@ -389,9 +389,9 @@ inline Message_t message3 = {{NameSpeaker::player, "Encore."}};
 inline Message_t message4 = {
     {NameSpeaker::plug, "Il est temps que cette imposture cesse."},
     {NameSpeaker::description, "Vous êtes mort."}};
-}  // namespace Level10
+}  // namespace level10
 
-namespace Outro {
+namespace outro {
 static constexpr auto nameLevel = "Crédits"sv;
 static constexpr auto hour = 0u;
 static constexpr auto minut = 0u;
@@ -400,9 +400,9 @@ inline Message_t message0 = {
     {NameSpeaker::description, "Programmeur : Jess H."},
     {NameSpeaker::description, "Merci d'avoir jouer à ce jeu !"},
     {NameSpeaker::description, "A la prochaine."}};
-}  // namespace Outro
+}  // namespace outro
 
-namespace Action {
+namespace action {
 static constexpr auto titleChooseWeapon = "Choix de l'arme"sv;
 static constexpr auto titleChoosePlug = "Choix de l'ennemi"sv;
 
@@ -446,9 +446,9 @@ inline auto resultsIncreaseMaxLifePoints(int maxLifePoints) {
       "Votre nombre de points de vie maximal augmente de {} points.",
       maxLifePoints);
 }
-}  // namespace Action
+}  // namespace action
 
-namespace Menu {
+namespace menu {
 // title of startGame menu
 static constexpr auto titleStartGameMenu = "Menu"sv;
 
@@ -486,9 +486,9 @@ static constexpr auto resultSaveAndQuit = "Partie sauvegardée"sv;
 
 // data for game Over action
 static constexpr auto resultGameOver = "Vous etes mort. Game Over."sv;
-}  // namespace Menu
+}  // namespace menu
 
-namespace Combo {
+namespace combo {
 static constexpr auto titleFistMeleeWeapon = "Combo Poing-Arme de mélée"sv;
 static constexpr auto triggerStatementFistMeleeWeapon =
     "Attaquer un ennemi avec le poing"sv;
@@ -516,9 +516,9 @@ static constexpr auto malusStatementQuadrupleCutter =
     "Le cutter est détruit et vous ne pouvez plus l'utiliser."sv;
 
 static constexpr auto statementDontCombo = "Ne pas déclencher le combo"sv;
-}  // namespace Combo
+}  // namespace combo
 
-namespace Information {
+namespace information {
 static constexpr auto titleInformation = "Informations"sv;
 static constexpr auto statementInformationWeapon =
     "Informations sur les armes que vous possèdez."sv;
@@ -529,9 +529,9 @@ static constexpr auto statementNoInformation =
 static constexpr auto statementNoInformationAnymore =
     "Je ne souhaite pas avoir d'informations et je ne souhaite plus voir le "
     "menu d'informations lors de ce combat."sv;
-}  // namespace Information
+}  // namespace information
 
-namespace Question {
+namespace question {
 // First question title
 static constexpr auto titleFirstQuestion =
     "Les hommes sont-ils allez sur la Lune ?"sv;
@@ -590,9 +590,9 @@ static constexpr auto answer3Question3 =
     "Pour cacher que toutes gouvernements sont à la solde d'une organisation "
     "secrète dirigée par les reptiliens."sv;
 static constexpr auto correctOrNotAnswer3Question3 = true;
-}  // namespace Question
+}  // namespace question
 
-namespace Tutorial {
+namespace tutorial {
 static constexpr auto titleCombatSystem = "Tutoriel : Système de combat"sv;
 inline std::vector<std::string> statementCombatSystem(int maxNbLifePoints) {
   return {
@@ -671,9 +671,9 @@ inline std::vector<std::string> statementRegeneration{
     "d'une femme. Bon, bref j'ai fini.",
     "En fait, non lol.",
     "Ah oui, bon courage pour le prochain combat."};
-}  // namespace Tutorial
+}  // namespace tutorial
 
-namespace Weapon {
+namespace weapon {
 inline std::string statementEmpty{""};
 // generic UseWeapon data statement for fist
 inline std::string statementUseFist{"Cognez ! (Poing)"};
@@ -721,7 +721,7 @@ inline std::string nameHeroine{"Heroine"};
 
 inline std::string nameNinemm{"9mm"};
 inline std::string nameAK47{"AK47"};
-}  // namespace Weapon
+}  // namespace weapon
 
 }  // namespace data
 

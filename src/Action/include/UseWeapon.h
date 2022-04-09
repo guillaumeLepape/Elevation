@@ -30,10 +30,10 @@ class UseWeapon {
       entity::attack(plug_, *weapon);
 
       auto result =
-          data::Weapon::resultUseWeapon(plug_.name(), weapon->nb_damage);
+          data::weapon::resultUseWeapon(plug_.name(), weapon->nb_damage);
       result::write(result);
 
-      action::Dead dead{plug_, data::Action::resultDead(plug_.name())};
+      action::Dead dead{plug_, data::action::resultDead(plug_.name())};
       dead.trigger();
 
       // if weapon is fireArm and has no ammo, delete it
@@ -51,7 +51,7 @@ class UseWeapon {
     if (weapon != std::cend(player_.weapons())) {
       return weapon->statement;
     } else {
-      return data::Weapon::statementEmpty;
+      return data::weapon::statementEmpty;
     }
   }
 

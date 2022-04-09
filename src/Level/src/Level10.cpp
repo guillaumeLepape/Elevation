@@ -12,19 +12,19 @@
 #include "PlugAttack.h"
 
 void Level10::start() {
-  Header::write(data::Level10::nameLevel, data::Level10::hour,
-                data::Level10::minut);
+  header::write(data::level10::nameLevel, data::level10::hour,
+                data::level10::minut);
 
   entity::Plug plug{"Dieu", 10000000, weapon::DivineStrike()};
 
-  Message::write(data::Level10::messageMinus1, player_.pseudo(), plug.name());
+  message::write(data::level10::messageMinus1, player_.pseudo(), plug.name());
 
   action::AddWeaponAction addWeaponAction{player_, weapon::AK47(100)};
   addWeaponAction.trigger();
 
   std::vector<MessageWriter> messageWriters{
-      MessageWriter(data::Level10::message0, player_.pseudo(), plug.name()),
-      MessageWriter(data::Level10::message1, player_.pseudo(), plug.name())};
+      MessageWriter(data::level10::message0, player_.pseudo(), plug.name()),
+      MessageWriter(data::level10::message1, player_.pseudo(), plug.name())};
 
   Fight fight{player_,
               {&plug},
@@ -34,15 +34,15 @@ void Level10::start() {
     return player_.healthBar().nbLifePoints() < plug.weapon().nb_damage;
   });
 
-  Message::write(data::Level10::message2, player_.pseudo(), plug.name());
+  message::write(data::level10::message2, player_.pseudo(), plug.name());
 
   entity::Plug heroine{"Heroine", 100, weapon::Heroine()};
   action::PlugAttack plugAttack{player_, heroine};
 
   while (player_.healthBar().alive()) {
     plugAttack.trigger();
-    Message::write(data::Level10::message3, player_.pseudo(), "");
+    message::write(data::level10::message3, player_.pseudo(), "");
   }
 
-  Message::write(data::Level10::message4, player_.pseudo(), plug.name());
+  message::write(data::level10::message4, player_.pseudo(), plug.name());
 }

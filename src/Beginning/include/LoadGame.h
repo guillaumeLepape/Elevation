@@ -42,11 +42,11 @@ template <utils::Printable T> class LoadGame {
       std::transform(
           std::cbegin(load_game_statements), std::cend(load_game_statements),
           std::back_inserter(statements), [](const auto& result_data) {
-            return data::Menu::statementChooseLoadedGame(
+            return data::menu::statementChooseLoadedGame(
                 std::get<1>(result_data), std::get<2>(result_data));
           });
       auto result = selection::select_from_statement(
-          data::Menu::titleLoadGameMenu, statements);
+          data::menu::titleLoadGameMenu, statements);
 
       const unsigned game_id = std::get<0>(load_game_statements[result]);
 

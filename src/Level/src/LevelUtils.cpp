@@ -8,10 +8,10 @@
 #include "Selection.h"
 
 void endoflevel() {
-  action::Nothing continueAction{data::Menu::statementContinue};
-  action::SaveAndQuit quit{data::Menu::statementQuit, data::Menu::resultQuit};
+  action::Nothing continueAction{data::menu::statementContinue};
+  action::SaveAndQuit quit{data::menu::statementQuit, data::menu::resultQuit};
 
-  selection::select(data::Menu::titleContinueMenu, continueAction, quit);
+  selection::select(data::menu::titleContinueMenu, continueAction, quit);
 
   fmt::print("\n");
 }

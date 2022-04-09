@@ -10,53 +10,53 @@
 
 namespace weapon {
 Weapon NoWeapon() {
-  return Weapon{data::Weapon::nameNoWeapon,         0, Type::noWeapon,
-                data::Weapon::statementUseNoWeapon, 1, 0};
+  return Weapon{data::weapon::nameNoWeapon,         0, Type::noWeapon,
+                data::weapon::statementUseNoWeapon, 1, 0};
 }
 Weapon Fist() {
-  return Weapon{data::Weapon::nameFist,         20, Type::fist,
-                data::Weapon::statementUseFist, 1,  0};
+  return Weapon{data::weapon::nameFist,         20, Type::fist,
+                data::weapon::statementUseFist, 1,  0};
 }
 Weapon DivineStrike() {
-  return Weapon{data::Weapon::nameDivineStrike,      1000, Type::fist,
-                data::Weapon::statementDivineStrike, 1,    0};
+  return Weapon{data::weapon::nameDivineStrike,      1000, Type::fist,
+                data::weapon::statementDivineStrike, 1,    0};
 }
 Weapon Chopper() {
-  return Weapon{data::Weapon::nameChopper,         80, Type::meleeWeapon,
-                data::Weapon::statementUseChopper, 1,  0};
+  return Weapon{data::weapon::nameChopper,         80, Type::meleeWeapon,
+                data::weapon::statementUseChopper, 1,  0};
 }
 Weapon Cutter() {
-  return Weapon{data::Weapon::nameCutter,         15, Type::meleeWeapon,
-                data::Weapon::statementUseCutter, 1,  0};
+  return Weapon{data::weapon::nameCutter,         15, Type::meleeWeapon,
+                data::weapon::statementUseCutter, 1,  0};
 }
 Weapon Hammer() {
-  return Weapon{data::Weapon::nameHammer,         40, Type::meleeWeapon,
-                data::Weapon::statementUseHammer, 1,  0};
+  return Weapon{data::weapon::nameHammer,         40, Type::meleeWeapon,
+                data::weapon::statementUseHammer, 1,  0};
 }
 Weapon Heroine() {
-  return Weapon{data::Weapon::nameHeroine, 50, Type::meleeWeapon, "", 1, 0};
+  return Weapon{data::weapon::nameHeroine, 50, Type::meleeWeapon, "", 1, 0};
 }
 Weapon Katana() {
-  return Weapon{data::Weapon::nameKatana,         50, Type::meleeWeapon,
-                data::Weapon::statementUseKatana, 1,  0};
+  return Weapon{data::weapon::nameKatana,         50, Type::meleeWeapon,
+                data::weapon::statementUseKatana, 1,  0};
 }
 Weapon Knife() {
-  return Weapon{data::Weapon::nameKnife,         30, Type::meleeWeapon,
-                data::Weapon::statementUseKnife, 1,  0};
+  return Weapon{data::weapon::nameKnife,         30, Type::meleeWeapon,
+                data::weapon::statementUseKnife, 1,  0};
 }
 Weapon Ninemm(int nb_ammo) {
-  return Weapon{data::Weapon::nameNinemm,         70,      Type::fireArm,
-                data::Weapon::statementUseNinemm, nb_ammo, 1};
+  return Weapon{data::weapon::nameNinemm,         70,      Type::fireArm,
+                data::weapon::statementUseNinemm, nb_ammo, 1};
 }
 Weapon AK47(int nb_ammo) {
-  return Weapon{data::Weapon::nameAK47,         150,     Type::fireArm,
-                data::Weapon::statementUseAK47, nb_ammo, 10};
+  return Weapon{data::weapon::nameAK47,         150,     Type::fireArm,
+                data::weapon::statementUseAK47, nb_ammo, 10};
 }
 Weapon WeaponFistCombo(const Weapon& weapon) {
   return Weapon{fmt::format("{}FistCombo", weapon.name),
                 static_cast<int>(weapon.nb_damage / 2),
                 weapon.type,
-                data::Weapon::statementCombo(weapon.name),
+                data::weapon::statementCombo(weapon.name),
                 1,
                 0};
 }

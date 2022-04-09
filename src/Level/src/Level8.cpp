@@ -12,14 +12,14 @@
 void Level8::start() {
   entity::Plug plug{"Mathilde", 30};
 
-  Header::write(data::Level8::nameLevel, data::Level8::hour,
-                data::Level8::minut);
+  header::write(data::level8::nameLevel, data::level8::hour,
+                data::level8::minut);
 
-  Message::write(data::Level8::message0(plug.name()), player_.pseudo(),
+  message::write(data::level8::message0(plug.name()), player_.pseudo(),
                  plug.name());
 
   action::AddWeaponAction addWeaponAction{player_, weapon::Ninemm(3)};
   addWeaponAction.trigger();
 
-  Message::write(data::Level8::message1, player_.pseudo(), plug.name());
+  message::write(data::level8::message1, player_.pseudo(), plug.name());
 }

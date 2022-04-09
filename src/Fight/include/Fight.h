@@ -35,16 +35,16 @@ template <utils::Printable T> class Fight {
     bool out = false;
 
     action::InformationWeaponInventory informationWeaponInventory{
-        player_.weapons(), data::Information::statementInformationWeapon};
+        player_.weapons(), data::information::statementInformationWeapon};
     action::InformationCombo informationCombo{
-        combos_, data::Information::statementInformationCombo};
-    action::Nothing noInformation{data::Information::statementNoInformation};
+        combos_, data::information::statementInformationCombo};
+    action::Nothing noInformation{data::information::statementNoInformation};
     action::Nothing noInformationAnymore{
-        data::Information::statementNoInformationAnymore};
+        data::information::statementNoInformationAnymore};
 
     while (not out) {
       auto resultInformation = selection::select(
-          data::Information::titleInformation, informationWeaponInventory,
+          data::information::titleInformation, informationWeaponInventory,
           informationCombo, noInformation, noInformationAnymore);
 
       // quit loop if no information has been selected
@@ -71,8 +71,8 @@ template <utils::Printable T> class Fight {
       // user cannot attack dead plugs
       if (((*p)->healthBar().alive())) {
         action::ChoosePlug choosePlug{
-            **p, data::Action::statementChoosePlug((*p)->name()),
-            data::Action::resultChoosePlug((*p)->name())};
+            **p, data::action::statementChoosePlug((*p)->name()),
+            data::action::resultChoosePlug((*p)->name())};
         choosePlugActions.push_back(choosePlug);
       }
     }
@@ -84,7 +84,7 @@ template <utils::Printable T> class Fight {
                      return choosePlugAction.statement();
                    });
     int resultChoosePlug = selection::select_from_statement(
-        data::Action::titleChoosePlug, statements);
+        data::action::titleChoosePlug, statements);
 
     entity::Plug& choosenPlug = choosePlugActions[resultChoosePlug].plug();
 
@@ -104,7 +104,7 @@ template <utils::Printable T> class Fight {
         });
 
     auto resultUseWeapon =
-        selection::select(data::Action::titleChooseWeapon, useWeapons);
+        selection::select(data::action::titleChooseWeapon, useWeapons);
 
     return {resultUseWeapon, useWeapons};
   }
@@ -178,7 +178,7 @@ template <utils::Printable T> class Fight {
         }
 
         if (player_.healthBar().dead()) {
-          action::GameOver gameOver{data::Menu::resultGameOver};
+          action::GameOver gameOver{data::menu::resultGameOver};
           gameOver.trigger();
         }
       }
@@ -191,7 +191,7 @@ template <utils::Printable T> class Fight {
 
       // Check if the index is valid
       if (nbTurns - 1 < std::size(messageWriter)) {
-        Message::write(messageWriter[nbTurns - 1]);
+        message::write(messageWriter[nbTurns - 1]);
       }
     }
 

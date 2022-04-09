@@ -10,7 +10,7 @@
 #include "Pause.h"
 #include "UtilsWriter.h"
 
-namespace Tutorial {
+namespace tutorial {
 template <utils::Printable T>
 void write(T&& title, const std::vector<std::string>& tutorialStatement) {
   utils::pause();
@@ -29,6 +29,6 @@ void write(T&& title, const std::vector<std::string>& tutorialStatement) {
 
   fmt::print("\n");
 }
-}  // namespace Tutorial
+}  // namespace tutorial
 
 #endif

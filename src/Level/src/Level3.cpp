@@ -13,35 +13,35 @@
 void Level3::start() {
   entity::Plug plug{"V", 100};
 
-  Header::write(data::Level3::nameLevel, data::Level3::hour,
-                data::Level3::minut);
+  header::write(data::level3::nameLevel, data::level3::hour,
+                data::level3::minut);
 
-  Message::write(data::Level3::message0, player_.pseudo(), plug.name());
+  message::write(data::level3::message0, player_.pseudo(), plug.name());
 
-  action::UseWeapon useFist{player_, plug, data::Weapon::nameFist};
+  action::UseWeapon useFist{player_, plug, data::weapon::nameFist};
   useFist.trigger();
 
-  Message::write(data::Level3::message1, player_.pseudo(), plug.name());
+  message::write(data::level3::message1, player_.pseudo(), plug.name());
 
-  selection::select(data::Action::titleChooseWeapon, useFist);
+  selection::select(data::action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message2(plug.name()), player_.pseudo(),
+  message::write(data::level3::message2(plug.name()), player_.pseudo(),
                  plug.name());
 
-  selection::select(data::Action::titleChooseWeapon, useFist);
+  selection::select(data::action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message3, player_.pseudo(), plug.name());
+  message::write(data::level3::message3, player_.pseudo(), plug.name());
 
-  selection::select(data::Action::titleChooseWeapon, useFist);
+  selection::select(data::action::titleChooseWeapon, useFist);
 
-  Message::write(data::Level3::message4, player_.pseudo(), plug.name());
+  message::write(data::level3::message4, player_.pseudo(), plug.name());
 
   action::AddWeaponAction addWeaponAction{player_, weapon::Knife()};
   addWeaponAction.trigger();
 
-  action::UseWeapon useKnife{player_, plug, data::Weapon::nameKnife};
+  action::UseWeapon useKnife{player_, plug, data::weapon::nameKnife};
 
-  selection::select(data::Action::titleChooseWeapon, useFist, useKnife);
+  selection::select(data::action::titleChooseWeapon, useFist, useKnife);
 
-  Message::write(data::Level3::message5, player_.pseudo(), plug.name());
+  message::write(data::level3::message5, player_.pseudo(), plug.name());
 }

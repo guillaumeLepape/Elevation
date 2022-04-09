@@ -15,11 +15,11 @@ struct MessageWriter {
       : messages_{messages}, pseudo_{pseudo}, plugName_{plugName} {}
 };
 
-namespace Message {
+namespace message {
 void write(const data::Message_t& messages, const std::string& pseudo,
            const std::string& plugName);
 
 void write(const MessageWriter& message);
-}  // namespace Message
+}  // namespace message
 
 #endif

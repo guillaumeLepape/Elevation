@@ -10,7 +10,7 @@
 #include "Pause.h"
 #include "UtilsWriter.h"
 
-namespace Header {
+namespace header {
 template <utils::Printable T, typename U, typename V>
 requires std::unsigned_integral<std::remove_cvref_t<U>>and
     std::unsigned_integral<std::remove_cvref_t<V>> void
@@ -28,6 +28,6 @@ requires std::unsigned_integral<std::remove_cvref_t<U>>and
 
   utils::writeSeparators();
 }
-}  // namespace Header
+}  // namespace header
 
 #endif

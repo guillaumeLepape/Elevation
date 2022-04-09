@@ -6,10 +6,10 @@
 template <utils::Printable T> class ComboQuadrupleCutter : public Combo<T> {
  public:
   ComboQuadrupleCutter(entity::Player& player)
-      : Combo<T>{player, data::Combo::titleQuadrupleCutter,
-                 data::Combo::triggerStatementQuadrupleCutter,
-                 data::Combo::triggeredStatementQuadrupleCutter,
-                 data::Combo::malusStatementQuadrupleCutter} {}
+      : Combo<T>{player, data::combo::titleQuadrupleCutter,
+                 data::combo::triggerStatementQuadrupleCutter,
+                 data::combo::triggeredStatementQuadrupleCutter,
+                 data::combo::malusStatementQuadrupleCutter} {}
 
   void triggerCombo(entity::Plug&, int resultChooseWeapon,
                     const std::vector<action::UseWeapon>& useWeapon) override {

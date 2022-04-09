@@ -38,7 +38,7 @@ template <utils::Printable T, utils::Printable U> class Pseudo {
 
     while (not out) {
       // Inform the user that he have to enter an information (his pseudo)
-      Message::write(data::Introduction::message1, player_.pseudo(), "");
+      message::write(data::introduction::message1, player_.pseudo(), "");
       statement::write(statement_);
 
       std::cin >> pseudo;
@@ -50,18 +50,18 @@ template <utils::Printable T, utils::Printable U> class Pseudo {
       }
       // Check if chosen pseudo is in the masculine name dataset
       else if (ranges::binary_search(masculineName, pseudo)) {
-        Message::write(data::Introduction::message2, player_.pseudo(), "");
+        message::write(data::introduction::message2, player_.pseudo(), "");
       }
       // If pseudo doesn't appear in the two previous dataset,
       // consider that this name doesn't exist
       else {
-        Message::write(data::Introduction::message3, player_.pseudo(), "");
+        message::write(data::introduction::message3, player_.pseudo(), "");
       }
     }
 
     player_.changePseudo(pseudo);
 
-    result::write(data::Action::resultPseudo(player_.pseudo()));
+    result::write(data::action::resultPseudo(player_.pseudo()));
   }
 };
 }  // namespace action

@@ -5,7 +5,7 @@
 #include "Pause.h"
 #include "UtilsWriter.h"
 
-namespace Rules {
+namespace rules {
 void write(const utils::Options& options) {
   std::ignore = std::system("clear");
 
@@ -62,4 +62,4 @@ void write(const utils::Options& options) {
     fmt::print(".\n");
   }
 }
-}  // namespace Rules
+}  // namespace rules

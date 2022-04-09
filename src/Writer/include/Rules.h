@@ -3,7 +3,7 @@
 
 #include "Options.h"
 
-namespace Rules {
+namespace rules {
 void write(const utils::Options& options);
 }
 
