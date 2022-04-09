@@ -2,7 +2,6 @@ project(utils)
 
 add_library(
     ${PROJECT_NAME}
-    src/id.cpp
     src/options.cpp
     src/pause.cpp
 )
@@ -16,4 +15,5 @@ target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC fmt
     PUBLIC range-v3
+    PUBLIC stduuid
 )

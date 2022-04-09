@@ -39,7 +39,7 @@ nlohmann::json Player::write() const {
                         {"weapons", weapon::write(weapons_)}};
 }
 
-Player make_player_from_game_id(unsigned id) {
+Player make_player_from_game_id(const std::string& id) {
   if (data::is_new_game(id)) {
     return Player{"Joueur", 0};
   } else {

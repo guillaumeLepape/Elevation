@@ -13,3 +13,6 @@
 [submodule "libraries/range-v3"]
 	path = libraries/range-v3
 	url = git@github.com:ericniebler/range-v3.git
+[submodule "libraries/stduuid"]
+	path = libraries/stduuid
+	url = git@github.com:mariusbancila/stduuid.git

@@ -48,7 +48,7 @@ template <utils::Printable T> class LoadGame {
       auto result = selection::select_from_statement(
           data::menu::titleLoadGameMenu, statements);
 
-      const unsigned game_id = std::get<0>(load_game_statements[result]);
+      const auto game_id = std::get<0>(load_game_statements[result]);
 
       game_engine::launch(options_, game_id);
     }

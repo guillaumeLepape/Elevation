@@ -27,10 +27,7 @@ template <utils::Printable T> class StartGame {
 
   const T& statement() const { return statement_; }
 
-  void trigger() {
-    const auto game_id = utils::id::generate();
-    game_engine::launch(options_, game_id);
-  }
+  void trigger() { game_engine::launch(options_, utils::id::generate()); }
 };
 }  // namespace action
 

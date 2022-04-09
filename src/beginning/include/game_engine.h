@@ -4,7 +4,7 @@
 #include "options.h"
 
 namespace game_engine {
-void launch(const utils::Options& options, const unsigned game_id);
+void launch(const utils::Options& options, const std::string& game_id);
 }
 
 #endif

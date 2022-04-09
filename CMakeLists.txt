@@ -24,6 +24,11 @@ add_subdirectory(libraries/fmt)
 # add range-v3 library
 add_subdirectory(libraries/range-v3)
 
+# add stduuid library
+set(UUID_USING_CXX20_SPAN ON CACHE INTERNAL "")
+set(UUID_BUILD_TESTS OFF CACHE INTERNAL "")
+add_subdirectory(libraries/stduuid)
+
 add_custom_target(graphviz ALL
                   "${CMAKE_COMMAND}" "--graphviz=graph" .
                   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")

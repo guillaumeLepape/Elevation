@@ -60,7 +60,7 @@ void attack(Entity& entity, const weapon::Weapon& weapon) {
   }
 }
 
-Player make_player_from_game_id(unsigned id);
+Player make_player_from_game_id(const std::string& id);
 
 }  // namespace entity
 #endif

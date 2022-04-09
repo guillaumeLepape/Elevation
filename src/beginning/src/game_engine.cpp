@@ -6,7 +6,7 @@
 #include "results.h"
 
 namespace game_engine {
-void launch(const utils::Options& options, const unsigned game_id) {
+void launch(const utils::Options& options, const std::string& game_id) {
   entity::Player player = entity::make_player_from_game_id(game_id);
 
   std::array<Level, NB_LEVEL> levels = {
