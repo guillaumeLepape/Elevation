@@ -31,8 +31,7 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level9::message0, player.pseudo(), plug.name());
 
-  action::UseWeapon useWeapon{player, plug, data::weapon::nameFist};
-  useWeapon.trigger();
+  action::use_weapon::trigger(player, plug, data::weapon::nameFist);
 
   action::RegenerateAllLife regenerateAllLife{player};
   regenerateAllLife.trigger();

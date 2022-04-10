@@ -15,9 +15,8 @@ void start(entity::Player& player) {
 
   message::write(data::introduction::message0, player.pseudo(), "");
 
-  action::Pseudo pseudo{player, data::action::statementPseudo,
-                        data::action::resultPseudo(player.pseudo())};
-  pseudo.trigger();
+  action::pseudo::trigger(player, data::action::statementPseudo,
+                          data::action::resultPseudo(player.pseudo()));
 
   message::write(data::introduction::message4(player.pseudo()), player.pseudo(),
                  "");

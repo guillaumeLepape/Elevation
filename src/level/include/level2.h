@@ -20,10 +20,9 @@ void start(entity::Player& player) {
   auto message = data::level2::message0(plug.name(), price);
   message::write(message, player.pseudo(), plug.name());
 
-  action::Negociate negociate{player, plug, price,
-                              data::action::statementNegociate,
-                              data::action::resultNegociate(0)};
-  negociate.trigger();
+  action::negociate::trigger(player, plug, price,
+                             data::action::statementNegociate,
+                             data::action::resultNegociate(0));
 }
 }  // namespace level2
 

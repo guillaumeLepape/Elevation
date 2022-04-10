@@ -33,8 +33,7 @@ class UseWeapon {
           data::weapon::resultUseWeapon(plug_.name(), weapon->nb_damage);
       result::write(result);
 
-      action::Dead dead{plug_, data::action::resultDead(plug_.name())};
-      dead.trigger();
+      action::dead::trigger(plug_, data::action::resultDead(plug_.name()));
 
       // if weapon is fireArm and has no ammo, delete it
       if (weapon->type == weapon::Type::fireArm and weapon->durability <= 0) {
@@ -66,6 +65,14 @@ class UseWeapon {
                                                   : weapon::Type::noWeapon;
   }
 };
+
+namespace use_weapon {
+void trigger(entity::Player& player, entity::Plug& plug,
+             const std::string& nameWeapon) {
+  UseWeapon use_weapon{player, plug, nameWeapon};
+  use_weapon.trigger();
+}
+}  // namespace use_weapon
 }  // namespace action
 
 #endif

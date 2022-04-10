@@ -46,6 +46,13 @@ class Regeneration {
     }
   }
 };
+
+namespace regeneration {
+void trigger(entity::Player& player) {
+  Regeneration regeneration{player};
+  regeneration.trigger();
+}
+}  // namespace regeneration
 }  // namespace action
 
 #endif

@@ -37,8 +37,7 @@ void start(entity::Player& player) {
 
   message::write(data::level3::message4, player.pseudo(), plug.name());
 
-  action::AddWeapon addWeaponAction{player, weapon::Knife()};
-  addWeaponAction.trigger();
+  action::add_weapon::trigger(player, weapon::Knife());
 
   action::UseWeapon useKnife{player, plug, data::weapon::nameKnife};
 

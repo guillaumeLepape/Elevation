@@ -18,6 +18,13 @@ template <utils::Printable T> class GameOver {
     exit(0);
   }
 };
+
+namespace game_over {
+template <utils::Printable T> void trigger(const T& result) {
+  GameOver game_over{result};
+  game_over.trigger();
+}
+}  // namespace game_over
 }  // namespace action
 
 #endif

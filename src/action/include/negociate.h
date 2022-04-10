@@ -75,6 +75,15 @@ template <utils::Printable T, utils::Printable U> class Negociate {
     message::write(data::level2::message5, player_.pseudo(), plug_.name());
   }
 };
+
+namespace negociate {
+template <utils::Printable T, utils::Printable U>
+void trigger(entity::Player& player, const entity::Plug& plug, int plugPrice,
+             const T& statement, const U& result) {
+  Negociate negociate{player, plug, plugPrice, statement, result};
+  negociate.trigger();
+}
+}  // namespace negociate
 }  // namespace action
 
 #endif

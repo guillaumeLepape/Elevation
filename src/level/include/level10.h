@@ -21,8 +21,7 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level10::messageMinus1, player.pseudo(), plug.name());
 
-  action::AddWeapon addWeaponAction{player, weapon::AK47(100)};
-  addWeaponAction.trigger();
+  action::add_weapon::trigger(player, weapon::AK47(100));
 
   std::vector<MessageWriter> messageWriters{
       MessageWriter(data::level10::message0, player.pseudo(), plug.name()),
@@ -39,10 +38,9 @@ void start(entity::Player& player, const utils::Options& options) {
   message::write(data::level10::message2, player.pseudo(), plug.name());
 
   entity::Plug heroine{"Heroine", 100, weapon::Heroine()};
-  action::PlugAttack plugAttack{player, heroine};
 
   while (player.healthBar().alive()) {
-    plugAttack.trigger();
+    action::plug_attack::trigger(player, heroine);
     message::write(data::level10::message3, player.pseudo(), "");
   }
 

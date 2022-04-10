@@ -20,6 +20,14 @@ template <utils::Printable U> class Dead {
     }
   }
 };
+
+namespace dead {
+template <utils::Printable U>
+void trigger(const entity::Plug& plug, const U& result) {
+  Dead dead{plug, result};
+  dead.trigger();
+}
+}  // namespace dead
 }  // namespace action
 
 #endif

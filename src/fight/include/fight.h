@@ -164,29 +164,24 @@ template <utils::Printable T> class Fight {
 
       if (numberOfDeadPlug_ != countNumberOfDeadPlug) {
         numberOfDeadPlug_ = countNumberOfDeadPlug;
-        action::AddWeapon addWeaponAction{player_,
-                                          std::move(choosenPlug.weapon())};
-        addWeaponAction.trigger();
+        action::add_weapon::trigger(player_, std::move(choosenPlug.weapon()));
 
         fight::remove_dead_body::write();
       }
 
       for (auto& plug : plugs_) {
         if (plug->healthBar().alive()) {
-          action::PlugAttack plugAttack{player_, *plug};
-          plugAttack.trigger();
+          action::plug_attack::trigger(player_, *plug);
         }
 
         if (player_.healthBar().dead()) {
-          action::GameOver gameOver{data::menu::resultGameOver};
-          gameOver.trigger();
+          action::game_over::trigger(data::menu::resultGameOver);
         }
       }
 
       // If player is not dead, regenerate her
       if (regeneration_) {
-        action::Regeneration regeneration{player_};
-        regeneration.trigger();
+        action::regeneration::trigger(player_);
       }
 
       // Check if the index is valid

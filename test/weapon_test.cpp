@@ -14,11 +14,9 @@
 TEST(weapon_test, UseWeapon) {
   entity::Player player("Guillaume", 0);
 
-  action::AddWeapon addWeaponFist(player, weapon::Fist());
-  addWeaponFist.trigger();
+  action::add_weapon::trigger(player, weapon::Fist());
 
-  action::AddWeapon addWeaponAK47(player, weapon::AK47(100));
-  addWeaponAK47.trigger();
+  action::add_weapon::trigger(player, weapon::AK47(100));
 
   EXPECT_EQ(player.pseudo(), "Guillaume");
 
@@ -37,8 +35,7 @@ TEST(weapon_test, UseWeapon) {
 TEST(weapon_test, Fist) {
   entity::Player player("Guillaume", 0, weapon::WeaponInventory{});
 
-  action::AddWeapon addWeaponFist(player, weapon::Fist());
-  addWeaponFist.trigger();
+  action::add_weapon::trigger(player, weapon::Fist());
 
   const auto& fist = *(std::cbegin(player.weapons()));
 
@@ -51,8 +48,7 @@ TEST(weapon_test, Fist) {
 TEST(weapon_test, AK47) {
   entity::Player player("Guillaume", 0, weapon::WeaponInventory{});
 
-  action::AddWeapon addWeaponAK47(player, weapon::AK47(40));
-  addWeaponAK47.trigger();
+  action::add_weapon::trigger(player, weapon::AK47(40));
 
   const auto& ak47 = *std::find_if(
       std::cbegin(player.weapons()), std::cend(player.weapons()),
@@ -66,8 +62,7 @@ TEST(weapon_test, AK47) {
 
   entity::Plug plug("Jean-Michel", 100);
 
-  action::UseWeapon useAK47(player, plug, data::weapon::nameAK47);
-  useAK47.trigger();
+  action::use_weapon::trigger(player, plug, data::weapon::nameAK47);
 
   EXPECT_EQ(ak47.nb_damage, 150);
   EXPECT_EQ(ak47.type, weapon::Type::fireArm);

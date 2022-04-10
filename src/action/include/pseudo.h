@@ -64,6 +64,14 @@ template <utils::Printable T, utils::Printable U> class Pseudo {
     result::write(data::action::resultPseudo(player_.pseudo()));
   }
 };
+
+namespace pseudo {
+template <utils::Printable T, utils::Printable U>
+void trigger(entity::Player& player, const T& statement, const U& result) {
+  Pseudo pseudo{player, statement, result};
+  pseudo.trigger();
+}
+}  // namespace pseudo
 }  // namespace action
 
 #endif

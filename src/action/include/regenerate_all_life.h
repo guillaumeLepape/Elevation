@@ -22,6 +22,13 @@ class RegenerateAllLife {
     }
   }
 };
+
+namespace regenerate_all_life {
+void trigger(entity::Player& player) {
+  RegenerateAllLife regenerate_all_life{player};
+  regenerate_all_life.trigger();
+}
+}  // namespace regenerate_all_life
 }  // namespace action
 
 #endif

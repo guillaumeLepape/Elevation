@@ -45,8 +45,7 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level7::message1, player.pseudo(), "");
 
-  action::RegenerateAllLife regenerateAllLife{player};
-  regenerateAllLife.trigger();
+  action::regenerate_all_life::trigger(player);
 }
 }  // namespace level7
 

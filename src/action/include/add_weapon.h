@@ -32,6 +32,13 @@ class AddWeapon {
     }
   }
 };
+
+namespace add_weapon {
+void trigger(entity::Player& player, weapon::Weapon&& weapon) {
+  AddWeapon add_weapon{player, std::forward<weapon::Weapon>(weapon)};
+  add_weapon.trigger();
+}
+}  // namespace add_weapon
 }  // namespace action
 
 #endif

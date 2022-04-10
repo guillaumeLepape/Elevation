@@ -24,6 +24,13 @@ class PlugAttack {
     }
   }
 };
+
+namespace plug_attack {
+void trigger(entity::Player& player, entity::Plug& plug) {
+  PlugAttack plug_attack{player, plug};
+  plug_attack.trigger();
+}
+}  // namespace plug_attack
 }  // namespace action
 
 #endif

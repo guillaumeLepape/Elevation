@@ -19,8 +19,7 @@ void start(entity::Player& player) {
   message::write(data::level8::message0(plug.name()), player.pseudo(),
                  plug.name());
 
-  action::AddWeapon addWeaponAction{player, weapon::Ninemm(3)};
-  addWeaponAction.trigger();
+  action::add_weapon::trigger(player, weapon::Ninemm(3));
 
   message::write(data::level8::message1, player.pseudo(), plug.name());
 }
