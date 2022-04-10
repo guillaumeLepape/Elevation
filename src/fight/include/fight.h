@@ -34,18 +34,15 @@ template <utils::Printable T> class Fight {
   void print_information() {
     bool out = false;
 
-    action::InformationWeaponInventory informationWeaponInventory{
-        player_.weapons(), data::information::statementInformationWeapon};
-    action::InformationCombo informationCombo{
-        combos_, data::information::statementInformationCombo};
-    action::Nothing noInformation{data::information::statementNoInformation};
-    action::Nothing noInformationAnymore{
-        data::information::statementNoInformationAnymore};
-
     while (not out) {
       auto resultInformation = selection::select(
-          data::information::titleInformation, informationWeaponInventory,
-          informationCombo, noInformation, noInformationAnymore);
+          data::information::titleInformation,
+          action::InformationWeaponInventory{
+              player_.weapons(), data::information::statementInformationWeapon},
+          action::InformationCombo{
+              combos_, data::information::statementInformationCombo},
+          action::Nothing{data::information::statementNoInformation},
+          action::Nothing{data::information::statementNoInformationAnymore});
 
       // quit loop if no information has been selected
       out = resultInformation == 2 or resultInformation == 3;

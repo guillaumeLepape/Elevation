@@ -19,13 +19,11 @@ template <utils::Printable T> class ComboDoubleMeleeWeapon : public Combo<T> {
     if ((useWeapon[resultChooseWeapon].name() == data::weapon::nameKnife or
          useWeapon[resultChooseWeapon].name() == data::weapon::nameHammer) and
         plug.healthBar().alive()) {
-      action::UseWeapon useWeaponCombo{Combo<T>::player_, plug,
-                                       useWeapon[resultChooseWeapon].name()};
-
-      action::Nothing nothing{data::combo::statementDontCombo};
-
-      auto result =
-          selection::select(Combo<T>::title_, useWeaponCombo, nothing);
+      auto result = selection::select(
+          Combo<T>::title_,
+          action::UseWeapon{Combo<T>::player_, plug,
+                            useWeapon[resultChooseWeapon].name()},
+          action::Nothing{data::combo::statementDontCombo});
       if (result == 0) {
         weapon::remove(Combo<T>::player_.weapons(),
                        useWeapon[resultChooseWeapon].name());

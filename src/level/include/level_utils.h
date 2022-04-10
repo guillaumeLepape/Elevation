@@ -9,10 +9,10 @@
 
 namespace utils::level {
 void end() {
-  action::Nothing continueAction{data::menu::statementContinue};
-  action::SaveAndQuit quit{data::menu::statementQuit, data::menu::resultQuit};
-
-  selection::select(data::menu::titleContinueMenu, continueAction, quit);
+  selection::select(
+      data::menu::titleContinueMenu,
+      action::Nothing{data::menu::statementContinue},
+      action::SaveAndQuit{data::menu::statementQuit, data::menu::resultQuit});
 
   fmt::print("\n");
 }

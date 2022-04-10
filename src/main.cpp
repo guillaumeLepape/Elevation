@@ -21,12 +21,9 @@ auto main(int argc, char* argv[]) -> int {
 
   rules::write(options);
 
-  // Start the game at the begining
-  action::StartGame startGame{data::menu::statementStartGame, options};
-  // Load previous game from results.json file
-  action::LoadGame loadGame{data::menu::statementLoadGame, options};
-  // Quit the game
-  action::Quit quit{data::menu::statementQuit, data::menu::resultQuit};
-
-  selection::select(data::menu::titleStartGameMenu, startGame, loadGame, quit);
+  selection::select(
+      data::menu::titleStartGameMenu,
+      action::StartGame{data::menu::statementStartGame, options},
+      action::LoadGame{data::menu::statementLoadGame, options},
+      action::Quit{data::menu::statementQuit, data::menu::resultQuit});
 }

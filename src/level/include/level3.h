@@ -19,29 +19,31 @@ void start(entity::Player& player) {
 
   message::write(data::level3::message0, player.pseudo(), plug.name());
 
-  action::UseWeapon useFist{player, plug, data::weapon::nameFist};
-  useFist.trigger();
+  action::use_weapon::trigger(player, plug, data::weapon::nameFist);
 
   message::write(data::level3::message1, player.pseudo(), plug.name());
 
-  selection::select(data::action::titleChooseWeapon, useFist);
+  selection::select(data::action::titleChooseWeapon,
+                    action::UseWeapon{player, plug, data::weapon::nameFist});
 
   message::write(data::level3::message2(plug.name()), player.pseudo(),
                  plug.name());
 
-  selection::select(data::action::titleChooseWeapon, useFist);
+  selection::select(data::action::titleChooseWeapon,
+                    action::UseWeapon{player, plug, data::weapon::nameFist});
 
   message::write(data::level3::message3, player.pseudo(), plug.name());
 
-  selection::select(data::action::titleChooseWeapon, useFist);
+  selection::select(data::action::titleChooseWeapon,
+                    action::UseWeapon{player, plug, data::weapon::nameFist});
 
   message::write(data::level3::message4, player.pseudo(), plug.name());
 
   action::add_weapon::trigger(player, weapon::Knife());
 
-  action::UseWeapon useKnife{player, plug, data::weapon::nameKnife};
-
-  selection::select(data::action::titleChooseWeapon, useFist, useKnife);
+  selection::select(data::action::titleChooseWeapon,
+                    action::UseWeapon{player, plug, data::weapon::nameFist},
+                    action::UseWeapon{player, plug, data::weapon::nameKnife});
 
   message::write(data::level3::message5, player.pseudo(), plug.name());
 }
