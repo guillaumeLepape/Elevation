@@ -52,10 +52,6 @@ void start(entity::Player& player, const utils::Options& options) {
 
   fight::launch(player, std::vector{&guetteur}, parameters_1);
 
-  // Fight firstFight{
-  //     player_, {&guetteur}, parameters};
-  // firstFight.startFight();
-
   // Second fight (introduction to Double melee Weapon combo )
   entity::Plug garde{"Garde", 50, weapon::Fist()};
 
@@ -72,10 +68,6 @@ void start(entity::Player& player, const utils::Options& options) {
 
   fight::launch(player, std::vector{&garde}, parameters_2);
 
-  // Fight secondFight{
-  //     player_, {&garde}, {comboDoubleMeleeWeapon}, options.noRule_, false};
-  // secondFight.startFight();
-
   // Third fight (introduction to Healing and weapon recuperation)
   entity::Plug secondGarde{"Un futur cadavre", 30, weapon::Knife()};
 
@@ -89,8 +81,6 @@ void start(entity::Player& player, const utils::Options& options) {
   fight::parameters parameters_3{std::vector<Combo<std::string_view>*>{},
                                  options.noRule_, false};
   fight::launch(player, std::vector{&secondGarde}, parameters_3);
-  // Fight thirdFight{player_, {&secondGarde}, {}, options.noRule_, false};
-  // thirdFight.startFight();
 
   message::write(data::level5::message4, player.pseudo(), "");
 
@@ -118,13 +108,6 @@ void start(entity::Player& player, const utils::Options& options) {
       options.noRule_};
   fight::launch(player, std::vector{&sacAPV, &kamikaze, &soutien},
                 parameters_4);
-
-  // Fight fight{
-  //     player_,
-  //     {&sacAPV, &kamikaze, &soutien},
-  //     {comboFistMeleeWeapon, comboDoubleMeleeWeapon, comboQuadrupleCutter},
-  //     options.noRule_};
-  // fight.startFight();
 
   message::write(data::level5::message7, player.pseudo(), "");
 

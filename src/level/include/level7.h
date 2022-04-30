@@ -36,12 +36,6 @@ void start(entity::Player& player, const utils::Options& options) {
                                             comboQuadrupleCutter.get()},
       options.noRule_};
   fight::launch(player, std::vector{&boss}, parameters);
-  //   Fight fight{
-  //       player,
-  //       {&boss},
-  //       {comboFistMeleeWeapon, comboDoubleMeleeWeapon, comboQuadrupleCutter},
-  //       options_.noRule_};
-  //   fight.startFight();
 
   message::write(data::level7::message1, player.pseudo(), "");
 

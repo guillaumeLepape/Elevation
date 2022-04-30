@@ -27,13 +27,9 @@ void start(entity::Player& player, const utils::Options& options) {
       MessageWriter(data::level10::message0, player.pseudo(), plug.name()),
       MessageWriter(data::level10::message1, player.pseudo(), plug.name())};
 
-  Fight fight{player,
-              {&plug},
-              std::vector<Combo<std::string_view>*>{},
-              options.noRule_};
-  fight.startFight(messageWriters, [&plug](entity::Player& player) -> bool {
-    return player.healthBar().nbLifePoints() < plug.weapon().nb_damage;
-  });
+  fight::launch(player, {&plug},
+                fight::parameters{std::vector<Combo<std::string_view>*>{},
+                                  options.noRule_});
 
   message::write(data::level10::message2, player.pseudo(), plug.name());
 
