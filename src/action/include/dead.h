@@ -5,7 +5,8 @@
 #include "plug.h"
 
 namespace action {
-template <utils::Printable U> class Dead {
+template <utils::Printable U>
+class Dead {
  private:
   U result_;
   const entity::Plug& plug_;

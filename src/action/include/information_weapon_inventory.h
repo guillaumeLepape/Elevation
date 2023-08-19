@@ -10,7 +10,8 @@
 #include "weapon_writer.h"
 
 namespace action {
-template <utils::Printable T> class InformationWeaponInventory {
+template <utils::Printable T>
+class InformationWeaponInventory {
  private:
   T statement_;
 

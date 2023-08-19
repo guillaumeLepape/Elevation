@@ -9,7 +9,8 @@
 #include "concept.h"
 
 namespace data {
-template <utils::Printable T> nlohmann::json read_json_file(T&& path) {
+template <utils::Printable T>
+nlohmann::json read_json_file(T&& path) {
   // open json file
   std::ifstream messageFile{std::move(path), std::ifstream::binary};
 

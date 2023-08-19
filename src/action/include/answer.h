@@ -4,7 +4,8 @@
 #include "concept.h"
 
 namespace action {
-template <utils::Printable T> class Answer {
+template <utils::Printable T>
+class Answer {
  private:
   const T& statement_;
   bool correctOrNot_;

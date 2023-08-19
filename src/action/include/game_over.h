@@ -5,7 +5,8 @@
 #include "concept.h"
 
 namespace action {
-template <utils::Printable T> class GameOver {
+template <utils::Printable T>
+class GameOver {
  private:
   T result_;
 
@@ -20,7 +21,8 @@ template <utils::Printable T> class GameOver {
 };
 
 namespace game_over {
-template <utils::Printable T> void trigger(const T& result) {
+template <utils::Printable T>
+void trigger(const T& result) {
   GameOver game_over{result};
   game_over.trigger();
 }

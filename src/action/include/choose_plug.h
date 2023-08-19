@@ -4,7 +4,8 @@
 #include "concept.h"
 
 namespace action {
-template <utils::Printable T, utils::Printable U> class ChoosePlug {
+template <utils::Printable T, utils::Printable U>
+class ChoosePlug {
  private:
   T statement_;
   U result_;

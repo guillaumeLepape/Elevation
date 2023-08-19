@@ -8,7 +8,8 @@
 #include "utils_writer.h"
 
 namespace combo {
-template <utils::Printable T> void write(const Combo<T>* const combo) {
+template <utils::Printable T>
+void write(const Combo<T>* const combo) {
   utils::pause();
 
   fmt::print("\n ");

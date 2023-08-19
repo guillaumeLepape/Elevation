@@ -4,7 +4,8 @@
 #include "concept.h"
 
 namespace action {
-template <utils::Printable U> class IncreaseMaxLifePoints {
+template <utils::Printable U>
+class IncreaseMaxLifePoints {
  private:
   U result_;
 

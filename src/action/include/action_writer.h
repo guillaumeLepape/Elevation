@@ -10,7 +10,8 @@
 
 namespace action {
 namespace statement {
-template <utils::Printable T> void write(T&& statement) {
+template <utils::Printable T>
+void write(T&& statement) {
   fmt::print("\n ");
   fmt::print(
       fg(fmt::color::black) | bg(fmt::color::yellow) | fmt::emphasis::bold,
@@ -20,7 +21,8 @@ template <utils::Printable T> void write(T&& statement) {
 }  // namespace statement
 
 namespace result {
-template <utils::Printable T> void write(T&& result) {
+template <utils::Printable T>
+void write(T&& result) {
   utils::pause();
   fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, "\n {}", result);
 }

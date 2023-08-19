@@ -7,7 +7,8 @@
 #include "concept.h"
 
 namespace action {
-template <utils::Printable T, utils::Printable U> class InformationCombo {
+template <utils::Printable T, utils::Printable U>
+class InformationCombo {
  private:
   T statement_;
 

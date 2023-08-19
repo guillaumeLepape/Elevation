@@ -3,7 +3,8 @@
 
 #include "combo.h"
 
-template <utils::Printable T> class ComboQuadrupleCutter : public Combo<T> {
+template <utils::Printable T>
+class ComboQuadrupleCutter : public Combo<T> {
  public:
   ComboQuadrupleCutter(entity::Player& player)
       : Combo<T>{player, data::combo::titleQuadrupleCutter,

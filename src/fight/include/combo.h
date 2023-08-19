@@ -8,7 +8,8 @@
 #include "selection.h"
 #include "use_weapon.h"
 
-template <utils::Printable T> class Combo {
+template <utils::Printable T>
+class Combo {
  protected:
   T title_;
   const T& triggerStatement_;
@@ -40,13 +41,16 @@ template <utils::Printable T> class Combo {
 };
 
 namespace combo_v2 {
-template <typename T> struct ComboDoubleMeleeWeapon {
+template <typename T>
+struct ComboDoubleMeleeWeapon {
   T title = data::combo::titleDoubleMeleeWeapon;
 };
-template <typename T> struct ComboFistMeleeWeapon {
+template <typename T>
+struct ComboFistMeleeWeapon {
   T title = data::combo::titleFistMeleeWeapon;
 };
-template <typename T> struct ComboQuadrupleCutter {
+template <typename T>
+struct ComboQuadrupleCutter {
   T title = data::combo::titleQuadrupleCutter;
 };
 
@@ -54,7 +58,8 @@ template <typename T>
 using Combo = std::variant<ComboDoubleMeleeWeapon<T>, ComboFistMeleeWeapon<T>,
                            ComboQuadrupleCutter<T>>;
 
-template <class... Ts> struct overloaded : Ts... {
+template <class... Ts>
+struct overloaded : Ts... {
   using Ts::operator()...;
 };
 

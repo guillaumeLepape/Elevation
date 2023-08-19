@@ -34,14 +34,14 @@ void print(const Weapon& weapon) {
 
 std::string_view informationWeaponType(const Weapon& weapon) {
   switch (weapon.type) {
-  case Type::fist:
-    return "poing";
-  case Type::meleeWeapon:
-    return "arme de mélée";
-  case Type::fireArm:
-    return "arme à feu";
-  default:
-    return "";
+    case Type::fist:
+      return "poing";
+    case Type::meleeWeapon:
+      return "arme de mélée";
+    case Type::fireArm:
+      return "arme à feu";
+    default:
+      return "";
   }
 }
 }  // namespace weapon

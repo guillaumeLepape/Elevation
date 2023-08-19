@@ -4,7 +4,8 @@
 #include "concept.h"
 
 namespace action {
-template <utils::Printable T> class Nothing {
+template <utils::Printable T>
+class Nothing {
  private:
   T statement_;
 

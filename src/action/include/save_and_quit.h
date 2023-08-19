@@ -7,7 +7,8 @@
 #include "concept.h"
 
 namespace action {
-template <utils::Printable T, utils::Printable U> class SaveAndQuit {
+template <utils::Printable T, utils::Printable U>
+class SaveAndQuit {
  private:
   T statement_;
   U result_;

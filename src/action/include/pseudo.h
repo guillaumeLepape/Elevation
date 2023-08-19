@@ -11,7 +11,8 @@
 #include "player.h"
 
 namespace action {
-template <utils::Printable T, utils::Printable U> class Pseudo {
+template <utils::Printable T, utils::Printable U>
+class Pseudo {
  private:
   T statement_;
   U result_;

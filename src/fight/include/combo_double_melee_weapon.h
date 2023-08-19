@@ -6,7 +6,8 @@
 #include "selection.h"
 #include "use_weapon.h"
 
-template <utils::Printable T> class ComboDoubleMeleeWeapon : public Combo<T> {
+template <utils::Printable T>
+class ComboDoubleMeleeWeapon : public Combo<T> {
  public:
   ComboDoubleMeleeWeapon(entity::Player& player)
       : Combo<T>{player, data::combo::titleDoubleMeleeWeapon,

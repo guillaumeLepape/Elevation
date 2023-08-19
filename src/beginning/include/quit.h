@@ -5,7 +5,8 @@
 #include "concept.h"
 
 namespace action {
-template <utils::Printable T, utils::Printable U> class Quit {
+template <utils::Printable T, utils::Printable U>
+class Quit {
  private:
   const T& statement_;
   const U& result_;

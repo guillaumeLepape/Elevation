@@ -3,7 +3,8 @@
 
 #include "combo.h"
 
-template <utils::Printable T> class ComboFistMeleeWeapon : public Combo<T> {
+template <utils::Printable T>
+class ComboFistMeleeWeapon : public Combo<T> {
  public:
   ComboFistMeleeWeapon(entity::Player& player)
       : Combo<T>{player, data::combo::titleFistMeleeWeapon,

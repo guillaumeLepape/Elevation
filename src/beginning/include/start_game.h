@@ -8,7 +8,8 @@
 #include "results.h"
 
 namespace action {
-template <utils::Printable T> class StartGame {
+template <utils::Printable T>
+class StartGame {
  private:
   T statement_;
   const utils::Options& options_;

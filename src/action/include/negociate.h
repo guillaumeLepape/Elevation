@@ -10,7 +10,8 @@
 #include "plug.h"
 
 namespace action {
-template <utils::Printable T, utils::Printable U> class Negociate {
+template <utils::Printable T, utils::Printable U>
+class Negociate {
  private:
   T statement_;
   U result_;

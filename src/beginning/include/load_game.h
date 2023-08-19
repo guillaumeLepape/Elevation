@@ -10,7 +10,8 @@
 #include "selection.h"
 
 namespace action {
-template <utils::Printable T> class LoadGame {
+template <utils::Printable T>
+class LoadGame {
  private:
   const T& statement_;
   const utils::Options& options_;

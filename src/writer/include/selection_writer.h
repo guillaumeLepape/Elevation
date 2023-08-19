@@ -21,7 +21,8 @@ void write_statements(const std::vector<printable>& statements) {
   }
 }
 
-template <utils::Printable... T> void write_statements(T&&... statements) {
+template <utils::Printable... T>
+void write_statements(T&&... statements) {
   std::size_t index = 1;
 
   (

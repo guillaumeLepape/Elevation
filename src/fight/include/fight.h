@@ -19,7 +19,8 @@
 #include "regeneration.h"
 #include "selection.h"
 
-template <utils::Printable T> class Fight {
+template <utils::Printable T>
+class Fight {
  private:
   entity::Player& player_;
   std::vector<entity::Plug*> plugs_;
