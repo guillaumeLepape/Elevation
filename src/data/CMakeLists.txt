@@ -13,6 +13,6 @@ target_include_directories(
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC utils
-    PUBLIC nlohmann_json::nlohmann_json 
+    PUBLIC nlohmann_json::nlohmann_json
     PUBLIC range-v3
 )

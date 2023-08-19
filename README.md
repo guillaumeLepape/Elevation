@@ -1,8 +1,9 @@
 # Clone the repository
 
-This repository contains some libraries and using Github submodules to integrate them. So to clone the repository, the `--recurse-submodule` flag has to used. With this flag, repository has to be cloned with ssh : 
+This repository contains some libraries and using Github submodules to integrate them. So to clone the repository, the `--recurse-submodule` flag has to used. With this flag, repository has to be cloned with ssh :
 
 With SSH :
+
 ```shell
     git clone --recurse-submodules git@github.com:guillaumeLepape/Elevation.git
 ```
@@ -12,8 +13,9 @@ If you forget to add the flag, running `git submodule update --init` will get al
 # Requirements
 
 1. CMake 3.12 or more
+
 ```shell
-    sudo apt install cmake 
+    sudo apt install cmake
 ```
 
 # Compilation
@@ -39,13 +41,14 @@ To make build faster, you can compile in parallel with the `-j` flag
 # Run program
 
 Once the program is compiled, run `main` executable by writing
+
 ```shell
     ./<build_folder>/src/main
 ```
 
 # Test
 
-This program uses googletest to generate tests. By default, tests are compiled. To run them, use the following command 
+This program uses googletest to generate tests. By default, tests are compiled. To run them, use the following command
 
 ```shell
     ./build/test_elevation/test_elevation
@@ -55,13 +58,14 @@ This program uses googletest to generate tests. By default, tests are compiled. 
 
 ## Doxygen
 
-To generate doxygen documentation, go to `doc/Doxygen` folder and run 
+To generate doxygen documentation, go to `doc/Doxygen` folder and run
 
 ```
 doxygen Doxyfile
 ```
 
-Open the documentation with 
+Open the documentation with
+
 ```
 firefox html/index.html
 ```

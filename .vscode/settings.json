@@ -100,7 +100,7 @@
         "build/**": true,
         "doc/**": true
     },
-    "cmake.useCMakePresets":"always",
+    "cmake.useCMakePresets": "always",
     "files.exclude": {
         "**/.git": false
     }

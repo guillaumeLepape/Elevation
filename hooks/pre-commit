@@ -1,9 +1,0 @@
-echo "Formatting src folder"
-cd src 
-find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format -i {} \;
-cd ..
-
-echo "Formatting test folder"
-cd test
-find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format -i {} \;
-cd ..
