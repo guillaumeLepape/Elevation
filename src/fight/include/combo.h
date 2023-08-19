@@ -54,7 +54,9 @@ template <typename T>
 using Combo = std::variant<ComboDoubleMeleeWeapon<T>, ComboFistMeleeWeapon<T>,
                            ComboQuadrupleCutter<T>>;
 
-template <class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
+template <class... Ts> struct overloaded : Ts... {
+  using Ts::operator()...;
+};
 
 template <typename T>
 void trigger(Combo<T>&& combo, entity::Player& player, entity::Plug& plug,

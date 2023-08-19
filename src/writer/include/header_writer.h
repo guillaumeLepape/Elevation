@@ -12,9 +12,9 @@
 
 namespace header {
 template <utils::Printable T, typename U, typename V>
-requires std::unsigned_integral<std::remove_cvref_t<U>>and
-    std::unsigned_integral<std::remove_cvref_t<V>> void
-    write(T&& name_level, U&& hour, V&& minut) {
+  requires std::unsigned_integral<std::remove_cvref_t<U>> and
+           std::unsigned_integral<std::remove_cvref_t<V>>
+void write(T&& name_level, U&& hour, V&& minut) {
   utils::pause();
 
   fmt::print("\n ");

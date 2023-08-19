@@ -16,7 +16,7 @@ add_subdirectory(libraries/tabulate)
 
 # add json library
 set(JSON_BuildTests OFF CACHE INTERNAL "")
-add_subdirectory(libraries/json) 
+add_subdirectory(libraries/json)
 
 # add fmt library
 add_subdirectory(libraries/fmt)

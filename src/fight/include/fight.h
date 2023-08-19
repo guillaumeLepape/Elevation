@@ -131,9 +131,9 @@ template <utils::Printable T> class Fight {
         noRule_{noRule} {}
 
   template <typename U = decltype(default_stop_condition)>
-  requires std::predicate<U, entity::Player&> void startFight(
-      const std::vector<MessageWriter>& messageWriter = {},
-      U stop_condition = default_stop_condition) {
+    requires std::predicate<U, entity::Player&>
+  void startFight(const std::vector<MessageWriter>& messageWriter = {},
+                  U stop_condition = default_stop_condition) {
     std::size_t nbTurns = 1;
 
     // while all enemies are not dead or player is not dead
@@ -196,7 +196,8 @@ template <utils::Printable T> class Fight {
 namespace fight {
 template <utils::Printable T,
           typename U = decltype(Fight<T>::default_stop_condition)>
-requires std::predicate<U, entity::Player&> struct parameters {
+  requires std::predicate<U, entity::Player&>
+struct parameters {
   const std::vector<Combo<T>*>& combos;
   bool noRule;
   bool regeneration = true;
@@ -206,9 +207,9 @@ requires std::predicate<U, entity::Player&> struct parameters {
 
 template <utils::Printable T,
           typename U = decltype(Fight<T>::default_stop_condition)>
-requires std::predicate<U, entity::Player&> void launch(
-    entity::Player& player, const std::vector<entity::Plug*>& plugs,
-    const parameters<T, U>& params) {
+  requires std::predicate<U, entity::Player&>
+void launch(entity::Player& player, const std::vector<entity::Plug*>& plugs,
+            const parameters<T, U>& params) {
   Fight fight(player, plugs, params.combos, params.noRule, params.regeneration);
 
   fight.startFight(params.messageWriter, params.stop_condition);

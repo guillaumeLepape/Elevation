@@ -2,7 +2,7 @@ project(action)
 
 add_library(
     ${PROJECT_NAME}
-    INTERFACE 
+    INTERFACE
 )
 
 target_include_directories(
@@ -11,7 +11,7 @@ target_include_directories(
 )
 
 target_link_libraries(
-    ${PROJECT_NAME} 
+    ${PROJECT_NAME}
     INTERFACE writer
     INTERFACE entity
 )
