@@ -21,7 +21,7 @@ class InformationCombo {
   const T& statement() const { return statement_; }
 
   void trigger() {
-    for (auto c = std::cbegin(combos_); c != std::cend(combos_); ++c) {
+    for (const auto& c : combos_) {
       combo::write(*c);
     }
   }
