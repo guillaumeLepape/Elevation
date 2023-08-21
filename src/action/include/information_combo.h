@@ -12,10 +12,11 @@ class InformationCombo {
  private:
   T statement_;
 
-  std::vector<Combo<U>*> combos_;
+  std::vector<combo_v2::Combo<U>> combos_;
 
  public:
-  InformationCombo(const std::vector<Combo<U>*>& combos, const T& statement)
+  InformationCombo(const std::vector<combo_v2::Combo<U>>& combos,
+                   const T& statement)
       : statement_{statement}, combos_{combos} {}
 
   const T& statement() const { return statement_; }

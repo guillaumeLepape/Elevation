@@ -24,7 +24,7 @@ class Fight {
  private:
   entity::Player& player_;
   std::vector<entity::Plug*> plugs_;
-  std::vector<Combo<T>*> combos_;
+  std::vector<combo_v2::Combo> combos_;
   bool regeneration_;
 
   int numberOfDeadPlug_;
@@ -120,7 +120,7 @@ class Fight {
 
  public:
   Fight(entity::Player& player, const std::vector<entity::Plug*>& plugs,
-        const std::vector<Combo<T>*>& combos, bool noRule,
+        const std::vector<combo_v2::Combo>& combos, bool noRule,
         bool regeneration = true)
       : player_{player},
         plugs_{plugs},
@@ -198,7 +198,7 @@ template <utils::Printable T,
           typename U = decltype(Fight<T>::default_stop_condition)>
   requires std::predicate<U, entity::Player&>
 struct parameters {
-  const std::vector<Combo<T>*>& combos;
+  const std::vector<combo_v2::Combo>& combos;
   bool noRule;
   bool regeneration = true;
   const std::vector<MessageWriter>& messageWriter = {};

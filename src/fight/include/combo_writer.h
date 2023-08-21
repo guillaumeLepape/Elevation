@@ -9,7 +9,7 @@
 
 namespace combo {
 template <utils::Printable T>
-void write(const Combo<T>& combo) {
+void write(const combo_v2::Combo& combo) {
   utils::pause();
 
   fmt::print("\n ");

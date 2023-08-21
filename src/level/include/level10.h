@@ -27,9 +27,9 @@ void start(entity::Player& player, const utils::Options& options) {
       MessageWriter(data::level10::message0, player.pseudo(), plug.name()),
       MessageWriter(data::level10::message1, player.pseudo(), plug.name())};
 
-  fight::launch(player, {&plug},
-                fight::parameters{std::vector<Combo<std::string_view>*>{},
-                                  options.noRule});
+  fight::launch(
+      player, {&plug},
+      fight::parameters{std::vector<combo_v2::Combo>{}, options.noRule});
 
   message::write(data::level10::message2, player.pseudo(), plug.name());
 
