@@ -594,8 +594,8 @@ static constexpr auto correctOrNotAnswer3Question3 = true;
 
 namespace tutorial {
 static constexpr auto titleCombatSystem = "Tutoriel : Système de combat"sv;
-inline std::vector<std::string> statementCombatSystem(int maxNbLifePoints) {
-  return {
+inline auto statementCombatSystem(int maxNbLifePoints) {
+  return std::array<std::string, 7>{
       "Dans ce jeu, les combats se déroulent ainsi.",
       "A chaque tour, vous choisissez d'abord quelle ennemi vous souhaitez "
       "attaquer et avec quelle arme.",
@@ -611,7 +611,7 @@ inline std::vector<std::string> statementCombatSystem(int maxNbLifePoints) {
 }
 
 static constexpr auto titleCombo = "Tutoriel : Enchaînements"sv;
-inline std::vector<std::string> statementCombo{
+static constexpr auto statementCombo = std::array{
     "Lors des combats des enchaînements peuvent être réalisés pour faire plus "
     "de dégats aux ennemis.",
     "Ainsi, au lieu de frapper avec une arme une unique fois lors de votre "
@@ -621,7 +621,7 @@ inline std::vector<std::string> statementCombo{
 
 static constexpr auto titleComboFistMeleeWeapon =
     "Tutoriel : Combo Poing - Arme de mélée"sv;
-inline std::vector<std::string> statementComboFistMeleeWeapon{
+static constexpr auto statementComboFistMeleeWeapon = std::array{
     "En frappant avec le poing un ennemi,",
     "vous pouvez, lors du même tour, frapper le même ennemi avec un arme de "
     "mélée.",
@@ -631,7 +631,7 @@ inline std::vector<std::string> statementComboFistMeleeWeapon{
 
 static constexpr auto titleComboDoubleMeleeWeapon =
     "Tutoriel : Arme de mélée + Arme de mélée"sv;
-inline std::vector<std::string> statementComboDoubleMeleeWeapon{
+static constexpr auto statementComboDoubleMeleeWeapon = std::array{
     "En frappant avec une arme de mélée un ennemi,",
     "vous pouvez, lors du même tour, frapper le même ennemi avec la même arme "
     "de mélée.",
@@ -642,14 +642,14 @@ inline std::vector<std::string> statementComboDoubleMeleeWeapon{
     "sans perdre de points de vie."};
 
 static constexpr auto titleNoWeapon = "Tutoriel : Subir et revenir"sv;
-inline std::vector<std::string> statementNoWeapon{
+static constexpr auto statementNoWeapon = std::array{
     "Vos poings sont la seule arme qu'il vous reste.",
     "Pas le choix, vous devez subir et revenir.",
     "Pour cela, lorsque vous tuez un ennemi, vous pouvez récupérer son arme si "
     "vous n'en disposez pas déjà."};
 
 static constexpr auto titleRegeneration = "Tutoriel : Regeneration"sv;
-inline std::vector<std::string> statementRegeneration{
+static constexpr auto statementRegeneration = std::array{
     "Les drogues sont très bonnes pour la santé (dans ce jeu en tout cas).",
     "Elles ouvrent de nouvelles capacité au corps humain.",
     "Parfois, elles permettent de se régénerer de ces blessures.",
