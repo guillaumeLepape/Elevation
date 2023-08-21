@@ -28,9 +28,8 @@ class Combo {
         malusStatement_{malusStatement},
         player_{player} {}
 
-  virtual void triggerCombo(
-      entity::Plug& plug, int resultChooseWeapon,
-      const std::vector<action::UseWeapon>& useWeapon) = 0;
+  virtual void triggerCombo(entity::Plug& plug,
+                            action::UseWeapon& useWeapon) = 0;
 
   virtual ~Combo() = default;
 

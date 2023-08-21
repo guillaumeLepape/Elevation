@@ -15,19 +15,16 @@ class ComboDoubleMeleeWeapon : public Combo<T> {
                  data::combo::triggeredStatementDoubleMeleeWeapon,
                  data::combo::malusStatementDoubleMeleeWeapon} {}
 
-  void triggerCombo(entity::Plug& plug, int resultChooseWeapon,
-                    const std::vector<action::UseWeapon>& useWeapon) override {
-    if ((useWeapon[resultChooseWeapon].name() == data::weapon::nameKnife or
-         useWeapon[resultChooseWeapon].name() == data::weapon::nameHammer) and
+  void triggerCombo(entity::Plug& plug, action::UseWeapon& useWeapon) override {
+    if ((useWeapon.name() == data::weapon::nameKnife or
+         useWeapon.name() == data::weapon::nameHammer) and
         plug.healthBar().alive()) {
       auto result = selection::select(
           Combo<T>::title_,
-          action::UseWeapon{Combo<T>::player_, plug,
-                            useWeapon[resultChooseWeapon].name()},
+          action::UseWeapon{Combo<T>::player_, plug, useWeapon.name()},
           action::Nothing{data::combo::statementDontCombo});
       if (result == 0) {
-        weapon::remove(Combo<T>::player_.weapons(),
-                       useWeapon[resultChooseWeapon].name());
+        weapon::remove(Combo<T>::player_.weapons(), useWeapon.name());
       }
     }
   }

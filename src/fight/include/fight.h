@@ -107,10 +107,9 @@ class Fight {
     return {resultUseWeapon, useWeapons};
   }
 
-  void runCombos(entity::Plug& choosenPlug, int resultUseWeapon,
-                 const std::vector<action::UseWeapon>& useWeapons) {
+  void runCombos(entity::Plug& choosenPlug, action::UseWeapon& useWeapon) {
     ranges::for_each(combos_, [&](const auto& combo) {
-      combo->triggerCombo(choosenPlug, resultUseWeapon, useWeapons);
+      combo->triggerCombo(choosenPlug, useWeapon);
     });
   }
 
@@ -156,7 +155,7 @@ class Fight {
       auto [resultUseWeapon, useWeapons] = chooseWeapon(choosenPlug);
 
       // run the combos
-      runCombos(choosenPlug, resultUseWeapon, useWeapons);
+      runCombos(choosenPlug, useWeapons[resultUseWeapon]);
 
       const int countNumberOfDeadPlug = methodNumberOfDeadPlug();
 
