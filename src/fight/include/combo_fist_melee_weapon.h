@@ -12,13 +12,11 @@ class ComboFistMeleeWeapon : public Combo<T> {
                  data::combo::triggeredStatementFistMeleeWeapon,
                  data::combo::malusStatementFistMeleeWeapon} {}
 
-  void triggerCombo(entity::Plug& plug, int resultChooseWeapon,
-                    const std::vector<action::UseWeapon>& useWeapon) override {
+  void triggerCombo(entity::Plug& plug, action::UseWeapon& useWeapon) override {
     // if the player has attack with his fist, trigger the combo
     // and the ennemy is not dead
     // and player has at least one melee weapon
-    if (useWeapon[resultChooseWeapon].type() == weapon::Type::fist and
-        plug.healthBar().alive() and
+    if (useWeapon.type() == weapon::Type::fist and plug.healthBar().alive() and
         weapon::contains(Combo<T>::player_.weapons(),
                          weapon::Type::meleeWeapon)) {
       std::vector<action::UseWeapon> useWeaponFistCombo;

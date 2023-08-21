@@ -12,16 +12,12 @@ class ComboQuadrupleCutter : public Combo<T> {
                  data::combo::triggeredStatementQuadrupleCutter,
                  data::combo::malusStatementQuadrupleCutter} {}
 
-  void triggerCombo(entity::Plug&, int resultChooseWeapon,
-                    const std::vector<action::UseWeapon>& useWeapon) override {
-    if (useWeapon[resultChooseWeapon].name() == "Cutter") {
-      action::UseWeapon useWeaponCombo = useWeapon[resultChooseWeapon];
-
-      useWeaponCombo.trigger();
-      useWeaponCombo.trigger();
-      useWeaponCombo.trigger();
-      weapon::remove(Combo<T>::player_.weapons(),
-                     useWeapon[resultChooseWeapon].name());
+  void triggerCombo(entity::Plug&, action::UseWeapon& useWeapon) override {
+    if (useWeapon.name() == "Cutter") {
+      useWeapon.trigger();
+      useWeapon.trigger();
+      useWeapon.trigger();
+      weapon::remove(Combo<T>::player_.weapons(), useWeapon.name());
     }
   }
 
