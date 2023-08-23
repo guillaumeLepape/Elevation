@@ -1,0 +1,39 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+    "name": "elevation",
+    "dependencies": [
+        "fmt",
+        "gtest",
+        "nlohmann-json",
+        "range-v3",
+        "stduuid",
+        "tabulate"
+    ],
+    "builtin-baseline": "da7048d0d95bab69c9ff8da3f34a1fbe160b0c0b",
+    "overrides": [
+        {
+            "name": "fmt",
+            "version": "10.0.0"
+        },
+        {
+            "name": "gtest",
+            "version": "1.13.0"
+        },
+        {
+            "name": "nlohmann-json",
+            "version": "3.11.2"
+        },
+        {
+            "name": "range-v3",
+            "version": "0.12.0#1"
+        },
+        {
+            "name": "stduuid",
+            "version": "1.2.3"
+        },
+        {
+            "name": "tabulate",
+            "version": "1.5"
+        }
+    ]
+}

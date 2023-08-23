@@ -46,13 +46,10 @@ void write(const entity::Player& player,
   utils::writeSeparators();
 
   tabulate::Table fighters;
-  std::vector<variant<std::string, const char*, tabulate::Table>> nameFighters;
-  std::vector<variant<std::string, const char*, tabulate::Table>>
-      lifePointsFighters;
-  std::vector<variant<std::string, const char*, tabulate::Table>>
-      nameWeaponFighters;
-  std::vector<variant<std::string, const char*, tabulate::Table>>
-      damageWeaponFighters;
+  tabulate::Table::Row_t nameFighters;
+  tabulate::Table::Row_t lifePointsFighters;
+  tabulate::Table::Row_t nameWeaponFighters;
+  tabulate::Table::Row_t damageWeaponFighters;
 
   // build a vector of name and life points of plugs
   for (std::size_t i = 0; i < std::size(plugs); i++) {
@@ -72,17 +69,14 @@ void write(const entity::Player& player,
   fighters.add_row(nameWeaponFighters);
   fighters.add_row(damageWeaponFighters);
 
-  std::vector<variant<std::string, const char*, tabulate::Table>> emptyLine(
-      std::size(nameFighters), "");
+  tabulate::Table::Row_t emptyLine(std::size(nameFighters), "");
   fighters.add_row(emptyLine);
 
-  std::vector<variant<std::string, const char*, tabulate::Table>> playerLine(
-      std::size(nameFighters), "");
+  tabulate::Table::Row_t playerLine(std::size(nameFighters), "");
   playerLine[std::size(nameFighters) / 2] = player.pseudo();
   fighters.add_row(playerLine);
 
-  std::vector<variant<std::string, const char*, tabulate::Table>>
-      lifePlayerPoints(std::size(nameFighters), "");
+  tabulate::Table::Row_t lifePlayerPoints(std::size(nameFighters), "");
   lifePlayerPoints[std::size(nameFighters) / 2] =
       fmt::format("{} points de vie", player.healthBar().nbLifePoints());
   fighters.add_row(lifePlayerPoints);
