@@ -23,31 +23,38 @@ static constexpr auto hour = 13u;
 static constexpr auto minut = 12u;
 
 // Messages data
-inline Message_t message0 = {
-    {NameSpeaker::description,
-     "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée que "
-     "vous avez passé chez votre amie."},
-    {NameSpeaker::player,
-     "C'est certainement dû à la consommation massive et diverse de drogues."},
-    {NameSpeaker::player,
-     "Il me faut persister sur cette lancée en allant m'approvisionnez auprès "
-     "de mes 10 dealeurs préférés."},
-    {NameSpeaker::description,
-     "La consommation de ces 10 drogues est votre seul moyen de changer "
-     "radicalement votre existence."}};
+static constexpr auto message0 = std::array{
+    std::tuple{
+        NameSpeaker::description,
+        "Vous vous réveillez chez vous avec de vagues souvenirs de la soirée "
+        "que vous avez passé chez votre amie."},
+    std::tuple{
+        NameSpeaker::player,
+        "C'est certainement dû à la consommation massive et diverse de drogues"
+        "."},
+    std::tuple{
+        NameSpeaker::player,
+        "Il me faut persister sur cette lancée en allant m'approvisionnez "
+        "auprès de mes 10 dealeurs préférés."},
+    std::tuple{
+        NameSpeaker::description,
+        "La consommation de ces 10 drogues est votre seul moyen de changer "
+        "radicalement votre existence."}};
 
-inline Message_t message1 = {
-    {NameSpeaker::player,
-     "Je ne souviens plus de mon prénom. Comment je m'appelle ?"}};
+static constexpr auto message1 = std::array{
+    std::tuple{NameSpeaker::player,
+               "Je ne souviens plus de mon prénom. Comment je m'appelle ?"}};
 
-inline Message_t message2 = {
-    {NameSpeaker::player, "Euh, je suis plutôt sûr d'être une femme."}};
+static constexpr auto message2 = std::array{std::tuple{
+    NameSpeaker::player, "Euh, je suis plutôt sûr d'être une femme."}};
 
-inline Message_t message3 = {{NameSpeaker::player, "Ce prénom n'existe pas."}};
+static constexpr auto message3 =
+    std::array{std::tuple{NameSpeaker::player, "Ce prénom n'existe pas."}};
 
-inline Message_t message4(const std::string& pseudo) {
-  return {{NameSpeaker::player,
-           fmt::format("Bon d'accord {}, ça fera l'affaire.", pseudo)}};
+inline auto message4(const std::string& pseudo) {
+  return std::array{
+      std::tuple{NameSpeaker::player,
+                 fmt::format("Bon d'accord {}, ça fera l'affaire.", pseudo)}};
 }
 }  // namespace introduction
 
@@ -61,19 +68,21 @@ static constexpr auto hour = 14u;
 static constexpr auto minut = 35u;
 
 // Messages data
-inline Message_t message0(const std::string& pseudo,
-                          const std::string& plugName, int pricePlug) {
-  return {{NameSpeaker::player, "Bon, c'est parti."},
-          {NameSpeaker::description, "Vous arrivez en bas du batiment"},
-          {NameSpeaker::plug, fmt::format("Ca va, {} ?", pseudo)},
-          {NameSpeaker::player, fmt::format("Et toi, {} ?", plugName)},
-          {NameSpeaker::plug,
-           fmt::format("Comme d'habitude ? C'est {}€.", pricePlug)},
-          {NameSpeaker::player, "Tiens."},
-          {NameSpeaker::action, fmt::format("Vous perdez {}€.", pricePlug)},
-          {NameSpeaker::plug, "Bonne journée."},
-          {NameSpeaker::player, "A la prochaine."},
-          {NameSpeaker::description, "Roule. Fume."}};
+inline auto message0(const std::string& pseudo, const std::string& plugName,
+                     int pricePlug) {
+  return std::tuple{
+      std::tuple{NameSpeaker::player, "Bon, c'est parti."},
+      std::tuple{NameSpeaker::description, "Vous arrivez en bas du batiment"},
+      std::tuple{NameSpeaker::plug, fmt::format("Ca va, {} ?", pseudo)},
+      std::tuple{NameSpeaker::player, fmt::format("Et toi, {} ?", plugName)},
+      std::tuple{NameSpeaker::plug,
+                 fmt::format("Comme d'habitude ? C'est {}€.", pricePlug)},
+      std::tuple{NameSpeaker::player, "Tiens."},
+      std::tuple{NameSpeaker::action,
+                 fmt::format("Vous perdez {}€.", pricePlug)},
+      std::tuple{NameSpeaker::plug, "Bonne journée."},
+      std::tuple{NameSpeaker::player, "A la prochaine."},
+      std::tuple{NameSpeaker::description, "Roule. Fume."}};
 }
 }  // namespace level1
 
@@ -87,29 +96,33 @@ static constexpr auto hour = 15u;
 static constexpr auto minut = 10u;
 
 // Messages data
-inline Message_t message0(const std::string& plugName, int pricePlug) {
-  return {{NameSpeaker::player, fmt::format("Salut, {}.", plugName)},
-          {NameSpeaker::plug, "Ca va ? Tu cherches quoi ?"},
-          {NameSpeaker::player, "De la C."},
-          {NameSpeaker::plug, fmt::format("C'est {}€ le gramme.", pricePlug)},
-          {NameSpeaker::player, "Putain, c'est un peu cher."},
-          {NameSpeaker::plug, "C'est pas négociable."},
-          {NameSpeaker::player, "Aller j'ai pas masse de tunes."}};
+inline auto message0(const std::string& plugName, int pricePlug) {
+  return std::tuple{
+      std::tuple{NameSpeaker::player, fmt::format("Salut, {}.", plugName)},
+      std::tuple{NameSpeaker::plug, "Ca va ? Tu cherches quoi ?"},
+      std::tuple{NameSpeaker::player, "De la C."},
+      std::tuple{NameSpeaker::plug,
+                 fmt::format("C'est {}€ le gramme.", pricePlug)},
+      std::tuple{NameSpeaker::player, "Putain, c'est un peu cher."},
+      std::tuple{NameSpeaker::plug, "C'est pas négociable."},
+      std::tuple{NameSpeaker::player, "Aller j'ai pas masse de tunes."}};
 }
 
-inline Message_t message1 = {
-    {NameSpeaker::plug, "Ok, je veux bien négocier. Tu proposes combien ?"}};
+static constexpr auto message1 = std::array{std::tuple{
+    NameSpeaker::plug, "Ok, je veux bien négocier. Tu proposes combien ?"}};
 
-inline Message_t message2 = {{NameSpeaker::plug, "T'es con ou quoi ?"}};
+static constexpr auto message2 =
+    std::array{std::tuple{NameSpeaker::plug, "T'es con ou quoi ?"}};
 
-inline Message_t message3 = {
-    {NameSpeaker::plug, "Je peux pas me permettre ca."}};
+static constexpr auto message3 =
+    std::array{std::tuple{NameSpeaker::plug, "Je peux pas me permettre ca."}};
 
-inline Message_t message4 = {
-    {NameSpeaker::plug, "Ca me convient. Tiens. A la prochaine."}};
+static constexpr auto message4 = std::array{
+    std::tuple{NameSpeaker::plug, "Ca me convient. Tiens. A la prochaine."}};
 
-inline Message_t message5 = {{NameSpeaker::player, "Merci. Salut."},
-                             {NameSpeaker::description, "Carte VISA. Sniffe."}};
+static constexpr auto message5 =
+    std::array{std::tuple{NameSpeaker::player, "Merci. Salut."},
+               std::tuple{NameSpeaker::description, "Carte VISA. Sniffe."}};
 }  // namespace level2
 
 namespace level3 {
@@ -117,41 +130,48 @@ static constexpr auto nameLevel = "Niveau 3 : Shit"sv;
 static constexpr auto hour = 16u;
 static constexpr auto minut = 4u;
 
-inline Message_t message0 = {
-    {NameSpeaker::description, "Vous arrivez en bas du bloc."},
-    {NameSpeaker::player, "Salut !"},
-    {NameSpeaker::plug, "Tu veux quoi."},
-    {NameSpeaker::player, "T'as quelque chose pour 10 balles."},
-    {NameSpeaker::plug, "Non, c'est minimum 20 balles."},
-    {NameSpeaker::player, "Ok, ca va être juste."},
-    {NameSpeaker::plug, "C'est 20 balles ou rien."},
-    {NameSpeaker::description, "Vous vous taisez. Vous serrez le poing."},
-    {NameSpeaker::plug,
-     "Qu'est ce qui t'arrive, meuf ? Tu as l'air grave défoncée."},
-    {NameSpeaker::description, "Il a raison."},
-    {NameSpeaker::description,
-     "J'ai pas le temps pour ça. Le sang me monte à la tête."}};
+static constexpr auto message0 = std::array{
+    std::tuple{NameSpeaker::description, "Vous arrivez en bas du bloc."},
+    std::tuple{NameSpeaker::player, "Salut !"},
+    std::tuple{NameSpeaker::plug, "Tu veux quoi."},
+    std::tuple{NameSpeaker::player, "T'as quelque chose pour 10 balles."},
+    std::tuple{NameSpeaker::plug, "Non, c'est minimum 20 balles."},
+    std::tuple{NameSpeaker::player, "Ok, ca va être juste."},
+    std::tuple{NameSpeaker::plug, "C'est 20 balles ou rien."},
+    std::tuple{NameSpeaker::description,
+               "Vous vous taisez. Vous serrez le poing."},
+    std::tuple{NameSpeaker::plug,
+               "Qu'est ce qui t'arrive, meuf ? Tu as l'air grave défoncée."},
+    std::tuple{NameSpeaker::description, "Il a raison."},
+    std::tuple{NameSpeaker::description,
+               "J'ai pas le temps pour ça. Le sang me monte à la tête."}};
 
-inline Message_t message1 = {
-    {NameSpeaker::plug, "Qu'est ce qui te prends, sale pute."},
-    {NameSpeaker::description, "Vous venez de le frapper."},
-    {NameSpeaker::plug, "Tu peux pas juste payer ta dose et te casser."}};
+static constexpr auto message1 = std::array{
+    std::tuple{NameSpeaker::plug, "Qu'est ce qui te prends, sale pute."},
+    std::tuple{NameSpeaker::description, "Vous venez de le frapper."},
+    std::tuple{NameSpeaker::plug,
+               "Tu peux pas juste payer ta dose et te casser."}};
 
-inline Message_t message2(const std::string& plugName) {
-  return {{NameSpeaker::description,
-           fmt::format("Vous vous placez sur le torse de {}.", plugName)},
-          {NameSpeaker::plug, "Batard !"}};
+inline auto message2(const std::string& plugName) {
+  return std::tuple{
+      std::tuple{NameSpeaker::description,
+                 fmt::format("Vous vous placez sur le torse de {}.", plugName)},
+      std::tuple{NameSpeaker::plug, "Batard !"}};
 }
 
-inline Message_t message3 = {{NameSpeaker::plug, "Salope !"}};
+static constexpr auto message3 =
+    std::array{std::tuple{NameSpeaker::plug, "Salope !"}};
 
-inline Message_t message4 = {
-    {NameSpeaker::plug, "Ah."},
-    {NameSpeaker::description, "Le produit tombe au sol ainsi qu'un couteau."},
-    {NameSpeaker::description,
-     "Vous mettez le shit dans votre poche et saisissez le couteau."}};
+static constexpr auto message4 = std::array{
+    std::tuple{NameSpeaker::plug, "Ah."},
+    std::tuple{NameSpeaker::description,
+               "Le produit tombe au sol ainsi qu'un couteau."},
+    std::tuple{
+        NameSpeaker::description,
+        "Vous mettez le shit dans votre poche et saisissez le couteau."}};
 
-inline Message_t message5 = {{NameSpeaker::description, "Roule. Fume."}};
+static constexpr auto message5 =
+    std::array{std::tuple{NameSpeaker::description, "Roule. Fume."}};
 }  // namespace level3
 
 namespace level4 {
@@ -159,34 +179,39 @@ static constexpr auto nameLevel = "Niveau 4 : Lean"sv;
 static constexpr auto hour = 17u;
 static constexpr auto minut = 15u;
 
-inline Message_t message0(const std::string& pseudo) {
-  return {
-      {NameSpeaker::description,
-       "Vous arrivez en bas d'un petit appartement où vous trouverez le "
-       "produit tant convoité."},
-      {NameSpeaker::description, "Vous sonnez à la porte."},
-      {NameSpeaker::plug, fmt::format("Ca va {} ?", pseudo)},
-      {NameSpeaker::player, "Tranquille."},
-      {NameSpeaker::description,
-       "La porte s'ouvre. Vous montez jusqu'à l'appartement et y pénétrez."},
-      {NameSpeaker::plug,
-       "Viens par ici, je peux te faire le produit gratuitement."},
-      {NameSpeaker::player, "Gratuit, c'est cool."},
-      {NameSpeaker::plug, "Mais tu dois répondre à quelques questions avant."},
-      {NameSpeaker::player, "Ok."},
-      {NameSpeaker::plug, "Je veux savoir si tu comprends les liens cachés."},
-      {NameSpeaker::player, "Euh ... ok."},
-      {NameSpeaker::plug, "Première question."}};
+inline auto message0(const std::string& pseudo) {
+  return std::tuple{
+      std::tuple{
+          NameSpeaker::description,
+          "Vous arrivez en bas d'un petit appartement où vous trouverez le "
+          "produit tant convoité."},
+      std::tuple{NameSpeaker::description, "Vous sonnez à la porte."},
+      std::tuple{NameSpeaker::plug, fmt::format("Ca va {} ?", pseudo)},
+      std::tuple{NameSpeaker::player, "Tranquille."},
+      std::tuple{
+          NameSpeaker::description,
+          "La porte s'ouvre. Vous montez jusqu'à l'appartement et y pénétrez."},
+      std::tuple{NameSpeaker::plug,
+                 "Viens par ici, je peux te faire le produit gratuitement."},
+      std::tuple{NameSpeaker::player, "Gratuit, c'est cool."},
+      std::tuple{NameSpeaker::plug,
+                 "Mais tu dois répondre à quelques questions avant."},
+      std::tuple{NameSpeaker::player, "Ok."},
+      std::tuple{NameSpeaker::plug,
+                 "Je veux savoir si tu comprends les liens cachés."},
+      std::tuple{NameSpeaker::player, "Euh ... ok."},
+      std::tuple{NameSpeaker::plug, "Première question."}};
 }
 
-inline Message_t message1 = {
-    {NameSpeaker::plug, "Non, c'est pas ça, réessaie."}};
+static constexpr auto message1 =
+    std::array{std::tuple{NameSpeaker::plug, "Non, c'est pas ça, réessaie."}};
 
-inline Message_t message2 = {
-    {NameSpeaker::plug, "Yep, c'est ca, question suivante."}};
+static constexpr auto message2 = std::array{
+    std::tuple{NameSpeaker::plug, "Yep, c'est ca, question suivante."}};
 
-inline Message_t message3 = {{NameSpeaker::plug, "Quelle niveau ! Tiens."},
-                             {NameSpeaker::description, "Gobelet. Sip."}};
+static constexpr auto message3 =
+    std::array{std::tuple{NameSpeaker::plug, "Quelle niveau ! Tiens."},
+               std::tuple{NameSpeaker::description, "Gobelet. Sip."}};
 }  // namespace level4
 
 namespace level5 {
@@ -194,52 +219,62 @@ static constexpr auto nameLevel = "Niveau 5 : Xanax"sv;
 static constexpr auto hour = 19u;
 static constexpr auto minut = 2u;
 
-inline Message_t message0 = {
-    {NameSpeaker::description,
-     "Vous arrivez en bas du Bones factory tenu par le "
-     "celebre gang des Bones."},
-    {NameSpeaker::plug, "Tu rentres pas."}};
+static constexpr auto message0 =
+    std::array{std::tuple{NameSpeaker::description,
+                          "Vous arrivez en bas du Bones factory tenu par le "
+                          "celebre gang des Bones."},
+               std::tuple{NameSpeaker::plug, "Tu rentres pas."}};
 
-inline Message_t message1 = {{NameSpeaker::player, "Je vais te buter."}};
+static constexpr auto message1 =
+    std::array{std::tuple{NameSpeaker::player, "Je vais te buter."}};
 
-inline Message_t message2 = {
-    {NameSpeaker::description,
-     "Après avoir tabasser le pauvre homme, vous pénetrez dans le batiment."},
-    {NameSpeaker::player, "Fait chier, je controle plus grand chose là."},
-    {NameSpeaker::plug, "Hey, toi là."},
-    {NameSpeaker::player, "Et merde."}};
+static constexpr auto message2 =
+    std::array{std::tuple{NameSpeaker::description,
+                          "Après avoir tabasser le pauvre homme, vous pénetrez "
+                          "dans le batiment."},
+               std::tuple{NameSpeaker::player,
+                          "Fait chier, je controle plus grand chose là."},
+               std::tuple{NameSpeaker::plug, "Hey, toi là."},
+               std::tuple{NameSpeaker::player, "Et merde."}};
 
-inline Message_t message3 = {
-    {NameSpeaker::player,
-     "Encore une personne tuée de ma main, pas le choix faut que je continue."},
-    {NameSpeaker::player,
-     "N'empêche j'ai plus d'armes, comment je vais faire."},
-    {NameSpeaker::description,
-     "Vous ouvrez la porte qui va vous mener au produit tant convoité."},
-    {NameSpeaker::plug, "Non pas ce fou furieux !"}};
+static constexpr auto message3 = std::array{
+    std::tuple{NameSpeaker::player,
+               "Encore une personne tuée de ma main, pas le choix faut que je "
+               "continue."},
+    std::tuple{NameSpeaker::player,
+               "N'empêche j'ai plus d'armes, comment je vais faire."},
+    std::tuple{
+        NameSpeaker::description,
+        "Vous ouvrez la porte qui va vous mener au produit tant convoité."},
+    std::tuple{NameSpeaker::plug, "Non pas ce fou furieux !"}};
 
-inline Message_t message4 = {
-    {NameSpeaker::player, "Putain, il m'a fait mal ce batard."},
-    {NameSpeaker::player,
-     "Au moins, j'ai récupéré son couteau, ca pourra mettre utile."}};
+static constexpr auto message4 = std::array{
+    std::tuple{NameSpeaker::player, "Putain, il m'a fait mal ce batard."},
+    std::tuple{NameSpeaker::player,
+               "Au moins, j'ai récupéré son couteau, ca pourra mettre utile."}};
 
-inline Message_t message5 = {
-    {NameSpeaker::player, "Qu'est ce qu'il se passe ? Je me sens mieux là."},
-    {NameSpeaker::player, "Ca doit être les effets de la drogue."}};
+static constexpr auto message5 = std::array{
+    std::tuple{NameSpeaker::player,
+               "Qu'est ce qu'il se passe ? Je me sens mieux là."},
+    std::tuple{NameSpeaker::player, "Ca doit être les effets de la drogue."}};
 
-inline Message_t message6 = {
-    {NameSpeaker::player, "En allant par là, je devrais trouver la drogue."},
-    {NameSpeaker::plug,
-     "Putain c'est la pétasse qui a buté tout le monde. On s'la fait."},
-    {NameSpeaker::player,
-     "Enfin. J'ai plus qu'à buter ces 3 batards et c'est torché."}};
+static constexpr auto message6 = std::array{
+    std::tuple{NameSpeaker::player,
+               "En allant par là, je devrais trouver la drogue."},
+    std::tuple{
+        NameSpeaker::plug,
+        "Putain c'est la pétasse qui a buté tout le monde. On s'la fait."},
+    std::tuple{NameSpeaker::player,
+               "Enfin. J'ai plus qu'à buter ces 3 batards et c'est torché."}};
 
-inline Message_t message7 = {
-    {NameSpeaker::description,
-     "Après avoir buter tout le monde, vous ramassez les 3 cachetons qui reste "
-     "dans la poche du kamikaze."},
-    {NameSpeaker::player, "Tout ca pour."},
-    {NameSpeaker::description, "Cachetons sur la langue. Verre d'eau."}};
+static constexpr auto message7 = std::array{
+    std::tuple{NameSpeaker::description,
+               "Après avoir buter tout le monde, vous ramassez les 3 cachetons "
+               "qui reste "
+               "dans la poche du kamikaze."},
+    std::tuple{NameSpeaker::player, "Tout ca pour."},
+    std::tuple{NameSpeaker::description,
+               "Cachetons sur la langue. Verre d'eau."}};
 }  // namespace level5
 
 namespace level6 {
@@ -247,18 +282,18 @@ static constexpr auto nameLevel = "Niveau 6 : Champis"sv;
 static constexpr auto hour = 21u;
 static constexpr auto minut = 10u;
 
-inline Message_t message0 = {
-    {NameSpeaker::player,
-     "Avec toutes ces histoires, il est temps de rentrer chez soi."},
-    {NameSpeaker::description,
-     "Arrivée chez vous, vous vous asseyez sur le canapé."},
-    {NameSpeaker::player,
-     "Ca tourne, sa mère. J'ai pas fini mais faut que je me repose."},
-    {NameSpeaker::player, "Il me reste quelque champis, parfait."},
-    {NameSpeaker::description, "Poele. Soupe de champis"},
-    {NameSpeaker::player, "Zzzzzzz."},
-    {NameSpeaker::player, "Zzzzzzz."},
-    {NameSpeaker::player, "Zzzzzzz."}};
+static constexpr auto message0 = std::array{
+    std::tuple{NameSpeaker::player,
+               "Avec toutes ces histoires, il est temps de rentrer chez soi."},
+    std::tuple{NameSpeaker::description,
+               "Arrivée chez vous, vous vous asseyez sur le canapé."},
+    std::tuple{NameSpeaker::player,
+               "Ca tourne, sa mère. J'ai pas fini mais faut que je me repose."},
+    std::tuple{NameSpeaker::player, "Il me reste quelque champis, parfait."},
+    std::tuple{NameSpeaker::description, "Poele. Soupe de champis"},
+    std::tuple{NameSpeaker::player, "Zzzzzzz."},
+    std::tuple{NameSpeaker::player, "Zzzzzzz."},
+    std::tuple{NameSpeaker::player, "Zzzzzzz."}};
 }  // namespace level6
 
 namespace level7 {
@@ -266,18 +301,18 @@ static constexpr auto nameLevel = "Niveau 7 : Kétamine"sv;
 static constexpr auto hour = 0u;
 static constexpr auto minut = 10u;
 
-inline Message_t message0 = {
-    {NameSpeaker::description, "Boum."},
-    {NameSpeaker::player,
-     "AHHHHHHHHHHHHHH. QU'EST CE QUI SE PASSE PUTAIN DE MERDE !"},
-    {NameSpeaker::description, "Kaboom."},
-    {NameSpeaker::plug, "CC je suis là pour te buter."}};
+static constexpr auto message0 = std::array{
+    std::tuple{NameSpeaker::description, "Boum."},
+    std::tuple{NameSpeaker::player,
+               "AHHHHHHHHHHHHHH. QU'EST CE QUI SE PASSE PUTAIN DE MERDE !"},
+    std::tuple{NameSpeaker::description, "Kaboom."},
+    std::tuple{NameSpeaker::plug, "CC je suis là pour te buter."}};
 
-inline Message_t message1 = {
-    {NameSpeaker::player, "Tu as pensé à mon sommeil."},
-    {NameSpeaker::player,
-     "Au moins, tu as des trucs sur toi. De la ké parfait."},
-    {NameSpeaker::description, "Feuille à rouler. Para."}};
+static constexpr auto message1 = std::array{
+    std::tuple{NameSpeaker::player, "Tu as pensé à mon sommeil."},
+    std::tuple{NameSpeaker::player,
+               "Au moins, tu as des trucs sur toi. De la ké parfait."},
+    std::tuple{NameSpeaker::description, "Feuille à rouler. Para."}};
 }  // namespace level7
 
 namespace level8 {
@@ -285,34 +320,39 @@ static constexpr auto nameLevel = "Niveau 8 : Crack (Interlude)"sv;
 static constexpr auto hour = 2u;
 static constexpr auto minut = 12u;
 
-inline Message_t message0(const std::string& plugName) {
-  return {
-      {NameSpeaker::player, fmt::format("Ca part en couilles là. Il faut que "
-                                        "j'aille voir {} pour qu'elle m'aide.",
-                                        plugName)},
-      {NameSpeaker::player,
-       "J'ai pas de sang sur moi, je peux tappe des hallus maintenant."},
-      {NameSpeaker::description,
-       fmt::format("Malgré votre état, vous arrivez enfin devant chez {}, "
-                   "l'une de vos plus fidèles amies.",
-                   plugName)},
-      {NameSpeaker::description,
-       "Arrivé devant la porte, celle-ci s'ouvre par miracle."},
-      {NameSpeaker::plug, "Pourquoi ?"},
-      {NameSpeaker::player, "Ah merde mon couteau."},
-      {NameSpeaker::description,
-       "Effectivement elle a un couteau dans la poitrine."},
-      {NameSpeaker::plug, "Après tout ce que j'ai fait pour toi."},
-      {NameSpeaker::player, "Tu souffres, faut que j'abrège tes souffrances."},
-      {NameSpeaker::player, "Avec ce gun c'est parfait."}};
+inline auto message0(const std::string& plugName) {
+  return std::tuple{
+      std::tuple{NameSpeaker::player,
+                 fmt::format("Ca part en couilles là. Il faut que "
+                             "j'aille voir {} pour qu'elle m'aide.",
+                             plugName)},
+      std::tuple{
+          NameSpeaker::player,
+          "J'ai pas de sang sur moi, je peux tappe des hallus maintenant."},
+      std::tuple{
+          NameSpeaker::description,
+          fmt::format("Malgré votre état, vous arrivez enfin devant chez {}, "
+                      "l'une de vos plus fidèles amies.",
+                      plugName)},
+      std::tuple{NameSpeaker::description,
+                 "Arrivé devant la porte, celle-ci s'ouvre par miracle."},
+      std::tuple{NameSpeaker::plug, "Pourquoi ?"},
+      std::tuple{NameSpeaker::player, "Ah merde mon couteau."},
+      std::tuple{NameSpeaker::description,
+                 "Effectivement elle a un couteau dans la poitrine."},
+      std::tuple{NameSpeaker::plug, "Après tout ce que j'ai fait pour toi."},
+      std::tuple{NameSpeaker::player,
+                 "Tu souffres, faut que j'abrège tes souffrances."},
+      std::tuple{NameSpeaker::player, "Avec ce gun c'est parfait."}};
 }
 
-inline Message_t message1 = {
-    {NameSpeaker::description, "BANG ! "},
-    {NameSpeaker::description, "PAW !"},
-    {NameSpeaker::player, "Deux balles dans le crane ca devrait suffire."},
-    {NameSpeaker::player, "Il y a du crack, je vais le fumer ici."},
-    {NameSpeaker::description, "Pipe à crack. Briquet."}};
+static constexpr auto message1 = std::array{
+    std::tuple{NameSpeaker::description, "BANG ! "},
+    std::tuple{NameSpeaker::description, "PAW !"},
+    std::tuple{NameSpeaker::player,
+               "Deux balles dans le crane ca devrait suffire."},
+    std::tuple{NameSpeaker::player, "Il y a du crack, je vais le fumer ici."},
+    std::tuple{NameSpeaker::description, "Pipe à crack. Briquet."}};
 }  // namespace level8
 
 namespace level9 {
@@ -320,38 +360,43 @@ static constexpr auto nameLevel = "Niveau 9 : LSD (Révélation)"sv;
 static constexpr auto hour = 3u;
 static constexpr auto minut = 35u;
 
-inline Message_t message0 = {{NameSpeaker::player, "Dégage de là."}};
+static constexpr auto message0 =
+    std::array{std::tuple{NameSpeaker::player, "Dégage de là."}};
 
-inline Message_t message1 = {
-    {NameSpeaker::player, "Tu te prends pour qui pour me poignarder 3 fois."},
-    {NameSpeaker::plug, "C'est toi qui bute tout le monde depuis ce matin."},
-    {NameSpeaker::player, "T'as planté la mauvaise personne."}};
+static constexpr auto message1 = std::array{
+    std::tuple{NameSpeaker::player,
+               "Tu te prends pour qui pour me poignarder 3 fois."},
+    std::tuple{NameSpeaker::plug,
+               "C'est toi qui bute tout le monde depuis ce matin."},
+    std::tuple{NameSpeaker::player, "T'as planté la mauvaise personne."}};
 
-inline Message_t message2 = {{NameSpeaker::plug, "Crêve sale pute."}};
+static constexpr auto message2 =
+    std::array{std::tuple{NameSpeaker::plug, "Crêve sale pute."}};
 
-inline Message_t message3 = {
-    {NameSpeaker::plug,
-     "Ca cicatrise tout seul, il faut que j'tappe plus fort."}};
+static constexpr auto message3 = std::array{
+    std::tuple{NameSpeaker::plug,
+               "Ca cicatrise tout seul, il faut que j'tappe plus fort."}};
 
-inline Message_t message4 = {
-    {NameSpeaker::plug, "J'ai jamais vu ca. T'es un putain d'alien."},
-    {NameSpeaker::player, "Non, juste un Dieu."},
-    {NameSpeaker::plug, "S'il te plait, me tue pas."},
-    {NameSpeaker::player, "J'hésite."},
-    {NameSpeaker::player, "Allez, pour s'amuser."}};
+static constexpr auto message4 = std::array{
+    std::tuple{NameSpeaker::plug, "J'ai jamais vu ca. T'es un putain d'alien."},
+    std::tuple{NameSpeaker::player, "Non, juste un Dieu."},
+    std::tuple{NameSpeaker::plug, "S'il te plait, me tue pas."},
+    std::tuple{NameSpeaker::player, "J'hésite."},
+    std::tuple{NameSpeaker::player, "Allez, pour s'amuser."}};
 
-inline Message_t message5 = {
-    {NameSpeaker::player, "Cette sensation."},
-    {NameSpeaker::player, "Je n'ai jamais rien vécu de tel."},
-    {NameSpeaker::player, "Ce sentiment de plénitude."},
-    {NameSpeaker::player, "Tous ces meurtres auront servis à quelque chose."}};
+static constexpr auto message5 = std::array{
+    std::tuple{NameSpeaker::player, "Cette sensation."},
+    std::tuple{NameSpeaker::player, "Je n'ai jamais rien vécu de tel."},
+    std::tuple{NameSpeaker::player, "Ce sentiment de plénitude."},
+    std::tuple{NameSpeaker::player,
+               "Tous ces meurtres auront servis à quelque chose."}};
 
-inline Message_t message6 = {
-    {NameSpeaker::player, "Encore."},
-    {NameSpeaker::player, "Toujours plus de puissance."}};
+static constexpr auto message6 =
+    std::array{std::tuple{NameSpeaker::player, "Encore."},
+               std::tuple{NameSpeaker::player, "Toujours plus de puissance."}};
 
-inline Message_t message7 = {
-    {NameSpeaker::player, "Ca y est, je deviens un dieu."}};
+static constexpr auto message7 = std::array{
+    std::tuple{NameSpeaker::player, "Ca y est, je deviens un dieu."}};
 }  // namespace level9
 
 namespace level10 {
@@ -359,36 +404,40 @@ static constexpr auto nameLevel = "Niveau 10 : Héroine (Désillusion)"sv;
 static constexpr auto hour = 7u;
 static constexpr auto minut = 30u;
 
-inline Message_t messageMinus1 = {
-    {NameSpeaker::plug, "Que fais tu petit chose ?"},
-    {NameSpeaker::player, "Viens là, j'ai pas peur de toi."},
-    {NameSpeaker::plug, "Tiens, tu peux combattre avec ca."}};
+static constexpr auto messageMinus1 = std::array{
+    std::tuple{NameSpeaker::plug, "Que fais tu petit chose ?"},
+    std::tuple{NameSpeaker::player, "Viens là, j'ai pas peur de toi."},
+    std::tuple{NameSpeaker::plug, "Tiens, tu peux combattre avec ca."}};
 
-inline Message_t message0 = {
-    {NameSpeaker::player, "Est ce qui se passe, mon corps !"},
-    {NameSpeaker::plug, "La drogue te décompose."},
-    {NameSpeaker::plug, "Tu es donc bien faible face à ma puissance."},
-    {NameSpeaker::plug,
-     "Ah, tu es encore en vie. Je te laisse encore une chance."}};
+inline auto message0 = Message_t{
+    std::tuple{NameSpeaker::player, "Est ce qui se passe, mon corps !"},
+    std::tuple{NameSpeaker::plug, "La drogue te décompose."},
+    std::tuple{NameSpeaker::plug,
+               "Tu es donc bien faible face à ma puissance."},
+    std::tuple{NameSpeaker::plug,
+               "Ah, tu es encore en vie. Je te laisse encore une chance."}};
 
-inline Message_t message1 = {{NameSpeaker::plug, "Tu t'es pris pour qui."},
-                             {NameSpeaker::plug,
-                              "Tu as peut-être détruit toutes ces imbéciles, "
-                              "mais face à moi tu ne peux rien."}};
+inline auto message1 =
+    Message_t{std::tuple{NameSpeaker::plug, "Tu t'es pris pour qui."},
+              std::tuple{NameSpeaker::plug,
+                         "Tu as peut-être détruit toutes ces imbéciles, "
+                         "mais face à moi tu ne peux rien."}};
 
-inline Message_t message2 = {
-    {NameSpeaker::plug,
-     "J'ai décidé de te laisser accomplir ta quête. Tiens prends ca."},
-    {NameSpeaker::action, "Héroine ajouté à votre inventaire."},
-    {NameSpeaker::description,
-     "Vous consommez le dernier produit tant convoité."},
-    {NameSpeaker::player, "J'y suis arrivé."}};
+static constexpr auto message2 = std::array{
+    std::tuple{
+        NameSpeaker::plug,
+        "J'ai décidé de te laisser accomplir ta quête. Tiens prends ca."},
+    std::tuple{NameSpeaker::action, "Héroine ajouté à votre inventaire."},
+    std::tuple{NameSpeaker::description,
+               "Vous consommez le dernier produit tant convoité."},
+    std::tuple{NameSpeaker::player, "J'y suis arrivé."}};
 
-inline Message_t message3 = {{NameSpeaker::player, "Encore."}};
+static constexpr auto message3 =
+    std::array{std::tuple{NameSpeaker::player, "Encore."}};
 
-inline Message_t message4 = {
-    {NameSpeaker::plug, "Il est temps que cette imposture cesse."},
-    {NameSpeaker::description, "Vous êtes mort."}};
+static constexpr auto message4 = std::array{
+    std::tuple{NameSpeaker::plug, "Il est temps que cette imposture cesse."},
+    std::tuple{NameSpeaker::description, "Vous êtes mort."}};
 }  // namespace level10
 
 namespace outro {
@@ -396,10 +445,10 @@ static constexpr auto nameLevel = "Crédits"sv;
 static constexpr auto hour = 0u;
 static constexpr auto minut = 0u;
 
-inline Message_t message0 = {
-    {NameSpeaker::description, "Programmeur : Jess H."},
-    {NameSpeaker::description, "Merci d'avoir jouer à ce jeu !"},
-    {NameSpeaker::description, "A la prochaine."}};
+static constexpr auto message0 = std::array{
+    std::tuple{NameSpeaker::description, "Programmeur : Jess H."},
+    std::tuple{NameSpeaker::description, "Merci d'avoir jouer à ce jeu !"},
+    std::tuple{NameSpeaker::description, "A la prochaine."}};
 }  // namespace outro
 
 namespace action {
