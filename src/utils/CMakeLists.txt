@@ -1,5 +1,9 @@
 project(utils)
 
+find_package(fmt CONFIG REQUIRED)
+find_package(stduuid CONFIG REQUIRED)
+find_package(range-v3 CONFIG REQUIRED)
+
 add_library(
     ${PROJECT_NAME}
     src/options.cpp
@@ -13,7 +17,7 @@ target_include_directories(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PUBLIC fmt
-    PUBLIC range-v3
+    PUBLIC fmt::fmt
+    PUBLIC range-v3::meta range-v3::concepts range-v3::range-v3
     PUBLIC stduuid
 )

@@ -1,11 +1,11 @@
 # Clone the repository
 
-This repository contains some libraries and using Github submodules to integrate them. So to clone the repository, the `--recurse-submodule` flag has to used. With this flag, repository has to be cloned with ssh :
+This repository contains vcpkg to build libraries. So to clone the repository, the `--recurse-submodule` flag is needed. With this flag, repository has to be cloned with ssh :
 
 With SSH :
 
 ```shell
-    git clone --recurse-submodules git@github.com:guillaumeLepape/Elevation.git
+git clone --recurse-submodules git@github.com:guillaumeLepape/Elevation.git
 ```
 
 If you forget to add the flag, running `git submodule update --init` will get all the submodules for you after you’ve cloned.
@@ -15,7 +15,16 @@ If you forget to add the flag, running `git submodule update --init` will get al
 1. CMake 3.12 or more
 
 ```shell
-    sudo apt install cmake
+sudo apt install cmake
+```
+
+# Vcpkg
+
+To build the libraries, you need to setup vcpkg. To do it, make sure you clone the vcpkg submodule. Run the boostrap script and make the packages available user-side
+
+```shell
+./vcpkg/bootstrap-vcpkg.sh
+./vcpkg/vcpkg integrate install
 ```
 
 # Compilation
@@ -23,19 +32,19 @@ If you forget to add the flag, running `git submodule update --init` will get al
 Generate the makefile in repository folder with
 
 ```shell
-    cmake -Bbuild -S.
+cmake -Bbuild -S. -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake
 ```
 
 In repository folder, compile with
 
 ```shell
-    cmake --build <build_folder>
+cmake --build <build_folder>
 ```
 
 To make build faster, you can compile in parallel with the `-j` flag
 
 ```shell
-    cmake --build <build_folder> -j <nb_core>
+cmake --build <build_folder> -j <nb_core>
 ```
 
 # Run program
@@ -43,7 +52,7 @@ To make build faster, you can compile in parallel with the `-j` flag
 Once the program is compiled, run `main` executable by writing
 
 ```shell
-    ./<build_folder>/src/main
+./<build_folder>/src/main
 ```
 
 # Test
@@ -51,7 +60,7 @@ Once the program is compiled, run `main` executable by writing
 This program uses googletest to generate tests. By default, tests are compiled. To run them, use the following command
 
 ```shell
-    ./build/test_elevation/test_elevation
+./build/test/test_elevation
 ```
 
 # Documentation

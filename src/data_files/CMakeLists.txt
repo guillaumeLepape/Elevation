@@ -1,5 +1,7 @@
 project(data_files)
 
+find_package(fmt CONFIG REQUIRED)
+
 add_library(${PROJECT_NAME} INTERFACE)
 
 target_include_directories(
@@ -9,5 +11,5 @@ target_include_directories(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    INTERFACE fmt
+    INTERFACE fmt::fmt
 )

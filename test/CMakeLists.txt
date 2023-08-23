@@ -1,4 +1,6 @@
-project(test1)
+project(test_elevation)
+
+find_package(GTest CONFIG REQUIRED)
 
 add_executable(
     ${PROJECT_NAME}
@@ -12,8 +14,10 @@ target_link_libraries(
     PRIVATE data_files
     PRIVATE action
     PRIVATE entity
-    PRIVATE gtest_main
+    PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main
 )
+
+add_test(AllTestsInMain main)
 
 include(GoogleTest)
 gtest_discover_tests(${PROJECT_NAME})

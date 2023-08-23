@@ -1,5 +1,7 @@
 project(fight)
 
+find_package(tabulate CONFIG REQUIRED)
+
 add_library(
     ${PROJECT_NAME}
     src/fight_writer.cpp
