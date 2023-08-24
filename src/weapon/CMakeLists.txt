@@ -1,18 +1,7 @@
 project(weapon)
 
-add_library(
-    ${PROJECT_NAME}
-    src/weapon.cpp
-    src/weapon_writer.cpp
-)
+add_library(${PROJECT_NAME} src/weapon.cpp src/weapon_writer.cpp)
 
-target_include_directories(
-    ${PROJECT_NAME}
-    PUBLIC ${PROJECT_SOURCE_DIR}/include
-)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
-target_link_libraries(
-    ${PROJECT_NAME}
-    PUBLIC data_files
-    PUBLIC data
-)
+target_link_libraries(${PROJECT_NAME} PUBLIC data_files data)
