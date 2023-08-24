@@ -13,7 +13,4 @@ add_subdirectory(writer)
 
 add_executable(main main.cpp)
 
-target_link_libraries(
-    main
-    PUBLIC beginning
-)
+target_link_libraries(main PUBLIC beginning)

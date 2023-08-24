@@ -11,16 +11,16 @@ add_compile_options(-O3 -Wall -Wextra -Werror)
 
 add_subdirectory(src)
 
-##
-## TESTS
-## create and configure the unit test target
-##
+#
+# TESTS create and configure the unit test target
+#
 
-option(Elevation_BuildTests "Build the unit tests when BUILD_TESTING is enabled." ON)
+option(Elevation_BuildTests
+       "Build the unit tests when BUILD_TESTING is enabled." ON)
 
-include(CTest) #adds option BUILD_TESTING (default ON)
+include(CTest) # adds option BUILD_TESTING (default ON)
 
 if(BUILD_TESTING AND Elevation_BuildTests)
-    enable_testing()
-    add_subdirectory(test)
+  enable_testing()
+  add_subdirectory(test)
 endif()
