@@ -19,7 +19,7 @@ void write(const utils::Options& options) {
       "\n Une fois que vous avez lu un message, appuyez sur entrée "
       "pour passer au suivant.");
 
-  if (not options.noRule_) {
+  if (not options.noRule) {
     utils::pause();
 
     fmt::print(

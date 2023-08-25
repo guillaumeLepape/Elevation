@@ -16,17 +16,17 @@ class Options {
   Options() = delete;
 
   Options(const Options&) = delete;
-  Options(Options&&) = default;
+  Options(Options&&) noexcept = default;
 
   Options& operator=(const Options&) = delete;
-  Options& operator=(Options&&) = default;
+  Options& operator=(Options&&) noexcept = default;
 
   ~Options() = default;
 
   void print_help() const;
 
-  bool noRule_;
-  bool help_;
+  bool noRule;
+  bool help;
 };
 }  // namespace utils
 

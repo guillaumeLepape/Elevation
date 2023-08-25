@@ -14,9 +14,9 @@ auto main(int argc, char* argv[]) -> int {
 
   // If user selected -h option, print options descriptions
   // and exit program
-  if (options.help_) {
+  if (options.help) {
     options.print_help();
-    return 0;
+    return EXIT_SUCCESS;
   }
 
   rules::write(options);

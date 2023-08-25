@@ -30,7 +30,7 @@ class Fight {
   int numberOfDeadPlug_;
 
   bool information_;
-  bool noRule_;
+  bool noRule;
 
   void print_information() {
     bool out = false;
@@ -128,7 +128,7 @@ class Fight {
         regeneration_{regeneration},
         numberOfDeadPlug_{0},
         information_{true},
-        noRule_{noRule} {}
+        noRule{noRule} {}
 
   template <typename U = decltype(default_stop_condition)>
     requires std::predicate<U, entity::Player&>
@@ -144,7 +144,7 @@ class Fight {
 
       // Allow player to print informations about plugs and combos
       // if the information_ is true and -r flag was selected
-      if (information_ and (not noRule_)) {
+      if (information_ and (not noRule)) {
         print_information();
       }
 

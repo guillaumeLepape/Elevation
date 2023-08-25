@@ -11,11 +11,13 @@ class HealthBar {
   constexpr HealthBar(int nbLifePoints, int maxNbLifePoints)
       : nbLifePoints_{nbLifePoints}, maxNbLifePoints_{maxNbLifePoints} {}
 
-  int nbLifePoints() const { return nbLifePoints_; }
+  [[nodiscard]] int nbLifePoints() const { return nbLifePoints_; }
 
-  int missingLifePoints() const { return maxNbLifePoints_ - nbLifePoints_; }
+  [[nodiscard]] int missingLifePoints() const {
+    return maxNbLifePoints_ - nbLifePoints_;
+  }
 
-  int maxLifePoints() const { return maxNbLifePoints_; }
+  [[nodiscard]] int maxLifePoints() const { return maxNbLifePoints_; }
 
   void increaseLifePoints(int nbLifePoints) {
     if (nbLifePoints_ + nbLifePoints >= maxNbLifePoints_) {
@@ -29,9 +31,11 @@ class HealthBar {
     maxNbLifePoints_ += maxNbLifePoints;
     nbLifePoints_ += maxNbLifePoints;
   }
-  bool fullLife() const { return nbLifePoints_ == maxNbLifePoints_; }
-  bool dead() const { return (nbLifePoints_ <= 0); }
-  bool alive() const { return not dead(); }
+  [[nodiscard]] bool fullLife() const {
+    return nbLifePoints_ == maxNbLifePoints_;
+  }
+  [[nodiscard]] bool dead() const { return (nbLifePoints_ <= 0); }
+  [[nodiscard]] bool alive() const { return not dead(); }
 };
 }  // namespace entity
 

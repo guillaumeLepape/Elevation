@@ -19,8 +19,8 @@ namespace introduction {
 
 // header data
 static constexpr auto nameLevel = "Introduction : Dur réveil"sv;
-static constexpr auto hour = 13u;
-static constexpr auto minut = 12u;
+static constexpr auto hour = 13U;
+static constexpr auto minut = 12U;
 
 // Messages data
 static constexpr auto message0 = std::array{
@@ -64,8 +64,8 @@ namespace level1 {
 
 // header data
 static constexpr auto nameLevel = "Niveau 1 : Beuh"sv;
-static constexpr auto hour = 14u;
-static constexpr auto minut = 35u;
+static constexpr auto hour = 14U;
+static constexpr auto minut = 35U;
 
 // Messages data
 inline auto message0(const std::string& pseudo, const std::string& plugName,
@@ -92,8 +92,8 @@ namespace level2 {
 
 // header data
 static constexpr auto nameLevel = "Niveau 2 : Coke"sv;
-static constexpr auto hour = 15u;
-static constexpr auto minut = 10u;
+static constexpr auto hour = 15U;
+static constexpr auto minut = 10U;
 
 // Messages data
 inline auto message0(const std::string& plugName, int pricePlug) {
@@ -127,8 +127,8 @@ static constexpr auto message5 =
 
 namespace level3 {
 static constexpr auto nameLevel = "Niveau 3 : Shit"sv;
-static constexpr auto hour = 16u;
-static constexpr auto minut = 4u;
+static constexpr auto hour = 16U;
+static constexpr auto minut = 4U;
 
 static constexpr auto message0 = std::array{
     std::tuple{NameSpeaker::description, "Vous arrivez en bas du bloc."},
@@ -176,8 +176,8 @@ static constexpr auto message5 =
 
 namespace level4 {
 static constexpr auto nameLevel = "Niveau 4 : Lean"sv;
-static constexpr auto hour = 17u;
-static constexpr auto minut = 15u;
+static constexpr auto hour = 17U;
+static constexpr auto minut = 15U;
 
 inline auto message0(const std::string& pseudo) {
   return std::tuple{
@@ -216,8 +216,8 @@ static constexpr auto message3 =
 
 namespace level5 {
 static constexpr auto nameLevel = "Niveau 5 : Xanax"sv;
-static constexpr auto hour = 19u;
-static constexpr auto minut = 2u;
+static constexpr auto hour = 19U;
+static constexpr auto minut = 2U;
 
 static constexpr auto message0 =
     std::array{std::tuple{NameSpeaker::description,
@@ -279,8 +279,8 @@ static constexpr auto message7 = std::array{
 
 namespace level6 {
 static constexpr auto nameLevel = "Niveau 6 : Champis"sv;
-static constexpr auto hour = 21u;
-static constexpr auto minut = 10u;
+static constexpr auto hour = 21U;
+static constexpr auto minut = 10U;
 
 static constexpr auto message0 = std::array{
     std::tuple{NameSpeaker::player,
@@ -298,8 +298,8 @@ static constexpr auto message0 = std::array{
 
 namespace level7 {
 static constexpr auto nameLevel = "Niveau 7 : Kétamine"sv;
-static constexpr auto hour = 0u;
-static constexpr auto minut = 10u;
+static constexpr auto hour = 0U;
+static constexpr auto minut = 10U;
 
 static constexpr auto message0 = std::array{
     std::tuple{NameSpeaker::description, "Boum."},
@@ -317,8 +317,8 @@ static constexpr auto message1 = std::array{
 
 namespace level8 {
 static constexpr auto nameLevel = "Niveau 8 : Crack (Interlude)"sv;
-static constexpr auto hour = 2u;
-static constexpr auto minut = 12u;
+static constexpr auto hour = 2U;
+static constexpr auto minut = 12U;
 
 inline auto message0(const std::string& plugName) {
   return std::tuple{
@@ -357,8 +357,8 @@ static constexpr auto message1 = std::array{
 
 namespace level9 {
 static constexpr auto nameLevel = "Niveau 9 : LSD (Révélation)"sv;
-static constexpr auto hour = 3u;
-static constexpr auto minut = 35u;
+static constexpr auto hour = 3U;
+static constexpr auto minut = 35U;
 
 static constexpr auto message0 =
     std::array{std::tuple{NameSpeaker::player, "Dégage de là."}};
@@ -401,15 +401,15 @@ static constexpr auto message7 = std::array{
 
 namespace level10 {
 static constexpr auto nameLevel = "Niveau 10 : Héroine (Désillusion)"sv;
-static constexpr auto hour = 7u;
-static constexpr auto minut = 30u;
+static constexpr auto hour = 7U;
+static constexpr auto minut = 30U;
 
 static constexpr auto messageMinus1 = std::array{
     std::tuple{NameSpeaker::plug, "Que fais tu petit chose ?"},
     std::tuple{NameSpeaker::player, "Viens là, j'ai pas peur de toi."},
     std::tuple{NameSpeaker::plug, "Tiens, tu peux combattre avec ca."}};
 
-inline auto message0 = Message_t{
+inline const auto message0 = Message_t{
     std::tuple{NameSpeaker::player, "Est ce qui se passe, mon corps !"},
     std::tuple{NameSpeaker::plug, "La drogue te décompose."},
     std::tuple{NameSpeaker::plug,
@@ -417,7 +417,7 @@ inline auto message0 = Message_t{
     std::tuple{NameSpeaker::plug,
                "Ah, tu es encore en vie. Je te laisse encore une chance."}};
 
-inline auto message1 =
+inline const auto message1 =
     Message_t{std::tuple{NameSpeaker::plug, "Tu t'es pris pour qui."},
               std::tuple{NameSpeaker::plug,
                          "Tu as peut-être détruit toutes ces imbéciles, "
@@ -442,8 +442,8 @@ static constexpr auto message4 = std::array{
 
 namespace outro {
 static constexpr auto nameLevel = "Crédits"sv;
-static constexpr auto hour = 0u;
-static constexpr auto minut = 0u;
+static constexpr auto hour = 0U;
+static constexpr auto minut = 0U;
 
 static constexpr auto message0 = std::array{
     std::tuple{NameSpeaker::description, "Programmeur : Jess H."},
@@ -723,28 +723,28 @@ static constexpr auto statementRegeneration = std::array{
 }  // namespace tutorial
 
 namespace weapon {
-inline std::string statementEmpty{""};
+inline const std::string statementEmpty;
 // generic UseWeapon data statement for fist
-inline std::string statementUseFist{"Cognez ! (Poing)"};
+inline const std::string statementUseFist{"Cognez ! (Poing)"};
 // generic UseWeapon data statement for knife
-inline std::string statementUseKnife{"Plantez ! (Couteau)"};
+inline const std::string statementUseKnife{"Plantez ! (Couteau)"};
 // generic UseWeapon data statement for katana
-inline std::string statementUseKatana{"Découpez ! (Katana)"};
+inline const std::string statementUseKatana{"Découpez ! (Katana)"};
 // generic UseWeapon data statement for cutter
-inline std::string statementUseCutter{"Tailladez ! (Cutter)"};
+inline const std::string statementUseCutter{"Tailladez ! (Cutter)"};
 // generic UseWeapon data statement for hammer
-inline std::string statementUseHammer{"Martelez ! (Marteau)"};
+inline const std::string statementUseHammer{"Martelez ! (Marteau)"};
 
-inline std::string statementDivineStrike{
+inline const std::string statementDivineStrike{
     "Frappez comme un Dieu! (Frappe divine)"};
 
-inline std::string statementUseChopper{"Hachez ! (Hachoir)"};
-inline std::string statementUseNoWeapon{""};
+inline const std::string statementUseChopper{"Hachez ! (Hachoir)"};
+inline const std::string statementUseNoWeapon;
 
 // generic UseWeapon data statement for 9mm
-inline std::string statementUseNinemm{"Tirez ! (9mm)"};
+inline const std::string statementUseNinemm{"Tirez ! (9mm)"};
 // generic UseWeapon data statement for 9mm
-inline std::string statementUseAK47{"Rafalez ! (AK47)"};
+inline const std::string statementUseAK47{"Rafalez ! (AK47)"};
 
 // generic UseWeapon data result
 inline auto resultUseWeapon(const std::string& plugName, int damageWeapon) {
@@ -756,20 +756,20 @@ inline std::string statementCombo(const std::string& nameWeapon) {
 }
 
 // Name of all weapons
-inline std::string nameNoWeapon{"Pas d'arme"};
+inline const std::string nameNoWeapon{"Pas d'arme"};
 
-inline std::string nameFist{"Poing"};
-inline std::string nameDivineStrike{"Frappe Divine"};
+inline const std::string nameFist{"Poing"};
+inline const std::string nameDivineStrike{"Frappe Divine"};
 
-inline std::string nameCutter{"Cutter"};
-inline std::string nameKnife{"Couteau"};
-inline std::string nameHammer{"Marteau"};
-inline std::string nameKatana{"Katana"};
-inline std::string nameChopper{"Hachoir"};
-inline std::string nameHeroine{"Heroine"};
+inline const std::string nameCutter{"Cutter"};
+inline const std::string nameKnife{"Couteau"};
+inline const std::string nameHammer{"Marteau"};
+inline const std::string nameKatana{"Katana"};
+inline const std::string nameChopper{"Hachoir"};
+inline const std::string nameHeroine{"Heroine"};
 
-inline std::string nameNinemm{"9mm"};
-inline std::string nameAK47{"AK47"};
+inline const std::string nameNinemm{"9mm"};
+inline const std::string nameAK47{"AK47"};
 }  // namespace weapon
 
 }  // namespace data

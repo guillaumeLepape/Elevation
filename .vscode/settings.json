@@ -83,7 +83,7 @@
         "variant": "cpp"
     },
     "editor.rulers": [
-        88
+        80
     ],
     "cmake.useCMakePresets": "always",
     "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json"

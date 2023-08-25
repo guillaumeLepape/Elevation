@@ -19,10 +19,10 @@ create_load_game_statements() {
     if (dir_entry.is_regular_file() and
         dir_entry.path().extension() == ".json") {
       auto jsonObject = data::read_json_file(dir_entry.path());
-      std::string game_id = jsonObject["game_id"];
-      std::string pseudo = jsonObject["player"]["pseudo"];
-      int nb_level_suceeded = jsonObject["player"]["nb_level_suceeded"];
-      vec.push_back(std::tuple{game_id, pseudo, nb_level_suceeded});
+
+      vec.push_back(std::tuple{jsonObject["game_id"],
+                               jsonObject["player"]["pseudo"],
+                               jsonObject["player"]["nb_level_suceeded"]});
     }
   }
 

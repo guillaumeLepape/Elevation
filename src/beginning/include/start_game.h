@@ -19,14 +19,14 @@ class StartGame {
       : statement_{statement}, options_{options} {}
 
   StartGame(const StartGame&) = delete;
-  StartGame(StartGame&&) = default;
+  StartGame(StartGame&&) noexcept = default;
 
   StartGame& operator=(const StartGame&) = delete;
-  StartGame& operator=(StartGame&&) = default;
+  StartGame& operator=(StartGame&&) noexcept = default;
 
   ~StartGame() = default;
 
-  const T& statement() const { return statement_; }
+  [[nodiscard]] const T& statement() const { return statement_; }
 
   void trigger() { game_engine::launch(options_, utils::id::generate()); }
 };

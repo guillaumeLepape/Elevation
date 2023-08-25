@@ -33,7 +33,7 @@ auto read_list_of_name() {
   std::set<std::string> list_male_name;
 
   ranges::for_each(jsonObject, [&](const auto& person) {
-    std::string name = person["fields"]["prenoms"];
+    const std::string name = person["fields"]["prenoms"];
 
     person["fields"]["sexe"] == "F" ? list_female_name.insert(name)
                                     : list_male_name.insert(name);
@@ -43,7 +43,7 @@ auto read_list_of_name() {
 
 void write_list_name(const std::set<std::string>& listName,
                      std::string&& nameFile) {
-  nlohmann::json jsonObject(listName);
+  const nlohmann::json jsonObject(listName);
 
   std::ofstream jsonFile{fmt::format("dataset/{}.json", nameFile),
                          std::ofstream::binary};
@@ -58,6 +58,4 @@ auto main() -> int {
 
   write_list_name(list_female_name, "prenoms_feminins");
   write_list_name(list_male_name, "prenoms_masculins");
-
-  return 0;
 }
