@@ -15,10 +15,10 @@ Options::Options(int argc, char* argv[])
         }
         return result;
       }()},
-      noRule_{ranges::binary_search(argv_, "-r") or
-              ranges::binary_search(argv_, "--rule")},
-      help_{ranges::binary_search(argv_, "-h") or
-            ranges::binary_search(argv_, "--help")} {}
+      noRule{ranges::binary_search(argv_, "-r") or
+             ranges::binary_search(argv_, "--rule")},
+      help{ranges::binary_search(argv_, "-h") or
+           ranges::binary_search(argv_, "--help")} {}
 
 void Options::print_help() const {
   fmt::print("Allowed options :\n");

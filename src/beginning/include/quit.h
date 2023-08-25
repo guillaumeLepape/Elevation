@@ -16,14 +16,14 @@ class Quit {
       : statement_{statement}, result_{result} {}
 
   Quit(const Quit&) = delete;
-  Quit(Quit&&) = default;
+  Quit(Quit&&) noexcept = default;
 
   Quit& operator=(const Quit&) = delete;
-  Quit& operator=(Quit&&) = default;
+  Quit& operator=(Quit&&) noexcept = default;
 
   ~Quit() = default;
 
-  const T& statement() const { return statement_; }
+  [[nodiscard]] const T& statement() const { return statement_; }
 
   void trigger() {
     result::write(result_);

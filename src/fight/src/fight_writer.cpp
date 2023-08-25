@@ -52,15 +52,15 @@ void write(const entity::Player& player,
   tabulate::Table::Row_t damageWeaponFighters;
 
   // build a vector of name and life points of plugs
-  for (std::size_t i = 0; i < std::size(plugs); i++) {
+  for (const auto& plug : plugs) {
     // display plugs only if they are not dead
-    if (plugs[i]->healthBar().alive()) {
-      nameFighters.push_back(plugs[i]->name());
-      lifePointsFighters.push_back(fmt::format(
-          "{} points de vie", plugs[i]->healthBar().nbLifePoints()));
-      nameWeaponFighters.push_back(plugs[i]->weapon().name);
+    if (plug->healthBar().alive()) {
+      nameFighters.push_back(plug->name());
+      lifePointsFighters.push_back(
+          fmt::format("{} points de vie", plug->healthBar().nbLifePoints()));
+      nameWeaponFighters.push_back(plug->weapon().name);
       damageWeaponFighters.push_back(
-          fmt::format("{} points d'attaque", plugs[i]->weapon().nb_damage));
+          fmt::format("{} points d'attaque", plug->weapon().nb_damage));
     }
   }
 

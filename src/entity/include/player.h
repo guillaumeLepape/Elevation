@@ -23,9 +23,9 @@ class Player {
   Player(const std::string& pseudo, int nbLevelSuceeded, int nbLifePoints,
          int maxLifePoints, int money, weapon::WeaponInventory&& weapons);
 
-  Player(unsigned id);
+  explicit Player(unsigned id);
 
-  Player(const nlohmann::json& jsonInput);
+  explicit Player(const nlohmann::json& jsonInput);
 
   Player(const Player&) = delete;
   Player(Player&&) = default;
@@ -35,10 +35,10 @@ class Player {
 
   ~Player() = default;
 
-  const std::string& pseudo() const { return pseudo_; }
+  [[nodiscard]] const std::string& pseudo() const { return pseudo_; }
   void changePseudo(const std::string& pseudo) { pseudo_ = pseudo; }
 
-  int nbLevelSuceeded() const { return nbLevelSuceeded_; }
+  [[nodiscard]] int nbLevelSuceeded() const { return nbLevelSuceeded_; }
   void nextLevel() { nbLevelSuceeded_++; }
 
   void increaseMoney(int money) { money_ += money; }
@@ -46,9 +46,9 @@ class Player {
 
   weapon::WeaponInventory& weapons() { return weapons_; }
 
-  nlohmann::json write() const;
+  [[nodiscard]] nlohmann::json write() const;
 
-  const HealthBar& healthBar() const { return healthBar_; }
+  [[nodiscard]] const HealthBar& healthBar() const { return healthBar_; }
   HealthBar& healthBar() { return healthBar_; }
 };
 

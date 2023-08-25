@@ -29,7 +29,7 @@ void start(entity::Player& player, const utils::Options& options) {
 
   fight::launch(player, {&plug},
                 fight::parameters{std::vector<Combo<std::string_view>*>{},
-                                  options.noRule_});
+                                  options.noRule});
 
   message::write(data::level10::message2, player.pseudo(), plug.name());
 

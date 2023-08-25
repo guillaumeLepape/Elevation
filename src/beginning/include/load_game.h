@@ -21,14 +21,14 @@ class LoadGame {
       : statement_{statement}, options_{options} {}
 
   LoadGame(const LoadGame&) = delete;
-  LoadGame(LoadGame&&) = default;
+  LoadGame(LoadGame&&) noexcept = default;
 
   LoadGame& operator=(const LoadGame&) = delete;
-  LoadGame& operator=(LoadGame&&) = default;
+  LoadGame& operator=(LoadGame&&) noexcept = default;
 
   ~LoadGame() = default;
 
-  const T& statement() const { return statement_; }
+  [[nodiscard]] const T& statement() const { return statement_; }
 
   void trigger() {
     auto load_game_statements = data::create_load_game_statements();

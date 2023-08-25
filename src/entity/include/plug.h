@@ -28,6 +28,7 @@ class Plug {
   const std::string& name() const { return name_; }
   void changeWeapon(weapon::Weapon&& newWeapon);
 
+  const weapon::Weapon& weapon() const { return weapon_; }
   weapon::Weapon& weapon() { return weapon_; }
 
   const HealthBar& healthBar() const { return healthBar_; }
