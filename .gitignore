@@ -38,8 +38,8 @@ doc/Doxygen/html
 Elevation_export
 Elevation_export.zip
 
-graph*
 results/*.json
 
-.vscode
 vcpkg_installed
+
+compile_commands.json
