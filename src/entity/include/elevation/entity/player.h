@@ -41,6 +41,7 @@ class Player {
   void increaseMoney(int money) { money_ += money; }
   void decreaseMoney(int money) { money_ -= money; }
 
+  const weapon::WeaponInventory& weapons() const { return weapons_; }
   weapon::WeaponInventory& weapons() { return weapons_; }
 
   [[nodiscard]] nlohmann::json write() const;

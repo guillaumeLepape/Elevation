@@ -3,6 +3,7 @@
     "name": "elevation",
     "dependencies": [
         "fmt",
+        "json-schema-validator",
         "gtest",
         "nlohmann-json",
         "range-v3",
@@ -14,6 +15,10 @@
         {
             "name": "fmt",
             "version": "10.0.0"
+        },
+        {
+            "name": "json-schema-validator",
+            "version": "2.2.0"
         },
         {
             "name": "gtest",
