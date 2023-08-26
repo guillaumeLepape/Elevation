@@ -1,6 +1,7 @@
 #ifndef LEVEL_7_H
 #define LEVEL_7_H
 
+#include "combo.h"
 #include "combo_double_melee_weapon.h"
 #include "combo_fist_melee_weapon.h"
 #include "combo_quadruple_cutter.h"
@@ -23,17 +24,13 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level7::message0, player.pseudo(), boss.name());
 
-  std::unique_ptr<Combo<std::string_view>> comboFistMeleeWeapon{
-      new ComboFistMeleeWeapon<std::string_view>(player)};
-  std::unique_ptr<Combo<std::string_view>> comboDoubleMeleeWeapon{
-      new ComboDoubleMeleeWeapon<std::string_view>(player)};
-  std::unique_ptr<Combo<std::string_view>> comboQuadrupleCutter{
-      new ComboQuadrupleCutter<std::string_view>(player)};
+  auto comboFistMeleeWeapon = combo_v2::ComboFistMeleeWeapon{};
+  auto comboDoubleMeleeWeapon = combo_v2::ComboDoubleMeleeWeapon{};
+  auto comboQuadrupleCutter = combo_v2::ComboQuadrupleCutter{};
 
   fight::parameters parameters{
-      std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get(),
-                                            comboDoubleMeleeWeapon.get(),
-                                            comboQuadrupleCutter.get()},
+      std::vector<combo_v2::Combo<std::string_view>*>{
+          comboFistMeleeWeapon, comboDoubleMeleeWeapon, comboQuadrupleCutter},
       options.noRule};
   fight::launch(player, std::vector{&boss}, parameters);
 

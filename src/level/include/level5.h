@@ -1,6 +1,7 @@
 #ifndef LEVEL_5_H
 #define LEVEL_5_H
 
+#include "combo.h"
 #include "combo_double_melee_weapon.h"
 #include "combo_fist_melee_weapon.h"
 #include "combo_quadruple_cutter.h"
@@ -33,12 +34,9 @@ void start(entity::Player& player, const utils::Options& options) {
   }
 
   // Declare combos
-  std::unique_ptr<Combo<std::string_view>> comboFistMeleeWeapon{
-      new ComboFistMeleeWeapon<std::string_view>(player)};
-  std::unique_ptr<Combo<std::string_view>> comboDoubleMeleeWeapon{
-      new ComboDoubleMeleeWeapon<std::string_view>(player)};
-  std::unique_ptr<Combo<std::string_view>> comboQuadrupleCutter{
-      new ComboQuadrupleCutter<std::string_view>(player)};
+  auto comboFistMeleeWeapon = combo_v2::ComboFistMeleeWeapon{};
+  auto comboDoubleMeleeWeapon = combo_v2::ComboDoubleMeleeWeapon();
+  auto comboQuadrupleCutter = combo_v2::ComboQuadrupleCutter{};
 
   // First fight (introduction to Fist - Melee Weapon combo)
   if (not options.noRule) {
@@ -47,8 +45,8 @@ void start(entity::Player& player, const utils::Options& options) {
   }
 
   fight::parameters parameters_1{
-      std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get()},
-      options.noRule, false};
+      std::vector<combo_v2::Combo>{comboFistMeleeWeapon}, options.noRule,
+      false};
 
   fight::launch(player, std::vector{&guetteur}, parameters_1);
 
@@ -63,8 +61,8 @@ void start(entity::Player& player, const utils::Options& options) {
   }
 
   fight::parameters parameters_2{
-      std::vector<Combo<std::string_view>*>{comboDoubleMeleeWeapon.get()},
-      options.noRule, false};
+      std::vector<combo_v2::Combo>{comboDoubleMeleeWeapon}, options.noRule,
+      false};
 
   fight::launch(player, std::vector{&garde}, parameters_2);
 
@@ -78,8 +76,8 @@ void start(entity::Player& player, const utils::Options& options) {
                     data::tutorial::statementNoWeapon);
   }
 
-  fight::parameters parameters_3{std::vector<Combo<std::string_view>*>{},
-                                 options.noRule, false};
+  fight::parameters parameters_3{std::vector<combo_v2::Combo>{}, options.noRule,
+                                 false};
   fight::launch(player, std::vector{&secondGarde}, parameters_3);
 
   message::write(data::level5::message4, player.pseudo(), "");
@@ -102,10 +100,9 @@ void start(entity::Player& player, const utils::Options& options) {
   message::write(data::level5::message6, player.pseudo(), kamikaze.name());
 
   fight::parameters parameters_4{
-      std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get(),
-                                            comboDoubleMeleeWeapon.get(),
-                                            comboQuadrupleCutter.get()},
-      options.noRule};
+      std::vector<combo_v2::Combo>{comboFistMeleeWeapon, comboDoubleMeleeWeapon,
+                                   comboQuadrupleCutter},
+      options.noRule_};
   fight::launch(player, std::vector{&sacAPV, &kamikaze, &soutien},
                 parameters_4);
 
