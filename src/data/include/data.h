@@ -12,7 +12,7 @@ namespace data {
 template <utils::Printable T>
 nlohmann::json read_json_file(T&& path) {
   // open json file
-  std::ifstream messageFile{std::move(path), std::ifstream::binary};
+  std::ifstream messageFile{std::forward<T>(path), std::ifstream::binary};
 
   // check if the file is opened
   assert(messageFile.is_open());

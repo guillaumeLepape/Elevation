@@ -1,21 +1,16 @@
 #include "results.h"
 
-#include <fmt/color.h>
-
-#include <filesystem>
 #include <iomanip>
 #include <iostream>
-
-namespace fs = std::filesystem;
 
 namespace data {
 std::vector<std::tuple<std::string, std::string, int>>
 create_load_game_statements() {
-  const fs::path results_path{"results"};
+  fs::create_directories(RESULTS_PATH);
 
   std::vector<std::tuple<std::string, std::string, int>> vec;
 
-  for (const auto& dir_entry : fs::directory_iterator{results_path}) {
+  for (const auto& dir_entry : fs::directory_iterator{RESULTS_PATH}) {
     if (dir_entry.is_regular_file() and
         dir_entry.path().extension() == ".json") {
       const auto jsonObject = data::read_json_file(dir_entry.path());
@@ -32,7 +27,7 @@ create_load_game_statements() {
 void save(const std::string& id, const entity::Player& player) {
   nlohmann::json json{{"game_id", id}, {"player", player.write()}};
 
-  std::string path = fmt::format("{}/{}.json", "results", id);
+  fs::path path = RESULTS_PATH / fmt::format("{}.json", id);
 
   std::ofstream file{path};
   file.clear();
@@ -41,10 +36,10 @@ void save(const std::string& id, const entity::Player& player) {
 }
 
 nlohmann::json get_saved_data(const std::string& id) {
-  return data::read_json_file(fmt::format("results/{}.json", id));
+  return data::read_json_file(RESULTS_PATH / fmt::format("{}.json", id));
 }
 
 bool is_new_game(const std::string& id) {
-  return not fs::exists(fmt::format("results/{}.json", id));
+  return not fs::exists(RESULTS_PATH / fmt::format("{}.json", id));
 }
 }  // namespace data
