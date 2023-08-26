@@ -21,12 +21,8 @@ class LoadGame {
       : statement_{statement}, options_{options} {}
 
   LoadGame(const LoadGame&) = delete;
-  LoadGame(LoadGame&&) noexcept = default;
 
   LoadGame& operator=(const LoadGame&) = delete;
-  LoadGame& operator=(LoadGame&&) noexcept = default;
-
-  ~LoadGame() = default;
 
   [[nodiscard]] const T& statement() const { return statement_; }
 

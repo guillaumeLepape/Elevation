@@ -19,12 +19,8 @@ class StartGame {
       : statement_{statement}, options_{options} {}
 
   StartGame(const StartGame&) = delete;
-  StartGame(StartGame&&) noexcept = default;
 
   StartGame& operator=(const StartGame&) = delete;
-  StartGame& operator=(StartGame&&) noexcept = default;
-
-  ~StartGame() = default;
 
   [[nodiscard]] const T& statement() const { return statement_; }
 

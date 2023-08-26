@@ -3,7 +3,6 @@
         "editor.formatOnSave": true
     },
     "files.associations": {
-        ".env.mysql": "properties",
         "any": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -86,5 +85,10 @@
         80
     ],
     "cmake.useCMakePresets": "always",
-    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json"
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
+    "editor.tabSize": 2,
+    "files.exclude": {
+        "doc/**": true,
+        "vcpkg/**": true
+    }
 }
