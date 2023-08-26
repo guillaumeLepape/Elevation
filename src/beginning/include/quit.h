@@ -16,8 +16,12 @@ class Quit {
       : statement_{statement}, result_{result} {}
 
   Quit(const Quit&) = delete;
+  Quit(Quit&&) noexcept = default;
 
   Quit& operator=(const Quit&) = delete;
+  Quit& operator=(Quit&&) noexcept = default;
+
+  ~Quit() noexcept = default;
 
   [[nodiscard]] const T& statement() const { return statement_; }
 
