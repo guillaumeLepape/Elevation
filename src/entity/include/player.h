@@ -23,17 +23,11 @@ class Player {
   Player(const std::string& pseudo, int nbLevelSuceeded, int nbLifePoints,
          int maxLifePoints, int money, weapon::WeaponInventory&& weapons);
 
-  explicit Player(unsigned id);
-
   explicit Player(const nlohmann::json& jsonInput);
 
   Player(const Player&) = delete;
-  Player(Player&&) = default;
 
   Player& operator=(const Player&) = delete;
-  Player& operator=(Player&&) = default;
-
-  ~Player() = default;
 
   [[nodiscard]] const std::string& pseudo() const { return pseudo_; }
   void changePseudo(const std::string& pseudo) { pseudo_ = pseudo; }

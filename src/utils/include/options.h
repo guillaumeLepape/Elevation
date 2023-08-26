@@ -13,15 +13,9 @@ class Options {
  public:
   Options(int argc, char* argv[]);
 
-  Options() = delete;
-
   Options(const Options&) = delete;
-  Options(Options&&) noexcept = default;
 
   Options& operator=(const Options&) = delete;
-  Options& operator=(Options&&) noexcept = default;
-
-  ~Options() = default;
 
   void print_help() const;
 

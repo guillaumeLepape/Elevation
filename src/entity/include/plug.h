@@ -18,12 +18,8 @@ class Plug {
        weapon::Weapon&& weapon = weapon::NoWeapon());
 
   Plug(const Plug&) = delete;
-  Plug(Plug&&) = default;
 
   Plug& operator=(const Plug&) = delete;
-  Plug& operator=(Plug&&) = default;
-
-  ~Plug() = default;
 
   const std::string& name() const { return name_; }
   void changeWeapon(weapon::Weapon&& newWeapon);
