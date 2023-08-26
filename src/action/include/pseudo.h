@@ -31,8 +31,9 @@ class Pseudo {
       : statement_{statement}, result_{result}, player_{player} {}
 
   void trigger() {
-    auto feminineName = data::read_list_name("dataset", "prenoms_feminins");
-    auto masculineName = data::read_list_name("dataset", "prenoms_masculins");
+    const auto feminineName = data::read_list_name("dataset/prenoms_feminins");
+    const auto masculineName =
+        data::read_list_name("dataset/prenoms_masculins");
 
     std::string pseudo;
     bool out = false;

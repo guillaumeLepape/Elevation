@@ -25,14 +25,6 @@ nlohmann::json read_json_file(T&& path) {
 
   return jsonObject;
 }
-
-template <utils::Printable T, utils::Printable U>
-nlohmann::json read_json_file(T&& folder, U&& file_name) {
-  auto path = fmt::format("{}/{}.json", std::forward<T>(folder),
-                          std::forward<U>(file_name));
-
-  return read_json_file(path);
-}
 }  // namespace data
 
 #endif
