@@ -26,8 +26,12 @@ class Player {
   explicit Player(const nlohmann::json& jsonInput);
 
   Player(const Player&) = delete;
+  Player(Player&&) noexcept = default;
 
   Player& operator=(const Player&) = delete;
+  Player& operator=(Player&&) noexcept = default;
+
+  ~Player() noexcept = default;
 
   [[nodiscard]] const std::string& pseudo() const { return pseudo_; }
   void changePseudo(const std::string& pseudo) { pseudo_ = pseudo; }

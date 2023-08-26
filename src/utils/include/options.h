@@ -9,18 +9,24 @@ namespace utils {
 class Options {
  private:
   std::set<std::string_view> argv_;
+  bool noRule_;
+  bool help_;
 
  public:
   Options(int argc, char* argv[]);
 
   Options(const Options&) = delete;
+  Options(Options&&) noexcept = default;
 
   Options& operator=(const Options&) = delete;
+  Options& operator=(Options&&) noexcept = default;
+
+  ~Options() noexcept = default;
 
   void print_help() const;
 
-  bool noRule;
-  bool help;
+  [[nodiscard]] bool noRule() const { return noRule_; }
+  [[nodiscard]] bool help() const { return help_; }
 };
 }  // namespace utils
 

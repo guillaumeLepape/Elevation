@@ -25,7 +25,7 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level5::message1, player.pseudo(), guetteur.name());
 
-  if (not options.noRule) {
+  if (not options.noRule()) {
     tutorial::write(data::tutorial::titleCombatSystem,
                     data::tutorial::statementCombatSystem(
                         player.healthBar().maxLifePoints()));
@@ -41,14 +41,14 @@ void start(entity::Player& player, const utils::Options& options) {
       new ComboQuadrupleCutter<std::string_view>(player)};
 
   // First fight (introduction to Fist - Melee Weapon combo)
-  if (not options.noRule) {
+  if (not options.noRule()) {
     tutorial::write(data::tutorial::titleComboFistMeleeWeapon,
                     data::tutorial::statementComboFistMeleeWeapon);
   }
 
   fight::parameters parameters_1{
       std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get()},
-      options.noRule, false};
+      options.noRule(), false};
 
   fight::launch(player, std::vector{&guetteur}, parameters_1);
 
@@ -57,14 +57,14 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level5::message2, player.pseudo(), garde.name());
 
-  if (not options.noRule) {
+  if (not options.noRule()) {
     tutorial::write(data::tutorial::titleComboDoubleMeleeWeapon,
                     data::tutorial::statementComboDoubleMeleeWeapon);
   }
 
   fight::parameters parameters_2{
       std::vector<Combo<std::string_view>*>{comboDoubleMeleeWeapon.get()},
-      options.noRule, false};
+      options.noRule(), false};
 
   fight::launch(player, std::vector{&garde}, parameters_2);
 
@@ -73,13 +73,13 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level5::message3, player.pseudo(), secondGarde.name());
 
-  if (not options.noRule) {
+  if (not options.noRule()) {
     tutorial::write(data::tutorial::titleNoWeapon,
                     data::tutorial::statementNoWeapon);
   }
 
   fight::parameters parameters_3{std::vector<Combo<std::string_view>*>{},
-                                 options.noRule, false};
+                                 options.noRule(), false};
   fight::launch(player, std::vector{&secondGarde}, parameters_3);
 
   message::write(data::level5::message4, player.pseudo(), "");
@@ -89,7 +89,7 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level5::message5, player.pseudo(), "");
 
-  if (not options.noRule) {
+  if (not options.noRule()) {
     tutorial::write(data::tutorial::titleRegeneration,
                     data::tutorial::statementRegeneration);
   }
@@ -105,7 +105,7 @@ void start(entity::Player& player, const utils::Options& options) {
       std::vector<Combo<std::string_view>*>{comboFistMeleeWeapon.get(),
                                             comboDoubleMeleeWeapon.get(),
                                             comboQuadrupleCutter.get()},
-      options.noRule};
+      options.noRule()};
   fight::launch(player, std::vector{&sacAPV, &kamikaze, &soutien},
                 parameters_4);
 
