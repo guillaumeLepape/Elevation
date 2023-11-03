@@ -1,5 +1,4 @@
-#ifndef INTRODUCTION_H
-#define INTRODUCTION_H
+#pragma once
 
 #include "header_writer.h"
 #include "languages.h"
@@ -22,5 +21,3 @@ void start(entity::Player& player) {
                  "");
 }
 }  // namespace introduction
-
-#endif

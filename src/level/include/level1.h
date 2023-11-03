@@ -1,5 +1,4 @@
-#ifndef LEVEL_1_H
-#define LEVEL_1_H
+#pragma once
 
 #include "header_writer.h"
 #include "languages.h"
@@ -23,5 +22,3 @@ void start(entity::Player& player) {
   player.decreaseMoney(price);
 }
 }  // namespace level1
-
-#endif

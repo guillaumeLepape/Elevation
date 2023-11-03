@@ -1,5 +1,4 @@
-#ifndef FIGHT_H
-#define FIGHT_H
+#pragma once
 
 #include <range/v3/algorithm/all_of.hpp>
 #include <range/v3/algorithm/count_if.hpp>
@@ -215,5 +214,3 @@ void launch(entity::Player& player, const std::vector<entity::Plug*>& plugs,
   fight.startFight(params.messageWriter, params.stop_condition);
 }
 }  // namespace fight
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 #include "health_bar.h"
 #include "weapon.h"
@@ -61,4 +60,3 @@ void attack(Entity& entity, const weapon::Weapon& weapon) {
 Player make_player_from_game_id(const std::string& id);
 
 }  // namespace entity
-#endif

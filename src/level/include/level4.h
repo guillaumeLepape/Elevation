@@ -1,5 +1,4 @@
-#ifndef LEVEL_4_H
-#define LEVEL_4_H
+#pragma once
 
 #include "answer.h"
 #include "header_writer.h"
@@ -80,5 +79,3 @@ void start(entity::Player& player) {
   message::write(data::level4::message2, player.pseudo(), plug.name());
 }
 }  // namespace level4
-
-#endif

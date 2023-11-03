@@ -1,5 +1,4 @@
-#ifndef QUESTION_H
-#define QUESTION_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -16,5 +15,3 @@ bool question(T&& title, const std::vector<U>& statements,
   return answers[result];
 }
 }  // namespace selection
-
-#endif

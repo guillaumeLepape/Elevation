@@ -1,5 +1,4 @@
-#ifndef REGENERATION_H
-#define REGENERATION_H
+#pragma once
 
 #include "player.h"
 
@@ -54,5 +53,3 @@ void trigger(entity::Player& player) {
 }
 }  // namespace regeneration
 }  // namespace action
-
-#endif

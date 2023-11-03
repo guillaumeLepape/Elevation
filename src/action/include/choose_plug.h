@@ -1,5 +1,4 @@
-#ifndef CHOOSE_PLUG
-#define CHOOSE_PLUG
+#pragma once
 
 #include "concept.h"
 
@@ -21,5 +20,3 @@ class ChoosePlug {
   entity::Plug& plug() const { return plug_; }
 };
 }  // namespace action
-
-#endif

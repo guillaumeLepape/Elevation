@@ -1,5 +1,4 @@
-#ifndef NEGOCIATE_H
-#define NEGOCIATE_H
+#pragma once
 
 #include "action_writer.h"
 #include "concept.h"
@@ -86,5 +85,3 @@ void trigger(entity::Player& player, const entity::Plug& plug, int plugPrice,
 }
 }  // namespace negociate
 }  // namespace action
-
-#endif

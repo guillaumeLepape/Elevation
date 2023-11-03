@@ -1,5 +1,4 @@
-#ifndef LEVEL_UTILS_H
-#define LEVEL_UTILS_H
+#pragma once
 
 #include "languages.h"
 #include "nothing.h"
@@ -17,5 +16,3 @@ void end() {
   fmt::print("\n");
 }
 }  // namespace utils::level
-
-#endif

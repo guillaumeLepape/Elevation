@@ -1,5 +1,4 @@
-#ifndef WEAPON_H
-#define WEAPON_H
+#pragma once
 
 #include <nlohmann/json.hpp>
 #include <optional>
@@ -53,5 +52,3 @@ bool contains(const WeaponInventory& weaponInventory, Type&& type);
 void remove(WeaponInventory& weaponInventory, const std::string& name);
 
 }  // namespace weapon
-
-#endif

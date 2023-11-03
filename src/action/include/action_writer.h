@@ -1,5 +1,4 @@
-#ifndef ACTION_WRITER_H
-#define ACTION_WRITER_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -28,5 +27,3 @@ void write(T&& result) {
 }
 }  // namespace result
 }  // namespace action
-
-#endif

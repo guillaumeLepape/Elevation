@@ -1,5 +1,4 @@
-#ifndef ADD_WEAPON_ACTION_H
-#define ADD_WEAPON_ACTION_H
+#pragma once
 
 #include "action_writer.h"
 #include "concept.h"
@@ -40,5 +39,3 @@ void trigger(entity::Player& player, weapon::Weapon&& weapon) {
 }
 }  // namespace add_weapon
 }  // namespace action
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef TUPLE_H
-#define TUPLE_H
+#pragma once
 
 namespace utils {
 template <class Tuple, class F>
@@ -12,5 +11,3 @@ constexpr auto for_each(Tuple&& tuple, F&& f) {
              std::tuple_size<std::remove_reference_t<Tuple>>::value>{});
 }
 }  // namespace utils
-
-#endif

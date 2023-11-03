@@ -1,5 +1,4 @@
-#ifndef FRENCH_DATA_H
-#define FRENCH_DATA_H
+#pragma once
 
 #include <fmt/core.h>
 
@@ -773,5 +772,3 @@ inline const std::string nameAK47{"AK47"};
 }  // namespace weapon
 
 }  // namespace data
-
-#endif

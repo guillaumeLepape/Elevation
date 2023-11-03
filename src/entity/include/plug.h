@@ -1,5 +1,4 @@
-#ifndef PLUG_H
-#define PLUG_H
+#pragma once
 
 #include "health_bar.h"
 #include "weapon.h"
@@ -31,5 +30,3 @@ class Plug {
   HealthBar& healthBar() { return healthBar_; }
 };
 }  // namespace entity
-
-#endif

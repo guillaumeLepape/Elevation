@@ -1,5 +1,4 @@
-#ifndef SELECTION_H
-#define SELECTION_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -90,5 +89,3 @@ std::size_t select(T&& title, std::vector<Arg>& actions) {
   return result;
 }
 }  // namespace selection
-
-#endif

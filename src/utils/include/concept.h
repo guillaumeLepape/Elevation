@@ -1,5 +1,4 @@
-#ifndef CONCEPT_H
-#define CONCEPT_H
+#pragma once
 
 #include <concepts>
 #include <iostream>
@@ -16,5 +15,3 @@ concept Action = requires(T action) {
   { action.trigger() } -> std::same_as<void>;
 };
 }  // namespace utils
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LEVEL_6_H
-#define LEVEL_6_H
+#pragma once
 
 #include "header_writer.h"
 #include "languages.h"
@@ -15,5 +14,3 @@ void start(entity::Player& player) {
   message::write(data::level6::message0, player.pseudo(), "");
 }
 }  // namespace level6
-
-#endif

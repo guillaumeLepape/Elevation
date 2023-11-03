@@ -1,5 +1,4 @@
-#ifndef LEVEL_5_H
-#define LEVEL_5_H
+#pragma once
 
 #include "combo_double_melee_weapon.h"
 #include "combo_fist_melee_weapon.h"
@@ -114,5 +113,3 @@ void start(entity::Player& player, const utils::Options& options) {
   regenerateAllLife.trigger();
 }
 }  // namespace level5
-
-#endif

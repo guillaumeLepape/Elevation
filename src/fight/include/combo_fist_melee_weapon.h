@@ -1,5 +1,4 @@
-#ifndef COMBO_FIST_MELEE_WEAPON_H
-#define COMBO_FIST_MELEE_WEAPON_H
+#pragma once
 
 #include "combo.h"
 
@@ -34,5 +33,3 @@ class ComboFistMeleeWeapon : public Combo<T> {
   }
   ~ComboFistMeleeWeapon() override = default;
 };
-
-#endif

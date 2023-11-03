@@ -1,5 +1,4 @@
-#ifndef SAVE_AND_QUIT_H
-#define SAVE_AND_QUIT_H
+#pragma once
 
 #include <iostream>
 
@@ -26,5 +25,3 @@ class SaveAndQuit {
   }
 };
 }  // namespace action
-
-#endif

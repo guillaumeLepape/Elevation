@@ -1,5 +1,4 @@
-#ifndef DEAD_H
-#define DEAD_H
+#pragma once
 
 #include "concept.h"
 #include "plug.h"
@@ -30,5 +29,3 @@ void trigger(const entity::Plug& plug, const U& result) {
 }
 }  // namespace dead
 }  // namespace action
-
-#endif

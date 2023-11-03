@@ -1,5 +1,4 @@
-#ifndef LEVEL_2_H
-#define LEVEL_2_H
+#pragma once
 
 #include "header_writer.h"
 #include "languages.h"
@@ -25,5 +24,3 @@ void start(entity::Player& player) {
                              data::action::resultNegociate(0));
 }
 }  // namespace level2
-
-#endif

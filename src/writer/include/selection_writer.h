@@ -1,5 +1,4 @@
-#ifndef SELECTION_WRITER_H
-#define SELECTION_WRITER_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -90,5 +89,3 @@ void write(T&& title, Args&&... statements) {
   }
 }
 }  // namespace selection
-
-#endif

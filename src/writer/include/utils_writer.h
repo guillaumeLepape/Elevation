@@ -1,8 +1,5 @@
-#ifndef UTILS_WRITER
-#define UTILS_WRITER
+#pragma once
 
 namespace utils {
 void writeSeparators();
 }
-
-#endif

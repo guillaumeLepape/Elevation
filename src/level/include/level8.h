@@ -1,5 +1,4 @@
-#ifndef LEVEL_8_H
-#define LEVEL_8_H
+#pragma once
 
 #include "add_weapon.h"
 #include "header_writer.h"
@@ -24,5 +23,3 @@ void start(entity::Player& player) {
   message::write(data::level8::message1, player.pseudo(), plug.name());
 }
 }  // namespace level8
-
-#endif

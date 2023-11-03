@@ -1,5 +1,4 @@
-#ifndef LEVEL_10_H
-#define LEVEL_10_H
+#pragma once
 
 #include "add_weapon.h"
 #include "fight.h"
@@ -43,5 +42,3 @@ void start(entity::Player& player, const utils::Options& options) {
   message::write(data::level10::message4, player.pseudo(), plug.name());
 }
 }  // namespace level10
-
-#endif

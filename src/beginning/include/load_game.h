@@ -1,5 +1,4 @@
-#ifndef LOAD_GAME_H
-#define LOAD_GAME_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -56,5 +55,3 @@ class LoadGame {
   }
 };
 }  // namespace action
-
-#endif
