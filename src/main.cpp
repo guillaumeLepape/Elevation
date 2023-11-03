@@ -2,12 +2,12 @@
 #include <string_view>
 #include <tuple>
 
-#include "languages.h"
-#include "load_game.h"
-#include "quit.h"
-#include "rules.h"
-#include "selection.h"
-#include "start_game.h"
+#include "elevation/beginning/load_game.h"
+#include "elevation/beginning/quit.h"
+#include "elevation/beginning/start_game.h"
+#include "elevation/data_files/languages.h"
+#include "elevation/selection/selection.h"
+#include "elevation/writer/rules.h"
 
 auto main(int argc, char* argv[]) -> int {
   const utils::Options options{argc, argv};

@@ -1,4 +1,4 @@
-#include "message_writer.h"
+#include "elevation/writer/message_writer.h"
 
 namespace message {
 void write(const MessageWriter& messageWriter) {

@@ -1,4 +1,4 @@
-#include "weapon.h"
+#include "elevation/weapon/weapon.h"
 
 #include <fmt/color.h>
 

@@ -1,8 +1,8 @@
-#include "weapon_writer.h"
+#include "elevation/weapon/weapon_writer.h"
 
 #include <fmt/color.h>
 
-#include "pause.h"
+#include "elevation/utils/pause.h"
 
 namespace weapon {
 void print(const Weapon& weapon) {

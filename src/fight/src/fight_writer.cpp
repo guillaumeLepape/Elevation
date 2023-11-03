@@ -1,11 +1,11 @@
-#include "fight_writer.h"
+#include "elevation/fight/fight_writer.h"
 
 #include <fmt/color.h>
 
 #include <tabulate/table.hpp>
 
-#include "pause.h"
-#include "utils_writer.h"
+#include "elevation/utils/pause.h"
+#include "elevation/writer/utils_writer.h"
 
 namespace fight {
 namespace start {
