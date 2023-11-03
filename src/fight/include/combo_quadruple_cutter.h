@@ -1,5 +1,4 @@
-#ifndef COMBO_QUADRUPLE_CUTTER_H
-#define COMBO_QUADRUPLE_CUTTER_H
+#pragma once
 
 #include "combo.h"
 
@@ -23,5 +22,3 @@ class ComboQuadrupleCutter : public Combo<T> {
 
   ~ComboQuadrupleCutter() override = default;
 };
-
-#endif

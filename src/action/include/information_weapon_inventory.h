@@ -1,5 +1,4 @@
-#ifndef INFORMATION_WEAPON_INVENTORY_H
-#define INFORMATION_WEAPON_INVENTORY_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -35,5 +34,3 @@ class InformationWeaponInventory {
   }
 };
 }  // namespace action
-
-#endif

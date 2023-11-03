@@ -1,5 +1,4 @@
-#ifndef TRAITS_H
-#define TRAITS_H
+#pragma once
 
 #include <tuple>
 
@@ -27,5 +26,3 @@ template <typename T>
 static constexpr bool is_message_tuple_v = is_message_tuple<T>::value;
 
 }  // namespace utils
-
-#endif

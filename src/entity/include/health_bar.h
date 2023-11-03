@@ -1,5 +1,4 @@
-#ifndef HEALTH_BAR_H
-#define HEALTH_BAR_H
+#pragma once
 
 namespace entity {
 class HealthBar {
@@ -38,5 +37,3 @@ class HealthBar {
   [[nodiscard]] bool alive() const { return not dead(); }
 };
 }  // namespace entity
-
-#endif

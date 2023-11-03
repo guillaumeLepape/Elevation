@@ -1,5 +1,4 @@
-#ifndef LEVEL_7_H
-#define LEVEL_7_H
+#pragma once
 
 #include "combo_double_melee_weapon.h"
 #include "combo_fist_melee_weapon.h"
@@ -42,5 +41,3 @@ void start(entity::Player& player, const utils::Options& options) {
   action::regenerate_all_life::trigger(player);
 }
 }  // namespace level7
-
-#endif

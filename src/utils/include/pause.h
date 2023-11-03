@@ -1,8 +1,5 @@
-#ifndef PAUSE_H
-#define PAUSE_H
+#pragma once
 
 namespace utils {
 void pause();
 }
-
-#endif

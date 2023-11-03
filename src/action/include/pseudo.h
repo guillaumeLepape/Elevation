@@ -1,5 +1,4 @@
-#ifndef PSEUDO_H
-#define PSEUDO_H
+#pragma once
 
 #include <range/v3/algorithm/binary_search.hpp>
 
@@ -75,5 +74,3 @@ void trigger(entity::Player& player, const T& statement, const U& result) {
 }
 }  // namespace pseudo
 }  // namespace action
-
-#endif

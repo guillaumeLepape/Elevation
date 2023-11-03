@@ -1,5 +1,4 @@
-#ifndef GAME_OVER_H
-#define GAME_OVER_H
+#pragma once
 
 #include "action_writer.h"
 #include "concept.h"
@@ -28,5 +27,3 @@ void trigger(const T& result) {
 }
 }  // namespace game_over
 }  // namespace action
-
-#endif

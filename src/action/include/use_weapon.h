@@ -1,5 +1,4 @@
-#ifndef USE_WEAPON_H
-#define USE_WEAPON_H
+#pragma once
 
 #include <range/v3/algorithm/find_if.hpp>
 #include <range/v3/range/concepts.hpp>
@@ -74,5 +73,3 @@ void trigger(entity::Player& player, entity::Plug& plug,
 }
 }  // namespace use_weapon
 }  // namespace action
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef NOTHING_H
-#define NOTHING_H
+#pragma once
 
 #include "concept.h"
 
@@ -17,5 +16,3 @@ class Nothing {
   const T& statement() const { return statement_; }
 };
 }  // namespace action
-
-#endif

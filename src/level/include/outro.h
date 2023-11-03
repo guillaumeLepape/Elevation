@@ -1,5 +1,4 @@
-#ifndef OUTRO_H
-#define OUTRO_H
+#pragma once
 
 #include "header_writer.h"
 #include "languages.h"
@@ -16,5 +15,3 @@ void start(entity::Player& player) {
   std::cout << "\n";
 }
 }  // namespace outro
-
-#endif

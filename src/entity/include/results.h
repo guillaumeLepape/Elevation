@@ -1,5 +1,4 @@
-#ifndef RESULTS_H
-#define RESULTS_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -24,5 +23,3 @@ bool is_new_game(const std::string& id);
 static const auto RESULTS_PATH =
     fs::path{fmt::format("{}/.elevation/results", getenv("HOME"))};
 }  // namespace data
-
-#endif

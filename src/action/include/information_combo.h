@@ -1,5 +1,4 @@
-#ifndef INFORMATION_COMBO_H
-#define INFORMATION_COMBO_H
+#pragma once
 
 #include <range/v3/algorithm/for_each.hpp>
 
@@ -27,5 +26,3 @@ class InformationCombo {
   }
 };
 }  // namespace action
-
-#endif

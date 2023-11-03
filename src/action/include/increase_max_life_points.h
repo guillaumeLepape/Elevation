@@ -1,5 +1,4 @@
-#ifndef INCREASE_MAX_LIFE_POINTS_H
-#define INCREASE_MAX_LIFE_POINTS_H
+#pragma once
 
 #include "concept.h"
 
@@ -25,5 +24,3 @@ class IncreaseMaxLifePoints {
   }
 };
 }  // namespace action
-
-#endif

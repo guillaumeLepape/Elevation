@@ -1,10 +1,7 @@
-#ifndef RULES_H
-#define RULES_H
+#pragma once
 
 #include "options.h"
 
 namespace rules {
 void write(const utils::Options& options);
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef HEADER_WRITER_H
-#define HEADER_WRITER_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -29,5 +28,3 @@ void write(T&& name_level, U&& hour, V&& minut) {
   utils::writeSeparators();
 }
 }  // namespace header
-
-#endif

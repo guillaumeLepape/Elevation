@@ -1,5 +1,4 @@
-#ifndef COMBO_H
-#define COMBO_H
+#pragma once
 
 #include <variant>
 
@@ -122,5 +121,3 @@ void trigger(Combo<T>&& combo, entity::Player& player, entity::Plug& plug,
       combo);
 }
 }  // namespace combo_v2
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef FIGHT_WRITER_H
-#define FIGHT_WRITER_H
+#pragma once
 
 #include "player.h"
 #include "plug.h"
@@ -30,5 +29,3 @@ namespace end {
 void write();
 }
 }  // namespace fight
-
-#endif

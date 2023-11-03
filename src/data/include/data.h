@@ -1,5 +1,4 @@
-#ifndef DATA_H
-#define DATA_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -26,5 +25,3 @@ nlohmann::json read_json_file(T&& path) {
   return jsonObject;
 }
 }  // namespace data
-
-#endif

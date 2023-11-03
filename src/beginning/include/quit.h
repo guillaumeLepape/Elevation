@@ -1,5 +1,4 @@
-#ifndef QUIT_H
-#define QUIT_H
+#pragma once
 
 #include "action_writer.h"
 #include "concept.h"
@@ -31,5 +30,3 @@ class Quit {
   }
 };
 }  // namespace action
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef COMBO_WRITER_H
-#define COMBO_WRITER_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -33,5 +32,3 @@ void write(const Combo<T>& combo) {
              combo.malusStatement());
 }
 }  // namespace combo
-
-#endif

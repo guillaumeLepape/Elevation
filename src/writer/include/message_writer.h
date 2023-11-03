@@ -1,5 +1,4 @@
-#ifndef MESSAGE_WRITER_H
-#define MESSAGE_WRITER_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -80,5 +79,3 @@ void write(T&& messages, U&& pseudo, V&& plugName) {
 
 void write(const MessageWriter& message);
 }  // namespace message
-
-#endif

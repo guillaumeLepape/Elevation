@@ -1,5 +1,4 @@
-#ifndef PLUG_ATTACK_H
-#define PLUG_ATTACK_H
+#pragma once
 
 #include "concept.h"
 
@@ -32,5 +31,3 @@ void trigger(entity::Player& player, entity::Plug& plug) {
 }
 }  // namespace plug_attack
 }  // namespace action
-
-#endif

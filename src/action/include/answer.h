@@ -1,5 +1,4 @@
-#ifndef ANSWER_H
-#define ANSWER_H
+#pragma once
 
 #include "concept.h"
 
@@ -19,5 +18,3 @@ class Answer {
   bool correctOrNot() const { return correctOrNot_; }
 };
 }  // namespace action
-
-#endif

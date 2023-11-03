@@ -1,5 +1,4 @@
-#ifndef LEVEL_3_H
-#define LEVEL_3_H
+#pragma once
 
 #include "add_weapon.h"
 #include "header_writer.h"
@@ -48,5 +47,3 @@ void start(entity::Player& player) {
   message::write(data::level3::message5, player.pseudo(), plug.name());
 }
 }  // namespace level3
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef TUTORIAL_WRITER_H
-#define TUTORIAL_WRITER_H
+#pragma once
 
 #include <fmt/color.h>
 
@@ -33,5 +32,3 @@ void write(T&& title, U&& tutorialStatement) {
   fmt::print("\n");
 }
 }  // namespace tutorial
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef OPTIONS_H
-#define OPTIONS_H
+#pragma once
 
 #include <set>
 #include <string_view>
@@ -29,5 +28,3 @@ class Options {
   [[nodiscard]] bool help() const { return help_; }
 };
 }  // namespace utils
-
-#endif

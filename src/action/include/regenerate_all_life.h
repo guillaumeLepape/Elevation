@@ -1,5 +1,4 @@
-#ifndef REGENERATE_ALL_LIFE
-#define REGENERATE_ALL_LIFE
+#pragma once
 
 #include "player.h"
 
@@ -30,5 +29,3 @@ void trigger(entity::Player& player) {
 }
 }  // namespace regenerate_all_life
 }  // namespace action
-
-#endif

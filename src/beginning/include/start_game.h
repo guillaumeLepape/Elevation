@@ -1,5 +1,4 @@
-#ifndef START_GAME_H
-#define START_GAME_H
+#pragma once
 
 #include "concept.h"
 #include "game_engine.h"
@@ -31,5 +30,3 @@ class StartGame {
   void trigger() { game_engine::launch(options_, utils::id::generate()); }
 };
 }  // namespace action
-
-#endif
