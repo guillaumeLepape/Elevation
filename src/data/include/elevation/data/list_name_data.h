@@ -6,6 +6,6 @@
 
 namespace fs = std::filesystem;
 
-namespace data {
+namespace elevation::data {
 std::set<std::string> read_list_name(fs::path&& file_path);
 }

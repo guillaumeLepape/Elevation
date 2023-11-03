@@ -11,6 +11,7 @@
 #include "elevation/utils/traits.h"
 #include "elevation/utils/tuple.h"
 
+namespace elevation {
 struct MessageWriter {
   data::Message_t messages_;
   std::string pseudo_;
@@ -79,3 +80,4 @@ void write(T&& messages, U&& pseudo, V&& plugName) {
 
 void write(const MessageWriter& message);
 }  // namespace message
+}  // namespace elevation

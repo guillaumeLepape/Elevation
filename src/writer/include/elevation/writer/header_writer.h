@@ -9,7 +9,7 @@
 #include "elevation/utils/pause.h"
 #include "elevation/writer/utils_writer.h"
 
-namespace header {
+namespace elevation::header {
 template <utils::Printable T, typename U, typename V>
   requires std::unsigned_integral<std::remove_cvref_t<U>> and
            std::unsigned_integral<std::remove_cvref_t<V>>
@@ -27,4 +27,4 @@ void write(T&& name_level, U&& hour, V&& minut) {
 
   utils::writeSeparators();
 }
-}  // namespace header
+}  // namespace elevation::header

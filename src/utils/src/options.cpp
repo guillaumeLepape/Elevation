@@ -6,7 +6,7 @@
 #include <iostream>
 #include <range/v3/algorithm/binary_search.hpp>
 
-namespace utils {
+namespace elevation::utils {
 Options::Options(int argc, char* argv[])
     : argv_{[&argc, &argv]() {
         std::set<std::string_view> result;
@@ -27,4 +27,4 @@ void Options::print_help() const {
       "-r, --rule : If this option is selected, the rules and "
       "tutorials are not printed\n");
 }
-}  // namespace utils
+}  // namespace elevation::utils

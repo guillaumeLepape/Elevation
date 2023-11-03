@@ -9,7 +9,7 @@
 #include "elevation/entity/player.h"
 #include "elevation/entity/plug.h"
 
-namespace action {
+namespace elevation::action {
 class UseWeapon {
   entity::Player& player_;
   entity::Plug& plug_;
@@ -72,4 +72,4 @@ void trigger(entity::Player& player, entity::Plug& plug,
   use_weapon.trigger();
 }
 }  // namespace use_weapon
-}  // namespace action
+}  // namespace elevation::action

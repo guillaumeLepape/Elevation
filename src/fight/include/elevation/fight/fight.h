@@ -18,6 +18,7 @@
 #include "elevation/utils/pause.h"
 #include "elevation/writer/message_writer.h"
 
+namespace elevation {
 template <utils::Printable T>
 class Fight {
  private:
@@ -214,3 +215,4 @@ void launch(entity::Player& player, const std::vector<entity::Plug*>& plugs,
   fight.startFight(params.messageWriter, params.stop_condition);
 }
 }  // namespace fight
+}  // namespace elevation

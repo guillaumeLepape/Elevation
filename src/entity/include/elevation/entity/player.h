@@ -5,7 +5,7 @@
 
 static constexpr int MAX_LIFE_POINTS_PLAYER = 100;
 
-namespace entity {
+namespace elevation::entity {
 class Player {
  private:
   std::string pseudo_;
@@ -59,4 +59,4 @@ void attack(Entity& entity, const weapon::Weapon& weapon) {
 
 Player make_player_from_game_id(const std::string& id);
 
-}  // namespace entity
+}  // namespace elevation::entity

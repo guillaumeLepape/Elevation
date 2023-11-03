@@ -2,7 +2,7 @@
 
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T, utils::Printable U>
 class ChoosePlug {
  private:
@@ -19,4 +19,4 @@ class ChoosePlug {
 
   entity::Plug& plug() const { return plug_; }
 };
-}  // namespace action
+}  // namespace elevation::action

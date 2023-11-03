@@ -2,7 +2,7 @@
 
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable U>
 class IncreaseMaxLifePoints {
  private:
@@ -23,4 +23,4 @@ class IncreaseMaxLifePoints {
     action::result::write(result_);
   }
 };
-}  // namespace action
+}  // namespace elevation::action

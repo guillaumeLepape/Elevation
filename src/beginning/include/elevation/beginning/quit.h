@@ -3,7 +3,7 @@
 #include "elevation/action/action_writer.h"
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T, utils::Printable U>
 class Quit {
  private:
@@ -29,4 +29,4 @@ class Quit {
     fmt::print("\n");
   }
 };
-}  // namespace action
+}  // namespace elevation::action

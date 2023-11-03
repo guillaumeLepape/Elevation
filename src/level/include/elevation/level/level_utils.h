@@ -6,7 +6,7 @@
 #include "elevation/entity/player.h"
 #include "elevation/selection/selection.h"
 
-namespace utils::level {
+namespace elevation::level::utils {
 void end() {
   selection::select(
       data::menu::titleContinueMenu,
@@ -15,4 +15,4 @@ void end() {
 
   fmt::print("\n");
 }
-}  // namespace utils::level
+}  // namespace elevation::level::utils

@@ -8,7 +8,7 @@
 #include <range/v3/algorithm/transform.hpp>
 #include <range/v3/iterator/insert_iterators.hpp>
 
-namespace weapon {
+namespace elevation::weapon {
 Weapon NoWeapon() {
   return Weapon{data::weapon::nameNoWeapon,         0, Type::noWeapon,
                 data::weapon::statementUseNoWeapon, 1, 0};
@@ -109,4 +109,4 @@ void remove(WeaponInventory& weaponInventory, const std::string& name) {
                 [&name](const auto& weapon) { return name == weapon.name; });
 }
 
-}  // namespace weapon
+}  // namespace elevation::weapon

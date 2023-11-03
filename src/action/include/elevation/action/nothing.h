@@ -2,7 +2,7 @@
 
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T>
 class Nothing {
  private:
@@ -15,4 +15,4 @@ class Nothing {
 
   const T& statement() const { return statement_; }
 };
-}  // namespace action
+}  // namespace elevation::action

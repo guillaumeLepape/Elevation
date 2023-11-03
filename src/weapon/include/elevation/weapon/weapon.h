@@ -7,7 +7,7 @@
 
 #include "elevation/data_files/languages.h"
 
-namespace weapon {
+namespace elevation::weapon {
 enum class Type { noWeapon = -1, fist = 0, meleeWeapon = 1, fireArm = 2 };
 
 struct Weapon {
@@ -51,4 +51,4 @@ bool contains(const WeaponInventory& weaponInventory, Type&& type);
 
 void remove(WeaponInventory& weaponInventory, const std::string& name);
 
-}  // namespace weapon
+}  // namespace elevation::weapon

@@ -2,6 +2,6 @@
 
 #include <uuid.h>
 
-namespace utils::id {
+namespace elevation::utils::id {
 std::string generate();
-}  // namespace utils::id
+}  // namespace elevation::utils::id

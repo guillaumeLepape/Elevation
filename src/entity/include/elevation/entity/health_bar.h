@@ -1,6 +1,6 @@
 #pragma once
 
-namespace entity {
+namespace elevation::entity {
 class HealthBar {
  private:
   int nbLifePoints_;
@@ -36,4 +36,4 @@ class HealthBar {
   [[nodiscard]] bool dead() const { return (nbLifePoints_ <= 0); }
   [[nodiscard]] bool alive() const { return not dead(); }
 };
-}  // namespace entity
+}  // namespace elevation::entity

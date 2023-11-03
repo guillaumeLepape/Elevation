@@ -5,7 +5,7 @@
 #include "elevation/data_files/languages.h"
 #include "elevation/utils/concept.h"
 
-namespace utils {
+namespace elevation::utils {
 template <typename>
 struct is_tuple : std::false_type {};
 
@@ -25,4 +25,4 @@ struct is_message_tuple<std::tuple<T, U>> : std::true_type {};
 template <typename T>
 static constexpr bool is_message_tuple_v = is_message_tuple<T>::value;
 
-}  // namespace utils
+}  // namespace elevation::utils

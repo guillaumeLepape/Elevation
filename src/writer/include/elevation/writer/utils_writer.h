@@ -1,5 +1,5 @@
 #pragma once
 
-namespace utils {
+namespace elevation::utils {
 void writeSeparators();
 }

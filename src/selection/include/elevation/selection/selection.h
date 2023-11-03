@@ -7,7 +7,7 @@
 
 #include "elevation/writer/selection_writer.h"
 
-namespace selection {
+namespace elevation::selection {
 template <utils::Printable T, utils::Printable printable>
 std::size_t select_from_statement(T&& title,
                                   const std::vector<printable>& statements) {
@@ -88,4 +88,4 @@ std::size_t select(T&& title, std::vector<Arg>& actions) {
   actions[result].trigger();
   return result;
 }
-}  // namespace selection
+}  // namespace elevation::selection

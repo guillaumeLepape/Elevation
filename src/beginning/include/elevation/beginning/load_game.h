@@ -8,7 +8,7 @@
 #include "elevation/utils/concept.h"
 #include "elevation/utils/options.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T>
 class LoadGame {
  private:
@@ -54,4 +54,4 @@ class LoadGame {
     }
   }
 };
-}  // namespace action
+}  // namespace elevation::action

@@ -16,7 +16,7 @@
 #include "elevation/level/level_utils.h"
 #include "elevation/level/outro.h"
 
-namespace game_engine {
+namespace elevation::game_engine {
 void launch(const utils::Options& options, const std::string& game_id) {
   entity::Player player = entity::make_player_from_game_id(game_id);
 
@@ -39,7 +39,7 @@ void launch(const utils::Options& options, const std::string& game_id) {
                    decltype(level6), decltype(level7), decltype(level8),
                    decltype(level9), decltype(level10), decltype(outro)>;
 
-  static constexpr std::size_t NB_LEVEL = std::variant_size_v<Level>;
+  static constexpr auto NB_LEVEL = std::variant_size_v<Level>;
 
   std::array<Level, NB_LEVEL> levels = {introduction, level1, level2,  level3,
                                         level4,       level5, level6,  level7,
@@ -49,7 +49,7 @@ void launch(const utils::Options& options, const std::string& game_id) {
     std::visit([](auto& level) { level(); }, levels[i]);
     player.nextLevel();
     data::save(game_id, player);
-    if (i != NB_LEVEL - 1) utils::level::end();
+    if (i != NB_LEVEL - 1) level::utils::end();
   }
 }
-}  // namespace game_engine
+}  // namespace elevation::game_engine

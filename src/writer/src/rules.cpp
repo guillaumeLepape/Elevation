@@ -5,7 +5,7 @@
 #include "elevation/utils/pause.h"
 #include "elevation/writer/utils_writer.h"
 
-namespace rules {
+namespace elevation::rules {
 void write(const utils::Options& options) {
   std::ignore = std::system("clear");
 
@@ -62,4 +62,4 @@ void write(const utils::Options& options) {
     fmt::print(".\n");
   }
 }
-}  // namespace rules
+}  // namespace elevation::rules

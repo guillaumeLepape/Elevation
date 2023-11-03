@@ -1,6 +1,6 @@
 #include "elevation/entity/plug.h"
 
-namespace entity {
+namespace elevation::entity {
 Plug::Plug(const std::string& name, int nbLifePoints, weapon::Weapon&& weapon)
     : name_{name},
       weapon_{std::move(weapon)},
@@ -9,4 +9,4 @@ Plug::Plug(const std::string& name, int nbLifePoints, weapon::Weapon&& weapon)
 void Plug::changeWeapon(weapon::Weapon&& newWeapon) {
   weapon_ = std::move(newWeapon);
 }
-}  // namespace entity
+}  // namespace elevation::entity

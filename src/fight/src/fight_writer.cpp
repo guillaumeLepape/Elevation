@@ -7,7 +7,7 @@
 #include "elevation/utils/pause.h"
 #include "elevation/writer/utils_writer.h"
 
-namespace fight {
+namespace elevation::fight {
 namespace start {
 void write() {
   utils::pause();
@@ -144,4 +144,4 @@ void write() {
              "\n Fin du combat\n");
 }
 }  // namespace end
-}  // namespace fight
+}  // namespace elevation::fight

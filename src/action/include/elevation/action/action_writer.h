@@ -7,7 +7,7 @@
 #include "elevation/utils/concept.h"
 #include "elevation/utils/pause.h"
 
-namespace action {
+namespace elevation::action {
 namespace statement {
 template <utils::Printable T>
 void write(T&& statement) {
@@ -26,4 +26,4 @@ void write(T&& result) {
   fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, "\n {}", result);
 }
 }  // namespace result
-}  // namespace action
+}  // namespace elevation::action

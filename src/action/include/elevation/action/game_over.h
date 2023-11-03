@@ -3,7 +3,7 @@
 #include "elevation/action/action_writer.h"
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T>
 class GameOver {
  private:
@@ -26,4 +26,4 @@ void trigger(const T& result) {
   game_over.trigger();
 }
 }  // namespace game_over
-}  // namespace action
+}  // namespace elevation::action

@@ -3,7 +3,7 @@
 #include "elevation/entity/player.h"
 #include "elevation/entity/plug.h"
 
-namespace fight {
+namespace elevation::fight {
 namespace start {
 void write();
 }
@@ -28,4 +28,4 @@ void write();
 namespace end {
 void write();
 }
-}  // namespace fight
+}  // namespace elevation::fight

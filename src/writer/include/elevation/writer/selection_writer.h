@@ -9,7 +9,7 @@
 #include "elevation/utils/pause.h"
 #include "elevation/writer/utils_writer.h"
 
-namespace selection {
+namespace elevation::selection {
 
 template <utils::Printable printable>
 void write_statements(const std::vector<printable>& statements) {
@@ -88,4 +88,4 @@ void write(T&& title, Args&&... statements) {
     fmt::print(" : ");
   }
 }
-}  // namespace selection
+}  // namespace elevation::selection
