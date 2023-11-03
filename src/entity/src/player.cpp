@@ -1,9 +1,9 @@
-#include "player.h"
+#include "elevation/entity/player.h"
 
 #include <algorithm>
 #include <iostream>
 
-#include "results.h"
+#include "elevation/entity/results.h"
 
 namespace entity {
 Player::Player(const std::string& pseudo, int nbLevelSuceeded,

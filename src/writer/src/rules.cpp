@@ -1,9 +1,9 @@
-#include "rules.h"
+#include "elevation/writer/rules.h"
 
 #include <fmt/color.h>
 
-#include "pause.h"
-#include "utils_writer.h"
+#include "elevation/utils/pause.h"
+#include "elevation/writer/utils_writer.h"
 
 namespace rules {
 void write(const utils::Options& options) {

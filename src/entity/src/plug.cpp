@@ -1,4 +1,4 @@
-#include "plug.h"
+#include "elevation/entity/plug.h"
 
 namespace entity {
 Plug::Plug(const std::string& name, int nbLifePoints, weapon::Weapon&& weapon)

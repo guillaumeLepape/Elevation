@@ -1,15 +1,15 @@
-#include "weapon.h"
+#include "elevation/weapon/weapon.h"
 
 #include <gtest/gtest.h>
 
 #include <algorithm>
 #include <iostream>
 
-#include "add_weapon.h"
-#include "languages.h"
-#include "player.h"
-#include "plug.h"
-#include "use_weapon.h"
+#include "elevation/action/add_weapon.h"
+#include "elevation/action/use_weapon.h"
+#include "elevation/data_files/languages.h"
+#include "elevation/entity/player.h"
+#include "elevation/entity/plug.h"
 
 TEST(weapon_test, UseWeapon) {
   entity::Player player("Guillaume", 0);
