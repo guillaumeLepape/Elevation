@@ -7,7 +7,7 @@
 
 #include "elevation/utils/concept.h"
 
-namespace data {
+namespace elevation::data {
 template <utils::Printable T>
 nlohmann::json read_json_file(T&& path) {
   // open json file
@@ -24,4 +24,4 @@ nlohmann::json read_json_file(T&& path) {
 
   return jsonObject;
 }
-}  // namespace data
+}  // namespace elevation::data

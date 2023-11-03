@@ -5,7 +5,7 @@
 #include "elevation/fight/combo_writer.h"
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T, utils::Printable U>
 class InformationCombo {
  private:
@@ -25,4 +25,4 @@ class InformationCombo {
     }
   }
 };
-}  // namespace action
+}  // namespace elevation::action

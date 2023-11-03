@@ -3,7 +3,7 @@
 #include <concepts>
 #include <iostream>
 
-namespace utils {
+namespace elevation::utils {
 template <typename T>
 concept Printable = requires(T t) {
   { std::cout << t } -> std::same_as<std::ostream&>;
@@ -14,4 +14,4 @@ concept Action = requires(T action) {
   { action.statement() } -> Printable;
   { action.trigger() } -> std::same_as<void>;
 };
-}  // namespace utils
+}  // namespace elevation::utils

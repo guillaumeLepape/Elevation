@@ -2,7 +2,7 @@
 
 #include "elevation/entity/player.h"
 
-namespace action {
+namespace elevation::action {
 class Regeneration {
  private:
   entity::Player& player_;
@@ -52,4 +52,4 @@ void trigger(entity::Player& player) {
   regeneration.trigger();
 }
 }  // namespace regeneration
-}  // namespace action
+}  // namespace elevation::action

@@ -7,7 +7,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace introduction {
+namespace elevation::introduction {
 void start(entity::Player& player) {
   header::write(data::introduction::nameLevel, data::introduction::hour,
                 data::introduction::minut);
@@ -20,4 +20,4 @@ void start(entity::Player& player) {
   message::write(data::introduction::message4(player.pseudo()), player.pseudo(),
                  "");
 }
-}  // namespace introduction
+}  // namespace elevation::introduction

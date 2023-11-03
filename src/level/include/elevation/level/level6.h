@@ -6,11 +6,11 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace level6 {
+namespace elevation::level6 {
 void start(entity::Player& player) {
   header::write(data::level6::nameLevel, data::level6::hour,
                 data::level6::minut);
 
   message::write(data::level6::message0, player.pseudo(), "");
 }
-}  // namespace level6
+}  // namespace elevation::level6

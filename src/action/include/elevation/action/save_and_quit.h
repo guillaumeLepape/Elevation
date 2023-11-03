@@ -5,7 +5,7 @@
 #include "elevation/action/action_writer.h"
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T, utils::Printable U>
 class SaveAndQuit {
  private:
@@ -24,4 +24,4 @@ class SaveAndQuit {
     exit(0);
   }
 };
-}  // namespace action
+}  // namespace elevation::action

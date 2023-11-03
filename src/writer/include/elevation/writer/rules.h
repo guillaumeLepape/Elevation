@@ -2,6 +2,6 @@
 
 #include "elevation/utils/options.h"
 
-namespace rules {
+namespace elevation::rules {
 void write(const utils::Options& options);
 }

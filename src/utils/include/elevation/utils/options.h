@@ -3,7 +3,7 @@
 #include <set>
 #include <string_view>
 
-namespace utils {
+namespace elevation::utils {
 
 class Options {
  private:
@@ -27,4 +27,4 @@ class Options {
   [[nodiscard]] bool noRule() const { return noRule_; }
   [[nodiscard]] bool help() const { return help_; }
 };
-}  // namespace utils
+}  // namespace elevation::utils

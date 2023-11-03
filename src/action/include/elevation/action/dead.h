@@ -3,7 +3,7 @@
 #include "elevation/entity/plug.h"
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable U>
 class Dead {
  private:
@@ -28,4 +28,4 @@ void trigger(const entity::Plug& plug, const U& result) {
   dead.trigger();
 }
 }  // namespace dead
-}  // namespace action
+}  // namespace elevation::action

@@ -9,6 +9,8 @@
 #include "elevation/selection/selection.h"
 #include "elevation/writer/rules.h"
 
+using namespace elevation;
+
 auto main(int argc, char* argv[]) -> int {
   const utils::Options options{argc, argv};
 

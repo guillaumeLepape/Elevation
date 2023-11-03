@@ -6,7 +6,7 @@
 #include <tuple>
 #include <vector>
 
-namespace data {
+namespace elevation::data {
 using namespace std::literals;
 
 enum class NameSpeaker { player = 0, plug, description, action };
@@ -771,4 +771,4 @@ inline const std::string nameNinemm{"9mm"};
 inline const std::string nameAK47{"AK47"};
 }  // namespace weapon
 
-}  // namespace data
+}  // namespace elevation::data

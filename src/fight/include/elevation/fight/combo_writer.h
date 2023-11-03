@@ -6,7 +6,7 @@
 #include "elevation/utils/pause.h"
 #include "elevation/writer/utils_writer.h"
 
-namespace combo {
+namespace elevation::combo {
 template <utils::Printable T>
 void write(const Combo<T>& combo) {
   utils::pause();
@@ -31,4 +31,4 @@ void write(const Combo<T>& combo) {
   fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold,
              combo.malusStatement());
 }
-}  // namespace combo
+}  // namespace elevation::combo

@@ -2,6 +2,7 @@
 
 #include "elevation/fight/combo.h"
 
+namespace elevation {
 template <utils::Printable T>
 class ComboFistMeleeWeapon : public Combo<T> {
  public:
@@ -33,3 +34,4 @@ class ComboFistMeleeWeapon : public Combo<T> {
   }
   ~ComboFistMeleeWeapon() override = default;
 };
+}  // namespace elevation

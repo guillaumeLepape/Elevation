@@ -3,7 +3,7 @@
 #include "elevation/entity/health_bar.h"
 #include "elevation/weapon/weapon.h"
 
-namespace entity {
+namespace elevation::entity {
 class Plug {
  private:
   std::string name_;
@@ -29,4 +29,4 @@ class Plug {
   const HealthBar& healthBar() const { return healthBar_; }
   HealthBar& healthBar() { return healthBar_; }
 };
-}  // namespace entity
+}  // namespace elevation::entity

@@ -8,7 +8,7 @@
 #include "elevation/weapon/weapon_writer.h"
 #include "elevation/writer/utils_writer.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T>
 class InformationWeaponInventory {
  private:
@@ -33,4 +33,4 @@ class InformationWeaponInventory {
     ranges::for_each(weaponInventory_, weapon::print);
   }
 };
-}  // namespace action
+}  // namespace elevation::action

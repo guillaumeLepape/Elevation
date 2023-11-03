@@ -8,7 +8,7 @@
 #include "elevation/utils/pause.h"
 #include "elevation/writer/message_writer.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T, utils::Printable U>
 class Negociate {
  private:
@@ -84,4 +84,4 @@ void trigger(entity::Player& player, const entity::Plug& plug, int plugPrice,
   negociate.trigger();
 }
 }  // namespace negociate
-}  // namespace action
+}  // namespace elevation::action

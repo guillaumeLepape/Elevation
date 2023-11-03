@@ -6,7 +6,7 @@
 #include "elevation/utils/id.h"
 #include "elevation/utils/options.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T>
 class StartGame {
  private:
@@ -29,4 +29,4 @@ class StartGame {
 
   void trigger() { game_engine::launch(options_, utils::id::generate()); }
 };
-}  // namespace action
+}  // namespace elevation::action

@@ -4,7 +4,7 @@
 
 #include "elevation/utils/pause.h"
 
-namespace weapon {
+namespace elevation::weapon {
 void print(const Weapon& weapon) {
   utils::pause();
 
@@ -44,4 +44,4 @@ std::string_view informationWeaponType(const Weapon& weapon) {
       return "";
   }
 }
-}  // namespace weapon
+}  // namespace elevation::weapon

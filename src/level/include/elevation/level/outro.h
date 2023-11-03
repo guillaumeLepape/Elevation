@@ -6,7 +6,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace outro {
+namespace elevation::outro {
 void start(entity::Player& player) {
   header::write(data::outro::nameLevel, data::outro::hour, data::outro::minut);
 
@@ -14,4 +14,4 @@ void start(entity::Player& player) {
 
   std::cout << "\n";
 }
-}  // namespace outro
+}  // namespace elevation::outro

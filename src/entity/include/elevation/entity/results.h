@@ -10,7 +10,7 @@
 
 namespace fs = std::filesystem;
 
-namespace data {
+namespace elevation::data {
 std::vector<std::tuple<std::string, std::string, int>>
 create_load_game_statements();
 
@@ -22,4 +22,4 @@ bool is_new_game(const std::string& id);
 
 static const auto RESULTS_PATH =
     fs::path{fmt::format("{}/.elevation/results", getenv("HOME"))};
-}  // namespace data
+}  // namespace elevation::data

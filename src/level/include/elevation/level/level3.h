@@ -9,7 +9,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace level3 {
+namespace elevation::level3 {
 void start(entity::Player& player) {
   entity::Plug plug{"V", 100};
 
@@ -46,4 +46,4 @@ void start(entity::Player& player) {
 
   message::write(data::level3::message5, player.pseudo(), plug.name());
 }
-}  // namespace level3
+}  // namespace elevation::level3

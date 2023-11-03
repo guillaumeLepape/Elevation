@@ -8,7 +8,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace level2 {
+namespace elevation::level2 {
 void start(entity::Player& player) {
   entity::Plug plug{"Jean-Luc Delarue"};
 
@@ -23,4 +23,4 @@ void start(entity::Player& player) {
                              data::action::statementNegociate,
                              data::action::resultNegociate(0));
 }
-}  // namespace level2
+}  // namespace elevation::level2

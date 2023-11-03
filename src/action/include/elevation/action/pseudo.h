@@ -9,7 +9,7 @@
 #include "elevation/utils/concept.h"
 #include "elevation/writer/message_writer.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T, utils::Printable U>
 class Pseudo {
  private:
@@ -73,4 +73,4 @@ void trigger(entity::Player& player, const T& statement, const U& result) {
   pseudo.trigger();
 }
 }  // namespace pseudo
-}  // namespace action
+}  // namespace elevation::action

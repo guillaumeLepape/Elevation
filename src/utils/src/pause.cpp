@@ -3,7 +3,7 @@
 #include <atomic>
 #include <iostream>
 
-namespace utils {
+namespace elevation::utils {
 std::atomic_bool keep_running{true};
 
 void pause() {
@@ -15,4 +15,4 @@ void pause() {
   keep_running = true;
   return;
 }
-}  // namespace utils
+}  // namespace elevation::utils

@@ -7,7 +7,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace level1 {
+namespace elevation::level1 {
 void start(entity::Player& player) {
   entity::Plug plug{"Petite frappe"};
 
@@ -21,4 +21,4 @@ void start(entity::Player& player) {
 
   player.decreaseMoney(price);
 }
-}  // namespace level1
+}  // namespace elevation::level1

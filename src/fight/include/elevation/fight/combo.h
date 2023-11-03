@@ -7,6 +7,7 @@
 #include "elevation/selection/selection.h"
 #include "elevation/utils/concept.h"
 
+namespace elevation {
 template <utils::Printable T>
 class Combo {
  protected:
@@ -121,3 +122,4 @@ void trigger(Combo<T>&& combo, entity::Player& player, entity::Plug& plug,
       combo);
 }
 }  // namespace combo_v2
+}  // namespace elevation

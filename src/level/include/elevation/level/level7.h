@@ -13,7 +13,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace level7 {
+namespace elevation::level7 {
 void start(entity::Player& player, const utils::Options& options) {
   header::write(data::level7::nameLevel, data::level7::hour,
                 data::level7::minut);
@@ -40,4 +40,4 @@ void start(entity::Player& player, const utils::Options& options) {
 
   action::regenerate_all_life::trigger(player);
 }
-}  // namespace level7
+}  // namespace elevation::level7

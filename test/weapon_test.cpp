@@ -10,7 +10,7 @@
 #include "elevation/data_files/languages.h"
 #include "elevation/entity/player.h"
 #include "elevation/entity/plug.h"
-
+namespace elevation {
 TEST(weapon_test, UseWeapon) {
   entity::Player player("Guillaume", 0);
 
@@ -70,3 +70,4 @@ TEST(weapon_test, AK47) {
   EXPECT_EQ(ak47.durability, 30);
   EXPECT_EQ(ak47.durability_loose_per_use, 10);
 }
+}  // namespace elevation

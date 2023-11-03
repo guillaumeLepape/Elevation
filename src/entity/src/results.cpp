@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <iostream>
 
-namespace data {
+namespace elevation::data {
 std::vector<std::tuple<std::string, std::string, int>>
 create_load_game_statements() {
   fs::create_directories(RESULTS_PATH);
@@ -42,4 +42,4 @@ nlohmann::json get_saved_data(const std::string& id) {
 bool is_new_game(const std::string& id) {
   return not fs::exists(RESULTS_PATH / fmt::format("{}.json", id));
 }
-}  // namespace data
+}  // namespace elevation::data

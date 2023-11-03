@@ -6,7 +6,7 @@
 #include "elevation/utils/concept.h"
 #include "elevation/weapon/weapon.h"
 
-namespace action {
+namespace elevation::action {
 class AddWeapon {
  private:
   std::string result_;
@@ -38,4 +38,4 @@ void trigger(entity::Player& player, weapon::Weapon&& weapon) {
   add_weapon.trigger();
 }
 }  // namespace add_weapon
-}  // namespace action
+}  // namespace elevation::action

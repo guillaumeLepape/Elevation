@@ -2,7 +2,7 @@
 
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 class PlugAttack {
  private:
   entity::Player& player_;
@@ -30,4 +30,4 @@ void trigger(entity::Player& player, entity::Plug& plug) {
   plug_attack.trigger();
 }
 }  // namespace plug_attack
-}  // namespace action
+}  // namespace elevation::action

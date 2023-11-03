@@ -9,7 +9,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace level4 {
+namespace elevation::level4 {
 void start(entity::Player& player) {
   entity::Plug plug{"Freeze Corleone", 20};
 
@@ -78,4 +78,4 @@ void start(entity::Player& player) {
 
   message::write(data::level4::message2, player.pseudo(), plug.name());
 }
-}  // namespace level4
+}  // namespace elevation::level4

@@ -13,7 +13,7 @@
 #include "elevation/writer/tutorial_writer.h"
 #include "level_utils.h"
 
-namespace level5 {
+namespace elevation::level5 {
 void start(entity::Player& player, const utils::Options& options) {
   header::write(data::level5::nameLevel, data::level5::hour,
                 data::level5::minut);
@@ -112,4 +112,4 @@ void start(entity::Player& player, const utils::Options& options) {
 
   regenerateAllLife.trigger();
 }
-}  // namespace level5
+}  // namespace elevation::level5

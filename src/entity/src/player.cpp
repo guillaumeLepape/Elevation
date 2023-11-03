@@ -5,7 +5,7 @@
 
 #include "elevation/entity/results.h"
 
-namespace entity {
+namespace elevation::entity {
 Player::Player(const std::string& pseudo, int nbLevelSuceeded,
                weapon::WeaponInventory&& weaponInventory)
     : pseudo_{pseudo},
@@ -47,4 +47,4 @@ Player make_player_from_game_id(const std::string& id) {
   }
 }
 
-}  // namespace entity
+}  // namespace elevation::entity

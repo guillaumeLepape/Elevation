@@ -16,7 +16,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace level9 {
+namespace elevation::level9 {
 void start(entity::Player& player, const utils::Options& options) {
   header::write(data::level9::nameLevel, data::level9::hour,
                 data::level9::minut);
@@ -90,4 +90,4 @@ void start(entity::Player& player, const utils::Options& options) {
 
   increaseMaxLifePoints.trigger();
 }
-}  // namespace level9
+}  // namespace elevation::level9

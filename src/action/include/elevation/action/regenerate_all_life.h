@@ -2,7 +2,7 @@
 
 #include "elevation/entity/player.h"
 
-namespace action {
+namespace elevation::action {
 class RegenerateAllLife {
  private:
   entity::Player& player_;
@@ -28,4 +28,4 @@ void trigger(entity::Player& player) {
   regenerate_all_life.trigger();
 }
 }  // namespace regenerate_all_life
-}  // namespace action
+}  // namespace elevation::action

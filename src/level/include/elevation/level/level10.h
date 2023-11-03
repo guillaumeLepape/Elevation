@@ -11,7 +11,7 @@
 #include "elevation/writer/message_writer.h"
 #include "level_utils.h"
 
-namespace level10 {
+namespace elevation::level10 {
 void start(entity::Player& player, const utils::Options& options) {
   header::write(data::level10::nameLevel, data::level10::hour,
                 data::level10::minut);
@@ -41,4 +41,4 @@ void start(entity::Player& player, const utils::Options& options) {
 
   message::write(data::level10::message4, player.pseudo(), plug.name());
 }
-}  // namespace level10
+}  // namespace elevation::level10

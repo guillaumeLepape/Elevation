@@ -1,6 +1,6 @@
 #include "elevation/utils/id.h"
 
-namespace utils::id {
+namespace elevation::utils::id {
 std::string generate() {
   std::random_device rd;
   auto seed_data = std::array<int, std::mt19937::state_size>{};
@@ -11,4 +11,4 @@ std::string generate() {
 
   return uuids::to_string(gen());
 }
-}  // namespace utils::id
+}  // namespace elevation::utils::id

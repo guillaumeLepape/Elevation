@@ -8,6 +8,7 @@
 #include <set>
 #include <string>
 
+namespace elevation {
 nlohmann::json readJsonFile(const std::string& path) {
   // open json file
   std::ifstream jsonFile{path, std::ifstream::binary};
@@ -52,10 +53,11 @@ void write_list_name(const std::set<std::string>& listName,
 
   jsonFile.close();
 }
+}  // namespace elevation
 
 auto main() -> int {
-  auto [list_female_name, list_male_name] = read_list_of_name();
+  auto [list_female_name, list_male_name] = elevation::read_list_of_name();
 
-  write_list_name(list_female_name, "prenoms_feminins");
-  write_list_name(list_male_name, "prenoms_masculins");
+  elevation::write_list_name(list_female_name, "prenoms_feminins");
+  elevation::write_list_name(list_male_name, "prenoms_masculins");
 }

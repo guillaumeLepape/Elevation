@@ -9,7 +9,7 @@
 #include "elevation/utils/pause.h"
 #include "elevation/writer/utils_writer.h"
 
-namespace tutorial {
+namespace elevation::tutorial {
 template <utils::Printable T, typename U>
   requires utils::Printable<ranges::range_value_t<U>>
 void write(T&& title, U&& tutorialStatement) {
@@ -31,4 +31,4 @@ void write(T&& title, U&& tutorialStatement) {
 
   fmt::print("\n");
 }
-}  // namespace tutorial
+}  // namespace elevation::tutorial

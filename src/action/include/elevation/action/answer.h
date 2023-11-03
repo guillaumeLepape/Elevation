@@ -2,7 +2,7 @@
 
 #include "elevation/utils/concept.h"
 
-namespace action {
+namespace elevation::action {
 template <utils::Printable T>
 class Answer {
  private:
@@ -17,4 +17,4 @@ class Answer {
 
   bool correctOrNot() const { return correctOrNot_; }
 };
-}  // namespace action
+}  // namespace elevation::action

@@ -2,6 +2,7 @@
 
 #include "elevation/fight/combo.h"
 
+namespace elevation {
 template <utils::Printable T>
 class ComboQuadrupleCutter : public Combo<T> {
  public:
@@ -22,3 +23,4 @@ class ComboQuadrupleCutter : public Combo<T> {
 
   ~ComboQuadrupleCutter() override = default;
 };
+}  // namespace elevation
