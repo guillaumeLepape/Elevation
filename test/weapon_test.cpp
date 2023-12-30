@@ -16,9 +16,12 @@ namespace elevation {
 TEST(weapon_test, UseWeapon) {
   entity::Player player("Guillaume", 0);
 
-  action::add_weapon::trigger(player, weapon::Fist());
+  std::istringstream stream{"\u000A\u000A"};
+  std::istream in{stream.rdbuf()};
 
-  action::add_weapon::trigger(player, weapon::AK47(100));
+  action::add_weapon::trigger(player, weapon::Fist(), in);
+
+  action::add_weapon::trigger(player, weapon::AK47(100), in);
 
   EXPECT_EQ(player.pseudo(), "Guillaume");
 
@@ -35,7 +38,10 @@ TEST(weapon_test, UseWeapon) {
 TEST(weapon_test, Fist) {
   entity::Player player("Guillaume", 0, weapon::WeaponInventory{});
 
-  action::add_weapon::trigger(player, weapon::Fist());
+  std::istringstream stream{"\u000A"};
+  std::istream in{stream.rdbuf()};
+
+  action::add_weapon::trigger(player, weapon::Fist(), in);
 
   const auto& fist = *(std::cbegin(player.weapons()));
 
@@ -48,7 +54,10 @@ TEST(weapon_test, Fist) {
 TEST(weapon_test, AK47) {
   entity::Player player("Guillaume", 0, weapon::WeaponInventory{});
 
-  action::add_weapon::trigger(player, weapon::AK47(40));
+  std::istringstream stream{"\u000A\u000A\u000A"};
+  std::istream in{stream.rdbuf()};
+
+  action::add_weapon::trigger(player, weapon::AK47(40), in);
 
   const auto& ak47 = *std::find_if(
       std::cbegin(player.weapons()), std::cend(player.weapons()),
@@ -62,7 +71,7 @@ TEST(weapon_test, AK47) {
 
   entity::Plug plug("Jean-Michel", 100);
 
-  action::use_weapon::trigger(player, plug, data::weapon::nameAK47);
+  action::use_weapon::trigger(player, plug, data::weapon::nameAK47, in);
 
   EXPECT_EQ(ak47.nb_damage, 150);
   EXPECT_EQ(ak47.type, weapon::Type::fireArm);

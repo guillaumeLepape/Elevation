@@ -12,12 +12,14 @@ class AddWeapon {
   std::string result_;
   entity::Player& player_;
   weapon::Weapon weapon_;
+  std::istream& in_;
 
  public:
-  AddWeapon(entity::Player& player, weapon::Weapon&& weapon)
+  AddWeapon(entity::Player& player, weapon::Weapon&& weapon, std::istream& in)
       : result_{data::action::resultAddWeapon(weapon.name)},
         player_{player},
-        weapon_{std::move(weapon)} {}
+        weapon_{std::move(weapon)},
+        in_{in} {}
 
   void trigger() {
     if (weapon_.type != weapon::Type::noWeapon) {
@@ -26,15 +28,16 @@ class AddWeapon {
           player_.weapons().insert(std::move(weapon_));
 
       if (not_in_player_weapons) {
-        result::write(result_);
+        result::write(result_, in_);
       }
     }
   }
 };
 
 namespace add_weapon {
-void trigger(entity::Player& player, weapon::Weapon&& weapon) {
-  AddWeapon add_weapon{player, std::forward<weapon::Weapon>(weapon)};
+void trigger(entity::Player& player, weapon::Weapon&& weapon,
+             std::istream& in = std::cin) {
+  AddWeapon add_weapon{player, std::forward<weapon::Weapon>(weapon), in};
   add_weapon.trigger();
 }
 }  // namespace add_weapon
