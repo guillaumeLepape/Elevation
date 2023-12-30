@@ -4,12 +4,14 @@
 
 #include <algorithm>
 #include <iostream>
+#include <range/v3/view.hpp>
 
 #include "elevation/action/add_weapon.h"
 #include "elevation/action/use_weapon.h"
 #include "elevation/data_files/languages.h"
 #include "elevation/entity/player.h"
 #include "elevation/entity/plug.h"
+
 namespace elevation {
 TEST(weapon_test, UseWeapon) {
   entity::Player player("Guillaume", 0);
@@ -20,15 +22,13 @@ TEST(weapon_test, UseWeapon) {
 
   EXPECT_EQ(player.pseudo(), "Guillaume");
 
-  std::vector<std::string> weaponsName;
-  std::transform(std::cbegin(player.weapons()), std::cend(player.weapons()),
-                 std::back_inserter(weaponsName),
-                 [](const auto& weapon) { return weapon.name; });
-
   std::vector<std::string> expectWeaponNames = {"Poing", "AK47"};
-  EXPECT_EQ(weaponsName.size(), expectWeaponNames.size());
-  for (std::size_t i = 0; i < weaponsName.size(); ++i) {
-    EXPECT_EQ(weaponsName[i], expectWeaponNames[i]);
+
+  EXPECT_EQ(player.weapons().size(), expectWeaponNames.size());
+
+  for (const auto& [playerWeapon, expectWeaponName] :
+       ranges::views::zip(player.weapons(), expectWeaponNames)) {
+    EXPECT_EQ(playerWeapon.name, expectWeaponName);
   }
 }
 
