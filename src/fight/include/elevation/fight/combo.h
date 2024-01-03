@@ -87,7 +87,7 @@ void trigger(Combo<T>&& combo, entity::Player& player, entity::Plug& plug,
               }
             }
           },
-          [&](ComboFistMeleeWeapon<T>&& arg) {
+          [&](ComboFistMeleeWeapon<T>&&) {
             // if the player has attack with his fist, trigger the combo
             // and the ennemy is not dead
             // and player has at least one melee weapon
@@ -107,7 +107,7 @@ void trigger(Combo<T>&& combo, entity::Player& player, entity::Plug& plug,
               selection::select(Combo<T>::title_, useWeaponFistCombo);
             }
           },
-          [&](ComboQuadrupleCutter<T>&& arg) {
+          [&](ComboQuadrupleCutter<T>&&) {
             if (useWeapon[resultChooseWeapon].name() == "Cutter") {
               action::UseWeapon useWeaponCombo = useWeapon[resultChooseWeapon];
 
