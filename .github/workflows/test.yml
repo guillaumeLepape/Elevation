@@ -11,13 +11,18 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
+      fail-fast: false
+
       matrix:
         os: [ubuntu-latest, windows-latest]
-        compiler: [Clang, GCC]
+        compiler: [Clang, GCC, MSVC]
         build_type: [Debug, Release]
         exclude:
           - os: windows-latest
+            compiler: GCC
           - compiler: Clang
+          - os: ubuntu-latest
+            compiler: MSVC
 
     steps:
       - uses: actions/checkout@v4
