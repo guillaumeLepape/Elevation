@@ -97,11 +97,10 @@ void trigger(Combo<T>&& combo, entity::Player& player, entity::Plug& plug,
                                  weapon::Type::meleeWeapon)) {
               std::vector<action::UseWeapon> useWeaponFistCombo;
 
-              for (auto weapon = std::cbegin(Combo<T>::player_.weapons());
-                   weapon != std::cend(Combo<T>::player_.weapons()); ++weapon) {
-                if (weapon->type == weapon::Type::meleeWeapon) {
+              for (const auto& weapon : Combo<T>::player_.weapons()) {
+                if (weapon.type == weapon::Type::meleeWeapon) {
                   useWeaponFistCombo.push_back(
-                      action::UseWeapon{Combo<T>::player_, plug, weapon->name});
+                      action::UseWeapon{Combo<T>::player_, plug, weapon.name});
                 }
               }
 
