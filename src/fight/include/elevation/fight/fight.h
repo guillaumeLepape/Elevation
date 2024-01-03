@@ -65,13 +65,11 @@ class Fight {
   entity::Plug& choosePlug() {
     std::vector<action::ChoosePlug<std::string, std::string>> choosePlugActions;
 
-    for (auto p = std::begin(plugs_); p != std::end(plugs_); p++) {
-      // user cannot attack dead plugs
-      if (((*p)->healthBar().alive())) {
-        action::ChoosePlug choosePlug{
-            **p, data::action::statementChoosePlug((*p)->name()),
-            data::action::resultChoosePlug((*p)->name())};
-        choosePlugActions.push_back(choosePlug);
+    for (auto& plug : plugs_) {
+      if (plug->healthBar().alive()) {
+        choosePlugActions.push_back(action::ChoosePlug{
+            *plug, data::action::statementChoosePlug(plug->name()),
+            data::action::resultChoosePlug(plug->name())});
       }
     }
 
