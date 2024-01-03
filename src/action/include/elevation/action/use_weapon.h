@@ -14,11 +14,12 @@ class UseWeapon {
   entity::Player& player_;
   entity::Plug& plug_;
   const std::string& nameWeapon_;
+  std::istream& in_;
 
  public:
   UseWeapon(entity::Player& player, entity::Plug& plug,
-            const std::string& nameWeapon)
-      : player_{player}, plug_{plug}, nameWeapon_{nameWeapon} {}
+            const std::string& nameWeapon, std::istream& in = std::cin)
+      : player_{player}, plug_{plug}, nameWeapon_{nameWeapon}, in_{in} {}
 
   void trigger() {
     auto weapon = ranges::find_if(player_.weapons(), [&](const auto& weapon) {
@@ -30,9 +31,9 @@ class UseWeapon {
 
       auto result =
           data::weapon::resultUseWeapon(plug_.name(), weapon->nb_damage);
-      result::write(result);
+      result::write(result, in_);
 
-      action::dead::trigger(plug_, data::action::resultDead(plug_.name()));
+      action::dead::trigger(plug_, data::action::resultDead(plug_.name()), in_);
 
       // if weapon is fireArm and has no ammo, delete it
       if (weapon->type == weapon::Type::fireArm and weapon->durability <= 0) {
@@ -67,8 +68,8 @@ class UseWeapon {
 
 namespace use_weapon {
 void trigger(entity::Player& player, entity::Plug& plug,
-             const std::string& nameWeapon) {
-  UseWeapon use_weapon{player, plug, nameWeapon};
+             const std::string& nameWeapon, std::istream& in = std::cin) {
+  UseWeapon use_weapon{player, plug, nameWeapon, in};
   use_weapon.trigger();
 }
 }  // namespace use_weapon

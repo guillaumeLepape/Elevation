@@ -21,8 +21,8 @@ void write(T&& statement) {
 
 namespace result {
 template <utils::Printable T>
-void write(T&& result) {
-  utils::pause();
+void write(T&& result, std::istream& in = std::cin) {
+  utils::pause(in);
   fmt::print(fg(fmt::color::yellow) | fmt::emphasis::bold, "\n {}", result);
 }
 }  // namespace result

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 namespace elevation::utils {
-void pause();
+void pause(std::istream& in = std::cin);
 }
