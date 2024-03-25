@@ -92,12 +92,12 @@ class Fight {
   const choose_weapon_result chooseWeapon(entity::Plug& choosenPlug) {
     std::vector<action::UseWeapon> useWeapons;
 
-    std::transform(
-        std::cbegin(player_.weapons()), std::cend(player_.weapons()),
-        std::back_inserter(useWeapons),
-        [this, &choosenPlug](const auto& weapon) {
-          return action::UseWeapon{player_, choosenPlug, weapon.name};
-        });
+    std::transform(std::cbegin(player_.weapons()), std::cend(player_.weapons()),
+                   std::back_inserter(useWeapons),
+                   [this, &choosenPlug](const auto& weapon) {
+                     return action::UseWeapon{player_, choosenPlug,
+                                              weapon.name};
+                   });
 
     auto resultUseWeapon =
         selection::select(data::action::titleChooseWeapon, useWeapons);
